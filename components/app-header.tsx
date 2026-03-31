@@ -4,7 +4,6 @@ import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ChevronDown, ChevronRight } from 'lucide-react'
-import { Badge } from '@/components/ui/badge'
 import { HamburgerMenu } from '@/components/HamburgerMenu'
 
 const NAV_ITEMS: Array<
@@ -95,24 +94,17 @@ export function AppHeader() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        {/* Logo + badge */}
+        {/* Logo */}
         <div className="flex shrink-0 items-center gap-4">
           <Link href="/" className="flex items-center gap-4" aria-label="Giga Brand Assets home">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/logos/giga-complete-horizontal.svg"
               alt="Giga"
-              className="w-[160px] transition-smooth-transform"
+              className="w-[180px] transition-smooth-transform"
               style={{ height: 'fit-content' }}
             />
           </Link>
-          <div className="hidden h-6 w-px shrink-0 bg-border lg:block" />
-          <Badge
-            variant="secondary"
-            className="hidden shrink-0 rounded border border-border bg-secondary px-2.5 py-0.5 text-xs font-medium text-muted-foreground lg:inline-flex"
-          >
-            Brand Assets
-          </Badge>
         </div>
 
         {/* Desktop nav — visible md+ */}

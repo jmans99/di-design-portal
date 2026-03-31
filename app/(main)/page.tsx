@@ -57,7 +57,7 @@ export default function HomePage() {
           <h1 className="font-heading mx-auto max-w-2xl text-[3.25rem] font-normal leading-[1.07] tracking-[-0.03em] text-foreground text-balance">
             One place for all Giga brand resources
           </h1>
-          <p className="mx-auto mt-5 max-w-lg text-[16px] leading-relaxed text-black">
+          <p className="mx-auto mt-5 max-w-[600px] text-[16px] leading-relaxed text-muted-foreground">
             Official logos, colors, typography, illustrations, and guidelines, ready to use.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -65,7 +65,7 @@ export default function HomePage() {
               href="/logos"
               className="inline-flex h-11 items-center gap-2 rounded-lg bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-stripe transition-all duration-200 hover:brightness-110 hover:shadow-stripe-md active:scale-[0.98]"
             >
-              Explore logos
+              Start exploring
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
