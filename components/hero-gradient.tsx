@@ -5,7 +5,7 @@ import { ShaderGradient, ShaderGradientCanvas } from '@shadergradient/react'
 export function HeroGradient() {
   return (
     <ShaderGradientCanvas
-      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
+      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0.5 }}
       pointerEvents="none"
     >
       <ShaderGradient
