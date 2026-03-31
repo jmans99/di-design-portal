@@ -34,10 +34,9 @@ export function AppHeader() {
   const guidelinesRef = useRef<HTMLDivElement>(null)
   const navRef = useRef<HTMLElement>(null)
   const itemRefs = useRef<Record<string, HTMLElement | null>>({})
-  const [indicator, setIndicator] = useState<{ left: number; width: number } | null>(null)
+  const [indicator, setIndicator] = useState<{ left: number; right: number; transition: string } | null>(null)
 
   const isActive = (path: string) => {
-    if (path === '/logos') return pathname === '/logos' || pathname === '/'
     return pathname === path || pathname.startsWith(path + '/')
   }
 
@@ -62,15 +61,30 @@ export function AppHeader() {
           item.type === 'item' && isActive(item.path)
         )?.id ?? null
 
-    if (!activeId || !navRef.current) return
+    if (!activeId || !navRef.current) {
+      setIndicator(null)
+      return
+    }
     const el = itemRefs.current[activeId]
     if (!el) return
 
     const navRect = navRef.current.getBoundingClientRect()
     const elRect = el.getBoundingClientRect()
-    setIndicator({
-      left: elRect.left - navRect.left + 8,
-      width: elRect.width - 16,
+    const newLeft = elRect.left - navRect.left + 8
+    const newRight = navRect.right - elRect.right + 8
+
+    setIndicator(prev => {
+      if (prev === null) {
+        return { left: newLeft, right: newRight, transition: 'none' }
+      }
+      const movingRight = newLeft > prev.left
+      return {
+        left: newLeft,
+        right: newRight,
+        transition: movingRight
+          ? 'right 260ms cubic-bezier(0.16, 1, 0.3, 1), left 400ms cubic-bezier(0.16, 1, 0.3, 1) 40ms'
+          : 'left 260ms cubic-bezier(0.16, 1, 0.3, 1), right 400ms cubic-bezier(0.16, 1, 0.3, 1) 40ms',
+      }
     })
   }, [pathname])
 
@@ -83,7 +97,7 @@ export function AppHeader() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         {/* Logo + badge */}
         <div className="flex shrink-0 items-center gap-4">
-          <Link href="/logos" className="flex items-center gap-4" aria-label="Giga Brand Assets home">
+          <Link href="/" className="flex items-center gap-4" aria-label="Giga Brand Assets home">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/logos/giga-complete-horizontal.svg"
@@ -166,8 +180,8 @@ export function AppHeader() {
               style={{
                 bottom: -17,
                 left: indicator.left,
-                width: indicator.width,
-                transition: 'left 450ms cubic-bezier(0.16, 1, 0.3, 1), width 350ms cubic-bezier(0.16, 1, 0.3, 1)',
+                right: indicator.right,
+                transition: indicator.transition,
               }}
             />
           )}
