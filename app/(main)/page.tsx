@@ -39,89 +39,32 @@ export default function HomePage() {
 
       {/* ── Hero ── */}
       <section
-        className="-mx-0 overflow-hidden px-6 pb-20 pt-20"
+        className="-mx-0 px-6 pb-20 pt-20 text-center"
         style={{ background: 'linear-gradient(180deg, hsl(214 100% 97%) 0%, hsl(210 40% 98.3%) 100%)' }}
       >
-        <div className="flex flex-col items-center gap-12 lg:flex-row lg:items-center lg:gap-16">
-
-          {/* Text */}
-          <div className="flex-1 text-center lg:text-left">
-            <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
-              Giga · Brand Assets
-            </p>
-            <h1 className="font-heading text-[3.25rem] font-normal leading-[1.07] tracking-[-0.03em] text-foreground text-balance">
-              One place for all Giga brand resources
-            </h1>
-            <p className="mx-auto mt-5 max-w-lg text-[16px] leading-relaxed text-muted-foreground lg:mx-0 lg:max-w-sm">
-              Official logos, colors, typography, illustrations, and guidelines — ready to download for authorized Giga partners.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
-              <Link
-                href="/logos"
-                className="inline-flex h-11 items-center gap-2 rounded-lg bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-stripe transition-all duration-200 hover:brightness-110 hover:shadow-stripe-md active:scale-[0.98]"
-              >
-                Explore logos
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                href="/guidelines/video"
-                className="inline-flex h-11 items-center gap-2 rounded-lg border border-border bg-card px-6 text-sm font-semibold text-foreground shadow-stripe transition-all duration-200 hover:shadow-stripe-md active:scale-[0.98]"
-              >
-                View guidelines
-              </Link>
-            </div>
-          </div>
-
-          {/* 3D CSS Blob */}
-          <div className="relative flex h-[340px] w-[340px] shrink-0 items-center justify-center lg:h-[420px] lg:w-[420px]" aria-hidden>
-            {/* Outer glow */}
-            <div
-              className="absolute inset-[-18%] animate-blob-morph rounded-full opacity-30"
-              style={{
-                background: 'radial-gradient(circle, hsl(214 100% 65% / 0.5) 0%, transparent 70%)',
-                filter: 'blur(24px)',
-              }}
-            />
-            {/* Main sphere body */}
-            <div
-              className="absolute inset-0 animate-blob-morph"
-              style={{
-                background: 'radial-gradient(circle at 36% 32%, hsl(214 100% 72%) 0%, hsl(214 100% 58%) 38%, hsl(222 88% 44%) 68%, hsl(222 78% 26%) 100%)',
-                boxShadow: 'inset -28px -28px 70px rgba(0,0,0,0.28), inset 14px 14px 40px rgba(255,255,255,0.14), 0 32px 90px hsl(214 100% 58% / 0.32)',
-              }}
-            />
-            {/* Rotating highlight ring */}
-            <div
-              className="animate-blob-spin absolute inset-[6%] rounded-full opacity-25"
-              style={{
-                background: 'conic-gradient(from 0deg, transparent 0%, rgba(255,255,255,0.7) 18%, transparent 38%)',
-              }}
-            />
-            {/* Specular highlight */}
-            <div
-              className="animate-blob-morph absolute inset-0"
-              style={{
-                background: 'radial-gradient(circle at 33% 28%, rgba(255,255,255,0.38) 0%, rgba(255,255,255,0.08) 28%, transparent 52%)',
-              }}
-            />
-            {/* Satellite orb 1 */}
-            <div
-              className="animate-orb-float-1 absolute -right-5 top-[15%] h-[52px] w-[52px] rounded-full"
-              style={{
-                background: 'radial-gradient(circle at 36% 34%, hsl(214 100% 78%) 0%, hsl(214 100% 62%) 100%)',
-                boxShadow: '0 8px 24px hsl(214 100% 58% / 0.45)',
-              }}
-            />
-            {/* Satellite orb 2 */}
-            <div
-              className="animate-orb-float-2 absolute -left-4 bottom-[20%] h-[34px] w-[34px] rounded-full"
-              style={{
-                background: 'radial-gradient(circle at 36% 34%, hsl(214 100% 82%) 0%, hsl(214 100% 68%) 100%)',
-                boxShadow: '0 6px 18px hsl(214 100% 58% / 0.4)',
-              }}
-            />
-          </div>
-
+        <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
+          Giga · Brand Assets
+        </p>
+        <h1 className="font-heading mx-auto max-w-2xl text-[3.25rem] font-normal leading-[1.07] tracking-[-0.03em] text-foreground text-balance">
+          One place for all Giga brand resources
+        </h1>
+        <p className="mx-auto mt-5 max-w-lg text-[16px] leading-relaxed text-muted-foreground">
+          Official logos, colors, typography, illustrations, and guidelines — ready to download for authorized Giga partners.
+        </p>
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <Link
+            href="/logos"
+            className="inline-flex h-11 items-center gap-2 rounded-lg bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-stripe transition-all duration-200 hover:brightness-110 hover:shadow-stripe-md active:scale-[0.98]"
+          >
+            Explore logos
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+          <Link
+            href="/guidelines/video"
+            className="inline-flex h-11 items-center gap-2 rounded-lg border border-border bg-card px-6 text-sm font-semibold text-foreground shadow-stripe transition-all duration-200 hover:shadow-stripe-md active:scale-[0.98]"
+          >
+            View guidelines
+          </Link>
         </div>
       </section>
 
