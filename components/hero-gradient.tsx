@@ -5,19 +5,19 @@ import { ShaderGradient, ShaderGradientCanvas } from '@shadergradient/react'
 export function HeroGradient() {
   return (
     <ShaderGradientCanvas
-      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0.5 }}
+      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0.7 }}
       pointerEvents="none"
     >
       <ShaderGradient
         animate="on"
         axesHelper="off"
-        brightness={1.2}
+        brightness={1.8}
         cAzimuthAngle={170}
         cDistance={2.59}
         cPolarAngle={70}
         cameraZoom={1}
-        color1="#ffffff"
-        color2="#277aff"
+        color1="#277aff"
+        color2="#ffffff"
         color3="#ffffff"
         destination="onCanvas"
         embedMode="off"
@@ -27,14 +27,14 @@ export function HeroGradient() {
         frameRate={10}
         gizmoHelper="hide"
         grain="off"
-        lightType="3d"
+        lightType="env"
         pixelDensity={0.6}
         positionX={0}
         positionY={0.9}
         positionZ={-0.3}
-        range="disabled"
-        rangeEnd={40}
-        rangeStart={0}
+        range="enabled"
+        rangeEnd={21.4}
+        rangeStart={11.9}
         reflection={0.1}
         rotationX={45}
         rotationY={0}
@@ -46,7 +46,7 @@ export function HeroGradient() {
         uFrequency={0}
         uSpeed={0.4}
         uStrength={0.7}
-        uTime={0}
+        uTime={11.9}
         wireframe={false}
       />
     </ShaderGradientCanvas>
