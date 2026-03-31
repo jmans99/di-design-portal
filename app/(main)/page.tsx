@@ -58,7 +58,7 @@ export default function HomePage() {
             One place for all Giga brand resources
           </h1>
           <p className="mx-auto mt-5 max-w-lg text-[16px] leading-relaxed text-black">
-            Official logos, colors, typography, illustrations, and guidelines — ready to download for authorized Giga partners.
+            Official logos, colors, typography, illustrations, and guidelines, ready to use.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link
