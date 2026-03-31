@@ -40,8 +40,8 @@ export default function HomePage() {
 
       {/* ── Hero ── */}
       <section
-        className="relative overflow-hidden pb-24 pt-24 text-center"
-        style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)' }}
+        className="relative overflow-hidden pb-24 pt-40 text-center"
+        style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', marginTop: '-4rem' }}
       >
         {/* Shader gradient background */}
         <HeroGradient />
@@ -54,13 +54,10 @@ export default function HomePage() {
 
         {/* Content */}
         <div className="relative z-10 mx-auto max-w-6xl px-6">
-          <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
-            Giga · Brand Assets
-          </p>
           <h1 className="font-heading mx-auto max-w-2xl text-[3.25rem] font-normal leading-[1.07] tracking-[-0.03em] text-foreground text-balance">
             One place for all Giga brand resources
           </h1>
-          <p className="mx-auto mt-5 max-w-lg text-[16px] leading-relaxed text-muted-foreground">
+          <p className="mx-auto mt-5 max-w-lg text-[16px] leading-relaxed text-black">
             Official logos, colors, typography, illustrations, and guidelines — ready to download for authorized Giga partners.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -70,12 +67,6 @@ export default function HomePage() {
             >
               Explore logos
               <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link
-              href="/guidelines/video"
-              className="inline-flex h-11 items-center gap-2 rounded-lg border border-border bg-card/80 px-6 text-sm font-semibold text-foreground shadow-stripe backdrop-blur-sm transition-all duration-200 hover:shadow-stripe-md active:scale-[0.98]"
-            >
-              View guidelines
             </Link>
           </div>
         </div>
