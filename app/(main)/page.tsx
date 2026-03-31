@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
+import { HeroGradient } from '@/components/hero-gradient'
 
 /* ------------------------------------------------------------------ */
 /*  Data                                                               */
@@ -38,33 +39,36 @@ export default function HomePage() {
     <main className="mx-auto min-w-0 w-full max-w-6xl flex-1 overflow-visible">
 
       {/* ── Hero ── */}
-      <section
-        className="-mx-0 px-6 pb-20 pt-20 text-center"
-        style={{ background: 'linear-gradient(180deg, hsl(214 100% 97%) 0%, hsl(210 40% 98.3%) 100%)' }}
-      >
-        <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
-          Giga · Brand Assets
-        </p>
-        <h1 className="font-heading mx-auto max-w-2xl text-[3.25rem] font-normal leading-[1.07] tracking-[-0.03em] text-foreground text-balance">
-          One place for all Giga brand resources
-        </h1>
-        <p className="mx-auto mt-5 max-w-lg text-[16px] leading-relaxed text-muted-foreground">
-          Official logos, colors, typography, illustrations, and guidelines — ready to download for authorized Giga partners.
-        </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Link
-            href="/logos"
-            className="inline-flex h-11 items-center gap-2 rounded-lg bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-stripe transition-all duration-200 hover:brightness-110 hover:shadow-stripe-md active:scale-[0.98]"
-          >
-            Explore logos
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-          <Link
-            href="/guidelines/video"
-            className="inline-flex h-11 items-center gap-2 rounded-lg border border-border bg-card px-6 text-sm font-semibold text-foreground shadow-stripe transition-all duration-200 hover:shadow-stripe-md active:scale-[0.98]"
-          >
-            View guidelines
-          </Link>
+      <section className="relative -mx-0 overflow-hidden px-6 pb-24 pt-24 text-center">
+        {/* Shader gradient background */}
+        <HeroGradient />
+
+        {/* Content */}
+        <div className="relative z-10">
+          <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
+            Giga · Brand Assets
+          </p>
+          <h1 className="font-heading mx-auto max-w-2xl text-[3.25rem] font-normal leading-[1.07] tracking-[-0.03em] text-foreground text-balance">
+            One place for all Giga brand resources
+          </h1>
+          <p className="mx-auto mt-5 max-w-lg text-[16px] leading-relaxed text-muted-foreground">
+            Official logos, colors, typography, illustrations, and guidelines — ready to download for authorized Giga partners.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <Link
+              href="/logos"
+              className="inline-flex h-11 items-center gap-2 rounded-lg bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-stripe transition-all duration-200 hover:brightness-110 hover:shadow-stripe-md active:scale-[0.98]"
+            >
+              Explore logos
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link
+              href="/guidelines/video"
+              className="inline-flex h-11 items-center gap-2 rounded-lg border border-border bg-card/80 px-6 text-sm font-semibold text-foreground shadow-stripe backdrop-blur-sm transition-all duration-200 hover:shadow-stripe-md active:scale-[0.98]"
+            >
+              View guidelines
+            </Link>
+          </div>
         </div>
       </section>
 
