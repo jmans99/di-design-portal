@@ -39,12 +39,15 @@ export default function HomePage() {
     <main className="mx-auto min-w-0 w-full max-w-6xl flex-1 overflow-visible">
 
       {/* ── Hero ── */}
-      <section className="relative -mx-0 overflow-hidden px-6 pb-24 pt-24 text-center">
+      <section
+        className="relative overflow-hidden pb-24 pt-24 text-center"
+        style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)' }}
+      >
         {/* Shader gradient background */}
         <HeroGradient />
 
         {/* Content */}
-        <div className="relative z-10">
+        <div className="relative z-10 mx-auto max-w-6xl px-6">
           <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
             Giga · Brand Assets
           </p>
