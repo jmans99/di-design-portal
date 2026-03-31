@@ -46,6 +46,12 @@ export default function HomePage() {
         {/* Shader gradient background */}
         <HeroGradient />
 
+        {/* Fade to background at bottom */}
+        <div
+          className="pointer-events-none absolute bottom-0 left-0 right-0 z-10 h-32"
+          style={{ background: 'linear-gradient(to bottom, transparent, hsl(210 40% 98.3%))' }}
+        />
+
         {/* Content */}
         <div className="relative z-10 mx-auto max-w-6xl px-6">
           <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
