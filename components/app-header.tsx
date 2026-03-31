@@ -61,7 +61,8 @@ export function AppHeader() {
         )?.id ?? null
 
     if (!activeId || !navRef.current) {
-      setIndicator(null)
+      // Reset when route has no matching nav item; deferred to avoid cascading renders in effect.
+      queueMicrotask(() => setIndicator(null))
       return
     }
     const el = itemRefs.current[activeId]
