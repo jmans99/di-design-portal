@@ -145,10 +145,32 @@ const config: Config = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
+        'hero-float-1': {
+          '0%, 100%': { transform: 'translate(0px, 0px) scale(1)' },
+          '33%': { transform: 'translate(50px, -35px) scale(1.06)' },
+          '66%': { transform: 'translate(-30px, 25px) scale(0.96)' },
+        },
+        'hero-float-2': {
+          '0%, 100%': { transform: 'translate(0px, 0px) scale(1)' },
+          '33%': { transform: 'translate(-40px, 30px) scale(0.93)' },
+          '66%': { transform: 'translate(30px, -22px) scale(1.07)' },
+        },
+        'hero-float-3': {
+          '0%, 100%': { transform: 'translate(0px, 0px) scale(1)' },
+          '50%': { transform: 'translate(28px, -35px) scale(1.1)' },
+        },
+        'hero-shimmer': {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'hero-float-1': 'hero-float-1 24s ease-in-out infinite',
+        'hero-float-2': 'hero-float-2 30s ease-in-out infinite',
+        'hero-float-3': 'hero-float-3 20s ease-in-out infinite',
+        'hero-shimmer': 'hero-shimmer 6s ease-in-out infinite',
       },
     },
   },

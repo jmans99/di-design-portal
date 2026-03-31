@@ -39,32 +39,54 @@ export default function HomePage() {
 
       {/* ── Hero ── */}
       <section
-        className="-mx-0 px-6 pb-20 pt-20 text-center"
+        className="relative -mx-0 overflow-hidden px-6 pb-24 pt-24 text-center"
         style={{ background: 'linear-gradient(180deg, hsl(214 100% 97%) 0%, hsl(210 40% 98.3%) 100%)' }}
       >
-        <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
-          Giga · Brand Assets
-        </p>
-        <h1 className="font-heading mx-auto max-w-2xl text-[3.25rem] font-normal leading-[1.07] tracking-[-0.03em] text-foreground text-balance">
-          One place for all Giga brand resources
-        </h1>
-        <p className="mx-auto mt-5 max-w-lg text-[16px] leading-relaxed text-muted-foreground">
-          Official logos, colors, typography, illustrations, and guidelines — ready to download for authorized Giga partners.
-        </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Link
-            href="/logos"
-            className="inline-flex h-11 items-center gap-2 rounded-lg bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-stripe transition-all duration-200 hover:brightness-110 hover:shadow-stripe-md active:scale-[0.98]"
-          >
-            Explore logos
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-          <Link
-            href="/guidelines/video"
-            className="inline-flex h-11 items-center gap-2 rounded-lg border border-border bg-card px-6 text-sm font-semibold text-foreground shadow-stripe transition-all duration-200 hover:shadow-stripe-md active:scale-[0.98]"
-          >
-            View guidelines
-          </Link>
+        {/* Stripe-style animated gradient orbs */}
+        <div className="pointer-events-none absolute inset-0" aria-hidden>
+          <div className="animate-hero-float-1 absolute -left-48 -top-24 h-[640px] w-[640px] rounded-full bg-primary/[0.10] blur-[130px]" />
+          <div className="animate-hero-float-2 absolute -right-48 top-8 h-[520px] w-[520px] rounded-full bg-primary/[0.07] blur-[110px]" />
+          <div className="animate-hero-float-3 absolute bottom-[-80px] left-1/2 h-[460px] w-[460px] -translate-x-1/2 rounded-full blur-[100px]"
+            style={{ background: 'radial-gradient(circle, hsl(214 100% 75% / 0.18) 0%, transparent 70%)' }}
+          />
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10">
+          <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
+            Giga · Brand Assets
+          </p>
+          <h1 className="font-heading mx-auto max-w-2xl text-[3.25rem] font-normal leading-[1.07] tracking-[-0.03em] text-foreground text-balance">
+            One place for all{' '}
+            <span
+              className="animate-hero-shimmer bg-clip-text text-transparent"
+              style={{
+                backgroundImage: 'linear-gradient(135deg, hsl(214 100% 50%) 0%, hsl(230 100% 65%) 40%, hsl(214 100% 50%) 100%)',
+                backgroundSize: '200% 200%',
+              }}
+            >
+              Giga brand
+            </span>{' '}
+            resources
+          </h1>
+          <p className="mx-auto mt-5 max-w-lg text-[16px] leading-relaxed text-muted-foreground">
+            Official logos, colors, typography, illustrations, and guidelines — ready to download for authorized Giga partners.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <Link
+              href="/logos"
+              className="inline-flex h-11 items-center gap-2 rounded-lg bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-stripe transition-all duration-200 hover:brightness-110 hover:shadow-stripe-md active:scale-[0.98]"
+            >
+              Explore logos
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link
+              href="/guidelines/video"
+              className="inline-flex h-11 items-center gap-2 rounded-lg border border-border bg-card px-6 text-sm font-semibold text-foreground shadow-stripe transition-all duration-200 hover:shadow-stripe-md active:scale-[0.98]"
+            >
+              View guidelines
+            </Link>
+          </div>
         </div>
       </section>
 
