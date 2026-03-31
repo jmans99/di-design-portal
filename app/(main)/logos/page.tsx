@@ -19,9 +19,6 @@ export default function LogosPage() {
         style={{ background: 'linear-gradient(180deg, hsl(214 100% 97%) 0%, hsl(210 40% 98.3%) 100%)' }}
       >
         <div className="px-6 pb-6 pt-9">
-          <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.15em] text-primary">
-            Giga · Brand Assets
-          </p>
           <h1 className="font-heading text-[2.75rem] font-normal leading-[1.1] tracking-[-0.03em] text-foreground">
             Logos
           </h1>
