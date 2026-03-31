@@ -33,8 +33,8 @@ export function HeroGradient() {
         positionY={0.9}
         positionZ={-0.3}
         range="enabled"
-        rangeEnd={21.4}
-        rangeStart={11.9}
+        rangeEnd={40}
+        rangeStart={0}
         reflection={0.1}
         rotationX={45}
         rotationY={0}
@@ -46,7 +46,7 @@ export function HeroGradient() {
         uFrequency={0}
         uSpeed={0.4}
         uStrength={0.7}
-        uTime={11.9}
+        uTime={0}
         wireframe={false}
       />
     </ShaderGradientCanvas>
