@@ -23,15 +23,6 @@ const BODY_SAMPLES = [
 export function TypographySection() {
   return (
     <div className="flex min-w-0 flex-col gap-8">
-      <div className="flex flex-col gap-2">
-        <h2 className="font-heading text-3xl font-medium text-foreground">
-          Typography
-        </h2>
-        <p className="text-base text-muted-foreground">
-          Two fonts only. Manrope for headings, Open Sans for everything else.
-        </p>
-      </div>
-
       {/* Font Cards */}
       <div className="grid min-w-0 gap-4 md:grid-cols-2">
         <Card className="min-w-0 rounded-lg border transition-smooth">
@@ -132,7 +123,7 @@ export function TypographySection() {
       {/* Heading Scale */}
       <Card className="min-w-0 rounded-lg border transition-smooth">
         <CardContent className="flex min-w-0 flex-col gap-6 p-6">
-          <h3 className="text-sm font-semibold text-foreground">
+          <h3 className="text-[11px] font-semibold uppercase tracking-[0.07em] text-muted-foreground">
             Heading Scale — Manrope 500
           </h3>
           <div className="flex flex-col gap-6">
@@ -158,7 +149,7 @@ export function TypographySection() {
       {/* Body Scale */}
       <Card className="min-w-0 rounded-lg border transition-smooth">
         <CardContent className="flex min-w-0 flex-col gap-6 p-6">
-          <h3 className="text-sm font-semibold text-foreground">
+          <h3 className="text-[11px] font-semibold uppercase tracking-[0.07em] text-muted-foreground">
             Body Scale — Open Sans
           </h3>
           <div className="flex flex-col gap-4">

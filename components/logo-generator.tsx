@@ -34,6 +34,7 @@ import type {
   GigaColorVariant,
 } from '@/lib/types'
 import { Download, Sun, Moon, Layers, ArrowUpDown } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 const RESOLUTIONS: { label: string; value: Resolution; scale: number }[] = [
   { label: '1x', value: '1x', scale: 1 },
@@ -178,9 +179,9 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
   )
 
   return (
-    <div className="flex min-h-[100vh] flex-col gap-8 lg:flex-row lg:items-stretch">
-      {/* Sidebar: scrolls with the page (Apple-style); below preview on mobile */}
-      <div className="order-2 flex w-full flex-col gap-6 pb-8 lg:order-1 lg:w-80 lg:shrink-0">
+    <div className="flex flex-col gap-8 lg:flex-row lg:items-start">
+      {/* Sidebar: sticky, height fits content */}
+      <div className="order-2 flex w-full flex-col gap-6 lg:order-1 lg:sticky lg:top-[calc(4rem+24px)] lg:w-80 lg:shrink-0 lg:rounded-2xl lg:border lg:border-border lg:bg-card lg:gap-0 lg:divide-y lg:divide-border lg:shadow-stripe">
         {/* Brand selector */}
         <ControlSection label="Brand">
           <Select value={selectedBrand} onValueChange={setSelectedBrand}>
@@ -210,6 +211,7 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
           <ControlSection
             label="Orientation"
             icon={<ArrowUpDown className="h-3.5 w-3.5 text-muted-foreground" />}
+            className="lg:!border-t-0 lg:pt-3 lg:pb-3"
           >
             <div className="flex gap-2">
               {(
@@ -235,6 +237,7 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
           <ControlSection
             label="Combination"
             icon={<Layers className="h-3.5 w-3.5 text-muted-foreground" />}
+            className="lg:!border-t-0 lg:pt-3"
           >
             <div className="flex flex-col gap-2">
               {(
@@ -264,7 +267,7 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
         )}
 
         {/* Color variant: bicolor only for Giga + Giga Connectivity Forum; monochrome for products + GEP */}
-        <ControlSection label="Color Variant">
+        <ControlSection label="Color Variant" className="lg:!border-t-0 lg:pt-3">
           <div className="flex flex-col gap-2">
             {brand.allowedColorVariants.map((v) => {
               const swatchColors = v.secondaryHex
@@ -277,7 +280,7 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
                   className={`flex items-center gap-3 rounded-[6px] border px-4 py-3 text-left text-sm font-medium transition-smooth-transform hover:shadow-md active:scale-[0.99] ${
                     selectedColorName === v.name
                       ? 'border-primary bg-accent text-foreground shadow'
-                      : 'border-border bg-background text-foreground'
+                      : 'border-border bg-card text-foreground'
                   }`}
                 >
                   <span className="flex shrink-0 items-center gap-0.5">
@@ -304,7 +307,7 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
         </ControlSection>
 
         {/* Format */}
-        <ControlSection label="Format">
+        <ControlSection label="Format" className="lg:!border-t-0 lg:pt-3">
           <div className="flex gap-2">
             {(['svg', 'png', 'jpeg'] as OutputFormat[]).map((fmt) => (
               <ToggleButton
@@ -336,8 +339,8 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
           </ControlSection>
         )}
 
-        {/* Download */}
-        <div className="mt-2 shrink-0">
+        {/* Download — sticky on desktop */}
+        <div className="lg:!border-t-0 lg:px-5 lg:pb-5 lg:pt-3">
           <Button
             onClick={handleExport}
             disabled={isExporting || !previewSvg}
@@ -347,14 +350,13 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
             <Download className="h-5 w-5 shrink-0" />
             {isExporting ? 'Exporting...' : 'Download Asset'}
           </Button>
+          <p className="mt-2 text-xs text-muted-foreground">
+            File:{' '}
+            <span className="font-medium text-foreground">
+              {previewFilename}
+            </span>
+          </p>
         </div>
-
-        <p className="shrink-0 text-xs text-muted-foreground">
-          File:{' '}
-          <span className="font-medium text-foreground">
-            {previewFilename}
-          </span>
-        </p>
       </div>
 
       {/* Preview Panel — sticky on desktop; above sidebar on mobile */}
@@ -457,14 +459,18 @@ function ControlSection({
   label,
   icon,
   children,
+  className,
 }: {
   label: string
   icon?: React.ReactNode
   children: React.ReactNode
+  className?: string
 }) {
   return (
-    <div className="flex flex-col gap-2">
-      <label className="text-sm font-semibold text-foreground">
+    <div
+      className={cn('flex flex-col gap-2 lg:px-5 lg:pt-5 lg:pb-3', className)}
+    >
+      <label className="text-[11px] font-semibold uppercase tracking-[0.07em] text-muted-foreground">
         {icon ? (
           <span className="flex items-center gap-1.5">
             {icon}
@@ -496,7 +502,7 @@ function ToggleButton({
       className={`flex-1 rounded-[6px] border px-4 py-2.5 text-sm font-medium transition-smooth-transform hover:shadow-md active:scale-[0.98] ${
         active
           ? 'border-primary bg-primary text-primary-foreground shadow'
-          : 'border-border bg-background text-foreground'
+          : 'border-border bg-card text-foreground'
       } ${className}`}
     >
       {children}
@@ -521,7 +527,7 @@ function OptionCard({
       className={`flex flex-col items-start rounded-[6px] border px-4 py-3 text-left transition-smooth-transform hover:shadow-md active:scale-[0.99] ${
         active
           ? 'border-primary bg-accent text-foreground shadow'
-          : 'border-border bg-background text-foreground'
+          : 'border-border bg-card text-foreground'
       }`}
     >
       <span className="text-sm font-medium">{label}</span>

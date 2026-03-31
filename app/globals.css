@@ -25,45 +25,55 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+  /* Stripe-quality shadow */
+  .shadow-stripe {
+    box-shadow: 0 1px 2px rgba(50,50,93,0.06), 0 2px 5px rgba(50,50,93,0.08), 0 1px 1.5px rgba(0,0,0,0.05);
+  }
+  .shadow-stripe-md {
+    box-shadow: 0 4px 6px rgba(50,50,93,0.07), 0 1px 3px rgba(0,0,0,0.06), 0 8px 20px rgba(50,50,93,0.05);
+  }
+  .shadow-stripe-lg {
+    box-shadow: 0 13px 27px rgba(50,50,93,0.1), 0 8px 16px rgba(0,0,0,0.07);
+  }
 }
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 9%;
+    --background: 210 40% 98.3%;
+    --foreground: 222 78% 14%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 9%;
+    --card-foreground: 222 78% 14%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 9%;
+    --popover-foreground: 222 78% 14%;
     --primary: 214 100% 58%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 91%;
-    --muted-foreground: 0 0% 44%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 25%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 23% 45%;
     --accent: 214 100% 95%;
-    --accent-foreground: 0 0% 9%;
+    --accent-foreground: 222 78% 14%;
     --destructive: 357 88% 52%;
     --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 91%;
-    --input: 0 0% 91%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
     --ring: 214 100% 58%;
-    --radius: 6px;
-    --radius-sm: 4px;
-    --radius-lg: 8px;
+    --radius: 8px;
+    --radius-sm: 5px;
+    --radius-lg: 12px;
     --radius-pill: 9999px;
     --chart-1: 214 100% 58%;
     --chart-2: 145 100% 42%;
     --chart-3: 0 0% 32%;
     --chart-4: 44 100% 62%;
     --chart-5: 357 88% 52%;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 0 0% 9%;
+    --sidebar-background: 210 40% 98.3%;
+    --sidebar-foreground: 222 78% 14%;
     --sidebar-primary: 214 100% 58%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 214 100% 95%;
-    --sidebar-accent-foreground: 0 0% 9%;
-    --sidebar-border: 0 0% 91%;
+    --sidebar-accent-foreground: 222 78% 14%;
+    --sidebar-border: 214 32% 91%;
     --sidebar-ring: 214 100% 58%;
   }
 
@@ -110,6 +120,7 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Open Sans', sans-serif;
+    scrollbar-gutter: stable;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Manrope', sans-serif;

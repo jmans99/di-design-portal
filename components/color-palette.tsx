@@ -17,17 +17,17 @@ function ColorSwatch({ name, hex, scaleName }: { name: string; hex: string; scal
     <button
       type="button"
       onClick={handleCopy}
-      className="group flex w-full flex-col rounded-lg border border-grey-200 bg-white transition-smooth-transform focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background hover:shadow-md hover:scale-[1.02] active:scale-[0.99]"
+      className="group flex w-full flex-col rounded-lg border border-border bg-card transition-smooth-transform focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background hover:shadow-md hover:scale-[1.02] active:scale-[0.99]"
       title={`Copy ${hex}`}
     >
       <div
-        className="h-[54px] w-full shrink-0 overflow-visible rounded-t-lg transition-smooth-transform"
+        className="h-16 w-full shrink-0 overflow-visible rounded-t-lg transition-smooth-transform"
         style={{ backgroundColor: hex }}
         aria-hidden
       />
-      <div className="flex w-full flex-col justify-center overflow-visible rounded-b-lg bg-white px-4 py-3 text-left">
-        <span className="text-xs font-semibold text-grey-900">{name}</span>
-        <span className="mt-0.5 font-mono text-[11px] text-grey-600 transition-all duration-smooth ease-smooth">
+      <div className="flex w-full flex-col justify-center overflow-visible rounded-b-lg bg-card px-4 py-3 text-left">
+        <span className="text-xs font-semibold text-card-foreground">{name}</span>
+        <span className="mt-0.5 font-mono text-[11px] text-muted-foreground transition-all duration-smooth ease-smooth">
           {copied ? 'Copied!' : hex}
         </span>
       </div>
@@ -37,18 +37,34 @@ function ColorSwatch({ name, hex, scaleName }: { name: string; hex: string; scal
 
 const PRIMARY_600 = '#277AFF'
 
+const ANCHOR_LINKS = [
+  { label: 'Main', href: '#colors-main' },
+  { label: 'Primary', href: '#colors-primary' },
+  { label: 'Grey', href: '#colors-grey' },
+  { label: 'Connectivity', href: '#colors-connectivity' },
+]
+
 export function ColorPalette() {
   return (
     <div className="flex min-w-0 w-full flex-col gap-10 overflow-visible">
-      <h2 className="font-heading text-3xl font-medium tracking-tight text-foreground">
-        Colors
-      </h2>
+      {/* Anchor links */}
+      <div className="flex flex-wrap gap-2">
+        {ANCHOR_LINKS.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            className="rounded-full border border-border bg-card px-3.5 py-1 text-[11px] font-semibold uppercase tracking-[0.06em] text-muted-foreground shadow-sm transition-smooth hover:border-primary hover:bg-accent hover:text-foreground"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
 
       {/* Main colors: White, Black, Primary 600 */}
-      <Card className="min-w-0 w-full overflow-visible rounded-[4px] border-0 bg-transparent shadow-none">
+      <Card id="colors-main" className="min-w-0 w-full overflow-visible rounded-[4px] border-0 bg-transparent shadow-none scroll-mt-24">
         <CardContent className="min-w-0 w-full overflow-visible p-0">
           <div className="mb-4 flex items-center gap-2 overflow-visible">
-            <h3 className="text-base font-semibold text-foreground">
+            <h3 className="text-[11px] font-semibold uppercase tracking-[0.07em] text-muted-foreground">
               Main colors
             </h3>
           </div>
@@ -70,17 +86,18 @@ export function ColorPalette() {
       {COLOR_SCALES.filter((scale) => scale.name !== 'Connectivity Red' && scale.name !== 'Connectivity Green').map((scale) => (
         <Card
           key={scale.name}
-          className="min-w-0 w-full overflow-visible rounded-[4px] border-0 bg-transparent shadow-none"
+          id={`colors-${scale.name.toLowerCase()}`}
+          className="min-w-0 w-full scroll-mt-24 overflow-visible rounded-[4px] border-0 bg-transparent shadow-none"
         >
           <CardContent className={`min-w-0 w-full overflow-visible ${scale.name === 'Grey' || scale.name === 'Connectivity' || scale.name === 'Primary' ? 'p-0' : 'p-6'}`}>
             <div className="mb-4 flex flex-col gap-1 overflow-visible">
               <div className="flex items-center gap-2 overflow-visible">
-                <h3 className="text-base font-semibold text-foreground">
+                <h3 className="text-[11px] font-semibold uppercase tracking-[0.07em] text-muted-foreground">
                   {scale.name}
                 </h3>
               </div>
               {scale.description && (
-                <p className="pl-4 text-sm text-muted-foreground">
+                <p className="text-sm text-muted-foreground">
                   {scale.description}
                 </p>
               )}

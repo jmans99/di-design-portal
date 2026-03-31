@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ChevronDown, ChevronRight } from 'lucide-react'
@@ -30,40 +30,151 @@ export function AppHeader() {
   const pathname = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [expandedGuidelines, setExpandedGuidelines] = useState(false)
+  const [guidelinesOpen, setGuidelinesOpen] = useState(false)
+  const guidelinesRef = useRef<HTMLDivElement>(null)
+  const navRef = useRef<HTMLElement>(null)
+  const itemRefs = useRef<Record<string, HTMLElement | null>>({})
+  const [indicator, setIndicator] = useState<{ left: number; width: number } | null>(null)
 
   const isActive = (path: string) => {
     if (path === '/logos') return pathname === '/logos' || pathname === '/'
     return pathname === path || pathname.startsWith(path + '/')
   }
 
+  const isGuidelinesActive = pathname.startsWith('/guidelines')
+
+  // Close guidelines dropdown on outside click
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (guidelinesRef.current && !guidelinesRef.current.contains(e.target as Node)) {
+        setGuidelinesOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [])
+
+  // Measure active item and update sliding indicator
+  useEffect(() => {
+    const activeId = isGuidelinesActive
+      ? 'guidelines'
+      : NAV_ITEMS.find((item): item is Extract<typeof NAV_ITEMS[number], { type: 'item' }> =>
+          item.type === 'item' && isActive(item.path)
+        )?.id ?? null
+
+    if (!activeId || !navRef.current) return
+    const el = itemRefs.current[activeId]
+    if (!el) return
+
+    const navRect = navRef.current.getBoundingClientRect()
+    const elRect = el.getBoundingClientRect()
+    setIndicator({
+      left: elRect.left - navRect.left + 8,
+      width: elRect.width - 16,
+    })
+  }, [pathname])
+
   return (
     <header
-      className={`sticky top-0 z-50 border-b border-border transition-smooth ${
-        isMenuOpen ? 'bg-white' : 'bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60'
+      className={`sticky top-0 z-[100] border-b border-border border-t-[3px] border-t-primary transition-smooth ${
+        isMenuOpen ? 'bg-white' : 'bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60'
       }`}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <div className="flex min-w-0 items-center gap-4">
+        {/* Logo + badge */}
+        <div className="flex shrink-0 items-center gap-4">
           <Link href="/logos" className="flex items-center gap-4" aria-label="Giga Brand Assets home">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/logos/giga-complete-horizontal.svg"
               alt="Giga"
-              className="w-[180px] transition-smooth-transform md:w-[220px]"
+              className="w-[160px] transition-smooth-transform"
               style={{ height: 'fit-content' }}
             />
           </Link>
-          <div className="hidden h-6 w-px shrink-0 bg-border sm:block" />
+          <div className="hidden h-6 w-px shrink-0 bg-border lg:block" />
           <Badge
             variant="secondary"
-            className="hidden shrink-0 rounded border-0 [background:unset] p-0 text-sm font-semibold text-accent-foreground sm:inline-flex"
+            className="hidden shrink-0 rounded border border-border bg-secondary px-2.5 py-0.5 text-xs font-medium text-muted-foreground lg:inline-flex"
           >
             Brand Assets
           </Badge>
         </div>
 
-        {/* Hamburger menu: all screen sizes */}
-        <div>
+        {/* Desktop nav — visible md+ */}
+        <nav ref={navRef} className="relative hidden items-center gap-1 lg:flex" aria-label="Main navigation">
+          {NAV_ITEMS.map((entry) => {
+            if (entry.type === 'item') {
+              const active = isActive(entry.path)
+              return (
+                <Link
+                  key={entry.id}
+                  href={entry.path}
+                  ref={(el) => { itemRefs.current[entry.id] = el }}
+                  className={`rounded-md px-3 py-1.5 text-sm font-[500] transition-smooth ${
+                    active
+                      ? 'text-foreground'
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                >
+                  {entry.label}
+                </Link>
+              )
+            }
+            // Group: Guidelines dropdown
+            return (
+              <div key={entry.label} className="relative z-[100]" ref={guidelinesRef}>
+                <button
+                  type="button"
+                  ref={(el) => { itemRefs.current['guidelines'] = el }}
+                  onClick={() => setGuidelinesOpen((v) => !v)}
+                  className={`flex items-center gap-1 rounded-md px-3 py-1.5 text-sm font-[500] transition-smooth ${
+                    isGuidelinesActive
+                      ? 'text-foreground'
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                >
+                  {entry.label}
+                  <ChevronDown
+                    className={`h-3.5 w-3.5 transition-transform duration-200 ${guidelinesOpen ? 'rotate-180' : ''}`}
+                    aria-hidden
+                  />
+                </button>
+                {guidelinesOpen && (
+                  <div className="absolute right-0 top-full z-[100] mt-3 min-w-[140px] rounded-lg border border-border bg-card py-1 shadow-lg">
+                    {entry.children.map((child) => (
+                      <Link
+                        key={child.id}
+                        href={child.path}
+                        onClick={() => setGuidelinesOpen(false)}
+                        className="block px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )
+          })}
+
+          {/* Shared sliding indicator */}
+          {indicator && (
+            <span
+              aria-hidden
+              className="pointer-events-none absolute h-[2px] rounded-full bg-primary"
+              style={{
+                bottom: -17,
+                left: indicator.left,
+                width: indicator.width,
+                transition: 'left 450ms cubic-bezier(0.16, 1, 0.3, 1), width 350ms cubic-bezier(0.16, 1, 0.3, 1)',
+              }}
+            />
+          )}
+        </nav>
+
+        {/* Hamburger menu: below lg */}
+        <div className="lg:hidden">
           <HamburgerMenu fullWidth onOpenChange={(open) => { setIsMenuOpen(open); if (!open) setExpandedGuidelines(false) }}>
             {(close) => (
               <div className="flex flex-col">
