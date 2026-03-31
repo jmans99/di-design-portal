@@ -48,8 +48,8 @@ export default function HomePage() {
 
         {/* Fade to background at bottom */}
         <div
-          className="pointer-events-none absolute bottom-0 left-0 right-0 z-10 h-32"
-          style={{ background: 'linear-gradient(to bottom, transparent, hsl(210 40% 98.3%))' }}
+          className="pointer-events-none absolute bottom-0 left-0 right-0 z-10 h-48"
+          style={{ background: 'linear-gradient(to bottom, transparent 0%, hsl(210 40% 98.3% / 0.4) 40%, hsl(210 40% 98.3% / 0.8) 70%, hsl(210 40% 98.3%) 100%)' }}
         />
 
         {/* Content */}
