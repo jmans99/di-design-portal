@@ -71,7 +71,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Logos ── */}
-      <section className="px-6 py-20">
+      <section className="px-6 py-[60px]">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           {/* Text */}
           <div>
@@ -112,7 +112,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Colors ── */}
-      <section className="px-6 py-20">
+      <section className="px-6 py-[60px]">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           {/* Visual — left on this section */}
           <div className="order-2 lg:order-1">
@@ -157,7 +157,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Illustrations ── */}
-      <section className="px-6 py-20">
+      <section className="px-6 py-[60px]">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           {/* Text */}
           <div>
@@ -192,7 +192,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Typography ── */}
-      <section className="px-6 py-20">
+      <section className="px-6 py-[60px]">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           {/* Visual — left */}
           <div className="order-2 lg:order-1 rounded-2xl bg-transparent p-0">
@@ -242,7 +242,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Media + Guidelines (2-col cards) ── */}
-      <section className="px-6 py-20">
+      <section className="px-6 py-[60px]">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {/* Media */}
           <Link
