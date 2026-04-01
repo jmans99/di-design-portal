@@ -95,14 +95,14 @@ export default function HomePage() {
             {LOGO_PREVIEWS.map((logo, i) => (
               <div
                 key={i}
-                className="flex h-[110px] items-center justify-center rounded-xl border border-border/60 p-5"
+                className="group hover-lift flex h-[110px] items-center justify-center overflow-hidden rounded-xl border border-border/60 p-5 hover:border-primary/20"
                 style={{ backgroundColor: logo.bg }}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={logo.src}
                   alt={logo.label}
-                  className="max-h-8 w-auto max-w-full"
+                  className="zoom-on-group-hover max-h-8 w-auto max-w-full"
                   style={logo.bg === '#161616' ? { filter: 'brightness(0) invert(1)' } : logo.tint ? { filter: 'brightness(0) invert(1)' } : {}}
                 />
               </div>
@@ -122,7 +122,7 @@ export default function HomePage() {
                 return (
                   <div key={color.hex} className="flex flex-1 flex-col items-center gap-2">
                     <div
-                      className={`${i === 1 ? 'flex' : 'grid'} w-full rounded-lg border border-border/50 ${heights[i]}`}
+                      className={`swatch-hover ${i === 1 ? 'flex' : 'grid'} w-full rounded-lg border border-border/50 ${heights[i]}`}
                       style={{ backgroundColor: color.hex }}
                     />
                     <span className="text-center text-[9px] font-semibold uppercase tracking-wide text-muted-foreground">
@@ -178,10 +178,10 @@ export default function HomePage() {
             {ILLUSTRATION_PREVIEWS.map((src, i) => (
               <div
                 key={i}
-                className="flex aspect-square items-center justify-center rounded-xl border-0 bg-transparent p-5 shadow-none"
+                className="group hover-lift flex aspect-square items-center justify-center overflow-hidden rounded-xl border-0 bg-transparent p-5 shadow-none"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={src} alt="" aria-hidden className="h-full w-full object-contain" />
+                <img src={src} alt="" aria-hidden className="zoom-on-group-hover h-full w-full object-contain" />
               </div>
             ))}
           </div>
@@ -244,13 +244,13 @@ export default function HomePage() {
           {/* Media */}
           <Link
             href="/media"
-            className="group overflow-hidden rounded-2xl border border-border bg-card shadow-stripe transition-all duration-300 hover:-translate-y-0.5 hover:shadow-stripe-md"
+            className="group hover-lift overflow-hidden rounded-2xl border border-border bg-card shadow-stripe"
           >
             <div
-              className="flex h-48 items-center justify-center"
+              className="flex h-48 items-center justify-center overflow-hidden"
               style={{ background: 'linear-gradient(135deg, hsl(195 80% 96%) 0%, hsl(195 60% 90%) 100%)' }}
             >
-              <div className="grid grid-cols-3 gap-2 p-6 opacity-80">
+              <div className="grid grid-cols-3 gap-2 p-6 opacity-80 transition-transform duration-500 ease-out group-hover:scale-[1.06]">
                 {Array.from({ length: 6 }).map((_, i) => (
                   <div
                     key={i}
@@ -277,13 +277,13 @@ export default function HomePage() {
           {/* Video Guidelines */}
           <Link
             href="/guidelines/video"
-            className="group overflow-hidden rounded-2xl border border-border bg-card shadow-stripe transition-all duration-300 hover:-translate-y-0.5 hover:shadow-stripe-md"
+            className="group hover-lift overflow-hidden rounded-2xl border border-border bg-card shadow-stripe"
           >
             <div
-              className="flex h-48 flex-col items-start justify-end p-8"
+              className="flex h-48 flex-col items-start justify-end overflow-hidden p-8"
               style={{ background: 'linear-gradient(135deg, hsl(222 78% 20%) 0%, hsl(222 78% 12%) 100%)' }}
             >
-              <p className="font-heading text-3xl font-semibold leading-tight text-white/90">
+              <p className="font-heading text-3xl font-semibold leading-tight text-white/90 transition-transform duration-[350ms] ease-out group-hover:-translate-y-1">
                 16:9<br />
                 <span className="text-white/50">aspect ratio</span>
               </p>
