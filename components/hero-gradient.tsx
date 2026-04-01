@@ -1,17 +1,6 @@
-'use client'
-
-import { useEffect, useRef } from 'react'
-
 export function HeroGradient() {
-  const ref = useRef<HTMLVideoElement>(null)
-
-  useEffect(() => {
-    if (ref.current) ref.current.playbackRate = 0.5
-  }, [])
-
   return (
     <video
-      ref={ref}
       autoPlay
       muted
       loop
