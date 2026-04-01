@@ -71,7 +71,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Logos ── */}
-      <section className="border-b border-border px-6 py-20">
+      <section className="px-6 py-20">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           {/* Text */}
           <div>
@@ -112,7 +112,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Colors ── */}
-      <section className="border-b border-border px-6 py-20">
+      <section className="px-6 py-20">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           {/* Visual — left on this section */}
           <div className="order-2 lg:order-1">
@@ -157,7 +157,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Illustrations ── */}
-      <section className="border-b border-border px-6 py-20">
+      <section className="px-6 py-20">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           {/* Text */}
           <div>
@@ -181,11 +181,7 @@ export default function HomePage() {
             {ILLUSTRATION_PREVIEWS.map((src, i) => (
               <div
                 key={i}
-                className={
-                  i === 3
-                    ? 'flex aspect-square items-center justify-center rounded-xl bg-transparent p-5'
-                    : 'flex aspect-square items-center justify-center rounded-xl border border-border bg-card p-5 shadow-stripe'
-                }
+                className="flex aspect-square items-center justify-center rounded-xl border-0 bg-transparent p-5 shadow-none"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={src} alt="" aria-hidden className="h-full w-full object-contain" />
@@ -196,7 +192,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Typography ── */}
-      <section className="border-b border-border px-6 py-20">
+      <section className="px-6 py-20">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           {/* Visual — left */}
           <div className="order-2 lg:order-1 rounded-2xl bg-transparent p-10">
