@@ -53,7 +53,7 @@ export default function HomePage() {
         {/* Content */}
         <div className="relative z-10 mx-auto max-w-6xl px-6">
           <h1 className="font-heading mx-auto max-w-2xl text-[3.25rem] font-normal leading-[1.07] tracking-[-0.03em] text-foreground text-balance">
-            One place for all Giga brand resources
+            One place for all brand resources
           </h1>
           <p className="mx-auto mt-5 max-w-[600px] text-[16px] leading-relaxed text-muted-foreground">
             Official logos, colors, typography, illustrations, and guidelines, ready to use.
