@@ -19,12 +19,10 @@ const ILLUSTRATION_PREVIEWS = [
   '/illustrations/fill/development.svg',
   '/illustrations/fill/contract.svg',
   '/illustrations/fill/model.svg',
-  '/illustrations/outlines/capacity-development-blue.svg',
 ]
 
 const BRAND_COLORS = [
   { name: 'Giga Blue', hex: '#277AFF' },
-  { name: 'Navy', hex: '#0A2540' },
   { name: 'Dark', hex: '#3D3D3D' },
   { name: 'Light', hex: '#E8EDF5' },
   { name: 'White', hex: '#FFFFFF' },
@@ -118,9 +116,9 @@ export default function HomePage() {
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           {/* Visual — left on this section */}
           <div className="order-2 lg:order-1">
-            <div className="flex items-end gap-3 rounded-2xl border border-border bg-card p-8 shadow-stripe">
+            <div className="flex h-[300px] items-end gap-3 rounded-2xl p-8">
               {BRAND_COLORS.map((color, i) => {
-                const heights = ['h-28', 'h-20', 'h-16', 'h-12', 'h-8']
+                const heights = ['h-28', 'h-20', 'h-16', 'h-12']
                 return (
                   <div key={color.hex} className="flex flex-1 flex-col items-center gap-2">
                     <div
@@ -183,7 +181,11 @@ export default function HomePage() {
             {ILLUSTRATION_PREVIEWS.map((src, i) => (
               <div
                 key={i}
-                className="flex aspect-square items-center justify-center rounded-xl border border-border bg-card p-5 shadow-stripe"
+                className={
+                  i === 3
+                    ? 'flex aspect-square items-center justify-center rounded-xl bg-transparent p-5'
+                    : 'flex aspect-square items-center justify-center rounded-xl border border-border bg-card p-5 shadow-stripe'
+                }
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={src} alt="" aria-hidden className="h-full w-full object-contain" />
@@ -197,7 +199,7 @@ export default function HomePage() {
       <section className="border-b border-border px-6 py-20">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           {/* Visual — left */}
-          <div className="order-2 lg:order-1 rounded-2xl border border-border bg-card p-10 shadow-stripe">
+          <div className="order-2 lg:order-1 rounded-2xl bg-transparent p-10">
             <div className="flex flex-col gap-4">
               <div>
                 <p className="mb-1 text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Heading — Manrope</p>
