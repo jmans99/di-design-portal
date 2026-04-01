@@ -116,7 +116,7 @@ export default function HomePage() {
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           {/* Visual — left on this section */}
           <div className="order-2 lg:order-1">
-            <div className="flex h-[300px] items-end gap-3 rounded-2xl p-8">
+            <div className="flex h-[300px] items-end gap-3 rounded-2xl p-0">
               {BRAND_COLORS.map((color, i) => {
                 const heights = ['h-28', 'h-20', 'h-16', 'h-12']
                 return (
@@ -195,7 +195,7 @@ export default function HomePage() {
       <section className="px-6 py-20">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           {/* Visual — left */}
-          <div className="order-2 lg:order-1 rounded-2xl bg-transparent p-10">
+          <div className="order-2 lg:order-1 rounded-2xl bg-transparent p-0">
             <div className="flex flex-col gap-4">
               <div>
                 <p className="mb-1 text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Heading — Manrope</p>
