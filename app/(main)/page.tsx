@@ -116,20 +116,17 @@ export default function HomePage() {
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           {/* Visual — left on this section */}
           <div className="order-2 lg:order-1">
-            <div className="flex h-[300px] items-end gap-3 rounded-2xl p-0">
+            <div className="grid h-fit grid-cols-2 items-end gap-2 rounded-2xl p-0">
               {BRAND_COLORS.map((color, i) => {
-                const heights = ['h-28', 'h-20', 'h-16', 'h-12']
+                const heights = ['h-[120px]', 'h-20', 'h-20', 'h-12']
                 return (
                   <div key={color.hex} className="flex flex-1 flex-col items-center gap-2">
                     <div
-                      className={`w-full rounded-lg border border-border/50 ${heights[i]}`}
+                      className={`${i === 1 ? 'flex' : 'grid'} w-full rounded-lg border border-border/50 ${heights[i]}`}
                       style={{ backgroundColor: color.hex }}
                     />
                     <span className="text-center text-[9px] font-semibold uppercase tracking-wide text-muted-foreground">
                       {color.name}
-                    </span>
-                    <span className="font-mono text-[9px] text-muted-foreground/70">
-                      {color.hex}
                     </span>
                   </div>
                 )
