@@ -250,7 +250,7 @@ export default function HomePage() {
               className="flex h-48 items-center justify-center overflow-hidden"
               style={{ background: 'linear-gradient(135deg, hsl(195 80% 96%) 0%, hsl(195 60% 90%) 100%)' }}
             >
-              <div className="grid grid-cols-3 gap-2 p-6 opacity-80 transition-transform duration-500 ease-out group-hover:scale-[1.06]">
+              <div className="grid grid-cols-3 gap-2 p-6 opacity-80 transition-transform duration-500 ease-out group-hover:scale-[1.03]">
                 {Array.from({ length: 6 }).map((_, i) => (
                   <div
                     key={i}
@@ -283,7 +283,7 @@ export default function HomePage() {
               className="flex h-48 flex-col items-start justify-end overflow-hidden p-8"
               style={{ background: 'linear-gradient(135deg, hsl(222 78% 20%) 0%, hsl(222 78% 12%) 100%)' }}
             >
-              <p className="font-heading text-3xl font-semibold leading-tight text-white/90 transition-transform duration-[350ms] ease-out group-hover:-translate-y-1">
+              <p className="font-heading text-3xl font-semibold leading-tight text-white/90 transition-transform duration-[350ms] ease-out group-hover:-translate-y-0.5">
                 16:9<br />
                 <span className="text-white/50">aspect ratio</span>
               </p>
