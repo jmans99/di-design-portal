@@ -116,16 +116,15 @@ export default function HomePage() {
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           {/* Visual — left on this section */}
           <div className="order-2 lg:order-1">
-            <div className="flex h-fit flex-wrap items-end gap-2 rounded-2xl p-0">
+            <div className="flex h-fit flex-nowrap items-end gap-2 rounded-2xl p-0">
               {BRAND_COLORS.map((color, i) => {
-                const heights = ['h-[120px]', 'h-[120px]', 'h-[120px]', 'h-12']
                 return (
                   <div
                     key={color.hex}
                     className="flex w-[calc((100%-0.5rem)/2)] flex-col items-center gap-2"
                   >
                     <div
-                      className={`swatch-hover ${i === 1 ? 'flex' : 'grid'} w-full rounded-lg border border-border/50 ${heights[i]}`}
+                      className={`swatch-hover ${i === 1 ? 'flex' : 'grid'} w-full rounded-lg border border-border/50 h-[120px]`}
                       style={{ backgroundColor: color.hex }}
                     />
                     <span className="text-center text-[9px] font-semibold uppercase tracking-wide text-muted-foreground">
