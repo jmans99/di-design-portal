@@ -21,6 +21,13 @@ export const MONOCHROME_VARIANTS: ColorVariant[] = [
   { name: 'White', hex: '#FFFFFF', description: 'Monochrome white' },
 ]
 
+/** UNICEF logo variants */
+export const UNICEF_MONOCHROME_VARIANTS: ColorVariant[] = [
+  { name: 'UNICEF Blue', hex: '#1CABE2', description: 'UNICEF signature blue' },
+  { name: 'Black', hex: '#000000', description: 'Monochrome black' },
+  { name: 'White', hex: '#FFFFFF', description: 'Monochrome white' },
+]
+
 /** Giga main logo color variant definitions */
 export const GIGA_COLOR_VARIANTS: {
   value: GigaColorVariant
@@ -71,6 +78,12 @@ export const BRAND_ASSETS: LogoAsset[] = [
     assetType: 'logo',
     isGigaMainLogo: true,
     allowedColorVariants: COLOR_VARIANTS,
+  },
+  {
+    brandName: 'UNICEF',
+    assetType: 'logo',
+    svgPath: '/logos/unicef.svg',
+    allowedColorVariants: UNICEF_MONOCHROME_VARIANTS,
   },
   {
     brandName: 'GigaSync',

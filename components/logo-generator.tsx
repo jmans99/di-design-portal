@@ -75,6 +75,7 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
   const [isLoading, setIsLoading] = useState(true)
 
   const isGigaMain = brand.isGigaMainLogo === true
+  const isUnicefLogo = brand.brandName === 'UNICEF'
   const colorVariant = brand.allowedColorVariants.find(
     (c) => c.name === selectedColorName
   ) ?? brand.allowedColorVariants[0]
@@ -411,7 +412,10 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
               <img
                 src={svgToDataUrl(previewSvg)}
                 alt={`${brand.brandName} logo preview`}
-                className="max-h-64 max-w-full object-contain"
+                className={cn(
+                  'max-h-64 max-w-full object-contain',
+                  isUnicefLogo && 'scale-[1.15]'
+                )}
               />
             ) : (
               <p className="text-sm text-muted-foreground">
