@@ -27,7 +27,7 @@ export function AppHeader() {
 
   const isActive = (path: string) => {
     if (path === '/logos') return pathname === '/logos' || pathname === '/'
-    if (path === '/typography') return pathname === '/typography' || pathname === '/colors'
+    if (path === '/typography') return pathname === '/typography'
     return pathname === path || pathname.startsWith(path + '/')
   }
 

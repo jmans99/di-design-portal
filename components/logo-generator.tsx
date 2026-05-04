@@ -141,10 +141,12 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
     generatePreview()
   }, [generatePreview])
 
-  // Auto-switch to dark preview for white variant
+  // Auto-switch preview background for light-on-dark lockups
   useEffect(() => {
-    if (selectedColorName === 'White') {
+    if (selectedColorName === 'White' || selectedColorName === 'Bicolor Negative') {
       setPreviewBg('dark')
+    } else {
+      setPreviewBg('light')
     }
   }, [selectedColorName])
 

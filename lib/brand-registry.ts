@@ -28,10 +28,21 @@ export const UNICEF_MONOCHROME_VARIANTS: ColorVariant[] = [
   { name: 'White', hex: '#FFFFFF', description: 'Monochrome white' },
 ]
 
+/** UNICEF signature blue — swatches for Digital Impact bicolor variants */
+const UNICEF_BLUE_HEX = '#1CABE2'
+
 /** UNICEF Digital Impact (Vision) — separate SVG per variant; no recolor */
 export const UNICEF_DIGITAL_IMPACT_VARIANTS: ColorVariant[] = [
-  { name: 'Black', hex: '#000000', description: 'Vision lockup — use on light backgrounds' },
-  { name: 'White', hex: '#FFFFFF', description: 'Vision lockup — use on dark backgrounds' },
+  {
+    name: 'Bicolor Positive',
+    hex: UNICEF_BLUE_HEX,
+    secondaryHex: '#000000',
+  },
+  {
+    name: 'Bicolor Negative',
+    hex: UNICEF_BLUE_HEX,
+    secondaryHex: '#FFFFFF',
+  },
 ]
 
 /** Giga main logo color variant definitions */
@@ -96,8 +107,8 @@ export const BRAND_ASSETS: LogoAsset[] = [
     assetType: 'logo',
     svgPath: '/logos/unicef-digital-impact-division-black.svg',
     svgPathByColorName: {
-      Black: '/logos/unicef-digital-impact-division-black.svg',
-      White: '/logos/unicef-digital-impact-division-white.svg',
+      'Bicolor Positive': '/logos/unicef-digital-impact-division-black.svg',
+      'Bicolor Negative': '/logos/unicef-digital-impact-division-white.svg',
     },
     allowedColorVariants: UNICEF_DIGITAL_IMPACT_VARIANTS,
   },

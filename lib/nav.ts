@@ -2,11 +2,12 @@
 export const MAIN_NAV_LINKS = [
   { id: 'logos', path: '/logos', label: 'Logos' },
   { id: 'illustrations', path: '/illustrations', label: 'Illustrations' },
+  { id: 'media', path: '/media', label: 'Media' },
 ] as const
 
 /** Items under the Guidelines dropdown (desktop + mobile accordion). */
 export const GUIDELINES_DROPDOWN_LINKS = [
-  { id: 'media', path: '/media', label: 'Media' },
+  { id: 'colors', path: '/colors', label: 'Colors' },
   { id: 'typography', path: '/typography', label: 'Typography' },
   { id: 'video-guidelines', path: '/guidelines/video', label: 'Video' },
 ] as const

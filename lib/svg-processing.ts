@@ -313,6 +313,8 @@ export function colorVariantToGigaVariant(variantName: string): GigaColorVariant
     'Giga Blue': 'blue',
     'Black': 'black',
     'White': 'white',
+    'Bicolor Positive': 'black',
+    'Bicolor Negative': 'white',
   }
   return map[variantName] ?? 'bicolore'
 }
