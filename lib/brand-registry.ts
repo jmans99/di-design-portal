@@ -28,6 +28,12 @@ export const UNICEF_MONOCHROME_VARIANTS: ColorVariant[] = [
   { name: 'White', hex: '#FFFFFF', description: 'Monochrome white' },
 ]
 
+/** UNICEF Digital Impact (Vision) — separate SVG per variant; no recolor */
+export const UNICEF_DIGITAL_IMPACT_VARIANTS: ColorVariant[] = [
+  { name: 'Black', hex: '#000000', description: 'Vision lockup — use on light backgrounds' },
+  { name: 'White', hex: '#FFFFFF', description: 'Vision lockup — use on dark backgrounds' },
+]
+
 /** Giga main logo color variant definitions */
 export const GIGA_COLOR_VARIANTS: {
   value: GigaColorVariant
@@ -84,6 +90,16 @@ export const BRAND_ASSETS: LogoAsset[] = [
     assetType: 'logo',
     svgPath: '/logos/unicef.svg',
     allowedColorVariants: UNICEF_MONOCHROME_VARIANTS,
+  },
+  {
+    brandName: 'UNICEF Digital Impact',
+    assetType: 'logo',
+    svgPath: '/logos/unicef-digital-impact-division-black.svg',
+    svgPathByColorName: {
+      Black: '/logos/unicef-digital-impact-division-black.svg',
+      White: '/logos/unicef-digital-impact-division-white.svg',
+    },
+    allowedColorVariants: UNICEF_DIGITAL_IMPACT_VARIANTS,
   },
   {
     brandName: 'GigaSync',

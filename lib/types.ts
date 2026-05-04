@@ -14,6 +14,11 @@ export interface LogoAsset {
   assetType: 'logo' | 'product' | 'event'
   /** For product logos, a single SVG path. For Giga main logo, not used (resolved by config). */
   svgPath?: string
+  /**
+   * When set, each ColorVariant.name maps to its own SVG file (no programmatic recolor).
+   * Use for Vision-style dual-file logos (e.g. black vs white lockups).
+   */
+  svgPathByColorName?: Record<string, string>
   /** Whether this asset is the main Giga brand logo with full variant support. */
   isGigaMainLogo?: boolean
   allowedColorVariants: ColorVariant[]

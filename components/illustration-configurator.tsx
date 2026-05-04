@@ -105,7 +105,7 @@ export function IllustrationConfigurator() {
   return (
     <div className="flex flex-col gap-8 lg:flex-row lg:items-start">
       {/* Sidebar — below preview on mobile */}
-      <div className="order-2 flex w-full flex-col gap-6 lg:order-1 lg:sticky lg:top-[calc(4rem+24px)] lg:w-80 lg:shrink-0 lg:rounded-2xl lg:border lg:border-border lg:bg-card lg:gap-0 lg:divide-y lg:divide-border lg:shadow-stripe">
+      <div className="order-2 flex w-full flex-col gap-0 lg:order-1 lg:sticky lg:top-[calc(4rem+24px)] lg:w-80 lg:shrink-0 lg:rounded-2xl lg:border lg:border-border lg:bg-card lg:shadow-stripe">
         <ControlSection label="Illustration">
           <Select
             value={selectedId}

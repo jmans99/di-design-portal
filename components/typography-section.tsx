@@ -23,6 +23,15 @@ const BODY_SAMPLES = [
 export function TypographySection() {
   return (
     <div className="flex min-w-0 flex-col gap-8">
+      <div className="flex flex-col gap-2">
+        <h2 className="font-heading text-3xl font-medium text-foreground" id="typography-type">
+          Typography
+        </h2>
+        <p className="text-base text-muted-foreground">
+          Two fonts only. Manrope for headings, Open Sans for everything else.
+        </p>
+      </div>
+
       {/* Font Cards */}
       <div className="grid min-w-0 gap-4 md:grid-cols-2">
         <Card className="min-w-0 rounded-lg border transition-smooth">

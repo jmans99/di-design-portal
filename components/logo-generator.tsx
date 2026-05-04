@@ -76,6 +76,7 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
 
   const isGigaMain = brand.isGigaMainLogo === true
   const isUnicefLogo = brand.brandName === 'UNICEF'
+  const isUnicefDigitalImpact = brand.brandName === 'UNICEF Digital Impact'
   const colorVariant = brand.allowedColorVariants.find(
     (c) => c.name === selectedColorName
   ) ?? brand.allowedColorVariants[0]
@@ -96,6 +97,16 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
   const generatePreview = useCallback(async () => {
     setIsLoading(true)
     try {
+      const mapping = brand.svgPathByColorName
+      if (mapping && Object.keys(mapping).length > 0) {
+        const path =
+          mapping[selectedColorName] ??
+          mapping[Object.keys(mapping)[0] as keyof typeof mapping]
+        const rawSvg = await loadSvg(path)
+        setPreviewSvg(rawSvg)
+        return
+      }
+
       let svgPath: string
 
       if (isGigaMain) {
@@ -117,6 +128,8 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
   }, [
     isGigaMain,
     brand.svgPath,
+    brand.svgPathByColorName,
+    selectedColorName,
     orientation,
     combination,
     gigaVariantKey,
@@ -182,9 +195,9 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
   return (
     <div className="flex flex-col gap-8 lg:flex-row lg:items-start">
       {/* Sidebar: sticky, height fits content */}
-      <div className="order-2 flex w-full flex-col gap-6 lg:order-1 lg:sticky lg:top-[calc(4rem+24px)] lg:w-80 lg:shrink-0 lg:rounded-2xl lg:border lg:border-border lg:bg-card lg:gap-0 lg:divide-y lg:divide-border lg:shadow-stripe">
+      <div className="order-2 flex w-full flex-col gap-0 lg:order-1 lg:sticky lg:top-[calc(4rem+24px)] lg:w-80 lg:shrink-0 lg:rounded-2xl lg:border lg:border-border lg:bg-card lg:shadow-stripe">
         {/* Brand selector */}
-        <ControlSection label="Brand">
+        <ControlSection label="Brand" className="lg:pt-4 lg:pb-2.5">
           <Select value={selectedBrand} onValueChange={setSelectedBrand}>
             <SelectTrigger className="rounded-md transition-smooth-transform">
               <SelectValue placeholder="Choose a brand" />
@@ -212,7 +225,6 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
           <ControlSection
             label="Orientation"
             icon={<ArrowUpDown className="h-3.5 w-3.5 text-muted-foreground" />}
-            className="lg:!border-t-0 lg:pt-3 lg:pb-3"
           >
             <div className="flex gap-2">
               {(
@@ -238,7 +250,6 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
           <ControlSection
             label="Combination"
             icon={<Layers className="h-3.5 w-3.5 text-muted-foreground" />}
-            className="lg:!border-t-0 lg:pt-3"
           >
             <div className="flex flex-col gap-2">
               {(
@@ -268,7 +279,7 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
         )}
 
         {/* Color variant: bicolor only for Giga + Giga Connectivity Forum; monochrome for products + GEP */}
-        <ControlSection label="Color Variant" className="lg:!border-t-0 lg:pt-3">
+        <ControlSection label="Color Variant">
           <div className="flex flex-col gap-2">
             {brand.allowedColorVariants.map((v) => {
               const swatchColors = v.secondaryHex
@@ -308,7 +319,7 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
         </ControlSection>
 
         {/* Format */}
-        <ControlSection label="Format" className="lg:!border-t-0 lg:pt-3">
+        <ControlSection label="Format">
           <div className="flex gap-2">
             {(['svg', 'png', 'jpeg'] as OutputFormat[]).map((fmt) => (
               <ToggleButton
@@ -341,7 +352,7 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
         )}
 
         {/* Download — sticky on desktop */}
-        <div className="lg:!border-t-0 lg:px-5 lg:pb-5 lg:pt-3">
+        <div className="lg:px-5 lg:pb-4 lg:pt-2">
           <Button
             onClick={handleExport}
             disabled={isExporting || !previewSvg}
@@ -413,7 +424,10 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
                 src={svgToDataUrl(previewSvg)}
                 alt={`${brand.brandName} logo preview`}
                 className={cn(
-                  'max-h-64 max-w-full object-contain',
+                  'object-contain',
+                  isUnicefDigitalImpact
+                    ? 'max-h-36 w-full max-w-md'
+                    : 'max-h-64 max-w-full',
                   isUnicefLogo && 'scale-[1.15]'
                 )}
               />
@@ -444,7 +458,13 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
                 <img
                   src={svgToDataUrl(previewSvg)}
                   alt="Transparency preview"
-                  className="max-h-32 max-w-full object-contain"
+                  className={cn(
+                    'object-contain',
+                    isUnicefDigitalImpact
+                      ? 'max-h-20 w-full max-w-sm'
+                      : 'max-h-32 max-w-full',
+                    isUnicefLogo && 'scale-[1.15]'
+                  )}
                 />
               </div>
             </CardContent>
@@ -472,7 +492,7 @@ function ControlSection({
 }) {
   return (
     <div
-      className={cn('flex flex-col gap-2 lg:px-5 lg:pt-5 lg:pb-3', className)}
+      className={cn('flex flex-col gap-1.5 lg:px-5 lg:py-2.5', className)}
     >
       <label className="text-[11px] font-semibold uppercase tracking-[0.07em] text-muted-foreground">
         {icon ? (

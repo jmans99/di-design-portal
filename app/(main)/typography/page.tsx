@@ -1,3 +1,4 @@
+import { ColorPalette } from '@/components/color-palette'
 import { TypographySection } from '@/components/typography-section'
 
 export default function TypographyPage() {
@@ -9,14 +10,19 @@ export default function TypographyPage() {
       >
         <div className="px-6 pb-6 pt-9">
           <h1 className="font-heading text-[2.75rem] font-normal leading-[1.1] tracking-[-0.03em] text-foreground">
-            Typography
+            Color & typography
           </h1>
           <p className="mt-3 w-full text-[15px] leading-relaxed text-muted-foreground">
-            Two fonts only. Manrope for headings, Open Sans for everything else.
+            Brand palette and tokens, then type — Manrope for headings, Open Sans for everything else.
           </p>
         </div>
       </div>
-      <TypographySection />
+      <section id="colors" className="scroll-mt-28">
+        <ColorPalette />
+      </section>
+      <div className="mt-16">
+        <TypographySection />
+      </div>
     </main>
   )
 }

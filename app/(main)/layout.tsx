@@ -1,6 +1,8 @@
 'use client'
 
+import Link from 'next/link'
 import { AppHeader } from '@/components/app-header'
+import { FOOTER_SECTION_LINKS } from '@/lib/nav'
 
 export default function MainLayout({
   children,
@@ -26,32 +28,17 @@ export default function MainLayout({
                 For authorized partners only.
               </p>
             </div>
-            <div className="flex items-center gap-4">
-              <a
-                href="/logos"
-                className="text-xs text-muted-foreground transition-colors hover:text-foreground"
-              >
-                Logos
-              </a>
-              <a
-                href="/colors"
-                className="text-xs text-muted-foreground transition-colors hover:text-foreground"
-              >
-                Colors
-              </a>
-              <a
-                href="/typography"
-                className="text-xs text-muted-foreground transition-colors hover:text-foreground"
-              >
-                Typography
-              </a>
-              <a
-                href="/guidelines/video"
-                className="text-xs text-muted-foreground transition-colors hover:text-foreground"
-              >
-                Guidelines
-              </a>
-            </div>
+            <nav className="flex flex-wrap items-center gap-x-4 gap-y-2" aria-label="Section links">
+              {FOOTER_SECTION_LINKS.map((item) => (
+                <Link
+                  key={item.id}
+                  href={item.path}
+                  className="text-xs text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
           </div>
         </div>
       </footer>
