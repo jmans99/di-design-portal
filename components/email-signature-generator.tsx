@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -11,13 +11,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Copy, Download } from 'lucide-react'
+import { Copy } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import {
   type SignatureLayout,
   type SignatureLocation,
   type SignatureLogoLockup,
   buildEmailSignatureHtml,
+  buildEmailSignaturePlainText,
+  resolveEmailSignatureAssetBaseUrl,
 } from '@/lib/email-signature-template'
 
 /** Matches `ControlSection` in logo-generator (sidebar form). */
@@ -81,12 +83,8 @@ export function EmailSignatureGenerator() {
     'unicef-digital-impact-division'
   )
   const [version, setVersion] = useState<SignatureLayout>('extended')
-  const [assetBaseUrl, setAssetBaseUrl] = useState('')
+  const [assetBaseUrl] = useState(resolveEmailSignatureAssetBaseUrl)
   const [copyHint, setCopyHint] = useState<string | null>(null)
-
-  useEffect(() => {
-    setAssetBaseUrl(typeof window !== 'undefined' ? window.location.origin : '')
-  }, [])
 
   const html = useMemo(
     () =>
@@ -96,31 +94,46 @@ export function EmailSignatureGenerator() {
         location,
         logoLockup,
         layout: version,
-        assetBaseUrl: assetBaseUrl || 'https://example.com',
+        assetBaseUrl,
       }),
     [name, jobTitle, location, logoLockup, version, assetBaseUrl]
   )
 
-  const handleCopy = useCallback(async () => {
-    try {
-      await navigator.clipboard.writeText(html)
-      setCopyHint('Copied HTML to clipboard')
-      setTimeout(() => setCopyHint(null), 2500)
-    } catch {
-      setCopyHint('Copy failed — select HTML manually')
-    }
-  }, [html])
+  const plainText = useMemo(
+    () =>
+      buildEmailSignaturePlainText({
+        name: name.trim() || 'Your name',
+        jobTitle: jobTitle.trim() || 'Job title',
+        location,
+        layout: version,
+      }),
+    [name, jobTitle, location, version]
+  )
 
-  const handleDownloadHtm = useCallback(() => {
-    const doc = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Email signature</title></head><body>${html}</body></html>`
-    const blob = new Blob([doc], { type: 'text/html;charset=utf-8' })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = url
-    a.download = 'giga-email-signature.htm'
-    a.click()
-    URL.revokeObjectURL(url)
-  }, [html])
+  const handleCopySignature = useCallback(async () => {
+    try {
+      if (typeof ClipboardItem !== 'undefined' && navigator.clipboard?.write) {
+        await navigator.clipboard.write([
+          new ClipboardItem({
+            'text/html': new Blob([html], { type: 'text/html' }),
+            'text/plain': new Blob([plainText], { type: 'text/plain' }),
+          }),
+        ])
+        setCopyHint('Copied — paste in Outlook (Settings > Signatures)')
+      } else {
+        await navigator.clipboard.writeText(html)
+        setCopyHint('Copied as text — use Chrome or Edge for rich paste, then try again')
+      }
+    } catch {
+      try {
+        await navigator.clipboard.writeText(html)
+        setCopyHint('Copied as plain text — try Chrome or Edge if paste looks wrong')
+      } catch {
+        setCopyHint('Copy failed — check clipboard permissions')
+      }
+    }
+    setTimeout(() => setCopyHint(null), 3500)
+  }, [html, plainText])
 
   return (
     <div className="flex flex-col gap-8 lg:flex-row lg:items-start">
@@ -191,26 +204,16 @@ export function EmailSignatureGenerator() {
         <div className="flex flex-col gap-2 lg:px-5 lg:pb-4 lg:pt-2">
           <Button
             type="button"
-            variant="outline"
-            className="h-11 w-full rounded-[6px]"
-            onClick={handleCopy}
-          >
-            <Copy className="mr-2 h-4 w-4" />
-            Copy HTML
-          </Button>
-          <Button
-            type="button"
             className="h-12 w-full rounded-[6px] text-base font-medium shadow transition-smooth-transform active:scale-[0.98]"
             size="lg"
-            onClick={handleDownloadHtm}
+            onClick={handleCopySignature}
           >
-            <Download className="h-5 w-5 shrink-0" />
-            Download .htm (Outlook)
+            <Copy className="mr-2 h-5 w-5 shrink-0" />
+            Copy signature
           </Button>
           {copyHint && <p className="text-center text-xs text-muted-foreground">{copyHint}</p>}
           <p className="text-xs text-muted-foreground leading-relaxed">
-            Outlook: Settings → Mail → Signatures — paste HTML or attach the .htm file. Images use URLs from{' '}
-            {assetBaseUrl || 'your deployed site'}.
+            Click Copy signature, then in Outlook go to Settings {'>'} Signatures and paste your signature.
           </p>
         </div>
       </div>

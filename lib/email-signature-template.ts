@@ -3,6 +3,29 @@
  * Text accent uses Giga bicolor blue (#277AFF). Logos use kit SVG paths.
  */
 
+/**
+ * Production origin where `/logos/*` are publicly served. Exported HTML must never use
+ * `http://localhost:*` or recipients’ mail clients will not load images.
+ * Set `NEXT_PUBLIC_SITE_URL` on Vercel (or locally) to override.
+ */
+export const EMAIL_SIGNATURE_PUBLIC_ASSET_ORIGIN = 'https://gigabrand.vercel.app'
+
+/**
+ * Base URL for absolute `<img src>` in pasted/downloaded signatures.
+ * Priority: `NEXT_PUBLIC_SITE_URL` → on localhost, {@link EMAIL_SIGNATURE_PUBLIC_ASSET_ORIGIN} → else current origin.
+ */
+export function resolveEmailSignatureAssetBaseUrl(): string {
+  const raw =
+    typeof process !== 'undefined' && process.env.NEXT_PUBLIC_SITE_URL
+      ? process.env.NEXT_PUBLIC_SITE_URL.trim()
+      : ''
+  if (raw) return raw.replace(/\/$/, '')
+  if (typeof window === 'undefined') return EMAIL_SIGNATURE_PUBLIC_ASSET_ORIGIN
+  const h = window.location.hostname
+  if (h === 'localhost' || h === '127.0.0.1') return EMAIL_SIGNATURE_PUBLIC_ASSET_ORIGIN
+  return window.location.origin
+}
+
 export type SignatureLocation = 'geneva' | 'valencia' | 'barcelona'
 
 /** Partner logo shown in extended signature (single image column — no extra wordmark beside it). */
@@ -74,7 +97,7 @@ export interface SignatureBuildOptions {
   location: SignatureLocation
   logoLockup: SignatureLogoLockup
   layout: SignatureLayout
-  /** Absolute base URL for <img src>, e.g. https://brand.example.com */
+  /** Absolute base URL for `<img src>` (use {@link resolveEmailSignatureAssetBaseUrl} from the app). */
   assetBaseUrl: string
   /** Max width for logo img (px) */
   logoWidth?: number
@@ -194,4 +217,33 @@ export function buildEmailSignatureHtml(opts: SignatureBuildOptions): string {
 </table>`
 
   return `${topBlock.trim()}\n${bottomBlock.trim()}`
+}
+
+/** Plain-text companion for clipboard `text/plain` when copying rich HTML for Outlook. */
+export function buildEmailSignaturePlainText(
+  opts: Pick<SignatureBuildOptions, 'name' | 'jobTitle' | 'location' | 'layout'>
+): string {
+  const displayName = opts.name.trim() || 'Your name'
+  const displayJob = opts.jobTitle.trim() || 'Job title'
+  const address = LOCATION_ADDRESSES[opts.location]
+  const lines = [displayName, displayJob, 'Digital Impact Division', address]
+  if (opts.layout === 'short') {
+    return lines.join('\n')
+  }
+  lines.push(
+    '',
+    'Learn more:',
+    LINK_DIGITAL_IMPACT,
+    LINK_GIGA,
+    '',
+    'Follow us on social media:',
+    `Digital Impact — LinkedIn: ${LINK_LI_DI}`,
+    `Giga — LinkedIn: ${LINK_LI_GIGA}`,
+    `X: ${LINK_X_GIGA}`,
+    `Instagram: ${LINK_IG_GIGA}`,
+    `YouTube: ${LINK_YT_GIGA}`,
+    '',
+    'For every child, digital inclusion'
+  )
+  return lines.join('\n')
 }

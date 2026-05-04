@@ -12,7 +12,7 @@ export default function EmailSignaturePage() {
             Email signature
           </h1>
           <p className="mt-3 w-full text-[15px] leading-relaxed text-muted-foreground">
-            Build a UNICEF Digital Impact / Giga signature. Copy HTML or download a .htm file for Outlook.
+            Build a UNICEF Digital Impact / Giga signature, then copy it and paste into Outlook (Settings &gt; Signatures).
           </p>
         </div>
       </div>
