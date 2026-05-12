@@ -69,18 +69,17 @@ function ToggleButton({
 }
 
 const LOGO_OPTIONS: { value: SignatureLogoLockup; label: string }[] = [
-  { value: 'giga-unicef-itu', label: 'Giga + UNICEF + ITU' },
+  { value: 'stacked-di-giga-unicef-itu', label: 'Digital Impact + Giga / UNICEF / ITU' },
   { value: 'unicef-digital-impact-division', label: 'UNICEF Digital Impact Division' },
+  { value: 'giga-unicef-itu', label: 'Giga + UNICEF + ITU' },
 ]
 
 export function EmailSignatureGenerator() {
   const [name, setName] = useState('Nobuntu Ndlovu')
-  const [jobTitle, setJobTitle] = useState(
-    'Communications Manager | Digital Inclusion and Giga'
-  )
+  const [jobTitle, setJobTitle] = useState('Communications Manager')
   const [location, setLocation] = useState<SignatureLocation>('geneva')
   const [logoLockup, setLogoLockup] = useState<SignatureLogoLockup>(
-    'unicef-digital-impact-division'
+    'stacked-di-giga-unicef-itu'
   )
   const [version, setVersion] = useState<SignatureLayout>('extended')
   const [assetBaseUrl] = useState(resolveEmailSignatureAssetBaseUrl)
@@ -148,13 +147,16 @@ export function EmailSignatureGenerator() {
           />
         </ControlSection>
 
-        <ControlSection label="Job title">
+        <ControlSection label="Role title">
           <Input
             value={jobTitle}
             onChange={(e) => setJobTitle(e.target.value)}
             className="rounded-md"
-            placeholder="Role title"
+            placeholder="e.g. Communications Manager"
           />
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            “ | Digital Inclusion and Giga” will be appended automatically.
+          </p>
         </ControlSection>
 
         <ControlSection label="Office location">
@@ -164,31 +166,32 @@ export function EmailSignatureGenerator() {
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="geneva">Geneva</SelectItem>
-              <SelectItem value="valencia">Valencia</SelectItem>
               <SelectItem value="barcelona">Barcelona</SelectItem>
             </SelectContent>
           </Select>
         </ControlSection>
 
-        <ControlSection label="Logo">
-          <div className="flex flex-col gap-2">
-            {LOGO_OPTIONS.map((opt) => (
-              <button
-                key={opt.value}
-                type="button"
-                onClick={() => setLogoLockup(opt.value)}
-                className={cn(
-                  'rounded-[6px] border px-4 py-3 text-left text-sm font-medium transition-smooth-transform hover:shadow-md active:scale-[0.99]',
-                  logoLockup === opt.value
-                    ? 'border-primary bg-accent text-foreground shadow'
-                    : 'border-border bg-card text-foreground'
-                )}
-              >
-                {opt.label}
-              </button>
-            ))}
-          </div>
-        </ControlSection>
+        {version === 'extended' && (
+          <ControlSection label="Logo">
+            <div className="flex flex-col gap-2">
+              {LOGO_OPTIONS.map((opt) => (
+                <button
+                  key={opt.value}
+                  type="button"
+                  onClick={() => setLogoLockup(opt.value)}
+                  className={cn(
+                    'rounded-[6px] border px-4 py-3 text-left text-sm font-medium transition-smooth-transform hover:shadow-md active:scale-[0.99]',
+                    logoLockup === opt.value
+                      ? 'border-primary bg-accent text-foreground shadow'
+                      : 'border-border bg-card text-foreground'
+                  )}
+                >
+                  {opt.label}
+                </button>
+              ))}
+            </div>
+          </ControlSection>
+        )}
 
         <ControlSection label="Version">
           <div className="flex gap-2">

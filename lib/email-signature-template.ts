@@ -1,6 +1,8 @@
 /**
  * Table-based HTML email signature (Outlook-friendly structure).
- * Text accent uses Giga bicolor blue (#277AFF). Logos use kit SVG paths.
+ * Brand spec: "WIP - Digital Inclusion email signature.pdf".
+ * Accent uses Digital Inclusion cyan (#00AEEF, R0 G174 B239).
+ * Font is Noto Sans (UNICEF official) with Arial/Helvetica fallback for Outlook.
  */
 
 /**
@@ -26,20 +28,33 @@ export function resolveEmailSignatureAssetBaseUrl(): string {
   return window.location.origin
 }
 
-export type SignatureLocation = 'geneva' | 'valencia' | 'barcelona'
+export type SignatureLocation = 'geneva' | 'barcelona'
 
-/** Partner logo shown in extended signature (single image column — no extra wordmark beside it). */
+/** Partner logo shown in extended signature. Default = both stacked, per PDF spec. */
 export type SignatureLogoLockup =
-  | 'giga-unicef-itu'
+  | 'stacked-di-giga-unicef-itu'
   | 'unicef-digital-impact-division'
+  | 'giga-unicef-itu'
 
 export type SignatureLayout = 'short' | 'extended'
 
 export const LOCATION_ADDRESSES: Record<SignatureLocation, string> = {
   geneva: 'Campus Biotech, Chemin des Mines 9 – 1202 Geneva, Switzerland',
-  valencia: 'Giga Valencia Technology Center',
-  barcelona: 'Giga Barcelona Technology Center',
+  barcelona: 'Ca l’Alier, Carrer de Pere IV, 362, Sant Martí – 08019, Barcelona, Spain',
 }
+
+/** Fixed text appended after the user-typed role (PDF: "Role Title | Digital Inclusion and Giga"). */
+export const ROLE_TEAM_SUFFIX = ' | Digital Inclusion and Giga'
+
+/** Org line varies by version. */
+export const ORG_LINE_EXTENDED = 'Digital Impact Division'
+export const ORG_LINE_SHORT = 'UNICEF Digital Impact Division'
+
+/** Digital Inclusion cyan (R0 G174 B239) — name, rules, section headings, links. */
+const ACCENT_DI = '#00AEEF'
+
+/** Noto Sans is the official UNICEF font; Outlook will fall back to Arial. */
+const FONT_STACK = "'Noto Sans', Arial, Helvetica, sans-serif"
 
 export function resolveLogoSrc(lockup: SignatureLogoLockup): string {
   switch (lockup) {
@@ -47,8 +62,9 @@ export function resolveLogoSrc(lockup: SignatureLogoLockup): string {
       return '/logos/giga-unicef-itu-horizontal.svg'
     case 'unicef-digital-impact-division':
       return '/logos/unicef-digital-impact-division-black.svg'
+    case 'stacked-di-giga-unicef-itu':
     default:
-      return '/logos/giga-unicef-itu-horizontal.svg'
+      return '/logos/unicef-digital-impact-division-black.svg'
   }
 }
 
@@ -57,6 +73,8 @@ export function defaultLogoWidth(lockup: SignatureLogoLockup): number {
     case 'unicef-digital-impact-division':
       return 126
     case 'giga-unicef-itu':
+      return 220
+    case 'stacked-di-giga-unicef-itu':
     default:
       return 220
   }
@@ -68,13 +86,11 @@ function logoAltText(lockup: SignatureLogoLockup): string {
       return 'Giga, UNICEF and ITU'
     case 'unicef-digital-impact-division':
       return 'UNICEF Digital Impact Division'
+    case 'stacked-di-giga-unicef-itu':
     default:
-      return 'Logo'
+      return 'UNICEF Digital Impact Division — Giga, UNICEF and ITU'
   }
 }
-
-/** Giga bicolor blue — name, rules, section headings in signature. */
-const ACCENT_GIGA = '#277AFF'
 
 const LINK_DIGITAL_IMPACT = 'https://www.unicef.org/digitalimpact/'
 const LINK_GIGA = 'https://www.giga.global/'
@@ -85,7 +101,6 @@ const LINK_IG_GIGA = 'https://www.instagram.com/giga_global/'
 const LINK_YT_GIGA = 'https://www.youtube.com/@GigaGlobal/videos'
 
 const GREY = '#555555'
-const LINK_BLUE = '#0066CC'
 
 /** Extended block: total table width and logo column match Giga + UNICEF + ITU lockup at 220px-wide image. */
 const EXTENDED_SIGNATURE_TABLE_PX = 560
@@ -99,7 +114,7 @@ export interface SignatureBuildOptions {
   layout: SignatureLayout
   /** Absolute base URL for `<img src>` (use {@link resolveEmailSignatureAssetBaseUrl} from the app). */
   assetBaseUrl: string
-  /** Max width for logo img (px) */
+  /** Max width for logo img (px) — ignored when `logoLockup === 'stacked-di-giga-unicef-itu'`. */
   logoWidth?: number
 }
 
@@ -131,35 +146,31 @@ export function buildEmailSignatureHtml(opts: SignatureBuildOptions): string {
     logoWidth: logoWidthOverride,
   } = opts
 
-  const logoWidth = logoWidthOverride ?? defaultLogoWidth(logoLockup)
-
-  const ACC = ACCENT_GIGA
+  const ACC = ACCENT_DI
   const address = LOCATION_ADDRESSES[location]
-  const logoPath = resolveLogoSrc(logoLockup)
-  const logoSrc = absUrl(assetBaseUrl, logoPath)
-
-  const jobLine = jobTitle.trim() || 'Job title'
+  const orgLine = layout === 'extended' ? ORG_LINE_EXTENDED : ORG_LINE_SHORT
+  const roleLine = `${jobTitle.trim() || 'Role title'}${ROLE_TEAM_SUFFIX}`
 
   const topBlock = `
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;mso-table-lspace:0;mso-table-rspace:0;font-family:Arial,Helvetica,sans-serif;">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;mso-table-lspace:0;mso-table-rspace:0;font-family:${FONT_STACK};">
   <tr>
     <td style="padding:0 0 4px 0;">
-      <span style="font-size:18px;font-weight:bold;color:${ACC};">${esc(name)}</span>
+      <span style="font-size:18px;font-weight:bold;color:${ACC};font-family:${FONT_STACK};">${esc(name)}</span>
     </td>
   </tr>
   <tr>
     <td style="padding:0 0 2px 0;">
-      <span style="font-size:13px;color:${GREY};line-height:1.45;">${esc(jobLine)}</span>
+      <span style="font-size:13px;color:${GREY};line-height:1.45;font-family:${FONT_STACK};">${esc(roleLine)}</span>
     </td>
   </tr>
   <tr>
     <td style="padding:0 0 2px 0;">
-      <span style="font-size:13px;color:${GREY};line-height:1.45;">Digital Impact Division</span>
+      <span style="font-size:13px;color:${GREY};line-height:1.45;font-family:${FONT_STACK};">${orgLine}</span>
     </td>
   </tr>
   <tr>
     <td style="padding:0;">
-      <span style="font-size:13px;color:${GREY};line-height:1.45;">${esc(address)}</span>
+      <span style="font-size:13px;color:${GREY};line-height:1.45;font-family:${FONT_STACK};">${esc(address)}</span>
     </td>
   </tr>
 </table>`
@@ -168,49 +179,56 @@ export function buildEmailSignatureHtml(opts: SignatureBuildOptions): string {
     return topBlock.trim()
   }
 
-  const learnLinks = `
-<span style="font-size:12px;font-weight:bold;color:${ACC};display:block;margin:0;padding:0;line-height:12px;mso-line-height-rule:exactly;">Learn more:</span>
-<span style="font-size:12px;color:${GREY};line-height:14px;mso-line-height-rule:exactly;display:block;margin:2px 0 0 0;padding:0;">
-  <a href="${LINK_DIGITAL_IMPACT}" style="color:${LINK_BLUE};text-decoration:underline;">www.unicef.org/digitalimpact</a>
-  <span style="color:${GREY};"> | </span>
-  <a href="${LINK_GIGA}" style="color:${LINK_BLUE};text-decoration:underline;">www.giga.global</a>
-</span>`
-
-  const socialBlock = `
-<span style="font-size:12px;font-weight:bold;color:${ACC};"><br/>Follow us on social media:</span><br/>
-<span style="font-size:12px;color:${GREY};line-height:1.6;">
-  Digital Impact:
-  <a href="${LINK_LI_DI}" style="color:${LINK_BLUE};text-decoration:underline;">LinkedIn</a><br/>
-  Giga:
-  <a href="${LINK_LI_GIGA}" style="color:${LINK_BLUE};text-decoration:underline;">LinkedIn</a>,
-  <a href="${LINK_X_GIGA}" style="color:${LINK_BLUE};text-decoration:underline;">X</a>,
-  <a href="${LINK_IG_GIGA}" style="color:${LINK_BLUE};text-decoration:underline;">Instagram</a>,
-  <a href="${LINK_YT_GIGA}" style="color:${LINK_BLUE};text-decoration:underline;">YouTube</a>
+  const learnBlock = `
+<span style="font-size:12px;font-weight:bold;color:${ACC};display:block;margin:0;padding:0;line-height:14px;mso-line-height-rule:exactly;font-family:${FONT_STACK};">Learn more:</span>
+<span style="font-size:12px;color:${GREY};line-height:18px;mso-line-height-rule:exactly;display:block;margin:2px 0 0 0;padding:0;font-family:${FONT_STACK};">
+  Digital Impact: <a href="${LINK_LI_DI}" style="color:${ACC};text-decoration:underline;">LinkedIn</a><br/>
+  Giga: <a href="${LINK_LI_GIGA}" style="color:${ACC};text-decoration:underline;">LinkedIn</a>, <a href="${LINK_X_GIGA}" style="color:${ACC};text-decoration:underline;">X</a>, <a href="${LINK_IG_GIGA}" style="color:${ACC};text-decoration:underline;">Instagram</a>, <a href="${LINK_YT_GIGA}" style="color:${ACC};text-decoration:underline;">YouTube</a><br/>
+  <a href="${LINK_DIGITAL_IMPACT}" style="color:${ACC};text-decoration:underline;">www.unicef.org/digitalimpact</a><br/>
+  <a href="${LINK_GIGA}" style="color:${ACC};text-decoration:underline;">www.giga.global</a>
 </span>`
 
   const taglineBlock = `
-<span style="font-size:12px;font-weight:bold;color:${ACC};"><br/><br/>For every child, digital inclusion</span>`
+<span style="font-size:12px;font-weight:bold;color:${ACC};font-family:${FONT_STACK};"><br/><br/>for every child, digital inclusion</span>`
 
   const logoAlt = logoAltText(logoLockup)
+  const logoColumn =
+    logoLockup === 'stacked-di-giga-unicef-itu'
+      ? `
+        <tr>
+          <td align="right" style="padding:0 0 10px 0;margin:0;line-height:0;font-size:0;mso-line-height-alt:0;vertical-align:top;">
+            <img src="${absUrl(assetBaseUrl, '/logos/unicef-digital-impact-division-black.svg')}" alt="UNICEF Digital Impact Division" width="126" style="display:block;margin:0;padding:0;border:0;outline:none;text-decoration:none;vertical-align:top;max-width:126px;height:auto;" />
+          </td>
+        </tr>
+        <tr>
+          <td align="right" style="padding:0;margin:0;line-height:0;font-size:0;mso-line-height-alt:0;vertical-align:top;">
+            <img src="${absUrl(assetBaseUrl, '/logos/giga-unicef-itu-horizontal.svg')}" alt="Giga, UNICEF and ITU" width="220" style="display:block;margin:0;padding:0;border:0;outline:none;text-decoration:none;vertical-align:top;max-width:220px;height:auto;" />
+          </td>
+        </tr>`
+      : (() => {
+          const w = logoWidthOverride ?? defaultLogoWidth(logoLockup)
+          const src = absUrl(assetBaseUrl, resolveLogoSrc(logoLockup))
+          return `
+        <tr>
+          <td align="right" style="padding:0;margin:0;line-height:0;font-size:0;mso-line-height-alt:0;vertical-align:top;">
+            <img src="${src}" alt="${esc(logoAlt)}" width="${w}" style="display:block;margin:0;padding:0;border:0;outline:none;text-decoration:none;vertical-align:top;max-width:${w}px;height:auto;" />
+          </td>
+        </tr>`
+        })()
 
   const bottomBlock = `
-<table role="presentation" width="${EXTENDED_SIGNATURE_TABLE_PX}" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;mso-table-lspace:0;mso-table-rspace:0;margin-top:14px;width:${EXTENDED_SIGNATURE_TABLE_PX}px;max-width:${EXTENDED_SIGNATURE_TABLE_PX}px;table-layout:fixed;font-family:Arial,Helvetica,sans-serif;">
+<table role="presentation" width="${EXTENDED_SIGNATURE_TABLE_PX}" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;mso-table-lspace:0;mso-table-rspace:0;margin-top:14px;width:${EXTENDED_SIGNATURE_TABLE_PX}px;max-width:${EXTENDED_SIGNATURE_TABLE_PX}px;table-layout:fixed;font-family:${FONT_STACK};">
   <tr>
     <td style="padding:8px 0;border-top:1px solid ${ACC};" colspan="2"></td>
   </tr>
   <tr>
-    <td valign="top" style="padding:0 24px 0 0;margin:0;vertical-align:top;font-size:12px;">
-      ${learnLinks}
-      ${socialBlock}
+    <td valign="top" style="padding:0 24px 0 0;margin:0;vertical-align:top;font-size:12px;font-family:${FONT_STACK};">
+      ${learnBlock}
       ${taglineBlock}
     </td>
     <td valign="top" align="right" width="${EXTENDED_LOGO_CELL_PX}" style="padding:0;margin:0;width:${EXTENDED_LOGO_CELL_PX}px;min-width:${EXTENDED_LOGO_CELL_PX}px;max-width:${EXTENDED_LOGO_CELL_PX}px;vertical-align:top;line-height:0;font-size:0;mso-line-height-alt:0;">
       <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="right" style="border-collapse:collapse;mso-table-lspace:0;mso-table-rspace:0;margin:0;padding:0;">
-        <tr>
-          <td align="right" style="padding:0;margin:0;line-height:0;font-size:0;mso-line-height-alt:0;vertical-align:top;">
-            <img src="${logoSrc}" alt="${esc(logoAlt)}" width="${logoWidth}" style="display:block;margin:0;padding:0;border:0;outline:none;text-decoration:none;vertical-align:top;max-width:${logoWidth}px;height:auto;" />
-          </td>
-        </tr>
+        ${logoColumn}
       </table>
     </td>
   </tr>
@@ -224,26 +242,25 @@ export function buildEmailSignaturePlainText(
   opts: Pick<SignatureBuildOptions, 'name' | 'jobTitle' | 'location' | 'layout'>
 ): string {
   const displayName = opts.name.trim() || 'Your name'
-  const displayJob = opts.jobTitle.trim() || 'Job title'
+  const displayRole = `${opts.jobTitle.trim() || 'Role title'}${ROLE_TEAM_SUFFIX}`
+  const orgLine = opts.layout === 'extended' ? ORG_LINE_EXTENDED : ORG_LINE_SHORT
   const address = LOCATION_ADDRESSES[opts.location]
-  const lines = [displayName, displayJob, 'Digital Impact Division', address]
+  const lines = [displayName, displayRole, orgLine, address]
   if (opts.layout === 'short') {
     return lines.join('\n')
   }
   lines.push(
     '',
     'Learn more:',
-    LINK_DIGITAL_IMPACT,
-    LINK_GIGA,
-    '',
-    'Follow us on social media:',
     `Digital Impact — LinkedIn: ${LINK_LI_DI}`,
     `Giga — LinkedIn: ${LINK_LI_GIGA}`,
     `X: ${LINK_X_GIGA}`,
     `Instagram: ${LINK_IG_GIGA}`,
     `YouTube: ${LINK_YT_GIGA}`,
+    LINK_DIGITAL_IMPACT,
+    LINK_GIGA,
     '',
-    'For every child, digital inclusion'
+    'for every child, digital inclusion'
   )
   return lines.join('\n')
 }
