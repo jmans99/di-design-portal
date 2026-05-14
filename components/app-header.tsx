@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ChevronDown, ChevronRight } from 'lucide-react'
 import { HamburgerMenu } from '@/components/HamburgerMenu'
-import { MAIN_NAV_LINKS, GUIDELINES_DROPDOWN_LINKS, MATERIALS_DROPDOWN_LINKS } from '@/lib/nav'
+import { VISIBLE_MAIN_NAV_LINKS as MAIN_NAV_LINKS, GUIDELINES_DROPDOWN_LINKS, MATERIALS_DROPDOWN_LINKS } from '@/lib/nav'
 
 const GUIDELINES_LABEL = 'Guidelines'
 const MATERIALS_LABEL = 'Materials'
