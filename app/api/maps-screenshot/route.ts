@@ -9,9 +9,9 @@ export const maxDuration = 60
 
 /** Wait fisso dopo che il canvas Mapbox e' apparso. Non si puo' aspettare il
  * networkidle: Mapbox continua a richiedere tile e il segnale non arriva mai
- * entro il cap di 60s di Vercel Hobby (cold start chromium ~8s + goto >30s).
- * 5s sono sufficienti per far renderizzare i dot dopo che il canvas e' ready. */
-const RENDER_WAIT_MS = 5000
+ * entro il cap di 60s di Vercel Hobby (cold start chromium ~10s + goto +
+ * waitForSelector + screenshot). 4s bastano per render dei dot dopo canvas ready. */
+const RENDER_WAIT_MS = 4000
 
 function buildUrl(code: string, layer: 'live' | 'static') {
   // In live mode lasciamo che sia GigaMaps a scegliere il layer adatto al
@@ -84,13 +84,13 @@ export async function GET(req: NextRequest) {
     })
     const page = await context.newPage()
 
-    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 })
+    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 })
     // Aspettiamo che il canvas Mapbox/MapLibre esista nel DOM (state:'attached',
     // non 'visible'): GigaMaps lo monta con visibility:hidden finche' i tile
     // non sono pronti, e con 'visible' Playwright andava in timeout.
     await page.waitForSelector(
       '.mapboxgl-canvas-container, .maplibregl-canvas-container',
-      { state: 'attached', timeout: 20000 }
+      { state: 'attached', timeout: 10000 }
     )
     await page.waitForTimeout(RENDER_WAIT_MS)
 
