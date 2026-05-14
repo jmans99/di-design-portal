@@ -14,8 +14,17 @@ export const maxDuration = 60
 const RENDER_WAIT_MS = 12000
 
 function buildUrl(code: string, layer: 'live' | 'static') {
-  const layerParam = layer === 'live' ? '14' : 'null'
-  return `https://maps.giga.global/map/country/${code}?layer=${layerParam}&status=10001`
+  // In live mode lasciamo che sia GigaMaps a scegliere il layer adatto al
+  // paese. Hardcodare layer=14 (DOWNLOAD_SPEED_BENCHMARK) fissava il
+  // selettore di data al 29 aprile - 5 maggio 2024 ovunque tranne in
+  // Brasile, perche' quel layer e' applicable_countries=[144]. Senza il
+  // parametro layer GigaMaps usa di default il layer 10
+  // (DOWNLOAD_DEFAULT_DYNAMIC), che ha dati aggiornati a livello globale.
+  // Static mode mantiene layer=null per disattivare i dot live.
+  if (layer === 'static') {
+    return `https://maps.giga.global/map/country/${code}?layer=null&status=10001`
+  }
+  return `https://maps.giga.global/map/country/${code}?status=10001`
 }
 
 export async function GET(req: NextRequest) {
