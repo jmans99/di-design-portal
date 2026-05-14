@@ -105,12 +105,32 @@ export const BRAND_ASSETS: LogoAsset[] = [
   {
     brandName: 'UNICEF Digital Impact',
     assetType: 'logo',
+    // Top-level fields mirror the default version (boxed) so code unaware of
+    // `versions` keeps working with the existing 2-color boxed lockup.
     svgPath: '/logos/unicef-digital-impact-division-black.svg',
     svgPathByColorName: {
       'Bicolor Positive': '/logos/unicef-digital-impact-division-black.svg',
       'Bicolor Negative': '/logos/unicef-digital-impact-division-white.svg',
     },
     allowedColorVariants: UNICEF_DIGITAL_IMPACT_VARIANTS,
+    versions: [
+      {
+        id: 'boxed',
+        label: 'Boxed',
+        svgPath: '/logos/unicef-digital-impact-division-black.svg',
+        svgPathByColorName: {
+          'Bicolor Positive': '/logos/unicef-digital-impact-division-black.svg',
+          'Bicolor Negative': '/logos/unicef-digital-impact-division-white.svg',
+        },
+        allowedColorVariants: UNICEF_DIGITAL_IMPACT_VARIANTS,
+      },
+      {
+        id: 'unboxed',
+        label: 'Unboxed',
+        svgPath: '/logos/unicef-digital-impact-unboxed.svg',
+        allowedColorVariants: UNICEF_MONOCHROME_VARIANTS,
+      },
+    ],
   },
   {
     brandName: 'GigaSync',

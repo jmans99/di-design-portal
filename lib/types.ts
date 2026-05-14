@@ -9,6 +9,16 @@ export interface GigaLogoConfig {
   colorVariant: GigaColorVariant
 }
 
+export interface LogoVersion {
+  /** Stable id, also used in the export filename. E.g. 'boxed', 'unboxed'. */
+  id: string
+  /** Human-facing label shown in the version toggle. */
+  label: string
+  svgPath?: string
+  svgPathByColorName?: Record<string, string>
+  allowedColorVariants: ColorVariant[]
+}
+
 export interface LogoAsset {
   brandName: string
   assetType: 'logo' | 'product' | 'event'
@@ -22,6 +32,13 @@ export interface LogoAsset {
   /** Whether this asset is the main Giga brand logo with full variant support. */
   isGigaMainLogo?: boolean
   allowedColorVariants: ColorVariant[]
+  /**
+   * Optional sub-versions of the same logo (e.g. boxed vs unboxed). When present,
+   * the active version's svgPath / svgPathByColorName / allowedColorVariants take
+   * precedence over the top-level fields. The top-level fields then act as the
+   * "default" version's snapshot for code paths unaware of versions.
+   */
+  versions?: LogoVersion[]
 }
 
 export interface ColorVariant {

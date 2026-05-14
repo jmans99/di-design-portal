@@ -51,17 +51,38 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
   const [selectedBrand, setSelectedBrand] = useState(BRAND_ASSETS[0].brandName)
   const brand = BRAND_ASSETS.find((b) => b.brandName === selectedBrand)!
 
-  // Color variant: use the current brand's allowed variants; default to first allowed
+  // Sub-version (e.g. boxed/unboxed for UNICEF Digital Impact). null = brand has
+  // no versions or falls back to the default. Stored as the version id.
+  const [selectedVersionId, setSelectedVersionId] = useState<string | null>(
+    BRAND_ASSETS[0].versions?.[0]?.id ?? null
+  )
+  const activeVersion =
+    brand.versions?.find((v) => v.id === selectedVersionId) ??
+    brand.versions?.[0] ??
+    null
+
+  // Effective resolution. When a brand defines versions, the active version is
+  // the SOLE source of truth — falling back to the top-level fields would leak
+  // the wrong SVG (e.g. unboxed would inherit boxed's svgPathByColorName).
+  const effectiveAllowedVariants = activeVersion
+    ? activeVersion.allowedColorVariants
+    : brand.allowedColorVariants
+  const effectiveSvgPath = activeVersion ? activeVersion.svgPath : brand.svgPath
+  const effectiveSvgPathByColorName = activeVersion
+    ? activeVersion.svgPathByColorName
+    : brand.svgPathByColorName
+
+  // Color variant: use the effective allowed variants; default to first allowed
   const [selectedColorName, setSelectedColorName] = useState(
     BRAND_ASSETS[0].allowedColorVariants[0].name
   )
 
   // Apply initial variant when navigating from Video guidelines (e.g. "White")
   useEffect(() => {
-    if (initialColorVariant && brand.allowedColorVariants.some((v) => v.name === initialColorVariant)) {
+    if (initialColorVariant && effectiveAllowedVariants.some((v) => v.name === initialColorVariant)) {
       setSelectedColorName(initialColorVariant)
     }
-  }, [initialColorVariant, brand.allowedColorVariants])
+  }, [initialColorVariant, effectiveAllowedVariants])
 
   // Giga main logo extra config
   const [orientation, setOrientation] = useState<LogoOrientation>('horizontal')
@@ -77,27 +98,39 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
   const isGigaMain = brand.isGigaMainLogo === true
   const isUnicefLogo = brand.brandName === 'UNICEF'
   const isUnicefDigitalImpact = brand.brandName === 'UNICEF Digital Impact'
-  const colorVariant = brand.allowedColorVariants.find(
+  const colorVariant = effectiveAllowedVariants.find(
     (c) => c.name === selectedColorName
-  ) ?? brand.allowedColorVariants[0]
+  ) ?? effectiveAllowedVariants[0]
   const gigaVariantKey = colorVariantToGigaVariant(selectedColorName)
-  const supportsBicolor = brand.allowedColorVariants.some(
+  const supportsBicolor = effectiveAllowedVariants.some(
     (v) => v.secondaryHex != null || v.name === 'Bicolor'
   )
 
-  // When switching brand, if current color variant isn't allowed, switch to first allowed
+  // When switching brand, reset to that brand's first version (if any) and clamp
+  // color variant to the resulting allowed list.
   useEffect(() => {
-    const allowed = brand.allowedColorVariants
-    const isAllowed = allowed.some((v) => v.name === selectedColorName)
-    if (!isAllowed && allowed.length > 0) {
-      setSelectedColorName(allowed[0].name)
+    const firstVersionId = brand.versions?.[0]?.id ?? null
+    setSelectedVersionId(firstVersionId)
+    const nextAllowed =
+      brand.versions?.[0]?.allowedColorVariants ?? brand.allowedColorVariants
+    if (!nextAllowed.some((v) => v.name === selectedColorName)) {
+      setSelectedColorName(nextAllowed[0].name)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedBrand])
+
+  // When switching version inside a brand, clamp color variant to the new allowed list.
+  useEffect(() => {
+    if (!effectiveAllowedVariants.some((v) => v.name === selectedColorName)) {
+      setSelectedColorName(effectiveAllowedVariants[0].name)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedVersionId])
 
   const generatePreview = useCallback(async () => {
     setIsLoading(true)
     try {
-      const mapping = brand.svgPathByColorName
+      const mapping = effectiveSvgPathByColorName
       if (mapping && Object.keys(mapping).length > 0) {
         const path =
           mapping[selectedColorName] ??
@@ -112,7 +145,7 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
       if (isGigaMain) {
         svgPath = resolveGigaLogoPath(orientation, combination)
       } else {
-        svgPath = brand.svgPath!
+        svgPath = effectiveSvgPath!
       }
 
       const rawSvg = await loadSvg(svgPath)
@@ -127,8 +160,8 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
     }
   }, [
     isGigaMain,
-    brand.svgPath,
-    brand.svgPathByColorName,
+    effectiveSvgPath,
+    effectiveSvgPathByColorName,
     selectedColorName,
     orientation,
     combination,
@@ -154,13 +187,20 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
     return colorVariant.name
   }
 
+  // When a brand has sub-versions, include the active version label in the filename
+  // (e.g. "unicef-digital-impact-unboxed_unicef-blue.svg") so exported files are
+  // self-describing.
+  const brandFilenameKey = activeVersion
+    ? `${brand.brandName} ${activeVersion.label}`
+    : brand.brandName
+
   const handleExport = async () => {
     if (!previewSvg) return
     setIsExporting(true)
 
     try {
       const filename = generateFilename(
-        brand.brandName,
+        brandFilenameKey,
         getFilenameVariant(),
         selectedFormat,
         selectedFormat !== 'svg' ? selectedResolution : undefined,
@@ -186,7 +226,7 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
   const isRaster = selectedFormat === 'png' || selectedFormat === 'jpeg'
 
   const previewFilename = generateFilename(
-    brand.brandName,
+    brandFilenameKey,
     getFilenameVariant(),
     selectedFormat,
     isRaster ? selectedResolution : undefined,
@@ -280,10 +320,27 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
           </ControlSection>
         )}
 
+        {/* Version (e.g. boxed/unboxed) — visible only when the brand defines sub-versions */}
+        {brand.versions && brand.versions.length > 1 && (
+          <ControlSection label="Version">
+            <div className="flex gap-2">
+              {brand.versions.map((v) => (
+                <ToggleButton
+                  key={v.id}
+                  active={(selectedVersionId ?? brand.versions![0].id) === v.id}
+                  onClick={() => setSelectedVersionId(v.id)}
+                >
+                  {v.label}
+                </ToggleButton>
+              ))}
+            </div>
+          </ControlSection>
+        )}
+
         {/* Color variant: bicolor only for Giga + Giga Connectivity Forum; monochrome for products + GEP */}
         <ControlSection label="Color Variant">
           <div className="flex flex-col gap-2">
-            {brand.allowedColorVariants.map((v) => {
+            {effectiveAllowedVariants.map((v) => {
               const swatchColors = v.secondaryHex
                 ? [v.hex, v.secondaryHex]
                 : [v.hex]
