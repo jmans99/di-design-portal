@@ -168,3 +168,10 @@
     font-weight: 500;
   }
 }
+
+@media print {
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+}

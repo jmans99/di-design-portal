@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -16,7 +16,6 @@ import { cn } from '@/lib/utils'
 import {
   type SignatureLayout,
   type SignatureLocation,
-  type SignatureLogoLockup,
   buildEmailSignatureHtml,
   buildEmailSignaturePlainText,
   resolveEmailSignatureAssetBaseUrl,
@@ -68,41 +67,85 @@ function ToggleButton({
   )
 }
 
-const LOGO_OPTIONS: { value: SignatureLogoLockup; label: string }[] = [
-  { value: 'stacked-di-giga-unicef-itu', label: 'Digital Impact + Giga / UNICEF / ITU' },
-  { value: 'unicef-digital-impact-division', label: 'UNICEF Digital Impact Division' },
-  { value: 'giga-unicef-itu', label: 'Giga + UNICEF + ITU' },
-]
-
 export function EmailSignatureGenerator() {
   const [name, setName] = useState('')
   const [jobTitle, setJobTitle] = useState('')
   const [location, setLocation] = useState<SignatureLocation>('geneva')
-  const [logoLockup, setLogoLockup] = useState<SignatureLogoLockup>(
-    'stacked-di-giga-unicef-itu'
-  )
   const [version, setVersion] = useState<SignatureLayout>('extended')
   const [assetBaseUrl] = useState(resolveEmailSignatureAssetBaseUrl)
   const [copyHint, setCopyHint] = useState<string | null>(null)
+  const [diLogoDataUrl, setDiLogoDataUrl] = useState<string | undefined>(undefined)
+  const [gigaLogoDataUrl, setGigaLogoDataUrl] = useState<string | undefined>(undefined)
+
+  useEffect(() => {
+    let cancelled = false
+
+    async function svgToPngDataUrl(svgPath: string, displayWidthPx: number): Promise<string> {
+      const res = await fetch(svgPath)
+      const svgText = await res.text()
+      const blob = new Blob([svgText], { type: 'image/svg+xml;charset=utf-8' })
+      const url = URL.createObjectURL(blob)
+      try {
+        const img = new Image()
+        await new Promise<void>((resolve, reject) => {
+          img.onload = () => resolve()
+          img.onerror = () => reject(new Error(`Failed to load ${svgPath}`))
+          img.src = url
+        })
+        const scale = 3
+        const ratio = img.naturalHeight / img.naturalWidth
+        const canvas = document.createElement('canvas')
+        canvas.width = Math.round(displayWidthPx * scale)
+        canvas.height = Math.round(displayWidthPx * ratio * scale)
+        const ctx = canvas.getContext('2d')
+        if (!ctx) throw new Error('Canvas 2D context unavailable')
+        ctx.imageSmoothingQuality = 'high'
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+        return canvas.toDataURL('image/png')
+      } finally {
+        URL.revokeObjectURL(url)
+      }
+    }
+
+    Promise.all([
+      svgToPngDataUrl('/logos/unicef-digital-impact-division-black.svg', 150),
+      svgToPngDataUrl('/logos/giga-unicef-itu-horizontal.svg', 150),
+    ])
+      .then(([di, giga]) => {
+        if (cancelled) return
+        setDiLogoDataUrl(di)
+        setGigaLogoDataUrl(giga)
+      })
+      .catch((err) => {
+        console.error('Email signature: SVG→PNG conversion failed', err)
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  const logosLoading = version === 'extended' && (!diLogoDataUrl || !gigaLogoDataUrl)
 
   const html = useMemo(
     () =>
       buildEmailSignatureHtml({
         name: name.trim() || 'Your name',
-        jobTitle: jobTitle.trim() || 'Job title',
+        jobTitle: jobTitle.trim() || 'Role title',
         location,
-        logoLockup,
         layout: version,
         assetBaseUrl,
+        diLogoDataUrl,
+        gigaLogoDataUrl,
       }),
-    [name, jobTitle, location, logoLockup, version, assetBaseUrl]
+    [name, jobTitle, location, version, assetBaseUrl, diLogoDataUrl, gigaLogoDataUrl]
   )
 
   const plainText = useMemo(
     () =>
       buildEmailSignaturePlainText({
         name: name.trim() || 'Your name',
-        jobTitle: jobTitle.trim() || 'Job title',
+        jobTitle: jobTitle.trim() || 'Role title',
         location,
         layout: version,
       }),
@@ -154,9 +197,6 @@ export function EmailSignatureGenerator() {
             className="rounded-md"
             placeholder="e.g. Communications Manager"
           />
-          <p className="text-xs text-muted-foreground leading-relaxed">
-            “ | Digital Inclusion and Giga” will be appended automatically.
-          </p>
         </ControlSection>
 
         <ControlSection label="Office location">
@@ -170,28 +210,6 @@ export function EmailSignatureGenerator() {
             </SelectContent>
           </Select>
         </ControlSection>
-
-        {version === 'extended' && (
-          <ControlSection label="Logo">
-            <div className="flex flex-col gap-2">
-              {LOGO_OPTIONS.map((opt) => (
-                <button
-                  key={opt.value}
-                  type="button"
-                  onClick={() => setLogoLockup(opt.value)}
-                  className={cn(
-                    'rounded-[6px] border px-4 py-3 text-left text-sm font-medium transition-smooth-transform hover:shadow-md active:scale-[0.99]',
-                    logoLockup === opt.value
-                      ? 'border-primary bg-accent text-foreground shadow'
-                      : 'border-border bg-card text-foreground'
-                  )}
-                >
-                  {opt.label}
-                </button>
-              ))}
-            </div>
-          </ControlSection>
-        )}
 
         <ControlSection label="Version">
           <div className="flex gap-2">
@@ -210,9 +228,10 @@ export function EmailSignatureGenerator() {
             className="h-12 w-full rounded-[6px] text-base font-medium shadow transition-smooth-transform active:scale-[0.98]"
             size="lg"
             onClick={handleCopySignature}
+            disabled={logosLoading}
           >
             <Copy className="mr-2 h-5 w-5 shrink-0" />
-            Copy signature
+            {logosLoading ? 'Preparing logos…' : 'Copy signature'}
           </Button>
           {copyHint && <p className="text-center text-xs text-muted-foreground">{copyHint}</p>}
           <p className="text-xs text-muted-foreground leading-relaxed">
@@ -227,7 +246,6 @@ export function EmailSignatureGenerator() {
         <Card className="min-h-[280px] overflow-auto rounded-lg border border-border bg-background transition-smooth lg:min-h-[360px]">
           <CardContent className="p-8">
             <div
-              key={logoLockup}
               className="email-signature-preview max-w-none [&_a]:text-inherit"
               dangerouslySetInnerHTML={{ __html: html }}
             />

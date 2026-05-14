@@ -3,6 +3,7 @@
  * Brand spec: "WIP - Digital Inclusion email signature.pdf".
  * Accent uses Digital Inclusion cyan (#00AEEF, R0 G174 B239).
  * Font is Noto Sans (UNICEF official) with Arial/Helvetica fallback for Outlook.
+ * Extended layout always renders the DI Division + Giga/UNICEF/ITU stacked lockup.
  */
 
 /**
@@ -30,12 +31,6 @@ export function resolveEmailSignatureAssetBaseUrl(): string {
 
 export type SignatureLocation = 'geneva' | 'barcelona'
 
-/** Partner logo shown in extended signature. Default = both stacked, per PDF spec. */
-export type SignatureLogoLockup =
-  | 'stacked-di-giga-unicef-itu'
-  | 'unicef-digital-impact-division'
-  | 'giga-unicef-itu'
-
 export type SignatureLayout = 'short' | 'extended'
 
 export const LOCATION_ADDRESSES: Record<SignatureLocation, string> = {
@@ -56,44 +51,6 @@ const ACCENT_DI = '#00AEEF'
 /** Noto Sans is the official UNICEF font; Outlook will fall back to Arial. */
 const FONT_STACK = "'Noto Sans', Arial, Helvetica, sans-serif"
 
-// PNG (not SVG) per i loghi nel signature: Outlook web e Gmail web non
-// renderizzano SVG inline negli email. I PNG sono @2x della larghezza display.
-export function resolveLogoSrc(lockup: SignatureLogoLockup): string {
-  switch (lockup) {
-    case 'giga-unicef-itu':
-      return '/logos/giga-unicef-itu-horizontal.png'
-    case 'unicef-digital-impact-division':
-      return '/logos/unicef-digital-impact-division-black.png'
-    case 'stacked-di-giga-unicef-itu':
-    default:
-      return '/logos/unicef-digital-impact-division-black.png'
-  }
-}
-
-export function defaultLogoWidth(lockup: SignatureLogoLockup): number {
-  switch (lockup) {
-    case 'unicef-digital-impact-division':
-      return 126
-    case 'giga-unicef-itu':
-      return 220
-    case 'stacked-di-giga-unicef-itu':
-    default:
-      return 220
-  }
-}
-
-function logoAltText(lockup: SignatureLogoLockup): string {
-  switch (lockup) {
-    case 'giga-unicef-itu':
-      return 'Giga, UNICEF and ITU'
-    case 'unicef-digital-impact-division':
-      return 'UNICEF Digital Impact Division'
-    case 'stacked-di-giga-unicef-itu':
-    default:
-      return 'UNICEF Digital Impact Division — Giga, UNICEF and ITU'
-  }
-}
-
 const LINK_DIGITAL_IMPACT = 'https://www.unicef.org/digitalimpact/'
 const LINK_GIGA = 'https://www.giga.global/'
 const LINK_LI_DI = 'https://www.linkedin.com/showcase/unicef-technology/'
@@ -104,20 +61,24 @@ const LINK_YT_GIGA = 'https://www.youtube.com/@GigaGlobal/videos'
 
 const GREY = '#555555'
 
-/** Extended block: total table width and logo column match Giga + UNICEF + ITU lockup at 220px-wide image. */
+/** Extended block layout. Logo cell is narrow so both stacked logos share a similar width per PDF. */
 const EXTENDED_SIGNATURE_TABLE_PX = 560
-const EXTENDED_LOGO_CELL_PX = 220
+const EXTENDED_LOGO_CELL_PX = 160
+const STACKED_LOGO_WIDTH_PX = 150
 
 export interface SignatureBuildOptions {
   name: string
   jobTitle: string
   location: SignatureLocation
-  logoLockup: SignatureLogoLockup
   layout: SignatureLayout
   /** Absolute base URL for `<img src>` (use {@link resolveEmailSignatureAssetBaseUrl} from the app). */
   assetBaseUrl: string
-  /** Max width for logo img (px) — ignored when `logoLockup === 'stacked-di-giga-unicef-itu'`. */
-  logoWidth?: number
+  /**
+   * Optional PNG data URIs for the two stacked logos. When provided, used instead of
+   * remote SVG URLs — required for Outlook Web, which strips remote/SVG `<img>` on paste.
+   */
+  diLogoDataUrl?: string
+  gigaLogoDataUrl?: string
 }
 
 function esc(s: string): string {
@@ -138,15 +99,7 @@ function absUrl(base: string, path: string): string {
  * Build complete HTML fragment for pasting into Outlook / webmail.
  */
 export function buildEmailSignatureHtml(opts: SignatureBuildOptions): string {
-  const {
-    name,
-    jobTitle,
-    location,
-    logoLockup,
-    layout,
-    assetBaseUrl,
-    logoWidth: logoWidthOverride,
-  } = opts
+  const { name, jobTitle, location, layout, assetBaseUrl } = opts
 
   const ACC = ACCENT_DI
   const address = LOCATION_ADDRESSES[location]
@@ -157,7 +110,7 @@ export function buildEmailSignatureHtml(opts: SignatureBuildOptions): string {
 <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;mso-table-lspace:0;mso-table-rspace:0;font-family:${FONT_STACK};">
   <tr>
     <td style="padding:0 0 4px 0;">
-      <span style="font-size:18px;font-weight:bold;color:${ACC};font-family:${FONT_STACK};">${esc(name)}</span>
+      <span style="font-size:15px;font-weight:bold;color:${ACC};font-family:${FONT_STACK};">${esc(name)}</span>
     </td>
   </tr>
   <tr>
@@ -193,30 +146,10 @@ export function buildEmailSignatureHtml(opts: SignatureBuildOptions): string {
   const taglineBlock = `
 <span style="font-size:12px;font-weight:bold;color:${ACC};font-family:${FONT_STACK};"><br/><br/>for every child, digital inclusion</span>`
 
-  const logoAlt = logoAltText(logoLockup)
-  const logoColumn =
-    logoLockup === 'stacked-di-giga-unicef-itu'
-      ? `
-        <tr>
-          <td align="right" style="padding:0 0 10px 0;margin:0;line-height:0;font-size:0;mso-line-height-alt:0;vertical-align:top;">
-            <img src="${absUrl(assetBaseUrl, '/logos/unicef-digital-impact-division-black.png')}" alt="UNICEF Digital Impact Division" width="126" style="display:block;margin:0;padding:0;border:0;outline:none;text-decoration:none;vertical-align:top;max-width:126px;height:auto;" />
-          </td>
-        </tr>
-        <tr>
-          <td align="right" style="padding:0;margin:0;line-height:0;font-size:0;mso-line-height-alt:0;vertical-align:top;">
-            <img src="${absUrl(assetBaseUrl, '/logos/giga-unicef-itu-horizontal.png')}" alt="Giga, UNICEF and ITU" width="220" style="display:block;margin:0;padding:0;border:0;outline:none;text-decoration:none;vertical-align:top;max-width:220px;height:auto;" />
-          </td>
-        </tr>`
-      : (() => {
-          const w = logoWidthOverride ?? defaultLogoWidth(logoLockup)
-          const src = absUrl(assetBaseUrl, resolveLogoSrc(logoLockup))
-          return `
-        <tr>
-          <td align="right" style="padding:0;margin:0;line-height:0;font-size:0;mso-line-height-alt:0;vertical-align:top;">
-            <img src="${src}" alt="${esc(logoAlt)}" width="${w}" style="display:block;margin:0;padding:0;border:0;outline:none;text-decoration:none;vertical-align:top;max-width:${w}px;height:auto;" />
-          </td>
-        </tr>`
-        })()
+  const diLogoSrc =
+    opts.diLogoDataUrl ?? absUrl(assetBaseUrl, '/logos/unicef-digital-impact-division-black.svg')
+  const gigaLogoSrc =
+    opts.gigaLogoDataUrl ?? absUrl(assetBaseUrl, '/logos/giga-unicef-itu-horizontal.svg')
 
   const bottomBlock = `
 <table role="presentation" width="${EXTENDED_SIGNATURE_TABLE_PX}" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;mso-table-lspace:0;mso-table-rspace:0;margin-top:14px;width:${EXTENDED_SIGNATURE_TABLE_PX}px;max-width:${EXTENDED_SIGNATURE_TABLE_PX}px;table-layout:fixed;font-family:${FONT_STACK};">
@@ -230,7 +163,16 @@ export function buildEmailSignatureHtml(opts: SignatureBuildOptions): string {
     </td>
     <td valign="top" align="right" width="${EXTENDED_LOGO_CELL_PX}" style="padding:0;margin:0;width:${EXTENDED_LOGO_CELL_PX}px;min-width:${EXTENDED_LOGO_CELL_PX}px;max-width:${EXTENDED_LOGO_CELL_PX}px;vertical-align:top;line-height:0;font-size:0;mso-line-height-alt:0;">
       <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="right" style="border-collapse:collapse;mso-table-lspace:0;mso-table-rspace:0;margin:0;padding:0;">
-        ${logoColumn}
+        <tr>
+          <td align="right" style="padding:0 0 10px 0;margin:0;line-height:0;font-size:0;mso-line-height-alt:0;vertical-align:top;">
+            <img src="${diLogoSrc}" alt="UNICEF Digital Impact Division" width="${STACKED_LOGO_WIDTH_PX}" style="display:block;margin:0;padding:0;border:0;outline:none;text-decoration:none;vertical-align:top;max-width:${STACKED_LOGO_WIDTH_PX}px;height:auto;" />
+          </td>
+        </tr>
+        <tr>
+          <td align="right" style="padding:0;margin:0;line-height:0;font-size:0;mso-line-height-alt:0;vertical-align:top;">
+            <img src="${gigaLogoSrc}" alt="Giga, UNICEF and ITU" width="${STACKED_LOGO_WIDTH_PX}" style="display:block;margin:0;padding:0;border:0;outline:none;text-decoration:none;vertical-align:top;max-width:${STACKED_LOGO_WIDTH_PX}px;height:auto;" />
+          </td>
+        </tr>
       </table>
     </td>
   </tr>
