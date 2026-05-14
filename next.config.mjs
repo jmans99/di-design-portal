@@ -12,6 +12,11 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  // Chromium binary (`.br` files under /bin) must be loaded off disk at runtime —
+  // if Webpack relocates them the function errors with "input directory
+  // /var/task/node_modules/@sparticuz/chromium/bin does not exist". Same for
+  // playwright-core which resolves its own driver path.
+  serverExternalPackages: ['@sparticuz/chromium', 'playwright-core', 'playwright'],
 }
 
 export default nextConfig
