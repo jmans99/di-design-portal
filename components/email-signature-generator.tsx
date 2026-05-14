@@ -75,8 +75,8 @@ const LOGO_OPTIONS: { value: SignatureLogoLockup; label: string }[] = [
 ]
 
 export function EmailSignatureGenerator() {
-  const [name, setName] = useState('Nobuntu Ndlovu')
-  const [jobTitle, setJobTitle] = useState('Communications Manager')
+  const [name, setName] = useState('')
+  const [jobTitle, setJobTitle] = useState('')
   const [location, setLocation] = useState<SignatureLocation>('geneva')
   const [logoLockup, setLogoLockup] = useState<SignatureLogoLockup>(
     'stacked-di-giga-unicef-itu'
