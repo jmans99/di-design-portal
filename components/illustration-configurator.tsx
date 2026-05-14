@@ -6,16 +6,24 @@ import { Button } from '@/components/ui/button'
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
+  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
 import {
   ILLUSTRATIONS,
+  ILLUSTRATION_CATEGORY_LABELS,
+  hasStyleVariants,
   resolveIllustrationPath,
   generateIllustrationFilename,
 } from '@/lib/illustration-registry'
-import type { IllustrationId, IllustrationStyle, OutlineColor } from '@/lib/illustration-registry'
+import type {
+  IllustrationCategory,
+  IllustrationStyle,
+  OutlineColor,
+} from '@/lib/illustration-registry'
 import {
   loadSvg,
   svgToDataUrl,
@@ -34,9 +42,22 @@ const RESOLUTIONS: { label: string; value: Resolution; scale: number }[] = [
 ]
 
 export function IllustrationConfigurator() {
-  const [selectedId, setSelectedId] = useState<IllustrationId>('mapping')
+  const [selectedId, setSelectedId] = useState<string>('mapping')
   const [style, setStyle] = useState<IllustrationStyle>('fill')
   const [outlineColor, setOutlineColor] = useState<OutlineColor>('blue')
+
+  const illustration = ILLUSTRATIONS.find((a) => a.id === selectedId)!
+  const supportsVariants = hasStyleVariants(illustration)
+  const effectiveStyle: IllustrationStyle = supportsVariants ? style : 'fill'
+
+  // Raggruppo le opzioni del Select per categoria (pillars / giga-meter)
+  const grouped = (Object.keys(ILLUSTRATION_CATEGORY_LABELS) as IllustrationCategory[])
+    .map((cat) => ({
+      category: cat,
+      label: ILLUSTRATION_CATEGORY_LABELS[cat],
+      items: ILLUSTRATIONS.filter((a) => a.category === cat),
+    }))
+    .filter((g) => g.items.length > 0)
   const [selectedFormat, setSelectedFormat] = useState<OutputFormat>('svg')
   const [selectedResolution, setSelectedResolution] = useState<Resolution>('2x')
   const [previewSvg, setPreviewSvg] = useState<string>('')
@@ -49,8 +70,8 @@ export function IllustrationConfigurator() {
     try {
       const path = resolveIllustrationPath(
         selectedId,
-        style,
-        style === 'outline' ? outlineColor : undefined
+        effectiveStyle,
+        effectiveStyle === 'outline' ? outlineColor : undefined
       )
       const rawSvg = await loadSvg(path)
       setPreviewSvg(rawSvg)
@@ -60,11 +81,19 @@ export function IllustrationConfigurator() {
     } finally {
       setIsLoading(false)
     }
-  }, [selectedId, style, outlineColor])
+  }, [selectedId, effectiveStyle, outlineColor])
 
   useEffect(() => {
     generatePreview()
   }, [generatePreview])
+
+  // Quando cambia illustrazione o stile, l'outline color riparte da Blue.
+  // L'utente puo' comunque cliccare White durante la stessa selezione, ma
+  // ogni nuova icona / ogni passaggio Fill -> Outline torna a Blue come
+  // default — coerente col brief ("blu come preset per le icone general").
+  useEffect(() => {
+    setOutlineColor('blue')
+  }, [selectedId, style])
 
   const handleExport = async () => {
     if (!previewSvg) return
@@ -72,8 +101,8 @@ export function IllustrationConfigurator() {
     try {
       const filename = generateIllustrationFilename(
         selectedId,
-        style,
-        style === 'outline' ? outlineColor : undefined,
+        effectiveStyle,
+        effectiveStyle === 'outline' ? outlineColor : undefined,
         selectedFormat,
         selectedFormat !== 'svg' ? selectedResolution : undefined
       )
@@ -93,11 +122,10 @@ export function IllustrationConfigurator() {
   }
 
   const isRaster = selectedFormat === 'png' || selectedFormat === 'jpeg'
-  const illustration = ILLUSTRATIONS.find((a) => a.id === selectedId)!
   const previewFilename = generateIllustrationFilename(
     selectedId,
-    style,
-    style === 'outline' ? outlineColor : undefined,
+    effectiveStyle,
+    effectiveStyle === 'outline' ? outlineColor : undefined,
     selectedFormat,
     isRaster ? selectedResolution : undefined
   )
@@ -107,23 +135,26 @@ export function IllustrationConfigurator() {
       {/* Sidebar — below preview on mobile */}
       <div className="order-2 flex w-full flex-col gap-0 lg:order-1 lg:sticky lg:top-[calc(4rem+24px)] lg:w-80 lg:shrink-0 lg:rounded-2xl lg:border lg:border-border lg:bg-card lg:shadow-stripe">
         <ControlSection label="Illustration">
-          <Select
-            value={selectedId}
-            onValueChange={(v) => setSelectedId(v as IllustrationId)}
-          >
+          <Select value={selectedId} onValueChange={(v) => setSelectedId(v)}>
             <SelectTrigger className="rounded-md transition-smooth-transform">
-              <SelectValue placeholder="Choose a pictogram" />
+              <SelectValue placeholder="Choose an illustration" />
             </SelectTrigger>
             <SelectContent>
-              {ILLUSTRATIONS.map((asset) => (
-                <SelectItem key={asset.id} value={asset.id}>
-                  {asset.label}
-                </SelectItem>
+              {grouped.map((group) => (
+                <SelectGroup key={group.category}>
+                  <SelectLabel>{group.label}</SelectLabel>
+                  {group.items.map((asset) => (
+                    <SelectItem key={asset.id} value={asset.id}>
+                      {asset.label}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
               ))}
             </SelectContent>
           </Select>
         </ControlSection>
 
+        {supportsVariants && (<>
         <ControlSection label="Style" className="lg:!border-t-0 lg:pt-3">
           <div className="flex gap-2">
             {(
@@ -178,6 +209,7 @@ export function IllustrationConfigurator() {
             </div>
           </ControlSection>
         )}
+        </>)}
 
         <ControlSection label="Format" className="lg:!border-t-0 lg:pt-3">
           <div className="flex gap-2">
