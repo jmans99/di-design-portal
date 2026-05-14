@@ -7,11 +7,11 @@ export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 export const maxDuration = 60
 
-/** Millisecondi da aspettare dopo il networkidle per far renderizzare i dot.
- * 12 secondi e' un valore conservativo perche' la function gira da US East e
- * maps.giga.global serve i layer da Europa: la prima invocation cold ci mette
- * qualche secondo in piu' rispetto al dev locale. */
-const RENDER_WAIT_MS = 12000
+/** Wait fisso dopo che il canvas Mapbox e' apparso. Non si puo' aspettare il
+ * networkidle: Mapbox continua a richiedere tile e il segnale non arriva mai
+ * entro il cap di 60s di Vercel Hobby (cold start chromium ~8s + goto >30s).
+ * 5s sono sufficienti per far renderizzare i dot dopo che il canvas e' ready. */
+const RENDER_WAIT_MS = 5000
 
 function buildUrl(code: string, layer: 'live' | 'static') {
   // In live mode lasciamo che sia GigaMaps a scegliere il layer adatto al
@@ -84,7 +84,13 @@ export async function GET(req: NextRequest) {
     })
     const page = await context.newPage()
 
-    await page.goto(url, { waitUntil: 'networkidle', timeout: 45000 })
+    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 })
+    // Aspettiamo che il canvas Mapbox/MapLibre esista prima del wait fisso —
+    // cosi non sprechiamo tempo se la pagina e' gia pronta.
+    await page.waitForSelector(
+      '.mapboxgl-canvas-container, .maplibregl-canvas-container',
+      { timeout: 20000 }
+    )
     await page.waitForTimeout(RENDER_WAIT_MS)
 
     // Pulizia UI: nascondiamo tutto tranne il path dal body al canvas Mapbox.
