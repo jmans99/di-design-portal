@@ -56,15 +56,17 @@ const ACCENT_DI = '#00AEEF'
 /** Noto Sans is the official UNICEF font; Outlook will fall back to Arial. */
 const FONT_STACK = "'Noto Sans', Arial, Helvetica, sans-serif"
 
+// PNG (not SVG) per i loghi nel signature: Outlook web e Gmail web non
+// renderizzano SVG inline negli email. I PNG sono @2x della larghezza display.
 export function resolveLogoSrc(lockup: SignatureLogoLockup): string {
   switch (lockup) {
     case 'giga-unicef-itu':
-      return '/logos/giga-unicef-itu-horizontal.svg'
+      return '/logos/giga-unicef-itu-horizontal.png'
     case 'unicef-digital-impact-division':
-      return '/logos/unicef-digital-impact-division-black.svg'
+      return '/logos/unicef-digital-impact-division-black.png'
     case 'stacked-di-giga-unicef-itu':
     default:
-      return '/logos/unicef-digital-impact-division-black.svg'
+      return '/logos/unicef-digital-impact-division-black.png'
   }
 }
 
@@ -197,12 +199,12 @@ export function buildEmailSignatureHtml(opts: SignatureBuildOptions): string {
       ? `
         <tr>
           <td align="right" style="padding:0 0 10px 0;margin:0;line-height:0;font-size:0;mso-line-height-alt:0;vertical-align:top;">
-            <img src="${absUrl(assetBaseUrl, '/logos/unicef-digital-impact-division-black.svg')}" alt="UNICEF Digital Impact Division" width="126" style="display:block;margin:0;padding:0;border:0;outline:none;text-decoration:none;vertical-align:top;max-width:126px;height:auto;" />
+            <img src="${absUrl(assetBaseUrl, '/logos/unicef-digital-impact-division-black.png')}" alt="UNICEF Digital Impact Division" width="126" style="display:block;margin:0;padding:0;border:0;outline:none;text-decoration:none;vertical-align:top;max-width:126px;height:auto;" />
           </td>
         </tr>
         <tr>
           <td align="right" style="padding:0;margin:0;line-height:0;font-size:0;mso-line-height-alt:0;vertical-align:top;">
-            <img src="${absUrl(assetBaseUrl, '/logos/giga-unicef-itu-horizontal.svg')}" alt="Giga, UNICEF and ITU" width="220" style="display:block;margin:0;padding:0;border:0;outline:none;text-decoration:none;vertical-align:top;max-width:220px;height:auto;" />
+            <img src="${absUrl(assetBaseUrl, '/logos/giga-unicef-itu-horizontal.png')}" alt="Giga, UNICEF and ITU" width="220" style="display:block;margin:0;padding:0;border:0;outline:none;text-decoration:none;vertical-align:top;max-width:220px;height:auto;" />
           </td>
         </tr>`
       : (() => {
