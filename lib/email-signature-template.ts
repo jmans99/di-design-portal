@@ -61,10 +61,11 @@ const LINK_YT_GIGA = 'https://www.youtube.com/@GigaGlobal/videos'
 
 const GREY = '#555555'
 
-/** Extended block layout. Logo cell is narrow so both stacked logos share a similar width per PDF. */
+/** Extended block layout. DI lockup is ~60% of the Giga+UNICEF+ITU width, matching the brand reference. */
 const EXTENDED_SIGNATURE_TABLE_PX = 560
 const EXTENDED_LOGO_CELL_PX = 160
-const STACKED_LOGO_WIDTH_PX = 150
+const DI_LOGO_WIDTH_PX = 100
+const GIGA_LOGO_WIDTH_PX = 160
 
 export interface SignatureBuildOptions {
   name: string
@@ -165,12 +166,12 @@ export function buildEmailSignatureHtml(opts: SignatureBuildOptions): string {
       <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="right" style="border-collapse:collapse;mso-table-lspace:0;mso-table-rspace:0;margin:0;padding:0;">
         <tr>
           <td align="right" style="padding:0 0 10px 0;margin:0;line-height:0;font-size:0;mso-line-height-alt:0;vertical-align:top;">
-            <img src="${diLogoSrc}" alt="UNICEF Digital Impact Division" width="${STACKED_LOGO_WIDTH_PX}" style="display:block;margin:0;padding:0;border:0;outline:none;text-decoration:none;vertical-align:top;max-width:${STACKED_LOGO_WIDTH_PX}px;height:auto;" />
+            <img src="${diLogoSrc}" alt="UNICEF Digital Impact Division" width="${DI_LOGO_WIDTH_PX}" style="display:block;margin:0;padding:0;border:0;outline:none;text-decoration:none;vertical-align:top;max-width:${DI_LOGO_WIDTH_PX}px;height:auto;" />
           </td>
         </tr>
         <tr>
           <td align="right" style="padding:0;margin:0;line-height:0;font-size:0;mso-line-height-alt:0;vertical-align:top;">
-            <img src="${gigaLogoSrc}" alt="Giga, UNICEF and ITU" width="${STACKED_LOGO_WIDTH_PX}" style="display:block;margin:0;padding:0;border:0;outline:none;text-decoration:none;vertical-align:top;max-width:${STACKED_LOGO_WIDTH_PX}px;height:auto;" />
+            <img src="${gigaLogoSrc}" alt="Giga, UNICEF and ITU" width="${GIGA_LOGO_WIDTH_PX}" style="display:block;margin:0;padding:0;border:0;outline:none;text-decoration:none;vertical-align:top;max-width:${GIGA_LOGO_WIDTH_PX}px;height:auto;" />
           </td>
         </tr>
       </table>

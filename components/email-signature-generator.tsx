@@ -107,9 +107,12 @@ export function EmailSignatureGenerator() {
       }
     }
 
+    // Display widths in the signature: DI 100px (~62% of Giga ITU's 160px) to
+    // match the brand reference proportions. Rasterize at the same widths so
+    // the canvas → PNG step doesn't waste pixels.
     Promise.all([
-      svgToPngDataUrl('/logos/unicef-digital-impact-division-black.svg', 150),
-      svgToPngDataUrl('/logos/giga-unicef-itu-horizontal.svg', 150),
+      svgToPngDataUrl('/logos/unicef-digital-impact-division-black.svg', 100),
+      svgToPngDataUrl('/logos/giga-unicef-itu-horizontal.svg', 160),
     ])
       .then(([di, giga]) => {
         if (cancelled) return
