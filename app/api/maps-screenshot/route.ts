@@ -85,11 +85,12 @@ export async function GET(req: NextRequest) {
     const page = await context.newPage()
 
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 })
-    // Aspettiamo che il canvas Mapbox/MapLibre esista prima del wait fisso —
-    // cosi non sprechiamo tempo se la pagina e' gia pronta.
+    // Aspettiamo che il canvas Mapbox/MapLibre esista nel DOM (state:'attached',
+    // non 'visible'): GigaMaps lo monta con visibility:hidden finche' i tile
+    // non sono pronti, e con 'visible' Playwright andava in timeout.
     await page.waitForSelector(
       '.mapboxgl-canvas-container, .maplibregl-canvas-container',
-      { timeout: 20000 }
+      { state: 'attached', timeout: 20000 }
     )
     await page.waitForTimeout(RENDER_WAIT_MS)
 
