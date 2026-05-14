@@ -7,11 +7,12 @@ export const MAIN_NAV_LINKS = [
 ] as const
 
 /**
- * Flag inlined a build time: se true nasconde la sezione Slides dal nav e dal
- * footer e fa servire 404 sulla route. Default: nascosto (Slides e' WIP). Per
- * riabilitarlo basta impostare NEXT_PUBLIC_HIDE_SLIDES=false su Vercel.
+ * Hardcoded: Slides e' WIP, resta nascosto da nav, footer e 404 sulla route.
+ * Per riabilitarlo cambia questa costante a `false` (l'env var precedente
+ * NEXT_PUBLIC_HIDE_SLIDES era impostata a 'false' su Vercel e teneva visibile
+ * la sezione anche dopo i tentativi di nasconderla via flag).
  */
-export const SLIDES_HIDDEN = process.env.NEXT_PUBLIC_HIDE_SLIDES !== 'false'
+export const SLIDES_HIDDEN = true
 
 /** Main nav links filtrati in base ai feature flag attivi. */
 export const VISIBLE_MAIN_NAV_LINKS = MAIN_NAV_LINKS.filter(
