@@ -61,11 +61,11 @@ const LINK_YT_GIGA = 'https://www.youtube.com/@GigaGlobal/videos'
 
 const GREY = '#555555'
 
-/** Extended block layout. DI lockup is ~60% of the Giga+UNICEF+ITU width, matching the brand reference. */
+/** Extended block layout. DI lockup is ~62% of the Giga+UNICEF+ITU width, matching the brand reference. */
 const EXTENDED_SIGNATURE_TABLE_PX = 560
-const EXTENDED_LOGO_CELL_PX = 160
-const DI_LOGO_WIDTH_PX = 100
-const GIGA_LOGO_WIDTH_PX = 160
+const EXTENDED_LOGO_CELL_PX = 200
+const DI_LOGO_WIDTH_PX = 120
+const GIGA_LOGO_WIDTH_PX = 192
 
 export interface SignatureBuildOptions {
   name: string
@@ -165,7 +165,7 @@ export function buildEmailSignatureHtml(opts: SignatureBuildOptions): string {
     <td valign="top" align="right" width="${EXTENDED_LOGO_CELL_PX}" style="padding:0;margin:0;width:${EXTENDED_LOGO_CELL_PX}px;min-width:${EXTENDED_LOGO_CELL_PX}px;max-width:${EXTENDED_LOGO_CELL_PX}px;vertical-align:top;line-height:0;font-size:0;mso-line-height-alt:0;">
       <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="right" style="border-collapse:collapse;mso-table-lspace:0;mso-table-rspace:0;margin:0;padding:0;">
         <tr>
-          <td align="right" style="padding:0 0 10px 0;margin:0;line-height:0;font-size:0;mso-line-height-alt:0;vertical-align:top;">
+          <td align="right" style="padding:0 0 16px 0;margin:0;line-height:0;font-size:0;mso-line-height-alt:0;vertical-align:top;">
             <img src="${diLogoSrc}" alt="UNICEF Digital Impact Division" width="${DI_LOGO_WIDTH_PX}" style="display:block;margin:0;padding:0;border:0;outline:none;text-decoration:none;vertical-align:top;max-width:${DI_LOGO_WIDTH_PX}px;height:auto;" />
           </td>
         </tr>
