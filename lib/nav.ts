@@ -30,6 +30,7 @@ export const GUIDELINES_DROPDOWN_LINKS = [
 export const MATERIALS_DROPDOWN_LINKS = [
   { id: 'email-signature', path: '/materials/email-signature', label: 'Email signature' },
   { id: 'maps', path: '/materials/maps', label: 'Maps' },
+  { id: 'social-media', path: '/materials/social-media', label: 'Social media' },
   { id: 'backgrounds', path: '/materials/backgrounds', label: 'Backgrounds' },
 ] as const
 
