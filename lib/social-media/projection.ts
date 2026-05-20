@@ -2,8 +2,8 @@ import { geoArea, geoBounds, geoEqualEarth, geoMercator, geoPath } from 'd3-geo'
 import type { Feature, Polygon, MultiPolygon } from 'geojson'
 import type { CountryFeature } from './silhouette-loader'
 
-const SILHOUETTE_WIDTH = 1000
-const SILHOUETTE_HEIGHT = 660
+const SILHOUETTE_WIDTH = 1040
+const SILHOUETTE_HEIGHT = 740
 
 // Soglia di "natural fill": un paese con maxSpan >= REFERENCE_SPAN_DEG fillera'
 // integralmente la silhouette area. Sotto, viene scalato in base alla compactness

@@ -60,14 +60,16 @@ export const CountryAnnouncementTemplate = forwardRef<
         fontFamily: '"Open Sans", system-ui, sans-serif',
       }}
     >
-      {/* Silhouette zone: occupa solo la fascia bassa, mai sotto il testo */}
+      {/* Silhouette zone: occupa la fascia centro-bassa, sotto il sottotitolo e
+          sopra il footer. Aspect ratio scelto come compromesso tra paesi larghi
+          (Indonesia 3:1) e paesi alti (Cile 1:4). */}
       <div
         style={{
           position: 'absolute',
-          width: 1000,
-          height: 660,
+          width: 1040,
+          height: 740,
           left: '50%',
-          top: 540,
+          top: 470,
           transform: 'translateX(-50%)',
         }}
       >
