@@ -10,10 +10,13 @@ const SILHOUETTE_HEIGHT = 740
 // (vedi sotto) per uniformare la dimensione visiva tra paesi piccoli e medi.
 const REFERENCE_SPAN_DEG = 1.0
 
-// Polygons piu' piccoli di questa frazione del piu' grande vengono scartati:
-// elimina puntini fuorvianti senza eliminare isole maggiori (NZ South Island,
-// Java/Sumatra/Borneo per Indonesia, Sicilia, ecc.).
-const MAJOR_POLY_THRESHOLD = 0.05
+// Pruning isole minori: una poligono viene tenuto se soddisfa una di queste:
+// - >= MAJOR_REL del piu' grande (cattura le isole co-principali, es. South Is. di NZ)
+// - >= MAJOR_ABS in steradiani (cattura isole "individualmente notevoli" indipendenti
+//   dal main, es. Bali per l'Indonesia, Hawaii per gli USA, Sicilia per l'Italia)
+// 0.00002 sr ≈ 800 km² (poco meno della Mauritius).
+const MAJOR_REL = 0.05
+const MAJOR_ABS = 0.00002
 
 const DEG2RAD = Math.PI / 180
 
@@ -52,7 +55,8 @@ function pruneMinorIslands(feature: CountryFeature): CountryFeature {
   const max = Math.max(...areas)
   if (max <= 0) return feature
 
-  const kept = polys.filter((_, i) => areas[i] >= max * MAJOR_POLY_THRESHOLD)
+  const minRel = max * MAJOR_REL
+  const kept = polys.filter((_, i) => areas[i] >= minRel || areas[i] >= MAJOR_ABS)
   if (kept.length === polys.length) return feature
 
   return {
