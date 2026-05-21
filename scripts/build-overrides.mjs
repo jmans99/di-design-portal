@@ -57,7 +57,11 @@ const TARGETS = [
   'cw', // Curacao (idem)
   // Pacifico — territori
   'as', // American Samoa (Tutuila + Manu'a)
+  'tc', // Turks and Caicos (~15K char mapsicon)
   // Cook Islands RIMOSSO: mapsicon traccia solo Rarotonga; gestito in HAND_OVERRIDES
+  // Grandi paesi con outlier che ridimensionano il main
+  'us', // United States (mapsicon ha contiguous 48 + Alaska/Hawaii)
+  'gb', // United Kingdom (multi-path con Shetland/Orkney/Hebrides separati ma a scala migliore)
   // Africa
   'sc', // Seychelles
   'km', // Comoros
@@ -107,17 +111,18 @@ const HAND_OVERRIDES = {
     }
     return points.join('')
   })(),
-  // Tuvalu: 9 atolli in chain NO-SE
+  // Tuvalu: 9 atolli in chain NO-SE, allargati per essere visibili
   tv: (() => {
     const cells = [
-      [380, 200, 14], [430, 240, 12], [475, 285, 11],
-      [515, 335, 13], [550, 385, 10], [580, 440, 12],
-      [610, 495, 11], [645, 550, 13], [685, 600, 12],
+      [340, 140, 26], [400, 200, 22], [460, 260, 24],
+      [520, 330, 28], [575, 400, 22], [625, 470, 26],
+      [675, 540, 22], [725, 605, 24], [770, 660, 20],
     ]
     return cells.map(([x, y, r]) => {
       const path = []
-      for (let k = 0; k < 8; k++) {
-        const a = (k / 8) * Math.PI * 2
+      const sides = r > 20 ? 12 : 8
+      for (let k = 0; k < sides; k++) {
+        const a = (k / sides) * Math.PI * 2
         const px = (x + Math.cos(a) * r).toFixed(1)
         const py = (y + Math.sin(a) * r).toFixed(1)
         path.push(k === 0 ? `M${px},${py}` : `L${px},${py}`)
@@ -159,6 +164,35 @@ const HAND_OVERRIDES = {
       const path = []
       for (let k = 0; k < 8; k++) {
         const a = (k / 8) * Math.PI * 2
+        const px = (x + Math.cos(a) * r).toFixed(1)
+        const py = (y + Math.sin(a) * r).toFixed(1)
+        path.push(k === 0 ? `M${px},${py}` : `L${px},${py}`)
+      }
+      return path.join('') + 'Z'
+    }).join('')
+  })(),
+  // Vanuatu: arcipelago ~80 isole, le maggiori (Espiritu Santo, Malakula, Efate,
+  // Tanna, Erromango) disposte a Y. Stilizzo ~12 isole principali.
+  vu: (() => {
+    const cells = [
+      [430, 130, 32], // Espiritu Santo (largest north)
+      [505, 165, 22], // Malo + Aore
+      [475, 220, 26], // Malakula
+      [555, 240, 14], // Ambrym
+      [605, 215, 12], // Pentecost
+      [635, 175, 10], // Maewo
+      [490, 320, 16], // Epi
+      [535, 380, 24], // Efate (capital island)
+      [580, 470, 14], // Erromango
+      [615, 545, 22], // Tanna
+      [635, 605, 12], // Aneityum
+      [395, 195, 8],  // outliers
+    ]
+    return cells.map(([x, y, r]) => {
+      const path = []
+      const sides = r > 20 ? 12 : 8
+      for (let k = 0; k < sides; k++) {
+        const a = (k / sides) * Math.PI * 2
         const px = (x + Math.cos(a) * r).toFixed(1)
         const py = (y + Math.sin(a) * r).toFixed(1)
         path.push(k === 0 ? `M${px},${py}` : `L${px},${py}`)
@@ -241,9 +275,11 @@ function extractPathAndTransform(svg) {
   const flat = svg.replace(/\n/g, ' ')
   const gMatch = flat.match(/<g[^>]*transform="([^"]+)"/)
   const transform = gMatch ? gMatch[1] : ''
-  const pathMatch = flat.match(/<path[^>]*\sd="([^"]+)"/)
-  if (!pathMatch) throw new Error('no <path d="..."> found')
-  return { d: pathMatch[1], transform }
+  // Some mapsicon SVGs have multiple <path> (es. US mainland + Alaska + Hawaii;
+  // archipelaghi). Concatena tutti i d-string.
+  const all = [...flat.matchAll(/<path[^>]*\sd="([^"]+)"/g)].map((m) => m[1])
+  if (all.length === 0) throw new Error('no <path d="..."> found')
+  return { d: all.join(' '), transform }
 }
 
 function polygonAreaXY(points) {
