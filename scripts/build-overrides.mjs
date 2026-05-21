@@ -58,7 +58,11 @@ const TARGETS = [
   // Pacifico — territori
   'as', // American Samoa (Tutuila + Manu'a)
   'tc', // Turks and Caicos (~15K char mapsicon)
+  'gu', // Guam (era piccolo)
   // Cook Islands RIMOSSO: mapsicon traccia solo Rarotonga; gestito in HAND_OVERRIDES
+  // Crown dependencies / piccole isole
+  'gg', // Guernsey + Alderney + Sark + Herm (multi-isola)
+  'im', // Isle of Man
   // Grandi paesi con outlier che ridimensionano il main
   'us', // United States (mapsicon ha contiguous 48 + Alaska/Hawaii)
   'gb', // United Kingdom (multi-path con Shetland/Orkney/Hebrides separati ma a scala migliore)
