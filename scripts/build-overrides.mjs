@@ -26,20 +26,23 @@ const TARGET_H = 740
 // Curated list of countries con poco dettaglio nel 10m Natural Earth.
 // Aggiungere/rimuovere paesi qui per scolpire il roster degli override.
 const TARGETS = [
+  // Micro-stati Europa
   'ad', // Andorra
   'mc', // Monaco
   'sm', // San Marino
   'li', // Liechtenstein
   'mt', // Malta
-  'bh', // Bahrain
-  'sg', // Singapore
   'lu', // Luxembourg
-  'bn', // Brunei
+  'cy', // Cyprus
+  'gi', // Gibraltar (very few vertices in 10m)
+  // Golfo Persico
+  'bh', // Bahrain
   'kw', // Kuwait
   'qa', // Qatar
-  'cy', // Cyprus
-  'mv', // Maldives
-  'mu', // Mauritius
+  // SE Asia
+  'sg', // Singapore
+  'bn', // Brunei
+  // Caraibi
   'bb', // Barbados
   'gd', // Grenada
   'dm', // Dominica
@@ -49,12 +52,115 @@ const TARGETS = [
   'ag', // Antigua and Barbuda
   'tt', // Trinidad and Tobago
   'bs', // Bahamas
+  // Africa
   'sc', // Seychelles
   'km', // Comoros
   'cv', // Cabo Verde
   'st', // Sao Tome and Principe
-  'gm', // Gambia (might benefit too — has river detail)
+  'gm', // Gambia
+  'mu', // Mauritius
+  // Pacifico (mapsicon ha trace decenti)
+  'nr', // Nauru
+  'ki', // Kiribati (4.2K char in mapsicon, evita "empty" del world-atlas wrap)
+  'pw', // Palau
+  'to', // Tonga
+  'ws', // Samoa
+  'nu', // Niue
+  // Territori francesi e altri missing in world-atlas
+  'gp', // Guadeloupe
+  'mq', // Martinique
+  'tk', // Tokelau
+  'pf', // French Polynesia
+  // Atoll-nations dove ne' world-atlas ne' mapsicon offrono niente di utile:
+  // Maldives, Tuvalu, Marshall Is., Micronesia — gestiti come HAND_OVERRIDES sotto.
 ]
+
+// Per gli atoll-archipelago dove non esiste un buon source automatico, uso
+// rappresentazioni stilizzate hand-crafted (chain di puntini che riflette la
+// disposizione geografica reale). Coordinate gia' nel viewBox 1040x740.
+const HAND_OVERRIDES = {
+  // Maldives: lunga catena nord-sud di atolli (~800km), stilizzata in ~20 puntini
+  mv: (() => {
+    const cx = 520
+    const points = []
+    for (let i = 0; i < 20; i++) {
+      const y = 110 + i * 28
+      const offsetX = ((i % 3) - 1) * 18 + Math.sin(i * 0.7) * 12
+      const r = i % 2 === 0 ? 14 : 10
+      const x = cx + offsetX
+      // Circle approximation as octagon (8-sided)
+      const path = []
+      for (let k = 0; k < 8; k++) {
+        const a = (k / 8) * Math.PI * 2
+        const px = (x + Math.cos(a) * r).toFixed(1)
+        const py = (y + Math.sin(a) * r).toFixed(1)
+        path.push(k === 0 ? `M${px},${py}` : `L${px},${py}`)
+      }
+      path.push('Z')
+      points.push(path.join(''))
+    }
+    return points.join('')
+  })(),
+  // Tuvalu: 9 atolli in chain NO-SE
+  tv: (() => {
+    const cells = [
+      [380, 200, 14], [430, 240, 12], [475, 285, 11],
+      [515, 335, 13], [550, 385, 10], [580, 440, 12],
+      [610, 495, 11], [645, 550, 13], [685, 600, 12],
+    ]
+    return cells.map(([x, y, r]) => {
+      const path = []
+      for (let k = 0; k < 8; k++) {
+        const a = (k / 8) * Math.PI * 2
+        const px = (x + Math.cos(a) * r).toFixed(1)
+        const py = (y + Math.sin(a) * r).toFixed(1)
+        path.push(k === 0 ? `M${px},${py}` : `L${px},${py}`)
+      }
+      return path.join('') + 'Z'
+    }).join('')
+  })(),
+  // Marshall Islands: due catene parallele Ratak e Ralik
+  mh: (() => {
+    const cells = []
+    // Ratak chain (right)
+    for (let i = 0; i < 7; i++) cells.push([600 + i * 12, 160 + i * 70, 11])
+    // Ralik chain (left)
+    for (let i = 0; i < 6; i++) cells.push([430 + i * 8, 200 + i * 75, 10])
+    return cells.map(([x, y, r]) => {
+      const path = []
+      for (let k = 0; k < 8; k++) {
+        const a = (k / 8) * Math.PI * 2
+        const px = (x + Math.cos(a) * r).toFixed(1)
+        const py = (y + Math.sin(a) * r).toFixed(1)
+        path.push(k === 0 ? `M${px},${py}` : `L${px},${py}`)
+      }
+      return path.join('') + 'Z'
+    }).join('')
+  })(),
+  // Micronesia: 4 gruppi sparsi (Yap, Chuuk, Pohnpei, Kosrae)
+  fm: (() => {
+    const cells = [
+      // Yap (W) — gruppo di 3 piccoli
+      [180, 380, 9], [200, 400, 7], [220, 365, 8],
+      // Chuuk (centro-O)
+      [400, 380, 14], [420, 400, 10],
+      // Pohnpei (centro-E)
+      [640, 380, 18],
+      // Kosrae (E)
+      [840, 380, 14],
+    ]
+    return cells.map(([x, y, r]) => {
+      const path = []
+      for (let k = 0; k < 8; k++) {
+        const a = (k / 8) * Math.PI * 2
+        const px = (x + Math.cos(a) * r).toFixed(1)
+        const py = (y + Math.sin(a) * r).toFixed(1)
+        path.push(k === 0 ? `M${px},${py}` : `L${px},${py}`)
+      }
+      return path.join('') + 'Z'
+    }).join('')
+  })(),
+}
 
 async function fetchSvg(alpha2) {
   const url = `https://raw.githubusercontent.com/djaiss/mapsicon/master/all/${alpha2}/vector.svg`
@@ -240,6 +346,12 @@ for (const a2 of TARGETS) {
     console.log(`SKIP — ${err.message}`)
     errors.push({ a2, err: err.message })
   }
+}
+
+// Hand-crafted stylized overrides for atoll-nations
+for (const [a2, d] of Object.entries(HAND_OVERRIDES)) {
+  results[a2] = d
+  console.log(`  ${a2}: HAND-CRAFTED (${d.length} chars)`)
 }
 
 const outPath = resolve(ROOT, 'lib/social-media/silhouette-overrides.ts')
