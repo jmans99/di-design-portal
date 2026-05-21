@@ -52,13 +52,19 @@ const TARGETS = [
   'ag', // Antigua and Barbuda
   'tt', // Trinidad and Tobago
   'bs', // Bahamas
+  'ai', // Anguilla (sottile, world-atlas era un blob ovale)
+  'aw', // Aruba (idem)
+  'cw', // Curacao (idem)
+  // Pacifico — territori
+  'as', // American Samoa (Tutuila + Manu'a)
+  // Cook Islands RIMOSSO: mapsicon traccia solo Rarotonga; gestito in HAND_OVERRIDES
   // Africa
   'sc', // Seychelles
   'km', // Comoros
-  'cv', // Cabo Verde
   'st', // Sao Tome and Principe
   'gm', // Gambia
   'mu', // Mauritius
+  // Cabo Verde RIMOSSO: mapsicon ha solo 535 byte (1 isola); gestito in HAND_OVERRIDES sotto
   // Pacifico (mapsicon ha trace decenti)
   'nr', // Nauru
   'ki', // Kiribati (4.2K char in mapsicon, evita "empty" del world-atlas wrap)
@@ -153,6 +159,67 @@ const HAND_OVERRIDES = {
       const path = []
       for (let k = 0; k < 8; k++) {
         const a = (k / 8) * Math.PI * 2
+        const px = (x + Math.cos(a) * r).toFixed(1)
+        const py = (y + Math.sin(a) * r).toFixed(1)
+        path.push(k === 0 ? `M${px},${py}` : `L${px},${py}`)
+      }
+      return path.join('') + 'Z'
+    }).join('')
+  })(),
+  // Cook Islands: 15 isole su 2 gruppi (Northern + Southern, separati da ~1000km)
+  ck: (() => {
+    const cells = [
+      // Northern Group (top) — atolli sparsi
+      [200, 110, 10], // Pukapuka
+      [310, 130, 8],  // Nassau
+      [430, 90, 14],  // Suwarrow
+      [560, 130, 12], // Rakahanga
+      [620, 150, 14], // Manihiki
+      [820, 100, 18], // Penrhyn (largest northern)
+      // Southern Group (bottom) — volcanic + atolli
+      [320, 480, 14], // Palmerston
+      [440, 520, 8],  // Takutea
+      [480, 540, 14], // Manuae
+      [400, 560, 22], // Aitutaki
+      [560, 600, 32], // Rarotonga (largest, capital)
+      [690, 580, 18], // Mangaia
+      [640, 540, 16], // Mauke
+      [680, 510, 14], // Mitiaro
+      [620, 500, 16], // Atiu
+    ]
+    return cells.map(([x, y, r]) => {
+      const path = []
+      const sides = r > 20 ? 12 : 8
+      for (let k = 0; k < sides; k++) {
+        const a = (k / sides) * Math.PI * 2
+        const px = (x + Math.cos(a) * r).toFixed(1)
+        const py = (y + Math.sin(a) * r).toFixed(1)
+        path.push(k === 0 ? `M${px},${py}` : `L${px},${py}`)
+      }
+      return path.join('') + 'Z'
+    }).join('')
+  })(),
+  // Cabo Verde: 10 isole in due archi (Barlavento N + Sotavento S) al largo del Senegal
+  cv: (() => {
+    const cells = [
+      // Barlavento (windward, top arc)
+      [320, 240, 32], // Santo Antão
+      [400, 250, 24], // São Vicente
+      [445, 255, 12], // Santa Luzia
+      [490, 265, 26], // São Nicolau
+      [600, 300, 34], // Sal
+      [620, 360, 32], // Boa Vista
+      // Sotavento (leeward, bottom arc)
+      [330, 450, 38], // Maio
+      [320, 510, 50], // Santiago (largest)
+      [260, 470, 26], // Fogo
+      [195, 460, 14], // Brava
+    ]
+    return cells.map(([x, y, r]) => {
+      const path = []
+      const sides = r > 20 ? 12 : 8
+      for (let k = 0; k < sides; k++) {
+        const a = (k / sides) * Math.PI * 2
         const px = (x + Math.cos(a) * r).toFixed(1)
         const py = (y + Math.sin(a) * r).toFixed(1)
         path.push(k === 0 ? `M${px},${py}` : `L${px},${py}`)
