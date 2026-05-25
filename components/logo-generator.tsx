@@ -98,6 +98,7 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
   const isGigaMain = brand.isGigaMainLogo === true
   const isUnicefLogo = brand.brandName === 'UNICEF'
   const isUnicefDigitalImpact = brand.brandName === 'UNICEF Digital Impact'
+  const isUnicefDigitalInclusion = brand.brandName === 'UNICEF Digital Inclusion'
   const colorVariant = effectiveAllowedVariants.find(
     (c) => c.name === selectedColorName
   ) ?? effectiveAllowedVariants[0]
@@ -486,7 +487,9 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
                   'object-contain',
                   isUnicefDigitalImpact
                     ? 'max-h-36 w-full max-w-md'
-                    : 'max-h-64 max-w-full',
+                    : isUnicefDigitalInclusion
+                      ? 'max-h-20 w-full max-w-md'
+                      : 'max-h-64 max-w-full',
                   isUnicefLogo && 'scale-[1.15]'
                 )}
               />
