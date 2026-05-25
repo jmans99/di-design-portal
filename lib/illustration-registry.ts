@@ -10,7 +10,7 @@
  * `outlines`/`fillPath` (variants) or just a single `path`.
  */
 
-export type IllustrationCategory = 'pillars' | 'general' | 'giga-meter' | 'scenes'
+export type IllustrationCategory = 'pillars' | 'general' | 'giga-meter'
 export type IllustrationStyle = 'fill' | 'outline'
 export type OutlineColor = 'white' | 'blue'
 
@@ -135,33 +135,12 @@ export const ILLUSTRATIONS: IllustrationAsset[] = [
     category: 'giga-meter',
     path: `${BASE}/giga-meter/people.svg`,
   },
-
-  // Scenes — wide, fully illustrated compositions; no variants
-  {
-    id: 'scene-capacity-building',
-    label: 'Capacity building',
-    category: 'scenes',
-    path: `${BASE}/scenes/capacity-building.svg`,
-  },
-  {
-    id: 'scene-connect',
-    label: 'Connect',
-    category: 'scenes',
-    path: `${BASE}/scenes/connect.svg`,
-  },
-  {
-    id: 'scene-giga',
-    label: 'Giga',
-    category: 'scenes',
-    path: `${BASE}/scenes/giga.svg`,
-  },
 ]
 
 export const ILLUSTRATION_CATEGORY_LABELS: Record<IllustrationCategory, string> = {
   pillars: 'Pillar pictograms',
   general: 'General',
   'giga-meter': 'Giga Meter',
-  scenes: 'Scenes',
 }
 
 /** Filename prefix used when exporting variant-less assets. */
@@ -169,7 +148,6 @@ const NO_VARIANT_FILENAME_PREFIX: Record<IllustrationCategory, string> = {
   pillars: 'giga-pictogram',
   general: 'giga-pictogram',
   'giga-meter': 'giga-meter',
-  scenes: 'giga-scene',
 }
 
 /** True when the asset supports the Fill/Outline + color picker. */
@@ -211,7 +189,7 @@ export function generateIllustrationFilename(
 
   if (asset && !hasStyleVariants(asset)) {
     // Per asset senza varianti uso il basename del path come slug — robusto
-    // a id con prefissi diversi (gigameter-, scene-, ...) ed evita di duplicare
+    // a id con prefissi diversi (es. gigameter-) ed evita di duplicare
     // il prefisso categoria nello slug stesso.
     const basename = asset.path!.split('/').pop()!.replace(/\.svg$/, '')
     const prefix = NO_VARIANT_FILENAME_PREFIX[asset.category]
