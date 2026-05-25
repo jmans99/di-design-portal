@@ -133,6 +133,17 @@ export const BRAND_ASSETS: LogoAsset[] = [
     ],
   },
   {
+    brandName: 'UNICEF Digital Inclusion',
+    assetType: 'logo',
+    svgPath: '/logos/unicef-digital-inclusion-blue.svg',
+    svgPathByColorName: {
+      'UNICEF Blue': '/logos/unicef-digital-inclusion-blue.svg',
+      Black: '/logos/unicef-digital-inclusion-black.svg',
+      White: '/logos/unicef-digital-inclusion-white.svg',
+    },
+    allowedColorVariants: UNICEF_MONOCHROME_VARIANTS,
+  },
+  {
     brandName: 'GigaSync',
     assetType: 'product',
     svgPath: '/logos/product-gigasync.svg',
