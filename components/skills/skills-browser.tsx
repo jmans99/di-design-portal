@@ -9,11 +9,19 @@ import {
   BarChart3,
   Compass,
   Terminal,
+  BookOpen,
 } from 'lucide-react'
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from '@/components/ui/dialog'
 import {
   SKILLS,
   SKILL_CATEGORIES,
-  SKILLS_AUTHOR,
   type Skill,
   type SkillCategoryId,
 } from '@/lib/skills-registry'
@@ -50,8 +58,8 @@ export function SkillsBrowser() {
 
   return (
     <div className="pb-4">
-      {/* Filter bar + attribution */}
-      <div className="flex flex-col gap-4 border-b border-border pb-5 sm:flex-row sm:items-center sm:justify-between">
+      {/* Filter bar + install guide trigger */}
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-wrap items-center gap-2" role="tablist" aria-label="Filter skills by category">
           <FilterPill active={filter === 'all'} onClick={() => setFilter('all')} count={counts.all}>
             All
@@ -67,15 +75,7 @@ export function SkillsBrowser() {
             </FilterPill>
           ))}
         </div>
-        <a
-          href={SKILLS_AUTHOR.repo}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group inline-flex items-center gap-1.5 self-start text-xs text-muted-foreground transition-smooth hover:text-foreground sm:self-auto"
-        >
-          Curated by {SKILLS_AUTHOR.name}
-          <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
-        </a>
+        <InstallGuideDialog />
       </div>
 
       {/* Grouped skill grid. Keyed on filter so the stagger replays on change. */}
@@ -113,8 +113,6 @@ export function SkillsBrowser() {
           )
         })}
       </div>
-
-      <InstallGuide />
     </div>
   )
 }
@@ -261,51 +259,63 @@ const INSTALL_STEPS = [
   },
 ]
 
-function InstallGuide() {
+function InstallGuideDialog() {
   return (
-    <section
-      aria-labelledby="install-guide"
-      className="mt-16 rounded-xl border border-border bg-card p-6 shadow-stripe sm:p-8"
-    >
-      <h2
-        id="install-guide"
-        className="font-heading text-xl font-medium tracking-[-0.01em] text-foreground"
-      >
-        Install in Claude Desktop
-      </h2>
-      <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-        Skills extend Claude with reusable instructions. Adding one takes about a minute and only
-        has to be done once.
-      </p>
+    <Dialog>
+      <DialogTrigger asChild>
+        <button
+          type="button"
+          className="inline-flex shrink-0 items-center gap-1.5 self-start rounded-md border border-border bg-card px-3 py-1.5 text-sm font-medium text-foreground shadow-stripe transition-smooth hover:border-primary-300 hover:text-primary-700 active:scale-[0.97] sm:self-auto"
+        >
+          <BookOpen className="h-4 w-4 text-primary-600" aria-hidden />
+          How to install
+        </button>
+      </DialogTrigger>
+      <DialogContent className="max-h-[85vh] overflow-y-auto">
+        <DialogHeader>
+          <DialogTitle className="font-heading text-xl font-medium tracking-[-0.01em]">
+            Install in Claude Desktop
+          </DialogTitle>
+          <DialogDescription className="text-sm leading-relaxed">
+            Skills extend Claude with reusable instructions. Adding one takes about a minute and
+            only has to be done once.
+          </DialogDescription>
+        </DialogHeader>
 
-      <ol className="mt-6 grid gap-x-8 gap-y-6 sm:grid-cols-2">
-        {INSTALL_STEPS.map((step, i) => (
-          <li key={step.title} className="flex gap-4">
-            <span
-              className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary-50 font-heading text-sm font-semibold tabular-nums text-primary-700"
-              aria-hidden
-            >
-              {i + 1}
-            </span>
-            <div>
-              <h3 className="text-sm font-semibold text-foreground">{step.title}</h3>
-              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{step.body}</p>
-            </div>
-          </li>
-        ))}
-      </ol>
+        <ol className="mt-2 flex flex-col gap-5">
+          {INSTALL_STEPS.map((step, i) => (
+            <li key={step.title} className="flex gap-3.5">
+              <span
+                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary-50 font-heading text-sm font-semibold tabular-nums text-primary-700"
+                aria-hidden
+              >
+                {i + 1}
+              </span>
+              <div>
+                <h3 className="text-sm font-semibold text-foreground">{step.title}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{step.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
 
-      <div className="mt-7 flex items-start gap-2.5 rounded-lg bg-secondary px-4 py-3">
-        <Terminal className="mt-0.5 h-4 w-4 shrink-0 text-grey-600" aria-hidden />
-        <p className="text-xs leading-relaxed text-grey-700">
-          <span className="font-semibold">Using Claude Code instead?</span> Unzip the package into{' '}
-          <code className="rounded bg-grey-100 px-1 py-0.5 font-mono text-[11px] text-grey-900">
-            ~/.claude/skills/
-          </code>{' '}
-          and the skill is available across every project. Skills that ship a slash command also
-          work as <code className="rounded bg-grey-100 px-1 py-0.5 font-mono text-[11px] text-grey-900">/commands</code>.
-        </p>
-      </div>
-    </section>
+        <div className="mt-1 flex items-start gap-2.5 rounded-lg bg-secondary px-4 py-3">
+          <Terminal className="mt-0.5 h-4 w-4 shrink-0 text-grey-600" aria-hidden />
+          <p className="text-xs leading-relaxed text-grey-700">
+            <span className="font-semibold">Using Claude Code instead?</span> Unzip the package
+            into{' '}
+            <code className="rounded bg-grey-100 px-1 py-0.5 font-mono text-[11px] text-grey-900">
+              ~/.claude/skills/
+            </code>{' '}
+            and the skill is available across every project. Skills that ship a slash command also
+            work as{' '}
+            <code className="rounded bg-grey-100 px-1 py-0.5 font-mono text-[11px] text-grey-900">
+              /commands
+            </code>
+            .
+          </p>
+        </div>
+      </DialogContent>
+    </Dialog>
   )
 }

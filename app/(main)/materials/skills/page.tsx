@@ -15,11 +15,9 @@ export default function SkillsPage() {
           <h1 className="font-heading text-[2.75rem] font-normal leading-[1.1] tracking-[-0.03em] text-foreground">
             Skills
           </h1>
-          <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-muted-foreground">
-            The Claude skills the Giga team uses, packaged and ready to install.
-            Download one, add it to Claude Desktop, and it runs whenever the work
-            calls for it. Each skill carries its own instructions, so the output
-            stays on brand.
+          <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-muted-foreground">
+            The Claude skills the Giga team uses. Download one, add it to Claude
+            Desktop, and it runs whenever the work calls for it.
           </p>
         </div>
       </div>
