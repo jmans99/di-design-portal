@@ -26,7 +26,7 @@ export function AppHeader() {
   const [indicator, setIndicator] = useState<{ left: number; right: number; transition: string } | null>(null)
 
   const isActive = (path: string) => {
-    if (path === '/logos') return pathname === '/logos' || pathname === '/'
+    if (path === '/logos') return pathname === '/logos'
     if (path === '/typography') return pathname === '/typography'
     return pathname === path || pathname.startsWith(path + '/')
   }
