@@ -48,8 +48,7 @@ export function SkillsBrowser() {
     return c
   }, [])
 
-  const visibleCategories =
-    filter === 'all' ? SKILL_CATEGORIES : SKILL_CATEGORIES.filter((c) => c.id === filter)
+  const visibleSkills = filter === 'all' ? SKILLS : SKILLS.filter((s) => s.category === filter)
 
   function handleDownload(skill: Skill) {
     setDownloadedId(skill.id)
@@ -80,38 +79,20 @@ export function SkillsBrowser() {
         <InstallGuideDialog />
       </div>
 
-      {/* Grouped skill grid. Keyed on filter so the stagger replays on change. */}
-      <div key={filter} className="mt-8 flex flex-col gap-12">
-        {visibleCategories.map((cat) => {
-          const items = SKILLS.filter((s) => s.category === cat.id)
-          const Icon = CATEGORY_ICON[cat.id]
+      {/* One grid for all skills, filtered by the chips. Keyed on filter so the stagger replays. */}
+      <div key={filter} className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {visibleSkills.map((skill, i) => {
+          const cat = SKILL_CATEGORIES.find((c) => c.id === skill.category)
           return (
-            <section key={cat.id} aria-labelledby={`cat-${cat.id}`}>
-              <div className="flex items-baseline gap-3">
-                <h2
-                  id={`cat-${cat.id}`}
-                  className="font-heading text-lg font-medium tracking-[-0.01em] text-foreground"
-                >
-                  {cat.label}
-                </h2>
-                <span className="text-xs tabular-nums text-muted-foreground">{items.length}</span>
-              </div>
-              <p className="mt-1 text-sm text-muted-foreground">{cat.blurb}</p>
-
-              <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {items.map((skill, i) => (
-                  <SkillCard
-                    key={skill.id}
-                    skill={skill}
-                    index={i}
-                    Icon={Icon}
-                    categoryLabel={cat.label}
-                    downloaded={downloadedId === skill.id}
-                    onDownload={() => handleDownload(skill)}
-                  />
-                ))}
-              </div>
-            </section>
+            <SkillCard
+              key={skill.id}
+              skill={skill}
+              index={i}
+              Icon={CATEGORY_ICON[skill.category]}
+              categoryLabel={cat?.label ?? ''}
+              downloaded={downloadedId === skill.id}
+              onDownload={() => handleDownload(skill)}
+            />
           )
         })}
       </div>
