@@ -32,7 +32,7 @@ export const MATERIALS_DROPDOWN_LINKS = [
   { id: 'maps', path: '/materials/maps', label: 'Maps' },
   { id: 'social-media', path: '/materials/social-media', label: 'Social media' },
   { id: 'backgrounds', path: '/materials/backgrounds', label: 'Backgrounds' },
-  { id: 'skills', path: '/materials/skills', label: 'Skills' },
+  { id: 'skills', path: '/materials/skills', label: 'AI Skills' },
 ] as const
 
 /** Footer quick links: same order as primary IA, rispetta i feature flag. */

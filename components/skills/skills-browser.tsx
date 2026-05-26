@@ -10,6 +10,7 @@ import {
   Compass,
   Terminal,
   BookOpen,
+  Palette,
 } from 'lucide-react'
 import {
   Dialog,
@@ -27,6 +28,7 @@ import {
 } from '@/lib/skills-registry'
 
 const CATEGORY_ICON: Record<SkillCategoryId, typeof PenLine> = {
+  design: Palette,
   writing: PenLine,
   data: BarChart3,
   strategy: Compass,
@@ -203,16 +205,20 @@ function SkillCard({
       <div className="mt-auto pt-5">
         <div className="mb-2.5 flex items-center gap-3 text-xs text-muted-foreground">
           <span className="tabular-nums">{skill.size}</span>
-          <span className="h-3 w-px bg-border" aria-hidden />
-          <a
-            href={skill.source}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center gap-0.5 transition-smooth hover:text-foreground"
-          >
-            Source
-            <ArrowUpRight className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
-          </a>
+          {skill.source && (
+            <>
+              <span className="h-3 w-px bg-border" aria-hidden />
+              <a
+                href={skill.source}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-0.5 transition-smooth hover:text-foreground"
+              >
+                Source
+                <ArrowUpRight className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
+              </a>
+            </>
+          )}
         </div>
         <a
           href={skill.file}

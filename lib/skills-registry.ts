@@ -5,7 +5,7 @@
  * DI-prompts repository by Maria Antonia Bravo.
  */
 
-export type SkillCategoryId = 'writing' | 'data' | 'strategy'
+export type SkillCategoryId = 'design' | 'writing' | 'data' | 'strategy'
 
 export interface SkillCategory {
   id: SkillCategoryId
@@ -28,11 +28,16 @@ export interface Skill {
   size: string
   /** Slash command, when the skill is invoked as one. */
   command?: string
-  /** Source markdown on GitHub. */
-  source: string
+  /** Source markdown on GitHub, when public. */
+  source?: string
 }
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
+  {
+    id: 'design',
+    label: 'Design & Build',
+    blurb: 'Ship product UI that is on brand by construction.',
+  },
   {
     id: 'writing',
     label: 'Writing & Editing',
@@ -56,6 +61,17 @@ export const SKILLS_AUTHOR = {
 }
 
 export const SKILLS: Skill[] = [
+  {
+    id: 'giga-design-system',
+    title: 'Giga Design System',
+    category: 'design',
+    description:
+      'The full Giga Product Design System as build instructions: Manrope/Open Sans type scale, the Primary/Grey/Connectivity palettes, shadcn/ui + Tailwind tokens, radii, shadows, and spring motion.',
+    useWhen:
+      'Building or styling a Next.js/React product, or setting up an AI build tool, so the UI stays on brand.',
+    file: '/skills/giga-design-system.zip',
+    size: '2.4 KB',
+  },
   {
     id: 'tech-writing-coach',
     title: 'Tech Writing Coach',

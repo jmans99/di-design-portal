@@ -1,7 +1,7 @@
 import { SkillsBrowser } from '@/components/skills/skills-browser'
 
 export const metadata = {
-  title: 'Skills — Brand asset generator',
+  title: 'AI Skills — Brand asset generator',
 }
 
 export default function SkillsPage() {
@@ -13,11 +13,11 @@ export default function SkillsPage() {
       >
         <div className="px-6 pb-6 pt-9">
           <h1 className="font-heading text-[2.75rem] font-normal leading-[1.1] tracking-[-0.03em] text-foreground">
-            Skills
+            AI Skills
           </h1>
-          <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-muted-foreground">
-            The Claude skills the Giga team uses. Download one, add it to Claude
-            Desktop, and it runs whenever the work calls for it.
+          <p className="mt-3 max-w-4xl text-[15px] leading-relaxed text-muted-foreground">
+            The AI skills the Giga team uses. Download one, add it to your AI
+            platform, and it runs whenever the work calls for it.
           </p>
         </div>
       </div>
