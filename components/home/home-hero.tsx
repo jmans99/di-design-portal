@@ -37,7 +37,7 @@ export function HomeHero() {
           muted
           playsInline
           preload="auto"
-          poster="/home/hero.jpg"
+          poster="/home/hero-poster.jpg"
           aria-label="Schoolchildren in uniform using tablets in their connected classroom"
         >
           <source src="/home/hero.mp4" type="video/mp4" />
