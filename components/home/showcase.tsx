@@ -29,7 +29,7 @@ export function Showcase() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-24">
       <div className="mx-auto mb-12 max-w-2xl text-center">
-        <h2 className="font-heading text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.1] tracking-[-0.03em] text-foreground text-balance">
+        <h2 className="font-heading text-[clamp(1.9rem,3.4vw,2.6rem)] font-medium leading-[1.1] tracking-[-0.03em] text-foreground text-balance">
           Grab it, paste it, move on
         </h2>
         <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">

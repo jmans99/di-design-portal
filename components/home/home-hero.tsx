@@ -67,7 +67,7 @@ export function HomeHero() {
       >
         <motion.h1
           variants={item}
-          className="font-heading mx-auto max-w-4xl text-[clamp(2.6rem,6.4vw,4.75rem)] font-semibold leading-[1.02] tracking-[-0.04em] text-white text-balance"
+          className="font-heading mx-auto max-w-4xl text-[clamp(2.6rem,6.4vw,4.75rem)] font-medium leading-[1.02] tracking-[-0.04em] text-white text-balance"
         >
           Every Giga asset, in one place
         </motion.h1>
@@ -83,10 +83,24 @@ export function HomeHero() {
         <motion.div variants={item} className="mt-9 flex flex-wrap items-center justify-center gap-3">
           <Link
             href="/logos"
-            className="group inline-flex h-14 items-center gap-2 rounded-full bg-primary-600 px-10 text-base font-semibold text-white shadow-stripe-md transition-smooth hover:bg-primary-700 active:scale-[0.98]"
+            onMouseMove={(e) => {
+              const r = e.currentTarget.getBoundingClientRect()
+              e.currentTarget.style.setProperty('--glx', `${e.clientX - r.left}px`)
+              e.currentTarget.style.setProperty('--gly', `${e.clientY - r.top}px`)
+            }}
+            className="group relative inline-flex h-14 items-center gap-2 overflow-hidden rounded-full bg-primary-600 px-10 text-base font-semibold text-white shadow-stripe-md transition-smooth hover:bg-primary-700 active:scale-[0.98]"
           >
-            Start exploring
-            <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+            <span
+              aria-hidden
+              className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              style={{
+                background:
+                  'radial-gradient(circle 110px at var(--glx, 50%) var(--gly, 50%), rgba(255,255,255,0.45) 0%, transparent 70%)',
+                mixBlendMode: 'overlay',
+              }}
+            />
+            <span className="relative">Start exploring</span>
+            <ArrowRight className="relative h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
           </Link>
           <Link
             href="/materials/skills"

@@ -39,7 +39,7 @@ export function WorkflowList() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-24">
       <div className="max-w-2xl">
-        <h2 className="font-heading text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.1] tracking-[-0.03em] text-foreground text-balance">
+        <h2 className="font-heading text-[clamp(1.9rem,3.4vw,2.6rem)] font-medium leading-[1.1] tracking-[-0.03em] text-foreground text-balance">
           Everything on brand, in seconds
         </h2>
         <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
@@ -69,7 +69,7 @@ export function WorkflowList() {
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <span
-                    className={`font-heading text-xl font-semibold transition-colors ${
+                    className={`font-heading text-xl font-medium transition-colors ${
                       open ? 'text-foreground' : 'text-muted-foreground group-hover:text-foreground'
                     }`}
                   >

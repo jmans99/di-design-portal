@@ -14,7 +14,7 @@ function LogosContent() {
 
 export default function LogosPage() {
   return (
-    <main className="mx-auto min-w-0 w-full max-w-6xl flex-1 overflow-visible px-6 py-12">
+    <main className="mx-auto min-w-0 w-full max-w-6xl flex-1 overflow-visible px-6 pb-12 pt-6">
       <PageHeader
         title="Logos"
         description="Select a color variant, choose your format, and download a ready-to-use asset."

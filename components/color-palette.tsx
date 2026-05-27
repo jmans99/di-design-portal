@@ -25,7 +25,7 @@ function ColorSwatch({ name, hex, scaleName }: { name: string; hex: string; scal
         aria-hidden
       />
       <div className="flex w-full flex-col justify-center bg-card px-4 py-3 text-left">
-        <span className="font-heading text-xs font-semibold text-card-foreground">{name}</span>
+        <span className="font-heading text-xs font-medium text-card-foreground">{name}</span>
         <span className="mt-0.5 font-mono text-[11px] text-muted-foreground transition-all duration-smooth ease-smooth">
           {copied ? 'Copied!' : hex}
         </span>
@@ -62,7 +62,7 @@ export function ColorPalette() {
       {/* Main colors: White, Black, Primary 600 */}
       <section id="colors-main" className="min-w-0 w-full scroll-mt-24">
         <div className="mb-4 flex items-center gap-2">
-          <h3 className="font-heading text-[11px] font-semibold uppercase tracking-[0.07em] text-muted-foreground">
+          <h3 className="font-heading text-[11px] font-medium uppercase tracking-[0.07em] text-muted-foreground">
             Main colors
           </h3>
         </div>
@@ -88,7 +88,7 @@ export function ColorPalette() {
         >
           <div className="mb-4 flex flex-col gap-1">
             <div className="flex items-center gap-2">
-              <h3 className="font-heading text-[11px] font-semibold uppercase tracking-[0.07em] text-muted-foreground">
+              <h3 className="font-heading text-[11px] font-medium uppercase tracking-[0.07em] text-muted-foreground">
                 {scale.name}
               </h3>
             </div>

@@ -273,7 +273,7 @@ function InstallGuideDialog() {
           {INSTALL_STEPS.map((step, i) => (
             <li key={step.title} className="flex gap-3.5">
               <span
-                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary-50 font-heading text-sm font-semibold tabular-nums text-primary-700"
+                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary-50 font-heading text-sm font-medium tabular-nums text-primary-700"
                 aria-hidden
               >
                 {i + 1}

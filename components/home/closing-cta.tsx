@@ -25,7 +25,7 @@ export function ClosingCta() {
           />
 
           <div className="relative">
-            <h2 className="font-heading mx-auto max-w-2xl text-[clamp(1.9rem,4vw,3rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-white text-balance">
+            <h2 className="font-heading mx-auto max-w-2xl text-[clamp(1.9rem,4vw,3rem)] font-medium leading-[1.08] tracking-[-0.03em] text-white text-balance">
               What are you waiting for?
             </h2>
             <p className="mx-auto mt-4 max-w-md text-[15px] leading-relaxed text-white/85">

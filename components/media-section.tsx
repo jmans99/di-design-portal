@@ -88,7 +88,7 @@ export function MediaSection() {
 
             {/* Content */}
             <div className="flex flex-1 flex-col gap-3 p-5">
-              <h3 className="font-heading text-base font-semibold text-foreground leading-snug">
+              <h3 className="font-heading text-base font-medium text-foreground leading-snug">
                 {gallery.title}
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed flex-1">

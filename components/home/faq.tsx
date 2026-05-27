@@ -39,7 +39,7 @@ export function Faq() {
           <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.18em] text-primary-600">
             Good to know
           </p>
-          <h2 className="font-heading text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.1] tracking-[-0.03em] text-foreground text-balance">
+          <h2 className="font-heading text-[clamp(1.9rem,3.4vw,2.6rem)] font-medium leading-[1.1] tracking-[-0.03em] text-foreground text-balance">
             Brand questions, answered
           </h2>
           <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-muted-foreground">
@@ -65,7 +65,7 @@ export function Faq() {
                   aria-expanded={isOpen}
                   className="flex w-full items-center justify-between gap-4 py-5 text-left"
                 >
-                  <span className="font-heading text-[17px] font-semibold text-foreground">
+                  <span className="font-heading text-[17px] font-medium text-foreground">
                     {item.q}
                   </span>
                   <Plus

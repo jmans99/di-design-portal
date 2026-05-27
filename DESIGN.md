@@ -20,19 +20,19 @@ typography:
   display:
     fontFamily: "Manrope, sans-serif"
     fontSize: "clamp(2.6rem, 6.4vw, 4.75rem)"
-    fontWeight: 600
+    fontWeight: 500
     lineHeight: 1.02
     letterSpacing: "-0.04em"
   headline:
     fontFamily: "Manrope, sans-serif"
     fontSize: "clamp(1.9rem, 3.4vw, 2.6rem)"
-    fontWeight: 600
+    fontWeight: 500
     lineHeight: 1.1
     letterSpacing: "-0.03em"
   title:
     fontFamily: "Manrope, sans-serif"
     fontSize: "1.125rem"
-    fontWeight: 600
+    fontWeight: 500
     lineHeight: 1.3
     letterSpacing: "-0.01em"
   body:
@@ -144,16 +144,16 @@ A monochrome-blue system: a single saturated Giga Blue carries identity over a c
 **Character:** Manrope gives confident, slightly geometric headlines with tight negative tracking; Open Sans keeps body copy plain, legible, and institutional. One family for voice, one for reading, no third typeface.
 
 ### Hierarchy
-- **Display** (Manrope 600, `clamp(2.6rem, 6.4vw, 4.75rem)`, line-height 1.02, tracking `-0.04em`): hero headline only. White over media.
-- **Headline** (Manrope 600, `clamp(1.9rem, 3.4vw, 2.6rem)`, line-height 1.1, tracking `-0.03em`): section titles. Often `text-balance`.
-- **Title** (Manrope 600, 1.125rem): tile and card titles, the "Aa" specimen.
+- **Display** (Manrope 500, `clamp(2.6rem, 6.4vw, 4.75rem)`, line-height 1.02, tracking `-0.04em`): hero headline only. White over media.
+- **Headline** (Manrope 500, `clamp(1.9rem, 3.4vw, 2.6rem)`, line-height 1.1, tracking `-0.03em`): section titles. Often `text-balance`.
+- **Title** (Manrope 500, 1.125rem): tile and card titles, the "Aa" specimen.
 - **Body** (Open Sans 400, 0.9375rem/15px, line-height ~1.6): paragraphs and descriptions. Cap measure at ~65ch (`max-w-sm`/`max-w-2xl`).
 - **Label / Eyebrow** (Manrope 700, 0.625rem/10px, uppercase, tracking `0.18em`, Giga Blue): the section eyebrow above every headline ("WHY IT EXISTS", "THE SYSTEM").
 
 ### Named Rules
 **The Eyebrow Rule.** Every section opens with a Giga-Blue uppercase 10px eyebrow, then the headline, then one line of muted body. This three-beat intro is the section signature; reuse it on every page.
 
-**The Tight-Headline Rule.** Headlines always carry negative letter-spacing (`-0.03em` to `-0.04em`) and weight 600. Never set a headline at default tracking or below 500.
+**The Tight-Headline Rule.** Headlines always carry negative letter-spacing (`-0.03em` to `-0.04em`) and weight 500. Never set a headline at default tracking or below 500.
 
 ## 4. Elevation
 
@@ -217,7 +217,7 @@ Flat surfaces, soft "Stripe-grade" shadows, no hard drop shadows. Depth is conve
 - **Do** keep Giga Blue (`#277AFF`) as the single voice; build variety from its tints (`#EAF2FF` to `#0050E6`) and from photography.
 - **Do** keep surfaces flat with `shadow-stripe`; reserve lift and `shadow-stripe-md` for hover/state.
 - **Do** use real, on-mission photography (connected classrooms, students, connectivity) for hero and a *few* feature tiles, with a neutral `#0A0A0C` scrim when text sits on top.
-- **Do** set headlines in Manrope 600 with negative tracking; body in Open Sans at ~15px, measure capped near 65ch.
+- **Do** set headlines in Manrope 500 with negative tracking; body in Open Sans at ~15px, measure capped near 65ch.
 - **Do** keep motion choreographed but quiet, one orchestrated entrance, scroll fade-ups, single-shot hover micro-animations, all `prefers-reduced-motion` safe.
 - **Do** prefer removing over adding. Balance, elegance, cleanliness.
 

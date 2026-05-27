@@ -263,7 +263,7 @@ export function AppHeader() {
                       onClick={close}
                       className="group flex w-full items-center justify-between py-5 text-left transition-colors hover:text-foreground/60 active:scale-[0.99]"
                     >
-                      <span className="font-heading text-2xl font-semibold leading-snug text-foreground">
+                      <span className="font-heading text-2xl font-medium leading-snug text-foreground">
                         {item.label}
                       </span>
                       <ChevronRight className="h-5 w-5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1" aria-hidden />
@@ -281,7 +281,7 @@ export function AppHeader() {
                       aria-controls={GUIDELINES_SUB_ID}
                       className="group flex w-full items-center justify-between py-5 text-left transition-colors hover:text-foreground/60 active:scale-[0.99]"
                     >
-                      <span className="font-heading text-2xl font-semibold leading-snug text-foreground">
+                      <span className="font-heading text-2xl font-medium leading-snug text-foreground">
                         {GUIDELINES_LABEL}
                       </span>
                       <ChevronDown
@@ -320,7 +320,7 @@ export function AppHeader() {
                       aria-controls={MATERIALS_SUB_ID}
                       className="group flex w-full items-center justify-between py-5 text-left transition-colors hover:text-foreground/60 active:scale-[0.99]"
                     >
-                      <span className="font-heading text-2xl font-semibold leading-snug text-foreground">
+                      <span className="font-heading text-2xl font-medium leading-snug text-foreground">
                         {MATERIALS_LABEL}
                       </span>
                       <ChevronDown

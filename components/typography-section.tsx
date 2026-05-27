@@ -121,7 +121,7 @@ export function TypographySection() {
       {/* Heading Scale */}
       <div className="min-w-0 rounded-2xl border border-border bg-card shadow-stripe hover-lift">
         <div className="flex min-w-0 flex-col gap-6 p-6">
-          <h3 className="font-heading text-[11px] font-semibold uppercase tracking-[0.07em] text-muted-foreground">
+          <h3 className="font-heading text-[11px] font-medium uppercase tracking-[0.07em] text-muted-foreground">
             Heading Scale — Manrope 500
           </h3>
           <div className="flex flex-col gap-6">
@@ -147,7 +147,7 @@ export function TypographySection() {
       {/* Body Scale */}
       <div className="min-w-0 rounded-2xl border border-border bg-card shadow-stripe hover-lift">
         <div className="flex min-w-0 flex-col gap-6 p-6">
-          <h3 className="font-heading text-[11px] font-semibold uppercase tracking-[0.07em] text-muted-foreground">
+          <h3 className="font-heading text-[11px] font-medium uppercase tracking-[0.07em] text-muted-foreground">
             Body Scale — Open Sans
           </h3>
           <div className="flex flex-col gap-4">

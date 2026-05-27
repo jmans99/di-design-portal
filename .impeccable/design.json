@@ -148,7 +148,7 @@
       { "name": "The No-Black Rule", "body": "Solid black or Grey-950 backgrounds are forbidden everywhere except Giga Maps. Dark areas are a real photograph or the neutral #0A0A0C scrim over a photograph, never a flat black panel.", "section": "colors" },
       { "name": "The No-Yellow Rule", "body": "Reference layouts may use a yellow/lime accent; we do not. CTAs and accents are Giga Blue.", "section": "colors" },
       { "name": "The Eyebrow Rule", "body": "Every section opens with a Giga-Blue uppercase 10px eyebrow, then the headline, then one line of muted body. Reuse on every page.", "section": "typography" },
-      { "name": "The Tight-Headline Rule", "body": "Headlines always carry negative letter-spacing (-0.03em to -0.04em) and weight 600. Never set a headline at default tracking or below 500.", "section": "typography" },
+      { "name": "The Tight-Headline Rule", "body": "Headlines always carry negative letter-spacing (-0.03em to -0.04em) and weight 500. Never set a headline at default tracking or below 500.", "section": "typography" },
       { "name": "The Lift-On-Hover Rule", "body": "Cards rest flat with shadow-stripe. On hover they rise via .hover-lift and deepen to shadow-stripe-md. Elevation is a response to state, never a default.", "section": "elevation" },
       { "name": "The Constant-Logo Rule", "body": "The logo lockup and its width never change between header states; only its color flips. No size jump on scroll.", "section": "components" }
     ],

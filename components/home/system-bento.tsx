@@ -11,11 +11,11 @@ const COLOR_SCALE = ['#002d9c', '#0050e6', '#277aff', '#5495ff', '#7eb0ff', '#bf
 export function SystemBento() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-24">
-      <Reveal className="mx-auto mb-12 max-w-2xl text-center">
-        <h2 className="font-heading text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.1] tracking-[-0.03em] text-foreground text-balance">
+      <Reveal className="mb-12 text-center">
+        <h2 className="font-heading text-[clamp(1.9rem,3.4vw,2.6rem)] font-medium leading-[1.1] tracking-[-0.03em] text-foreground">
           On brand, without the back-and-forth
         </h2>
-        <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
+        <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-muted-foreground">
           No more chasing the design team for the right file. The correct asset, in
           the right format, is already here.
         </p>
@@ -28,7 +28,7 @@ export function SystemBento() {
             <span className="mb-3 inline-flex rounded-full bg-primary-600 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-white">
               New
             </span>
-            <h3 className="font-heading text-2xl font-semibold text-foreground">AI Skills</h3>
+            <h3 className="font-heading text-2xl font-medium text-foreground">AI Skills</h3>
             <p className="mt-2 max-w-sm text-[14px] leading-relaxed text-muted-foreground">
               The skills the Giga team builds with, packaged and ready to install on
               your AI platform.
@@ -60,7 +60,7 @@ export function SystemBento() {
             className="absolute inset-0 bg-gradient-to-t from-primary-900/90 via-primary-900/10 to-transparent"
           />
           <div className="relative mt-auto p-5">
-            <h3 className="font-heading text-base font-semibold text-white">Colors</h3>
+            <h3 className="font-heading text-base font-medium text-white">Colors</h3>
             <p className="mt-0.5 text-[13px] text-white/85">Palette and tokens</p>
           </div>
         </Link>
@@ -76,14 +76,14 @@ export function SystemBento() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-primary-900/85 via-primary-900/25 to-transparent" />
           <div className="relative mt-auto p-5">
-            <h3 className="font-heading text-lg font-semibold text-white">Maps</h3>
+            <h3 className="font-heading text-lg font-medium text-white">Maps</h3>
             <p className="mt-0.5 text-[13px] text-white/80">Connectivity maps for any country.</p>
           </div>
         </Link>
 
         {/* Typography — clean specimen */}
         <Link href="/typography" className={TILE}>
-          <span className="font-heading text-4xl font-semibold leading-none tracking-tight text-foreground">
+          <span className="font-heading text-4xl font-medium leading-none tracking-tight text-foreground">
             Aa
           </span>
           <TileLabel title="Typography" sub="The full type scale" className="pt-3" />
@@ -108,7 +108,7 @@ export function SystemBento() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-primary-900/85 via-primary-900/20 to-transparent" />
           <div className="relative mt-auto p-5">
-            <h3 className="font-heading text-base font-semibold text-white">Media</h3>
+            <h3 className="font-heading text-base font-medium text-white">Media</h3>
             <p className="mt-0.5 text-[13px] text-white/80">Photo and video library</p>
           </div>
         </Link>
@@ -152,7 +152,7 @@ function TileLabel({
 }) {
   return (
     <div className={className}>
-      <h3 className="font-heading text-base font-semibold text-foreground">{title}</h3>
+      <h3 className="font-heading text-base font-medium text-foreground">{title}</h3>
       <p className="mt-0.5 text-[13px] text-muted-foreground">{sub}</p>
     </div>
   )
