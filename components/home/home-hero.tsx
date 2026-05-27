@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion, useReducedMotion, type Variants } from 'framer-motion'
-import { ArrowRight, Sparkles } from 'lucide-react'
+import { ArrowRight, Sparkles, Network } from 'lucide-react'
 
 const container: Variants = {
   hidden: {},
@@ -85,7 +85,10 @@ export function HomeHero() {
             className="group inline-flex h-14 items-center gap-2 rounded-full bg-primary-600 px-10 text-base font-semibold text-white shadow-stripe-md transition-smooth hover:bg-primary-700 active:scale-[0.98]"
           >
             Start exploring
-            <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+            <span className="relative inline-flex h-4 w-4 items-center justify-center">
+              <ArrowRight className="absolute h-4 w-4 transition-all duration-300 ease-out-expo group-hover:-translate-x-1 group-hover:scale-50 group-hover:opacity-0" />
+              <Network className="absolute h-4 w-4 scale-50 opacity-0 transition-all duration-300 ease-out-expo group-hover:scale-100 group-hover:opacity-100" />
+            </span>
           </Link>
           <Link
             href="/materials/skills"
