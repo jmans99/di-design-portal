@@ -106,7 +106,7 @@ export function AppHeader() {
         isMenuOpen
           ? 'border-border bg-white backdrop-blur-0'
           : transparent
-            ? 'border-transparent bg-transparent backdrop-blur-0 shadow-none'
+            ? 'border-transparent bg-transparent shadow-none'
             : overHero
               ? 'border-white/15 bg-white/[0.08] backdrop-blur-[10.7px] shadow-[0_4px_30px_rgba(0,0,0,0.1)]'
               : 'border-border/70 bg-card/70 backdrop-blur-[10.7px] shadow-[0_4px_30px_rgba(0,0,0,0.06)]'

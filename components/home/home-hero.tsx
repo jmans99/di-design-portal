@@ -31,11 +31,12 @@ export function HomeHero() {
         />
       ) : (
         <video
-          className="absolute inset-0 -z-10 h-full w-full object-cover object-center"
+          className="absolute inset-0 -z-10 h-full w-full object-cover object-center [transform:translateZ(0)]"
           autoPlay
           loop
           muted
           playsInline
+          preload="auto"
           poster="/home/hero.jpg"
           aria-label="Schoolchildren in uniform using tablets in their connected classroom"
         >
@@ -89,10 +90,25 @@ export function HomeHero() {
           </Link>
           <Link
             href="/materials/skills"
-            className="glass group inline-flex h-14 items-center gap-2 rounded-full px-9 text-base font-semibold text-white transition-smooth hover:bg-white/[0.14] active:scale-[0.98]"
+            onMouseMove={(e) => {
+              const r = e.currentTarget.getBoundingClientRect()
+              e.currentTarget.style.setProperty('--glx', `${e.clientX - r.left}px`)
+              e.currentTarget.style.setProperty('--gly', `${e.clientY - r.top}px`)
+            }}
+            className="glass group relative inline-flex h-14 items-center gap-2 overflow-hidden rounded-full px-9 text-base font-semibold text-white transition-smooth hover:bg-white/[0.14] active:scale-[0.98]"
           >
-            <Sparkles className="h-4 w-4" />
-            Explore AI Skills
+            {/* Interactive liquid-glass glow that follows the cursor */}
+            <span
+              aria-hidden
+              className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              style={{
+                background:
+                  'radial-gradient(circle 100px at var(--glx, 50%) var(--gly, 50%), rgba(255,255,255,0.22) 0%, transparent 72%)',
+                mixBlendMode: 'overlay',
+              }}
+            />
+            <Sparkles className="relative h-4 w-4" />
+            <span className="relative">Explore AI Skills</span>
           </Link>
         </motion.div>
       </motion.div>
