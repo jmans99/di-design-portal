@@ -29,7 +29,7 @@ export function CountryPicker({ value, onChange }: CountryPickerProps) {
           type="button"
           role="combobox"
           aria-expanded={open}
-          className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm transition-smooth-transform hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-ring"
+          className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm transition-smooth-transform focus:outline-none focus:ring-2 focus:ring-ring"
         >
           <span className="flex items-center gap-2 truncate">
             <span className="inline-flex h-5 min-w-[28px] items-center justify-center rounded bg-muted px-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">

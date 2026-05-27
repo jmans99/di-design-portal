@@ -71,11 +71,11 @@ function VideoColorSwatch({ name, hex }: { name: string; hex: string }) {
     <button
       type="button"
       onClick={handleCopy}
-      className="flex w-full min-w-0 flex-col rounded-lg border border-border overflow-hidden transition-smooth-transform hover:shadow-md hover:scale-[1.02] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+      className="hover-lift flex w-full min-w-0 flex-col rounded-2xl border border-border bg-card shadow-stripe overflow-hidden focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
       title={`Copy ${hex}`}
     >
       <div className="h-12 w-full min-w-[100px]" style={{ backgroundColor: hex }} aria-hidden />
-      <div className="bg-background px-3 py-2 text-left">
+      <div className="bg-card px-3 py-2 text-left">
         <span className="text-xs font-semibold text-foreground">{name}</span>
         <span className="block font-mono text-[11px] text-muted-foreground">
           {copied ? 'Copied!' : hex}
@@ -95,7 +95,7 @@ function ImagePlaceholder({
 }) {
   return (
     <div
-      className={`flex flex-col items-center justify-center gap-2 rounded-lg bg-muted border border-border ${aspectRatio} w-full min-h-[140px]`}
+      className={`flex flex-col items-center justify-center gap-2 rounded-2xl bg-card border border-border shadow-stripe ${aspectRatio} w-full min-h-[140px]`}
       aria-label={`Placeholder: ${label}`}
     >
       <ImageIcon className="h-10 w-10 text-muted-foreground" aria-hidden />
@@ -127,7 +127,7 @@ export function VideoBrandGuidelinesSection({
           By correctly applying the assets outlined here, the validation process is more likely
           to proceed smoothly, quickly, and efficiently.
         </p>
-        <Button variant="outline" size="sm" className="rounded-[6px] font-medium" asChild>
+        <Button variant="outline" size="sm" asChild>
           <a
             href={ASSETS.brandGuidelinesUrl}
             target="_blank"
@@ -143,14 +143,14 @@ export function VideoBrandGuidelinesSection({
       <section className="space-y-4">
         <h3 className="font-heading text-2xl font-medium text-foreground">Font</h3>
         <div className="grid min-w-0 gap-4 md:grid-cols-2">
-          <Card className="min-w-0 rounded-lg border transition-smooth">
+          <Card className="hover-lift min-w-0 rounded-2xl border border-border bg-card shadow-stripe">
             <CardContent className="flex min-w-0 flex-col gap-2 p-6">
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <p className="font-heading text-lg font-medium text-foreground">Manrope</p>
                   <p className="text-sm text-muted-foreground">Used for headings.</p>
                 </div>
-                <Button variant="outline" size="sm" className="rounded-[6px] shrink-0" asChild>
+                <Button variant="outline" size="sm" className="shrink-0" asChild>
                   <a href={ASSETS.manropeUrl} target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="h-3.5 w-3.5" />
                   </a>
@@ -158,18 +158,18 @@ export function VideoBrandGuidelinesSection({
               </div>
             </CardContent>
           </Card>
-          <Card className="min-w-0 rounded-lg border transition-smooth">
+          <Card className="hover-lift min-w-0 rounded-2xl border border-border bg-card shadow-stripe">
             <CardContent className="flex min-w-0 flex-col gap-2 p-6">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="text-lg font-medium text-foreground">Open Sans</p>
+                  <p className="font-heading text-lg font-medium text-foreground">Open Sans</p>
                   <p className="text-sm text-muted-foreground">
                     Use in all Giga multimedia assets: captions, subtitles, and lower thirds.
                     Avoid bold weight; use semibold for body text when highlighting, and medium
                     for titles.
                   </p>
                 </div>
-                <Button variant="outline" size="sm" className="rounded-[6px] shrink-0" asChild>
+                <Button variant="outline" size="sm" className="shrink-0" asChild>
                   <a href={ASSETS.openSansUrl} target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="h-3.5 w-3.5" />
                   </a>
@@ -205,7 +205,7 @@ export function VideoBrandGuidelinesSection({
           {LOGO_FORMATS.map((item) => (
             <article
               key={item.format}
-              className="flex min-h-[380px] flex-col rounded-lg border border-border bg-card overflow-hidden transition-smooth hover:shadow-md"
+              className="hover-lift flex min-h-[380px] flex-col rounded-2xl border border-border bg-card shadow-stripe overflow-hidden"
             >
               <div className="flex h-[400px] shrink-0 items-center justify-center overflow-hidden bg-muted/50">
                 <img
@@ -242,7 +242,6 @@ export function VideoBrandGuidelinesSection({
                         key={link.label}
                         variant="outline"
                         size="sm"
-                        className="rounded-[6px] text-xs"
                         onClick={() => onNavigateToLogosWithVariant(link.variant)}
                       >
                         {link.label}
@@ -252,7 +251,6 @@ export function VideoBrandGuidelinesSection({
                         key={link.label}
                         variant="outline"
                         size="sm"
-                        className="rounded-[6px] text-xs"
                         asChild
                       >
                         <a
@@ -272,7 +270,7 @@ export function VideoBrandGuidelinesSection({
           ))}
         </div>
 
-        <p className="rounded-lg border border-border bg-muted/30 px-4 py-3 text-sm text-muted-foreground">
+        <p className="rounded-2xl border border-border bg-card shadow-stripe px-4 py-3 text-sm text-muted-foreground">
           <strong className="font-semibold text-foreground">Alternative:</strong> Use horizontal logos (Giga + UNICEF + ITU) at top right for horizontal, and Giga only for square and vertical. Apply 75% opacity.
         </p>
       </section>
@@ -286,7 +284,7 @@ export function VideoBrandGuidelinesSection({
         <img
           src="/images/video-guidelines/subtitles-example.png"
           alt="Subtitles example – white text on semi-transparent dark background"
-          className="w-full max-w-2xl rounded-lg border border-border object-contain"
+          className="w-full max-w-2xl rounded-2xl border border-border bg-card shadow-stripe object-contain"
         />
       </section>
 
@@ -301,12 +299,12 @@ export function VideoBrandGuidelinesSection({
           <li>Line 3: Organization / country (when applicable)</li>
         </ul>
         <div className="flex flex-wrap gap-2">
-          <Button variant="outline" size="sm" className="rounded-[6px]" asChild>
+          <Button variant="outline" size="sm" asChild>
             <a href={ASSETS.lowerThirdsAeUrl} target="_blank" rel="noopener noreferrer">
               After Effects Template
             </a>
           </Button>
-          <Button variant="outline" size="sm" className="rounded-[6px]" asChild>
+          <Button variant="outline" size="sm" asChild>
             <a href={ASSETS.lowerThirdsAlphaUrl} target="_blank" rel="noopener noreferrer">
               Alpha files (blue bar)
             </a>
@@ -319,7 +317,7 @@ export function VideoBrandGuidelinesSection({
         <img
           src="/images/video-guidelines/lower-thirds-example.png"
           alt="Lower thirds example – name, job title and organisation on blue bar"
-          className="w-full max-w-2xl rounded-lg border border-border object-contain"
+          className="w-full max-w-2xl rounded-2xl border border-border bg-card shadow-stripe object-contain"
         />
       </section>
 
@@ -333,7 +331,7 @@ export function VideoBrandGuidelinesSection({
           text (15 words max).
         </p>
         <div className="flex flex-wrap gap-2">
-          <Button variant="outline" size="sm" className="rounded-[6px]" asChild>
+          <Button variant="outline" size="sm" asChild>
             <a
               href={ASSETS.explainersHorizontalUrl}
               target="_blank"
@@ -342,12 +340,12 @@ export function VideoBrandGuidelinesSection({
               16:9 Horizontal
             </a>
           </Button>
-          <Button variant="outline" size="sm" className="rounded-[6px]" asChild>
+          <Button variant="outline" size="sm" asChild>
             <a href={ASSETS.explainersSquareUrl} target="_blank" rel="noopener noreferrer">
               1:1 Square
             </a>
           </Button>
-          <Button variant="outline" size="sm" className="rounded-[6px]" asChild>
+          <Button variant="outline" size="sm" asChild>
             <a href={ASSETS.explainersVerticalUrl} target="_blank" rel="noopener noreferrer">
               9:16 Vertical
             </a>
@@ -356,7 +354,7 @@ export function VideoBrandGuidelinesSection({
         <img
           src="/images/video-guidelines/explainers-example.png"
           alt="Explainers: text on screen – white text on blue with key words emphasised"
-          className="w-full max-w-2xl rounded-lg border border-border object-contain"
+          className="w-full max-w-2xl rounded-2xl border border-border bg-card shadow-stripe object-contain"
         />
       </section>
 
@@ -368,7 +366,7 @@ export function VideoBrandGuidelinesSection({
         <p className="text-base text-muted-foreground">
           Apply Giga’s stingers. Black background (preferred), white and blue versions available.
         </p>
-        <Button variant="outline" size="sm" className="rounded-[6px]" asChild>
+        <Button variant="outline" size="sm" asChild>
           <a href={ASSETS.stingersUrl} target="_blank" rel="noopener noreferrer">
             Stingers (all versions)
           </a>
@@ -376,7 +374,7 @@ export function VideoBrandGuidelinesSection({
         <img
           src="/images/video-guidelines/video-signature-example.png"
           alt="Video signature – Giga, UNICEF and ITU logos on black (preferred version)"
-          className="w-full max-w-2xl rounded-lg border border-border object-contain"
+          className="w-full max-w-2xl rounded-2xl border border-border bg-card shadow-stripe object-contain"
         />
       </section>
 
@@ -385,7 +383,7 @@ export function VideoBrandGuidelinesSection({
         <h3 className="font-heading text-2xl font-medium text-foreground">
           Location pin template
         </h3>
-        <Button variant="outline" size="sm" className="rounded-[6px]" asChild>
+        <Button variant="outline" size="sm" asChild>
           <a href={ASSETS.locationPinUrl} target="_blank" rel="noopener noreferrer">
             <ExternalLink className="mr-2 h-3.5 w-3.5" />
             Download template
@@ -394,7 +392,7 @@ export function VideoBrandGuidelinesSection({
         <img
           src="/images/video-guidelines/location-pin-example.png"
           alt="Location pin template – pin icon with location text (e.g. Geneva, Switzerland)"
-          className="w-full max-w-2xl rounded-lg border border-border object-contain"
+          className="w-full max-w-2xl rounded-2xl border border-border bg-card shadow-stripe object-contain"
         />
       </section>
 
@@ -406,7 +404,7 @@ export function VideoBrandGuidelinesSection({
         <p className="text-base text-muted-foreground">
           If you have any questions, please contact:
         </p>
-        <Button variant="outline" size="sm" className="rounded-[6px]" asChild>
+        <Button variant="outline" size="sm" asChild>
           <a href="mailto:rduarte@unicef.org">
             <Mail className="mr-2 h-3.5 w-3.5" />
             Rafael Duarte — rduarte@unicef.org

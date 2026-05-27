@@ -33,7 +33,8 @@ import type {
   LogoCombination,
   GigaColorVariant,
 } from '@/lib/types'
-import { Download, Sun, Moon, Layers, ArrowUpDown } from 'lucide-react'
+import { Download, Layers, ArrowUpDown } from 'lucide-react'
+import { PreviewPanel, PreviewThemeToggle } from '@/components/ui/preview-panel'
 import { cn } from '@/lib/utils'
 
 const RESOLUTIONS: { label: string; value: Resolution; scale: number }[] = [
@@ -297,16 +298,8 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
             <div className="flex flex-col gap-2">
               {(
                 [
-                  {
-                    value: 'standalone' as LogoCombination,
-                    label: 'Giga Only',
-                    desc: 'Standalone Giga logo',
-                  },
-                  {
-                    value: 'unicef-itu' as LogoCombination,
-                    label: 'Giga + UNICEF + ITU',
-                    desc: 'Combined lockup with partners',
-                  },
+                  { value: 'standalone' as LogoCombination, label: 'Giga Only' },
+                  { value: 'unicef-itu' as LogoCombination, label: 'Giga + UNICEF + ITU' },
                 ] as const
               ).map((opt) => (
                 <OptionCard
@@ -314,7 +307,6 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
                   active={combination === opt.value}
                   onClick={() => setCombination(opt.value)}
                   label={opt.label}
-                  description={opt.desc}
                 />
               ))}
             </div>
@@ -349,10 +341,10 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
                 <button
                   key={v.name}
                   onClick={() => setSelectedColorName(v.name)}
-                  className={`flex items-center gap-3 rounded-[6px] border px-4 py-3 text-left text-sm font-medium transition-smooth-transform hover:shadow-md active:scale-[0.99] ${
+                  className={`flex items-center gap-3 rounded-2xl border px-4 py-3 text-left text-sm font-medium transition-smooth-transform active:scale-[0.99] ${
                     selectedColorName === v.name
-                      ? 'border-primary bg-accent text-foreground shadow'
-                      : 'border-border bg-card text-foreground'
+                      ? 'border-primary-300 bg-primary-50/70 text-foreground'
+                      : 'border-border bg-card text-foreground hover:bg-secondary/60'
                   }`}
                 >
                   <span className="flex shrink-0 items-center gap-0.5">
@@ -364,14 +356,7 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
                       />
                     ))}
                   </span>
-                  <span className="flex flex-col items-start">
-                    <span>{v.name}</span>
-                    {v.description && (
-                      <span className="text-xs font-normal text-muted-foreground">
-                        {v.description}
-                      </span>
-                    )}
-                  </span>
+                  <span>{v.name}</span>
                 </button>
               )
             })}
@@ -416,10 +401,9 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
           <Button
             onClick={handleExport}
             disabled={isExporting || !previewSvg}
-            className="h-12 w-full rounded-[6px] text-base font-medium shadow transition-smooth-transform active:scale-[0.98]"
-            size="lg"
+            className="w-full"
           >
-            <Download className="h-5 w-5 shrink-0" />
+            <Download />
             {isExporting ? 'Exporting...' : 'Download Asset'}
           </Button>
           <p className="mt-2 text-xs text-muted-foreground">
@@ -433,77 +417,38 @@ export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
 
       {/* Preview Panel — sticky on desktop; above sidebar on mobile */}
       <div className="order-1 flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto lg:order-2 lg:sticky lg:top-[calc(4rem+24px)] lg:h-fit lg:min-w-0">
-        <div className="flex items-center justify-between">
-          <h3 className="font-heading text-2xl font-medium text-foreground">
-            Live Preview
-          </h3>
-          <div className="flex items-center gap-1 rounded-[6px] border border-border p-1">
-            <button
-              onClick={() => setPreviewBg('light')}
-              className={`flex items-center gap-1.5 rounded-[6px] px-3 py-1.5 text-xs font-medium transition-smooth-transform hover:shadow-md active:scale-[0.97] ${
-                previewBg === 'light'
-                  ? 'bg-foreground text-background shadow-sm'
-                  : 'text-muted-foreground hover:text-foreground'
-              }`}
-            >
-              <Sun className="h-3.5 w-3.5" />
-              Light
-            </button>
-            <button
-              onClick={() => setPreviewBg('dark')}
-              className={`flex items-center gap-1.5 rounded-[6px] px-3 py-1.5 text-xs font-medium transition-smooth-transform hover:shadow-md active:scale-[0.97] ${
-                previewBg === 'dark'
-                  ? 'bg-foreground text-background shadow-sm'
-                  : 'text-muted-foreground hover:text-foreground'
-              }`}
-            >
-              <Moon className="h-3.5 w-3.5" />
-              Dark
-            </button>
-          </div>
-        </div>
-
         {/* Main preview area */}
-        <Card
-          className={`flex min-h-[320px] items-center justify-center overflow-hidden rounded-lg border transition-smooth lg:min-h-[400px] ${
-            previewBg === 'dark'
-              ? 'border-[#393939] bg-[#161616]'
-              : 'border-border bg-background'
-          }`}
+        <PreviewPanel
+          dark={previewBg === 'dark'}
+          controls={<PreviewThemeToggle value={previewBg} onChange={setPreviewBg} />}
         >
-          <CardContent className="flex items-center justify-center p-12">
-            {isLoading ? (
-              <div className="flex flex-col items-center gap-3">
-                <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
-                <p className="text-sm text-muted-foreground">
-                  Loading asset...
-                </p>
-              </div>
-            ) : previewSvg ? (
-              <img
-                src={svgToDataUrl(previewSvg)}
-                alt={`${brand.brandName} logo preview`}
-                className={cn(
-                  'object-contain',
-                  isUnicefDigitalImpact
-                    ? 'max-h-36 w-full max-w-md'
-                    : isUnicefDigitalInclusion
-                      ? 'max-h-20 w-full max-w-md'
-                      : 'max-h-64 max-w-full',
-                  isUnicefLogo && 'scale-[1.15]'
-                )}
-              />
-            ) : (
-              <p className="text-sm text-muted-foreground">
-                Select options to preview
-              </p>
-            )}
-          </CardContent>
-        </Card>
+          {isLoading ? (
+            <div className="flex flex-col items-center gap-3">
+              <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+              <p className="text-sm text-muted-foreground">Loading asset...</p>
+            </div>
+          ) : previewSvg ? (
+            <img
+              src={svgToDataUrl(previewSvg)}
+              alt={`${brand.brandName} logo preview`}
+              className={cn(
+                'object-contain',
+                isUnicefDigitalImpact
+                  ? 'max-h-36 w-full max-w-md'
+                  : isUnicefDigitalInclusion
+                    ? 'max-h-20 w-full max-w-md'
+                    : 'max-h-64 max-w-full',
+                isUnicefLogo && 'scale-[1.15]'
+              )}
+            />
+          ) : (
+            <p className="text-sm text-muted-foreground">Select options to preview</p>
+          )}
+        </PreviewPanel>
 
         {/* Transparency preview for PNG */}
         {selectedFormat === 'png' && previewSvg && !isLoading && (
-          <Card className="overflow-hidden rounded-lg border">
+          <Card className="overflow-hidden rounded-2xl border border-border bg-card shadow-stripe">
             <CardContent className="p-4">
               <p className="mb-3 text-xs font-medium text-muted-foreground">
                 Transparency Preview
@@ -585,10 +530,10 @@ function ToggleButton({
   return (
     <button
       onClick={onClick}
-      className={`flex-1 rounded-[6px] border px-4 py-2.5 text-sm font-medium transition-smooth-transform hover:shadow-md active:scale-[0.98] ${
+      className={`flex-1 rounded-full border px-4 py-2.5 text-sm font-medium transition-smooth-transform active:scale-[0.98] ${
         active
-          ? 'border-primary bg-primary text-primary-foreground shadow'
-          : 'border-border bg-card text-foreground'
+          ? 'border-primary-300 bg-primary-50 text-primary-700'
+          : 'border-border bg-card text-foreground hover:bg-secondary/60'
       } ${className}`}
     >
       {children}
@@ -605,19 +550,21 @@ function OptionCard({
   active: boolean
   onClick: () => void
   label: string
-  description: string
+  description?: string
 }) {
   return (
     <button
       onClick={onClick}
-      className={`flex flex-col items-start rounded-[6px] border px-4 py-3 text-left transition-smooth-transform hover:shadow-md active:scale-[0.99] ${
+      className={`flex flex-col items-start rounded-2xl border px-4 py-3 text-left transition-smooth-transform active:scale-[0.99] ${
         active
-          ? 'border-primary bg-accent text-foreground shadow'
-          : 'border-border bg-card text-foreground'
+          ? 'border-primary-300 bg-primary-50/70 text-foreground'
+          : 'border-border bg-card text-foreground hover:bg-secondary/60'
       }`}
     >
       <span className="text-sm font-medium">{label}</span>
-      <span className="text-xs text-muted-foreground">{description}</span>
+      {description ? (
+        <span className="text-xs text-muted-foreground">{description}</span>
+      ) : null}
     </button>
   )
 }

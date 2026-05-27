@@ -32,7 +32,8 @@ import {
   downloadSvg,
 } from '@/lib/svg-processing'
 import type { OutputFormat, Resolution } from '@/lib/types'
-import { Download, Sun, Moon } from 'lucide-react'
+import { Download } from 'lucide-react'
+import { PreviewPanel, PreviewThemeToggle } from '@/components/ui/preview-panel'
 import { cn } from '@/lib/utils'
 
 const RESOLUTIONS: { label: string; value: Resolution; scale: number }[] = [
@@ -186,10 +187,10 @@ export function IllustrationConfigurator() {
                 <button
                   key={opt.value}
                   onClick={() => setOutlineColor(opt.value)}
-                  className={`flex items-center gap-3 rounded-[6px] border px-4 py-3 text-left text-sm font-medium transition-smooth-transform hover:shadow-md active:scale-[0.99] ${
+                  className={`flex items-center gap-3 rounded-2xl border px-4 py-3 text-left text-sm font-medium transition-smooth-transform active:scale-[0.99] ${
                     outlineColor === opt.value
-                      ? 'border-primary bg-accent text-foreground shadow'
-                      : 'border-border bg-card text-foreground'
+                      ? 'border-primary-300 bg-primary-50/70 text-foreground'
+                      : 'border-border bg-card text-foreground hover:bg-secondary/60'
                   }`}
                 >
                   <span className="flex shrink-0 items-center gap-0.5">
@@ -246,10 +247,9 @@ export function IllustrationConfigurator() {
           <Button
             onClick={handleExport}
             disabled={isExporting || !previewSvg}
-            className="h-12 w-full rounded-[6px] text-base font-medium shadow transition-smooth-transform active:scale-[0.98]"
-            size="lg"
+            className="w-full"
           >
-            <Download className="h-5 w-5 shrink-0" />
+            <Download />
             {isExporting ? 'Exporting...' : 'Download Asset'}
           </Button>
           <p className="mt-2 text-xs text-muted-foreground">
@@ -263,69 +263,31 @@ export function IllustrationConfigurator() {
 
       {/* Preview Panel — sticky on desktop; above sidebar on mobile, height from content on mobile */}
       <div className="order-1 flex min-h-0 flex-col gap-4 overflow-y-auto lg:order-2 lg:flex-1 lg:sticky lg:top-[calc(4rem+24px)] lg:h-fit lg:min-w-0">
-        <div className="flex items-center justify-between">
-          <h3 className="font-heading text-2xl font-medium text-foreground">
-            Live Preview
-          </h3>
-          <div className="flex items-center gap-1 rounded-[6px] border border-border p-1">
-            <button
-              onClick={() => setPreviewBg('light')}
-              className={`flex items-center gap-1.5 rounded-[6px] px-3 py-1.5 text-xs font-medium transition-smooth-transform hover:shadow-md active:scale-[0.97] ${
-                previewBg === 'light'
-                  ? 'bg-foreground text-background shadow-sm'
-                  : 'text-muted-foreground hover:text-foreground'
-              }`}
-            >
-              <Sun className="h-3.5 w-3.5" />
-              Light
-            </button>
-            <button
-              onClick={() => setPreviewBg('dark')}
-              className={`flex items-center gap-1.5 rounded-[6px] px-3 py-1.5 text-xs font-medium transition-smooth-transform hover:shadow-md active:scale-[0.97] ${
-                previewBg === 'dark'
-                  ? 'bg-foreground text-background shadow-sm'
-                  : 'text-muted-foreground hover:text-foreground'
-              }`}
-            >
-              <Moon className="h-3.5 w-3.5" />
-              Dark
-            </button>
-          </div>
-        </div>
-
-        <Card
-          className={`flex min-h-[320px] items-center justify-center overflow-hidden rounded-lg border transition-smooth lg:min-h-[400px] ${
-            previewBg === 'dark'
-              ? 'border-[#393939] bg-[#161616]'
-              : 'border-border bg-background'
-          }`}
+        <PreviewPanel
+          dark={previewBg === 'dark'}
+          controls={<PreviewThemeToggle value={previewBg} onChange={setPreviewBg} />}
+          contentClassName="p-6 lg:p-12"
         >
-          <CardContent className="flex items-center justify-center p-6 lg:p-12">
-            {isLoading ? (
-              <div className="flex min-h-48 flex-col items-center justify-center gap-3">
-                <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
-                <p className="text-sm text-muted-foreground">
-                  Loading asset...
-                </p>
-              </div>
-            ) : previewSvg ? (
-              <div className="flex w-full min-w-0 items-center justify-center">
-                <img
-                  src={svgToDataUrl(previewSvg)}
-                  alt={`${illustration.label} pictogram preview`}
-                  className="max-h-64 max-w-full object-contain"
-                />
-              </div>
-            ) : (
-              <p className="text-sm text-muted-foreground">
-                Select options to preview
-              </p>
-            )}
-          </CardContent>
-        </Card>
+          {isLoading ? (
+            <div className="flex min-h-48 flex-col items-center justify-center gap-3">
+              <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+              <p className="text-sm text-muted-foreground">Loading asset...</p>
+            </div>
+          ) : previewSvg ? (
+            <div className="flex w-full min-w-0 items-center justify-center">
+              <img
+                src={svgToDataUrl(previewSvg)}
+                alt={`${illustration.label} pictogram preview`}
+                className="max-h-64 max-w-full object-contain"
+              />
+            </div>
+          ) : (
+            <p className="text-sm text-muted-foreground">Select options to preview</p>
+          )}
+        </PreviewPanel>
 
         {selectedFormat === 'png' && previewSvg && !isLoading && (
-          <Card className="overflow-hidden rounded-lg border">
+          <Card className="overflow-hidden rounded-2xl border border-border bg-card shadow-stripe">
             <CardContent className="p-4">
               <p className="mb-3 text-xs font-medium text-muted-foreground">
                 Transparency Preview
@@ -384,10 +346,10 @@ function ToggleButton({
   return (
     <button
       onClick={onClick}
-      className={`flex-1 rounded-[6px] border px-4 py-2.5 text-sm font-medium transition-smooth-transform hover:shadow-md active:scale-[0.98] ${
+      className={`flex-1 rounded-full border px-4 py-2.5 text-sm font-medium transition-smooth-transform active:scale-[0.98] ${
         active
-          ? 'border-primary bg-primary text-primary-foreground shadow'
-          : 'border-border bg-card text-foreground'
+          ? 'border-primary-300 bg-primary-50 text-primary-700'
+          : 'border-border bg-card text-foreground hover:bg-secondary/60'
       } ${className}`}
     >
       {children}

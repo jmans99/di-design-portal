@@ -119,12 +119,12 @@ function FilterPill({
       onClick={onClick}
       className={`inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-smooth active:scale-[0.97] ${
         active
-          ? 'border-primary-600 bg-primary-600 text-white shadow-stripe'
-          : 'border-border bg-card text-muted-foreground hover:border-primary-300 hover:text-foreground'
+          ? 'border-primary-300 bg-primary-50 text-primary-700'
+          : 'border-border bg-card text-muted-foreground hover:bg-secondary/60 hover:text-foreground'
       }`}
     >
       {children}
-      <span className={`tabular-nums text-xs ${active ? 'text-white/70' : 'text-muted-foreground/70'}`}>
+      <span className={`tabular-nums text-xs ${active ? 'text-primary-700/70' : 'text-muted-foreground/70'}`}>
         {count}
       </span>
     </button>
@@ -148,13 +148,13 @@ function SkillCard({
 }) {
   return (
     <article
-      className="reveal-in hover-lift flex h-full flex-col rounded-lg border border-border bg-card p-5"
+      className="reveal-in hover-lift flex h-full flex-col rounded-2xl border border-border bg-card p-5 shadow-stripe"
       style={{ '--i': index } as React.CSSProperties}
     >
       {/* Icon tile anchor + optional command badge */}
       <div className="flex items-start justify-between">
         <span
-          className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-50 text-primary-600"
+          className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary-50 text-primary-600"
           aria-hidden
         >
           <Icon className="h-5 w-5" />
@@ -206,7 +206,7 @@ function SkillCard({
           download
           onClick={onDownload}
           aria-label={`Download ${skill.title} skill`}
-          className={`flex w-full items-center justify-center gap-1.5 rounded-md px-3 py-2 text-sm font-medium text-white shadow-stripe transition-smooth active:scale-[0.98] ${
+          className={`inline-flex w-full items-center justify-center gap-2 rounded-full h-12 px-7 text-[15px] font-semibold text-white transition-smooth active:scale-[0.98] ${
             downloaded ? 'bg-accent-green-600' : 'bg-primary-600 hover:bg-primary-700'
           }`}
         >
@@ -252,7 +252,7 @@ function InstallGuideDialog() {
       <DialogTrigger asChild>
         <button
           type="button"
-          className="inline-flex shrink-0 items-center gap-1.5 self-start rounded-md border border-border bg-card px-3 py-1.5 text-sm font-medium text-foreground shadow-stripe transition-smooth hover:border-primary-300 hover:text-primary-700 active:scale-[0.97] sm:self-auto"
+          className="inline-flex shrink-0 items-center gap-2 self-start rounded-full h-10 px-5 text-sm font-medium text-foreground border border-border bg-card hover:bg-secondary/60 transition-smooth active:scale-[0.98] sm:self-auto"
         >
           <BookOpen className="h-4 w-4 text-primary-600" aria-hidden />
           How to install
@@ -286,7 +286,7 @@ function InstallGuideDialog() {
           ))}
         </ol>
 
-        <div className="mt-1 flex items-start gap-2.5 rounded-lg bg-secondary px-4 py-3">
+        <div className="mt-1 flex items-start gap-2.5 rounded-xl bg-secondary px-4 py-3">
           <Terminal className="mt-0.5 h-4 w-4 shrink-0 text-grey-600" aria-hidden />
           <p className="text-xs leading-relaxed text-grey-700">
             <span className="font-semibold">Using Claude Code instead?</span> Unzip the package

@@ -1,6 +1,5 @@
 'use client'
 
-import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { ExternalLink } from 'lucide-react'
 
@@ -34,8 +33,8 @@ export function TypographySection() {
 
       {/* Font Cards */}
       <div className="grid min-w-0 gap-4 md:grid-cols-2">
-        <Card className="min-w-0 rounded-lg border transition-smooth">
-          <CardContent className="flex min-w-0 flex-col gap-4 p-6">
+        <div className="min-w-0 rounded-2xl border border-border bg-card shadow-stripe hover-lift">
+          <div className="flex min-w-0 flex-col gap-4 p-6">
             <div className="flex min-w-0 items-start justify-between gap-3">
               <div className="min-w-0 flex-1">
                 <h3 className="font-heading text-2xl font-medium text-foreground">
@@ -45,12 +44,7 @@ export function TypographySection() {
                   Headings only — weight 500
                 </p>
               </div>
-              <Button
-                variant="outline"
-                size="sm"
-                className="rounded-[6px] text-xs font-medium shadow transition-smooth-transform"
-                asChild
-              >
+              <Button variant="outline" size="sm" asChild>
                 <a
                   href="https://fonts.google.com/specimen/Manrope"
                   target="_blank"
@@ -78,26 +72,21 @@ export function TypographySection() {
             <p className="text-xs text-muted-foreground">
               Used for text-2xl (24px) through text-9xl (128px). Always weight 500.
             </p>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
 
-        <Card className="min-w-0 rounded-lg border transition-smooth">
-          <CardContent className="flex min-w-0 flex-col gap-4 p-6">
+        <div className="min-w-0 rounded-2xl border border-border bg-card shadow-stripe hover-lift">
+          <div className="flex min-w-0 flex-col gap-4 p-6">
             <div className="flex min-w-0 items-start justify-between gap-3">
               <div className="min-w-0 flex-1">
-                <h3 className="font-heading text-2xl font-normal text-foreground">
+                <h3 className="font-heading text-2xl font-medium text-foreground">
                   Open Sans
                 </h3>
                 <p className="text-sm text-muted-foreground">
                   Body text — weights 400, 500, 600
                 </p>
               </div>
-              <Button
-                variant="outline"
-                size="sm"
-                className="rounded-[6px] text-xs font-medium shadow transition-smooth-transform"
-                asChild
-              >
+              <Button variant="outline" size="sm" asChild>
                 <a
                   href="https://fonts.google.com/specimen/Open+Sans"
                   target="_blank"
@@ -125,14 +114,14 @@ export function TypographySection() {
             <p className="text-xs text-muted-foreground">
               Used for text-xs (12px) through text-xl (20px). Weights: 400 body, 500 interactive, 600 section titles.
             </p>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
 
       {/* Heading Scale */}
-      <Card className="min-w-0 rounded-lg border transition-smooth">
-        <CardContent className="flex min-w-0 flex-col gap-6 p-6">
-          <h3 className="text-[11px] font-semibold uppercase tracking-[0.07em] text-muted-foreground">
+      <div className="min-w-0 rounded-2xl border border-border bg-card shadow-stripe hover-lift">
+        <div className="flex min-w-0 flex-col gap-6 p-6">
+          <h3 className="font-heading text-[11px] font-semibold uppercase tracking-[0.07em] text-muted-foreground">
             Heading Scale — Manrope 500
           </h3>
           <div className="flex flex-col gap-6">
@@ -152,13 +141,13 @@ export function TypographySection() {
               </div>
             ))}
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* Body Scale */}
-      <Card className="min-w-0 rounded-lg border transition-smooth">
-        <CardContent className="flex min-w-0 flex-col gap-6 p-6">
-          <h3 className="text-[11px] font-semibold uppercase tracking-[0.07em] text-muted-foreground">
+      <div className="min-w-0 rounded-2xl border border-border bg-card shadow-stripe hover-lift">
+        <div className="flex min-w-0 flex-col gap-6 p-6">
+          <h3 className="font-heading text-[11px] font-semibold uppercase tracking-[0.07em] text-muted-foreground">
             Body Scale — Open Sans
           </h3>
           <div className="flex flex-col gap-4">
@@ -178,8 +167,8 @@ export function TypographySection() {
               </div>
             ))}
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   )
 }

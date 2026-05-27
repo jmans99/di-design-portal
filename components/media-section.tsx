@@ -75,7 +75,7 @@ export function MediaSection() {
             href={gallery.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:shadow-xl hover:shadow-black/8 hover:-translate-y-1"
+            className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-stripe transition-smooth hover-lift"
           >
             {/* Thumbnail */}
             <div className="relative h-44 w-full overflow-hidden shrink-0">

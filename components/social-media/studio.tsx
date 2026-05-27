@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { PreviewPanel } from '@/components/ui/preview-panel'
 import { Download, Globe, Hash, Info, Type } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -132,10 +133,10 @@ export function SocialMediaStudio() {
                   if (preset.id !== 'custom') setTaglineCustom(preset.value)
                 }}
                 className={cn(
-                  'flex items-center justify-between rounded-[6px] border px-3 py-2 text-left text-sm font-medium transition-smooth-transform hover:shadow-md active:scale-[0.99]',
+                  'flex items-center justify-between rounded-2xl border px-3 py-2 text-left text-sm font-medium transition-smooth-transform active:scale-[0.99]',
                   taglinePreset === preset.id
-                    ? 'border-primary bg-accent text-foreground shadow'
-                    : 'border-border bg-card text-foreground'
+                    ? 'border-primary-300 bg-primary-50/70 text-foreground'
+                    : 'border-border bg-card text-foreground hover:bg-secondary/60'
                 )}
               >
                 <span>{preset.label}</span>
@@ -174,10 +175,9 @@ export function SocialMediaStudio() {
           <Button
             onClick={handleDownload}
             disabled={isExporting}
-            className="h-12 w-full rounded-[6px] text-base font-medium shadow transition-smooth-transform active:scale-[0.98]"
-            size="lg"
+            className="w-full"
           >
-            <Download className="h-5 w-5 shrink-0" />
+            <Download className="shrink-0" />
             {isExporting ? 'Generating…' : 'Download PNG'}
           </Button>
           <p className="mt-2 text-xs text-muted-foreground">
@@ -197,25 +197,25 @@ export function SocialMediaStudio() {
 
       {/* Preview */}
       <div className="order-1 flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto lg:order-2 lg:sticky lg:top-[calc(4rem+24px)] lg:h-fit lg:min-w-0">
-        <div className="flex items-center justify-between">
-          <h3 className="font-heading text-2xl font-medium text-foreground">Live Preview</h3>
+        <div className="flex items-center justify-end">
           <span className="text-xs font-medium text-muted-foreground">
             {TEMPLATE_WIDTH} × {TEMPLATE_HEIGHT}
           </span>
         </div>
 
-        <div
-          ref={previewWrapperRef}
-          className="relative flex w-full items-center justify-center overflow-hidden rounded-lg border border-border bg-grey-100/40"
-          style={{ height: TEMPLATE_HEIGHT * scale }}
-        >
+        <PreviewPanel className="min-h-0" contentClassName="p-4">
           <div
-            style={{
-              width: TEMPLATE_WIDTH * scale,
-              height: TEMPLATE_HEIGHT * scale,
-              position: 'relative',
-            }}
+            ref={previewWrapperRef}
+            className="relative flex w-full items-center justify-center overflow-hidden"
+            style={{ height: TEMPLATE_HEIGHT * scale }}
           >
+            <div
+              style={{
+                width: TEMPLATE_WIDTH * scale,
+                height: TEMPLATE_HEIGHT * scale,
+                position: 'relative',
+              }}
+            >
             <div
               style={{
                 position: 'absolute',
@@ -238,7 +238,8 @@ export function SocialMediaStudio() {
               />
             </div>
           </div>
-        </div>
+          </div>
+        </PreviewPanel>
 
         <p className="text-xs leading-relaxed text-muted-foreground">
           The preview is rendered at native 1080×1350 and downscaled for your screen. The downloaded PNG is the full-resolution capture.

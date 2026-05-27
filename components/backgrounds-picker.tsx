@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useMemo, useState } from 'react'
-import { Card, CardContent } from '@/components/ui/card'
+import { PreviewPanel } from '@/components/ui/preview-panel'
 import { Button } from '@/components/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import {
@@ -257,7 +257,7 @@ export function BackgroundsPicker() {
                   type="button"
                   role="combobox"
                   aria-expanded={pickerOpen}
-                  className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm transition-smooth-transform hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm transition-smooth-transform focus:outline-none focus:ring-2 focus:ring-ring"
                 >
                   <span className="flex items-center gap-2 truncate">
                     <span className="inline-flex h-5 min-w-[28px] items-center justify-center rounded bg-muted px-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
@@ -313,19 +313,19 @@ export function BackgroundsPicker() {
               <Button
                 onClick={handleGenerate}
                 disabled={isGenerating}
-                className="h-12 w-full rounded-[6px] text-base font-medium shadow transition-smooth-transform active:scale-[0.98]"
-                size="lg"
+                className="w-full"
               >
-                <Sparkles className="h-5 w-5 shrink-0" />
+                <Sparkles />
                 {isGenerating ? 'Generating...' : 'Generate background'}
               </Button>
               {customUrl && !isGenerating && (
                 <Button
                   onClick={handleCustomDownload}
-                  variant="secondary"
-                  className="mt-2 h-11 w-full rounded-[6px] text-sm font-medium"
+                  variant="outline"
+                  size="sm"
+                  className="mt-2 w-full"
                 >
-                  <Download className="h-4 w-4" />
+                  <Download />
                   Download PNG
                 </Button>
               )}
@@ -342,10 +342,9 @@ export function BackgroundsPicker() {
             <>
               <Button
                 onClick={handlePresetDownload}
-                className="h-12 w-full rounded-[6px] text-base font-medium shadow transition-smooth-transform active:scale-[0.98]"
-                size="lg"
+                className="w-full"
               >
-                <Download className="h-5 w-5 shrink-0" />
+                <Download />
                 Download PNG
               </Button>
               <p className="mt-2 text-xs text-muted-foreground">
@@ -364,31 +363,29 @@ export function BackgroundsPicker() {
 
       {/* Preview panel */}
       <div className="order-1 flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto lg:order-2 lg:sticky lg:top-[calc(4rem+24px)] lg:h-fit lg:min-w-0">
-        <Card className="relative overflow-hidden rounded-lg border border-border">
-          <CardContent className="p-0">
-            <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#0a0a0a]">
-              {previewSrc ? (
-                <img
-                  src={previewSrc}
-                  alt={
-                    isCustom
-                      ? `Generated background for ${country.name}`
-                      : PRESETS[selection as PresetId].label
-                  }
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-              ) : (
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center">
-                  <Sparkles className="h-8 w-8 text-white/30" />
-                  <p className="max-w-xs text-sm text-white/60">
-                    Pick a country, then hit{' '}
-                    <span className="font-medium">Generate background</span>.
-                  </p>
-                </div>
-              )}
-            </div>
-          </CardContent>
-        </Card>
+        <PreviewPanel dark className="min-h-0" contentClassName="p-0">
+          <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#0a0a0a]">
+            {previewSrc ? (
+              <img
+                src={previewSrc}
+                alt={
+                  isCustom
+                    ? `Generated background for ${country.name}`
+                    : PRESETS[selection as PresetId].label
+                }
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            ) : (
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center">
+                <Sparkles className="h-8 w-8 text-white/30" />
+                <p className="max-w-xs text-sm text-white/60">
+                  Pick a country, then hit{' '}
+                  <span className="font-medium">Generate background</span>.
+                </p>
+              </div>
+            )}
+          </div>
+        </PreviewPanel>
       </div>
     </div>
   )

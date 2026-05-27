@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-27T00:00:00.000Z",
+  "title": "Design System: Giga Brand Asset Generator",
+  "extensions": {
+    "colorMeta": {
+      "giga-blue": {
+        "role": "primary",
+        "displayName": "Giga Blue",
+        "canonical": "#277AFF",
+        "tonalRamp": ["#002d76", "#002d9c", "#0050e6", "#277aff", "#5495ff", "#7eb0ff", "#a9caff", "#d4e5ff"]
+      },
+      "giga-blue-tint": {
+        "role": "primary",
+        "displayName": "Giga Blue Tint",
+        "canonical": "#EAF2FF",
+        "tonalRamp": ["#bfd7ff", "#cfe1ff", "#d4e5ff", "#e0edff", "#eaf2ff", "#f0f6ff", "#f5f9ff", "#fafcff"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "hsl(222 78% 14%)",
+        "tonalRamp": ["#0a1b3f", "#10264a", "#1c2f57", "#33476f", "#5c7187", "#8a99ad", "#bcc7d4", "#dde6f0"]
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Canvas",
+        "canonical": "hsl(210 40% 98.3%)",
+        "tonalRamp": ["#dde6f0", "#e6edf5", "#eef3f9", "#f2f6fb", "#f7f9fc", "#fafcfe", "#fdfeff", "#ffffff"]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#DDE6F0",
+        "tonalRamp": ["#9fb1c6", "#b3c2d4", "#c6d2e1", "#d4dfeb", "#dde6f0", "#e6edf5", "#eef3f9", "#f7f9fc"]
+      },
+      "scrim": {
+        "role": "neutral",
+        "displayName": "Neutral Scrim",
+        "canonical": "#0A0A0C",
+        "tonalRamp": ["#0a0a0c", "#15151a", "#22222a", "#33333d", "#4a4a56", "#6b6b78", "#9a9aa6", "#c8c8d0"]
+      },
+      "status-green": { "role": "tertiary", "displayName": "Connectivity Green", "canonical": "#00D661", "tonalRamp": ["#00662e", "#008f40", "#00b853", "#00d661", "#0aff78", "#5cffa5", "#85ffbc", "#d6ffe9"] },
+      "status-amber": { "role": "tertiary", "displayName": "Connectivity Amber", "canonical": "#FFC93D", "tonalRamp": ["#8a6300", "#b38100", "#d99c00", "#ffc93d", "#ffd566", "#ffe199", "#ffeec2", "#fff7e0"] },
+      "status-red": { "role": "tertiary", "displayName": "Connectivity Red", "canonical": "#ED1C24", "tonalRamp": ["#7a0a0e", "#a30f15", "#cc141c", "#ed1c24", "#f25158", "#f7848a", "#fbb3b7", "#fde0e2"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline only, white over media." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles, often text-balance." },
+      "title": { "displayName": "Title", "purpose": "Tile and card titles." },
+      "body": { "displayName": "Body", "purpose": "Paragraphs and descriptions, measure capped ~65ch." },
+      "label": { "displayName": "Eyebrow / Label", "purpose": "Giga-Blue uppercase 10px section eyebrow." }
+    },
+    "shadows": [
+      { "name": "shadow-stripe", "value": "0 1px 2px rgba(50,50,93,0.06), 0 2px 5px rgba(50,50,93,0.08), 0 1px 1.5px rgba(0,0,0,0.05)", "purpose": "Resting state of cards, tiles, and the solid header band." },
+      { "name": "shadow-stripe-md", "value": "0 4px 6px rgba(50,50,93,0.07), 0 1px 3px rgba(0,0,0,0.06), 0 8px 20px rgba(50,50,93,0.05)", "purpose": "Primary buttons, raised media frames, card hover." },
+      { "name": "shadow-stripe-lg", "value": "0 13px 27px rgba(50,50,93,0.1), 0 8px 16px rgba(0,0,0,0.07)", "purpose": "The largest photo blocks." }
+    ],
+    "motion": [
+      { "name": "ease-out-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Entrances, scroll reveals, accordion expansion." },
+      { "name": "transition-smooth", "value": "cubic-bezier(0.25, 0.46, 0.45, 0.94) 280ms", "purpose": "Default hover/state transitions." },
+      { "name": "hover-lift", "value": "transform translateY(-2px) rotate(0.4deg); 180ms in / 350ms out", "purpose": "Card lift on hover; elevation as a response to state." },
+      { "name": "icon-hover", "value": "single-shot transform animation ~0.5s on card hover (twist/wiggle/send/share/bounce)", "purpose": "Characterful, non-looping bento icon micro-animation; reduced-motion safe." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The main call to action. Giga Blue pill with a trailing arrow.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Start exploring<svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;gap:.5rem;height:3rem;padding:0 1.75rem;border-radius:9999px;background:#277AFF;color:#fff;font-family:Manrope,sans-serif;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 4px 6px rgba(50,50,93,.07),0 1px 3px rgba(0,0,0,.06),0 8px 20px rgba(50,50,93,.05);transition:background .28s cubic-bezier(.25,.46,.45,.94),transform .28s}.ds-btn-primary:hover{background:#0050E6}.ds-btn-primary:hover svg{transform:translateX(2px)}.ds-btn-primary svg{transition:transform .2s}.ds-btn-primary:active{transform:scale(.98)}"
+    },
+    {
+      "name": "On-accent Button",
+      "kind": "button",
+      "refersTo": "button-on-accent",
+      "description": "CTA placed over a blue or photo block: inverted white pill with blue text.",
+      "html": "<a class=\"ds-btn-on-accent\" href=\"#\">Start exploring</a>",
+      "css": ".ds-btn-on-accent{display:inline-flex;align-items:center;gap:.5rem;height:3rem;padding:0 1.75rem;border-radius:9999px;background:#fff;color:#0050E6;font-family:Manrope,sans-serif;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 4px 6px rgba(50,50,93,.07),0 8px 20px rgba(50,50,93,.05);transition:background .28s}.ds-btn-on-accent:hover{background:#EAF2FF}.ds-btn-on-accent:active{transform:scale(.98)}"
+    },
+    {
+      "name": "Ghost Button (over media)",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action over the dark hero scrim only.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">Explore AI Skills</a>",
+      "css": ".ds-btn-ghost{display:inline-flex;align-items:center;height:3rem;padding:0 1.5rem;border-radius:9999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);color:#fff;font-family:Manrope,sans-serif;font-weight:600;font-size:15px;text-decoration:none;backdrop-filter:blur(8px);transition:background .28s}.ds-btn-ghost:hover{background:rgba(255,255,255,.2)}"
+    },
+    {
+      "name": "Utility Tile",
+      "kind": "card",
+      "refersTo": "tile",
+      "description": "The calm baseline of the bento: white card, Giga-Blue icon chip, title, subtitle. Lifts on hover.",
+      "html": "<a class=\"ds-tile\" href=\"#\"><span class=\"ds-tile-chip\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"2\" y=\"4\" width=\"20\" height=\"16\" rx=\"2\"/><path d=\"m22 7-10 5L2 7\"/></svg></span><div class=\"ds-tile-text\"><h3>Email signature</h3><p>Build and copy yours</p></div></a>",
+      "css": ".ds-tile{display:flex;flex-direction:column;justify-content:space-between;min-height:200px;padding:1.25rem;border-radius:24px;background:#fff;border:1px solid #DDE6F0;text-decoration:none;box-shadow:0 1px 2px rgba(50,50,93,.06),0 2px 5px rgba(50,50,93,.08);transition:transform .35s cubic-bezier(.25,.46,.45,.94),box-shadow .35s}.ds-tile:hover{transform:translateY(-2px) rotate(.4deg);box-shadow:0 4px 6px rgba(50,50,93,.07),0 8px 20px rgba(50,50,93,.05)}.ds-tile-chip{display:flex;align-items:center;justify-content:center;width:2.75rem;height:2.75rem;border-radius:16px;background:#EAF2FF;color:#277AFF}.ds-tile-text h3{margin:0;font-family:Manrope,sans-serif;font-weight:600;font-size:16px;color:#0A1B3F}.ds-tile-text p{margin:.125rem 0 0;font-family:'Open Sans',sans-serif;font-size:13px;color:#5C7187}"
+    },
+    {
+      "name": "Palette Tile",
+      "kind": "card",
+      "refersTo": "tile",
+      "description": "Signature accent tile: bold Giga-Blue tonal bands with a label over a navy gradient.",
+      "html": "<a class=\"ds-tile-palette\" href=\"#\"><span class=\"ds-band\" style=\"background:#002d9c\"></span><span class=\"ds-band\" style=\"background:#0050e6\"></span><span class=\"ds-band\" style=\"background:#277aff\"></span><span class=\"ds-band\" style=\"background:#5495ff\"></span><span class=\"ds-band\" style=\"background:#7eb0ff\"></span><span class=\"ds-band\" style=\"background:#bfd7ff\"></span><div class=\"ds-palette-label\"><h3>Colors</h3><p>Palette and tokens</p></div></a>",
+      "css": ".ds-tile-palette{position:relative;display:flex;min-height:200px;border-radius:24px;overflow:hidden;text-decoration:none;box-shadow:0 1px 2px rgba(50,50,93,.06),0 2px 5px rgba(50,50,93,.08)}.ds-band{flex:1}.ds-tile-palette::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,45,118,.9),rgba(0,45,118,.1) 60%,transparent)}.ds-palette-label{position:absolute;left:0;right:0;bottom:0;padding:1.25rem;z-index:1}.ds-palette-label h3{margin:0;font-family:Manrope,sans-serif;font-weight:600;font-size:16px;color:#fff}.ds-palette-label p{margin:.125rem 0 0;font-family:'Open Sans',sans-serif;font-size:13px;color:rgba(255,255,255,.85)}"
+    },
+    {
+      "name": "Input Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Tool-surface text field: hairline border, Giga-Blue focus ring.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"Country name\">",
+      "css": ".ds-input{width:100%;padding:.625rem .875rem;border-radius:8px;border:1px solid #DDE6F0;background:#fff;color:#0A1B3F;font-family:'Open Sans',sans-serif;font-size:15px;outline:none;transition:border-color .2s,box-shadow .2s}.ds-input::placeholder{color:#5C7187}.ds-input:focus-visible{border-color:#277AFF;box-shadow:0 0 0 3px rgba(39,122,255,.25)}"
+    },
+    {
+      "name": "Section Intro",
+      "kind": "custom",
+      "refersTo": "eyebrow",
+      "description": "The reusable three-beat section header: Giga-Blue eyebrow, headline, one muted line.",
+      "html": "<div class=\"ds-intro\"><p class=\"ds-eyebrow\">Why it exists</p><h2 class=\"ds-headline\">On brand, without the back-and-forth</h2><p class=\"ds-sub\">The correct asset, in the right format, is already here.</p></div>",
+      "css": ".ds-intro{max-width:42rem;text-align:center;margin:0 auto}.ds-eyebrow{margin:0 0 .75rem;font-family:Manrope,sans-serif;font-weight:700;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#277AFF}.ds-headline{margin:0;font-family:Manrope,sans-serif;font-weight:600;font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.1;letter-spacing:-.03em;color:#0A1B3F;text-wrap:balance}.ds-sub{margin:1rem 0 0;font-family:'Open Sans',sans-serif;font-size:15px;line-height:1.6;color:#5C7187}"
+    },
+    {
+      "name": "Header Band",
+      "kind": "nav",
+      "refersTo": "header-band",
+      "description": "Full-width solid (scrolled / inner-page) state: frosted white band with a bottom hairline.",
+      "html": "<header class=\"ds-header\"><span class=\"ds-logo\">giga</span><nav class=\"ds-nav\"><a href=\"#\">Logos</a><a href=\"#\">Illustrations</a><a href=\"#\">Media</a></nav></header>",
+      "css": ".ds-header{display:flex;align-items:center;justify-content:space-between;height:4.5rem;padding:0 1.5rem;background:rgba(255,255,255,.8);backdrop-filter:blur(12px);border-bottom:1px solid #DDE6F0}.ds-logo{font-family:Manrope,sans-serif;font-weight:700;color:#277AFF;font-size:20px}.ds-nav{display:flex;gap:.25rem}.ds-nav a{padding:.375rem .75rem;border-radius:9999px;font-family:Manrope,sans-serif;font-weight:500;font-size:14px;color:#5C7187;text-decoration:none;transition:color .28s}.ds-nav a:hover{color:#0A1B3F}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Bright Utility",
+    "overview": "The brand site that is the brand. It enforces the Giga design system by embodying it. The personality is institutional precision warmed by mission: a calm, generous, white-space-led baseline that comes alive with two things only, Giga Blue and real photography of connected classrooms. The blue is the voice; the photography is the reason. Density is low and deliberate; layout alternates centered intros with left-aligned, asymmetric content. Motion is choreographed but restrained. It rejects clutter and 'too much': no decorative illustration spam, no rainbow of accents, no black slabs, no gradient-text or glassmorphism, no SaaS hype.",
+    "keyCharacteristics": [
+      "One voice color (Giga Blue) over a tinted near-white canvas, no second accent.",
+      "Real classroom/connectivity photography for warmth, used sparingly, never as wallpaper.",
+      "Manrope headlines with tight tracking; Open Sans body; generous whitespace.",
+      "Soft Stripe-grade shadows on flat surfaces; depth is a response to state.",
+      "Choreographed-but-quiet motion; everything honors prefers-reduced-motion."
+    ],
+    "rules": [
+      { "name": "The One Voice Rule", "body": "Giga Blue is the only color that may fill a background. There is no secondary accent. Variety comes from blue tints (#EAF2FF to #0050E6) and from photography, not from new hues.", "section": "colors" },
+      { "name": "The No-Black Rule", "body": "Solid black or Grey-950 backgrounds are forbidden everywhere except Giga Maps. Dark areas are a real photograph or the neutral #0A0A0C scrim over a photograph, never a flat black panel.", "section": "colors" },
+      { "name": "The No-Yellow Rule", "body": "Reference layouts may use a yellow/lime accent; we do not. CTAs and accents are Giga Blue.", "section": "colors" },
+      { "name": "The Eyebrow Rule", "body": "Every section opens with a Giga-Blue uppercase 10px eyebrow, then the headline, then one line of muted body. Reuse on every page.", "section": "typography" },
+      { "name": "The Tight-Headline Rule", "body": "Headlines always carry negative letter-spacing (-0.03em to -0.04em) and weight 600. Never set a headline at default tracking or below 500.", "section": "typography" },
+      { "name": "The Lift-On-Hover Rule", "body": "Cards rest flat with shadow-stripe. On hover they rise via .hover-lift and deepen to shadow-stripe-md. Elevation is a response to state, never a default.", "section": "elevation" },
+      { "name": "The Constant-Logo Rule", "body": "The logo lockup and its width never change between header states; only its color flips. No size jump on scroll.", "section": "components" }
+    ],
+    "dos": [
+      "Do lead every section with the eyebrow + headline + one-line body pattern, eyebrow in Giga Blue uppercase 10px.",
+      "Do keep Giga Blue (#277AFF) as the single voice; build variety from its tints and from photography.",
+      "Do keep surfaces flat with shadow-stripe; reserve lift and shadow-stripe-md for hover/state.",
+      "Do use real, on-mission photography for hero and a few feature tiles, with a neutral #0A0A0C scrim when text sits on top.",
+      "Do set headlines in Manrope 600 with negative tracking; body in Open Sans at ~15px, measure capped near 65ch.",
+      "Do keep motion choreographed but quiet, all prefers-reduced-motion safe.",
+      "Do prefer removing over adding. Balance, elegance, cleanliness."
+    ],
+    "donts": [
+      "Don't use any background color other than Giga Blue. No second accent, no yellow/lime.",
+      "Don't place a solid black or Grey-950 background anywhere outside Giga Maps.",
+      "Don't fill tiles with decorative illustration SVGs, and don't let photo/color tiles outnumber the calm white ones.",
+      "Don't use gradient text, decorative glassmorphism, or glowing/'magical AI' SaaS styling.",
+      "Don't use em dashes in copy.",
+      "Don't let the connectivity colors (green/amber/red) become decorative; they are status/data only.",
+      "Don't change logo size between header states, and don't reintroduce a floating pill header."
+    ]
+  }
+}

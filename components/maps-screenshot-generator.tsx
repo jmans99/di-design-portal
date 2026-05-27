@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { Card, CardContent } from '@/components/ui/card'
+import { PreviewPanel } from '@/components/ui/preview-panel'
 import { Button } from '@/components/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import {
@@ -98,7 +98,7 @@ export function MapsScreenshotGenerator() {
                 type="button"
                 role="combobox"
                 aria-expanded={pickerOpen}
-                className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm transition-smooth-transform hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm transition-smooth-transform focus:outline-none focus:ring-2 focus:ring-ring"
               >
                 <span className="flex items-center gap-2 truncate">
                   <span className="inline-flex h-5 min-w-[28px] items-center justify-center rounded bg-muted px-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
@@ -187,10 +187,9 @@ export function MapsScreenshotGenerator() {
           <Button
             onClick={handleExport}
             disabled={isExporting}
-            className="h-12 w-full rounded-[6px] text-base font-medium shadow transition-smooth-transform active:scale-[0.98]"
-            size="lg"
+            className="w-full"
           >
-            <Download className="h-5 w-5 shrink-0" />
+            <Download />
             {isExporting ? 'Generating...' : 'Download Screenshot'}
           </Button>
           <p className="mt-2 text-xs text-muted-foreground">
@@ -208,15 +207,12 @@ export function MapsScreenshotGenerator() {
 
       {/* Preview panel */}
       <div className="order-1 flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto lg:order-2 lg:sticky lg:top-[calc(4rem+24px)] lg:h-fit lg:min-w-0">
-        <div className="flex items-center justify-between">
-          <h3 className="font-heading text-2xl font-medium text-foreground">
-            Live Preview
-          </h3>
+        <div className="flex items-center justify-end">
           <a
             href={mapUrl}
             target="_blank"
             rel="noreferrer"
-            className="text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className="text-xs font-medium text-muted-foreground transition-smooth hover:text-foreground"
           >
             Open on maps.giga.global
           </a>
@@ -232,23 +228,21 @@ export function MapsScreenshotGenerator() {
           </div>
         </div>
 
-        <Card className="relative overflow-hidden rounded-lg border border-[#393939] bg-[#161616]">
-          <span className="pointer-events-none absolute right-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-black/70 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-white shadow backdrop-blur">
+        <PreviewPanel dark className="min-h-0" contentClassName="p-0">
+          <span className="pointer-events-none absolute right-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-black/70 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-white shadow-stripe backdrop-blur">
             <EyeOff className="h-3 w-3" aria-hidden />
             UI removed in download
           </span>
-          <CardContent className="p-0">
-            <div className="relative aspect-[16/10] w-full overflow-hidden">
-              <iframe
-                key={mapUrl}
-                src={mapUrl}
-                title={`Giga Maps preview for ${country.name}`}
-                className="absolute inset-0 h-full w-full border-0"
-                loading="lazy"
-              />
-            </div>
-          </CardContent>
-        </Card>
+          <div className="relative aspect-[16/10] w-full overflow-hidden">
+            <iframe
+              key={mapUrl}
+              src={mapUrl}
+              title={`Giga Maps preview for ${country.name}`}
+              className="absolute inset-0 h-full w-full border-0"
+              loading="lazy"
+            />
+          </div>
+        </PreviewPanel>
 
         <p className="text-xs leading-relaxed text-muted-foreground">
           The preview is the real interactive GigaMaps so you can navigate. When
@@ -307,10 +301,10 @@ function ToggleButton({
     <button
       type="button"
       onClick={onClick}
-      className={`flex-1 rounded-[6px] border px-4 py-2.5 text-sm font-medium transition-smooth-transform hover:shadow-md active:scale-[0.98] ${
+      className={`flex-1 rounded-full border px-4 py-2.5 text-sm font-medium transition-smooth-transform active:scale-[0.98] ${
         active
-          ? 'border-primary bg-primary text-primary-foreground shadow'
-          : 'border-border bg-card text-foreground'
+          ? 'border-primary-300 bg-primary-50 text-primary-700'
+          : 'border-border bg-card text-foreground hover:bg-secondary/60'
       } ${className}`}
     >
       {children}
@@ -333,10 +327,10 @@ function OptionCard({
     <button
       type="button"
       onClick={onClick}
-      className={`flex flex-col items-start rounded-[6px] border px-4 py-3 text-left transition-smooth-transform hover:shadow-md active:scale-[0.99] ${
+      className={`flex flex-col items-start rounded-2xl border px-4 py-3 text-left transition-smooth-transform active:scale-[0.99] ${
         active
-          ? 'border-primary bg-accent text-foreground shadow'
-          : 'border-border bg-card text-foreground'
+          ? 'border-primary-300 bg-primary-50/70 text-foreground'
+          : 'border-border bg-card text-foreground hover:bg-secondary/60'
       }`}
     >
       <span className="text-sm font-medium">{label}</span>

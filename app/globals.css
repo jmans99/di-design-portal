@@ -89,6 +89,40 @@
   }
 }
 
+/* ── Bento icon hover animations ──
+   Each plays once when the parent card (.group) is hovered, then settles
+   back to rest. Transform-only, so they stay cheap and GPU-friendly. */
+@keyframes icon-bounce {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.18); }
+  65% { transform: scale(0.94); }
+  100% { transform: scale(1); }
+}
+@keyframes icon-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  20% { transform: rotate(-13deg); }
+  50% { transform: rotate(10deg); }
+  80% { transform: rotate(-5deg); }
+}
+@keyframes icon-send {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  35% { transform: translate(1px, -4px) rotate(-10deg); }
+}
+@keyframes icon-share {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  45% { transform: rotate(14deg) scale(1.14); }
+}
+@keyframes icon-twist {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(40deg) scale(1.1); }
+}
+
+.group:hover .anim-bounce { animation: icon-bounce 0.5s ease-out; }
+.group:hover .anim-wiggle { animation: icon-wiggle 0.55s ease-in-out; }
+.group:hover .anim-send { animation: icon-send 0.55s ease-out; }
+.group:hover .anim-share { animation: icon-share 0.5s ease-out; }
+.group:hover .anim-twist { animation: icon-twist 0.55s ease-out; }
+
 @layer base {
   :root {
     --background: 210 40% 98.3%;

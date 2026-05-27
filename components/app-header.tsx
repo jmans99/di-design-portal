@@ -15,6 +15,7 @@ const MATERIALS_SUB_ID = 'nav-materials-sub'
 export function AppHeader() {
   const pathname = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [atTop, setAtTop] = useState(true)
   const [expandedGuidelines, setExpandedGuidelines] = useState(false)
   const [expandedMaterials, setExpandedMaterials] = useState(false)
   const [guidelinesOpen, setGuidelinesOpen] = useState(false)
@@ -61,8 +62,8 @@ export function AppHeader() {
 
     const navRect = navRef.current.getBoundingClientRect()
     const elRect = el.getBoundingClientRect()
-    const newLeft = elRect.left - navRect.left + 8
-    const newRight = navRect.right - elRect.right + 8
+    const newLeft = elRect.left - navRect.left
+    const newRight = navRect.right - elRect.right
 
     setIndicator((prev) => {
       if (prev === null) {
@@ -79,26 +80,45 @@ export function AppHeader() {
     })
   }, [pathname])
 
+  // Transparent-over-hero state: only on the home page while the hero is still
+  // under the header. Flips to the solid pill once the photo scrolls past.
+  useEffect(() => {
+    const onScroll = () => {
+      const hero = document.querySelector('main > section')
+      if (hero) setAtTop(hero.getBoundingClientRect().bottom > 80)
+      else setAtTop(window.scrollY < 100)
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [pathname])
+
+  const overHero = pathname === '/' && atTop && !isMenuOpen
+
   return (
     <header
-      className={`sticky top-0 z-[100] border-b border-border border-t-[3px] border-t-primary transition-smooth ${
-        isMenuOpen ? 'bg-white' : 'bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60'
+      className={`sticky top-0 z-[100] border-b transition-smooth ${
+        overHero
+          ? 'border-transparent bg-transparent'
+          : isMenuOpen
+            ? 'border-border bg-white'
+            : 'border-border/70 bg-card/80 backdrop-blur-md supports-[backdrop-filter]:bg-card/70'
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+      <div className="mx-auto flex h-[4.5rem] max-w-6xl items-center justify-between px-6">
         <div className="flex shrink-0 items-center gap-4">
           <Link href="/" className="flex items-center gap-4" aria-label="Giga Brand Assets home">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/logos/giga-complete-horizontal.svg"
-              alt="Giga"
-              className="w-[180px] transition-smooth-transform"
+              src="/logos/giga-unicef-itu-horizontal.svg"
+              alt="Giga, UNICEF and ITU"
+              className={`w-[188px] transition-smooth-transform ${overHero ? 'brightness-0 invert' : ''}`}
               style={{ height: 'fit-content' }}
             />
           </Link>
         </div>
 
-        <nav ref={navRef} className="relative hidden items-center gap-1 lg:flex" aria-label="Main navigation">
+        <nav ref={navRef} className="relative hidden h-full items-center gap-1 lg:flex" aria-label="Main navigation">
           {MAIN_NAV_LINKS.map((item) => {
             const active = isActive(item.path)
             return (
@@ -108,8 +128,12 @@ export function AppHeader() {
                 ref={(el) => {
                   itemRefs.current[item.id] = el
                 }}
-                className={`rounded-md px-3 py-1.5 text-sm font-[500] transition-smooth ${
-                  active ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
+                className={`relative z-10 rounded-full px-3 py-1.5 text-sm font-[500] transition-smooth ${
+                  active
+                    ? 'text-foreground'
+                    : overHero
+                      ? 'text-white/85 hover:text-white'
+                      : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
                 {item.label}
@@ -127,8 +151,12 @@ export function AppHeader() {
                 setGuidelinesOpen((v) => !v)
                 setMaterialsOpen(false)
               }}
-              className={`flex items-center gap-1 rounded-md px-3 py-1.5 text-sm font-[500] transition-smooth ${
-                isGuidelinesActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
+              className={`relative z-10 flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-[500] transition-smooth ${
+                isGuidelinesActive
+                  ? 'text-foreground'
+                  : overHero
+                    ? 'text-white/85 hover:text-white'
+                    : 'text-muted-foreground hover:text-foreground'
               }`}
             >
               {GUIDELINES_LABEL}
@@ -138,7 +166,7 @@ export function AppHeader() {
               />
             </button>
             {guidelinesOpen && (
-              <div className="absolute right-0 top-full z-[100] mt-3 min-w-[160px] rounded-lg border border-border bg-card py-1 shadow-lg">
+              <div className="absolute right-0 top-full z-[100] mt-3 min-w-[160px] rounded-2xl border border-border bg-card py-1 shadow-stripe-lg">
                 {GUIDELINES_DROPDOWN_LINKS.map((child) => (
                   <Link
                     key={child.id}
@@ -163,8 +191,12 @@ export function AppHeader() {
                 setMaterialsOpen((v) => !v)
                 setGuidelinesOpen(false)
               }}
-              className={`flex items-center gap-1 rounded-md px-3 py-1.5 text-sm font-[500] transition-smooth ${
-                isMaterialsActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
+              className={`relative z-10 flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-[500] transition-smooth ${
+                isMaterialsActive
+                  ? 'text-foreground'
+                  : overHero
+                    ? 'text-white/85 hover:text-white'
+                    : 'text-muted-foreground hover:text-foreground'
               }`}
             >
               {MATERIALS_LABEL}
@@ -174,7 +206,7 @@ export function AppHeader() {
               />
             </button>
             {materialsOpen && (
-              <div className="absolute right-0 top-full z-[100] mt-3 min-w-[180px] rounded-lg border border-border bg-card py-1 shadow-lg">
+              <div className="absolute right-0 top-full z-[100] mt-3 min-w-[180px] rounded-2xl border border-border bg-card py-1 shadow-stripe-lg">
                 {MATERIALS_DROPDOWN_LINKS.map((child) => (
                   <Link
                     key={child.id}
@@ -192,9 +224,8 @@ export function AppHeader() {
           {indicator && (
             <span
               aria-hidden
-              className="pointer-events-none absolute h-[2px] rounded-full bg-primary"
+              className="pointer-events-none absolute bottom-0 z-0 h-[2px] rounded-full bg-primary-600"
               style={{
-                bottom: -17,
                 left: indicator.left,
                 right: indicator.right,
                 transition: indicator.transition,
@@ -206,6 +237,7 @@ export function AppHeader() {
         <div className="lg:hidden">
           <HamburgerMenu
             fullWidth
+            light={overHero}
             onOpenChange={(open) => {
               setIsMenuOpen(open)
               if (!open) {

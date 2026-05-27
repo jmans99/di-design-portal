@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { Card, CardContent } from '@/components/ui/card'
+import { PreviewPanel } from '@/components/ui/preview-panel'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import {
@@ -56,10 +56,10 @@ function ToggleButton({
     <button
       type="button"
       onClick={onClick}
-      className={`flex-1 rounded-[6px] border px-4 py-2.5 text-sm font-medium transition-smooth-transform hover:shadow-md active:scale-[0.98] ${
+      className={`flex-1 rounded-full border px-4 py-2.5 text-sm font-medium transition-smooth-transform active:scale-[0.98] ${
         active
-          ? 'border-primary bg-primary text-primary-foreground shadow'
-          : 'border-border bg-card text-foreground'
+          ? 'border-primary-300 bg-primary-50 text-primary-700'
+          : 'border-border bg-card text-foreground hover:bg-secondary/60'
       } ${className}`}
     >
       {children}
@@ -228,12 +228,11 @@ export function EmailSignatureGenerator() {
         <div className="flex flex-col gap-2 lg:px-5 lg:pb-4 lg:pt-2">
           <Button
             type="button"
-            className="h-12 w-full rounded-[6px] text-base font-medium shadow transition-smooth-transform active:scale-[0.98]"
-            size="lg"
+            className="w-full"
             onClick={handleCopySignature}
             disabled={logosLoading}
           >
-            <Copy className="mr-2 h-5 w-5 shrink-0" />
+            <Copy className="shrink-0" />
             {logosLoading ? 'Preparing logos…' : 'Copy signature'}
           </Button>
           {copyHint && <p className="text-center text-xs text-muted-foreground">{copyHint}</p>}
@@ -244,16 +243,15 @@ export function EmailSignatureGenerator() {
       </div>
 
       <div className="order-1 flex min-h-0 flex-1 flex-col gap-4 lg:order-2 lg:sticky lg:top-[calc(4rem+24px)] lg:h-fit">
-        <h3 className="font-heading text-2xl font-medium text-foreground">Live preview</h3>
-
-        <Card className="min-h-[280px] overflow-auto rounded-lg border border-border bg-background transition-smooth lg:min-h-[360px]">
-          <CardContent className="p-8">
-            <div
-              className="email-signature-preview max-w-none [&_a]:text-inherit"
-              dangerouslySetInnerHTML={{ __html: html }}
-            />
-          </CardContent>
-        </Card>
+        <PreviewPanel
+          className="min-h-[280px] overflow-auto lg:min-h-[360px]"
+          contentClassName="items-start justify-start p-8"
+        >
+          <div
+            className="email-signature-preview max-w-none [&_a]:text-inherit"
+            dangerouslySetInnerHTML={{ __html: html }}
+          />
+        </PreviewPanel>
       </div>
     </div>
   )
