@@ -87,6 +87,15 @@
   .shadow-stripe-lg {
     box-shadow: 0 13px 27px rgba(50,50,93,0.1), 0 8px 16px rgba(0,0,0,0.07);
   }
+
+  /* Glass effect (css.glass) — for elements over media / dark surfaces */
+  .glass {
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    -webkit-backdrop-filter: blur(10.7px);
+    backdrop-filter: blur(10.7px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
 }
 
 /* ── Bento icon hover animations ──

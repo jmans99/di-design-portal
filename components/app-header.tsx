@@ -15,7 +15,8 @@ const MATERIALS_SUB_ID = 'nav-materials-sub'
 export function AppHeader() {
   const pathname = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [atTop, setAtTop] = useState(true)
+  const [atVeryTop, setAtVeryTop] = useState(true)
+  const [inHeroZone, setInHeroZone] = useState(true)
   const [expandedGuidelines, setExpandedGuidelines] = useState(false)
   const [expandedMaterials, setExpandedMaterials] = useState(false)
   const [guidelinesOpen, setGuidelinesOpen] = useState(false)
@@ -80,29 +81,35 @@ export function AppHeader() {
     })
   }, [pathname])
 
-  // Transparent-over-hero state: only on the home page while the hero is still
-  // under the header. Flips to the solid pill once the photo scrolls past.
+  // Header over the home hero: fully transparent at the very top, glass once
+  // scrolling begins, solid once the hero has scrolled past the header.
   useEffect(() => {
     const onScroll = () => {
+      setAtVeryTop(window.scrollY < 10)
       const hero = document.querySelector('main > section')
-      if (hero) setAtTop(hero.getBoundingClientRect().bottom > 80)
-      else setAtTop(window.scrollY < 100)
+      setInHeroZone(hero ? hero.getBoundingClientRect().bottom > 80 : window.scrollY < 100)
     }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [pathname])
 
-  const overHero = pathname === '/' && atTop && !isMenuOpen
+  // White logo/nav while over the hero video. Every page: transparent at the
+  // very top, glass once scrolling begins (dark glass over the hero, light
+  // frosted glass over normal content).
+  const overHero = pathname === '/' && inHeroZone && !isMenuOpen
+  const transparent = atVeryTop && !isMenuOpen
 
   return (
     <header
-      className={`sticky top-0 z-[100] border-b transition-smooth ${
-        overHero
-          ? 'border-transparent bg-transparent'
-          : isMenuOpen
-            ? 'border-border bg-white'
-            : 'border-border/70 bg-card/80 backdrop-blur-md supports-[backdrop-filter]:bg-card/70'
+      className={`sticky top-0 z-[100] border-b transition-[background-color,backdrop-filter,border-color,box-shadow] duration-500 ease-out-expo ${
+        isMenuOpen
+          ? 'border-border bg-white backdrop-blur-0'
+          : transparent
+            ? 'border-transparent bg-transparent backdrop-blur-0 shadow-none'
+            : overHero
+              ? 'border-white/15 bg-white/[0.08] backdrop-blur-[10.7px] shadow-[0_4px_30px_rgba(0,0,0,0.1)]'
+              : 'border-border/70 bg-card/70 backdrop-blur-[10.7px] shadow-[0_4px_30px_rgba(0,0,0,0.06)]'
       }`}
     >
       <div className="mx-auto flex h-[4.5rem] max-w-6xl items-center justify-between px-6">

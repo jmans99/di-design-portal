@@ -89,7 +89,7 @@ export function HomeHero() {
           </Link>
           <Link
             href="/materials/skills"
-            className="group inline-flex h-14 items-center gap-2 rounded-full border border-white/30 bg-white/10 px-9 text-base font-semibold text-white backdrop-blur transition-smooth hover:bg-white/20 active:scale-[0.98]"
+            className="glass group inline-flex h-14 items-center gap-2 rounded-full px-9 text-base font-semibold text-white transition-smooth hover:bg-white/[0.14] active:scale-[0.98]"
           >
             <Sparkles className="h-4 w-4" />
             Explore AI Skills
