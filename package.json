@@ -60,6 +60,7 @@
     "next-themes": "^0.4.6",
     "playwright-core": "^1.59.1",
     "pptxgenjs": "^4.0.1",
+    "qrcode.react": "^4.2.0",
     "react": "19.2.3",
     "react-day-picker": "8.10.1",
     "react-dom": "19.2.3",
@@ -73,6 +74,7 @@
     "topojson-client": "^3.1.0",
     "vaul": "^1.1.2",
     "world-atlas": "^2.0.2",
+    "xlsx": "^0.18.5",
     "zod": "^3.24.1"
   },
   "devDependencies": {
