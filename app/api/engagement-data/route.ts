@@ -55,13 +55,19 @@ function buildCountry(rawName: string): EngagementCountry {
   }
 }
 
-export async function GET(): Promise<NextResponse<ApiResponse | { error: string }>> {
+export async function GET(
+  request: Request
+): Promise<NextResponse<ApiResponse | { error: string }>> {
+  // `?refresh=1` bypasses the 5-minute cache and re-downloads the Excel now.
+  const forceRefresh = new URL(request.url).searchParams.has('refresh')
   const shareUrl = process.env.ENGAGEMENT_EXCEL_SHARE_URL || DEFAULT_SHARE_URL
   try {
     const downloadUrl = shareUrlToDownloadUrl(shareUrl)
     const res = await fetch(downloadUrl, {
       headers: { Accept: 'application/octet-stream' },
-      next: { revalidate: 300 },
+      ...(forceRefresh
+        ? { cache: 'no-store' as const }
+        : { next: { revalidate: 300 } }),
     })
     if (!res.ok) {
       return NextResponse.json(

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { PreviewPanel } from '@/components/ui/preview-panel'
 import {
   Download,
@@ -11,6 +11,7 @@ import {
   Info,
   Layers,
   Map as MapIcon,
+  RefreshCw,
   Type,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -113,39 +114,34 @@ export function SocialMediaStudio() {
 
   const mapDataRef = useRef<EngagementApiResponse | null>(null)
 
+  const loadMapData = useCallback(async (force = false) => {
+    setMapLoading(true)
+    setMapError(null)
+    try {
+      const res = await fetch(
+        force ? '/api/engagement-data?refresh=1' : '/api/engagement-data',
+        force ? { cache: 'no-store' } : undefined
+      )
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}))
+        throw new Error(body.error || `HTTP ${res.status}`)
+      }
+      const data = (await res.json()) as EngagementApiResponse
+      mapDataRef.current = data
+      setMapData(data)
+    } catch (err) {
+      setMapError(err instanceof Error ? err.message : 'Unknown error')
+    } finally {
+      setMapLoading(false)
+    }
+  }, [])
+
   // Fetch engagement data the first time we enter map mode.
   useEffect(() => {
     if (contentType !== 'map') return
     if (mapDataRef.current) return
-    let cancelled = false
-    const ac = new AbortController()
-    setMapLoading(true)
-    setMapError(null)
-    fetch('/api/engagement-data', { signal: ac.signal })
-      .then(async (res) => {
-        if (!res.ok) {
-          const body = await res.json().catch(() => ({}))
-          throw new Error(body.error || `HTTP ${res.status}`)
-        }
-        return res.json() as Promise<EngagementApiResponse>
-      })
-      .then((data) => {
-        if (cancelled) return
-        mapDataRef.current = data
-        setMapData(data)
-      })
-      .catch((err) => {
-        if (cancelled || err.name === 'AbortError') return
-        setMapError(err instanceof Error ? err.message : 'Unknown error')
-      })
-      .finally(() => {
-        if (!cancelled) setMapLoading(false)
-      })
-    return () => {
-      cancelled = true
-      ac.abort()
-    }
-  }, [contentType])
+    void loadMapData(false)
+  }, [contentType, loadMapData])
 
   const tagline = useMemo(() => {
     const preset = TAGLINE_PRESETS.find((p) => p.id === taglinePreset)
@@ -297,7 +293,7 @@ export function SocialMediaStudio() {
             icon={<Info className="h-3.5 w-3.5 text-muted-foreground" />}
           >
             <div className="flex flex-col gap-1 text-xs text-muted-foreground">
-              {mapLoading && <span>Loading data from SharePoint…</span>}
+              {mapLoading && !mapData && <span>Loading data from SharePoint…</span>}
               {mapError && (
                 <span className="text-destructive">Error: {mapError}</span>
               )}
@@ -336,6 +332,17 @@ export function SocialMediaStudio() {
                   )}
                 </>
               )}
+              <button
+                type="button"
+                onClick={() => loadMapData(true)}
+                disabled={mapLoading}
+                className="mt-2 inline-flex w-fit items-center gap-1.5 rounded-md border border-input bg-background px-2.5 py-1.5 font-medium text-foreground transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                <RefreshCw
+                  className={`h-3.5 w-3.5 shrink-0 ${mapLoading ? 'animate-spin' : ''}`}
+                />
+                {mapLoading ? 'Refreshing…' : 'Refresh data'}
+              </button>
             </div>
           </ControlSection>
         )}

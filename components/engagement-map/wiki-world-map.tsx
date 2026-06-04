@@ -36,15 +36,21 @@ function safeIso(iso: string): string {
 const SCOPE = 'engagement-map-world'
 
 function buildStyledSvg(rawSvg: string, engaged: string[], early: string[]): string {
+  // Multi-polygon countries carry the class on a <g> wrapper whose child
+  // <path> elements have no class of their own. The generic `path` rule below
+  // sets fill directly on every path, which would beat the group's inherited
+  // fill — so also target the descendant paths explicitly.
+  const toSelector = (iso: string) =>
+    `.${SCOPE} .land.${iso}, .${SCOPE} .land.${iso} path, .${SCOPE} .circle.${iso}`
   const engagedSelectors = engaged
     .map(safeIso)
     .filter(Boolean)
-    .map((iso) => `.${SCOPE} .land.${iso}, .${SCOPE} .circle.${iso}`)
+    .map(toSelector)
     .join(',')
   const earlySelectors = early
     .map(safeIso)
     .filter(Boolean)
-    .map((iso) => `.${SCOPE} .land.${iso}, .${SCOPE} .circle.${iso}`)
+    .map(toSelector)
     .join(',')
 
   const css = `
