@@ -31,6 +31,7 @@ export const MATERIALS_DROPDOWN_LINKS = [
   { id: 'email-signature', path: '/materials/email-signature', label: 'Email signature' },
   { id: 'maps', path: '/materials/maps', label: 'Maps' },
   { id: 'social-media', path: '/materials/social-media', label: 'Social media' },
+  { id: 'engagement-map', path: '/materials/engagement-map', label: 'Engagement map' },
   { id: 'backgrounds', path: '/materials/backgrounds', label: 'Backgrounds' },
   { id: 'skills', path: '/materials/skills', label: 'AI Skills' },
 ] as const
