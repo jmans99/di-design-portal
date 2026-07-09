@@ -10,6 +10,7 @@ export const TEMPLATE_HEIGHT = 1350
  * usa la dimensione vera (modern-screenshot rispetta i parametri).
  */
 export async function exportTemplateToPng(node: HTMLElement): Promise<Blob> {
+  await document.fonts.ready
   const dataUrl = await domToPng(node, {
     width: TEMPLATE_WIDTH,
     height: TEMPLATE_HEIGHT,

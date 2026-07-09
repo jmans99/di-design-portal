@@ -2,6 +2,11 @@
 
 import { useEffect, useMemo, useState } from 'react'
 
+// Pre-processed copy of the wiki world map: the marker circles that stood in
+// for small island states are removed, and every land shape too small to read
+// at map scale carries a baked-in transform that enlarges it around its own
+// center, so islands keep their real outline. Regenerate with
+// tools/enlarge-map-islands.md if the base map is ever replaced.
 const SVG_URL = '/data/engagement-map-wiki.svg'
 
 export const MAP_COLORS = {
@@ -41,7 +46,7 @@ function buildStyledSvg(rawSvg: string, engaged: string[], early: string[]): str
   // sets fill directly on every path, which would beat the group's inherited
   // fill — so also target the descendant paths explicitly.
   const toSelector = (iso: string) =>
-    `.${SCOPE} .land.${iso}, .${SCOPE} .land.${iso} path, .${SCOPE} .circle.${iso}`
+    `.${SCOPE} .land.${iso}, .${SCOPE} .land.${iso} path`
   const engagedSelectors = engaged
     .map(safeIso)
     .filter(Boolean)
@@ -55,7 +60,6 @@ function buildStyledSvg(rawSvg: string, engaged: string[], early: string[]): str
 
   const css = `
     .${SCOPE} path { fill: ${MAP_COLORS.none}; stroke: ${MAP_COLORS.stroke}; stroke-width: 1.5; stroke-linejoin: round; }
-    .${SCOPE} .circle { stroke: none; }
     .${SCOPE} .antarctica path { stroke-width: 1; }
     ${engagedSelectors ? `${engagedSelectors} { fill: ${MAP_COLORS.engaged}; }` : ''}
     ${earlySelectors ? `${earlySelectors} { fill: ${MAP_COLORS.earlyInterest}; }` : ''}

@@ -4,6 +4,9 @@ export const ENGAGEMENT_MAP_WIDTH = 1920
 export const ENGAGEMENT_MAP_HEIGHT = 1080
 
 export async function exportEngagementMapToPng(node: HTMLElement): Promise<Blob> {
+  // Capturing before webfonts finish loading bakes fallback-font metrics into
+  // the PNG: long country names re-wrap and rows overlap.
+  await document.fonts.ready
   const dataUrl = await domToPng(node, {
     width: ENGAGEMENT_MAP_WIDTH,
     height: ENGAGEMENT_MAP_HEIGHT,

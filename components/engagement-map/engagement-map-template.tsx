@@ -28,6 +28,12 @@ const MAP_AREA = {
   height: 898,
 }
 
+function sortByName(countries: EngagementMapCountry[]): EngagementMapCountry[] {
+  return [...countries].sort((a, b) =>
+    a.rawName.localeCompare(b.rawName, 'en', { sensitivity: 'base' })
+  )
+}
+
 function toIsoList(countries: EngagementMapCountry[]): string[] {
   const out: string[] = []
   for (const c of countries) {
@@ -132,6 +138,9 @@ export const EngagementMapTemplate = forwardRef<
   HTMLDivElement,
   EngagementMapTemplateProps
 >(function EngagementMapTemplate({ engaged, earlyInterest }, ref) {
+  // The Excel columns come in join order; the rendered lists read better A→Z.
+  const engagedSorted = useMemo(() => sortByName(engaged), [engaged])
+  const earlySorted = useMemo(() => sortByName(earlyInterest), [earlyInterest])
   const engagedIso = useMemo(() => toIsoList(engaged), [engaged])
   const earlyIso = useMemo(() => toIsoList(earlyInterest), [earlyInterest])
 
@@ -172,7 +181,7 @@ export const EngagementMapTemplate = forwardRef<
         </SectionTitle>
         <div style={{ marginTop: 24 }}>
           <CountryList
-            countries={engaged}
+            countries={engagedSorted}
             col1Width={247}
             col2Width={200}
             maxHeight={557}
@@ -187,7 +196,7 @@ export const EngagementMapTemplate = forwardRef<
         </SectionTitle>
         <div style={{ marginTop: 24 }}>
           <CountryList
-            countries={earlyInterest}
+            countries={earlySorted}
             col1Width={246}
             col2Width={200}
             maxHeight={284}
