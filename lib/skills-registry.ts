@@ -2,7 +2,8 @@
  * Registry of downloadable Claude skills used by the Giga team.
  * Each skill is packaged as a `.zip` containing a `SKILL.md` (name + description
  * frontmatter), ready to upload to Claude Desktop. Source files live in the
- * DI-prompts repository by Maria Antonia Bravo.
+ * DI-prompts repository by Maria Antonia Bravo Reyes, except where a skill names its
+ * own author.
  */
 
 export type SkillCategoryId = 'design' | 'writing' | 'data' | 'strategy'
@@ -30,13 +31,17 @@ export interface Skill {
   command?: string
   /** Source markdown on GitHub, when public. */
   source?: string
+  /** Author, when it is not the default `SKILLS_AUTHOR`. */
+  author?: string
+  /** ISO date the skill was published here. Drives the newest-first order. */
+  added: string
 }
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
     id: 'design',
     label: 'Design & Build',
-    blurb: 'Ship product UI that is on brand by construction.',
+    blurb: 'Ship product UI and decks that are on brand by construction.',
   },
   {
     id: 'writing',
@@ -56,11 +61,11 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 ]
 
 export const SKILLS_AUTHOR = {
-  name: 'Maria Antonia Bravo',
+  name: 'Maria Antonia Bravo Reyes',
   repo: 'https://github.com/mabravoreyes/DI-prompts',
 }
 
-export const SKILLS: Skill[] = [
+const SKILLS_SOURCE: Skill[] = [
   {
     id: 'giga-design-system',
     title: 'Giga Design System',
@@ -70,7 +75,9 @@ export const SKILLS: Skill[] = [
     useWhen:
       'Building or styling a Next.js/React product, or setting up an AI build tool, so the UI stays on brand.',
     file: '/skills/giga-design-system.zip',
+    added: '2026-05-26',
     size: '2.4 KB',
+    author: 'Mario Del Prete',
   },
   {
     id: 'tech-writing-coach',
@@ -81,6 +88,7 @@ export const SKILLS: Skill[] = [
     useWhen:
       'Drafting internal docs, product explainers, or comms where clarity beats polish.',
     file: '/skills/tech-writing-coach.zip',
+    added: '2026-05-26',
     size: '3.2 KB',
     source: 'https://github.com/mabravoreyes/DI-prompts/blob/main/tech_writing_coach.md',
   },
@@ -93,6 +101,7 @@ export const SKILLS: Skill[] = [
     useWhen:
       'Writing about internet trends or network events for both technical and general readers.',
     file: '/skills/cloudflare-radar-style.zip',
+    added: '2026-05-26',
     size: '2.0 KB',
     source: 'https://github.com/mabravoreyes/DI-prompts/blob/main/cloudflare-radar-style.md',
   },
@@ -105,6 +114,7 @@ export const SKILLS: Skill[] = [
     useWhen:
       'Polishing a blog post, newsletter, script, or email before it ships.',
     file: '/skills/copy-edit.zip',
+    added: '2026-05-26',
     size: '1.2 KB',
     command: '/copy-edit',
     source: 'https://github.com/mabravoreyes/DI-prompts/blob/main/copy-edit.md',
@@ -118,6 +128,7 @@ export const SKILLS: Skill[] = [
     useWhen:
       'Building charts in Jupyter for Giga blogs, decks, or country reports.',
     file: '/skills/giga-chart-style.zip',
+    added: '2026-05-26',
     size: '2.9 KB',
     source: 'https://github.com/mabravoreyes/DI-prompts/blob/main/giga-chart-style.md',
   },
@@ -130,7 +141,29 @@ export const SKILLS: Skill[] = [
     useWhen:
       'Routing comms or tailoring a deliverable in a government or education connectivity context.',
     file: '/skills/giga-persona-segmentation.zip',
+    added: '2026-05-26',
     size: '3.6 KB',
     source: 'https://github.com/mabravoreyes/DI-prompts/blob/main/giga_persona_segmentation.md',
   },
+  {
+    id: 'giga-di-deck-design',
+    title: 'DI Deck Design System',
+    category: 'design',
+    description:
+      'The deck design system for UNICEF Digital Inclusion: the Giga system with UNICEF Blue as primary and the DI logo. Covers colour roles, the Manrope/Open Sans deck type scale, slide chrome, the card system, and every canonical slide type.',
+    useWhen:
+      'Building, converting, or reviewing a DI or Giga slide deck, in Figma, PowerPoint, or an AI tool.',
+    file: '/skills/giga-di-deck-design.zip',
+    added: '2026-08-20',
+    size: '7.7 KB',
+    author: 'Jamil Mansour',
+  },
 ]
+
+/**
+ * Newest first. Ties keep the order they are written in above, so a batch
+ * published on the same day stays in its authored sequence.
+ */
+export const SKILLS: Skill[] = [...SKILLS_SOURCE].sort((a, b) =>
+  b.added.localeCompare(a.added),
+)

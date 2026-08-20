@@ -22,6 +22,7 @@ import {
 } from '@/components/ui/dialog'
 import {
   SKILLS,
+  SKILLS_AUTHOR,
   SKILL_CATEGORIES,
   type Skill,
   type SkillCategoryId,
@@ -184,6 +185,12 @@ function SkillCard({
 
       {/* Footer pinned to bottom: meta row + full-width download */}
       <div className="mt-auto pt-5">
+        <p className="mb-2 text-xs text-muted-foreground">
+          By{' '}
+          <span className="font-semibold text-foreground">
+            {skill.author ?? SKILLS_AUTHOR.name}
+          </span>
+        </p>
         <div className="mb-2.5 flex items-center gap-3 text-xs text-muted-foreground">
           <span className="tabular-nums">{skill.size}</span>
           {skill.source && (
