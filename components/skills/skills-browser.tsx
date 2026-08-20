@@ -186,7 +186,7 @@ function SkillCard({
       {/* Footer pinned to bottom: meta row + full-width download */}
       <div className="mt-auto pt-5">
         <p className="mb-2 text-xs text-muted-foreground">
-          By{' '}
+          Skill by{' '}
           <span className="font-semibold text-foreground">
             {skill.author ?? SKILLS_AUTHOR.name}
           </span>

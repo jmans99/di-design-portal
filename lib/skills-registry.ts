@@ -67,19 +67,6 @@ export const SKILLS_AUTHOR = {
 
 const SKILLS_SOURCE: Skill[] = [
   {
-    id: 'giga-design-system',
-    title: 'Giga Design System',
-    category: 'design',
-    description:
-      'The full Giga Product Design System as build instructions: Manrope/Open Sans type scale, the Primary/Grey/Connectivity palettes, shadcn/ui + Tailwind tokens, radii, shadows, and spring motion.',
-    useWhen:
-      'Building or styling a Next.js/React product, or setting up an AI build tool, so the UI stays on brand.',
-    file: '/skills/giga-design-system.zip',
-    added: '2026-05-26',
-    size: '2.4 KB',
-    author: 'Mario Del Prete',
-  },
-  {
     id: 'tech-writing-coach',
     title: 'Tech Writing Coach',
     category: 'writing',
