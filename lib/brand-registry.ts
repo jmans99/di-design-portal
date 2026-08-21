@@ -21,6 +21,12 @@ export const MONOCHROME_VARIANTS: ColorVariant[] = [
   { name: 'White', hex: '#FFFFFF', description: 'Monochrome white' },
 ]
 
+/** Black + white only (GigaSpatial ships without a blue lockup) */
+export const BLACK_WHITE_VARIANTS: ColorVariant[] = [
+  { name: 'Black', hex: '#000000', description: 'Monochrome black' },
+  { name: 'White', hex: '#FFFFFF', description: 'Monochrome white' },
+]
+
 /** UNICEF logo variants */
 export const UNICEF_MONOCHROME_VARIANTS: ColorVariant[] = [
   { name: 'UNICEF Blue', hex: '#1CABE2', description: 'UNICEF signature blue' },
@@ -184,6 +190,12 @@ export const BRAND_ASSETS: LogoAsset[] = [
     assetType: 'product',
     svgPath: '/logos/product-gigameter.svg',
     allowedColorVariants: MONOCHROME_VARIANTS,
+  },
+  {
+    brandName: 'GigaSpatial',
+    assetType: 'product',
+    svgPath: '/logos/product-gigaspatial.svg',
+    allowedColorVariants: BLACK_WHITE_VARIANTS,
   },
   {
     brandName: 'GEP',
