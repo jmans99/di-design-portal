@@ -26,6 +26,9 @@ export interface IllustrationAsset {
   fillPath?: string
   /** Pillar outline variants. */
   outlines?: { white: string; blue: string }
+  /** Extra terms the search box should match. Labels alone are too narrow:
+   *  "Antena" is a typo nobody types, "Lens" is what people call zoom. */
+  keywords?: string[]
 }
 
 /** Names of the 35 "General" illustrations. The folder layout under
@@ -39,6 +42,45 @@ const GENERAL_NAMES = [
   'Schools', 'Search', 'Sharing data', 'Team', 'Update',
 ] as const
 
+/** Search synonyms for the General set, keyed by slug. */
+const GENERAL_KEYWORDS: Record<string, string[]> = {
+  adjustment: ['settings', 'sliders', 'configure', 'tune', 'preferences'],
+  alert: ['warning', 'attention', 'error', 'caution', 'exclamation'],
+  antena: ['antenna', 'signal', 'tower', 'broadcast', 'radio', 'transmitter'],
+  buildings: ['city', 'urban', 'offices', 'houses', 'infrastructure'],
+  'check-data-01': ['validate', 'verify', 'quality', 'checklist', 'approved'],
+  'check-data-02': ['validate', 'verify', 'quality', 'checklist', 'approved'],
+  cloud: ['storage', 'server', 'hosting', 'saas', 'upload'],
+  code: ['developer', 'programming', 'api', 'software', 'engineering'],
+  compass: ['direction', 'navigate', 'orientation', 'explore', 'north'],
+  computer: ['laptop', 'desktop', 'pc', 'device', 'workstation'],
+  congratulations: ['celebrate', 'success', 'achievement', 'award', 'win'],
+  connection: ['connectivity', 'internet', 'link', 'online', 'broadband', 'wifi'],
+  'cycle-data': ['loop', 'refresh', 'sync', 'pipeline', 'process'],
+  devices: ['hardware', 'gadgets', 'tablet', 'phone', 'equipment'],
+  'globe-01': ['world', 'earth', 'global', 'planet', 'international'],
+  'globe-02': ['world', 'earth', 'global', 'planet', 'international'],
+  hierarchy: ['tree', 'org chart', 'structure', 'levels', 'taxonomy'],
+  key: ['access', 'security', 'password', 'unlock', 'credentials'],
+  kid: ['child', 'student', 'pupil', 'learner', 'boy', 'girl'],
+  lens: ['magnify', 'zoom', 'inspect', 'magnifier', 'detail', 'focus'],
+  'location-01': ['pin', 'map', 'marker', 'place', 'gps', 'geolocation'],
+  'location-02': ['pin', 'map', 'marker', 'place', 'gps', 'geolocation'],
+  'measure-cycle': ['metrics', 'monitoring', 'measurement', 'kpi', 'speed test'],
+  network: ['nodes', 'mesh', 'topology', 'graph', 'infrastructure'],
+  'not-mapped': ['unmapped', 'missing', 'unknown', 'offline', 'no data'],
+  notification: ['bell', 'alert', 'reminder', 'message', 'push'],
+  people: ['group', 'users', 'community', 'persons', 'crowd'],
+  'person-location': ['user pin', 'where', 'tracking', 'geolocated user'],
+  satellite: ['space', 'orbit', 'signal', 'remote sensing', 'imagery'],
+  'school-location': ['school pin', 'school map', 'mapped school', 'geolocation'],
+  schools: ['education', 'classroom', 'institution', 'learning'],
+  search: ['find', 'lookup', 'query', 'magnifier', 'discover'],
+  'sharing-data': ['share', 'exchange', 'transfer', 'open data', 'distribute'],
+  team: ['collaboration', 'group', 'staff', 'together', 'partners'],
+  update: ['refresh', 'sync', 'reload', 'upgrade', 'latest'],
+}
+
 function generalEntry(name: string): IllustrationAsset {
   const slug = name.toLowerCase().replace(/\s+/g, '-')
   return {
@@ -50,6 +92,7 @@ function generalEntry(name: string): IllustrationAsset {
       white: `${BASE}/general/outlines/${slug}-white.svg`,
       blue: `${BASE}/general/outlines/${slug}-blue.svg`,
     },
+    keywords: GENERAL_KEYWORDS[slug],
   }
 }
 
@@ -64,6 +107,7 @@ export const ILLUSTRATIONS: IllustrationAsset[] = [
       white: `${BASE}/outlines/mapping-white.svg`,
       blue: `${BASE}/outlines/mapping-blue.svg`,
     },
+    keywords: ['map', 'geolocation', 'coordinates', 'school mapping', 'pin'],
   },
   {
     id: 'model',
@@ -74,6 +118,7 @@ export const ILLUSTRATIONS: IllustrationAsset[] = [
       white: `${BASE}/outlines/model-white.svg`,
       blue: `${BASE}/outlines/model-blue.svg`,
     },
+    keywords: ['modelling', 'analysis', 'simulation', 'data model', 'forecast'],
   },
   {
     id: 'finance',
@@ -84,6 +129,7 @@ export const ILLUSTRATIONS: IllustrationAsset[] = [
       white: `${BASE}/outlines/finance-white.svg`,
       blue: `${BASE}/outlines/finance-blue.svg`,
     },
+    keywords: ['funding', 'money', 'investment', 'budget', 'cost'],
   },
   {
     id: 'contract',
@@ -94,6 +140,7 @@ export const ILLUSTRATIONS: IllustrationAsset[] = [
       white: `${BASE}/outlines/contract-white.svg`,
       blue: `${BASE}/outlines/contract-blue.svg`,
     },
+    keywords: ['agreement', 'procurement', 'document', 'signature', 'terms'],
   },
   {
     id: 'development',
@@ -104,6 +151,7 @@ export const ILLUSTRATIONS: IllustrationAsset[] = [
       white: `${BASE}/outlines/capacity-development-white.svg`,
       blue: `${BASE}/outlines/capacity-development-blue.svg`,
     },
+    keywords: ['capacity', 'training', 'growth', 'skills', 'capacity building'],
   },
 
   // General set — 35 pictograms with Fill / Outline (white / blue) variants,
@@ -116,24 +164,28 @@ export const ILLUSTRATIONS: IllustrationAsset[] = [
     label: 'Computers',
     category: 'giga-meter',
     path: `${BASE}/giga-meter/computers.svg`,
+    keywords: ['laptops', 'devices', 'hardware', 'lab', 'workstations'],
   },
   {
     id: 'gigameter-connection',
     label: 'Connection',
     category: 'giga-meter',
     path: `${BASE}/giga-meter/connection.svg`,
+    keywords: ['connectivity', 'internet', 'wifi', 'online', 'broadband'],
   },
   {
     id: 'gigameter-contract',
     label: 'Contract',
     category: 'giga-meter',
     path: `${BASE}/giga-meter/contract.svg`,
+    keywords: ['agreement', 'procurement', 'document', 'signature', 'terms'],
   },
   {
     id: 'gigameter-people',
     label: 'People',
     category: 'giga-meter',
     path: `${BASE}/giga-meter/people.svg`,
+    keywords: ['users', 'community', 'group', 'students', 'persons'],
   },
 ]
 

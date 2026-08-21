@@ -3,24 +3,14 @@
 import { useState, useEffect, useCallback } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
+import { IllustrationPicker } from '@/components/illustration-picker'
 import {
   ILLUSTRATIONS,
-  ILLUSTRATION_CATEGORY_LABELS,
   hasStyleVariants,
   resolveIllustrationPath,
   generateIllustrationFilename,
 } from '@/lib/illustration-registry'
 import type {
-  IllustrationCategory,
   IllustrationStyle,
   OutlineColor,
 } from '@/lib/illustration-registry'
@@ -51,14 +41,6 @@ export function IllustrationConfigurator() {
   const supportsVariants = hasStyleVariants(illustration)
   const effectiveStyle: IllustrationStyle = supportsVariants ? style : 'fill'
 
-  // Raggruppo le opzioni del Select per categoria (pillars / giga-meter)
-  const grouped = (Object.keys(ILLUSTRATION_CATEGORY_LABELS) as IllustrationCategory[])
-    .map((cat) => ({
-      category: cat,
-      label: ILLUSTRATION_CATEGORY_LABELS[cat],
-      items: ILLUSTRATIONS.filter((a) => a.category === cat),
-    }))
-    .filter((g) => g.items.length > 0)
   const [selectedFormat, setSelectedFormat] = useState<OutputFormat>('svg')
   const [selectedResolution, setSelectedResolution] = useState<Resolution>('2x')
   const [previewSvg, setPreviewSvg] = useState<string>('')
@@ -136,23 +118,7 @@ export function IllustrationConfigurator() {
       {/* Sidebar — below preview on mobile */}
       <div className="order-2 flex w-full flex-col gap-0 lg:order-1 lg:sticky lg:top-[calc(4rem+24px)] lg:w-80 lg:shrink-0 lg:rounded-2xl lg:border lg:border-border lg:bg-card lg:shadow-stripe">
         <ControlSection label="Illustration">
-          <Select value={selectedId} onValueChange={(v) => setSelectedId(v)}>
-            <SelectTrigger className="rounded-md transition-smooth-transform">
-              <SelectValue placeholder="Choose an illustration" />
-            </SelectTrigger>
-            <SelectContent>
-              {grouped.map((group) => (
-                <SelectGroup key={group.category}>
-                  <SelectLabel>{group.label}</SelectLabel>
-                  {group.items.map((asset) => (
-                    <SelectItem key={asset.id} value={asset.id}>
-                      {asset.label}
-                    </SelectItem>
-                  ))}
-                </SelectGroup>
-              ))}
-            </SelectContent>
-          </Select>
+          <IllustrationPicker value={selectedId} onChange={setSelectedId} />
         </ControlSection>
 
         {supportsVariants && (<>
