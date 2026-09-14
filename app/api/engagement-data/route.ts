@@ -5,7 +5,7 @@ import { normalizeToIsoCode, stripAnnotations } from '@/lib/engagement-map/count
 export const revalidate = 300
 
 const DEFAULT_SHARE_URL =
-  'https://unicef-my.sharepoint.com/:x:/g/personal/mdelprete_unicef_org/IQAicr-B1aq4Q7MV5EW_HIq2AfaRRyHBiBDBCd_ryT6TSC0?e=EfMtjU'
+  'https://unicef-my.sharepoint.com/:x:/g/personal/mdelprete_unicef_org/IQDyS71gbyPDSoiiJ0DtKpRgAb7PhlveMIMyPTS3RTKkHno?e=68Mb4U'
 
 type EngagementCountry = {
   code: string | null
@@ -76,6 +76,21 @@ export async function GET(
       )
     }
     const buf = Buffer.from(await res.arrayBuffer())
+    // SharePoint answers 200 + an HTML error page when the share link has
+    // expired or requires sign-in. Catch it before xlsx tries to parse it.
+    const contentType = res.headers.get('content-type') ?? ''
+    if (contentType.includes('text/html') || buf.subarray(0, 64).toString('utf8').trimStart().startsWith('<')) {
+      const html = buf.toString('utf8')
+      const expired = /link has expired/i.test(html)
+      return NextResponse.json(
+        {
+          error: expired
+            ? 'SharePoint share link has expired. Create a new "Anyone with the link" share link for the Excel file and set ENGAGEMENT_EXCEL_SHARE_URL.'
+            : 'SharePoint returned a web page instead of the Excel file (link expired or sign-in required). Create a new share link and set ENGAGEMENT_EXCEL_SHARE_URL.',
+        },
+        { status: 502 }
+      )
+    }
     const wb = XLSX.read(buf, { type: 'buffer' })
     const sheet = wb.Sheets[wb.SheetNames[0]]
     if (!sheet) {
