@@ -32,14 +32,21 @@ export function StoryLightbox({
   onClose: () => void
 }) {
   const [expanded, setExpanded] = useState(false)
+  // Keep the last story mounted while the dialog animates out: `story` goes
+  // null the moment the user closes, and an empty shell shrinking away is
+  // exactly the flicker this avoids.
+  const [displayed, setDisplayed] = useState<PhotoAwardStory | null>(story)
+  useEffect(() => {
+    if (story) setDisplayed(story)
+  }, [story])
   const open = !!story
-  const images = story?.images ?? []
+  const images = displayed?.images ?? []
   const image = images[index]
   const many = images.length > 1
 
   // Story text: multi-photo stories carry a project description; a single
   // photo's caption is the story itself.
-  const text = story ? (story.description || story.images[0]?.caption || '') : ''
+  const text = displayed ? (displayed.description || displayed.images[0]?.caption || '') : ''
   const showCaption = many && !!image?.caption
   const long = text.length > CLAMP_CHARS
 
@@ -60,7 +67,7 @@ export function StoryLightbox({
   // Reset the "read more" state per story and preload the neighbours.
   useEffect(() => {
     setExpanded(false)
-  }, [story?.slug])
+  }, [displayed?.slug])
   useEffect(() => {
     if (!many) return
     for (const i of [index + 1, index - 1]) {
@@ -70,20 +77,20 @@ export function StoryLightbox({
   }, [index, images, many])
 
   const downloadName = useMemo(() => {
-    if (!story) return ''
+    if (!displayed) return ''
     const nn = String(index + 1).padStart(2, '0')
-    return `giga-photo-award_${story.slug}_${nn}_${slugify(story.photographer)}.jpg`
-  }, [story, index])
+    return `giga-photo-award_${displayed.slug}_${nn}_${slugify(displayed.photographer)}.jpg`
+  }, [displayed, index])
 
   return (
     <DialogPrimitive.Root open={open} onOpenChange={(o) => !o && onClose()}>
       <DialogPrimitive.Portal>
         <DialogPrimitive.Overlay className="fixed inset-0 z-[200] bg-[#0A0A0C]/70 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
         <DialogPrimitive.Content
-          className="fixed left-1/2 top-1/2 z-[201] flex h-[min(92vh,920px)] w-[min(96vw,1480px)] -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-stripe-lg focus:outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 lg:flex-row"
+          className="fixed left-1/2 top-1/2 z-[201] flex h-[min(92vh,920px)] w-[min(96vw,1480px)] -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-stripe-lg focus:outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:duration-150 lg:flex-row"
           aria-describedby={undefined}
         >
-          {story && image && (
+          {displayed && image && (
             <>
               {/* Photo */}
               <div className="relative flex min-h-0 min-w-0 flex-1 flex-col bg-muted">
@@ -92,7 +99,7 @@ export function StoryLightbox({
                   <img
                     key={image.src}
                     src={image.src}
-                    alt={image.caption || story.title}
+                    alt={image.caption || displayed.title}
                     className="max-h-full max-w-full rounded-lg object-contain shadow-stripe-md animate-in fade-in duration-300"
                   />
                   {many && (
@@ -135,19 +142,19 @@ export function StoryLightbox({
               <aside className="flex w-full shrink-0 flex-col border-t border-border bg-card lg:w-[380px] lg:border-l lg:border-t-0">
                 <div className="flex items-start justify-between gap-3 px-6 pt-5">
                   <div className="min-w-0">
-                    <p className="truncate text-sm font-semibold text-foreground">{story.photographer}</p>
-                    {story.location && (
+                    <p className="truncate text-sm font-semibold text-foreground">{displayed.photographer}</p>
+                    {displayed.location && (
                       <p className="mt-0.5 flex items-center gap-1 text-xs text-muted-foreground">
                         <MapPin className="h-3 w-3" aria-hidden />
-                        {story.location}
+                        {displayed.location}
                       </p>
                     )}
                   </div>
                   <div className="flex shrink-0 items-center gap-2">
-                    {story.rank && (
+                    {displayed.rank && (
                       <span className="inline-flex items-center gap-1 rounded-full border border-primary-300 bg-primary-50 px-2.5 py-1 text-[11px] font-semibold text-primary-700">
                         <Award className="h-3 w-3" aria-hidden />
-                        {RANK_LABEL[story.rank]}
+                        {RANK_LABEL[displayed.rank]}
                       </span>
                     )}
                     <DialogPrimitive.Close
@@ -161,7 +168,7 @@ export function StoryLightbox({
 
                 <div className="min-h-0 flex-1 overflow-y-auto px-6 pb-4 pt-4">
                   <DialogPrimitive.Title className="font-heading text-xl font-medium leading-snug tracking-[-0.02em] text-foreground">
-                    {story.title}
+                    {displayed.title}
                   </DialogPrimitive.Title>
                   <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-muted-foreground">
                     {long && !expanded ? `${text.slice(0, CLAMP_CHARS).trimEnd()}…` : text}
@@ -194,7 +201,7 @@ export function StoryLightbox({
                     </a>
                   </Button>
                   <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">
-                    JPEG, {image.width} × {image.height}. Credit: {story.photographer} / Giga Photo Award. For UNICEF
+                    JPEG, {image.width} × {image.height}. Credit: {displayed.photographer} / Giga Photo Award. For UNICEF
                     advocacy use; contact UNICEF for any other use.
                   </p>
                 </div>
