@@ -10,15 +10,20 @@ import {
   STAGE_HEIGHT,
   STAGE_WIDTH,
   TILE_SOURCE_LAYERS,
+  REGIONS,
+  targetBbox,
   type DataLayer,
   type GigaMapCountry,
+  type MapTarget,
   type MapTheme,
 } from './config'
 
 const DOTS_SOURCE = 'giga-entities'
 const SCHOOL_LAYER = 'giga-schools-dots'
 const HEALTH_LAYER = 'giga-health-dots'
-const IDLE_TIMEOUT_MS = 45000
+// Regions pull several MB of tiles from a backend that needs 3 to 6 s per
+// tile, so the first render can legitimately take a minute.
+const IDLE_TIMEOUT_MS = 150000
 
 /* ------------------------------------------------------------------ */
 /*  Country metadata (cached per session)                              */
@@ -54,17 +59,18 @@ export async function getGigaMapCountry(code: string): Promise<GigaMapCountry> {
 
 export type GigaMapOptions = {
   container: HTMLElement
-  country: GigaMapCountry
+  target: MapTarget
   theme: MapTheme
   layer: DataLayer
   pixelRatio?: number
   interactive?: boolean
 }
 
-function tileUrl(layer: DataLayer, countryId: number) {
+function tileUrl(layer: DataLayer, target: MapTarget) {
   const base = typeof window !== 'undefined' ? window.location.origin : ''
   const kind = DATA_LAYERS[layer].entityCode
-  return `${base}/api/giga-maps/tiles?kind=${kind}&country=${countryId}&z={z}&x={x}&y={y}`
+  const scope = target.kind === 'country' ? `country=${target.country.id}` : 'scope=global'
+  return `${base}/api/giga-maps/tiles?kind=${kind}&${scope}&z={z}&x={x}&y={y}`
 }
 
 const CONNECTIVITY_COLOR = [
@@ -140,7 +146,7 @@ function cleanBasemap(map: MapLibreMap) {
   }
 }
 
-export function setGigaDataLayer(map: MapLibreMap, layer: DataLayer, countryId: number) {
+export function setGigaDataLayer(map: MapLibreMap, layer: DataLayer, target: MapTarget) {
   for (const id of [SCHOOL_LAYER, HEALTH_LAYER]) {
     if (map.getLayer(id)) map.removeLayer(id)
   }
@@ -148,11 +154,20 @@ export function setGigaDataLayer(map: MapLibreMap, layer: DataLayer, countryId: 
 
   map.addSource(DOTS_SOURCE, {
     type: 'vector',
-    tiles: [tileUrl(layer, countryId)],
+    tiles: [tileUrl(layer, target)],
     minzoom: 0,
     maxzoom: 14,
   })
   const before = firstSymbolLayerId(map)
+  // Regions hide the neighbours the frame lets in: only points inside the
+  // region's outline are drawn.
+  const filter =
+    target.kind === 'region' && target.region.polygon
+      ? ([
+          'within',
+          { type: 'Polygon', coordinates: [[...target.region.polygon, target.region.polygon[0]]] },
+        ] as never)
+      : undefined
 
   if (layer === 'school' || layer === 'all') {
     map.addLayer(
@@ -161,6 +176,7 @@ export function setGigaDataLayer(map: MapLibreMap, layer: DataLayer, countryId: 
         type: 'circle',
         source: DOTS_SOURCE,
         'source-layer': TILE_SOURCE_LAYERS.school,
+        ...(filter ? { filter } : {}),
         paint: {
           'circle-radius': RADIUS_BY_ZOOM as never,
           'circle-opacity': 0.9,
@@ -177,6 +193,7 @@ export function setGigaDataLayer(map: MapLibreMap, layer: DataLayer, countryId: 
       type: 'symbol',
       source: DOTS_SOURCE,
       'source-layer': TILE_SOURCE_LAYERS.health,
+      ...(filter ? { filter } : {}),
       layout: {
         'icon-image': [
           'match',
@@ -219,16 +236,18 @@ export function waitForIdle(map: MapLibreMap, timeoutMs = IDLE_TIMEOUT_MS): Prom
 }
 
 export function createGigaMap(opts: GigaMapOptions): Promise<MapLibreMap> {
-  const { container, country, theme, layer, pixelRatio = 1, interactive = false } = opts
+  const { container, target, theme, layer, pixelRatio = 1, interactive = false } = opts
+  const bbox = targetBbox(target)
+  const centroid = target.kind === 'country' ? target.country.centroid : null
 
   return new Promise((resolve, reject) => {
     let map: MapLibreMap
     try {
       // Note: MapLibre merges options over its defaults with Object.assign
       // semantics, so keys must be omitted (not set to undefined).
-      const framing = country.bbox
-        ? { bounds: country.bbox, fitBoundsOptions: { padding: 80 } }
-        : { center: country.centroid ?? ([0, 0] as [number, number]), zoom: 4 }
+      const framing = bbox
+        ? { bounds: bbox, fitBoundsOptions: { padding: target.kind === 'region' ? 40 : 80 } }
+        : { center: centroid ?? ([0, 0] as [number, number]), zoom: 4 }
       map = new maplibregl.Map({
         container,
         style: BASEMAP_STYLE[theme],
@@ -262,7 +281,7 @@ export function createGigaMap(opts: GigaMapOptions): Promise<MapLibreMap> {
 
     map.once('load', () => {
       cleanBasemap(map)
-      setGigaDataLayer(map, layer, country.id)
+      setGigaDataLayer(map, layer, target)
       resolve(map)
     })
   })
@@ -316,7 +335,10 @@ export async function renderGigaMapPng(opts: {
   layer: DataLayer
   scale: 1 | 2
 }): Promise<Blob> {
-  const country = await getGigaMapCountry(opts.countryCode)
+  const region = REGIONS.find((r) => r.code === opts.countryCode)
+  const target: MapTarget = region
+    ? { kind: 'region', region }
+    : { kind: 'country', country: await getGigaMapCountry(opts.countryCode) }
   const host = document.createElement('div')
   host.style.cssText = `position:fixed;left:-${STAGE_WIDTH + 100}px;top:0;width:${STAGE_WIDTH}px;height:${STAGE_HEIGHT}px;pointer-events:none;`
   document.body.appendChild(host)
@@ -324,7 +346,7 @@ export async function renderGigaMapPng(opts: {
   try {
     map = await createGigaMap({
       container: host,
-      country,
+      target,
       theme: opts.theme,
       layer: opts.layer,
       pixelRatio: opts.scale,

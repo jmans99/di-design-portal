@@ -19,10 +19,14 @@ import { cn } from '@/lib/utils'
 import {
   CONNECTIVITY_LEGEND,
   DATA_LAYERS,
+  REGIONS,
+  regionContains,
   STAGE_HEIGHT,
   STAGE_WIDTH,
   type DataLayer,
   type GigaMapCountry,
+  type GigaMapRegion,
+  type MapTarget,
   type MapTheme,
 } from '@/lib/giga-maps/config'
 import {
@@ -44,6 +48,8 @@ export function GigaMapGenerator() {
   const [countries, setCountries] = useState<GigaMapCountry[]>([])
   const [countriesError, setCountriesError] = useState<string | null>(null)
   const [country, setCountry] = useState<GigaMapCountry | null>(null)
+  const [scope, setScope] = useState<'country' | 'region'>('country')
+  const [region, setRegion] = useState<GigaMapRegion>(REGIONS.find((r) => r.code === 'africa') ?? REGIONS[0])
   const [layer, setLayer] = useState<DataLayer>('school')
   const [theme, setTheme] = useState<MapTheme>('dark')
   const [resolution, setResolution] = useState<Resolution>('2x')
@@ -89,14 +95,19 @@ export function GigaMapGenerator() {
   // (Re)create the map whenever country, theme or data layer changes. A fresh
   // instance per change is simpler and cheap: the basemap style is cached by
   // the browser and country tiles are what actually take time.
+  const target: MapTarget | null = useMemo(() => {
+    if (scope === 'region') return { kind: 'region', region }
+    return country ? { kind: 'country', country } : null
+  }, [scope, region, country])
+
   useEffect(() => {
     const host = stageRef.current
-    if (!host || !country) return
+    if (!host || !target) return
     let cancelled = false
     setRenderState('loading')
     setRenderError(null)
 
-    createGigaMap({ container: host, country, theme, layer })
+    createGigaMap({ container: host, target, theme, layer })
       .then(async (map) => {
         if (cancelled) {
           map.remove()
@@ -117,12 +128,30 @@ export function GigaMapGenerator() {
       mapRef.current?.remove()
       mapRef.current = null
     }
-  }, [country, theme, layer])
+  }, [target, theme, layer])
 
   const filename = useMemo(() => {
-    if (!country) return ''
-    return `giga-maps_${country.code.toUpperCase()}_${DATA_LAYERS[layer].fileTag}_${theme}_${resolution}.png`
-  }, [country, layer, theme, resolution])
+    if (!target) return ''
+    const code = target.kind === 'country' ? target.country.code.toUpperCase() : target.region.code
+    return `giga-maps_${code}_${DATA_LAYERS[layer].fileTag}_${theme}_${resolution}.png`
+  }, [target, layer, theme, resolution])
+
+  // What is mapped inside the frame: the country's own counts, or the sum of
+  // every country whose centroid falls inside the region box.
+  const counts = useMemo(() => {
+    if (!target) return null
+    if (target.kind === 'country') {
+      return { countries: 1, schools: target.country.schoolsTotal, health: target.country.healthTotal }
+    }
+    const inside = countries.filter(
+      (c) => !!c.centroid && regionContains(target.region, c.centroid) && c.schoolsTotal + c.healthTotal > 0,
+    )
+    return {
+      countries: inside.length,
+      schools: inside.reduce((a, c) => a + c.schoolsTotal, 0),
+      health: inside.reduce((a, c) => a + c.healthTotal, 0),
+    }
+  }, [target, countries])
 
   const handleExport = useCallback(async () => {
     const map = mapRef.current
@@ -149,33 +178,45 @@ export function GigaMapGenerator() {
   }, [filename, renderState, resolution])
 
   const legend = CONNECTIVITY_LEGEND
-  const noHealthData = !!country && layer !== 'school' && country.healthTotal === 0
-  const noSchoolData = !!country && layer !== 'health' && country.schoolsTotal === 0
+  const noHealthData = !!counts && layer !== 'school' && counts.health === 0
+  const noSchoolData = !!counts && layer !== 'health' && counts.schools === 0
 
   return (
     <div className="flex flex-col gap-8 lg:flex-row lg:items-start">
       {/* Sidebar */}
       <div className="order-2 flex w-full flex-col gap-0 lg:order-1 lg:sticky lg:top-[calc(4rem+24px)] lg:w-80 lg:shrink-0 lg:rounded-2xl lg:border lg:border-border lg:bg-card lg:shadow-stripe">
         <ControlSection
-          label="Country"
+          label="Area"
           icon={<Globe className="h-3.5 w-3.5 text-muted-foreground" />}
           className="lg:pt-4 lg:pb-2.5"
         >
+          <div className="flex gap-2">
+            <ToggleButton active={scope === 'country'} onClick={() => setScope('country')}>
+              Country
+            </ToggleButton>
+            <ToggleButton active={scope === 'region'} onClick={() => setScope('region')}>
+              Region
+            </ToggleButton>
+          </div>
           <Popover open={pickerOpen} onOpenChange={setPickerOpen}>
             <PopoverTrigger asChild>
               <button
                 type="button"
                 role="combobox"
                 aria-expanded={pickerOpen}
-                disabled={!country}
+                disabled={scope === 'country' && !country}
                 className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm transition-smooth-transform focus:outline-none focus:ring-2 focus:ring-ring disabled:opacity-60"
               >
                 <span className="flex items-center gap-2 truncate">
-                  <span className="inline-flex h-5 min-w-[28px] items-center justify-center rounded bg-muted px-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-                    {country?.code ?? '…'}
-                  </span>
+                  {scope === 'country' && (
+                    <span className="inline-flex h-5 min-w-[28px] items-center justify-center rounded bg-muted px-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                      {country?.code ?? '…'}
+                    </span>
+                  )}
                   <span className="truncate text-foreground">
-                    {country?.name ?? (countriesError ? 'Unavailable' : 'Loading countries…')}
+                    {scope === 'region'
+                      ? region.name
+                      : (country?.name ?? (countriesError ? 'Unavailable' : 'Loading countries…'))}
                   </span>
                 </span>
                 <ChevronsUpDown className="h-4 w-4 shrink-0 opacity-50" />
@@ -183,34 +224,59 @@ export function GigaMapGenerator() {
             </PopoverTrigger>
             <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-0" align="start">
               <Command>
-                <CommandInput placeholder="Search country..." />
+                <CommandInput placeholder={scope === 'region' ? 'Search region...' : 'Search country...'} />
                 <CommandList>
-                  <CommandEmpty>No country found.</CommandEmpty>
-                  <CommandGroup>
-                    {countries.map((c) => (
-                      <CommandItem
-                        key={c.code}
-                        value={`${c.name} ${c.code}`}
-                        onSelect={() => {
-                          setCountry(c)
-                          setPickerOpen(false)
-                        }}
-                      >
-                        <span className="mr-2 inline-flex h-5 min-w-[28px] items-center justify-center rounded bg-muted px-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-                          {c.code}
-                        </span>
-                        <span className="flex-1 truncate">{c.name}</span>
-                        <Check
-                          className={cn('ml-2 h-4 w-4', country?.code === c.code ? 'opacity-100' : 'opacity-0')}
-                        />
-                      </CommandItem>
-                    ))}
-                  </CommandGroup>
+                  <CommandEmpty>{scope === 'region' ? 'No region found.' : 'No country found.'}</CommandEmpty>
+                  {scope === 'region' ? (
+                    (['World', 'Continents', 'UNICEF regions'] as const).map((group) => (
+                      <CommandGroup key={group} heading={group}>
+                        {REGIONS.filter((r) => r.group === group).map((r) => (
+                          <CommandItem
+                            key={r.code}
+                            value={`${r.name} ${r.code}`}
+                            onSelect={() => {
+                              setRegion(r)
+                              setPickerOpen(false)
+                            }}
+                          >
+                            <span className="flex-1 truncate">{r.name}</span>
+                            <Check className={cn('ml-2 h-4 w-4', region.code === r.code ? 'opacity-100' : 'opacity-0')} />
+                          </CommandItem>
+                        ))}
+                      </CommandGroup>
+                    ))
+                  ) : (
+                    <CommandGroup>
+                      {countries.map((c) => (
+                        <CommandItem
+                          key={c.code}
+                          value={`${c.name} ${c.code}`}
+                          onSelect={() => {
+                            setCountry(c)
+                            setPickerOpen(false)
+                          }}
+                        >
+                          <span className="mr-2 inline-flex h-5 min-w-[28px] items-center justify-center rounded bg-muted px-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                            {c.code}
+                          </span>
+                          <span className="flex-1 truncate">{c.name}</span>
+                          <Check
+                            className={cn('ml-2 h-4 w-4', country?.code === c.code ? 'opacity-100' : 'opacity-0')}
+                          />
+                        </CommandItem>
+                      ))}
+                    </CommandGroup>
+                  )}
                 </CommandList>
               </Command>
             </PopoverContent>
           </Popover>
           {countriesError && <p className="text-xs text-destructive">{countriesError}</p>}
+          {scope === 'region' && (
+            <p className="text-[11px] text-muted-foreground">
+              Region maps load a few MB of live data; the first render can take a little longer.
+            </p>
+          )}
         </ControlSection>
 
         <ControlSection label="Facilities">
@@ -221,10 +287,10 @@ export function GigaMapGenerator() {
               </ToggleButton>
             ))}
           </div>
-          {country && (
+          {counts && (
             <p className="text-[11px] text-muted-foreground">
-              {formatCount(country.schoolsTotal)} schools · {formatCount(country.healthTotal)} health
-              centers mapped
+              {counts.countries !== 1 ? `${counts.countries} countries · ` : ''}
+              {formatCount(counts.schools)} schools · {formatCount(counts.health)} health centers mapped
             </p>
           )}
         </ControlSection>
@@ -289,16 +355,16 @@ export function GigaMapGenerator() {
             {(noHealthData || noSchoolData) && (
               <span className="text-amber-700 dark:text-amber-300">
                 {noHealthData && noSchoolData
-                  ? 'No facilities mapped for this country yet'
+                  ? 'No facilities mapped here yet'
                   : noHealthData
-                    ? 'No health centers mapped for this country yet'
-                    : 'No schools mapped for this country yet'}
+                    ? 'No health centers mapped here yet'
+                    : 'No schools mapped here yet'}
               </span>
             )}
           </div>
-          {country && (
+          {target && (
             <a
-              href={`https://maps.giga.global/map/country/${country.code}`}
+              href={target.kind === 'country' ? `https://maps.giga.global/map/country/${target.country.code}` : 'https://maps.giga.global/map'}
               target="_blank"
               rel="noreferrer"
               className="text-xs font-medium text-muted-foreground transition-smooth hover:text-foreground"
@@ -332,7 +398,7 @@ export function GigaMapGenerator() {
               <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/30">
                 <span className="inline-flex items-center gap-2 rounded-full bg-black/70 px-3 py-1.5 text-xs font-medium text-white shadow-stripe backdrop-blur">
                   <Loader2 className="h-3.5 w-3.5 animate-spin" />
-                  Loading school data…
+                  {scope === 'region' ? 'Loading live data for the whole region…' : 'Loading school data…'}
                 </span>
               </div>
             )}
