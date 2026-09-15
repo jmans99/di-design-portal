@@ -284,7 +284,7 @@ export function GigaMapGenerator() {
               </span>
             ))}
             {layer === 'all' && (
-              <span className="text-muted-foreground/80">Health centers have a white ring</span>
+              <span className="text-muted-foreground/80">Schools are dots, health centers are squares</span>
             )}
             {(noHealthData || noSchoolData) && (
               <span className="text-amber-700 dark:text-amber-300">

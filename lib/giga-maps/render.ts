@@ -78,10 +78,42 @@ const CONNECTIVITY_COLOR = [
 ]
 
 const RADIUS_BY_ZOOM = ['interpolate', ['linear'], ['zoom'], 2, 1.4, 4, 2.2, 6, 3, 8, 4, 12, 6]
-// Health centers are one pixel larger. Must be its own top-level interpolate:
-// MapLibre rejects ['zoom'] nested inside arithmetic, and the layer is then
-// silently dropped (the validation error is only fired as an event).
-const HEALTH_RADIUS_BY_ZOOM = ['interpolate', ['linear'], ['zoom'], 2, 2.4, 4, 3.2, 6, 4, 8, 5, 12, 7]
+/* Health centers are drawn as squares. Circle layers cannot do that, so we
+ * register one small square image per connectivity status and use a symbol
+ * layer with collisions disabled. Images are 32px at pixelRatio 4 (8 CSS px)
+ * so they stay crisp in the 2x export. */
+const SQUARE_PX = 32
+const SQUARE_IMAGE_RATIO = 4
+const SQUARE_IMAGES: Record<'connected' | 'not_connected' | 'unknown', string> = {
+  connected: 'giga-square-connected',
+  not_connected: 'giga-square-not-connected',
+  unknown: 'giga-square-unknown',
+}
+const SQUARE_COLORS: Record<keyof typeof SQUARE_IMAGES, string> = {
+  connected: DOT_COLORS.connected,
+  not_connected: DOT_COLORS.notConnected,
+  unknown: DOT_COLORS.unknown,
+}
+// 8 CSS px image scaled by zoom: ~4px at z2, ~9px at z8, ~13px at z12.
+const SQUARE_SIZE_BY_ZOOM = ['interpolate', ['linear'], ['zoom'], 2, 0.5, 4, 0.75, 6, 0.95, 8, 1.15, 12, 1.6]
+
+function makeSquare(color: string): ImageData {
+  const canvas = document.createElement('canvas')
+  canvas.width = SQUARE_PX
+  canvas.height = SQUARE_PX
+  const ctx = canvas.getContext('2d')
+  if (!ctx) throw new Error('Canvas 2D context unavailable')
+  ctx.fillStyle = color
+  ctx.fillRect(0, 0, SQUARE_PX, SQUARE_PX)
+  return ctx.getImageData(0, 0, SQUARE_PX, SQUARE_PX)
+}
+
+function ensureSquareImages(map: MapLibreMap) {
+  for (const key of Object.keys(SQUARE_IMAGES) as (keyof typeof SQUARE_IMAGES)[]) {
+    const id = SQUARE_IMAGES[key]
+    if (!map.hasImage(id)) map.addImage(id, makeSquare(SQUARE_COLORS[key]), { pixelRatio: SQUARE_IMAGE_RATIO })
+  }
+}
 
 function firstSymbolLayerId(map: MapLibreMap): string | undefined {
   const style = map.getStyle() as StyleSpecification | undefined
@@ -98,6 +130,7 @@ const HIDDEN_SOURCE_LAYERS = new Set(['transportation', 'transportation_name', '
 function cleanBasemap(map: MapLibreMap) {
   const style = map.getStyle() as StyleSpecification | undefined
   for (const l of style?.layers ?? []) {
+    if (l.id.startsWith('giga-')) continue
     const sourceLayer = 'source-layer' in l ? l['source-layer'] : undefined
     const isInternalBoundary =
       sourceLayer === 'boundary' && !/country|boundary_2$|disputed/.test(l.id)
@@ -138,24 +171,28 @@ export function setGigaDataLayer(map: MapLibreMap, layer: DataLayer, countryId: 
     )
   }
   if (layer === 'health' || layer === 'all') {
-    // Health centers get a white ring so they stay recognisable next to schools.
-    map.addLayer(
-      {
-        id: HEALTH_LAYER,
-        type: 'circle',
-        source: DOTS_SOURCE,
-        'source-layer': TILE_SOURCE_LAYERS.health,
-        paint: {
-          'circle-radius': HEALTH_RADIUS_BY_ZOOM as never,
-          'circle-opacity': 0.95,
-          'circle-color': CONNECTIVITY_COLOR as never,
-          'circle-stroke-width': 1.2,
-          'circle-stroke-color': '#ffffff',
-          'circle-stroke-opacity': 0.85,
-        },
+    ensureSquareImages(map)
+    map.addLayer({
+      id: HEALTH_LAYER,
+      type: 'symbol',
+      source: DOTS_SOURCE,
+      'source-layer': TILE_SOURCE_LAYERS.health,
+      layout: {
+        'icon-image': [
+          'match',
+          ['get', 'connectivity_status'],
+          'connected',
+          SQUARE_IMAGES.connected,
+          'not_connected',
+          SQUARE_IMAGES.not_connected,
+          SQUARE_IMAGES.unknown,
+        ] as never,
+        'icon-size': SQUARE_SIZE_BY_ZOOM as never,
+        'icon-allow-overlap': true,
+        'icon-ignore-placement': true,
       },
-      before
-    )
+      paint: { 'icon-opacity': 0.95 },
+    })
   }
 }
 
