@@ -2,7 +2,6 @@
 export const MAIN_NAV_LINKS = [
   { id: 'logos', path: '/logos', label: 'Logos' },
   { id: 'illustrations', path: '/illustrations', label: 'Illustrations' },
-  { id: 'media', path: '/media', label: 'Media' },
   { id: 'slides', path: '/slides', label: 'Slides' },
 ] as const
 
@@ -18,6 +17,12 @@ export const SLIDES_HIDDEN = true
 export const VISIBLE_MAIN_NAV_LINKS = MAIN_NAV_LINKS.filter(
   (l) => !(SLIDES_HIDDEN && l.id === 'slides')
 )
+
+/** Items under the Media dropdown (desktop + mobile accordion). */
+export const MEDIA_DROPDOWN_LINKS = [
+  { id: 'image-galleries', path: '/media', label: 'Image galleries' },
+  { id: 'photo-awards', path: '/media/photo-awards', label: 'Photo awards' },
+] as const
 
 /** Items under the Guidelines dropdown (desktop + mobile accordion). */
 export const GUIDELINES_DROPDOWN_LINKS = [
@@ -39,6 +44,7 @@ export const MATERIALS_DROPDOWN_LINKS = [
 /** Footer quick links: same order as primary IA, rispetta i feature flag. */
 export const FOOTER_SECTION_LINKS = [
   ...VISIBLE_MAIN_NAV_LINKS,
+  ...MEDIA_DROPDOWN_LINKS,
   ...GUIDELINES_DROPDOWN_LINKS,
   ...MATERIALS_DROPDOWN_LINKS,
 ]

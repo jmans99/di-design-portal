@@ -5,10 +5,12 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ChevronDown, ChevronRight } from 'lucide-react'
 import { HamburgerMenu } from '@/components/HamburgerMenu'
-import { VISIBLE_MAIN_NAV_LINKS as MAIN_NAV_LINKS, GUIDELINES_DROPDOWN_LINKS, MATERIALS_DROPDOWN_LINKS } from '@/lib/nav'
+import { VISIBLE_MAIN_NAV_LINKS as MAIN_NAV_LINKS, MEDIA_DROPDOWN_LINKS, GUIDELINES_DROPDOWN_LINKS, MATERIALS_DROPDOWN_LINKS } from '@/lib/nav'
 
+const MEDIA_LABEL = 'Media'
 const GUIDELINES_LABEL = 'Guidelines'
 const MATERIALS_LABEL = 'Materials'
+const MEDIA_SUB_ID = 'nav-media-sub'
 const GUIDELINES_SUB_ID = 'nav-guidelines-sub'
 const MATERIALS_SUB_ID = 'nav-materials-sub'
 
@@ -17,10 +19,13 @@ export function AppHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [atVeryTop, setAtVeryTop] = useState(true)
   const [inHeroZone, setInHeroZone] = useState(true)
+  const [expandedMedia, setExpandedMedia] = useState(false)
   const [expandedGuidelines, setExpandedGuidelines] = useState(false)
   const [expandedMaterials, setExpandedMaterials] = useState(false)
+  const [mediaOpen, setMediaOpen] = useState(false)
   const [guidelinesOpen, setGuidelinesOpen] = useState(false)
   const [materialsOpen, setMaterialsOpen] = useState(false)
+  const mediaRef = useRef<HTMLDivElement>(null)
   const guidelinesRef = useRef<HTMLDivElement>(null)
   const materialsRef = useRef<HTMLDivElement>(null)
   const navRef = useRef<HTMLElement>(null)
@@ -33,12 +38,14 @@ export function AppHeader() {
     return pathname === path || pathname.startsWith(path + '/')
   }
 
+  const isMediaActive = MEDIA_DROPDOWN_LINKS.some((c) => isActive(c.path))
   const isGuidelinesActive = GUIDELINES_DROPDOWN_LINKS.some((c) => isActive(c.path))
   const isMaterialsActive = MATERIALS_DROPDOWN_LINKS.some((c) => isActive(c.path))
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       const t = e.target as Node
+      if (mediaRef.current && !mediaRef.current.contains(t)) setMediaOpen(false)
       if (guidelinesRef.current && !guidelinesRef.current.contains(t)) setGuidelinesOpen(false)
       if (materialsRef.current && !materialsRef.current.contains(t)) setMaterialsOpen(false)
     }
@@ -52,7 +59,9 @@ export function AppHeader() {
       ? 'materials'
       : isGuidelinesActive
         ? 'guidelines'
-        : mainActive?.id ?? null
+        : isMediaActive
+          ? 'media'
+          : mainActive?.id ?? null
 
     if (!activeId || !navRef.current) {
       queueMicrotask(() => setIndicator(null))
@@ -148,6 +157,47 @@ export function AppHeader() {
             )
           })}
 
+          <div className="relative z-[100]" ref={mediaRef}>
+            <button
+              type="button"
+              ref={(el) => {
+                itemRefs.current.media = el
+              }}
+              onClick={() => {
+                setMediaOpen((v) => !v)
+                setGuidelinesOpen(false)
+                setMaterialsOpen(false)
+              }}
+              className={`relative z-10 flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-[500] transition-smooth ${
+                isMediaActive
+                  ? 'text-foreground'
+                  : overHero
+                    ? 'text-white/85 hover:text-white'
+                    : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              {MEDIA_LABEL}
+              <ChevronDown
+                className={`h-3.5 w-3.5 transition-transform duration-200 ${mediaOpen ? 'rotate-180' : ''}`}
+                aria-hidden
+              />
+            </button>
+            {mediaOpen && (
+              <div className="absolute right-0 top-full z-[100] mt-3 min-w-[170px] rounded-2xl border border-border bg-card py-1 shadow-stripe-lg">
+                {MEDIA_DROPDOWN_LINKS.map((child) => (
+                  <Link
+                    key={child.id}
+                    href={child.path}
+                    onClick={() => setMediaOpen(false)}
+                    className="block px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+                  >
+                    {child.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
           <div className="relative z-[100]" ref={guidelinesRef}>
             <button
               type="button"
@@ -157,6 +207,7 @@ export function AppHeader() {
               onClick={() => {
                 setGuidelinesOpen((v) => !v)
                 setMaterialsOpen(false)
+                setMediaOpen(false)
               }}
               className={`relative z-10 flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-[500] transition-smooth ${
                 isGuidelinesActive
@@ -197,6 +248,7 @@ export function AppHeader() {
               onClick={() => {
                 setMaterialsOpen((v) => !v)
                 setGuidelinesOpen(false)
+                setMediaOpen(false)
               }}
               className={`relative z-10 flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-[500] transition-smooth ${
                 isMaterialsActive
@@ -248,6 +300,7 @@ export function AppHeader() {
             onOpenChange={(open) => {
               setIsMenuOpen(open)
               if (!open) {
+                setExpandedMedia(false)
                 setExpandedGuidelines(false)
                 setExpandedMaterials(false)
               }
@@ -274,8 +327,49 @@ export function AppHeader() {
                     <button
                       type="button"
                       onClick={() => {
+                        setExpandedMedia((v) => !v)
+                        setExpandedGuidelines(false)
+                        setExpandedMaterials(false)
+                      }}
+                      aria-expanded={expandedMedia}
+                      aria-controls={MEDIA_SUB_ID}
+                      className="group flex w-full items-center justify-between py-5 text-left transition-colors hover:text-foreground/60 active:scale-[0.99]"
+                    >
+                      <span className="font-heading text-2xl font-medium leading-snug text-foreground">
+                        {MEDIA_LABEL}
+                      </span>
+                      <ChevronDown
+                        className={`h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200 ${expandedMedia ? 'rotate-180' : ''}`}
+                        aria-hidden
+                      />
+                    </button>
+                    <div
+                      id={MEDIA_SUB_ID}
+                      role="group"
+                      aria-label={MEDIA_LABEL}
+                      className={expandedMedia ? 'flex flex-col divide-y divide-border pl-4 pb-2' : 'hidden'}
+                    >
+                      {MEDIA_DROPDOWN_LINKS.map((child) => (
+                        <Link
+                          key={child.id}
+                          href={child.path}
+                          onClick={close}
+                          className="group flex w-full items-center justify-between py-3 text-left transition-colors hover:text-foreground/60 active:scale-[0.99]"
+                        >
+                          <span className="text-lg font-medium text-foreground">{child.label}</span>
+                          <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1" aria-hidden />
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col">
+                    <button
+                      type="button"
+                      onClick={() => {
                         setExpandedGuidelines((v) => !v)
                         setExpandedMaterials(false)
+                        setExpandedMedia(false)
                       }}
                       aria-expanded={expandedGuidelines}
                       aria-controls={GUIDELINES_SUB_ID}
@@ -315,6 +409,7 @@ export function AppHeader() {
                       onClick={() => {
                         setExpandedMaterials((v) => !v)
                         setExpandedGuidelines(false)
+                        setExpandedMedia(false)
                       }}
                       aria-expanded={expandedMaterials}
                       aria-controls={MATERIALS_SUB_ID}
