@@ -78,6 +78,10 @@ const CONNECTIVITY_COLOR = [
 ]
 
 const RADIUS_BY_ZOOM = ['interpolate', ['linear'], ['zoom'], 2, 1.4, 4, 2.2, 6, 3, 8, 4, 12, 6]
+// Health centers are one pixel larger. Must be its own top-level interpolate:
+// MapLibre rejects ['zoom'] nested inside arithmetic, and the layer is then
+// silently dropped (the validation error is only fired as an event).
+const HEALTH_RADIUS_BY_ZOOM = ['interpolate', ['linear'], ['zoom'], 2, 2.4, 4, 3.2, 6, 4, 8, 5, 12, 7]
 
 function firstSymbolLayerId(map: MapLibreMap): string | undefined {
   const style = map.getStyle() as StyleSpecification | undefined
@@ -131,7 +135,7 @@ export function setGigaDataLayer(map: MapLibreMap, layer: DataLayer, countryId: 
         source: DOTS_SOURCE,
         'source-layer': TILE_SOURCE_LAYERS.health,
         paint: {
-          'circle-radius': ['+', RADIUS_BY_ZOOM, 1] as never,
+          'circle-radius': HEALTH_RADIUS_BY_ZOOM as never,
           'circle-opacity': 0.95,
           'circle-color': CONNECTIVITY_COLOR as never,
           'circle-stroke-width': 1.2,
@@ -197,6 +201,7 @@ export function createGigaMap(opts: GigaMapOptions): Promise<MapLibreMap> {
     map.on('error', (e) => {
       // Tile 204s and missing sprites are harmless; a failed style is not.
       const msg = e?.error?.message ?? ''
+      if (msg && !/tile|sprite|image/i.test(msg)) console.warn('[giga-map]', msg)
       if (!styleErrored && /style/i.test(msg)) {
         styleErrored = true
         reject(new Error(`Basemap failed to load: ${msg}`))
