@@ -123,13 +123,12 @@ export function AppHeader() {
     >
       <div className="mx-auto flex h-[4.5rem] max-w-6xl items-center justify-between px-6">
         <div className="flex shrink-0 items-center gap-4">
-          <Link href="/" className="flex items-center gap-4" aria-label="Giga Brand Assets home">
+          <Link href="/" className="flex items-center gap-4" aria-label="Brand assets home">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/logos/giga-unicef-itu-horizontal.svg"
-              alt="Giga, UNICEF and ITU"
-              className={`w-[188px] transition-smooth-transform ${overHero ? 'brightness-0 invert' : ''}`}
-              style={{ height: 'fit-content' }}
+              src="/logos/unicef-digital-impact-unboxed.svg"
+              alt="UNICEF Digital Impact Division"
+              className={`h-11 w-auto transition-smooth-transform ${overHero ? 'brightness-0 invert' : ''}`}
             />
           </Link>
         </div>

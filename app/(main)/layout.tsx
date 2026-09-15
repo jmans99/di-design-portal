@@ -19,9 +19,9 @@ export default function MainLayout({
             <div className="flex items-center gap-4">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/logos/giga-complete-horizontal.svg"
-                alt="Giga"
-                className="h-5 w-auto opacity-60"
+                src="/logos/unicef-digital-impact-unboxed.svg"
+                alt="UNICEF Digital Impact Division"
+                className="h-7 w-auto opacity-70"
               />
               <span className="h-4 w-px bg-border" />
               <p className="text-xs text-muted-foreground">
