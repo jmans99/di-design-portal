@@ -23,6 +23,7 @@ import { Download, Check, ChevronsUpDown, Globe, Sparkles, Image as ImageIcon } 
 import { cn } from '@/lib/utils'
 import { GIGA_COUNTRIES, type GigaCountry } from '@/lib/giga-countries'
 import { loadSvg, recolorSvg, svgToDataUrl } from '@/lib/svg-processing'
+import { renderGigaMapPng } from '@/lib/giga-maps/render'
 
 type PresetId = 'map-01' | 'map-02'
 type Selection = PresetId | 'custom'
@@ -169,20 +170,14 @@ export function BackgroundsPicker() {
     setIsGenerating(true)
     setError(null)
     try {
-      const params = new URLSearchParams({
-        country: country.code,
-        layer: 'live',
+      // Rendered in the browser with MapLibre (see lib/giga-maps/render.ts):
+      // no serverless Chromium, deterministic 'idle' signal, 3840x2160 output.
+      const mapBlob = await renderGigaMapPng({
+        countryCode: country.code,
         theme: 'dark',
-        scale: '2',
+        layer: 'status',
+        scale: 2,
       })
-      const res = await fetch(`/api/maps-screenshot?${params.toString()}`, {
-        method: 'GET',
-      })
-      if (!res.ok) {
-        const text = await res.text().catch(() => '')
-        throw new Error(text || `Request failed: ${res.status}`)
-      }
-      const mapBlob = await res.blob()
       const composed = await composeBackground(mapBlob)
 
       if (customUrl) URL.revokeObjectURL(customUrl)
