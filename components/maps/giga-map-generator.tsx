@@ -214,7 +214,7 @@ export function GigaMapGenerator() {
         </ControlSection>
 
         <ControlSection label="Facilities">
-          <div className="flex gap-2">
+          <div className="flex flex-col gap-2">
             {(Object.keys(DATA_LAYERS) as DataLayer[]).map((key) => (
               <ToggleButton key={key} active={layer === key} onClick={() => setLayer(key)}>
                 {DATA_LAYERS[key].label}
@@ -404,7 +404,7 @@ function ToggleButton({
       type="button"
       onClick={onClick}
       className={cn(
-        'flex-1 rounded-full border px-3 py-2.5 text-sm font-medium transition-smooth-transform active:scale-[0.98]',
+        'flex-1 whitespace-nowrap rounded-full border px-4 py-2.5 text-sm font-medium transition-smooth-transform active:scale-[0.98]',
         active
           ? 'border-primary-300 bg-primary-50 text-primary-700'
           : 'border-border bg-card text-foreground hover:bg-secondary/60'
