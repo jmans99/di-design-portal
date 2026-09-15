@@ -6,7 +6,7 @@ export default function PhotoAwardsPage() {
     <main className="mx-auto min-w-0 w-full max-w-6xl flex-1 overflow-visible px-6 pb-12 pt-6">
       <PageHeader
         title="Photo awards"
-        description="The winning stories of the Giga Photo Award. Open a story to read it photo by photo and download the images for UNICEF advocacy use."
+        description="The winning stories of the 2026 Giga Photo Award, Stories on the Impact of Connectivity. The photos may be used for UNICEF advocacy purposes; for any other use, contact UNICEF for permission."
       />
       <PhotoAwardsGallery />
     </main>

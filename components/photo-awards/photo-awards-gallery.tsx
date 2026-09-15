@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Award, ChevronLeft, ChevronRight } from 'lucide-react'
-import { PHOTO_AWARD_INTRO, PHOTO_AWARD_STORIES, type PhotoAwardStory } from '@/lib/photo-awards'
+import { PHOTO_AWARD_STORIES, type PhotoAwardStory } from '@/lib/photo-awards'
 import { StoryLightbox } from '@/components/photo-awards/story-lightbox'
 import { cn } from '@/lib/utils'
 
@@ -21,19 +21,9 @@ const STORIES = [...PHOTO_AWARD_STORIES].sort((a, b) => (a.rank ?? 9) - (b.rank 
  */
 export function PhotoAwardsGallery() {
   const [open, setOpen] = useState<{ story: PhotoAwardStory; index: number } | null>(null)
-  const [title, ...introRest] = PHOTO_AWARD_INTRO.split('\n').filter(Boolean)
-  const note = introRest.join(' ')
 
   return (
     <div className="animate-in fade-in duration-300 ease-out">
-      <div className="mb-8 max-w-3xl">
-        <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">Giga Photo Award 2026</p>
-        <h2 className="font-heading text-2xl font-medium tracking-[-0.02em] text-foreground">
-          {title.replace(/^Giga Photo Award:\s*/i, '')}
-        </h2>
-        {note && <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{note}</p>}
-      </div>
-
       <div className="grid gap-x-6 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
         {STORIES.map((story) => (
           <StoryTile key={story.slug} story={story} onOpen={(index) => setOpen({ story, index })} />
