@@ -9,7 +9,7 @@
 
 export const GIGA_BACKEND = 'https://uni-ooi-giga-backend-hjekcuagasashucv.a03.azurefd.net'
 
-export type DataLayer = 'status' | 'realtime' | 'none'
+export type DataLayer = 'school' | 'health' | 'all'
 export type MapTheme = 'dark' | 'light'
 
 export const STAGE_WIDTH = 1920
@@ -30,65 +30,29 @@ export const DOT_COLORS = {
   bad: '#ff5538',
 } as const
 
-export const DATA_LAYERS: Record<
-  Exclude<DataLayer, 'none'>,
-  { label: string; description: string; property: string; legend: { label: string; color: string }[] }
-> = {
-  status: {
-    label: 'School status',
-    description: 'Connected, not connected and unknown schools',
-    property: 'connectivity_status',
-    legend: [
-      { label: 'Connected', color: DOT_COLORS.connected },
-      { label: 'Not connected', color: DOT_COLORS.notConnected },
-      { label: 'Unknown', color: DOT_COLORS.unknown },
-    ],
-  },
-  realtime: {
-    label: 'Real-time connectivity',
-    description: 'Download speed against the national benchmark',
-    property: 'field_status',
-    legend: [
-      { label: 'Good', color: DOT_COLORS.good },
-      { label: 'Moderate', color: DOT_COLORS.moderate },
-      { label: 'Bad', color: DOT_COLORS.bad },
-      { label: 'Unknown', color: DOT_COLORS.unknown },
-    ],
-  },
-}
-
-/** Basemap label layers that add noise at country zoom. Hidden on load. */
-export const HIDDEN_BASEMAP_LAYERS = [
-  'water_name',
-  'road_oneway',
-  'road_oneway_opposite',
-  'highway_name_other',
-  'highway_name_motorway',
-  'place_other',
-  'place_suburb',
-  'place_village',
-  'place_town',
-  'place_state',
-  'poi',
-  'housenumber',
-  // positron (light) ids
-  'waterway_line_label',
-  'water_name_point_label',
-  'water_name_line_label',
-  'highway-name-path',
-  'highway-name-minor',
-  'highway-name-major',
-  'highway-shield-non-us',
-  'highway-shield-us-interstate',
-  'road_shield_us',
-  'airport',
-  'label_other',
-  'label_village',
-  'label_town',
-  'label_state',
+/** Legend shared by every facility type. */
+export const CONNECTIVITY_LEGEND = [
+  { label: 'Connected', color: DOT_COLORS.connected },
+  { label: 'Not connected', color: DOT_COLORS.notConnected },
+  { label: 'Unknown', color: DOT_COLORS.unknown },
 ]
 
-export const MAP_ATTRIBUTION = '© OpenMapTiles © OpenStreetMap contributors · School data: Giga'
+export const DATA_LAYERS: Record<
+  DataLayer,
+  { label: string; fileTag: string; entityCode: 'school' | 'health' | 'all' }
+> = {
+  school: { label: 'Schools', fileTag: 'schools', entityCode: 'school' },
+  health: { label: 'Health centers', fileTag: 'health', entityCode: 'health' },
+  all: { label: 'All facilities', fileTag: 'all-facilities', entityCode: 'all' },
+}
+
+/** Vector tile source-layer names inside the Giga v2 entity tiles. */
+export const TILE_SOURCE_LAYERS = {
+  school: 'school',
+  health: 'entities',
+} as const
+
+export const MAP_ATTRIBUTION = '© OpenMapTiles © OpenStreetMap contributors · Facility data: Giga'
 
 export type GigaMapCountry = {
   code: string
@@ -97,4 +61,5 @@ export type GigaMapCountry = {
   bbox: [number, number, number, number] | null
   centroid: [number, number] | null
   schoolsTotal: number
+  healthTotal: number
 }

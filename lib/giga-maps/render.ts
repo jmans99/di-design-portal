@@ -6,17 +6,18 @@ import {
   BASEMAP_STYLE,
   DATA_LAYERS,
   DOT_COLORS,
-  HIDDEN_BASEMAP_LAYERS,
   MAP_ATTRIBUTION,
   STAGE_HEIGHT,
   STAGE_WIDTH,
+  TILE_SOURCE_LAYERS,
   type DataLayer,
   type GigaMapCountry,
   type MapTheme,
 } from './config'
 
-const DOTS_SOURCE = 'giga-schools'
-const DOTS_LAYER = 'giga-schools-dots'
+const DOTS_SOURCE = 'giga-entities'
+const SCHOOL_LAYER = 'giga-schools-dots'
+const HEALTH_LAYER = 'giga-health-dots'
 const IDLE_TIMEOUT_MS = 45000
 
 /* ------------------------------------------------------------------ */
@@ -60,52 +61,42 @@ export type GigaMapOptions = {
   interactive?: boolean
 }
 
-function tileUrl(kind: Exclude<DataLayer, 'none'>, countryId: number) {
+function tileUrl(layer: DataLayer, countryId: number) {
   const base = typeof window !== 'undefined' ? window.location.origin : ''
+  const kind = DATA_LAYERS[layer].entityCode
   return `${base}/api/giga-maps/tiles?kind=${kind}&country=${countryId}&z={z}&x={x}&y={y}`
 }
 
-function dotColorExpression(layer: Exclude<DataLayer, 'none'>) {
-  const prop = DATA_LAYERS[layer].property
-  if (layer === 'status') {
-    return [
-      'match',
-      ['get', prop],
-      'connected',
-      DOT_COLORS.connected,
-      'not_connected',
-      DOT_COLORS.notConnected,
-      DOT_COLORS.unknown,
-    ]
-  }
-  return [
-    'match',
-    ['get', prop],
-    'good',
-    DOT_COLORS.good,
-    'moderate',
-    DOT_COLORS.moderate,
-    'bad',
-    DOT_COLORS.bad,
-    DOT_COLORS.unknown,
-  ]
-}
+const CONNECTIVITY_COLOR = [
+  'match',
+  ['get', 'connectivity_status'],
+  'connected',
+  DOT_COLORS.connected,
+  'not_connected',
+  DOT_COLORS.notConnected,
+  DOT_COLORS.unknown,
+]
+
+const RADIUS_BY_ZOOM = ['interpolate', ['linear'], ['zoom'], 2, 1.4, 4, 2.2, 6, 3, 8, 4, 12, 6]
 
 function firstSymbolLayerId(map: MapLibreMap): string | undefined {
   const style = map.getStyle() as StyleSpecification | undefined
   return style?.layers.find((l) => l.type === 'symbol')?.id
 }
 
-function hideNoisyLabels(map: MapLibreMap) {
-  for (const id of HIDDEN_BASEMAP_LAYERS) {
-    if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', 'none')
+/** The export is a clean shape map: no place names, road names or shields. */
+function hideAllLabels(map: MapLibreMap) {
+  const style = map.getStyle() as StyleSpecification | undefined
+  for (const l of style?.layers ?? []) {
+    if (l.type === 'symbol') map.setLayoutProperty(l.id, 'visibility', 'none')
   }
 }
 
 export function setGigaDataLayer(map: MapLibreMap, layer: DataLayer, countryId: number) {
-  if (map.getLayer(DOTS_LAYER)) map.removeLayer(DOTS_LAYER)
+  for (const id of [SCHOOL_LAYER, HEALTH_LAYER]) {
+    if (map.getLayer(id)) map.removeLayer(id)
+  }
   if (map.getSource(DOTS_SOURCE)) map.removeSource(DOTS_SOURCE)
-  if (layer === 'none') return
 
   map.addSource(DOTS_SOURCE, {
     type: 'vector',
@@ -113,29 +104,44 @@ export function setGigaDataLayer(map: MapLibreMap, layer: DataLayer, countryId: 
     minzoom: 0,
     maxzoom: 14,
   })
-  map.addLayer(
-    {
-      id: DOTS_LAYER,
-      type: 'circle',
-      source: DOTS_SOURCE,
-      'source-layer': 'default',
-      paint: {
-        'circle-radius': [
-          'interpolate',
-          ['linear'],
-          ['zoom'],
-          2, 1.4,
-          4, 2.2,
-          6, 3,
-          8, 4,
-          12, 6,
-        ],
-        'circle-opacity': 0.9,
-        'circle-color': dotColorExpression(layer) as never,
+  const before = firstSymbolLayerId(map)
+
+  if (layer === 'school' || layer === 'all') {
+    map.addLayer(
+      {
+        id: SCHOOL_LAYER,
+        type: 'circle',
+        source: DOTS_SOURCE,
+        'source-layer': TILE_SOURCE_LAYERS.school,
+        paint: {
+          'circle-radius': RADIUS_BY_ZOOM as never,
+          'circle-opacity': 0.9,
+          'circle-color': CONNECTIVITY_COLOR as never,
+        },
       },
-    },
-    firstSymbolLayerId(map)
-  )
+      before
+    )
+  }
+  if (layer === 'health' || layer === 'all') {
+    // Health centers get a white ring so they stay recognisable next to schools.
+    map.addLayer(
+      {
+        id: HEALTH_LAYER,
+        type: 'circle',
+        source: DOTS_SOURCE,
+        'source-layer': TILE_SOURCE_LAYERS.health,
+        paint: {
+          'circle-radius': ['+', RADIUS_BY_ZOOM, 1] as never,
+          'circle-opacity': 0.95,
+          'circle-color': CONNECTIVITY_COLOR as never,
+          'circle-stroke-width': 1.2,
+          'circle-stroke-color': '#ffffff',
+          'circle-stroke-opacity': 0.85,
+        },
+      },
+      before
+    )
+  }
 }
 
 /** Resolves when the map has finished loading tiles and rendering. */
@@ -202,7 +208,7 @@ export function createGigaMap(opts: GigaMapOptions): Promise<MapLibreMap> {
     }
 
     map.once('load', () => {
-      hideNoisyLabels(map)
+      hideAllLabels(map)
       setGigaDataLayer(map, layer, country.id)
       resolve(map)
     })

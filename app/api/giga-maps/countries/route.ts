@@ -7,7 +7,7 @@ type BackendCountry = {
   id: number
   name: string
   code: string
-  schools_total?: number | null
+  entity_counts?: { school?: number; health?: number } | null
   admin_metadata?: {
     bbox?: number[] | null
     centroid?: number[] | null
@@ -17,11 +17,11 @@ type BackendCountry = {
 /**
  * Country list for the Maps page picker. Proxies the public Giga Maps backend
  * and keeps only what the renderer needs: id (for tiles), bbox (for framing)
- * and a school count (to sort countries with data first).
+ * and facility counts (schools, health centers) for the UI.
  */
 export async function GET() {
   try {
-    const res = await fetch(`${GIGA_BACKEND}/api/locations/countries/`, {
+    const res = await fetch(`${GIGA_BACKEND}/api/v2/entities/countries/`, {
       next: { revalidate: 86400 },
     })
     if (!res.ok) {
@@ -44,7 +44,8 @@ export async function GET() {
           c.admin_metadata?.centroid?.length === 2
             ? (c.admin_metadata.centroid as [number, number])
             : null,
-        schoolsTotal: c.schools_total ?? 0,
+        schoolsTotal: c.entity_counts?.school ?? 0,
+        healthTotal: c.entity_counts?.health ?? 0,
       }))
       .sort((a, b) => a.name.localeCompare(b.name))
 

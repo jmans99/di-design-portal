@@ -175,7 +175,7 @@ export function BackgroundsPicker() {
       const mapBlob = await renderGigaMapPng({
         countryCode: country.code,
         theme: 'dark',
-        layer: 'status',
+        layer: 'school',
         scale: 2,
       })
       const composed = await composeBackground(mapBlob)

@@ -17,6 +17,7 @@ import {
 import { Download, Check, ChevronsUpDown, Globe, Maximize2, Loader2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import {
+  CONNECTIVITY_LEGEND,
   DATA_LAYERS,
   STAGE_HEIGHT,
   STAGE_WIDTH,
@@ -43,7 +44,7 @@ export function GigaMapGenerator() {
   const [countries, setCountries] = useState<GigaMapCountry[]>([])
   const [countriesError, setCountriesError] = useState<string | null>(null)
   const [country, setCountry] = useState<GigaMapCountry | null>(null)
-  const [layer, setLayer] = useState<DataLayer>('status')
+  const [layer, setLayer] = useState<DataLayer>('school')
   const [theme, setTheme] = useState<MapTheme>('dark')
   const [resolution, setResolution] = useState<Resolution>('2x')
   const [pickerOpen, setPickerOpen] = useState(false)
@@ -51,8 +52,6 @@ export function GigaMapGenerator() {
   const [renderError, setRenderError] = useState<string | null>(null)
   const [isExporting, setIsExporting] = useState(false)
   const [exportError, setExportError] = useState<string | null>(null)
-  const [realtimeWindow, setRealtimeWindow] = useState<{ startIso: string; endIso: string } | null>(null)
-  const [realtimeChecked, setRealtimeChecked] = useState(false)
 
   const stageRef = useRef<HTMLDivElement>(null)
   const wrapperRef = useRef<HTMLDivElement>(null)
@@ -120,35 +119,9 @@ export function GigaMapGenerator() {
     }
   }, [country, theme, layer])
 
-  // Which week the real-time layer is showing (resolved server side).
-  useEffect(() => {
-    setRealtimeChecked(false)
-    if (!country || layer !== 'realtime') {
-      setRealtimeWindow(null)
-      return
-    }
-    let cancelled = false
-    fetch(`/api/giga-maps/realtime-window?country=${country.id}`)
-      .then((r) => (r.ok ? r.json() : null))
-      .then((w) => {
-        if (cancelled) return
-        setRealtimeWindow(w && w.startIso ? w : null)
-        setRealtimeChecked(true)
-      })
-      .catch(() => {
-        if (cancelled) return
-        setRealtimeWindow(null)
-        setRealtimeChecked(true)
-      })
-    return () => {
-      cancelled = true
-    }
-  }, [country, layer])
-
   const filename = useMemo(() => {
     if (!country) return ''
-    const layerTag = layer === 'none' ? 'static' : layer
-    return `giga-maps_${country.code.toUpperCase()}_${layerTag}_${theme}_${resolution}.png`
+    return `giga-maps_${country.code.toUpperCase()}_${DATA_LAYERS[layer].fileTag}_${theme}_${resolution}.png`
   }, [country, layer, theme, resolution])
 
   const handleExport = useCallback(async () => {
@@ -175,7 +148,9 @@ export function GigaMapGenerator() {
     }
   }, [filename, renderState, resolution])
 
-  const legend = layer === 'none' ? [] : DATA_LAYERS[layer].legend
+  const legend = CONNECTIVITY_LEGEND
+  const noHealthData = !!country && layer !== 'school' && country.healthTotal === 0
+  const noSchoolData = !!country && layer !== 'health' && country.schoolsTotal === 0
 
   return (
     <div className="flex flex-col gap-8 lg:flex-row lg:items-start">
@@ -238,27 +213,20 @@ export function GigaMapGenerator() {
           {countriesError && <p className="text-xs text-destructive">{countriesError}</p>}
         </ControlSection>
 
-        <ControlSection label="Data layer">
-          <div className="flex flex-col gap-2">
-            <OptionCard
-              active={layer === 'status'}
-              onClick={() => setLayer('status')}
-              label={DATA_LAYERS.status.label}
-              description={DATA_LAYERS.status.description}
-            />
-            <OptionCard
-              active={layer === 'realtime'}
-              onClick={() => setLayer('realtime')}
-              label={DATA_LAYERS.realtime.label}
-              description={DATA_LAYERS.realtime.description}
-            />
-            <OptionCard
-              active={layer === 'none'}
-              onClick={() => setLayer('none')}
-              label="Static map"
-              description="Country outline without school dots"
-            />
+        <ControlSection label="Facilities">
+          <div className="flex gap-2">
+            {(Object.keys(DATA_LAYERS) as DataLayer[]).map((key) => (
+              <ToggleButton key={key} active={layer === key} onClick={() => setLayer(key)}>
+                {DATA_LAYERS[key].label}
+              </ToggleButton>
+            ))}
           </div>
+          {country && (
+            <p className="text-[11px] text-muted-foreground">
+              {formatCount(country.schoolsTotal)} schools · {formatCount(country.healthTotal)} health
+              centers mapped
+            </p>
+          )}
         </ControlSection>
 
         <ControlSection
@@ -299,7 +267,7 @@ export function GigaMapGenerator() {
           </p>
           {exportError && <p className="mt-2 text-xs text-destructive">{exportError}</p>}
           <p className="mt-3 text-[11px] leading-relaxed text-muted-foreground">
-            Rendered in your browser from live Giga Maps school data. The
+            Rendered in your browser from live Giga Maps facility data. The
             download matches the preview exactly.
           </p>
         </div>
@@ -315,14 +283,16 @@ export function GigaMapGenerator() {
                 {item.label}
               </span>
             ))}
-            {layer === 'realtime' && realtimeWindow && (
-              <span className="text-muted-foreground/80">
-                Week {formatRange(realtimeWindow.startIso, realtimeWindow.endIso)}
-              </span>
+            {layer === 'all' && (
+              <span className="text-muted-foreground/80">Health centers have a white ring</span>
             )}
-            {layer === 'realtime' && realtimeChecked && !realtimeWindow && (
+            {(noHealthData || noSchoolData) && (
               <span className="text-amber-700 dark:text-amber-300">
-                No real-time measurements for this country in the last 10 weeks
+                {noHealthData && noSchoolData
+                  ? 'No facilities mapped for this country yet'
+                  : noHealthData
+                    ? 'No health centers mapped for this country yet'
+                    : 'No schools mapped for this country yet'}
               </span>
             )}
           </div>
@@ -376,7 +346,7 @@ export function GigaMapGenerator() {
 
         <p className="text-xs leading-relaxed text-muted-foreground">
           The preview is rendered at native 1920×1080 and downscaled for your
-          screen. Basemap © OpenMapTiles © OpenStreetMap contributors, school
+          screen. Basemap © OpenMapTiles © OpenStreetMap contributors, facility
           data from Giga.
         </p>
       </div>
@@ -384,9 +354,8 @@ export function GigaMapGenerator() {
   )
 }
 
-function formatRange(startIso: string, endIso: string) {
-  const fmt = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
-  return `${fmt.format(new Date(startIso))} to ${fmt.format(new Date(endIso))}`
+function formatCount(n: number) {
+  return new Intl.NumberFormat('en-US').format(n)
 }
 
 /* ------------------------------------------------------------------ */
@@ -435,41 +404,13 @@ function ToggleButton({
       type="button"
       onClick={onClick}
       className={cn(
-        'flex-1 rounded-full border px-4 py-2.5 text-sm font-medium transition-smooth-transform active:scale-[0.98]',
+        'flex-1 rounded-full border px-3 py-2.5 text-sm font-medium transition-smooth-transform active:scale-[0.98]',
         active
           ? 'border-primary-300 bg-primary-50 text-primary-700'
           : 'border-border bg-card text-foreground hover:bg-secondary/60'
       )}
     >
       {children}
-    </button>
-  )
-}
-
-function OptionCard({
-  active,
-  onClick,
-  label,
-  description,
-}: {
-  active: boolean
-  onClick: () => void
-  label: string
-  description: string
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={cn(
-        'flex flex-col items-start rounded-2xl border px-4 py-3 text-left transition-smooth-transform active:scale-[0.99]',
-        active
-          ? 'border-primary-300 bg-primary-50/70 text-foreground'
-          : 'border-border bg-card text-foreground hover:bg-secondary/60'
-      )}
-    >
-      <span className="text-sm font-medium">{label}</span>
-      <span className="text-xs text-muted-foreground">{description}</span>
     </button>
   )
 }
