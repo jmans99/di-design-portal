@@ -168,7 +168,7 @@ export function AppHeader() {
                 setGuidelinesOpen(false)
                 setMaterialsOpen(false)
               }}
-              className={`relative z-10 flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-[500] transition-smooth ${
+              className={`relative z-10 flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-[500] transition-smooth focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
                 isMediaActive
                   ? 'text-foreground'
                   : overHero
@@ -183,13 +183,13 @@ export function AppHeader() {
               />
             </button>
             {mediaOpen && (
-              <div className="absolute right-0 top-full z-[100] mt-3 min-w-[170px] rounded-2xl border border-border bg-card py-1 shadow-stripe-lg">
+              <div className="absolute right-0 top-full z-[100] mt-3 min-w-[170px] overflow-hidden rounded-2xl border border-border bg-card p-1.5 shadow-stripe-lg">
                 {MEDIA_DROPDOWN_LINKS.map((child) => (
                   <Link
                     key={child.id}
                     href={child.path}
                     onClick={() => setMediaOpen(false)}
-                    className="block px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+                    className="block rounded-xl px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:bg-accent focus-visible:text-foreground focus-visible:outline-none"
                   >
                     {child.label}
                   </Link>
@@ -209,7 +209,7 @@ export function AppHeader() {
                 setMaterialsOpen(false)
                 setMediaOpen(false)
               }}
-              className={`relative z-10 flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-[500] transition-smooth ${
+              className={`relative z-10 flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-[500] transition-smooth focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
                 isGuidelinesActive
                   ? 'text-foreground'
                   : overHero
@@ -224,13 +224,13 @@ export function AppHeader() {
               />
             </button>
             {guidelinesOpen && (
-              <div className="absolute right-0 top-full z-[100] mt-3 min-w-[160px] rounded-2xl border border-border bg-card py-1 shadow-stripe-lg">
+              <div className="absolute right-0 top-full z-[100] mt-3 min-w-[160px] overflow-hidden rounded-2xl border border-border bg-card p-1.5 shadow-stripe-lg">
                 {GUIDELINES_DROPDOWN_LINKS.map((child) => (
                   <Link
                     key={child.id}
                     href={child.path}
                     onClick={() => setGuidelinesOpen(false)}
-                    className="block px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+                    className="block rounded-xl px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:bg-accent focus-visible:text-foreground focus-visible:outline-none"
                   >
                     {child.label}
                   </Link>
@@ -250,7 +250,7 @@ export function AppHeader() {
                 setGuidelinesOpen(false)
                 setMediaOpen(false)
               }}
-              className={`relative z-10 flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-[500] transition-smooth ${
+              className={`relative z-10 flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-[500] transition-smooth focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
                 isMaterialsActive
                   ? 'text-foreground'
                   : overHero
@@ -265,13 +265,13 @@ export function AppHeader() {
               />
             </button>
             {materialsOpen && (
-              <div className="absolute right-0 top-full z-[100] mt-3 min-w-[180px] rounded-2xl border border-border bg-card py-1 shadow-stripe-lg">
+              <div className="absolute right-0 top-full z-[100] mt-3 min-w-[180px] overflow-hidden rounded-2xl border border-border bg-card p-1.5 shadow-stripe-lg">
                 {MATERIALS_DROPDOWN_LINKS.map((child) => (
                   <Link
                     key={child.id}
                     href={child.path}
                     onClick={() => setMaterialsOpen(false)}
-                    className="block px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+                    className="block rounded-xl px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:bg-accent focus-visible:text-foreground focus-visible:outline-none"
                   >
                     {child.label}
                   </Link>
