@@ -88,11 +88,22 @@ function firstSymbolLayerId(map: MapLibreMap): string | undefined {
   return style?.layers.find((l) => l.type === 'symbol')?.id
 }
 
-/** The export is a clean shape map: no place names, road names or shields. */
-function hideAllLabels(map: MapLibreMap) {
+/** Basemap source-layers that only add noise on a facility map. */
+const HIDDEN_SOURCE_LAYERS = new Set(['transportation', 'transportation_name', 'aeroway', 'building'])
+
+/**
+ * The export is a clean shape map: no place names, no roads, and only
+ * national borders (admin_level 2). Water, land use and coastlines stay.
+ */
+function cleanBasemap(map: MapLibreMap) {
   const style = map.getStyle() as StyleSpecification | undefined
   for (const l of style?.layers ?? []) {
-    if (l.type === 'symbol') map.setLayoutProperty(l.id, 'visibility', 'none')
+    const sourceLayer = 'source-layer' in l ? l['source-layer'] : undefined
+    const isInternalBoundary =
+      sourceLayer === 'boundary' && !/country|boundary_2$|disputed/.test(l.id)
+    if (l.type === 'symbol' || (sourceLayer && HIDDEN_SOURCE_LAYERS.has(sourceLayer)) || isInternalBoundary) {
+      map.setLayoutProperty(l.id, 'visibility', 'none')
+    }
   }
 }
 
@@ -213,7 +224,7 @@ export function createGigaMap(opts: GigaMapOptions): Promise<MapLibreMap> {
     }
 
     map.once('load', () => {
-      hideAllLabels(map)
+      cleanBasemap(map)
       setGigaDataLayer(map, layer, country.id)
       resolve(map)
     })
