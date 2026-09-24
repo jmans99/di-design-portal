@@ -10,7 +10,7 @@ export default function SocialMediaPage() {
     <main className="mx-auto min-w-0 w-full max-w-6xl flex-1 overflow-visible px-6 pb-12 pt-6">
       <PageHeader
         title="Social media"
-        description="Pick a country and download the ready-to-post country-joins-Giga announcement. Tagline, date, and subtitle are editable. PNG export is 1080×1350 (Instagram portrait)."
+        description="Pick a country and download the ready-to-post country-joins-Digital-Inclusion announcement. Tagline, date, and subtitle are editable. PNG export is 1080×1350 (Instagram portrait)."
       />
       <SocialMediaStudio />
     </main>

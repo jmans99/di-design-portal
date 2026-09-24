@@ -30,7 +30,7 @@ export function SystemBento() {
             </span>
             <h3 className="font-heading text-2xl font-medium text-foreground">AI Skills</h3>
             <p className="mt-2 max-w-sm text-[14px] leading-relaxed text-muted-foreground">
-              The skills the Giga team builds with, packaged and ready to install on
+              The skills the Digital Inclusion team builds with, packaged and ready to install on
               your AI platform.
             </p>
             <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary-600">

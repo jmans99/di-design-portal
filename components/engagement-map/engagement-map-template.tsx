@@ -177,7 +177,7 @@ export const EngagementMapTemplate = forwardRef<
       {/* Engaged section */}
       <div style={{ position: 'absolute', left: 55, top: 60, width: 471 }}>
         <SectionTitle dotColor={MAP_COLORS.engaged}>
-          Countries Engaged With Giga ({engaged.length})
+          Countries Engaged With Digital Inclusion ({engaged.length})
         </SectionTitle>
         <div style={{ marginTop: 24 }}>
           <CountryList

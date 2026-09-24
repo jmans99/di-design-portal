@@ -6,7 +6,7 @@ const GALLERIES = [
   {
     id: 'flickr',
     title: 'Public Events Photos',
-    description: "Giga's public Flickr albums — event coverage, field visits, and community moments shared openly.",
+    description: "Digital Inclusion's public Flickr albums — event coverage, field visits, and community moments shared openly.",
     tags: ['Flickr', 'Images'],
     href: 'https://www.flickr.com/photos/gigaglobal/albums/',
     svg: (
@@ -26,7 +26,7 @@ const GALLERIES = [
   {
     id: 'impact-stories',
     title: 'Impact Stories',
-    description: "Visual documentation of Giga's impact — stories from schools, communities, and partners around the world.",
+    description: "Visual documentation of Digital Inclusion's impact — stories from schools, communities, and partners around the world.",
     tags: ['SharePoint', 'Images', 'Videos'],
     href: 'https://unicef.sharepoint.com/:f:/r/teams/ICTD-DIDI/DocumentLibrary1/005%20Communication%20and%20External%20Relations/02_Communications/000%20-%20COMMS%20HUB%20ALPHA/MULTIMEDIA%20CENTRE/IMPACT%20STORIES?csf=1&web=1&e=DeBXbe',
     svg: (
@@ -36,7 +36,7 @@ const GALLERIES = [
   {
     id: 'events',
     title: 'Event Coverage',
-    description: 'Photos and media from Giga events — conferences, launches, field missions, and partner meetings.',
+    description: 'Photos and media from Digital Inclusion events — conferences, launches, field missions, and partner meetings.',
     tags: ['SharePoint', 'Images', 'Videos'],
     href: 'https://unicef.sharepoint.com/teams/ICTD-DIDI/DocumentLibrary1/Forms/AllItems.aspx?csf=1&web=1&e=QQLhHm&CID=e70b14e6%2Dcbca%2D46d7%2D807f%2D410bceffa2af&FolderCTID=0x012000817466FC87269A4FA817DD253A5243D5&id=%2Fteams%2FICTD%2DDIDI%2FDocumentLibrary1%2F005%20Communication%20and%20External%20Relations%2F02%5FCommunications%2F000%20%2D%20COMMS%20HUB%20ALPHA%2FMULTIMEDIA%20CENTRE%2FEVENT%20COVERAGE',
     svg: (
@@ -46,7 +46,7 @@ const GALLERIES = [
   {
     id: 'product',
     title: 'Product Photos & Footage',
-    description: "Photos and video footage of Giga's products, tools, and technology — for presentations and communications.",
+    description: "Photos and video footage of Digital Inclusion's products, tools, and technology — for presentations and communications.",
     tags: ['SharePoint', 'Images', 'Videos'],
     href: 'https://unicef.sharepoint.com/:f:/r/teams/ICTD-DIDI/DocumentLibrary1/005%20Communication%20and%20External%20Relations/02_Communications/000%20-%20COMMS%20HUB%20ALPHA/MULTIMEDIA%20CENTRE/PRODUCT%20PHOTOS%20AND%20FOOTAGE?csf=1&web=1&e=UdyYd3',
     svg: (
@@ -56,7 +56,7 @@ const GALLERIES = [
   {
     id: 'youtube',
     title: 'YouTube Channel',
-    description: "Giga's official YouTube channel — documentaries, explainers, event recordings, and partner stories.",
+    description: "Digital Inclusion's official YouTube channel — documentaries, explainers, event recordings, and partner stories.",
     tags: ['YouTube', 'Videos'],
     href: 'https://www.youtube.com/@GigaGlobal',
     svg: (

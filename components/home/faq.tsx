@@ -12,7 +12,7 @@ const ITEMS: Item[] = [
     a: 'Use the white logo on Giga Blue or over imagery. Keep solid black backgrounds for Giga Maps only, everywhere else stays on brand without them.',
   },
   {
-    q: 'Which fonts does Giga use?',
+    q: 'Which fonts does Digital Inclusion use?',
     a: 'Manrope for headings and Open Sans for body. The full type scale is set up for you on the Typography page.',
   },
   {
@@ -25,7 +25,7 @@ const ITEMS: Item[] = [
   },
   {
     q: 'Who can use these assets?',
-    a: 'Authorized Giga, UNICEF, ITU, and partner teams. The goal is simple: zero off-brand assets in the wild.',
+    a: 'Authorized Digital Inclusion, UNICEF, ITU, and partner teams. The goal is simple: zero off-brand assets in the wild.',
   },
 ]
 

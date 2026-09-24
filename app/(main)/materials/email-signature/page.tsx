@@ -6,7 +6,7 @@ export default function EmailSignaturePage() {
     <main className="mx-auto min-w-0 w-full max-w-6xl flex-1 overflow-visible px-6 pb-12 pt-6">
       <PageHeader
         title="Digital Inclusion email signature"
-        description="Build your Digital Inclusion + Giga signature, then copy it and paste into Outlook (Settings > Signatures). The signature font is Noto Sans, Outlook may reformat it, please verify after pasting."
+        description="Build your Digital Inclusion signature, then copy it and paste into Outlook (Settings > Signatures). The signature font is Noto Sans, Outlook may reformat it, please verify after pasting."
       />
       <EmailSignatureGenerator />
     </main>

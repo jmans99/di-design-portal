@@ -1,5 +1,5 @@
 ---
-name: Giga Brand Asset Generator
+name: Digital Inclusion Brand Asset Generator
 description: The on-brand home for every Giga asset, bright-utility design language led by Giga Blue and real-world classroom imagery.
 colors:
   giga-blue: "#277AFF"
@@ -91,7 +91,7 @@ components:
     typography: "{typography.label}"
 ---
 
-# Design System: Giga Brand Asset Generator
+# Design System: Digital Inclusion Brand Asset Generator
 
 ## 1. Overview
 

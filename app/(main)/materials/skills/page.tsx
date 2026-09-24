@@ -10,7 +10,7 @@ export default function SkillsPage() {
     <main className="mx-auto min-w-0 w-full max-w-6xl flex-1 overflow-visible px-6 pb-12 pt-6">
       <PageHeader
         title="AI Skills"
-        description="The AI skills the Giga team uses. Download one, add it to your AI platform, and it runs whenever the work calls for it."
+        description="The AI skills the Digital Inclusion team uses. Download one, add it to your AI platform, and it runs whenever the work calls for it."
       />
       <SkillsBrowser />
     </main>

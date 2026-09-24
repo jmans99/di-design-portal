@@ -23,8 +23,8 @@ import {
 import { getDisplayCountryName } from '@/lib/social-media/display-names'
 
 const TAGLINE_PRESETS = [
-  { id: 'growing', label: 'Giga is growing', value: 'Giga is growing' },
-  { id: 'on-tour', label: 'Giga is on tour', value: 'Giga is on tour' },
+  { id: 'growing', label: 'Digital Inclusion is growing', value: 'Digital Inclusion is growing' },
+  { id: 'on-tour', label: 'Digital Inclusion is on tour', value: 'Digital Inclusion is on tour' },
   { id: 'custom', label: 'Custom…', value: '' },
 ] as const
 
@@ -35,7 +35,7 @@ const DEFAULT_COUNTRY = GIGA_COUNTRIES.find((c) => c.code === 'gm') ?? GIGA_COUN
 export function SocialMediaStudio() {
   const [country, setCountry] = useState<GigaCountry>(DEFAULT_COUNTRY)
   const [taglinePreset, setTaglinePreset] = useState<TaglinePresetId>('growing')
-  const [taglineCustom, setTaglineCustom] = useState('Giga is growing')
+  const [taglineCustom, setTaglineCustom] = useState('Digital Inclusion is growing')
 
   const today = useMemo(() => new Date(), [])
   const formattedDate = useMemo(() => formatMonthYear(today), [today])

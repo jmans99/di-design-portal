@@ -8,11 +8,11 @@ product
 
 ## Users
 
-Brand and communications teams at Giga, UNICEF, ITU, and authorized partner organizations. They are not designers; they need the tool to make the formatting decisions for them so they can focus on communicating. The same surfaces double as the public face of the Giga design system, so visitors form an impression of the brand here too.
+Brand and communications teams at Digital Inclusion, UNICEF, ITU, and authorized partner organizations. They are not designers; they need the tool to make the formatting decisions for them so they can focus on communicating. The same surfaces double as the public face of the Giga design system, so visitors form an impression of the brand here too.
 
 ## Product Purpose
 
-Self-serve brand asset platform for the Giga design system. Partners find and download correct, on-brand assets (logos, colors, typography, illustrations, media, maps, email signatures, backgrounds, social templates) plus the AI skills the Giga team builds with, without involving the design team. Success means zero off-brand assets in the wild. The home page sells that promise; the inner tools deliver it.
+Self-serve brand asset platform for the Digital Inclusion design system. Partners find and download correct, on-brand assets (logos, colors, typography, illustrations, media, maps, email signatures, backgrounds, social templates) plus the AI skills the Digital Inclusion team builds with, without involving the design team. Success means zero off-brand assets in the wild. The home page sells that promise; the inner tools deliver it.
 
 ## Brand Personality
 

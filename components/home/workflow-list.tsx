@@ -43,7 +43,7 @@ export function WorkflowList() {
           Everything on brand, in seconds
         </h2>
         <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
-          The same building blocks the Giga design team works from, documented and
+          The same building blocks the Digital Inclusion design team works from, documented and
           ready for you to use.
         </p>
       </div>
@@ -105,7 +105,7 @@ export function WorkflowList() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/home/workflow.jpg"
-            alt="A communications team working with Giga assets on their laptops"
+            alt="A communications team working with Digital Inclusion assets on their laptops"
             className="aspect-[4/3] w-full object-cover"
           />
         </div>

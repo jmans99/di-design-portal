@@ -413,7 +413,7 @@ export function GigaMapGenerator() {
         <p className="text-xs leading-relaxed text-muted-foreground">
           The preview is rendered at native 1920×1080 and downscaled for your
           screen. Basemap © OpenMapTiles © OpenStreetMap contributors, facility
-          data from Giga.
+          data from Giga Maps.
         </p>
       </div>
     </div>

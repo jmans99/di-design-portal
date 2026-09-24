@@ -15,7 +15,7 @@ export default function VideoGuidelinesPage() {
     <main className="mx-auto min-w-0 w-full max-w-6xl flex-1 overflow-visible px-6 pb-12 pt-6">
       <PageHeader
         title="Video guidelines"
-        description="Branding guidelines and assets for Giga video content."
+        description="Branding guidelines and assets for Digital Inclusion video content."
       />
       <VideoBrandGuidelinesSection onNavigateToLogosWithVariant={handleNavigateToLogosWithVariant} />
     </main>

@@ -111,9 +111,9 @@ const SKILLS_SOURCE: Skill[] = [
     title: 'Giga Chart Style',
     category: 'data',
     description:
-      'A visual identity for matplotlib charts: Cloudflare Radar information hierarchy applied to Giga brand colours and fonts, with patterns for time series, dumbbells, and heatmaps.',
+      'A visual identity for matplotlib charts: Cloudflare Radar information hierarchy applied to Digital Inclusion brand colours and fonts, with patterns for time series, dumbbells, and heatmaps.',
     useWhen:
-      'Building charts in Jupyter for Giga blogs, decks, or country reports.',
+      'Building charts in Jupyter for Digital Inclusion blogs, decks, or country reports.',
     file: '/skills/giga-chart-style.zip',
     added: '2026-05-26',
     size: '2.9 KB',

@@ -12,7 +12,7 @@ export interface CountryAnnouncementTemplateProps {
   countryName: string
   /** Flag emoji (es. "🇬🇲"). */
   flagEmoji: string
-  /** Tagline in alto a sinistra (es. "Giga is growing"). */
+  /** Tagline in alto a sinistra (es. "Digital Inclusion is growing"). */
   tagline: string
   /** Data formattata in alto a destra (es. "May 2026"). */
   date: string
@@ -166,7 +166,7 @@ export const CountryAnnouncementTemplate = forwardRef<
           >
             {countryName}
             <br />
-            joins Giga
+            joins Digital Inclusion
           </h1>
           <p
             style={{

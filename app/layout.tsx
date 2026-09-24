@@ -3,8 +3,8 @@ import Script from 'next/script'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Giga Brand Asset Generator',
-  description: 'Generate brand-compliant visual assets for Giga partners. Logos, colors, and typography — all in one operational tool.',
+  title: 'Digital Inclusion Brand Asset Generator',
+  description: 'Generate brand-compliant visual assets for Digital Inclusion partners. Logos, colors, and typography — all in one operational tool.',
 }
 
 export const viewport: Viewport = {
