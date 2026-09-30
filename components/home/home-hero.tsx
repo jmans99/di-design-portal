@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion, useReducedMotion, type Variants } from 'framer-motion'
-import { ArrowRight, Sparkles } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 
 const container: Variants = {
   hidden: {},
@@ -102,8 +102,10 @@ export function HomeHero() {
             <span className="relative">Start exploring</span>
             <ArrowRight className="relative h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
           </Link>
-          <Link
-            href="/materials/skills"
+          <a
+            href="https://un-deck-builder.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
             onMouseMove={(e) => {
               const r = e.currentTarget.getBoundingClientRect()
               e.currentTarget.style.setProperty('--glx', `${e.clientX - r.left}px`)
@@ -121,9 +123,11 @@ export function HomeHero() {
                 mixBlendMode: 'overlay',
               }}
             />
-            <Sparkles className="relative h-4 w-4" />
-            <span className="relative">Explore AI Skills</span>
-          </Link>
+            <span className="relative rounded-full bg-primary-600 px-2.5 py-1.5 text-[11px] font-semibold uppercase leading-none tracking-[0.06em] text-white">
+              New
+            </span>
+            <span className="relative">Build a deck</span>
+          </a>
         </motion.div>
       </motion.div>
     </section>
