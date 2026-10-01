@@ -19,14 +19,14 @@ type Selection = PresetId | 'custom'
 
 const PRESETS: Record<PresetId, { label: string; src: string; filename: string }> = {
   'map-01': {
-    label: 'World map 01',
+    label: 'Standard 1',
     src: '/backgrounds/map-01-dark.png',
-    filename: 'giga-background_map-01-dark.png',
+    filename: 'giga-background_standard-1_dark.png',
   },
   'map-02': {
-    label: 'World map 02',
+    label: 'Standard 2',
     src: '/backgrounds/map-02-dark.png',
-    filename: 'giga-background_map-02-dark.png',
+    filename: 'giga-background_standard-2_dark.png',
   },
 }
 
@@ -44,8 +44,8 @@ export function BackgroundsPicker() {
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="map-01">World map 01</SelectItem>
-          <SelectItem value="map-02">World map 02</SelectItem>
+          <SelectItem value="map-01">Standard 1</SelectItem>
+          <SelectItem value="map-02">Standard 2</SelectItem>
           <SelectItem value="custom">Custom map</SelectItem>
         </SelectContent>
       </Select>
