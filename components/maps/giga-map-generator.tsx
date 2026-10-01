@@ -221,14 +221,6 @@ export function GigaMapGenerator({
           icon={<Globe className="h-3.5 w-3.5 text-muted-foreground" />}
           className={sidebarTop ? undefined : 'lg:pt-4 lg:pb-2.5'}
         >
-          <div className="flex gap-2">
-            <ToggleButton active={scope === 'country'} onClick={() => setScope('country')}>
-              Country
-            </ToggleButton>
-            <ToggleButton active={scope === 'region'} onClick={() => setScope('region')}>
-              Region
-            </ToggleButton>
-          </div>
           <Popover open={pickerOpen} onOpenChange={setPickerOpen}>
             <PopoverTrigger asChild>
               <button
@@ -255,35 +247,40 @@ export function GigaMapGenerator({
             </PopoverTrigger>
             <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-0" align="start">
               <Command>
-                <CommandInput placeholder={scope === 'region' ? 'Search region...' : 'Search country...'} />
+                <CommandInput placeholder="Search a region or country..." />
                 <CommandList>
-                  <CommandEmpty>{scope === 'region' ? 'No region found.' : 'No country found.'}</CommandEmpty>
-                  {scope === 'region' ? (
-                    (['World', 'Continents', 'UNICEF regions'] as const).map((group) => (
-                      <CommandGroup key={group} heading={group}>
-                        {REGIONS.filter((r) => r.group === group).map((r) => (
-                          <CommandItem
-                            key={r.code}
-                            value={`${r.name} ${r.code}`}
-                            onSelect={() => {
-                              setRegion(r)
-                              setPickerOpen(false)
-                            }}
-                          >
-                            <span className="flex-1 truncate">{r.name}</span>
-                            <Check className={cn('ml-2 h-4 w-4', region.code === r.code ? 'opacity-100' : 'opacity-0')} />
-                          </CommandItem>
-                        ))}
-                      </CommandGroup>
-                    ))
-                  ) : (
-                    <CommandGroup>
+                  <CommandEmpty>No region or country found.</CommandEmpty>
+                  {/* One list, two sections: regions (World first, as in REGIONS), then countries. */}
+                  <CommandGroup heading="Regions">
+                    {REGIONS.map((r) => (
+                      <CommandItem
+                        key={r.code}
+                        value={`${r.name} ${r.code}`}
+                        onSelect={() => {
+                          setRegion(r)
+                          setScope('region')
+                          setPickerOpen(false)
+                        }}
+                      >
+                        <span className="flex-1 truncate">{r.name}</span>
+                        <Check
+                          className={cn(
+                            'ml-2 h-4 w-4',
+                            scope === 'region' && region.code === r.code ? 'opacity-100' : 'opacity-0'
+                          )}
+                        />
+                      </CommandItem>
+                    ))}
+                  </CommandGroup>
+                  {countries.length > 0 && (
+                    <CommandGroup heading="Countries">
                       {countries.map((c) => (
                         <CommandItem
                           key={c.code}
                           value={`${c.name} ${c.code}`}
                           onSelect={() => {
                             setCountry(c)
+                            setScope('country')
                             setPickerOpen(false)
                           }}
                         >
@@ -292,7 +289,10 @@ export function GigaMapGenerator({
                           </span>
                           <span className="flex-1 truncate">{c.name}</span>
                           <Check
-                            className={cn('ml-2 h-4 w-4', country?.code === c.code ? 'opacity-100' : 'opacity-0')}
+                            className={cn(
+                              'ml-2 h-4 w-4',
+                              scope === 'country' && country?.code === c.code ? 'opacity-100' : 'opacity-0'
+                            )}
                           />
                         </CommandItem>
                       ))}
