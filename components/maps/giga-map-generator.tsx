@@ -35,6 +35,7 @@ import {
   fetchGigaMapCountries,
   waitForIdle,
 } from '@/lib/giga-maps/render'
+import { composeBackground, renderBackgroundOverlay } from '@/lib/backgrounds/compose'
 
 type Resolution = '1x' | '2x'
 type RenderState = 'loading' | 'ready' | 'error'
@@ -44,15 +45,31 @@ const RESOLUTIONS: { label: string; value: Resolution; scale: 1 | 2 }[] = [
   { label: '2x', value: '2x', scale: 2 },
 ]
 
-export function GigaMapGenerator() {
+/**
+ * `map` is the Maps page. `background` is the same generator for the
+ * Backgrounds page: dark only, always 4K, with the lockup overlay shown on
+ * the preview and drawn onto the download. `sidebarTop` lets the host page
+ * put its own control (the background picker) above Area.
+ */
+export function GigaMapGenerator({
+  variant = 'map',
+  sidebarTop,
+}: {
+  variant?: 'map' | 'background'
+  sidebarTop?: React.ReactNode
+} = {}) {
+  const isBackground = variant === 'background'
   const [countries, setCountries] = useState<GigaMapCountry[]>([])
   const [countriesError, setCountriesError] = useState<string | null>(null)
   const [country, setCountry] = useState<GigaMapCountry | null>(null)
   const [scope, setScope] = useState<'country' | 'region'>('country')
   const [region, setRegion] = useState<GigaMapRegion>(REGIONS.find((r) => r.code === 'africa') ?? REGIONS[0])
   const [layer, setLayer] = useState<DataLayer>('school')
-  const [theme, setTheme] = useState<MapTheme>('dark')
-  const [resolution, setResolution] = useState<Resolution>('2x')
+  const [themeChoice, setTheme] = useState<MapTheme>('dark')
+  const theme: MapTheme = isBackground ? 'dark' : themeChoice
+  const [resolutionChoice, setResolution] = useState<Resolution>('2x')
+  const resolution: Resolution = isBackground ? '2x' : resolutionChoice
+  const [overlayUrl, setOverlayUrl] = useState<string | null>(null)
   const [pickerOpen, setPickerOpen] = useState(false)
   const [renderState, setRenderState] = useState<RenderState>('loading')
   const [renderError, setRenderError] = useState<string | null>(null)
@@ -80,6 +97,17 @@ export function GigaMapGenerator() {
       cancelled = true
     }
   }, [])
+
+  useEffect(() => {
+    if (!isBackground) return
+    let cancelled = false
+    renderBackgroundOverlay()
+      .then((url) => !cancelled && setOverlayUrl(url))
+      .catch((err) => console.error('Background overlay failed:', err))
+    return () => {
+      cancelled = true
+    }
+  }, [isBackground])
 
   // Keep the native 1920x1080 stage scaled to the panel width.
   useEffect(() => {
@@ -133,8 +161,9 @@ export function GigaMapGenerator() {
   const filename = useMemo(() => {
     if (!target) return ''
     const code = target.kind === 'country' ? target.country.code.toUpperCase() : target.region.code
+    if (isBackground) return `giga-background_${code}_${DATA_LAYERS[layer].fileTag}_dark.png`
     return `giga-maps_${code}_${DATA_LAYERS[layer].fileTag}_${theme}_${resolution}.png`
-  }, [target, layer, theme, resolution])
+  }, [target, layer, theme, resolution, isBackground])
 
   // What is mapped inside the frame: the country's own counts, or the sum of
   // every country whose centroid falls inside the region box.
@@ -160,7 +189,8 @@ export function GigaMapGenerator() {
     setExportError(null)
     try {
       const scale = RESOLUTIONS.find((r) => r.value === resolution)?.scale ?? 2
-      const blob = await exportGigaMapPng(map, scale)
+      const mapBlob = await exportGigaMapPng(map, scale)
+      const blob = isBackground ? await composeBackground(mapBlob) : mapBlob
       const url = URL.createObjectURL(blob)
       const a = document.createElement('a')
       a.href = url
@@ -175,7 +205,7 @@ export function GigaMapGenerator() {
     } finally {
       setIsExporting(false)
     }
-  }, [filename, renderState, resolution])
+  }, [filename, renderState, resolution, isBackground])
 
   const legend = CONNECTIVITY_LEGEND
   const noHealthData = !!counts && layer !== 'school' && counts.health === 0
@@ -185,10 +215,11 @@ export function GigaMapGenerator() {
     <div className="flex flex-col gap-8 lg:flex-row lg:items-start">
       {/* Sidebar */}
       <div className="order-2 flex w-full flex-col gap-0 lg:order-1 lg:sticky lg:top-[calc(4rem+24px)] lg:w-80 lg:shrink-0 lg:rounded-2xl lg:border lg:border-border lg:bg-card lg:shadow-stripe">
+        {sidebarTop}
         <ControlSection
           label="Area"
           icon={<Globe className="h-3.5 w-3.5 text-muted-foreground" />}
-          className="lg:pt-4 lg:pb-2.5"
+          className={sidebarTop ? undefined : 'lg:pt-4 lg:pb-2.5'}
         >
           <div className="flex gap-2">
             <ToggleButton active={scope === 'country'} onClick={() => setScope('country')}>
@@ -295,6 +326,7 @@ export function GigaMapGenerator() {
           )}
         </ControlSection>
 
+        {!isBackground && (
         <ControlSection
           label="Resolution"
           icon={<Maximize2 className="h-3.5 w-3.5 text-muted-foreground" />}
@@ -314,6 +346,7 @@ export function GigaMapGenerator() {
             {resolution === '2x' ? '3840 × 2160' : '1920 × 1080'} PNG
           </p>
         </ControlSection>
+        )}
 
         <div className="lg:px-5 lg:pb-4 lg:pt-2">
           <Button
@@ -333,8 +366,9 @@ export function GigaMapGenerator() {
           </p>
           {exportError && <p className="mt-2 text-xs text-destructive">{exportError}</p>}
           <p className="mt-3 text-[11px] leading-relaxed text-muted-foreground">
-            Rendered in your browser from live Giga Maps facility data. The
-            download matches the preview exactly.
+            {isBackground
+              ? 'The map from the Maps page with the Digital Impact Division lockup on top. 3840 × 2160 PNG, ready for Teams, Zoom and Google Meet.'
+              : 'Rendered in your browser from live Giga Maps facility data. The download matches the preview exactly.'}
           </p>
         </div>
       </div>
@@ -378,7 +412,7 @@ export function GigaMapGenerator() {
           dark={theme === 'dark'}
           className="min-h-0"
           contentClassName="p-0"
-          controls={<PreviewThemeToggle value={theme} onChange={setTheme} />}
+          controls={isBackground ? undefined : <PreviewThemeToggle value={theme} onChange={setTheme} />}
         >
           <div
             ref={wrapperRef}
@@ -394,6 +428,15 @@ export function GigaMapGenerator() {
                 transform: `scale(${stageScale})`,
               }}
             />
+            {isBackground && overlayUrl && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={overlayUrl}
+                alt=""
+                aria-hidden
+                className="pointer-events-none absolute inset-0 h-full w-full"
+              />
+            )}
             {renderState === 'loading' && (
               <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/30">
                 <span className="inline-flex items-center gap-2 rounded-full bg-black/70 px-3 py-1.5 text-xs font-medium text-white shadow-stripe backdrop-blur">

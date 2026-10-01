@@ -11,7 +11,6 @@ import {
   STAGE_HEIGHT,
   STAGE_WIDTH,
   TILE_SOURCE_LAYERS,
-  REGIONS,
   targetBbox,
   type DataLayer,
   type GigaMapCountry,
@@ -45,13 +44,6 @@ export function fetchGigaMapCountries(): Promise<GigaMapCountry[]> {
       })
   }
   return countriesPromise
-}
-
-export async function getGigaMapCountry(code: string): Promise<GigaMapCountry> {
-  const list = await fetchGigaMapCountries()
-  const found = list.find((c) => c.code === code.toLowerCase())
-  if (!found) throw new Error(`No Giga Maps data for country "${code.toUpperCase()}"`)
-  return found
 }
 
 /* ------------------------------------------------------------------ */
@@ -350,37 +342,4 @@ export async function exportGigaMapPng(map: MapLibreMap, scale: 1 | 2): Promise<
     map.setPixelRatio(previousRatio)
   }
   return blob
-}
-
-/**
- * One shot renderer for callers without a visible map (Backgrounds page):
- * mounts an offscreen 1920x1080 stage, renders, exports and cleans up.
- */
-export async function renderGigaMapPng(opts: {
-  countryCode: string
-  theme: MapTheme
-  layer: DataLayer
-  scale: 1 | 2
-}): Promise<Blob> {
-  const region = REGIONS.find((r) => r.code === opts.countryCode)
-  const target: MapTarget = region
-    ? { kind: 'region', region }
-    : { kind: 'country', country: await getGigaMapCountry(opts.countryCode) }
-  const host = document.createElement('div')
-  host.style.cssText = `position:fixed;left:-${STAGE_WIDTH + 100}px;top:0;width:${STAGE_WIDTH}px;height:${STAGE_HEIGHT}px;pointer-events:none;`
-  document.body.appendChild(host)
-  let map: MapLibreMap | null = null
-  try {
-    map = await createGigaMap({
-      container: host,
-      target,
-      theme: opts.theme,
-      layer: opts.layer,
-      pixelRatio: opts.scale,
-    })
-    return await exportGigaMapPng(map, opts.scale)
-  } finally {
-    map?.remove()
-    host.remove()
-  }
 }
