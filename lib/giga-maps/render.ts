@@ -6,6 +6,7 @@ import {
   BASEMAP_STYLE,
   DATA_LAYERS,
   DOT_COLORS,
+  GIGAMAPS_DARK,
   MAP_ATTRIBUTION,
   STAGE_HEIGHT,
   STAGE_WIDTH,
@@ -132,8 +133,9 @@ const HIDDEN_SOURCE_LAYERS = new Set(['transportation', 'transportation_name', '
 /**
  * The export is a clean shape map: no place names, no roads, and only
  * national borders (admin_level 2). Water, land use and coastlines stay.
+ * The dark theme is then repainted with the GigaMaps palette.
  */
-function cleanBasemap(map: MapLibreMap) {
+function cleanBasemap(map: MapLibreMap, theme: MapTheme) {
   const style = map.getStyle() as StyleSpecification | undefined
   for (const l of style?.layers ?? []) {
     if (l.id.startsWith('giga-')) continue
@@ -142,6 +144,31 @@ function cleanBasemap(map: MapLibreMap) {
       sourceLayer === 'boundary' && !/country|boundary_2$|disputed/.test(l.id)
     if (l.type === 'symbol' || (sourceLayer && HIDDEN_SOURCE_LAYERS.has(sourceLayer)) || isInternalBoundary) {
       map.setLayoutProperty(l.id, 'visibility', 'none')
+    }
+  }
+  if (theme === 'dark') paintGigaMapsDark(map)
+}
+
+/**
+ * GigaMaps draws flat land, blue-grey water and grey country borders,
+ * nothing else: land cover, land use and rivers are hidden.
+ */
+function paintGigaMapsDark(map: MapLibreMap) {
+  const style = map.getStyle() as StyleSpecification | undefined
+  for (const l of style?.layers ?? []) {
+    if (l.id.startsWith('giga-')) continue
+    const sourceLayer = 'source-layer' in l ? l['source-layer'] : undefined
+    if (l.type === 'background') {
+      map.setPaintProperty(l.id, 'background-color', GIGAMAPS_DARK.land)
+    } else if (sourceLayer === 'water' && l.type === 'fill') {
+      map.setPaintProperty(l.id, 'fill-color', GIGAMAPS_DARK.water)
+      map.setPaintProperty(l.id, 'fill-outline-color', GIGAMAPS_DARK.waterOutline)
+    } else if (sourceLayer === 'landcover' || sourceLayer === 'landuse' || sourceLayer === 'waterway') {
+      map.setLayoutProperty(l.id, 'visibility', 'none')
+    } else if (sourceLayer === 'boundary' && l.type === 'line') {
+      map.setPaintProperty(l.id, 'line-color', GIGAMAPS_DARK.border)
+      map.setPaintProperty(l.id, 'line-opacity', GIGAMAPS_DARK.borderOpacity)
+      map.setPaintProperty(l.id, 'line-width', ['interpolate', ['linear'], ['zoom'], 0, 1, 12, 4] as never)
     }
   }
 }
@@ -280,7 +307,7 @@ export function createGigaMap(opts: GigaMapOptions): Promise<MapLibreMap> {
     }
 
     map.once('load', () => {
-      cleanBasemap(map)
+      cleanBasemap(map, theme)
       setGigaDataLayer(map, layer, target)
       resolve(map)
     })

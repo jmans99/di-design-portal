@@ -19,14 +19,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Download, Check, ChevronsUpDown, Globe, Sparkles, Image as ImageIcon } from 'lucide-react'
+import { Download, Check, ChevronsUpDown, Globe, Earth, Sparkles, Image as ImageIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { GIGA_COUNTRIES, type GigaCountry } from '@/lib/giga-countries'
 import { loadSvg, recolorSvg, svgToDataUrl } from '@/lib/svg-processing'
 import { renderGigaMapPng } from '@/lib/giga-maps/render'
+import { REGIONS, type GigaMapRegion } from '@/lib/giga-maps/config'
 
 type PresetId = 'map-01' | 'map-02'
-type Selection = PresetId | 'custom'
+type CustomMode = 'country' | 'continent'
+type Selection = PresetId | CustomMode
+
+const CONTINENTS = REGIONS.filter((r) => r.group === 'Continents')
 
 const CANVAS_W = 3840
 const CANVAS_H = 2160
@@ -145,43 +149,58 @@ export function BackgroundsPicker() {
   const [country, setCountry] = useState<GigaCountry>(
     GIGA_COUNTRIES.find((c) => c.code === 'br') ?? GIGA_COUNTRIES[0]
   )
+  const [continent, setContinent] = useState<GigaMapRegion>(CONTINENTS[0])
   const [pickerOpen, setPickerOpen] = useState(false)
   const [isGenerating, setIsGenerating] = useState(false)
-  const [customUrl, setCustomUrl] = useState<string | null>(null)
+  // Un blob per modalita': passando da Country a Continent e ritorno
+  // l'utente rivede l'ultimo generato di ciascuna.
+  const [customUrls, setCustomUrls] = useState<Record<CustomMode, string | null>>({
+    country: null,
+    continent: null,
+  })
   const [error, setError] = useState<string | null>(null)
 
-  // Cleanup blob URL on unmount o quando ne genero uno nuovo.
+  // Cleanup blob URL on unmount.
   useEffect(() => {
     return () => {
-      if (customUrl) URL.revokeObjectURL(customUrl)
+      Object.values(customUrls).forEach((u) => u && URL.revokeObjectURL(u))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const isCustom = selection === 'custom'
+  const isCustom = selection === 'country' || selection === 'continent'
+  const customUrl = isCustom ? customUrls[selection] : null
+  const targetCode = selection === 'continent' ? continent.code : country.code
+  const targetLabel = selection === 'continent' ? continent.name : country.name
 
   const previewSrc = isCustom
     ? customUrl
     : PRESETS[selection as PresetId].src
 
-  const customFilename = `giga-background_${country.code.toUpperCase()}_dark.png`
+  const customFilename = `giga-background_${targetCode.toUpperCase()}_dark.png`
 
   const handleGenerate = async () => {
+    if (!isCustom) return
+    const mode = selection
     setIsGenerating(true)
     setError(null)
     try {
       // Rendered in the browser with MapLibre (see lib/giga-maps/render.ts):
       // no serverless Chromium, deterministic 'idle' signal, 3840x2160 output.
       const mapBlob = await renderGigaMapPng({
-        countryCode: country.code,
+        // Accepts a country code or a region code (continents use the global tiles).
+        countryCode: targetCode,
         theme: 'dark',
         layer: 'school',
         scale: 2,
       })
       const composed = await composeBackground(mapBlob)
 
-      if (customUrl) URL.revokeObjectURL(customUrl)
-      setCustomUrl(URL.createObjectURL(composed))
+      const url = URL.createObjectURL(composed)
+      setCustomUrls((prev) => {
+        if (prev[mode]) URL.revokeObjectURL(prev[mode]!)
+        return { ...prev, [mode]: url }
+      })
     } catch (err) {
       console.error('Background generation failed:', err)
       setError(err instanceof Error ? err.message : 'Unknown error')
@@ -235,13 +254,41 @@ export function BackgroundsPicker() {
             <SelectContent>
               <SelectItem value="map-01">World map 01</SelectItem>
               <SelectItem value="map-02">World map 02</SelectItem>
-              <SelectItem value="custom">Custom (by country)</SelectItem>
+              <SelectItem value="country">Custom (by country)</SelectItem>
+              <SelectItem value="continent">Custom (by continent)</SelectItem>
             </SelectContent>
           </Select>
         </ControlSection>
 
-        {/* Country picker — solo per Custom */}
-        {isCustom && (
+        {/* Continent picker, solo per Custom by continent */}
+        {selection === 'continent' && (
+          <ControlSection
+            label="Continent"
+            icon={<Earth className="h-3.5 w-3.5 text-muted-foreground" />}
+          >
+            <Select
+              value={continent.code}
+              onValueChange={(code) => {
+                const next = CONTINENTS.find((r) => r.code === code)
+                if (next) setContinent(next)
+              }}
+            >
+              <SelectTrigger className="h-10 w-full">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {CONTINENTS.map((r) => (
+                  <SelectItem key={r.code} value={r.code}>
+                    {r.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </ControlSection>
+        )}
+
+        {/* Country picker, solo per Custom by country */}
+        {selection === 'country' && (
           <ControlSection
             label="Country"
             icon={<Globe className="h-3.5 w-3.5 text-muted-foreground" />}
@@ -330,7 +377,10 @@ export function BackgroundsPicker() {
               </p>
               {error && <p className="mt-2 text-xs text-destructive">{error}</p>}
               <p className="mt-3 text-[11px] leading-relaxed text-muted-foreground">
-                Generation takes about 10 to 15 seconds. Output is 3840 × 2160 PNG, dark theme.
+                {selection === 'continent'
+                  ? 'A continent can take up to a minute to generate.'
+                  : 'Generation takes about 10 to 15 seconds.'}{' '}
+                Output is 3840 × 2160 PNG, dark theme.
               </p>
             </>
           ) : (
@@ -365,7 +415,7 @@ export function BackgroundsPicker() {
                 src={previewSrc}
                 alt={
                   isCustom
-                    ? `Generated background for ${country.name}`
+                    ? `Generated background for ${targetLabel}`
                     : PRESETS[selection as PresetId].label
                 }
                 className="absolute inset-0 h-full w-full object-cover"
@@ -374,7 +424,7 @@ export function BackgroundsPicker() {
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center">
                 <Sparkles className="h-8 w-8 text-white/30" />
                 <p className="max-w-xs text-sm text-white/60">
-                  Pick a country, then hit{' '}
+                  Pick a {selection === 'continent' ? 'continent' : 'country'}, then hit{' '}
                   <span className="font-medium">Generate background</span>.
                 </p>
               </div>

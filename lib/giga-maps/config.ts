@@ -20,6 +20,19 @@ export const BASEMAP_STYLE: Record<MapTheme, string> = {
   light: 'https://tiles.openfreemap.org/styles/positron',
 }
 
+/**
+ * Basemap colors of maps.giga.global (its Mapbox style "GigaEntity-Dark-Mode",
+ * read 1 Oct 2026). The dark theme repaints OpenFreeMap with these so an
+ * export looks like a GigaMaps screenshot. GigaMaps has no light basemap.
+ */
+export const GIGAMAPS_DARK = {
+  land: '#1c1c1c',
+  water: '#1a2a3c',
+  waterOutline: '#2e2e2e',
+  border: '#7d7d7d',
+  borderOpacity: 0.5,
+} as const
+
 /** Legend colors as used on maps.giga.global. */
 export const DOT_COLORS = {
   connected: '#00d661',
