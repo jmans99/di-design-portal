@@ -69,3 +69,9 @@ export function getColorTokens() {
 export function getPrimaryColor600() {
   return '#277AFF'
 }
+
+/**
+ * Brand navy. Used as a background for the Maps page Abstract style.
+ * Kept out of COLOR_SCALES on purpose: it is not shown on the Colors page yet.
+ */
+export const NAVY = '#1A2A3C'

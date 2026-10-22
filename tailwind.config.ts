@@ -73,6 +73,7 @@ const config: Config = {
           yellow: '#ffc93d',
           red: '#ed1c24',
         },
+        navy: '#1a2a3c',
         'accent-green': {
           50: '#d6ffe9',
           100: '#adffd2',

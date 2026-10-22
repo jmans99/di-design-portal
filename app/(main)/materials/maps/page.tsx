@@ -1,4 +1,5 @@
 import { GigaMapGenerator } from '@/components/maps/giga-map-generator'
+import { MapsStyleLinks } from '@/components/maps/maps-style-links'
 import { PageHeader } from '@/components/page-header'
 
 export default function MapsPage() {
@@ -8,6 +9,9 @@ export default function MapsPage() {
         title="Maps"
         description="Pick a country, a continent or a UNICEF region, preview the live Giga map of schools and health centers, and download a clean PNG ready for pitch decks."
       />
+      <div className="mb-6">
+        <MapsStyleLinks active="map" />
+      </div>
       <GigaMapGenerator />
     </main>
   )
