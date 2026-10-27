@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * Import the Knowledge data (audiences, facilities, needs, offerings) from
- * the review cockpit into data/knowledge/*.json.
+ * Import the Knowledge data (audiences, facilities, systems, needs,
+ * offerings) from the review cockpit into data/knowledge/*.json.
  *
  *   node scripts/import-knowledge.mjs [path/to/review-cockpit/data/appdata.json]
  *
@@ -13,7 +13,8 @@
  *
  * Everything you may want to correct lives in the tables right below:
  * AUDIENCE_GROUPS, AUDIENCE_GROUP_MAP, AUDIENCE_OVERRIDES, FACILITY_GROUPS,
- * FACILITIES, OFFERING_CATEGORIES, OFFERINGS and TEXT_OVERRIDES.
+ * FACILITIES, SYSTEM_GROUPS, SYSTEMS, OFFERING_CATEGORIES, OFFERINGS and
+ * TEXT_OVERRIDES.
  */
 
 import fs from 'node:fs'
@@ -48,8 +49,8 @@ const AUDIENCE_GROUP_MAP = {
   'donors-private': 'private-sector-funders-donors',
   'operators-vendors': 'operators-providers',
   'civil-society': 'civil-society',
-  'school-institutions': null, // places are facilities (FACILITIES), people are in AUDIENCE_OVERRIDES
-  'health-institutions': null, // places are facilities (FACILITIES), people are in AUDIENCE_OVERRIDES
+  'school-institutions': null, // places: FACILITIES, systems: SYSTEMS, people: AUDIENCE_OVERRIDES
+  'health-institutions': null, // places: FACILITIES, systems: SYSTEMS, people: AUDIENCE_OVERRIDES
   'children-communities': 'community',
   'patients-mothers': 'community',
   'internal-unicef': 'unicef',
@@ -69,8 +70,9 @@ const AUDIENCE_OVERRIDES = {
 // ── Facilities ───────────────────────────────────────────────────────────
 // Schools and health institutions are facilities, not audiences. These
 // cockpit audiences (audGroups[].atoms[].id) become facilities, keeping
-// their needs links. Facilities are places, not people: the people in the
-// same cockpit groups are audiences (see AUDIENCE_OVERRIDES).
+// their needs links. Facilities are places only: the people in the same
+// cockpit groups are audiences (AUDIENCE_OVERRIDES), and the systems,
+// services and institutions are systems (SYSTEMS).
 const FACILITY_GROUPS = [
   { id: 'schools', name: 'Schools' },
   { id: 'health-institutions', name: 'Health institutions' },
@@ -78,12 +80,24 @@ const FACILITY_GROUPS = [
 
 const FACILITIES = {
   school: 'schools',
-  'school-system': 'schools',
   'health-facility': 'health-institutions',
-  'health-system': 'health-institutions',
-  'health-information-system': 'health-institutions',
-  'mnch-service': 'health-institutions',
-  'child-facing-institution': 'health-institutions',
+}
+
+// ── Systems ──────────────────────────────────────────────────────────────
+// Systems, services and institutions: neither people nor places. These
+// cockpit audiences become systems, keeping their needs links.
+const SYSTEM_GROUPS = [
+  { id: 'education', name: 'Education' },
+  { id: 'health', name: 'Health' },
+  { id: 'cross-sector', name: 'Cross-sector' },
+]
+
+const SYSTEMS = {
+  'school-system': 'education',
+  'health-system': 'health',
+  'health-information-system': 'health',
+  'mnch-service': 'health',
+  'child-facing-institution': 'cross-sector',
 }
 
 // ── Offering categories ──────────────────────────────────────────────────
@@ -161,9 +175,10 @@ const name = (kind, id, value) => text(kind, id, 'name', sentenceCase(value))
 const data = JSON.parse(fs.readFileSync(SOURCE, 'utf8'))
 const unmapped = []
 
-// Audiences and facilities
+// Audiences, facilities and systems
 const audiences = []
 const facilities = []
+const systems = []
 for (const group of data.audGroups) {
   if (!(group.id in AUDIENCE_GROUP_MAP)) throw new Error(`Audience group "${group.id}" is missing from AUDIENCE_GROUP_MAP`)
   for (const a of group.atoms ?? []) {
@@ -173,6 +188,15 @@ for (const group of data.audGroups) {
         name: name('facility', a.id, a.label),
         description: text('facility', a.id, 'description', a.def),
         facilityGroupId: FACILITIES[a.id],
+      })
+      continue
+    }
+    if (a.id in SYSTEMS) {
+      systems.push({
+        id: a.id,
+        name: name('system', a.id, a.label),
+        description: text('system', a.id, 'description', a.def),
+        systemGroupId: SYSTEMS[a.id],
       })
       continue
     }
@@ -189,6 +213,8 @@ for (const group of data.audGroups) {
 
 const missingFacilities = Object.keys(FACILITIES).filter((id) => !facilities.some((f) => f.id === id))
 if (missingFacilities.length) throw new Error(`FACILITIES ids not found in the cockpit: ${missingFacilities.join(', ')}`)
+const missingSystems = Object.keys(SYSTEMS).filter((id) => !systems.some((s) => s.id === id))
+if (missingSystems.length) throw new Error(`SYSTEMS ids not found in the cockpit: ${missingSystems.join(', ')}`)
 
 // Offerings: the official list, with descriptions from the matched cockpit offering
 const cockpitOfferings = new Map(data.solutions.flatMap((cat) => cat.services.map((s) => [s.id, s])))
@@ -223,14 +249,15 @@ const needs = data.painGroups.flatMap((g) =>
   })),
 )
 
-// Audience/facility ↔ need links: presence of a link only, never its counts.
+// Audience/facility/system ↔ need links: presence of a link only, never its counts.
 const needIds = new Set(needs.map((n) => n.id))
 const needLinks = (ids, key) =>
   data.graph.atom_edges.filter((e) => ids.has(e.audience) && needIds.has(e.pain)).map((e) => ({ [key]: e.audience, needId: e.pain }))
 const audienceNeeds = needLinks(new Set(audiences.map((a) => a.id)), 'audienceId')
 const facilityNeeds = needLinks(new Set(facilities.map((f) => f.id)), 'facilityId')
+const systemNeeds = needLinks(new Set(systems.map((s) => s.id)), 'systemId')
 
-// Audience/facility ↔ offering links, derived through needs. The cockpit has
+// Audience/facility/system ↔ offering links, derived through needs. The cockpit has
 // no off / included / lead state, so none is set.
 const needOfferings = new Map(needs.map((n) => [n.id, n.offeringIds]))
 function offeringLinks(links, key) {
@@ -246,6 +273,7 @@ function offeringLinks(links, key) {
 }
 const audienceOfferings = offeringLinks(audienceNeeds, 'audienceId')
 const facilityOfferings = offeringLinks(facilityNeeds, 'facilityId')
+const systemOfferings = offeringLinks(systemNeeds, 'systemId')
 
 const unusedOverrides = Object.keys(TEXT_OVERRIDES).filter((key) => !usedOverrides.has(key))
 if (unusedOverrides.length) throw new Error(`TEXT_OVERRIDES keys match nothing: ${unusedOverrides.join(', ')}`)
@@ -256,6 +284,8 @@ write('audience-groups.json', AUDIENCE_GROUPS)
 write('audiences.json', audiences)
 write('facility-groups.json', FACILITY_GROUPS)
 write('facilities.json', facilities)
+write('system-groups.json', SYSTEM_GROUPS)
+write('systems.json', systems)
 write('need-groups.json', needGroups)
 write('needs.json', needs)
 write('offering-categories.json', offeringCategories)
@@ -264,13 +294,17 @@ write('audience-needs.json', audienceNeeds)
 write('audience-offerings.json', audienceOfferings)
 write('facility-needs.json', facilityNeeds)
 write('facility-offerings.json', facilityOfferings)
+write('system-needs.json', systemNeeds)
+write('system-offerings.json', systemOfferings)
 
 console.log(`Read ${path.relative(process.cwd(), SOURCE)}`)
 console.log(
   `Wrote ${AUDIENCE_GROUPS.length} audience groups, ${audiences.length} audiences, ` +
-    `${FACILITY_GROUPS.length} facility groups, ${facilities.length} facilities, ${needGroups.length} need groups, ` +
+    `${FACILITY_GROUPS.length} facility groups, ${facilities.length} facilities, ` +
+    `${SYSTEM_GROUPS.length} system groups, ${systems.length} systems, ${needGroups.length} need groups, ` +
     `${needs.length} needs, ${offeringCategories.length} offering categories, ${offerings.length} offerings, ` +
     `${audienceNeeds.length} audience-need links, ${audienceOfferings.length} audience-offering links, ` +
-    `${facilityNeeds.length} facility-need links, ${facilityOfferings.length} facility-offering links to data/knowledge/`,
+    `${facilityNeeds.length} facility-need links, ${facilityOfferings.length} facility-offering links, ` +
+    `${systemNeeds.length} system-need links, ${systemOfferings.length} system-offering links to data/knowledge/`,
 )
 if (unmapped.length) console.log(`Not mapped (fix the tables at the top of this script):\n  - ${unmapped.join('\n  - ')}`)

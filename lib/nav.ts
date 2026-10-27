@@ -10,6 +10,7 @@ import {
   Images,
   Mail,
   MapIcon,
+  Network,
   Monitor,
   Palette,
   Presentation,
@@ -94,6 +95,7 @@ const ALL_NAV_GROUPS: NavGroup[] = [
     items: [
       { id: 'audiences', path: '/knowledge/audiences', label: 'Audiences', icon: Users },
       { id: 'facilities', path: '/knowledge/facilities', label: 'Facilities', icon: School },
+      { id: 'systems', path: '/knowledge/systems', label: 'Systems', icon: Network },
       { id: 'offerings', path: '/knowledge/offerings', label: 'Offerings', icon: Building2 },
       { id: 'kpis', path: '/knowledge/kpis', label: 'KPIs', icon: ChartColumn, soon: true },
       { id: 'case-studies', path: '/knowledge/case-studies', label: 'Case studies', icon: Waypoints, soon: true },

@@ -1,5 +1,5 @@
 /**
- * Knowledge data (DI site): audiences, facilities, needs and offerings,
+ * Knowledge data (DI site): audiences, facilities, systems, needs and offerings,
  * imported from the review cockpit by scripts/import-knowledge.mjs into
  * data/knowledge/.
  */
@@ -15,11 +15,17 @@ import facilityGroupsJson from '@/data/knowledge/facility-groups.json'
 import facilitiesJson from '@/data/knowledge/facilities.json'
 import facilityNeedsJson from '@/data/knowledge/facility-needs.json'
 import facilityOfferingsJson from '@/data/knowledge/facility-offerings.json'
+import systemGroupsJson from '@/data/knowledge/system-groups.json'
+import systemsJson from '@/data/knowledge/systems.json'
+import systemNeedsJson from '@/data/knowledge/system-needs.json'
+import systemOfferingsJson from '@/data/knowledge/system-offerings.json'
 
 export type AudienceGroup = { id: string; name: string }
 export type Audience = { id: string; name: string; description: string; audienceGroupId: string | null }
 export type FacilityGroup = { id: string; name: string }
 export type Facility = { id: string; name: string; description: string; facilityGroupId: string }
+export type SystemGroup = { id: string; name: string }
+export type System = { id: string; name: string; description: string; systemGroupId: string }
 export type NeedGroup = { id: string; name: string }
 export type Need = { id: string; name: string; statement: string; needGroupId: string; offeringIds: string[] }
 export type OfferingCategory = { id: string; name: string }
@@ -38,6 +44,8 @@ export const AUDIENCE_GROUPS: AudienceGroup[] = audienceGroupsJson
 export const AUDIENCES: Audience[] = (audiencesJson as Audience[]).filter((a) => a.audienceGroupId !== null)
 export const FACILITY_GROUPS: FacilityGroup[] = facilityGroupsJson
 export const FACILITIES: Facility[] = facilitiesJson
+export const SYSTEM_GROUPS: SystemGroup[] = systemGroupsJson
+export const SYSTEMS: System[] = systemsJson
 export const NEED_GROUPS: NeedGroup[] = needGroupsJson
 export const NEEDS: Need[] = needsJson
 export const OFFERING_CATEGORIES: OfferingCategory[] = offeringCategoriesJson
@@ -47,12 +55,16 @@ const audienceNeeds: { audienceId: string; needId: string }[] = audienceNeedsJso
 const audienceOfferings: { audienceId: string; offeringId: string }[] = audienceOfferingsJson
 const facilityNeeds: { facilityId: string; needId: string }[] = facilityNeedsJson
 const facilityOfferings: { facilityId: string; offeringId: string }[] = facilityOfferingsJson
+const systemNeeds: { systemId: string; needId: string }[] = systemNeedsJson
+const systemOfferings: { systemId: string; offeringId: string }[] = systemOfferingsJson
 
 export const getAudience = (id: string) => AUDIENCES.find((a) => a.id === id)
 export const getOffering = (id: string) => OFFERINGS.find((o) => o.id === id)
 export const getAudienceGroup = (id: string | null) => AUDIENCE_GROUPS.find((g) => g.id === id)
 export const getFacility = (id: string) => FACILITIES.find((f) => f.id === id)
 export const getFacilityGroup = (id: string) => FACILITY_GROUPS.find((g) => g.id === id)
+export const getSystem = (id: string) => SYSTEMS.find((s) => s.id === id)
+export const getSystemGroup = (id: string) => SYSTEM_GROUPS.find((g) => g.id === id)
 export const getOfferingCategory = (id: string) => OFFERING_CATEGORIES.find((c) => c.id === id)
 
 /** Audience groups, each with its audiences, in display order. */
@@ -68,6 +80,14 @@ export function facilitiesByGroup() {
   return FACILITY_GROUPS.map((group) => ({
     group,
     facilities: FACILITIES.filter((f) => f.facilityGroupId === group.id),
+  }))
+}
+
+/** System groups, each with its systems, in display order. */
+export function systemsByGroup() {
+  return SYSTEM_GROUPS.map((group) => ({
+    group,
+    systems: SYSTEMS.filter((s) => s.systemGroupId === group.id),
   }))
 }
 
@@ -114,6 +134,16 @@ export function offeringsForFacility(facilityId: string) {
   return orderedOfferings(new Set(facilityOfferings.filter((l) => l.facilityId === facilityId).map((l) => l.offeringId)))
 }
 
+/** A system's needs, grouped by need group. */
+export function needsForSystem(systemId: string) {
+  return groupNeeds(new Set(systemNeeds.filter((l) => l.systemId === systemId).map((l) => l.needId)))
+}
+
+/** Offerings that serve a system (through its needs), in category order. */
+export function offeringsForSystem(systemId: string) {
+  return orderedOfferings(new Set(systemOfferings.filter((l) => l.systemId === systemId).map((l) => l.offeringId)))
+}
+
 /** Audiences an offering serves, grouped by audience group. */
 export function audiencesForOffering(offeringId: string) {
   const ids = new Set(audienceOfferings.filter((l) => l.offeringId === offeringId).map((l) => l.audienceId))
@@ -128,4 +158,12 @@ export function facilitiesForOffering(offeringId: string) {
   return facilitiesByGroup()
     .map(({ group, facilities }) => ({ group, facilities: facilities.filter((f) => ids.has(f.id)) }))
     .filter((g) => g.facilities.length > 0)
+}
+
+/** Systems an offering serves (through their needs), grouped by system group. */
+export function systemsForOffering(offeringId: string) {
+  const ids = new Set(systemOfferings.filter((l) => l.offeringId === offeringId).map((l) => l.systemId))
+  return systemsByGroup()
+    .map(({ group, systems }) => ({ group, systems: systems.filter((s) => ids.has(s.id)) }))
+    .filter((g) => g.systems.length > 0)
 }

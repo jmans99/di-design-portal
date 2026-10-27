@@ -6,39 +6,9 @@
     "facilityGroupId": "schools"
   },
   {
-    "id": "school-system",
-    "name": "School system",
-    "description": "The aggregated national or regional education delivery apparatus.",
-    "facilityGroupId": "schools"
-  },
-  {
     "id": "health-facility",
     "name": "Health facility",
     "description": "The physical or institutional site where health services are delivered.",
-    "facilityGroupId": "health-institutions"
-  },
-  {
-    "id": "health-system",
-    "name": "Health system",
-    "description": "The aggregated national health-delivery apparatus.",
-    "facilityGroupId": "health-institutions"
-  },
-  {
-    "id": "health-information-system",
-    "name": "Health information system",
-    "description": "Digital health data and reporting infrastructure (HMIS, surveillance).",
-    "facilityGroupId": "health-institutions"
-  },
-  {
-    "id": "mnch-service",
-    "name": "MNCH service",
-    "description": "Maternal, newborn and child health service line specifically.",
-    "facilityGroupId": "health-institutions"
-  },
-  {
-    "id": "child-facing-institution",
-    "name": "Child-facing institution",
-    "description": "Public institutions beyond schools and health facilities, such as protection systems.",
     "facilityGroupId": "health-institutions"
   }
 ]

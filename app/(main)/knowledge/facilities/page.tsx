@@ -10,7 +10,7 @@ export default function FacilitiesPage() {
       <BetaNote />
       <PageHeader
         title="Facilities"
-        description="The schools and health institutions where connectivity is delivered. Open a facility to see what it needs and which offerings serve it."
+        description="The places where connectivity is delivered: schools and health facilities. Open a facility to see what it needs and which offerings serve it."
       />
       <div className="flex flex-col gap-10">
         {facilitiesByGroup().map(({ group, facilities }) => (

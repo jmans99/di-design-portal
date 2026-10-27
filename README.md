@@ -73,7 +73,7 @@ disabled with a "Soon" label, and never in the header or footer.
 | Create    | Maps, Social media, Engagement map, Email signature, Backgrounds, (Slides, Two-pagers: soon) |
 | AI skills | AI skills (di)                                                             |
 | Home      | Home (di side panel only)                                                  |
-| Knowledge | Audiences, Facilities, Offerings, (KPIs, Case studies: soon) (di side panel only) |
+| Knowledge | Audiences, Facilities, Systems, Offerings, (KPIs, Case studies: soon) (di side panel only) |
 
 Each item is dropped when its page is not enabled for the current site. A group
 left with one item shows as a plain link (no dropdown); an empty group is
@@ -95,7 +95,7 @@ preview on both.
 ## Knowledge data (DI)
 
 The Knowledge pages (`/knowledge/audiences`, `/knowledge/facilities`,
-`/knowledge/offerings`) read
+`/knowledge/systems`, `/knowledge/offerings`) read
 `data/knowledge/*.json`, imported from the review cockpit
 ([jmans99/review-cockpit](https://github.com/jmans99/review-cockpit),
 `data/appdata.json`). To refresh after the cockpit changes, clone it next to
@@ -110,7 +110,8 @@ Commit the updated `data/knowledge/` files. Only names, descriptions,
 groupings and links are imported (no evidence, excerpts, sources or counts).
 The tables at the top of `scripts/import-knowledge.mjs` hold everything you
 may want to correct: the mapping from the cockpit's audience groups to the
-nine audience groups, which cockpit audiences are facilities (schools and
-health institutions), the official list of 18 offerings in six categories
+nine audience groups, which cockpit audiences are facilities (places: schools
+and health facilities) or systems (education and health systems, services and
+institutions), the official list of 18 offerings in six categories
 with the cockpit offering each one is matched to, and name and text fixes.
 The script lists anything it could not map.

@@ -1,0 +1,266 @@
+[
+  {
+    "systemId": "child-facing-institution",
+    "needId": "ai-readiness-gap"
+  },
+  {
+    "systemId": "child-facing-institution",
+    "needId": "cable-alone-insufficient"
+  },
+  {
+    "systemId": "child-facing-institution",
+    "needId": "compounding-infra-gaps"
+  },
+  {
+    "systemId": "child-facing-institution",
+    "needId": "coverage-unaffordable"
+  },
+  {
+    "systemId": "child-facing-institution",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "systemId": "child-facing-institution",
+    "needId": "last-mile-uneconomical"
+  },
+  {
+    "systemId": "child-facing-institution",
+    "needId": "no-post-launch-funding"
+  },
+  {
+    "systemId": "child-facing-institution",
+    "needId": "not-connected"
+  },
+  {
+    "systemId": "child-facing-institution",
+    "needId": "same-children-left-behind"
+  },
+  {
+    "systemId": "child-facing-institution",
+    "needId": "unreliable-power"
+  },
+  {
+    "systemId": "health-information-system",
+    "needId": "compounding-infra-gaps"
+  },
+  {
+    "systemId": "health-information-system",
+    "needId": "data-siloed"
+  },
+  {
+    "systemId": "health-information-system",
+    "needId": "fragmented-health-tools"
+  },
+  {
+    "systemId": "health-information-system",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "systemId": "health-information-system",
+    "needId": "no-shared-standards"
+  },
+  {
+    "systemId": "health-information-system",
+    "needId": "paper-based-records"
+  },
+  {
+    "systemId": "health-information-system",
+    "needId": "workforce-development-blocked"
+  },
+  {
+    "systemId": "health-information-system",
+    "needId": "workforce-shortage"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "bill-exceeds-budget"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "cable-alone-insufficient"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "causal-proof-missing"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "compounding-infra-gaps"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "coverage-unaffordable"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "crisis-cuts-connectivity"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "data-not-actioned"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "data-siloed"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "data-trust-deficit"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "dropped-connection-fatal"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "fragmented-health-tools"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "last-mile-uneconomical"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "no-enforceable-standards"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "no-fibre-backbone"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "no-investment-certainty"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "no-post-launch-funding"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "no-proof-no-funding"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "no-safety-standards"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "no-shared-standards"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "no-single-steward"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "not-connected"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "paper-based-records"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "preventable-deaths"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "same-children-left-behind"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "services-degrade-offline"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "staff-cant-run-programmes"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "unreliable-power"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "weak-procurement"
+  },
+  {
+    "systemId": "health-system",
+    "needId": "workforce-shortage"
+  },
+  {
+    "systemId": "mnch-service",
+    "needId": "data-siloed"
+  },
+  {
+    "systemId": "mnch-service",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "systemId": "mnch-service",
+    "needId": "paper-based-records"
+  },
+  {
+    "systemId": "school-system",
+    "needId": "bill-exceeds-budget"
+  },
+  {
+    "systemId": "school-system",
+    "needId": "compounding-infra-gaps"
+  },
+  {
+    "systemId": "school-system",
+    "needId": "coverage-unaffordable"
+  },
+  {
+    "systemId": "school-system",
+    "needId": "data-not-actioned"
+  },
+  {
+    "systemId": "school-system",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "systemId": "school-system",
+    "needId": "last-mile-uneconomical"
+  },
+  {
+    "systemId": "school-system",
+    "needId": "no-investment-certainty"
+  },
+  {
+    "systemId": "school-system",
+    "needId": "no-post-launch-funding"
+  },
+  {
+    "systemId": "school-system",
+    "needId": "no-single-steward"
+  },
+  {
+    "systemId": "school-system",
+    "needId": "no-skills-no-job"
+  },
+  {
+    "systemId": "school-system",
+    "needId": "not-connected"
+  },
+  {
+    "systemId": "school-system",
+    "needId": "paper-based-records"
+  },
+  {
+    "systemId": "school-system",
+    "needId": "unreliable-power"
+  },
+  {
+    "systemId": "school-system",
+    "needId": "workforce-shortage"
+  }
+]

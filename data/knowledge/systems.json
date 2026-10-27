@@ -1,0 +1,32 @@
+[
+  {
+    "id": "school-system",
+    "name": "School system",
+    "description": "The aggregated national or regional education delivery apparatus.",
+    "systemGroupId": "education"
+  },
+  {
+    "id": "health-system",
+    "name": "Health system",
+    "description": "The aggregated national health-delivery apparatus.",
+    "systemGroupId": "health"
+  },
+  {
+    "id": "health-information-system",
+    "name": "Health information system",
+    "description": "Digital health data and reporting infrastructure (HMIS, surveillance).",
+    "systemGroupId": "health"
+  },
+  {
+    "id": "mnch-service",
+    "name": "MNCH service",
+    "description": "Maternal, newborn and child health service line specifically.",
+    "systemGroupId": "health"
+  },
+  {
+    "id": "child-facing-institution",
+    "name": "Child-facing institution",
+    "description": "Public institutions beyond schools and health facilities, such as protection systems.",
+    "systemGroupId": "cross-sector"
+  }
+]
