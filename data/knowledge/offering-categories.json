@@ -1,0 +1,26 @@
+[
+  {
+    "id": "modelling",
+    "name": "Modelling"
+  },
+  {
+    "id": "finance",
+    "name": "Finance"
+  },
+  {
+    "id": "sustainable-business-models",
+    "name": "Sustainable business models"
+  },
+  {
+    "id": "network-data-solutions",
+    "name": "Network and data solutions"
+  },
+  {
+    "id": "ecosystem-readiness",
+    "name": "Ecosystem readiness"
+  },
+  {
+    "id": "procurement",
+    "name": "Procurement"
+  }
+]

@@ -1,0 +1,3314 @@
+[
+  {
+    "audienceId": "academia",
+    "offeringId": "evidence",
+    "needIds": [
+      "causal-proof-missing",
+      "no-proof-no-funding"
+    ]
+  },
+  {
+    "audienceId": "academia",
+    "offeringId": "mapping",
+    "needIds": [
+      "facilities-unmapped"
+    ]
+  },
+  {
+    "audienceId": "academia",
+    "offeringId": "rtm",
+    "needIds": [
+      "no-live-monitoring"
+    ]
+  },
+  {
+    "audienceId": "academia",
+    "offeringId": "investment-case",
+    "needIds": [
+      "no-proof-no-funding"
+    ]
+  },
+  {
+    "audienceId": "child",
+    "offeringId": "infra-modelling",
+    "needIds": [
+      "compounding-infra-gaps"
+    ]
+  },
+  {
+    "audienceId": "child",
+    "offeringId": "connectivity-credits",
+    "needIds": [
+      "coverage-unaffordable",
+      "last-mile-uneconomical",
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "child",
+    "offeringId": "investment-case",
+    "needIds": [
+      "coverage-unaffordable",
+      "income-opportunity-lost",
+      "last-mile-uneconomical",
+      "preventable-deaths"
+    ]
+  },
+  {
+    "audienceId": "child",
+    "offeringId": "rtm",
+    "needIds": [
+      "crisis-cuts-connectivity",
+      "data-not-actioned",
+      "no-live-monitoring",
+      "services-degrade-offline"
+    ]
+  },
+  {
+    "audienceId": "child",
+    "offeringId": "dashboards",
+    "needIds": [
+      "data-not-actioned",
+      "data-siloed"
+    ]
+  },
+  {
+    "audienceId": "child",
+    "offeringId": "mapping",
+    "needIds": [
+      "data-siloed",
+      "not-connected",
+      "skills-without-connectivity"
+    ]
+  },
+  {
+    "audienceId": "child",
+    "offeringId": "evidence",
+    "needIds": [
+      "income-opportunity-lost",
+      "life-chances-lost",
+      "lived-experience-not-intent",
+      "preventable-deaths"
+    ]
+  },
+  {
+    "audienceId": "child",
+    "offeringId": "ifi-engagement",
+    "needIds": [
+      "no-investment-certainty"
+    ]
+  },
+  {
+    "audienceId": "child",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "no-investment-certainty",
+      "spectrum-rules-outdated"
+    ]
+  },
+  {
+    "audienceId": "child",
+    "offeringId": "x-as-a-hub",
+    "needIds": [
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "child",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected",
+      "skills-without-connectivity"
+    ]
+  },
+  {
+    "audienceId": "child",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "child-facing-institution",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "cable-alone-insufficient"
+    ]
+  },
+  {
+    "audienceId": "child-facing-institution",
+    "offeringId": "in-country-implementation",
+    "needIds": [
+      "cable-alone-insufficient"
+    ]
+  },
+  {
+    "audienceId": "child-facing-institution",
+    "offeringId": "infra-modelling",
+    "needIds": [
+      "compounding-infra-gaps"
+    ]
+  },
+  {
+    "audienceId": "child-facing-institution",
+    "offeringId": "connectivity-credits",
+    "needIds": [
+      "coverage-unaffordable",
+      "last-mile-uneconomical",
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "child-facing-institution",
+    "offeringId": "investment-case",
+    "needIds": [
+      "coverage-unaffordable",
+      "last-mile-uneconomical"
+    ]
+  },
+  {
+    "audienceId": "child-facing-institution",
+    "offeringId": "mapping",
+    "needIds": [
+      "facilities-unmapped",
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "child-facing-institution",
+    "offeringId": "x-as-a-hub",
+    "needIds": [
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "child-facing-institution",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "child-facing-institution",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "citizen-user",
+    "offeringId": "connectivity-credits",
+    "needIds": [
+      "coverage-unaffordable"
+    ]
+  },
+  {
+    "audienceId": "citizen-user",
+    "offeringId": "investment-case",
+    "needIds": [
+      "coverage-unaffordable",
+      "income-opportunity-lost"
+    ]
+  },
+  {
+    "audienceId": "citizen-user",
+    "offeringId": "dashboards",
+    "needIds": [
+      "data-not-actioned"
+    ]
+  },
+  {
+    "audienceId": "citizen-user",
+    "offeringId": "rtm",
+    "needIds": [
+      "data-not-actioned"
+    ]
+  },
+  {
+    "audienceId": "citizen-user",
+    "offeringId": "evidence",
+    "needIds": [
+      "income-opportunity-lost"
+    ]
+  },
+  {
+    "audienceId": "citizen-user",
+    "offeringId": "mapping",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "citizen-user",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "citizen-user",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "community",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "cable-alone-insufficient",
+      "sectors-plan-alone"
+    ]
+  },
+  {
+    "audienceId": "community",
+    "offeringId": "in-country-implementation",
+    "needIds": [
+      "cable-alone-insufficient"
+    ]
+  },
+  {
+    "audienceId": "community",
+    "offeringId": "infra-modelling",
+    "needIds": [
+      "compounding-infra-gaps"
+    ]
+  },
+  {
+    "audienceId": "community",
+    "offeringId": "connectivity-credits",
+    "needIds": [
+      "coverage-unaffordable",
+      "last-mile-uneconomical"
+    ]
+  },
+  {
+    "audienceId": "community",
+    "offeringId": "investment-case",
+    "needIds": [
+      "coverage-unaffordable",
+      "income-opportunity-lost",
+      "last-mile-uneconomical",
+      "preventable-deaths"
+    ]
+  },
+  {
+    "audienceId": "community",
+    "offeringId": "rtm",
+    "needIds": [
+      "crisis-cuts-connectivity",
+      "data-not-actioned",
+      "no-live-monitoring",
+      "services-degrade-offline"
+    ]
+  },
+  {
+    "audienceId": "community",
+    "offeringId": "dashboards",
+    "needIds": [
+      "data-not-actioned"
+    ]
+  },
+  {
+    "audienceId": "community",
+    "offeringId": "evidence",
+    "needIds": [
+      "income-opportunity-lost",
+      "preventable-deaths"
+    ]
+  },
+  {
+    "audienceId": "community",
+    "offeringId": "mapping",
+    "needIds": [
+      "not-connected",
+      "skills-without-connectivity"
+    ]
+  },
+  {
+    "audienceId": "community",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected",
+      "skills-without-connectivity"
+    ]
+  },
+  {
+    "audienceId": "community",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "development-bank",
+    "offeringId": "evidence",
+    "needIds": [
+      "causal-proof-missing",
+      "no-proof-no-funding",
+      "proof-demanded-by-funders"
+    ]
+  },
+  {
+    "audienceId": "development-bank",
+    "offeringId": "infra-modelling",
+    "needIds": [
+      "cost-unknown"
+    ]
+  },
+  {
+    "audienceId": "development-bank",
+    "offeringId": "funding-screening",
+    "needIds": [
+      "cost-unknown"
+    ]
+  },
+  {
+    "audienceId": "development-bank",
+    "offeringId": "dashboards",
+    "needIds": [
+      "data-siloed"
+    ]
+  },
+  {
+    "audienceId": "development-bank",
+    "offeringId": "mapping",
+    "needIds": [
+      "data-siloed",
+      "facilities-unmapped",
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "development-bank",
+    "offeringId": "connectivity-credits",
+    "needIds": [
+      "last-mile-uneconomical",
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "development-bank",
+    "offeringId": "investment-case",
+    "needIds": [
+      "last-mile-uneconomical",
+      "no-proof-no-funding",
+      "proof-demanded-by-funders"
+    ]
+  },
+  {
+    "audienceId": "development-bank",
+    "offeringId": "ifi-engagement",
+    "needIds": [
+      "no-investment-certainty"
+    ]
+  },
+  {
+    "audienceId": "development-bank",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "no-investment-certainty",
+      "no-single-steward",
+      "sectors-plan-alone"
+    ]
+  },
+  {
+    "audienceId": "development-bank",
+    "offeringId": "rtm",
+    "needIds": [
+      "no-live-monitoring"
+    ]
+  },
+  {
+    "audienceId": "development-bank",
+    "offeringId": "x-as-a-hub",
+    "needIds": [
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "development-bank",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected",
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "development-bank",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected",
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "development-bank",
+    "offeringId": "supported-procurement",
+    "needIds": [
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "development-partner",
+    "offeringId": "evidence",
+    "needIds": [
+      "causal-proof-missing",
+      "no-proof-no-funding",
+      "proof-demanded-by-funders"
+    ]
+  },
+  {
+    "audienceId": "development-partner",
+    "offeringId": "connectivity-credits",
+    "needIds": [
+      "coverage-unaffordable",
+      "last-mile-uneconomical",
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "development-partner",
+    "offeringId": "investment-case",
+    "needIds": [
+      "coverage-unaffordable",
+      "last-mile-uneconomical",
+      "no-proof-no-funding",
+      "proof-demanded-by-funders"
+    ]
+  },
+  {
+    "audienceId": "development-partner",
+    "offeringId": "dashboards",
+    "needIds": [
+      "data-not-actioned",
+      "data-siloed"
+    ]
+  },
+  {
+    "audienceId": "development-partner",
+    "offeringId": "rtm",
+    "needIds": [
+      "data-not-actioned",
+      "no-live-monitoring"
+    ]
+  },
+  {
+    "audienceId": "development-partner",
+    "offeringId": "mapping",
+    "needIds": [
+      "data-siloed",
+      "facilities-unmapped",
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "development-partner",
+    "offeringId": "ifi-engagement",
+    "needIds": [
+      "no-investment-certainty"
+    ]
+  },
+  {
+    "audienceId": "development-partner",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "no-investment-certainty",
+      "no-single-steward"
+    ]
+  },
+  {
+    "audienceId": "development-partner",
+    "offeringId": "x-as-a-hub",
+    "needIds": [
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "development-partner",
+    "offeringId": "supported-procurement",
+    "needIds": [
+      "no-supplier-accountability",
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "development-partner",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected",
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "development-partner",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected",
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "finance-minister",
+    "offeringId": "evidence",
+    "needIds": [
+      "evidence-without-enforcement-teeth"
+    ]
+  },
+  {
+    "audienceId": "finance-minister",
+    "offeringId": "investment-case",
+    "needIds": [
+      "evidence-without-enforcement-teeth"
+    ]
+  },
+  {
+    "audienceId": "finance-minister",
+    "offeringId": "supported-procurement",
+    "needIds": [
+      "evidence-without-enforcement-teeth"
+    ]
+  },
+  {
+    "audienceId": "firm-business",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "cable-alone-insufficient",
+      "no-investment-certainty"
+    ]
+  },
+  {
+    "audienceId": "firm-business",
+    "offeringId": "in-country-implementation",
+    "needIds": [
+      "cable-alone-insufficient"
+    ]
+  },
+  {
+    "audienceId": "firm-business",
+    "offeringId": "evidence",
+    "needIds": [
+      "income-opportunity-lost",
+      "no-proof-no-funding"
+    ]
+  },
+  {
+    "audienceId": "firm-business",
+    "offeringId": "investment-case",
+    "needIds": [
+      "income-opportunity-lost",
+      "no-proof-no-funding"
+    ]
+  },
+  {
+    "audienceId": "firm-business",
+    "offeringId": "ifi-engagement",
+    "needIds": [
+      "no-investment-certainty"
+    ]
+  },
+  {
+    "audienceId": "firm-business",
+    "offeringId": "mapping",
+    "needIds": [
+      "not-connected",
+      "skills-without-connectivity"
+    ]
+  },
+  {
+    "audienceId": "firm-business",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected",
+      "skills-without-connectivity"
+    ]
+  },
+  {
+    "audienceId": "firm-business",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "cable-alone-insufficient",
+      "fragmented-health-tools",
+      "no-enforceable-standards",
+      "no-shared-standards",
+      "no-single-steward",
+      "staff-cant-run-programmes"
+    ]
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "offeringId": "in-country-implementation",
+    "needIds": [
+      "cable-alone-insufficient",
+      "staff-cant-run-programmes"
+    ]
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "offeringId": "infra-modelling",
+    "needIds": [
+      "compounding-infra-gaps",
+      "cost-unknown"
+    ]
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "offeringId": "funding-screening",
+    "needIds": [
+      "cost-unknown"
+    ]
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "offeringId": "dashboards",
+    "needIds": [
+      "data-not-actioned",
+      "data-siloed",
+      "fragmented-health-tools"
+    ]
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "offeringId": "rtm",
+    "needIds": [
+      "data-not-actioned",
+      "no-live-monitoring",
+      "services-degrade-offline"
+    ]
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "offeringId": "mapping",
+    "needIds": [
+      "data-siloed",
+      "facilities-unmapped",
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "offeringId": "connectivity-credits",
+    "needIds": [
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "offeringId": "x-as-a-hub",
+    "needIds": [
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "offeringId": "investment-case",
+    "needIds": [
+      "no-proof-no-funding"
+    ]
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "offeringId": "evidence",
+    "needIds": [
+      "no-proof-no-funding"
+    ]
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected",
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected",
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "offeringId": "supported-procurement",
+    "needIds": [
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "head-of-state",
+    "offeringId": "evidence",
+    "needIds": [
+      "causal-proof-missing",
+      "cost-of-inaction-quantified",
+      "life-chances-lost",
+      "no-proof-no-funding",
+      "proof-demanded-by-funders"
+    ]
+  },
+  {
+    "audienceId": "head-of-state",
+    "offeringId": "investment-case",
+    "needIds": [
+      "cost-of-inaction-quantified",
+      "no-proof-no-funding",
+      "proof-demanded-by-funders"
+    ]
+  },
+  {
+    "audienceId": "head-of-state",
+    "offeringId": "global-convening",
+    "needIds": [
+      "country-not-left-behind",
+      "nationally-led-agenda"
+    ]
+  },
+  {
+    "audienceId": "head-of-state",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "nationally-led-agenda",
+      "sectors-plan-alone"
+    ]
+  },
+  {
+    "audienceId": "health-facility",
+    "offeringId": "investment-proposal",
+    "needIds": [
+      "bill-exceeds-budget"
+    ]
+  },
+  {
+    "audienceId": "health-facility",
+    "offeringId": "ifi-engagement",
+    "needIds": [
+      "bill-exceeds-budget",
+      "no-investment-certainty"
+    ]
+  },
+  {
+    "audienceId": "health-facility",
+    "offeringId": "connectivity-credits",
+    "needIds": [
+      "bill-exceeds-budget",
+      "coverage-unaffordable",
+      "last-mile-uneconomical",
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "health-facility",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "cable-alone-insufficient",
+      "fragmented-health-tools",
+      "no-enforceable-standards",
+      "no-investment-certainty",
+      "no-shared-standards",
+      "no-single-steward",
+      "staff-cant-run-programmes",
+      "workforce-development-blocked"
+    ]
+  },
+  {
+    "audienceId": "health-facility",
+    "offeringId": "in-country-implementation",
+    "needIds": [
+      "cable-alone-insufficient",
+      "staff-cant-run-programmes"
+    ]
+  },
+  {
+    "audienceId": "health-facility",
+    "offeringId": "infra-modelling",
+    "needIds": [
+      "compounding-infra-gaps",
+      "cost-unknown",
+      "hidden-extra-costs"
+    ]
+  },
+  {
+    "audienceId": "health-facility",
+    "offeringId": "funding-screening",
+    "needIds": [
+      "cost-unknown"
+    ]
+  },
+  {
+    "audienceId": "health-facility",
+    "offeringId": "investment-case",
+    "needIds": [
+      "coverage-unaffordable",
+      "hidden-extra-costs",
+      "last-mile-uneconomical",
+      "preventable-deaths"
+    ]
+  },
+  {
+    "audienceId": "health-facility",
+    "offeringId": "rtm",
+    "needIds": [
+      "crisis-cuts-connectivity",
+      "data-not-actioned",
+      "dropped-connection-fatal",
+      "no-live-monitoring",
+      "services-degrade-offline",
+      "unusable-in-practice"
+    ]
+  },
+  {
+    "audienceId": "health-facility",
+    "offeringId": "dashboards",
+    "needIds": [
+      "data-not-actioned",
+      "data-siloed",
+      "fragmented-health-tools"
+    ]
+  },
+  {
+    "audienceId": "health-facility",
+    "offeringId": "mapping",
+    "needIds": [
+      "data-siloed",
+      "facilities-unmapped",
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "health-facility",
+    "offeringId": "x-as-a-hub",
+    "needIds": [
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "health-facility",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected",
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "health-facility",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected",
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "health-facility",
+    "offeringId": "evidence",
+    "needIds": [
+      "preventable-deaths"
+    ]
+  },
+  {
+    "audienceId": "health-facility",
+    "offeringId": "supported-procurement",
+    "needIds": [
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "health-information-system",
+    "offeringId": "infra-modelling",
+    "needIds": [
+      "compounding-infra-gaps"
+    ]
+  },
+  {
+    "audienceId": "health-information-system",
+    "offeringId": "dashboards",
+    "needIds": [
+      "data-siloed",
+      "fragmented-health-tools"
+    ]
+  },
+  {
+    "audienceId": "health-information-system",
+    "offeringId": "mapping",
+    "needIds": [
+      "data-siloed"
+    ]
+  },
+  {
+    "audienceId": "health-information-system",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "fragmented-health-tools",
+      "no-shared-standards",
+      "workforce-development-blocked"
+    ]
+  },
+  {
+    "audienceId": "health-information-system",
+    "offeringId": "rtm",
+    "needIds": [
+      "no-live-monitoring"
+    ]
+  },
+  {
+    "audienceId": "health-system",
+    "offeringId": "investment-proposal",
+    "needIds": [
+      "bill-exceeds-budget"
+    ]
+  },
+  {
+    "audienceId": "health-system",
+    "offeringId": "ifi-engagement",
+    "needIds": [
+      "bill-exceeds-budget",
+      "no-investment-certainty"
+    ]
+  },
+  {
+    "audienceId": "health-system",
+    "offeringId": "connectivity-credits",
+    "needIds": [
+      "bill-exceeds-budget",
+      "coverage-unaffordable",
+      "last-mile-uneconomical",
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "health-system",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "cable-alone-insufficient",
+      "fragmented-health-tools",
+      "no-enforceable-standards",
+      "no-investment-certainty",
+      "no-shared-standards",
+      "no-single-steward",
+      "staff-cant-run-programmes"
+    ]
+  },
+  {
+    "audienceId": "health-system",
+    "offeringId": "in-country-implementation",
+    "needIds": [
+      "cable-alone-insufficient",
+      "staff-cant-run-programmes"
+    ]
+  },
+  {
+    "audienceId": "health-system",
+    "offeringId": "evidence",
+    "needIds": [
+      "causal-proof-missing",
+      "no-proof-no-funding",
+      "preventable-deaths"
+    ]
+  },
+  {
+    "audienceId": "health-system",
+    "offeringId": "infra-modelling",
+    "needIds": [
+      "compounding-infra-gaps",
+      "no-fibre-backbone"
+    ]
+  },
+  {
+    "audienceId": "health-system",
+    "offeringId": "investment-case",
+    "needIds": [
+      "coverage-unaffordable",
+      "last-mile-uneconomical",
+      "no-fibre-backbone",
+      "no-proof-no-funding",
+      "preventable-deaths"
+    ]
+  },
+  {
+    "audienceId": "health-system",
+    "offeringId": "rtm",
+    "needIds": [
+      "crisis-cuts-connectivity",
+      "data-not-actioned",
+      "dropped-connection-fatal",
+      "no-live-monitoring",
+      "services-degrade-offline"
+    ]
+  },
+  {
+    "audienceId": "health-system",
+    "offeringId": "dashboards",
+    "needIds": [
+      "data-not-actioned",
+      "data-siloed",
+      "fragmented-health-tools"
+    ]
+  },
+  {
+    "audienceId": "health-system",
+    "offeringId": "mapping",
+    "needIds": [
+      "data-siloed",
+      "facilities-unmapped",
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "health-system",
+    "offeringId": "x-as-a-hub",
+    "needIds": [
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "health-system",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected",
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "health-system",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected",
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "health-system",
+    "offeringId": "supported-procurement",
+    "needIds": [
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "health-workforce",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "cable-alone-insufficient",
+      "staff-cant-run-programmes",
+      "workforce-development-blocked"
+    ]
+  },
+  {
+    "audienceId": "health-workforce",
+    "offeringId": "in-country-implementation",
+    "needIds": [
+      "cable-alone-insufficient",
+      "staff-cant-run-programmes"
+    ]
+  },
+  {
+    "audienceId": "health-workforce",
+    "offeringId": "dashboards",
+    "needIds": [
+      "data-not-actioned",
+      "data-siloed"
+    ]
+  },
+  {
+    "audienceId": "health-workforce",
+    "offeringId": "rtm",
+    "needIds": [
+      "data-not-actioned",
+      "dropped-connection-fatal",
+      "no-live-monitoring"
+    ]
+  },
+  {
+    "audienceId": "health-workforce",
+    "offeringId": "mapping",
+    "needIds": [
+      "data-siloed",
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "health-workforce",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "health-workforce",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "household",
+    "offeringId": "investment-proposal",
+    "needIds": [
+      "bill-exceeds-budget"
+    ]
+  },
+  {
+    "audienceId": "household",
+    "offeringId": "ifi-engagement",
+    "needIds": [
+      "bill-exceeds-budget"
+    ]
+  },
+  {
+    "audienceId": "household",
+    "offeringId": "connectivity-credits",
+    "needIds": [
+      "bill-exceeds-budget",
+      "coverage-unaffordable",
+      "last-mile-uneconomical"
+    ]
+  },
+  {
+    "audienceId": "household",
+    "offeringId": "infra-modelling",
+    "needIds": [
+      "compounding-infra-gaps",
+      "hidden-extra-costs"
+    ]
+  },
+  {
+    "audienceId": "household",
+    "offeringId": "evidence",
+    "needIds": [
+      "cost-of-inaction-quantified",
+      "income-opportunity-lost",
+      "life-chances-lost",
+      "preventable-deaths"
+    ]
+  },
+  {
+    "audienceId": "household",
+    "offeringId": "investment-case",
+    "needIds": [
+      "cost-of-inaction-quantified",
+      "coverage-unaffordable",
+      "hidden-extra-costs",
+      "income-opportunity-lost",
+      "last-mile-uneconomical",
+      "preventable-deaths"
+    ]
+  },
+  {
+    "audienceId": "household",
+    "offeringId": "mapping",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "household",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "household",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "infant-young-child",
+    "offeringId": "evidence",
+    "needIds": [
+      "preventable-deaths"
+    ]
+  },
+  {
+    "audienceId": "infant-young-child",
+    "offeringId": "investment-case",
+    "needIds": [
+      "preventable-deaths"
+    ]
+  },
+  {
+    "audienceId": "last-mile-isp",
+    "offeringId": "rtm",
+    "needIds": [
+      "crisis-cuts-connectivity",
+      "dropped-connection-fatal",
+      "no-live-monitoring"
+    ]
+  },
+  {
+    "audienceId": "last-mile-isp",
+    "offeringId": "dashboards",
+    "needIds": [
+      "data-siloed"
+    ]
+  },
+  {
+    "audienceId": "last-mile-isp",
+    "offeringId": "mapping",
+    "needIds": [
+      "data-siloed",
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "last-mile-isp",
+    "offeringId": "connectivity-credits",
+    "needIds": [
+      "last-mile-uneconomical"
+    ]
+  },
+  {
+    "audienceId": "last-mile-isp",
+    "offeringId": "investment-case",
+    "needIds": [
+      "last-mile-uneconomical",
+      "preventable-deaths"
+    ]
+  },
+  {
+    "audienceId": "last-mile-isp",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "no-enforceable-standards",
+      "no-investment-certainty",
+      "no-shared-standards",
+      "spectrum-rules-outdated"
+    ]
+  },
+  {
+    "audienceId": "last-mile-isp",
+    "offeringId": "ifi-engagement",
+    "needIds": [
+      "no-investment-certainty"
+    ]
+  },
+  {
+    "audienceId": "last-mile-isp",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected",
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "last-mile-isp",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected",
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "last-mile-isp",
+    "offeringId": "evidence",
+    "needIds": [
+      "preventable-deaths"
+    ]
+  },
+  {
+    "audienceId": "last-mile-isp",
+    "offeringId": "supported-procurement",
+    "needIds": [
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "local-entrepreneur",
+    "offeringId": "evidence",
+    "needIds": [
+      "income-opportunity-lost"
+    ]
+  },
+  {
+    "audienceId": "local-entrepreneur",
+    "offeringId": "investment-case",
+    "needIds": [
+      "income-opportunity-lost"
+    ]
+  },
+  {
+    "audienceId": "local-entrepreneur",
+    "offeringId": "ifi-engagement",
+    "needIds": [
+      "no-investment-certainty"
+    ]
+  },
+  {
+    "audienceId": "local-entrepreneur",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "no-investment-certainty"
+    ]
+  },
+  {
+    "audienceId": "local-entrepreneur",
+    "offeringId": "mapping",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "local-entrepreneur",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "local-entrepreneur",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "cable-alone-insufficient",
+      "no-shared-standards",
+      "no-single-steward",
+      "sectors-plan-alone",
+      "staff-cant-run-programmes"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "offeringId": "in-country-implementation",
+    "needIds": [
+      "cable-alone-insufficient",
+      "staff-cant-run-programmes"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "offeringId": "evidence",
+    "needIds": [
+      "causal-proof-missing",
+      "life-chances-lost",
+      "no-proof-no-funding",
+      "proof-demanded-by-funders"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "offeringId": "infra-modelling",
+    "needIds": [
+      "cost-unknown"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "offeringId": "funding-screening",
+    "needIds": [
+      "cost-unknown"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "offeringId": "dashboards",
+    "needIds": [
+      "data-not-actioned",
+      "data-siloed"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "offeringId": "rtm",
+    "needIds": [
+      "data-not-actioned",
+      "no-live-monitoring",
+      "unusable-in-practice"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "offeringId": "mapping",
+    "needIds": [
+      "data-siloed",
+      "facilities-unmapped",
+      "not-connected",
+      "skills-without-connectivity"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "offeringId": "investment-case",
+    "needIds": [
+      "no-proof-no-funding",
+      "proof-demanded-by-funders"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected",
+      "skills-without-connectivity"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "offeringId": "investment-proposal",
+    "needIds": [
+      "bill-exceeds-budget"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "offeringId": "ifi-engagement",
+    "needIds": [
+      "bill-exceeds-budget",
+      "no-investment-certainty"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "offeringId": "connectivity-credits",
+    "needIds": [
+      "bill-exceeds-budget",
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "cable-alone-insufficient",
+      "fragmented-health-tools",
+      "no-investment-certainty",
+      "no-shared-standards",
+      "no-single-steward",
+      "sectors-plan-alone"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "offeringId": "in-country-implementation",
+    "needIds": [
+      "cable-alone-insufficient"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "offeringId": "infra-modelling",
+    "needIds": [
+      "compounding-infra-gaps",
+      "hidden-extra-costs"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "offeringId": "evidence",
+    "needIds": [
+      "cost-of-inaction-quantified",
+      "no-proof-no-funding"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "offeringId": "investment-case",
+    "needIds": [
+      "cost-of-inaction-quantified",
+      "hidden-extra-costs",
+      "no-proof-no-funding"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "offeringId": "rtm",
+    "needIds": [
+      "crisis-cuts-connectivity",
+      "data-not-actioned",
+      "no-live-monitoring"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "offeringId": "dashboards",
+    "needIds": [
+      "data-not-actioned",
+      "data-siloed",
+      "fragmented-health-tools"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "offeringId": "mapping",
+    "needIds": [
+      "data-siloed",
+      "facilities-unmapped",
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "offeringId": "x-as-a-hub",
+    "needIds": [
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-ict",
+    "offeringId": "evidence",
+    "needIds": [
+      "causal-proof-missing",
+      "no-proof-no-funding",
+      "proof-demanded-by-funders"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-ict",
+    "offeringId": "dashboards",
+    "needIds": [
+      "data-siloed"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-ict",
+    "offeringId": "mapping",
+    "needIds": [
+      "data-siloed",
+      "facilities-unmapped"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-ict",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "no-enforceable-standards",
+      "no-shared-standards",
+      "sectors-plan-alone"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-ict",
+    "offeringId": "rtm",
+    "needIds": [
+      "no-live-monitoring"
+    ]
+  },
+  {
+    "audienceId": "ministry-of-ict",
+    "offeringId": "investment-case",
+    "needIds": [
+      "no-proof-no-funding",
+      "proof-demanded-by-funders"
+    ]
+  },
+  {
+    "audienceId": "mnch-service",
+    "offeringId": "dashboards",
+    "needIds": [
+      "data-siloed"
+    ]
+  },
+  {
+    "audienceId": "mnch-service",
+    "offeringId": "mapping",
+    "needIds": [
+      "data-siloed"
+    ]
+  },
+  {
+    "audienceId": "mnch-service",
+    "offeringId": "rtm",
+    "needIds": [
+      "no-live-monitoring"
+    ]
+  },
+  {
+    "audienceId": "mother-pregnant-woman",
+    "offeringId": "connectivity-credits",
+    "needIds": [
+      "coverage-unaffordable"
+    ]
+  },
+  {
+    "audienceId": "mother-pregnant-woman",
+    "offeringId": "investment-case",
+    "needIds": [
+      "coverage-unaffordable",
+      "preventable-deaths"
+    ]
+  },
+  {
+    "audienceId": "mother-pregnant-woman",
+    "offeringId": "rtm",
+    "needIds": [
+      "no-live-monitoring"
+    ]
+  },
+  {
+    "audienceId": "mother-pregnant-woman",
+    "offeringId": "mapping",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "mother-pregnant-woman",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "mother-pregnant-woman",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "mother-pregnant-woman",
+    "offeringId": "evidence",
+    "needIds": [
+      "preventable-deaths"
+    ]
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "cable-alone-insufficient",
+      "nationally-led-agenda",
+      "no-enforceable-standards",
+      "no-shared-standards",
+      "no-single-steward",
+      "sectors-plan-alone",
+      "spectrum-rules-outdated"
+    ]
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "offeringId": "in-country-implementation",
+    "needIds": [
+      "cable-alone-insufficient"
+    ]
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "offeringId": "evidence",
+    "needIds": [
+      "causal-proof-missing",
+      "lived-experience-not-intent",
+      "no-proof-no-funding",
+      "proof-demanded-by-funders"
+    ]
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "offeringId": "dashboards",
+    "needIds": [
+      "data-not-actioned"
+    ]
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "offeringId": "rtm",
+    "needIds": [
+      "data-not-actioned",
+      "unusable-in-practice"
+    ]
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "offeringId": "mapping",
+    "needIds": [
+      "facilities-unmapped"
+    ]
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "offeringId": "global-convening",
+    "needIds": [
+      "nationally-led-agenda"
+    ]
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "offeringId": "investment-case",
+    "needIds": [
+      "no-proof-no-funding",
+      "proof-demanded-by-funders"
+    ]
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "offeringId": "supported-procurement",
+    "needIds": [
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "national-government",
+    "offeringId": "investment-proposal",
+    "needIds": [
+      "bill-exceeds-budget"
+    ]
+  },
+  {
+    "audienceId": "national-government",
+    "offeringId": "ifi-engagement",
+    "needIds": [
+      "bill-exceeds-budget",
+      "no-investment-certainty"
+    ]
+  },
+  {
+    "audienceId": "national-government",
+    "offeringId": "connectivity-credits",
+    "needIds": [
+      "bill-exceeds-budget",
+      "coverage-unaffordable",
+      "last-mile-uneconomical",
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "national-government",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "cable-alone-insufficient",
+      "fragmented-health-tools",
+      "governance-incentives-block-adoption",
+      "nationally-led-agenda",
+      "no-enforceable-standards",
+      "no-investment-certainty",
+      "no-shared-standards",
+      "no-single-steward",
+      "sectors-plan-alone",
+      "spectrum-rules-outdated",
+      "staff-cant-run-programmes",
+      "workforce-development-blocked"
+    ]
+  },
+  {
+    "audienceId": "national-government",
+    "offeringId": "in-country-implementation",
+    "needIds": [
+      "cable-alone-insufficient",
+      "staff-cant-run-programmes"
+    ]
+  },
+  {
+    "audienceId": "national-government",
+    "offeringId": "evidence",
+    "needIds": [
+      "causal-proof-missing",
+      "cost-of-inaction-quantified",
+      "evidence-without-enforcement-teeth",
+      "good-enough-data-complacency",
+      "income-opportunity-lost",
+      "life-chances-lost",
+      "lived-experience-not-intent",
+      "no-proof-no-funding",
+      "proof-demanded-by-funders"
+    ]
+  },
+  {
+    "audienceId": "national-government",
+    "offeringId": "infra-modelling",
+    "needIds": [
+      "compounding-infra-gaps",
+      "cost-unknown",
+      "hidden-extra-costs",
+      "no-fibre-backbone"
+    ]
+  },
+  {
+    "audienceId": "national-government",
+    "offeringId": "investment-case",
+    "needIds": [
+      "cost-of-inaction-quantified",
+      "coverage-unaffordable",
+      "evidence-without-enforcement-teeth",
+      "hidden-extra-costs",
+      "income-opportunity-lost",
+      "last-mile-uneconomical",
+      "no-fibre-backbone",
+      "no-proof-no-funding",
+      "proof-demanded-by-funders"
+    ]
+  },
+  {
+    "audienceId": "national-government",
+    "offeringId": "funding-screening",
+    "needIds": [
+      "cost-unknown"
+    ]
+  },
+  {
+    "audienceId": "national-government",
+    "offeringId": "global-convening",
+    "needIds": [
+      "country-not-left-behind",
+      "nationally-led-agenda"
+    ]
+  },
+  {
+    "audienceId": "national-government",
+    "offeringId": "rtm",
+    "needIds": [
+      "crisis-cuts-connectivity",
+      "data-not-actioned",
+      "good-enough-data-complacency",
+      "no-live-monitoring",
+      "unusable-in-practice",
+      "unverified-data-treated-as-decision-grade"
+    ]
+  },
+  {
+    "audienceId": "national-government",
+    "offeringId": "dashboards",
+    "needIds": [
+      "data-not-actioned",
+      "data-siloed",
+      "fragmented-health-tools"
+    ]
+  },
+  {
+    "audienceId": "national-government",
+    "offeringId": "mapping",
+    "needIds": [
+      "data-siloed",
+      "facilities-unmapped",
+      "not-connected",
+      "unverified-data-treated-as-decision-grade"
+    ]
+  },
+  {
+    "audienceId": "national-government",
+    "offeringId": "supported-procurement",
+    "needIds": [
+      "evidence-without-enforcement-teeth",
+      "no-supplier-accountability",
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "national-government",
+    "offeringId": "x-as-a-hub",
+    "needIds": [
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "national-government",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected",
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "national-government",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected",
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "cable-alone-insufficient",
+      "no-shared-standards",
+      "no-single-steward",
+      "sectors-plan-alone"
+    ]
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "offeringId": "in-country-implementation",
+    "needIds": [
+      "cable-alone-insufficient"
+    ]
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "offeringId": "evidence",
+    "needIds": [
+      "causal-proof-missing",
+      "lived-experience-not-intent",
+      "no-proof-no-funding",
+      "proof-demanded-by-funders"
+    ]
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "offeringId": "infra-modelling",
+    "needIds": [
+      "compounding-infra-gaps"
+    ]
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "offeringId": "dashboards",
+    "needIds": [
+      "data-not-actioned",
+      "data-siloed"
+    ]
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "offeringId": "rtm",
+    "needIds": [
+      "data-not-actioned"
+    ]
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "offeringId": "mapping",
+    "needIds": [
+      "data-siloed",
+      "facilities-unmapped"
+    ]
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "offeringId": "investment-case",
+    "needIds": [
+      "no-proof-no-funding",
+      "proof-demanded-by-funders"
+    ]
+  },
+  {
+    "audienceId": "patient",
+    "offeringId": "investment-proposal",
+    "needIds": [
+      "bill-exceeds-budget"
+    ]
+  },
+  {
+    "audienceId": "patient",
+    "offeringId": "ifi-engagement",
+    "needIds": [
+      "bill-exceeds-budget"
+    ]
+  },
+  {
+    "audienceId": "patient",
+    "offeringId": "connectivity-credits",
+    "needIds": [
+      "bill-exceeds-budget",
+      "coverage-unaffordable"
+    ]
+  },
+  {
+    "audienceId": "patient",
+    "offeringId": "evidence",
+    "needIds": [
+      "cost-of-inaction-quantified",
+      "income-opportunity-lost",
+      "life-chances-lost",
+      "no-proof-no-funding",
+      "preventable-deaths"
+    ]
+  },
+  {
+    "audienceId": "patient",
+    "offeringId": "investment-case",
+    "needIds": [
+      "cost-of-inaction-quantified",
+      "coverage-unaffordable",
+      "hidden-extra-costs",
+      "income-opportunity-lost",
+      "no-proof-no-funding",
+      "preventable-deaths"
+    ]
+  },
+  {
+    "audienceId": "patient",
+    "offeringId": "infra-modelling",
+    "needIds": [
+      "cost-unknown",
+      "hidden-extra-costs"
+    ]
+  },
+  {
+    "audienceId": "patient",
+    "offeringId": "funding-screening",
+    "needIds": [
+      "cost-unknown"
+    ]
+  },
+  {
+    "audienceId": "patient",
+    "offeringId": "dashboards",
+    "needIds": [
+      "data-not-actioned",
+      "data-siloed",
+      "fragmented-health-tools"
+    ]
+  },
+  {
+    "audienceId": "patient",
+    "offeringId": "rtm",
+    "needIds": [
+      "data-not-actioned",
+      "no-live-monitoring",
+      "services-degrade-offline"
+    ]
+  },
+  {
+    "audienceId": "patient",
+    "offeringId": "mapping",
+    "needIds": [
+      "data-siloed",
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "patient",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "fragmented-health-tools",
+      "staff-cant-run-programmes"
+    ]
+  },
+  {
+    "audienceId": "patient",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "patient",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "patient",
+    "offeringId": "in-country-implementation",
+    "needIds": [
+      "staff-cant-run-programmes"
+    ]
+  },
+  {
+    "audienceId": "person-with-disability",
+    "offeringId": "connectivity-credits",
+    "needIds": [
+      "coverage-unaffordable"
+    ]
+  },
+  {
+    "audienceId": "person-with-disability",
+    "offeringId": "investment-case",
+    "needIds": [
+      "coverage-unaffordable",
+      "income-opportunity-lost"
+    ]
+  },
+  {
+    "audienceId": "person-with-disability",
+    "offeringId": "evidence",
+    "needIds": [
+      "income-opportunity-lost",
+      "life-chances-lost"
+    ]
+  },
+  {
+    "audienceId": "person-with-disability",
+    "offeringId": "rtm",
+    "needIds": [
+      "unusable-in-practice"
+    ]
+  },
+  {
+    "audienceId": "procurement-officer",
+    "offeringId": "investment-proposal",
+    "needIds": [
+      "bill-exceeds-budget"
+    ]
+  },
+  {
+    "audienceId": "procurement-officer",
+    "offeringId": "ifi-engagement",
+    "needIds": [
+      "bill-exceeds-budget",
+      "no-investment-certainty"
+    ]
+  },
+  {
+    "audienceId": "procurement-officer",
+    "offeringId": "connectivity-credits",
+    "needIds": [
+      "bill-exceeds-budget",
+      "last-mile-uneconomical",
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "procurement-officer",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "cable-alone-insufficient",
+      "no-enforceable-standards",
+      "no-investment-certainty"
+    ]
+  },
+  {
+    "audienceId": "procurement-officer",
+    "offeringId": "in-country-implementation",
+    "needIds": [
+      "cable-alone-insufficient"
+    ]
+  },
+  {
+    "audienceId": "procurement-officer",
+    "offeringId": "infra-modelling",
+    "needIds": [
+      "compounding-infra-gaps",
+      "cost-unknown"
+    ]
+  },
+  {
+    "audienceId": "procurement-officer",
+    "offeringId": "funding-screening",
+    "needIds": [
+      "cost-unknown"
+    ]
+  },
+  {
+    "audienceId": "procurement-officer",
+    "offeringId": "dashboards",
+    "needIds": [
+      "data-siloed"
+    ]
+  },
+  {
+    "audienceId": "procurement-officer",
+    "offeringId": "mapping",
+    "needIds": [
+      "data-siloed",
+      "facilities-unmapped",
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "procurement-officer",
+    "offeringId": "evidence",
+    "needIds": [
+      "evidence-without-enforcement-teeth",
+      "no-proof-no-funding",
+      "proof-demanded-by-funders"
+    ]
+  },
+  {
+    "audienceId": "procurement-officer",
+    "offeringId": "investment-case",
+    "needIds": [
+      "evidence-without-enforcement-teeth",
+      "last-mile-uneconomical",
+      "no-proof-no-funding",
+      "proof-demanded-by-funders"
+    ]
+  },
+  {
+    "audienceId": "procurement-officer",
+    "offeringId": "supported-procurement",
+    "needIds": [
+      "evidence-without-enforcement-teeth",
+      "no-supplier-accountability",
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "procurement-officer",
+    "offeringId": "rtm",
+    "needIds": [
+      "no-live-monitoring",
+      "unusable-in-practice"
+    ]
+  },
+  {
+    "audienceId": "procurement-officer",
+    "offeringId": "x-as-a-hub",
+    "needIds": [
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "procurement-officer",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected",
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "procurement-officer",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected",
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "rural-population",
+    "offeringId": "connectivity-credits",
+    "needIds": [
+      "coverage-unaffordable",
+      "last-mile-uneconomical"
+    ]
+  },
+  {
+    "audienceId": "rural-population",
+    "offeringId": "investment-case",
+    "needIds": [
+      "coverage-unaffordable",
+      "last-mile-uneconomical"
+    ]
+  },
+  {
+    "audienceId": "rural-population",
+    "offeringId": "mapping",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "rural-population",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "rural-population",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "school",
+    "offeringId": "investment-proposal",
+    "needIds": [
+      "bill-exceeds-budget"
+    ]
+  },
+  {
+    "audienceId": "school",
+    "offeringId": "ifi-engagement",
+    "needIds": [
+      "bill-exceeds-budget",
+      "no-investment-certainty"
+    ]
+  },
+  {
+    "audienceId": "school",
+    "offeringId": "connectivity-credits",
+    "needIds": [
+      "bill-exceeds-budget",
+      "coverage-unaffordable",
+      "last-mile-uneconomical",
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "school",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "cable-alone-insufficient",
+      "no-enforceable-standards",
+      "no-investment-certainty",
+      "no-shared-standards",
+      "sectors-plan-alone",
+      "staff-cant-run-programmes"
+    ]
+  },
+  {
+    "audienceId": "school",
+    "offeringId": "in-country-implementation",
+    "needIds": [
+      "cable-alone-insufficient",
+      "staff-cant-run-programmes"
+    ]
+  },
+  {
+    "audienceId": "school",
+    "offeringId": "infra-modelling",
+    "needIds": [
+      "compounding-infra-gaps",
+      "cost-unknown",
+      "hidden-extra-costs",
+      "no-fibre-backbone"
+    ]
+  },
+  {
+    "audienceId": "school",
+    "offeringId": "funding-screening",
+    "needIds": [
+      "cost-unknown"
+    ]
+  },
+  {
+    "audienceId": "school",
+    "offeringId": "investment-case",
+    "needIds": [
+      "coverage-unaffordable",
+      "hidden-extra-costs",
+      "income-opportunity-lost",
+      "last-mile-uneconomical",
+      "no-fibre-backbone",
+      "no-proof-no-funding"
+    ]
+  },
+  {
+    "audienceId": "school",
+    "offeringId": "rtm",
+    "needIds": [
+      "crisis-cuts-connectivity",
+      "data-not-actioned",
+      "no-live-monitoring",
+      "services-degrade-offline",
+      "unusable-in-practice"
+    ]
+  },
+  {
+    "audienceId": "school",
+    "offeringId": "dashboards",
+    "needIds": [
+      "data-not-actioned",
+      "data-siloed"
+    ]
+  },
+  {
+    "audienceId": "school",
+    "offeringId": "mapping",
+    "needIds": [
+      "data-siloed",
+      "facilities-unmapped",
+      "facility-registry-drift",
+      "not-connected",
+      "skills-without-connectivity"
+    ]
+  },
+  {
+    "audienceId": "school",
+    "offeringId": "evidence",
+    "needIds": [
+      "income-opportunity-lost",
+      "life-chances-lost",
+      "no-proof-no-funding"
+    ]
+  },
+  {
+    "audienceId": "school",
+    "offeringId": "x-as-a-hub",
+    "needIds": [
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "school",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected",
+      "skills-without-connectivity",
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "school",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected",
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "school",
+    "offeringId": "supported-procurement",
+    "needIds": [
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "school-leader",
+    "offeringId": "investment-proposal",
+    "needIds": [
+      "bill-exceeds-budget"
+    ]
+  },
+  {
+    "audienceId": "school-leader",
+    "offeringId": "ifi-engagement",
+    "needIds": [
+      "bill-exceeds-budget"
+    ]
+  },
+  {
+    "audienceId": "school-leader",
+    "offeringId": "connectivity-credits",
+    "needIds": [
+      "bill-exceeds-budget",
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "school-leader",
+    "offeringId": "rtm",
+    "needIds": [
+      "no-live-monitoring"
+    ]
+  },
+  {
+    "audienceId": "school-leader",
+    "offeringId": "x-as-a-hub",
+    "needIds": [
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "school-leader",
+    "offeringId": "mapping",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "school-leader",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "school-leader",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "school-leader",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "staff-cant-run-programmes"
+    ]
+  },
+  {
+    "audienceId": "school-leader",
+    "offeringId": "in-country-implementation",
+    "needIds": [
+      "staff-cant-run-programmes"
+    ]
+  },
+  {
+    "audienceId": "school-system",
+    "offeringId": "investment-proposal",
+    "needIds": [
+      "bill-exceeds-budget"
+    ]
+  },
+  {
+    "audienceId": "school-system",
+    "offeringId": "ifi-engagement",
+    "needIds": [
+      "bill-exceeds-budget",
+      "no-investment-certainty"
+    ]
+  },
+  {
+    "audienceId": "school-system",
+    "offeringId": "connectivity-credits",
+    "needIds": [
+      "bill-exceeds-budget",
+      "coverage-unaffordable",
+      "last-mile-uneconomical",
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "school-system",
+    "offeringId": "infra-modelling",
+    "needIds": [
+      "compounding-infra-gaps"
+    ]
+  },
+  {
+    "audienceId": "school-system",
+    "offeringId": "investment-case",
+    "needIds": [
+      "coverage-unaffordable",
+      "last-mile-uneconomical"
+    ]
+  },
+  {
+    "audienceId": "school-system",
+    "offeringId": "dashboards",
+    "needIds": [
+      "data-not-actioned"
+    ]
+  },
+  {
+    "audienceId": "school-system",
+    "offeringId": "rtm",
+    "needIds": [
+      "data-not-actioned"
+    ]
+  },
+  {
+    "audienceId": "school-system",
+    "offeringId": "mapping",
+    "needIds": [
+      "facilities-unmapped",
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "school-system",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "no-investment-certainty",
+      "no-single-steward"
+    ]
+  },
+  {
+    "audienceId": "school-system",
+    "offeringId": "x-as-a-hub",
+    "needIds": [
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "school-system",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "school-system",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "student-learner",
+    "offeringId": "investment-proposal",
+    "needIds": [
+      "bill-exceeds-budget"
+    ]
+  },
+  {
+    "audienceId": "student-learner",
+    "offeringId": "ifi-engagement",
+    "needIds": [
+      "bill-exceeds-budget"
+    ]
+  },
+  {
+    "audienceId": "student-learner",
+    "offeringId": "connectivity-credits",
+    "needIds": [
+      "bill-exceeds-budget",
+      "coverage-unaffordable",
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "student-learner",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "cable-alone-insufficient",
+      "staff-cant-run-programmes"
+    ]
+  },
+  {
+    "audienceId": "student-learner",
+    "offeringId": "in-country-implementation",
+    "needIds": [
+      "cable-alone-insufficient",
+      "staff-cant-run-programmes"
+    ]
+  },
+  {
+    "audienceId": "student-learner",
+    "offeringId": "investment-case",
+    "needIds": [
+      "coverage-unaffordable",
+      "income-opportunity-lost",
+      "preventable-deaths"
+    ]
+  },
+  {
+    "audienceId": "student-learner",
+    "offeringId": "rtm",
+    "needIds": [
+      "crisis-cuts-connectivity",
+      "services-degrade-offline",
+      "unusable-in-practice"
+    ]
+  },
+  {
+    "audienceId": "student-learner",
+    "offeringId": "mapping",
+    "needIds": [
+      "facilities-unmapped",
+      "not-connected",
+      "skills-without-connectivity"
+    ]
+  },
+  {
+    "audienceId": "student-learner",
+    "offeringId": "evidence",
+    "needIds": [
+      "income-opportunity-lost",
+      "life-chances-lost",
+      "preventable-deaths"
+    ]
+  },
+  {
+    "audienceId": "student-learner",
+    "offeringId": "x-as-a-hub",
+    "needIds": [
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "student-learner",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected",
+      "skills-without-connectivity"
+    ]
+  },
+  {
+    "audienceId": "student-learner",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "teacher",
+    "offeringId": "investment-proposal",
+    "needIds": [
+      "bill-exceeds-budget"
+    ]
+  },
+  {
+    "audienceId": "teacher",
+    "offeringId": "ifi-engagement",
+    "needIds": [
+      "bill-exceeds-budget"
+    ]
+  },
+  {
+    "audienceId": "teacher",
+    "offeringId": "connectivity-credits",
+    "needIds": [
+      "bill-exceeds-budget"
+    ]
+  },
+  {
+    "audienceId": "teacher",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "cable-alone-insufficient",
+      "staff-cant-run-programmes",
+      "workforce-development-blocked"
+    ]
+  },
+  {
+    "audienceId": "teacher",
+    "offeringId": "in-country-implementation",
+    "needIds": [
+      "cable-alone-insufficient",
+      "staff-cant-run-programmes"
+    ]
+  },
+  {
+    "audienceId": "teacher",
+    "offeringId": "dashboards",
+    "needIds": [
+      "data-siloed"
+    ]
+  },
+  {
+    "audienceId": "teacher",
+    "offeringId": "mapping",
+    "needIds": [
+      "data-siloed",
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "teacher",
+    "offeringId": "infra-modelling",
+    "needIds": [
+      "hidden-extra-costs"
+    ]
+  },
+  {
+    "audienceId": "teacher",
+    "offeringId": "investment-case",
+    "needIds": [
+      "hidden-extra-costs"
+    ]
+  },
+  {
+    "audienceId": "teacher",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "teacher",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "telecom-operator",
+    "offeringId": "infra-modelling",
+    "needIds": [
+      "compounding-infra-gaps",
+      "cost-unknown",
+      "no-fibre-backbone"
+    ]
+  },
+  {
+    "audienceId": "telecom-operator",
+    "offeringId": "funding-screening",
+    "needIds": [
+      "cost-unknown"
+    ]
+  },
+  {
+    "audienceId": "telecom-operator",
+    "offeringId": "connectivity-credits",
+    "needIds": [
+      "coverage-unaffordable",
+      "last-mile-uneconomical",
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "telecom-operator",
+    "offeringId": "investment-case",
+    "needIds": [
+      "coverage-unaffordable",
+      "last-mile-uneconomical",
+      "no-fibre-backbone"
+    ]
+  },
+  {
+    "audienceId": "telecom-operator",
+    "offeringId": "rtm",
+    "needIds": [
+      "crisis-cuts-connectivity",
+      "no-live-monitoring",
+      "unusable-in-practice"
+    ]
+  },
+  {
+    "audienceId": "telecom-operator",
+    "offeringId": "dashboards",
+    "needIds": [
+      "data-siloed"
+    ]
+  },
+  {
+    "audienceId": "telecom-operator",
+    "offeringId": "mapping",
+    "needIds": [
+      "data-siloed",
+      "facilities-unmapped",
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "telecom-operator",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "no-enforceable-standards",
+      "no-investment-certainty",
+      "no-shared-standards",
+      "spectrum-rules-outdated"
+    ]
+  },
+  {
+    "audienceId": "telecom-operator",
+    "offeringId": "ifi-engagement",
+    "needIds": [
+      "no-investment-certainty"
+    ]
+  },
+  {
+    "audienceId": "telecom-operator",
+    "offeringId": "x-as-a-hub",
+    "needIds": [
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "telecom-operator",
+    "offeringId": "supported-procurement",
+    "needIds": [
+      "no-supplier-accountability",
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "telecom-operator",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected",
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "telecom-operator",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected",
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "telecom-regulator",
+    "offeringId": "mapping",
+    "needIds": [
+      "facilities-unmapped",
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "telecom-regulator",
+    "offeringId": "ifi-engagement",
+    "needIds": [
+      "no-investment-certainty"
+    ]
+  },
+  {
+    "audienceId": "telecom-regulator",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "no-investment-certainty",
+      "sectors-plan-alone",
+      "spectrum-rules-outdated"
+    ]
+  },
+  {
+    "audienceId": "telecom-regulator",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "telecom-regulator",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "unconnected-underserved-person",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "cable-alone-insufficient"
+    ]
+  },
+  {
+    "audienceId": "unconnected-underserved-person",
+    "offeringId": "in-country-implementation",
+    "needIds": [
+      "cable-alone-insufficient"
+    ]
+  },
+  {
+    "audienceId": "unconnected-underserved-person",
+    "offeringId": "evidence",
+    "needIds": [
+      "cost-of-inaction-quantified",
+      "income-opportunity-lost",
+      "life-chances-lost",
+      "preventable-deaths"
+    ]
+  },
+  {
+    "audienceId": "unconnected-underserved-person",
+    "offeringId": "investment-case",
+    "needIds": [
+      "cost-of-inaction-quantified",
+      "coverage-unaffordable",
+      "income-opportunity-lost",
+      "last-mile-uneconomical",
+      "no-fibre-backbone",
+      "preventable-deaths"
+    ]
+  },
+  {
+    "audienceId": "unconnected-underserved-person",
+    "offeringId": "connectivity-credits",
+    "needIds": [
+      "coverage-unaffordable",
+      "last-mile-uneconomical",
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "unconnected-underserved-person",
+    "offeringId": "rtm",
+    "needIds": [
+      "crisis-cuts-connectivity"
+    ]
+  },
+  {
+    "audienceId": "unconnected-underserved-person",
+    "offeringId": "infra-modelling",
+    "needIds": [
+      "no-fibre-backbone"
+    ]
+  },
+  {
+    "audienceId": "unconnected-underserved-person",
+    "offeringId": "x-as-a-hub",
+    "needIds": [
+      "no-post-launch-funding"
+    ]
+  },
+  {
+    "audienceId": "unconnected-underserved-person",
+    "offeringId": "mapping",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "unconnected-underserved-person",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "unconnected-underserved-person",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "vendor",
+    "offeringId": "dashboards",
+    "needIds": [
+      "data-not-actioned",
+      "data-siloed"
+    ]
+  },
+  {
+    "audienceId": "vendor",
+    "offeringId": "rtm",
+    "needIds": [
+      "data-not-actioned",
+      "no-live-monitoring"
+    ]
+  },
+  {
+    "audienceId": "vendor",
+    "offeringId": "mapping",
+    "needIds": [
+      "data-siloed",
+      "facilities-unmapped",
+      "not-connected",
+      "skills-without-connectivity"
+    ]
+  },
+  {
+    "audienceId": "vendor",
+    "offeringId": "infra-modelling",
+    "needIds": [
+      "hidden-extra-costs"
+    ]
+  },
+  {
+    "audienceId": "vendor",
+    "offeringId": "investment-case",
+    "needIds": [
+      "hidden-extra-costs",
+      "last-mile-uneconomical",
+      "proof-demanded-by-funders"
+    ]
+  },
+  {
+    "audienceId": "vendor",
+    "offeringId": "connectivity-credits",
+    "needIds": [
+      "last-mile-uneconomical"
+    ]
+  },
+  {
+    "audienceId": "vendor",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "no-enforceable-standards",
+      "no-shared-standards",
+      "no-single-steward",
+      "sectors-plan-alone"
+    ]
+  },
+  {
+    "audienceId": "vendor",
+    "offeringId": "supported-procurement",
+    "needIds": [
+      "no-supplier-accountability",
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "vendor",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected",
+      "skills-without-connectivity",
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "vendor",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected",
+      "weak-procurement"
+    ]
+  },
+  {
+    "audienceId": "vendor",
+    "offeringId": "evidence",
+    "needIds": [
+      "proof-demanded-by-funders"
+    ]
+  },
+  {
+    "audienceId": "woman-girl",
+    "offeringId": "connectivity-credits",
+    "needIds": [
+      "coverage-unaffordable"
+    ]
+  },
+  {
+    "audienceId": "woman-girl",
+    "offeringId": "investment-case",
+    "needIds": [
+      "coverage-unaffordable",
+      "income-opportunity-lost",
+      "no-proof-no-funding"
+    ]
+  },
+  {
+    "audienceId": "woman-girl",
+    "offeringId": "evidence",
+    "needIds": [
+      "income-opportunity-lost",
+      "life-chances-lost",
+      "no-proof-no-funding"
+    ]
+  },
+  {
+    "audienceId": "woman-girl",
+    "offeringId": "mapping",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "woman-girl",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "woman-girl",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "worker",
+    "offeringId": "evidence",
+    "needIds": [
+      "income-opportunity-lost"
+    ]
+  },
+  {
+    "audienceId": "worker",
+    "offeringId": "investment-case",
+    "needIds": [
+      "income-opportunity-lost"
+    ]
+  },
+  {
+    "audienceId": "worker",
+    "offeringId": "mapping",
+    "needIds": [
+      "not-connected",
+      "skills-without-connectivity"
+    ]
+  },
+  {
+    "audienceId": "worker",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected",
+      "skills-without-connectivity"
+    ]
+  },
+  {
+    "audienceId": "worker",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "worker",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "workforce-development-blocked"
+    ]
+  },
+  {
+    "audienceId": "youth-labour-social-ministry",
+    "offeringId": "evidence",
+    "needIds": [
+      "causal-proof-missing",
+      "income-opportunity-lost",
+      "life-chances-lost",
+      "no-proof-no-funding"
+    ]
+  },
+  {
+    "audienceId": "youth-labour-social-ministry",
+    "offeringId": "investment-case",
+    "needIds": [
+      "income-opportunity-lost",
+      "no-proof-no-funding"
+    ]
+  },
+  {
+    "audienceId": "youth-labour-social-ministry",
+    "offeringId": "mapping",
+    "needIds": [
+      "skills-without-connectivity"
+    ]
+  },
+  {
+    "audienceId": "youth-labour-social-ministry",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "skills-without-connectivity"
+    ]
+  },
+  {
+    "audienceId": "youth-labour-social-ministry",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "workforce-development-blocked"
+    ]
+  },
+  {
+    "audienceId": "youth-young-person",
+    "offeringId": "evidence",
+    "needIds": [
+      "income-opportunity-lost",
+      "life-chances-lost"
+    ]
+  },
+  {
+    "audienceId": "youth-young-person",
+    "offeringId": "investment-case",
+    "needIds": [
+      "income-opportunity-lost"
+    ]
+  },
+  {
+    "audienceId": "youth-young-person",
+    "offeringId": "mapping",
+    "needIds": [
+      "not-connected",
+      "skills-without-connectivity"
+    ]
+  },
+  {
+    "audienceId": "youth-young-person",
+    "offeringId": "procurement-on-behalf",
+    "needIds": [
+      "not-connected",
+      "skills-without-connectivity"
+    ]
+  },
+  {
+    "audienceId": "youth-young-person",
+    "offeringId": "delivery-toolkit",
+    "needIds": [
+      "not-connected"
+    ]
+  },
+  {
+    "audienceId": "youth-young-person",
+    "offeringId": "institutional-development",
+    "needIds": [
+      "workforce-development-blocked"
+    ]
+  }
+]

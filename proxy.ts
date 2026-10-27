@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from 'next/server'
-import { PAGE_ROUTES, isRouteEnabled } from '@/lib/site'
+import { isRouteEnabled, matchPageRoute } from '@/lib/site'
 
 /**
  * Route guard for the two sites (see lib/site.ts). A page route that exists in
@@ -8,7 +8,7 @@ import { PAGE_ROUTES, isRouteEnabled } from '@/lib/site'
  */
 export function proxy(request: NextRequest) {
   const path = request.nextUrl.pathname.replace(/\/+$/, '') || '/'
-  if ((PAGE_ROUTES as readonly string[]).includes(path) && !isRouteEnabled(path)) {
+  if (matchPageRoute(path) && !isRouteEnabled(path)) {
     return NextResponse.rewrite(new URL('/__not-on-this-site', request.url))
   }
   return NextResponse.next()

@@ -1,0 +1,110 @@
+[
+  {
+    "id": "mapping",
+    "name": "Mapping",
+    "description": "Geospatial connectivity maps.",
+    "offeringCategoryId": "network-data-solutions"
+  },
+  {
+    "id": "rtm",
+    "name": "Real time monitoring",
+    "description": "Telemetry-based live connectivity monitoring.",
+    "offeringCategoryId": "network-data-solutions"
+  },
+  {
+    "id": "dashboards",
+    "name": "Tailored analytical dashboards",
+    "description": "Custom dashboards built on connectivity data.",
+    "offeringCategoryId": "network-data-solutions"
+  },
+  {
+    "id": "predictive-modelling",
+    "name": "Predictive policy & planning modelling",
+    "description": "Socio-economic and infrastructure modelling for government policy and planning.",
+    "offeringCategoryId": "modelling"
+  },
+  {
+    "id": "infra-modelling",
+    "name": "Infrastructure modelling",
+    "description": "Technical modelling of infrastructure options and costs.",
+    "offeringCategoryId": "modelling"
+  },
+  {
+    "id": "funding-screening",
+    "name": "Funding screening",
+    "description": "Screening and identifying viable funding sources.",
+    "offeringCategoryId": "finance"
+  },
+  {
+    "id": "investment-case",
+    "name": "Investment case",
+    "description": "Building the case for connectivity investment.",
+    "offeringCategoryId": "finance"
+  },
+  {
+    "id": "ifi-engagement",
+    "name": "IFI engagement strategy",
+    "description": "Strategy for engaging international financial institutions.",
+    "offeringCategoryId": "finance"
+  },
+  {
+    "id": "investment-proposal",
+    "name": "Investment proposal",
+    "description": "A formal proposal package for investors/funders.",
+    "offeringCategoryId": "finance"
+  },
+  {
+    "id": "connectivity-credits",
+    "name": "Connectivity credits",
+    "description": "A financing/incentive mechanism for sustained connectivity.",
+    "offeringCategoryId": "sustainable-business-models"
+  },
+  {
+    "id": "x-as-a-hub",
+    "name": "X as a hub",
+    "description": "Model for facilities acting as multi-purpose connectivity hubs.",
+    "offeringCategoryId": "sustainable-business-models"
+  },
+  {
+    "id": "delivery-toolkit",
+    "name": "Delivery solutions toolkit",
+    "description": "DIY, free toolkit supporting procurement delivery.",
+    "offeringCategoryId": "procurement"
+  },
+  {
+    "id": "supported-procurement",
+    "name": "Supported public procurement",
+    "description": "TA supporting pre-contracting, contracting and contract management.",
+    "offeringCategoryId": "procurement"
+  },
+  {
+    "id": "procurement-on-behalf",
+    "name": "Procurement on behalf of government",
+    "description": "Bulk procurement delivered as a service for a fee.",
+    "offeringCategoryId": "procurement"
+  },
+  {
+    "id": "institutional-development",
+    "name": "Institutional development",
+    "description": "Whole-of-government engagement across sectoral ministries.",
+    "offeringCategoryId": "ecosystem-readiness"
+  },
+  {
+    "id": "in-country-implementation",
+    "name": "In-country implementation & support",
+    "description": "Field-based implementation support with country office presence, including policy and planning advice.",
+    "offeringCategoryId": "ecosystem-readiness"
+  },
+  {
+    "id": "global-convening",
+    "name": "Global convening",
+    "description": "Ministerial and other global convening (e.g. GTEP, GEP).",
+    "offeringCategoryId": "ecosystem-readiness"
+  },
+  {
+    "id": "evidence",
+    "name": "Evidence",
+    "description": "M&E, Geneva Research Lab, and academic collaboration.",
+    "offeringCategoryId": "ecosystem-readiness"
+  }
+]

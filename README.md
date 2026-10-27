@@ -27,6 +27,9 @@ It decides:
 - the colour tokens: `<html data-site="giga|di">`, and `app/globals.css`
   overrides the colour tokens under `[data-site='di']`
 - the organisation name in copy about the portal itself ("Giga" / "Digital Inclusion")
+- the shell (`shell` in `lib/site.ts`): Giga uses the marketing shell (top
+  header, marketing home, footer); DI uses the app shell (side panel, slim top
+  bar with a Beta badge, and the "What are you generating today?" home)
 
 Everything site-specific lives in **`lib/site.ts`**. The value is read at
 build time, so change it and rebuild (or restart `npm run dev`).
@@ -43,7 +46,8 @@ Production build: `NEXT_PUBLIC_SITE=di npm run build && npm start`.
 ### Add or remove a page from a site
 
 1. New page: create it under `app/(main)/…` as usual and add its path to
-   `PAGE_ROUTES` in `lib/site.ts`.
+   `PAGE_ROUTES` in `lib/site.ts` (dynamic segments as `[id]`, e.g.
+   `/knowledge/audiences/[id]`).
 2. Add the path to the `routes` list of each site that should have it (or
    remove it to take the page off that site).
 3. If it should be in the menu, add it to a group in `lib/nav.ts`.
@@ -55,15 +59,21 @@ hidden automatically. API routes are not gated: they work on both sites.
 
 ### How the menu groups work
 
-`lib/nav.ts` holds one list of groups. The desktop header (dropdowns and the
-sliding active indicator), the mobile menu and the footer all read from it.
+`lib/nav.ts` holds one list of groups and items (with their side panel
+icons). Each shell picks its order from it: `NAV_GROUPS` for the Giga header
+(dropdowns and the sliding active indicator), mobile menu and footer;
+`SIDEBAR_GROUPS` for the DI side panel (Home, Create, Knowledge, Assets,
+Brand, AI skills). Items marked `soon: true` show in the side panel as
+disabled with a "Soon" label, and never in the header or footer.
 
 | Group     | Items                                                                      |
 | --------- | -------------------------------------------------------------------------- |
 | Brand     | Colors, Typography, Video (giga) / Brand guidelines (di)                   |
 | Assets    | Logos, Illustrations, Image galleries, Photo awards                        |
-| Create    | Maps, Social media, Engagement map, Email signature, Backgrounds, (Slides) |
+| Create    | Maps, Social media, Engagement map, Email signature, Backgrounds, (Slides, Two-pagers: soon) |
 | AI skills | AI skills (di)                                                             |
+| Home      | Home (di side panel only)                                                  |
+| Knowledge | Audiences, Offerings, (KPIs, Case studies: soon) (di side panel only)      |
 
 Each item is dropped when its page is not enabled for the current site. A group
 left with one item shows as a plain link (no dropdown); an empty group is
@@ -81,3 +91,23 @@ hidden. Slides has no page yet and stays hidden on both sites while
 
 Both projects deploy every push to `main`, and each pull request gets a
 preview on both.
+
+## Knowledge data (DI)
+
+The Knowledge pages (`/knowledge/audiences`, `/knowledge/offerings`) read
+`data/knowledge/*.json`, imported from the review cockpit
+([jmans99/review-cockpit](https://github.com/jmans99/review-cockpit),
+`data/appdata.json`). To refresh after the cockpit changes, clone it next to
+this repo and run:
+
+```bash
+git clone https://github.com/jmans99/review-cockpit ../review-cockpit
+node scripts/import-knowledge.mjs            # or: node scripts/import-knowledge.mjs path/to/appdata.json
+```
+
+Commit the updated `data/knowledge/` files. Only names, descriptions,
+groupings and links are imported (no evidence, excerpts, sources or counts).
+The mapping from the cockpit's audience groups and offering categories to the
+nine audience groups and six offering categories, plus name and text fixes,
+are tables at the top of `scripts/import-knowledge.mjs`. The script lists
+anything it could not map.

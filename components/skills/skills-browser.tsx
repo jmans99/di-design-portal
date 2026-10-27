@@ -214,7 +214,7 @@ function SkillCard({
           onClick={onDownload}
           aria-label={`Download ${skill.title} skill`}
           className={`inline-flex w-full items-center justify-center gap-2 rounded-full h-12 px-7 text-[15px] font-semibold text-white transition-smooth active:scale-[0.98] ${
-            downloaded ? 'bg-accent-green-600' : 'bg-primary-600 hover:bg-primary-700'
+            downloaded ? 'bg-accent-green-600' : 'bg-primary-700 hover:bg-primary-800'
           }`}
         >
           {downloaded ? (

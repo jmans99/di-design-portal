@@ -1,0 +1,2666 @@
+[
+  {
+    "audienceId": "academia",
+    "needId": "ai-readiness-gap"
+  },
+  {
+    "audienceId": "academia",
+    "needId": "causal-proof-missing"
+  },
+  {
+    "audienceId": "academia",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "audienceId": "academia",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "audienceId": "academia",
+    "needId": "no-proof-no-funding"
+  },
+  {
+    "audienceId": "child",
+    "needId": "ai-hype-crowds-out-access"
+  },
+  {
+    "audienceId": "child",
+    "needId": "ai-readiness-gap"
+  },
+  {
+    "audienceId": "child",
+    "needId": "compounding-infra-gaps"
+  },
+  {
+    "audienceId": "child",
+    "needId": "coverage-unaffordable"
+  },
+  {
+    "audienceId": "child",
+    "needId": "crisis-cuts-connectivity"
+  },
+  {
+    "audienceId": "child",
+    "needId": "data-not-actioned"
+  },
+  {
+    "audienceId": "child",
+    "needId": "data-siloed"
+  },
+  {
+    "audienceId": "child",
+    "needId": "income-opportunity-lost"
+  },
+  {
+    "audienceId": "child",
+    "needId": "institutions-dont-listen"
+  },
+  {
+    "audienceId": "child",
+    "needId": "last-mile-uneconomical"
+  },
+  {
+    "audienceId": "child",
+    "needId": "life-chances-lost"
+  },
+  {
+    "audienceId": "child",
+    "needId": "lived-experience-not-intent"
+  },
+  {
+    "audienceId": "child",
+    "needId": "more-exposure-with-access"
+  },
+  {
+    "audienceId": "child",
+    "needId": "no-emergency-restoration-plan"
+  },
+  {
+    "audienceId": "child",
+    "needId": "no-grid-access"
+  },
+  {
+    "audienceId": "child",
+    "needId": "no-investment-certainty"
+  },
+  {
+    "audienceId": "child",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "audienceId": "child",
+    "needId": "no-post-launch-funding"
+  },
+  {
+    "audienceId": "child",
+    "needId": "no-safety-standards"
+  },
+  {
+    "audienceId": "child",
+    "needId": "no-skills-no-job"
+  },
+  {
+    "audienceId": "child",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "child",
+    "needId": "passive-beneficiaries"
+  },
+  {
+    "audienceId": "child",
+    "needId": "preventable-deaths"
+  },
+  {
+    "audienceId": "child",
+    "needId": "protection-systems-unreachable"
+  },
+  {
+    "audienceId": "child",
+    "needId": "safeguards-an-afterthought"
+  },
+  {
+    "audienceId": "child",
+    "needId": "same-children-left-behind"
+  },
+  {
+    "audienceId": "child",
+    "needId": "services-degrade-offline"
+  },
+  {
+    "audienceId": "child",
+    "needId": "skills-without-connectivity"
+  },
+  {
+    "audienceId": "child",
+    "needId": "spectrum-rules-outdated"
+  },
+  {
+    "audienceId": "child",
+    "needId": "unguided-use-backfires"
+  },
+  {
+    "audienceId": "child",
+    "needId": "unreliable-power"
+  },
+  {
+    "audienceId": "child",
+    "needId": "workforce-shortage"
+  },
+  {
+    "audienceId": "child-facing-institution",
+    "needId": "ai-readiness-gap"
+  },
+  {
+    "audienceId": "child-facing-institution",
+    "needId": "cable-alone-insufficient"
+  },
+  {
+    "audienceId": "child-facing-institution",
+    "needId": "compounding-infra-gaps"
+  },
+  {
+    "audienceId": "child-facing-institution",
+    "needId": "coverage-unaffordable"
+  },
+  {
+    "audienceId": "child-facing-institution",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "audienceId": "child-facing-institution",
+    "needId": "last-mile-uneconomical"
+  },
+  {
+    "audienceId": "child-facing-institution",
+    "needId": "no-post-launch-funding"
+  },
+  {
+    "audienceId": "child-facing-institution",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "child-facing-institution",
+    "needId": "same-children-left-behind"
+  },
+  {
+    "audienceId": "child-facing-institution",
+    "needId": "unreliable-power"
+  },
+  {
+    "audienceId": "citizen-user",
+    "needId": "coverage-unaffordable"
+  },
+  {
+    "audienceId": "citizen-user",
+    "needId": "data-not-actioned"
+  },
+  {
+    "audienceId": "citizen-user",
+    "needId": "data-trust-deficit"
+  },
+  {
+    "audienceId": "citizen-user",
+    "needId": "income-opportunity-lost"
+  },
+  {
+    "audienceId": "citizen-user",
+    "needId": "institutions-dont-listen"
+  },
+  {
+    "audienceId": "citizen-user",
+    "needId": "more-exposure-with-access"
+  },
+  {
+    "audienceId": "citizen-user",
+    "needId": "no-safety-standards"
+  },
+  {
+    "audienceId": "citizen-user",
+    "needId": "no-skills-no-job"
+  },
+  {
+    "audienceId": "citizen-user",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "citizen-user",
+    "needId": "unguided-use-backfires"
+  },
+  {
+    "audienceId": "community",
+    "needId": "cable-alone-insufficient"
+  },
+  {
+    "audienceId": "community",
+    "needId": "compounding-infra-gaps"
+  },
+  {
+    "audienceId": "community",
+    "needId": "coverage-unaffordable"
+  },
+  {
+    "audienceId": "community",
+    "needId": "crisis-cuts-connectivity"
+  },
+  {
+    "audienceId": "community",
+    "needId": "data-not-actioned"
+  },
+  {
+    "audienceId": "community",
+    "needId": "data-trust-deficit"
+  },
+  {
+    "audienceId": "community",
+    "needId": "digitisation-excludes-least-skilled"
+  },
+  {
+    "audienceId": "community",
+    "needId": "income-opportunity-lost"
+  },
+  {
+    "audienceId": "community",
+    "needId": "last-mile-uneconomical"
+  },
+  {
+    "audienceId": "community",
+    "needId": "more-exposure-with-access"
+  },
+  {
+    "audienceId": "community",
+    "needId": "no-emergency-restoration-plan"
+  },
+  {
+    "audienceId": "community",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "audienceId": "community",
+    "needId": "no-skills-no-job"
+  },
+  {
+    "audienceId": "community",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "community",
+    "needId": "preventable-deaths"
+  },
+  {
+    "audienceId": "community",
+    "needId": "protection-systems-unreachable"
+  },
+  {
+    "audienceId": "community",
+    "needId": "safeguards-an-afterthought"
+  },
+  {
+    "audienceId": "community",
+    "needId": "sectors-plan-alone"
+  },
+  {
+    "audienceId": "community",
+    "needId": "services-degrade-offline"
+  },
+  {
+    "audienceId": "community",
+    "needId": "skills-without-connectivity"
+  },
+  {
+    "audienceId": "community",
+    "needId": "unguided-use-backfires"
+  },
+  {
+    "audienceId": "development-bank",
+    "needId": "causal-proof-missing"
+  },
+  {
+    "audienceId": "development-bank",
+    "needId": "cost-unknown"
+  },
+  {
+    "audienceId": "development-bank",
+    "needId": "data-siloed"
+  },
+  {
+    "audienceId": "development-bank",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "audienceId": "development-bank",
+    "needId": "last-mile-uneconomical"
+  },
+  {
+    "audienceId": "development-bank",
+    "needId": "no-investment-certainty"
+  },
+  {
+    "audienceId": "development-bank",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "audienceId": "development-bank",
+    "needId": "no-post-launch-funding"
+  },
+  {
+    "audienceId": "development-bank",
+    "needId": "no-proof-no-funding"
+  },
+  {
+    "audienceId": "development-bank",
+    "needId": "no-single-steward"
+  },
+  {
+    "audienceId": "development-bank",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "development-bank",
+    "needId": "proof-demanded-by-funders"
+  },
+  {
+    "audienceId": "development-bank",
+    "needId": "sectors-plan-alone"
+  },
+  {
+    "audienceId": "development-bank",
+    "needId": "weak-procurement"
+  },
+  {
+    "audienceId": "development-partner",
+    "needId": "ai-readiness-gap"
+  },
+  {
+    "audienceId": "development-partner",
+    "needId": "causal-proof-missing"
+  },
+  {
+    "audienceId": "development-partner",
+    "needId": "coverage-unaffordable"
+  },
+  {
+    "audienceId": "development-partner",
+    "needId": "data-not-actioned"
+  },
+  {
+    "audienceId": "development-partner",
+    "needId": "data-siloed"
+  },
+  {
+    "audienceId": "development-partner",
+    "needId": "data-trust-deficit"
+  },
+  {
+    "audienceId": "development-partner",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "audienceId": "development-partner",
+    "needId": "last-mile-uneconomical"
+  },
+  {
+    "audienceId": "development-partner",
+    "needId": "no-investment-certainty"
+  },
+  {
+    "audienceId": "development-partner",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "audienceId": "development-partner",
+    "needId": "no-post-launch-funding"
+  },
+  {
+    "audienceId": "development-partner",
+    "needId": "no-proof-no-funding"
+  },
+  {
+    "audienceId": "development-partner",
+    "needId": "no-single-steward"
+  },
+  {
+    "audienceId": "development-partner",
+    "needId": "no-supplier-accountability"
+  },
+  {
+    "audienceId": "development-partner",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "development-partner",
+    "needId": "proof-demanded-by-funders"
+  },
+  {
+    "audienceId": "development-partner",
+    "needId": "weak-procurement"
+  },
+  {
+    "audienceId": "finance-minister",
+    "needId": "evidence-without-enforcement-teeth"
+  },
+  {
+    "audienceId": "firm-business",
+    "needId": "cable-alone-insufficient"
+  },
+  {
+    "audienceId": "firm-business",
+    "needId": "income-opportunity-lost"
+  },
+  {
+    "audienceId": "firm-business",
+    "needId": "no-investment-certainty"
+  },
+  {
+    "audienceId": "firm-business",
+    "needId": "no-proof-no-funding"
+  },
+  {
+    "audienceId": "firm-business",
+    "needId": "no-skills-no-job"
+  },
+  {
+    "audienceId": "firm-business",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "firm-business",
+    "needId": "skills-without-connectivity"
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "needId": "cable-alone-insufficient"
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "needId": "compounding-infra-gaps"
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "needId": "cost-unknown"
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "needId": "data-not-actioned"
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "needId": "data-siloed"
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "needId": "data-trust-deficit"
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "needId": "fragmented-health-tools"
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "needId": "no-enforceable-standards"
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "needId": "no-post-launch-funding"
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "needId": "no-proof-no-funding"
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "needId": "no-shared-standards"
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "needId": "no-single-steward"
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "needId": "no-skills-no-job"
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "needId": "services-degrade-offline"
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "needId": "staff-cant-run-programmes"
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "needId": "unreliable-power"
+  },
+  {
+    "audienceId": "government-technical-staff",
+    "needId": "weak-procurement"
+  },
+  {
+    "audienceId": "head-of-state",
+    "needId": "ai-readiness-gap"
+  },
+  {
+    "audienceId": "head-of-state",
+    "needId": "causal-proof-missing"
+  },
+  {
+    "audienceId": "head-of-state",
+    "needId": "cost-of-inaction-quantified"
+  },
+  {
+    "audienceId": "head-of-state",
+    "needId": "country-not-left-behind"
+  },
+  {
+    "audienceId": "head-of-state",
+    "needId": "data-trust-deficit"
+  },
+  {
+    "audienceId": "head-of-state",
+    "needId": "digitisation-excludes-least-skilled"
+  },
+  {
+    "audienceId": "head-of-state",
+    "needId": "felt-benefits-not-promises"
+  },
+  {
+    "audienceId": "head-of-state",
+    "needId": "life-chances-lost"
+  },
+  {
+    "audienceId": "head-of-state",
+    "needId": "more-exposure-with-access"
+  },
+  {
+    "audienceId": "head-of-state",
+    "needId": "nationally-led-agenda"
+  },
+  {
+    "audienceId": "head-of-state",
+    "needId": "no-proof-no-funding"
+  },
+  {
+    "audienceId": "head-of-state",
+    "needId": "no-safety-scandal"
+  },
+  {
+    "audienceId": "head-of-state",
+    "needId": "no-safety-standards"
+  },
+  {
+    "audienceId": "head-of-state",
+    "needId": "no-skills-no-job"
+  },
+  {
+    "audienceId": "head-of-state",
+    "needId": "proof-demanded-by-funders"
+  },
+  {
+    "audienceId": "head-of-state",
+    "needId": "same-children-left-behind"
+  },
+  {
+    "audienceId": "head-of-state",
+    "needId": "sectors-plan-alone"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "bill-exceeds-budget"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "cable-alone-insufficient"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "compounding-infra-gaps"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "cost-unknown"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "coverage-unaffordable"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "crisis-cuts-connectivity"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "data-not-actioned"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "data-siloed"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "data-trust-deficit"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "dropped-connection-fatal"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "fragmented-health-tools"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "hidden-extra-costs"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "last-mile-uneconomical"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "no-enforceable-standards"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "no-grid-access"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "no-investment-certainty"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "no-post-launch-funding"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "no-shared-standards"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "no-single-steward"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "paper-based-records"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "preventable-deaths"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "same-children-left-behind"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "services-degrade-offline"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "staff-cant-run-programmes"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "unreliable-power"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "unusable-in-practice"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "weak-procurement"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "workforce-development-blocked"
+  },
+  {
+    "audienceId": "health-facility",
+    "needId": "workforce-shortage"
+  },
+  {
+    "audienceId": "health-information-system",
+    "needId": "compounding-infra-gaps"
+  },
+  {
+    "audienceId": "health-information-system",
+    "needId": "data-siloed"
+  },
+  {
+    "audienceId": "health-information-system",
+    "needId": "fragmented-health-tools"
+  },
+  {
+    "audienceId": "health-information-system",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "audienceId": "health-information-system",
+    "needId": "no-shared-standards"
+  },
+  {
+    "audienceId": "health-information-system",
+    "needId": "paper-based-records"
+  },
+  {
+    "audienceId": "health-information-system",
+    "needId": "workforce-development-blocked"
+  },
+  {
+    "audienceId": "health-information-system",
+    "needId": "workforce-shortage"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "bill-exceeds-budget"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "cable-alone-insufficient"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "causal-proof-missing"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "compounding-infra-gaps"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "coverage-unaffordable"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "crisis-cuts-connectivity"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "data-not-actioned"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "data-siloed"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "data-trust-deficit"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "dropped-connection-fatal"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "fragmented-health-tools"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "last-mile-uneconomical"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "no-enforceable-standards"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "no-fibre-backbone"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "no-investment-certainty"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "no-post-launch-funding"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "no-proof-no-funding"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "no-safety-standards"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "no-shared-standards"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "no-single-steward"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "paper-based-records"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "preventable-deaths"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "same-children-left-behind"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "services-degrade-offline"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "staff-cant-run-programmes"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "unreliable-power"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "weak-procurement"
+  },
+  {
+    "audienceId": "health-system",
+    "needId": "workforce-shortage"
+  },
+  {
+    "audienceId": "health-workforce",
+    "needId": "ai-readiness-gap"
+  },
+  {
+    "audienceId": "health-workforce",
+    "needId": "cable-alone-insufficient"
+  },
+  {
+    "audienceId": "health-workforce",
+    "needId": "data-not-actioned"
+  },
+  {
+    "audienceId": "health-workforce",
+    "needId": "data-siloed"
+  },
+  {
+    "audienceId": "health-workforce",
+    "needId": "dropped-connection-fatal"
+  },
+  {
+    "audienceId": "health-workforce",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "audienceId": "health-workforce",
+    "needId": "no-skills-no-job"
+  },
+  {
+    "audienceId": "health-workforce",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "health-workforce",
+    "needId": "staff-cant-run-programmes"
+  },
+  {
+    "audienceId": "health-workforce",
+    "needId": "workforce-development-blocked"
+  },
+  {
+    "audienceId": "health-workforce",
+    "needId": "workforce-shortage"
+  },
+  {
+    "audienceId": "household",
+    "needId": "bill-exceeds-budget"
+  },
+  {
+    "audienceId": "household",
+    "needId": "compounding-infra-gaps"
+  },
+  {
+    "audienceId": "household",
+    "needId": "cost-of-inaction-quantified"
+  },
+  {
+    "audienceId": "household",
+    "needId": "coverage-unaffordable"
+  },
+  {
+    "audienceId": "household",
+    "needId": "hidden-extra-costs"
+  },
+  {
+    "audienceId": "household",
+    "needId": "income-opportunity-lost"
+  },
+  {
+    "audienceId": "household",
+    "needId": "last-mile-uneconomical"
+  },
+  {
+    "audienceId": "household",
+    "needId": "life-chances-lost"
+  },
+  {
+    "audienceId": "household",
+    "needId": "no-grid-access"
+  },
+  {
+    "audienceId": "household",
+    "needId": "no-skills-no-job"
+  },
+  {
+    "audienceId": "household",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "household",
+    "needId": "preventable-deaths"
+  },
+  {
+    "audienceId": "infant-young-child",
+    "needId": "preventable-deaths"
+  },
+  {
+    "audienceId": "last-mile-isp",
+    "needId": "crisis-cuts-connectivity"
+  },
+  {
+    "audienceId": "last-mile-isp",
+    "needId": "data-siloed"
+  },
+  {
+    "audienceId": "last-mile-isp",
+    "needId": "dropped-connection-fatal"
+  },
+  {
+    "audienceId": "last-mile-isp",
+    "needId": "last-mile-uneconomical"
+  },
+  {
+    "audienceId": "last-mile-isp",
+    "needId": "no-affordable-filtering"
+  },
+  {
+    "audienceId": "last-mile-isp",
+    "needId": "no-enforceable-standards"
+  },
+  {
+    "audienceId": "last-mile-isp",
+    "needId": "no-investment-certainty"
+  },
+  {
+    "audienceId": "last-mile-isp",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "audienceId": "last-mile-isp",
+    "needId": "no-safety-standards"
+  },
+  {
+    "audienceId": "last-mile-isp",
+    "needId": "no-shared-standards"
+  },
+  {
+    "audienceId": "last-mile-isp",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "last-mile-isp",
+    "needId": "preventable-deaths"
+  },
+  {
+    "audienceId": "last-mile-isp",
+    "needId": "spectrum-rules-outdated"
+  },
+  {
+    "audienceId": "last-mile-isp",
+    "needId": "weak-procurement"
+  },
+  {
+    "audienceId": "local-entrepreneur",
+    "needId": "income-opportunity-lost"
+  },
+  {
+    "audienceId": "local-entrepreneur",
+    "needId": "no-investment-certainty"
+  },
+  {
+    "audienceId": "local-entrepreneur",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "needId": "cable-alone-insufficient"
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "needId": "causal-proof-missing"
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "needId": "cost-unknown"
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "needId": "data-not-actioned"
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "needId": "data-siloed"
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "needId": "digitisation-excludes-least-skilled"
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "needId": "felt-benefits-not-promises"
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "needId": "life-chances-lost"
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "needId": "more-exposure-with-access"
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "needId": "no-proof-no-funding"
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "needId": "no-safety-standards"
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "needId": "no-shared-standards"
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "needId": "no-single-steward"
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "needId": "no-skills-no-job"
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "needId": "passive-beneficiaries"
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "needId": "proof-demanded-by-funders"
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "needId": "safeguards-an-afterthought"
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "needId": "same-children-left-behind"
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "needId": "sectors-plan-alone"
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "needId": "skills-without-connectivity"
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "needId": "staff-cant-run-programmes"
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "needId": "tokenistic-participation"
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "needId": "unguided-use-backfires"
+  },
+  {
+    "audienceId": "ministry-of-education",
+    "needId": "unusable-in-practice"
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "needId": "bill-exceeds-budget"
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "needId": "cable-alone-insufficient"
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "needId": "compounding-infra-gaps"
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "needId": "cost-of-inaction-quantified"
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "needId": "crisis-cuts-connectivity"
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "needId": "data-not-actioned"
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "needId": "data-siloed"
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "needId": "fragmented-health-tools"
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "needId": "hidden-extra-costs"
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "needId": "no-investment-certainty"
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "needId": "no-post-launch-funding"
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "needId": "no-proof-no-funding"
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "needId": "no-shared-standards"
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "needId": "no-single-steward"
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "ministry-of-health",
+    "needId": "sectors-plan-alone"
+  },
+  {
+    "audienceId": "ministry-of-ict",
+    "needId": "causal-proof-missing"
+  },
+  {
+    "audienceId": "ministry-of-ict",
+    "needId": "data-siloed"
+  },
+  {
+    "audienceId": "ministry-of-ict",
+    "needId": "data-trust-deficit"
+  },
+  {
+    "audienceId": "ministry-of-ict",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "audienceId": "ministry-of-ict",
+    "needId": "no-enforceable-standards"
+  },
+  {
+    "audienceId": "ministry-of-ict",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "audienceId": "ministry-of-ict",
+    "needId": "no-proof-no-funding"
+  },
+  {
+    "audienceId": "ministry-of-ict",
+    "needId": "no-safety-standards"
+  },
+  {
+    "audienceId": "ministry-of-ict",
+    "needId": "no-shared-standards"
+  },
+  {
+    "audienceId": "ministry-of-ict",
+    "needId": "proof-demanded-by-funders"
+  },
+  {
+    "audienceId": "ministry-of-ict",
+    "needId": "safeguards-an-afterthought"
+  },
+  {
+    "audienceId": "ministry-of-ict",
+    "needId": "sectors-plan-alone"
+  },
+  {
+    "audienceId": "mnch-service",
+    "needId": "data-siloed"
+  },
+  {
+    "audienceId": "mnch-service",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "audienceId": "mnch-service",
+    "needId": "paper-based-records"
+  },
+  {
+    "audienceId": "mother-pregnant-woman",
+    "needId": "coverage-unaffordable"
+  },
+  {
+    "audienceId": "mother-pregnant-woman",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "audienceId": "mother-pregnant-woman",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "mother-pregnant-woman",
+    "needId": "paper-based-records"
+  },
+  {
+    "audienceId": "mother-pregnant-woman",
+    "needId": "preventable-deaths"
+  },
+  {
+    "audienceId": "mother-pregnant-woman",
+    "needId": "protection-systems-unreachable"
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "needId": "advocacy-frame-misread"
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "needId": "ai-hype-crowds-out-access"
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "needId": "ai-readiness-gap"
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "needId": "cable-alone-insufficient"
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "needId": "causal-proof-missing"
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "needId": "data-not-actioned"
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "needId": "felt-benefits-not-promises"
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "needId": "institutions-dont-listen"
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "needId": "lived-experience-not-intent"
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "needId": "nationally-led-agenda"
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "needId": "no-enforceable-standards"
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "needId": "no-proof-no-funding"
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "needId": "no-safety-standards"
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "needId": "no-shared-standards"
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "needId": "no-single-steward"
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "needId": "proof-demanded-by-funders"
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "needId": "safeguards-an-afterthought"
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "needId": "same-children-left-behind"
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "needId": "sectors-plan-alone"
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "needId": "spectrum-rules-outdated"
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "needId": "tokenistic-participation"
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "needId": "unguided-use-backfires"
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "needId": "unusable-in-practice"
+  },
+  {
+    "audienceId": "multilateral-igo",
+    "needId": "weak-procurement"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "ai-readiness-gap"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "bill-exceeds-budget"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "cable-alone-insufficient"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "causal-proof-missing"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "compounding-infra-gaps"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "cost-of-inaction-quantified"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "cost-unknown"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "country-not-left-behind"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "coverage-unaffordable"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "crisis-cuts-connectivity"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "data-not-actioned"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "data-siloed"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "data-trust-deficit"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "evidence-without-enforcement-teeth"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "fragmented-health-tools"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "good-enough-data-complacency"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "governance-incentives-block-adoption"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "hidden-extra-costs"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "income-opportunity-lost"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "last-mile-uneconomical"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "life-chances-lost"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "lived-experience-not-intent"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "nationally-led-agenda"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "no-enforceable-standards"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "no-fibre-backbone"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "no-grid-access"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "no-investment-certainty"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "no-post-launch-funding"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "no-proof-no-funding"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "no-safety-standards"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "no-shared-standards"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "no-single-steward"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "no-skills-no-job"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "no-supplier-accountability"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "paper-based-records"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "proof-demanded-by-funders"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "safeguards-an-afterthought"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "same-children-left-behind"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "sectors-plan-alone"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "spectrum-rules-outdated"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "staff-cant-run-programmes"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "tokenistic-participation"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "unreliable-power"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "unusable-in-practice"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "unverified-data-treated-as-decision-grade"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "weak-procurement"
+  },
+  {
+    "audienceId": "national-government",
+    "needId": "workforce-development-blocked"
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "needId": "ai-readiness-gap"
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "needId": "cable-alone-insufficient"
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "needId": "causal-proof-missing"
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "needId": "compounding-infra-gaps"
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "needId": "data-not-actioned"
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "needId": "data-siloed"
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "needId": "data-trust-deficit"
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "needId": "felt-benefits-not-promises"
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "needId": "institutions-dont-listen"
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "needId": "lived-experience-not-intent"
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "needId": "more-exposure-with-access"
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "needId": "no-proof-no-funding"
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "needId": "no-shared-standards"
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "needId": "no-single-steward"
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "needId": "passive-beneficiaries"
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "needId": "proof-demanded-by-funders"
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "needId": "safeguards-an-afterthought"
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "needId": "same-children-left-behind"
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "needId": "sectors-plan-alone"
+  },
+  {
+    "audienceId": "ngo-civil-society",
+    "needId": "tokenistic-participation"
+  },
+  {
+    "audienceId": "patient",
+    "needId": "bill-exceeds-budget"
+  },
+  {
+    "audienceId": "patient",
+    "needId": "cost-of-inaction-quantified"
+  },
+  {
+    "audienceId": "patient",
+    "needId": "cost-unknown"
+  },
+  {
+    "audienceId": "patient",
+    "needId": "coverage-unaffordable"
+  },
+  {
+    "audienceId": "patient",
+    "needId": "data-not-actioned"
+  },
+  {
+    "audienceId": "patient",
+    "needId": "data-siloed"
+  },
+  {
+    "audienceId": "patient",
+    "needId": "fragmented-health-tools"
+  },
+  {
+    "audienceId": "patient",
+    "needId": "hidden-extra-costs"
+  },
+  {
+    "audienceId": "patient",
+    "needId": "income-opportunity-lost"
+  },
+  {
+    "audienceId": "patient",
+    "needId": "life-chances-lost"
+  },
+  {
+    "audienceId": "patient",
+    "needId": "no-grid-access"
+  },
+  {
+    "audienceId": "patient",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "audienceId": "patient",
+    "needId": "no-proof-no-funding"
+  },
+  {
+    "audienceId": "patient",
+    "needId": "no-safety-standards"
+  },
+  {
+    "audienceId": "patient",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "patient",
+    "needId": "paper-based-records"
+  },
+  {
+    "audienceId": "patient",
+    "needId": "preventable-deaths"
+  },
+  {
+    "audienceId": "patient",
+    "needId": "protection-systems-unreachable"
+  },
+  {
+    "audienceId": "patient",
+    "needId": "services-degrade-offline"
+  },
+  {
+    "audienceId": "patient",
+    "needId": "staff-cant-run-programmes"
+  },
+  {
+    "audienceId": "patient",
+    "needId": "unreliable-power"
+  },
+  {
+    "audienceId": "patient",
+    "needId": "workforce-shortage"
+  },
+  {
+    "audienceId": "person-with-disability",
+    "needId": "coverage-unaffordable"
+  },
+  {
+    "audienceId": "person-with-disability",
+    "needId": "digitisation-excludes-least-skilled"
+  },
+  {
+    "audienceId": "person-with-disability",
+    "needId": "income-opportunity-lost"
+  },
+  {
+    "audienceId": "person-with-disability",
+    "needId": "life-chances-lost"
+  },
+  {
+    "audienceId": "person-with-disability",
+    "needId": "no-skills-no-job"
+  },
+  {
+    "audienceId": "person-with-disability",
+    "needId": "unusable-in-practice"
+  },
+  {
+    "audienceId": "procurement-officer",
+    "needId": "bill-exceeds-budget"
+  },
+  {
+    "audienceId": "procurement-officer",
+    "needId": "cable-alone-insufficient"
+  },
+  {
+    "audienceId": "procurement-officer",
+    "needId": "compounding-infra-gaps"
+  },
+  {
+    "audienceId": "procurement-officer",
+    "needId": "cost-unknown"
+  },
+  {
+    "audienceId": "procurement-officer",
+    "needId": "data-siloed"
+  },
+  {
+    "audienceId": "procurement-officer",
+    "needId": "data-trust-deficit"
+  },
+  {
+    "audienceId": "procurement-officer",
+    "needId": "evidence-without-enforcement-teeth"
+  },
+  {
+    "audienceId": "procurement-officer",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "audienceId": "procurement-officer",
+    "needId": "last-mile-uneconomical"
+  },
+  {
+    "audienceId": "procurement-officer",
+    "needId": "more-exposure-with-access"
+  },
+  {
+    "audienceId": "procurement-officer",
+    "needId": "no-enforceable-standards"
+  },
+  {
+    "audienceId": "procurement-officer",
+    "needId": "no-investment-certainty"
+  },
+  {
+    "audienceId": "procurement-officer",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "audienceId": "procurement-officer",
+    "needId": "no-post-launch-funding"
+  },
+  {
+    "audienceId": "procurement-officer",
+    "needId": "no-proof-no-funding"
+  },
+  {
+    "audienceId": "procurement-officer",
+    "needId": "no-safety-standards"
+  },
+  {
+    "audienceId": "procurement-officer",
+    "needId": "no-supplier-accountability"
+  },
+  {
+    "audienceId": "procurement-officer",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "procurement-officer",
+    "needId": "proof-demanded-by-funders"
+  },
+  {
+    "audienceId": "procurement-officer",
+    "needId": "safeguards-an-afterthought"
+  },
+  {
+    "audienceId": "procurement-officer",
+    "needId": "unreliable-power"
+  },
+  {
+    "audienceId": "procurement-officer",
+    "needId": "unusable-in-practice"
+  },
+  {
+    "audienceId": "procurement-officer",
+    "needId": "weak-procurement"
+  },
+  {
+    "audienceId": "rural-population",
+    "needId": "coverage-unaffordable"
+  },
+  {
+    "audienceId": "rural-population",
+    "needId": "last-mile-uneconomical"
+  },
+  {
+    "audienceId": "rural-population",
+    "needId": "no-grid-access"
+  },
+  {
+    "audienceId": "rural-population",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "rural-population",
+    "needId": "same-children-left-behind"
+  },
+  {
+    "audienceId": "school",
+    "needId": "ai-readiness-gap"
+  },
+  {
+    "audienceId": "school",
+    "needId": "bill-exceeds-budget"
+  },
+  {
+    "audienceId": "school",
+    "needId": "cable-alone-insufficient"
+  },
+  {
+    "audienceId": "school",
+    "needId": "compounding-infra-gaps"
+  },
+  {
+    "audienceId": "school",
+    "needId": "cost-unknown"
+  },
+  {
+    "audienceId": "school",
+    "needId": "coverage-unaffordable"
+  },
+  {
+    "audienceId": "school",
+    "needId": "crisis-cuts-connectivity"
+  },
+  {
+    "audienceId": "school",
+    "needId": "data-not-actioned"
+  },
+  {
+    "audienceId": "school",
+    "needId": "data-siloed"
+  },
+  {
+    "audienceId": "school",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "audienceId": "school",
+    "needId": "facility-registry-drift"
+  },
+  {
+    "audienceId": "school",
+    "needId": "hidden-extra-costs"
+  },
+  {
+    "audienceId": "school",
+    "needId": "income-opportunity-lost"
+  },
+  {
+    "audienceId": "school",
+    "needId": "last-mile-uneconomical"
+  },
+  {
+    "audienceId": "school",
+    "needId": "life-chances-lost"
+  },
+  {
+    "audienceId": "school",
+    "needId": "more-exposure-with-access"
+  },
+  {
+    "audienceId": "school",
+    "needId": "no-affordable-filtering"
+  },
+  {
+    "audienceId": "school",
+    "needId": "no-emergency-restoration-plan"
+  },
+  {
+    "audienceId": "school",
+    "needId": "no-enforceable-standards"
+  },
+  {
+    "audienceId": "school",
+    "needId": "no-fibre-backbone"
+  },
+  {
+    "audienceId": "school",
+    "needId": "no-grid-access"
+  },
+  {
+    "audienceId": "school",
+    "needId": "no-investment-certainty"
+  },
+  {
+    "audienceId": "school",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "audienceId": "school",
+    "needId": "no-post-launch-funding"
+  },
+  {
+    "audienceId": "school",
+    "needId": "no-proof-no-funding"
+  },
+  {
+    "audienceId": "school",
+    "needId": "no-safety-standards"
+  },
+  {
+    "audienceId": "school",
+    "needId": "no-shared-standards"
+  },
+  {
+    "audienceId": "school",
+    "needId": "no-skills-no-job"
+  },
+  {
+    "audienceId": "school",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "school",
+    "needId": "safeguards-an-afterthought"
+  },
+  {
+    "audienceId": "school",
+    "needId": "same-children-left-behind"
+  },
+  {
+    "audienceId": "school",
+    "needId": "sectors-plan-alone"
+  },
+  {
+    "audienceId": "school",
+    "needId": "services-degrade-offline"
+  },
+  {
+    "audienceId": "school",
+    "needId": "skills-without-connectivity"
+  },
+  {
+    "audienceId": "school",
+    "needId": "staff-cant-run-programmes"
+  },
+  {
+    "audienceId": "school",
+    "needId": "unguided-use-backfires"
+  },
+  {
+    "audienceId": "school",
+    "needId": "unreliable-power"
+  },
+  {
+    "audienceId": "school",
+    "needId": "unusable-in-practice"
+  },
+  {
+    "audienceId": "school",
+    "needId": "weak-procurement"
+  },
+  {
+    "audienceId": "school",
+    "needId": "workforce-shortage"
+  },
+  {
+    "audienceId": "school-leader",
+    "needId": "bill-exceeds-budget"
+  },
+  {
+    "audienceId": "school-leader",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "audienceId": "school-leader",
+    "needId": "no-post-launch-funding"
+  },
+  {
+    "audienceId": "school-leader",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "school-leader",
+    "needId": "staff-cant-run-programmes"
+  },
+  {
+    "audienceId": "school-leader",
+    "needId": "unguided-use-backfires"
+  },
+  {
+    "audienceId": "school-system",
+    "needId": "bill-exceeds-budget"
+  },
+  {
+    "audienceId": "school-system",
+    "needId": "compounding-infra-gaps"
+  },
+  {
+    "audienceId": "school-system",
+    "needId": "coverage-unaffordable"
+  },
+  {
+    "audienceId": "school-system",
+    "needId": "data-not-actioned"
+  },
+  {
+    "audienceId": "school-system",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "audienceId": "school-system",
+    "needId": "last-mile-uneconomical"
+  },
+  {
+    "audienceId": "school-system",
+    "needId": "no-investment-certainty"
+  },
+  {
+    "audienceId": "school-system",
+    "needId": "no-post-launch-funding"
+  },
+  {
+    "audienceId": "school-system",
+    "needId": "no-single-steward"
+  },
+  {
+    "audienceId": "school-system",
+    "needId": "no-skills-no-job"
+  },
+  {
+    "audienceId": "school-system",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "school-system",
+    "needId": "paper-based-records"
+  },
+  {
+    "audienceId": "school-system",
+    "needId": "unreliable-power"
+  },
+  {
+    "audienceId": "school-system",
+    "needId": "workforce-shortage"
+  },
+  {
+    "audienceId": "student-learner",
+    "needId": "ai-hype-crowds-out-access"
+  },
+  {
+    "audienceId": "student-learner",
+    "needId": "ai-readiness-gap"
+  },
+  {
+    "audienceId": "student-learner",
+    "needId": "bill-exceeds-budget"
+  },
+  {
+    "audienceId": "student-learner",
+    "needId": "cable-alone-insufficient"
+  },
+  {
+    "audienceId": "student-learner",
+    "needId": "coverage-unaffordable"
+  },
+  {
+    "audienceId": "student-learner",
+    "needId": "crisis-cuts-connectivity"
+  },
+  {
+    "audienceId": "student-learner",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "audienceId": "student-learner",
+    "needId": "income-opportunity-lost"
+  },
+  {
+    "audienceId": "student-learner",
+    "needId": "life-chances-lost"
+  },
+  {
+    "audienceId": "student-learner",
+    "needId": "no-post-launch-funding"
+  },
+  {
+    "audienceId": "student-learner",
+    "needId": "no-skills-no-job"
+  },
+  {
+    "audienceId": "student-learner",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "student-learner",
+    "needId": "paper-based-records"
+  },
+  {
+    "audienceId": "student-learner",
+    "needId": "preventable-deaths"
+  },
+  {
+    "audienceId": "student-learner",
+    "needId": "same-children-left-behind"
+  },
+  {
+    "audienceId": "student-learner",
+    "needId": "services-degrade-offline"
+  },
+  {
+    "audienceId": "student-learner",
+    "needId": "skills-without-connectivity"
+  },
+  {
+    "audienceId": "student-learner",
+    "needId": "staff-cant-run-programmes"
+  },
+  {
+    "audienceId": "student-learner",
+    "needId": "unguided-use-backfires"
+  },
+  {
+    "audienceId": "student-learner",
+    "needId": "unusable-in-practice"
+  },
+  {
+    "audienceId": "teacher",
+    "needId": "bill-exceeds-budget"
+  },
+  {
+    "audienceId": "teacher",
+    "needId": "cable-alone-insufficient"
+  },
+  {
+    "audienceId": "teacher",
+    "needId": "data-siloed"
+  },
+  {
+    "audienceId": "teacher",
+    "needId": "hidden-extra-costs"
+  },
+  {
+    "audienceId": "teacher",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "teacher",
+    "needId": "staff-cant-run-programmes"
+  },
+  {
+    "audienceId": "teacher",
+    "needId": "unguided-use-backfires"
+  },
+  {
+    "audienceId": "teacher",
+    "needId": "workforce-development-blocked"
+  },
+  {
+    "audienceId": "teacher",
+    "needId": "workforce-shortage"
+  },
+  {
+    "audienceId": "telecom-operator",
+    "needId": "compounding-infra-gaps"
+  },
+  {
+    "audienceId": "telecom-operator",
+    "needId": "cost-unknown"
+  },
+  {
+    "audienceId": "telecom-operator",
+    "needId": "coverage-unaffordable"
+  },
+  {
+    "audienceId": "telecom-operator",
+    "needId": "crisis-cuts-connectivity"
+  },
+  {
+    "audienceId": "telecom-operator",
+    "needId": "data-siloed"
+  },
+  {
+    "audienceId": "telecom-operator",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "audienceId": "telecom-operator",
+    "needId": "last-mile-uneconomical"
+  },
+  {
+    "audienceId": "telecom-operator",
+    "needId": "more-exposure-with-access"
+  },
+  {
+    "audienceId": "telecom-operator",
+    "needId": "no-enforceable-standards"
+  },
+  {
+    "audienceId": "telecom-operator",
+    "needId": "no-fibre-backbone"
+  },
+  {
+    "audienceId": "telecom-operator",
+    "needId": "no-investment-certainty"
+  },
+  {
+    "audienceId": "telecom-operator",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "audienceId": "telecom-operator",
+    "needId": "no-post-launch-funding"
+  },
+  {
+    "audienceId": "telecom-operator",
+    "needId": "no-safety-standards"
+  },
+  {
+    "audienceId": "telecom-operator",
+    "needId": "no-shared-standards"
+  },
+  {
+    "audienceId": "telecom-operator",
+    "needId": "no-supplier-accountability"
+  },
+  {
+    "audienceId": "telecom-operator",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "telecom-operator",
+    "needId": "spectrum-rules-outdated"
+  },
+  {
+    "audienceId": "telecom-operator",
+    "needId": "unusable-in-practice"
+  },
+  {
+    "audienceId": "telecom-operator",
+    "needId": "weak-procurement"
+  },
+  {
+    "audienceId": "telecom-regulator",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "audienceId": "telecom-regulator",
+    "needId": "no-emergency-restoration-plan"
+  },
+  {
+    "audienceId": "telecom-regulator",
+    "needId": "no-investment-certainty"
+  },
+  {
+    "audienceId": "telecom-regulator",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "telecom-regulator",
+    "needId": "sectors-plan-alone"
+  },
+  {
+    "audienceId": "telecom-regulator",
+    "needId": "spectrum-rules-outdated"
+  },
+  {
+    "audienceId": "unconnected-underserved-person",
+    "needId": "cable-alone-insufficient"
+  },
+  {
+    "audienceId": "unconnected-underserved-person",
+    "needId": "cost-of-inaction-quantified"
+  },
+  {
+    "audienceId": "unconnected-underserved-person",
+    "needId": "coverage-unaffordable"
+  },
+  {
+    "audienceId": "unconnected-underserved-person",
+    "needId": "crisis-cuts-connectivity"
+  },
+  {
+    "audienceId": "unconnected-underserved-person",
+    "needId": "digitisation-excludes-least-skilled"
+  },
+  {
+    "audienceId": "unconnected-underserved-person",
+    "needId": "income-opportunity-lost"
+  },
+  {
+    "audienceId": "unconnected-underserved-person",
+    "needId": "last-mile-uneconomical"
+  },
+  {
+    "audienceId": "unconnected-underserved-person",
+    "needId": "life-chances-lost"
+  },
+  {
+    "audienceId": "unconnected-underserved-person",
+    "needId": "no-fibre-backbone"
+  },
+  {
+    "audienceId": "unconnected-underserved-person",
+    "needId": "no-grid-access"
+  },
+  {
+    "audienceId": "unconnected-underserved-person",
+    "needId": "no-post-launch-funding"
+  },
+  {
+    "audienceId": "unconnected-underserved-person",
+    "needId": "no-skills-no-job"
+  },
+  {
+    "audienceId": "unconnected-underserved-person",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "unconnected-underserved-person",
+    "needId": "preventable-deaths"
+  },
+  {
+    "audienceId": "unconnected-underserved-person",
+    "needId": "same-children-left-behind"
+  },
+  {
+    "audienceId": "unconnected-underserved-person",
+    "needId": "unreliable-power"
+  },
+  {
+    "audienceId": "vendor",
+    "needId": "data-not-actioned"
+  },
+  {
+    "audienceId": "vendor",
+    "needId": "data-siloed"
+  },
+  {
+    "audienceId": "vendor",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "audienceId": "vendor",
+    "needId": "hidden-extra-costs"
+  },
+  {
+    "audienceId": "vendor",
+    "needId": "last-mile-uneconomical"
+  },
+  {
+    "audienceId": "vendor",
+    "needId": "no-enforceable-standards"
+  },
+  {
+    "audienceId": "vendor",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "audienceId": "vendor",
+    "needId": "no-safety-standards"
+  },
+  {
+    "audienceId": "vendor",
+    "needId": "no-shared-standards"
+  },
+  {
+    "audienceId": "vendor",
+    "needId": "no-single-steward"
+  },
+  {
+    "audienceId": "vendor",
+    "needId": "no-skills-no-job"
+  },
+  {
+    "audienceId": "vendor",
+    "needId": "no-supplier-accountability"
+  },
+  {
+    "audienceId": "vendor",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "vendor",
+    "needId": "proof-demanded-by-funders"
+  },
+  {
+    "audienceId": "vendor",
+    "needId": "sectors-plan-alone"
+  },
+  {
+    "audienceId": "vendor",
+    "needId": "skills-without-connectivity"
+  },
+  {
+    "audienceId": "vendor",
+    "needId": "weak-procurement"
+  },
+  {
+    "audienceId": "woman-girl",
+    "needId": "coverage-unaffordable"
+  },
+  {
+    "audienceId": "woman-girl",
+    "needId": "income-opportunity-lost"
+  },
+  {
+    "audienceId": "woman-girl",
+    "needId": "life-chances-lost"
+  },
+  {
+    "audienceId": "woman-girl",
+    "needId": "more-exposure-with-access"
+  },
+  {
+    "audienceId": "woman-girl",
+    "needId": "no-proof-no-funding"
+  },
+  {
+    "audienceId": "woman-girl",
+    "needId": "no-skills-no-job"
+  },
+  {
+    "audienceId": "woman-girl",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "woman-girl",
+    "needId": "protection-systems-unreachable"
+  },
+  {
+    "audienceId": "worker",
+    "needId": "ai-readiness-gap"
+  },
+  {
+    "audienceId": "worker",
+    "needId": "income-opportunity-lost"
+  },
+  {
+    "audienceId": "worker",
+    "needId": "no-skills-no-job"
+  },
+  {
+    "audienceId": "worker",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "worker",
+    "needId": "skills-without-connectivity"
+  },
+  {
+    "audienceId": "worker",
+    "needId": "workforce-development-blocked"
+  },
+  {
+    "audienceId": "worker",
+    "needId": "workforce-shortage"
+  },
+  {
+    "audienceId": "youth-labour-social-ministry",
+    "needId": "causal-proof-missing"
+  },
+  {
+    "audienceId": "youth-labour-social-ministry",
+    "needId": "income-opportunity-lost"
+  },
+  {
+    "audienceId": "youth-labour-social-ministry",
+    "needId": "life-chances-lost"
+  },
+  {
+    "audienceId": "youth-labour-social-ministry",
+    "needId": "no-proof-no-funding"
+  },
+  {
+    "audienceId": "youth-labour-social-ministry",
+    "needId": "no-skills-no-job"
+  },
+  {
+    "audienceId": "youth-labour-social-ministry",
+    "needId": "skills-without-connectivity"
+  },
+  {
+    "audienceId": "youth-labour-social-ministry",
+    "needId": "workforce-development-blocked"
+  },
+  {
+    "audienceId": "youth-young-person",
+    "needId": "ai-readiness-gap"
+  },
+  {
+    "audienceId": "youth-young-person",
+    "needId": "data-trust-deficit"
+  },
+  {
+    "audienceId": "youth-young-person",
+    "needId": "income-opportunity-lost"
+  },
+  {
+    "audienceId": "youth-young-person",
+    "needId": "life-chances-lost"
+  },
+  {
+    "audienceId": "youth-young-person",
+    "needId": "no-safety-standards"
+  },
+  {
+    "audienceId": "youth-young-person",
+    "needId": "no-skills-no-job"
+  },
+  {
+    "audienceId": "youth-young-person",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "youth-young-person",
+    "needId": "passive-beneficiaries"
+  },
+  {
+    "audienceId": "youth-young-person",
+    "needId": "skills-without-connectivity"
+  },
+  {
+    "audienceId": "youth-young-person",
+    "needId": "tokenistic-participation"
+  },
+  {
+    "audienceId": "youth-young-person",
+    "needId": "unguided-use-backfires"
+  },
+  {
+    "audienceId": "youth-young-person",
+    "needId": "workforce-development-blocked"
+  }
+]

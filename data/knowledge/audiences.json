@@ -1,0 +1,284 @@
+[
+  {
+    "id": "head-of-state",
+    "name": "Head of state",
+    "description": "Top political leadership; motivated by national competitiveness and public visibility rather than technical delivery.",
+    "audienceGroupId": "governments"
+  },
+  {
+    "id": "national-government",
+    "name": "National government",
+    "description": "Generic state actor, used when government is addressed broadly rather than a specific ministry.",
+    "audienceGroupId": "governments"
+  },
+  {
+    "id": "ministry-of-education",
+    "name": "Ministry of Education",
+    "description": "The government body responsible for education-sector policy and school connectivity rollout.",
+    "audienceGroupId": "governments"
+  },
+  {
+    "id": "ministry-of-health",
+    "name": "Ministry of Health",
+    "description": "The government body responsible for the health sector.",
+    "audienceGroupId": "governments"
+  },
+  {
+    "id": "ministry-of-ict",
+    "name": "Ministry of ICT",
+    "description": "The government body responsible for national ICT and telecom policy.",
+    "audienceGroupId": "governments"
+  },
+  {
+    "id": "youth-labour-social-ministry",
+    "name": "Youth/labour/social ministry",
+    "description": "Government ministries responsible for youth employment, labour, or social development policy.",
+    "audienceGroupId": "governments"
+  },
+  {
+    "id": "telecom-regulator",
+    "name": "Telecom regulator",
+    "description": "The arms-length regulatory authority responsible for spectrum, licensing and market rules.",
+    "audienceGroupId": "governments"
+  },
+  {
+    "id": "procurement-officer",
+    "name": "Procurement officer",
+    "description": "Government or school-system staff responsible for procurement and supplier compliance.",
+    "audienceGroupId": "governments"
+  },
+  {
+    "id": "government-technical-staff",
+    "name": "Government technical staff",
+    "description": "Frontline or mid-level ministry and regulator staff who implement programmes day to day.",
+    "audienceGroupId": "governments"
+  },
+  {
+    "id": "finance-minister",
+    "name": "Finance minister / treasury",
+    "description": "Finance ministry or treasury officials responsible for national budget allocation, fiscal policy and audit — a distinct compliance-driven path from sector ministries, focused on defensible evidence rather than programme delivery.",
+    "audienceGroupId": "governments"
+  },
+  {
+    "id": "development-bank",
+    "name": "Development bank",
+    "description": "Multilateral or bilateral financing institutions.",
+    "audienceGroupId": "public-sector-funders-donors"
+  },
+  {
+    "id": "development-partner",
+    "name": "Development partner",
+    "description": "Bilateral donors and implementing partners.",
+    "audienceGroupId": "public-sector-funders-donors"
+  },
+  {
+    "id": "multilateral-igo",
+    "name": "Multilateral / IGO",
+    "description": "UN agencies and intergovernmental organisations (e.g. ITU, WHO) in coordination or standard-setting roles.",
+    "audienceGroupId": "public-sector-partners"
+  },
+  {
+    "id": "telecom-operator",
+    "name": "Telecom operator",
+    "description": "National or regional network backbone operators.",
+    "audienceGroupId": "operators-providers"
+  },
+  {
+    "id": "last-mile-isp",
+    "name": "Last-mile ISP",
+    "description": "Small-scale or community-level providers serving the final connection.",
+    "audienceGroupId": "operators-providers"
+  },
+  {
+    "id": "vendor",
+    "name": "Vendor",
+    "description": "A contracted equipment or service supplier.",
+    "audienceGroupId": "operators-providers"
+  },
+  {
+    "id": "local-entrepreneur",
+    "name": "Local entrepreneur",
+    "description": "Individual income-generating actors — innovators, farmers, gig workers — whose livelihood depends on connectivity.",
+    "audienceGroupId": "community"
+  },
+  {
+    "id": "ngo-civil-society",
+    "name": "NGO / civil society",
+    "description": "Non-governmental and civil-society organisations.",
+    "audienceGroupId": "civil-society"
+  },
+  {
+    "id": "youth-organisation",
+    "name": "Youth organisation",
+    "description": "Organised youth-representative advocacy bodies.",
+    "audienceGroupId": "civil-society"
+  },
+  {
+    "id": "academia",
+    "name": "Academia",
+    "description": "Universities and research institutions.",
+    "audienceGroupId": "civil-society"
+  },
+  {
+    "id": "media",
+    "name": "Media",
+    "description": "Press and media audiences.",
+    "audienceGroupId": "civil-society"
+  },
+  {
+    "id": "school",
+    "name": "School",
+    "description": "The physical or institutional site where education services are delivered.",
+    "audienceGroupId": null
+  },
+  {
+    "id": "school-leader",
+    "name": "School leader",
+    "description": "An individual administrator or principal role.",
+    "audienceGroupId": null
+  },
+  {
+    "id": "teacher",
+    "name": "Teacher",
+    "description": "Instructional staff.",
+    "audienceGroupId": null
+  },
+  {
+    "id": "school-system",
+    "name": "School system",
+    "description": "The aggregated national or regional education delivery apparatus.",
+    "audienceGroupId": null
+  },
+  {
+    "id": "health-facility",
+    "name": "Health facility",
+    "description": "The physical or institutional site where health services are delivered.",
+    "audienceGroupId": null
+  },
+  {
+    "id": "health-system",
+    "name": "Health system",
+    "description": "The aggregated national health-delivery apparatus.",
+    "audienceGroupId": null
+  },
+  {
+    "id": "health-workforce",
+    "name": "Health workforce",
+    "description": "Clinical and health-facility staff.",
+    "audienceGroupId": null
+  },
+  {
+    "id": "health-information-system",
+    "name": "Health information system",
+    "description": "Digital health data and reporting infrastructure (HMIS, surveillance).",
+    "audienceGroupId": null
+  },
+  {
+    "id": "mnch-service",
+    "name": "MNCH service",
+    "description": "Maternal, newborn and child health service line specifically.",
+    "audienceGroupId": null
+  },
+  {
+    "id": "child-facing-institution",
+    "name": "Child-facing institution",
+    "description": "Public institutions beyond schools and health facilities, such as protection systems.",
+    "audienceGroupId": null
+  },
+  {
+    "id": "child",
+    "name": "Child",
+    "description": "General child beneficiary, in a rights-based framing.",
+    "audienceGroupId": "community"
+  },
+  {
+    "id": "student-learner",
+    "name": "Student / learner",
+    "description": "A child or person specifically in a learning context.",
+    "audienceGroupId": "community"
+  },
+  {
+    "id": "youth-young-person",
+    "name": "Youth / young person",
+    "description": "Older adolescents and young adults, around workforce or civic engagement.",
+    "audienceGroupId": "community"
+  },
+  {
+    "id": "woman-girl",
+    "name": "Woman / girl",
+    "description": "Female beneficiaries, where gender-differentiated access gaps are the point.",
+    "audienceGroupId": "community"
+  },
+  {
+    "id": "person-with-disability",
+    "name": "Person with disability",
+    "description": "Beneficiaries defined by disability status.",
+    "audienceGroupId": "community"
+  },
+  {
+    "id": "household",
+    "name": "Household",
+    "description": "The family or household unit as beneficiary.",
+    "audienceGroupId": "community"
+  },
+  {
+    "id": "rural-population",
+    "name": "Rural population",
+    "description": "Beneficiaries defined by rural or remote geography.",
+    "audienceGroupId": "community"
+  },
+  {
+    "id": "community",
+    "name": "Community",
+    "description": "A local social grouping, not defined by geography alone.",
+    "audienceGroupId": "community"
+  },
+  {
+    "id": "worker",
+    "name": "Worker",
+    "description": "Employed individuals, in a labour-market or productivity framing.",
+    "audienceGroupId": "community"
+  },
+  {
+    "id": "firm-business",
+    "name": "Firm / business",
+    "description": "A business or company as the beneficiary unit.",
+    "audienceGroupId": "community"
+  },
+  {
+    "id": "citizen-user",
+    "name": "Citizen / user",
+    "description": "A generic individual user or citizen framing.",
+    "audienceGroupId": "community"
+  },
+  {
+    "id": "unconnected-underserved-person",
+    "name": "Unconnected person",
+    "description": "An individual defined specifically by their connectivity status.",
+    "audienceGroupId": "community"
+  },
+  {
+    "id": "patient",
+    "name": "Patient",
+    "description": "An individual receiving health care.",
+    "audienceGroupId": "community"
+  },
+  {
+    "id": "mother-pregnant-woman",
+    "name": "Mother / pregnant woman",
+    "description": "Women in a pregnancy, childbirth or motherhood framing.",
+    "audienceGroupId": "community"
+  },
+  {
+    "id": "infant-young-child",
+    "name": "Infant / young child",
+    "description": "Very young children, in a health-outcomes framing.",
+    "audienceGroupId": "community"
+  },
+  {
+    "id": "country-office",
+    "name": "UNICEF country office",
+    "description": "UNICEF country offices, who deliver Digital Inclusion work in-country and are an audience for internal alignment and capacity.",
+    "audienceGroupId": "unicef"
+  }
+]

@@ -1,0 +1,597 @@
+[
+  {
+    "id": "not-connected",
+    "name": "Whole-country dark",
+    "statement": "We need the site connected to the internet, full stop.",
+    "needGroupId": "connectivity-coverage",
+    "offeringIds": [
+      "mapping",
+      "procurement-on-behalf",
+      "delivery-toolkit"
+    ]
+  },
+  {
+    "id": "coverage-unaffordable",
+    "name": "Signal there, can't afford it",
+    "statement": "We need connectivity we can actually afford to keep switched on.",
+    "needGroupId": "connectivity-coverage",
+    "offeringIds": [
+      "connectivity-credits",
+      "investment-case"
+    ]
+  },
+  {
+    "id": "facilities-unmapped",
+    "name": "Facilities unmapped",
+    "statement": "We need a trusted, complete map of every facility before we can plan anything.",
+    "needGroupId": "visibility-data",
+    "offeringIds": [
+      "mapping"
+    ]
+  },
+  {
+    "id": "data-siloed",
+    "name": "Data never comes together",
+    "statement": "We need one place where all our connectivity data comes together.",
+    "needGroupId": "visibility-data",
+    "offeringIds": [
+      "dashboards",
+      "mapping"
+    ]
+  },
+  {
+    "id": "cost-unknown",
+    "name": "Flying blind on cost",
+    "statement": "We need a real cost and technology estimate before we commit budget.",
+    "needGroupId": "visibility-data",
+    "offeringIds": [
+      "infra-modelling",
+      "funding-screening"
+    ]
+  },
+  {
+    "id": "data-not-actioned",
+    "name": "Data never reaches decision",
+    "statement": "We need our data to reach decision-makers while it still matters.",
+    "needGroupId": "visibility-data",
+    "offeringIds": [
+      "dashboards",
+      "rtm"
+    ]
+  },
+  {
+    "id": "no-live-monitoring",
+    "name": "No one watching the line",
+    "statement": "We need to know in real time if a connection goes down.",
+    "needGroupId": "visibility-data",
+    "offeringIds": [
+      "rtm"
+    ]
+  },
+  {
+    "id": "good-enough-data-complacency",
+    "name": "'Good enough' data complacency",
+    "statement": "We need a reason and a moment to upgrade past data we only think is good enough.",
+    "needGroupId": "visibility-data",
+    "offeringIds": [
+      "rtm",
+      "evidence"
+    ]
+  },
+  {
+    "id": "unverified-data-treated-as-decision-grade",
+    "name": "Unverified data trusted as fact",
+    "statement": "We need our connectivity data independently verified, not just self-reported.",
+    "needGroupId": "visibility-data",
+    "offeringIds": [
+      "rtm",
+      "mapping"
+    ]
+  },
+  {
+    "id": "facility-registry-drift",
+    "name": "Facility registry drift",
+    "statement": "We need our facility registry refreshed regularly, not just built once and left to go stale.",
+    "needGroupId": "visibility-data",
+    "offeringIds": [
+      "mapping"
+    ]
+  },
+  {
+    "id": "no-proof-no-funding",
+    "name": "No proof, no money",
+    "statement": "We need credible proof of impact before we can unlock funding.",
+    "needGroupId": "financing-sustainability",
+    "offeringIds": [
+      "investment-case",
+      "evidence"
+    ]
+  },
+  {
+    "id": "bill-exceeds-budget",
+    "name": "Bill bigger than any budget",
+    "statement": "We need a financing plan that spreads the cost across more than one source.",
+    "needGroupId": "financing-sustainability",
+    "offeringIds": [
+      "investment-proposal",
+      "ifi-engagement",
+      "connectivity-credits"
+    ]
+  },
+  {
+    "id": "hidden-extra-costs",
+    "name": "Cable isn't the whole bill",
+    "statement": "We need the full cost — not just the cable — reflected in the budget from the start.",
+    "needGroupId": "financing-sustainability",
+    "offeringIds": [
+      "infra-modelling",
+      "investment-case"
+    ]
+  },
+  {
+    "id": "no-post-launch-funding",
+    "name": "Nobody pays after ribbon-cutting",
+    "statement": "We need a funded plan for who pays to keep this running, not just to switch it on.",
+    "needGroupId": "financing-sustainability",
+    "offeringIds": [
+      "connectivity-credits",
+      "x-as-a-hub"
+    ]
+  },
+  {
+    "id": "ai-readiness-gap",
+    "name": "Locked out of the AI era",
+    "statement": "We need infrastructure that's ready for what comes after basic connectivity, not just today's needs.",
+    "needGroupId": "power-physical-infra",
+    "offeringIds": []
+  },
+  {
+    "id": "unreliable-power",
+    "name": "Power keeps cutting out",
+    "statement": "We need stable power before connectivity can mean anything.",
+    "needGroupId": "power-physical-infra",
+    "offeringIds": []
+  },
+  {
+    "id": "compounding-infra-gaps",
+    "name": "Everything missing at once",
+    "statement": "We need a plan that tackles power, backbone and devices together, not one at a time.",
+    "needGroupId": "power-physical-infra",
+    "offeringIds": [
+      "infra-modelling"
+    ]
+  },
+  {
+    "id": "no-fibre-backbone",
+    "name": "Backbone isn't built",
+    "statement": "We need the backbone infrastructure built before last-mile connections are even possible.",
+    "needGroupId": "power-physical-infra",
+    "offeringIds": [
+      "infra-modelling",
+      "investment-case"
+    ]
+  },
+  {
+    "id": "no-grid-access",
+    "name": "No grid to plug into",
+    "statement": "We need an off-grid power solution, because the grid isn't coming.",
+    "needGroupId": "power-physical-infra",
+    "offeringIds": []
+  },
+  {
+    "id": "no-skills-no-job",
+    "name": "No digital skills, no job",
+    "statement": "We need digital skills training alongside the connection, not instead of it.",
+    "needGroupId": "complementary-capacity",
+    "offeringIds": []
+  },
+  {
+    "id": "cable-alone-insufficient",
+    "name": "Cable alone changes nothing",
+    "statement": "We need devices, training and content — not just a cable — for connectivity to matter.",
+    "needGroupId": "complementary-capacity",
+    "offeringIds": [
+      "institutional-development",
+      "in-country-implementation"
+    ]
+  },
+  {
+    "id": "skills-without-connectivity",
+    "name": "Nothing to plug skills into",
+    "statement": "We need the connectivity that makes the skills we already have usable.",
+    "needGroupId": "complementary-capacity",
+    "offeringIds": [
+      "mapping",
+      "procurement-on-behalf"
+    ]
+  },
+  {
+    "id": "digitisation-excludes-least-skilled",
+    "name": "Digitisation excludes least skilled",
+    "statement": "We need digitisation designed so it doesn't leave the least digitally confident behind.",
+    "needGroupId": "complementary-capacity",
+    "offeringIds": []
+  },
+  {
+    "id": "workforce-shortage",
+    "name": "One doctor for 12,000",
+    "statement": "We need more trained frontline staff, and connectivity-enabled ways to stretch the ones we have.",
+    "needGroupId": "complementary-capacity",
+    "offeringIds": []
+  },
+  {
+    "id": "unguided-use-backfires",
+    "name": "Internet without guidance backfires",
+    "statement": "We need guidance and safeguards to go live at the same time as the connection.",
+    "needGroupId": "complementary-capacity",
+    "offeringIds": []
+  },
+  {
+    "id": "staff-cant-run-programmes",
+    "name": "Staff can't run the programme",
+    "statement": "We need hands-on capacity support to run this, not just the funding to start it.",
+    "needGroupId": "complementary-capacity",
+    "offeringIds": [
+      "institutional-development",
+      "in-country-implementation"
+    ]
+  },
+  {
+    "id": "workforce-development-blocked",
+    "name": "Development blocked without connectivity",
+    "statement": "We need connectivity so our own staff can access the training they need.",
+    "needGroupId": "complementary-capacity",
+    "offeringIds": [
+      "institutional-development"
+    ]
+  },
+  {
+    "id": "more-exposure-with-access",
+    "name": "More access, more exposure",
+    "statement": "We need safety measures that scale up alongside access, not after it.",
+    "needGroupId": "safety-rights",
+    "offeringIds": []
+  },
+  {
+    "id": "no-safety-standards",
+    "name": "No shared safety rulebook",
+    "statement": "We need one shared, enforceable child-safety standard everyone can be held to.",
+    "needGroupId": "safety-rights",
+    "offeringIds": []
+  },
+  {
+    "id": "no-affordable-filtering",
+    "name": "No affordable filter at scale",
+    "statement": "We need content filtering that small providers can actually afford.",
+    "needGroupId": "safety-rights",
+    "offeringIds": []
+  },
+  {
+    "id": "safeguards-an-afterthought",
+    "name": "Safeguards bolted on after",
+    "statement": "We need safety built into the plan from day one, not patched on afterward.",
+    "needGroupId": "safety-rights",
+    "offeringIds": []
+  },
+  {
+    "id": "data-trust-deficit",
+    "name": "Citizens fear for their data",
+    "statement": "We need people to be able to trust what happens to their data.",
+    "needGroupId": "safety-rights",
+    "offeringIds": []
+  },
+  {
+    "id": "protection-systems-unreachable",
+    "name": "Protection can't reach offline children",
+    "statement": "We need protection systems that can reach children even before they're connected.",
+    "needGroupId": "safety-rights",
+    "offeringIds": []
+  },
+  {
+    "id": "weak-procurement",
+    "name": "Weak procurement drives up cost",
+    "statement": "We need stronger procurement capacity so we're not overpaying by default.",
+    "needGroupId": "market-regulatory",
+    "offeringIds": [
+      "supported-procurement",
+      "delivery-toolkit",
+      "procurement-on-behalf"
+    ]
+  },
+  {
+    "id": "last-mile-uneconomical",
+    "name": "Last-mile uneconomical",
+    "statement": "We need an incentive or subsidy that makes the last mile worth an operator's while.",
+    "needGroupId": "market-regulatory",
+    "offeringIds": [
+      "connectivity-credits",
+      "investment-case"
+    ]
+  },
+  {
+    "id": "no-supplier-accountability",
+    "name": "No enforcement on suppliers",
+    "statement": "We need contracts with teeth — a real way to hold suppliers accountable.",
+    "needGroupId": "market-regulatory",
+    "offeringIds": [
+      "supported-procurement"
+    ]
+  },
+  {
+    "id": "no-enforceable-standards",
+    "name": "Regulators lack standards to enforce",
+    "statement": "We need enforceable standards regulators can actually hold providers to.",
+    "needGroupId": "market-regulatory",
+    "offeringIds": [
+      "institutional-development"
+    ]
+  },
+  {
+    "id": "spectrum-rules-outdated",
+    "name": "Rules built for big, static operators",
+    "statement": "We need spectrum rules that make room for new kinds of providers, not just incumbents.",
+    "needGroupId": "market-regulatory",
+    "offeringIds": [
+      "institutional-development"
+    ]
+  },
+  {
+    "id": "no-investment-certainty",
+    "name": "Operators lack certainty to invest",
+    "statement": "We need predictable rules so operators feel safe investing for the long term.",
+    "needGroupId": "market-regulatory",
+    "offeringIds": [
+      "ifi-engagement",
+      "institutional-development"
+    ]
+  },
+  {
+    "id": "crisis-cuts-connectivity",
+    "name": "Crisis cuts the line",
+    "statement": "We need connectivity that holds up during emergencies, not just in normal conditions.",
+    "needGroupId": "service-reliability",
+    "offeringIds": [
+      "rtm"
+    ]
+  },
+  {
+    "id": "unusable-in-practice",
+    "name": "Connected on paper only",
+    "statement": "We need connections that are actually usable, not just technically present.",
+    "needGroupId": "service-reliability",
+    "offeringIds": [
+      "rtm"
+    ]
+  },
+  {
+    "id": "services-degrade-offline",
+    "name": "Service degrades without it",
+    "statement": "We need service delivery that doesn't collapse the moment connectivity dips.",
+    "needGroupId": "service-reliability",
+    "offeringIds": [
+      "rtm"
+    ]
+  },
+  {
+    "id": "paper-based-records",
+    "name": "Health system runs on paper",
+    "statement": "We need digital record-keeping that actually replaces the paper trail.",
+    "needGroupId": "service-reliability",
+    "offeringIds": []
+  },
+  {
+    "id": "no-emergency-restoration-plan",
+    "name": "No plan to restore it",
+    "statement": "We need a clear plan for restoring connectivity fast when it fails.",
+    "needGroupId": "service-reliability",
+    "offeringIds": []
+  },
+  {
+    "id": "dropped-connection-fatal",
+    "name": "A dropped connection can kill",
+    "statement": "We need connectivity reliable enough that losing it isn't a matter of life and death.",
+    "needGroupId": "service-reliability",
+    "offeringIds": [
+      "rtm"
+    ]
+  },
+  {
+    "id": "preventable-deaths",
+    "name": "Preventable deaths",
+    "statement": "We need connected care that stops these deaths from being preventable and still happening.",
+    "needGroupId": "outcome-deficit",
+    "offeringIds": [
+      "evidence",
+      "investment-case"
+    ]
+  },
+  {
+    "id": "income-opportunity-lost",
+    "name": "Income & opportunity lost",
+    "statement": "We need connectivity that turns into real income and opportunity, not just access.",
+    "needGroupId": "outcome-deficit",
+    "offeringIds": [
+      "evidence",
+      "investment-case"
+    ]
+  },
+  {
+    "id": "life-chances-lost",
+    "name": "Learning & life chances lost",
+    "statement": "We need connectivity that closes the learning gap, not just adds a wire to the classroom.",
+    "needGroupId": "outcome-deficit",
+    "offeringIds": [
+      "evidence"
+    ]
+  },
+  {
+    "id": "cost-of-inaction-quantified",
+    "name": "Cost of inaction, quantified",
+    "statement": "We need the quantified cost of inaction put in front of the people who decide budgets.",
+    "needGroupId": "outcome-evidence",
+    "offeringIds": [
+      "evidence",
+      "investment-case"
+    ]
+  },
+  {
+    "id": "proof-demanded-by-funders",
+    "name": "Proof demanded by funders",
+    "statement": "We need a credible, funder-ready evidence package before we ask for money.",
+    "needGroupId": "outcome-evidence",
+    "offeringIds": [
+      "evidence",
+      "investment-case"
+    ]
+  },
+  {
+    "id": "causal-proof-missing",
+    "name": "No causal proof",
+    "statement": "We need real causal evidence that connectivity is what's driving the outcome, not just a correlation.",
+    "needGroupId": "outcome-evidence",
+    "offeringIds": [
+      "evidence"
+    ]
+  },
+  {
+    "id": "sectors-plan-alone",
+    "name": "Each ministry buys alone",
+    "statement": "We need ministries planning connectivity together, not each buying it alone.",
+    "needGroupId": "coordination-ownership",
+    "offeringIds": [
+      "institutional-development"
+    ]
+  },
+  {
+    "id": "fragmented-health-tools",
+    "name": "Pile of tools, no standards",
+    "statement": "We need our health data tools to actually talk to each other.",
+    "needGroupId": "coordination-ownership",
+    "offeringIds": [
+      "institutional-development",
+      "dashboards"
+    ]
+  },
+  {
+    "id": "no-single-steward",
+    "name": "Nobody owns the pathway",
+    "statement": "We need one clear owner responsible for the whole pathway, start to finish.",
+    "needGroupId": "coordination-ownership",
+    "offeringIds": [
+      "institutional-development"
+    ]
+  },
+  {
+    "id": "no-shared-standards",
+    "name": "No standards to align around",
+    "statement": "We need a shared standard everyone can build to, instead of everyone inventing their own.",
+    "needGroupId": "coordination-ownership",
+    "offeringIds": [
+      "institutional-development"
+    ]
+  },
+  {
+    "id": "evidence-without-enforcement-teeth",
+    "name": "Evidence with no enforcement teeth",
+    "statement": "We need evidence that's tied to a real decision, payment, or enforcement action, not just a report that sits on a shelf.",
+    "needGroupId": "evidence-to-action",
+    "offeringIds": [
+      "evidence",
+      "investment-case",
+      "supported-procurement"
+    ]
+  },
+  {
+    "id": "governance-incentives-block-adoption",
+    "name": "Incentives work against adoption",
+    "statement": "We need governance and incentives that reward better data practice instead of treating it as extra burden.",
+    "needGroupId": "evidence-to-action",
+    "offeringIds": [
+      "institutional-development"
+    ]
+  },
+  {
+    "id": "no-safety-scandal",
+    "name": "No scandal on my watch",
+    "statement": "We need airtight safety measures so this never becomes a scandal on anyone's watch.",
+    "needGroupId": "political-narrative",
+    "offeringIds": []
+  },
+  {
+    "id": "country-not-left-behind",
+    "name": "Country not left behind",
+    "statement": "We need visible proof our country is keeping pace, not falling behind.",
+    "needGroupId": "political-narrative",
+    "offeringIds": [
+      "global-convening"
+    ]
+  },
+  {
+    "id": "felt-benefits-not-promises",
+    "name": "Felt benefits, not promises",
+    "statement": "We need people to feel the difference this makes, not just hear that it happened.",
+    "needGroupId": "political-narrative",
+    "offeringIds": []
+  },
+  {
+    "id": "same-children-left-behind",
+    "name": "Same children left behind, again",
+    "statement": "We need this rollout to deliberately reach the children every previous effort left out.",
+    "needGroupId": "political-narrative",
+    "offeringIds": []
+  },
+  {
+    "id": "ai-hype-crowds-out-access",
+    "name": "AI hype crowds out access",
+    "statement": "We need basic access funded and protected even while AI captures the spotlight.",
+    "needGroupId": "political-narrative",
+    "offeringIds": []
+  },
+  {
+    "id": "nationally-led-agenda",
+    "name": "Nationally led, not imposed",
+    "statement": "We need this to be visibly our agenda, led by us, not imposed from outside.",
+    "needGroupId": "political-narrative",
+    "offeringIds": [
+      "institutional-development",
+      "global-convening"
+    ]
+  },
+  {
+    "id": "advocacy-frame-misread",
+    "name": "The message gets misheard",
+    "statement": "We need our message to land as intended with audiences who think in economic terms, not get lost in translation.",
+    "needGroupId": "political-narrative",
+    "offeringIds": []
+  },
+  {
+    "id": "lived-experience-not-intent",
+    "name": "Show lived experience, not intent",
+    "statement": "We need to show real lived experience, not just describe our intentions.",
+    "needGroupId": "voice-agency",
+    "offeringIds": [
+      "evidence"
+    ]
+  },
+  {
+    "id": "passive-beneficiaries",
+    "name": "Treated as beneficiaries, not actors",
+    "statement": "We need young people treated as active participants, not passive recipients.",
+    "needGroupId": "voice-agency",
+    "offeringIds": []
+  },
+  {
+    "id": "tokenistic-participation",
+    "name": "Tokenistic participation",
+    "statement": "We need participation that's genuinely built into decisions, not just a box we tick.",
+    "needGroupId": "voice-agency",
+    "offeringIds": []
+  },
+  {
+    "id": "institutions-dont-listen",
+    "name": "The system doesn't listen",
+    "statement": "We need institutions people can trust are actually listening to them.",
+    "needGroupId": "voice-agency",
+    "offeringIds": []
+  }
+]

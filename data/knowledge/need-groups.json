@@ -1,0 +1,58 @@
+[
+  {
+    "id": "connectivity-coverage",
+    "name": "Connectivity coverage"
+  },
+  {
+    "id": "visibility-data",
+    "name": "Visibility & data"
+  },
+  {
+    "id": "financing-sustainability",
+    "name": "Financing sustainability"
+  },
+  {
+    "id": "power-physical-infra",
+    "name": "Power & physical infra"
+  },
+  {
+    "id": "complementary-capacity",
+    "name": "Complementary capacity"
+  },
+  {
+    "id": "safety-rights",
+    "name": "Safety & rights"
+  },
+  {
+    "id": "market-regulatory",
+    "name": "Market & regulatory"
+  },
+  {
+    "id": "service-reliability",
+    "name": "Service reliability"
+  },
+  {
+    "id": "outcome-deficit",
+    "name": "Outcome deficit"
+  },
+  {
+    "id": "outcome-evidence",
+    "name": "Outcome evidence"
+  },
+  {
+    "id": "coordination-ownership",
+    "name": "Coordination & ownership"
+  },
+  {
+    "id": "evidence-to-action",
+    "name": "Evidence-to-action"
+  },
+  {
+    "id": "political-narrative",
+    "name": "Political narrative"
+  },
+  {
+    "id": "voice-agency",
+    "name": "Voice & agency"
+  }
+]

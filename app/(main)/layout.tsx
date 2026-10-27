@@ -1,17 +1,23 @@
-'use client'
-
 import Link from 'next/link'
+import { cookies } from 'next/headers'
 import { AppHeader } from '@/components/app-header'
+import { AppShell } from '@/components/app-shell/app-shell'
 import { FOOTER_SECTION_LINKS } from '@/lib/nav'
 import { getSite } from '@/lib/site'
 
 const SITE = getSite()
 
-export default function MainLayout({
+export default async function MainLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  if (SITE.shell === 'app') {
+    // Remembered side panel state (cookie written by components/ui/sidebar.tsx).
+    const sidebarState = (await cookies()).get('sidebar_state')?.value
+    return <AppShell defaultOpen={sidebarState !== 'false'}>{children}</AppShell>
+  }
+
   return (
     <div className="flex min-h-screen flex-col overflow-visible bg-background">
       <AppHeader />

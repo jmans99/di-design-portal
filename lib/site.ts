@@ -7,7 +7,10 @@
 
 export type SiteId = 'giga' | 'di'
 
-/** Every page route in the app (API routes are not listed: they stay on both sites). */
+/**
+ * Every page route in the app (API routes are not listed: they stay on both
+ * sites). Dynamic segments are written as "[id]".
+ */
 export const PAGE_ROUTES = [
   '/',
   '/logos',
@@ -25,6 +28,10 @@ export const PAGE_ROUTES = [
   '/materials/skills',
   '/guidelines/video',
   '/guidelines/brand',
+  '/knowledge/audiences',
+  '/knowledge/audiences/[id]',
+  '/knowledge/offerings',
+  '/knowledge/offerings/[id]',
 ] as const
 
 export type PageRoute = (typeof PAGE_ROUTES)[number]
@@ -42,6 +49,11 @@ export type SiteConfig = {
   name: string
   /** Organisation name used in copy about the portal itself. */
   orgName: string
+  /**
+   * "marketing": top header, marketing home and footer (Giga).
+   * "app": side panel app shell with a "Beta" top bar (DI).
+   */
+  shell: 'marketing' | 'app'
   metadata: { title: string; description: string }
   /** Home page copy that names features, so each site only mentions what it has. */
   home: {
@@ -63,6 +75,7 @@ const giga: SiteConfig = {
   id: 'giga',
   name: 'Giga brand portal',
   orgName: 'Giga',
+  shell: 'marketing',
   metadata: {
     title: 'Giga Brand Asset Generator',
     description:
@@ -96,6 +109,7 @@ const di: SiteConfig = {
   id: 'di',
   name: 'Digital Inclusion brand portal',
   orgName: 'Digital Inclusion',
+  shell: 'app',
   metadata: {
     title: 'Digital Inclusion Brand Asset Generator',
     description:
@@ -126,6 +140,10 @@ const di: SiteConfig = {
     '/materials/backgrounds',
     '/materials/skills',
     '/guidelines/brand',
+    '/knowledge/audiences',
+    '/knowledge/audiences/[id]',
+    '/knowledge/offerings',
+    '/knowledge/offerings/[id]',
   ],
 }
 
@@ -141,7 +159,19 @@ export function getSite(): SiteConfig {
   return giga
 }
 
-/** True when the current site serves this page route. */
+/** The PAGE_ROUTES entry a path belongs to ("/knowledge/offerings/mapping" → "/knowledge/offerings/[id]"), if any. */
+export function matchPageRoute(path: string): PageRoute | undefined {
+  const exact = PAGE_ROUTES.find((route) => route === path)
+  if (exact) return exact
+  return PAGE_ROUTES.find((route) => {
+    if (!route.includes('[')) return false
+    const pattern = new RegExp(`^${route.replace(/\[[^/\]]+\]/g, '[^/]+')}$`)
+    return pattern.test(path)
+  })
+}
+
+/** True when the current site serves this page path. */
 export function isRouteEnabled(path: string): boolean {
-  return (getSite().routes as readonly string[]).includes(path)
+  const route = matchPageRoute(path)
+  return route !== undefined && getSite().routes.includes(route)
 }

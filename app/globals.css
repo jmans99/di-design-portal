@@ -283,9 +283,9 @@
     --foreground: 212 40% 16.9%; /* navy #1A2A3C */
     --card-foreground: 212 40% 16.9%;
     --popover-foreground: 212 40% 16.9%;
-    /* Primary = 600, as on Giga. White on 600 is 3.86:1 (Giga 600: 3.95:1);
-       white on 500 #00AEEF is 2.53:1, so 500 is not used behind text. */
-    --primary: 198 100% 38.6%; /* 600 #008AC5 */
+    /* Primary (button backgrounds) = 700, so white text passes WCAG AA
+       (6.05:1). White on 600 is 3.86:1 and on 500 #00AEEF 2.53:1. */
+    --primary: 200 99% 31%; /* 700 #01689D */
     --secondary-foreground: 212 40% 16.9%;
     --accent: 201 100% 96.7%; /* 50 #EEF9FF */
     --accent-foreground: 212 40% 16.9%;
@@ -295,7 +295,7 @@
     --accent-orange: 24 93% 54.5%; /* #F7761F */
     --sidebar-background: 0 0% 97.3%;
     --sidebar-foreground: 212 40% 16.9%;
-    --sidebar-primary: 198 100% 38.6%;
+    --sidebar-primary: 200 99% 31%;
     --sidebar-accent: 201 100% 96.7%;
     --sidebar-accent-foreground: 212 40% 16.9%;
     --sidebar-ring: 198 100% 38.6%;

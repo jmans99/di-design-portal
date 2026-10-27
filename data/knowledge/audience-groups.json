@@ -1,0 +1,38 @@
+[
+  {
+    "id": "governments",
+    "name": "Governments"
+  },
+  {
+    "id": "public-sector-funders-donors",
+    "name": "Public sector funders and donors"
+  },
+  {
+    "id": "private-sector-funders-donors",
+    "name": "Private sector funders and donors"
+  },
+  {
+    "id": "public-sector-partners",
+    "name": "Public sector partners"
+  },
+  {
+    "id": "private-sector-partners",
+    "name": "Private sector partners"
+  },
+  {
+    "id": "operators-providers",
+    "name": "Operators and providers"
+  },
+  {
+    "id": "unicef",
+    "name": "UNICEF"
+  },
+  {
+    "id": "community",
+    "name": "Community"
+  },
+  {
+    "id": "civil-society",
+    "name": "Civil society"
+  }
+]
