@@ -2,9 +2,9 @@
 
 import { motion, useReducedMotion } from 'framer-motion'
 import { Check } from 'lucide-react'
+import { getSite } from '@/lib/site'
 
 type Chip = {
-  label: string
   top?: string
   bottom?: string
   left?: string
@@ -14,12 +14,16 @@ type Chip = {
   rot: number // float tilt in deg
 }
 
-const CHIPS: Chip[] = [
-  { label: 'Logo copied', top: '14%', left: '6%', amp: 7, dur: 4.2, rot: 1.6 },
-  { label: 'Signature ready', top: '64%', left: '3%', amp: 5, dur: 5.0, rot: -1.3 },
-  { label: 'Map exported as PNG', top: '22%', right: '5%', amp: 8, dur: 4.6, rot: 1.1 },
-  { label: 'On-brand colors', bottom: '12%', right: '8%', amp: 6, dur: 5.4, rot: -1.7 },
+// Chip positions and motion; the labels come from the site config, so each
+// site only names features it has.
+const CHIP_LAYOUT: Chip[] = [
+  { top: '14%', left: '6%', amp: 7, dur: 4.2, rot: 1.6 },
+  { top: '64%', left: '3%', amp: 5, dur: 5.0, rot: -1.3 },
+  { top: '22%', right: '5%', amp: 8, dur: 4.6, rot: 1.1 },
+  { bottom: '12%', right: '8%', amp: 6, dur: 5.4, rot: -1.7 },
 ]
+
+const CHIPS = CHIP_LAYOUT.map((chip, i) => ({ ...chip, label: getSite().home.showcaseChips[i] }))
 
 const EASE_OUT = [0.16, 1, 0.3, 1] as const
 

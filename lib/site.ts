@@ -43,6 +43,12 @@ export type SiteConfig = {
   /** Organisation name used in copy about the portal itself. */
   orgName: string
   metadata: { title: string; description: string }
+  /** Home page copy that names features, so each site only mentions what it has. */
+  home: {
+    heroSubtitle: string
+    /** Labels of the four floating chips in the showcase, in display order. */
+    showcaseChips: [string, string, string, string]
+  }
   headerLogo: SiteLogo
   footerLogo: SiteLogo
   /** Browser UI colour (viewport themeColor). */
@@ -61,6 +67,11 @@ const giga: SiteConfig = {
     title: 'Giga Brand Asset Generator',
     description:
       'Generate brand-compliant visual assets for Giga partners. Logos, colors, and typography — all in one operational tool.',
+  },
+  home: {
+    heroSubtitle:
+      'Logos, colors, typography, illustrations, maps, and templates the Giga team builds with. Correct by default, ready in a click.',
+    showcaseChips: ['Logo copied', 'Announcement ready', 'Map exported as PNG', 'On-brand colors'],
   },
   headerLogo: { src: '/logos/giga-main-horizontal.svg', alt: 'Giga', className: 'h-11' },
   footerLogo: { src: '/logos/giga-unicef-itu-horizontal.svg', alt: 'Giga, UNICEF and ITU', className: 'h-7' },
@@ -89,6 +100,11 @@ const di: SiteConfig = {
     title: 'Digital Inclusion Brand Asset Generator',
     description:
       'Generate brand-compliant visual assets for Digital Inclusion partners. Logos, colors, and typography — all in one operational tool.',
+  },
+  home: {
+    heroSubtitle:
+      'Logos, colors, typography, illustrations, templates, and the AI skills the Digital Inclusion team builds with. Correct by default, ready in a click.',
+    showcaseChips: ['Logo copied', 'Signature ready', 'Map exported as PNG', 'On-brand colors'],
   },
   headerLogo: { src: '/logos/unicef-digital-inclusion-blue.svg', alt: 'UNICEF Digital Inclusion', className: 'h-7' },
   footerLogo: { src: '/logos/unicef-digital-inclusion-black.svg', alt: 'UNICEF Digital Inclusion', className: 'h-5' },
