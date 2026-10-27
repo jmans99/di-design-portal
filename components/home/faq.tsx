@@ -3,16 +3,19 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { Plus, ArrowRight } from 'lucide-react'
+import { getSite, isRouteEnabled } from '@/lib/site'
+
+const ORG = getSite().orgName
 
 type Item = { q: string; a: string }
 
-const ITEMS: Item[] = [
+const ALL_ITEMS: (Item & { route?: string })[] = [
   {
     q: 'Can I put the Giga logo on a dark background?',
     a: 'Use the white logo on Giga Blue or over imagery. Keep solid black backgrounds for Giga Maps only, everywhere else stays on brand without them.',
   },
   {
-    q: 'Which fonts does Digital Inclusion use?',
+    q: `Which fonts does ${ORG} use?`,
     a: 'Manrope for headings and Open Sans for body. The full type scale is set up for you on the Typography page.',
   },
   {
@@ -21,13 +24,17 @@ const ITEMS: Item[] = [
   },
   {
     q: 'How do I install the AI Skills?',
+    route: '/materials/skills',
     a: 'Each skill ships with a one-click install guide on the AI Skills page, so it works on your AI platform straight away.',
   },
   {
     q: 'Who can use these assets?',
-    a: 'Authorized Digital Inclusion, UNICEF, ITU, and partner teams. The goal is simple: zero off-brand assets in the wild.',
+    a: `Authorized ${ORG}, UNICEF, ITU, and partner teams. The goal is simple: zero off-brand assets in the wild.`,
   },
 ]
+
+/** Questions that point to a page are shown only on sites that have it. */
+const ITEMS: Item[] = ALL_ITEMS.filter((item) => !item.route || isRouteEnabled(item.route))
 
 export function Faq() {
   const [open, setOpen] = useState(0)

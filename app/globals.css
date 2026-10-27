@@ -261,6 +261,54 @@
     --sidebar-accent-foreground: 222 78% 14%;
     --sidebar-border: 214 32% 91%;
     --sidebar-ring: 214 100% 58%;
+    /* Primary scale as RGB channels (Tailwind primary-50 … primary-900). */
+    --primary-50: 234 242 255; /* #EAF2FF */
+    --primary-100: 212 229 255; /* #D4E5FF */
+    --primary-200: 191 215 255; /* #BFD7FF */
+    --primary-300: 169 202 255; /* #A9CAFF */
+    --primary-400: 126 176 255; /* #7EB0FF */
+    --primary-500: 84 149 255; /* #5495FF */
+    --primary-600: 39 122 255; /* #277AFF */
+    --primary-700: 0 80 230; /* #0050E6 */
+    --primary-800: 0 45 156; /* #002D9C */
+    --primary-900: 0 45 118; /* #002D76 */
+  }
+
+  /* Digital Inclusion site (NEXT_PUBLIC_SITE=di, see lib/site.ts): colour
+     tokens only. Fonts, radii, shadows, spacing and motion stay shared.
+     Secondary, muted, border and input keep the Giga values: their slate hue
+     (210-215) already matches DI navy (212). */
+  [data-site='di'] {
+    --background: 0 0% 97.3%; /* off-white #F8F8F8 */
+    --foreground: 212 40% 16.9%; /* navy #1A2A3C */
+    --card-foreground: 212 40% 16.9%;
+    --popover-foreground: 212 40% 16.9%;
+    /* Primary = 600, as on Giga. White on 600 is 3.86:1 (Giga 600: 3.95:1);
+       white on 500 #00AEEF is 2.53:1, so 500 is not used behind text. */
+    --primary: 198 100% 38.6%; /* 600 #008AC5 */
+    --secondary-foreground: 212 40% 16.9%;
+    --accent: 201 100% 96.7%; /* 50 #EEF9FF */
+    --accent-foreground: 212 40% 16.9%;
+    --ring: 198 100% 38.6%;
+    --chart-1: 198 100% 38.6%;
+    /* Single accent only (kickers and highlights). Not applied anywhere yet. */
+    --accent-orange: 24 93% 54.5%; /* #F7761F */
+    --sidebar-background: 0 0% 97.3%;
+    --sidebar-foreground: 212 40% 16.9%;
+    --sidebar-primary: 198 100% 38.6%;
+    --sidebar-accent: 201 100% 96.7%;
+    --sidebar-accent-foreground: 212 40% 16.9%;
+    --sidebar-ring: 198 100% 38.6%;
+    --primary-50: 238 249 255; /* #EEF9FF */
+    --primary-100: 218 241 255; /* #DAF1FF */
+    --primary-200: 181 228 255; /* #B5E4FF */
+    --primary-300: 130 211 255; /* #82D3FF */
+    --primary-400: 73 188 246; /* #49BCF6 */
+    --primary-500: 0 174 239; /* #00AEEF */
+    --primary-600: 0 138 197; /* #008AC5 */
+    --primary-700: 1 104 157; /* #01689D */
+    --primary-800: 15 71 114; /* #0F4772 */
+    --primary-900: 26 42 60; /* #1A2A3C */
   }
 
   .dark {

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { COLOR_SCALES } from '@/lib/color-tokens'
+import type { ColorScale } from '@/lib/types'
 
 function ColorSwatch({ name, hex, scaleName }: { name: string; hex: string; scaleName: string }) {
   const [copied, setCopied] = useState(false)
@@ -36,19 +37,34 @@ function ColorSwatch({ name, hex, scaleName }: { name: string; hex: string; scal
 
 const PRIMARY_600 = '#277AFF'
 
-const ANCHOR_LINKS = [
-  { label: 'Main', href: '#colors-main' },
-  { label: 'Primary', href: '#colors-primary' },
-  { label: 'Grey', href: '#colors-grey' },
-  { label: 'Connectivity', href: '#colors-connectivity' },
+const MAIN_COLORS = [
+  { name: 'White', hex: '#FFFFFF' },
+  { name: 'Black', hex: '#000000' },
+  { name: 'Primary', hex: PRIMARY_600 },
 ]
 
-export function ColorPalette() {
+/** Scales not shown as their own section (they are summed up in "Connectivity"). */
+const HIDDEN_SCALES = ['Connectivity Red', 'Connectivity Green']
+
+/** Defaults to the Giga palette; the DI site passes its own scales and main colors. */
+export function ColorPalette({
+  scales = COLOR_SCALES,
+  mainColors = MAIN_COLORS,
+}: {
+  scales?: ColorScale[]
+  mainColors?: { name: string; hex: string }[]
+} = {}) {
+  const visibleScales = scales.filter((scale) => !HIDDEN_SCALES.includes(scale.name))
+  const anchorLinks = [
+    { label: 'Main', href: '#colors-main' },
+    ...visibleScales.map((scale) => ({ label: scale.name, href: `#colors-${scale.name.toLowerCase()}` })),
+  ]
+
   return (
     <div className="flex min-w-0 w-full flex-col gap-10 overflow-visible">
       {/* Anchor links */}
       <div className="flex flex-wrap gap-2">
-        {ANCHOR_LINKS.map((link) => (
+        {anchorLinks.map((link) => (
           <a
             key={link.href}
             href={link.href}
@@ -59,7 +75,7 @@ export function ColorPalette() {
         ))}
       </div>
 
-      {/* Main colors: White, Black, Primary 600 */}
+      {/* Main colors (Giga: White, Black, Primary 600) */}
       <section id="colors-main" className="min-w-0 w-full scroll-mt-24">
         <div className="mb-4 flex items-center gap-2">
           <h3 className="font-heading text-[11px] font-medium uppercase tracking-[0.07em] text-muted-foreground">
@@ -67,20 +83,16 @@ export function ColorPalette() {
           </h3>
         </div>
         <div className="grid min-w-0 w-full grid-cols-3 gap-2 sm:flex sm:flex-nowrap sm:gap-2">
-          <div className="min-w-0 sm:flex-1">
-            <ColorSwatch name="White" hex="#FFFFFF" scaleName="Main" />
-          </div>
-          <div className="min-w-0 sm:flex-1">
-            <ColorSwatch name="Black" hex="#000000" scaleName="Main" />
-          </div>
-          <div className="min-w-0 sm:flex-1">
-            <ColorSwatch name="Primary" hex={PRIMARY_600} scaleName="Main" />
-          </div>
+          {mainColors.map((color) => (
+            <div key={color.name} className="min-w-0 sm:flex-1">
+              <ColorSwatch name={color.name} hex={color.hex} scaleName="Main" />
+            </div>
+          ))}
         </div>
       </section>
 
       {/* Color scales */}
-      {COLOR_SCALES.filter((scale) => scale.name !== 'Connectivity Red' && scale.name !== 'Connectivity Green').map((scale) => (
+      {visibleScales.map((scale) => (
         <section
           key={scale.name}
           id={`colors-${scale.name.toLowerCase()}`}

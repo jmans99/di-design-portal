@@ -5,29 +5,21 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ChevronDown, ChevronRight } from 'lucide-react'
 import { HamburgerMenu } from '@/components/HamburgerMenu'
-import { VISIBLE_MAIN_NAV_LINKS as MAIN_NAV_LINKS, MEDIA_DROPDOWN_LINKS, GUIDELINES_DROPDOWN_LINKS, MATERIALS_DROPDOWN_LINKS } from '@/lib/nav'
+import { NAV_GROUPS } from '@/lib/nav'
+import { getSite } from '@/lib/site'
 
-const MEDIA_LABEL = 'Media'
-const GUIDELINES_LABEL = 'Guidelines'
-const MATERIALS_LABEL = 'Materials'
-const MEDIA_SUB_ID = 'nav-media-sub'
-const GUIDELINES_SUB_ID = 'nav-guidelines-sub'
-const MATERIALS_SUB_ID = 'nav-materials-sub'
+const SITE = getSite()
 
 export function AppHeader() {
   const pathname = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [atVeryTop, setAtVeryTop] = useState(true)
   const [inHeroZone, setInHeroZone] = useState(true)
-  const [expandedMedia, setExpandedMedia] = useState(false)
-  const [expandedGuidelines, setExpandedGuidelines] = useState(false)
-  const [expandedMaterials, setExpandedMaterials] = useState(false)
-  const [mediaOpen, setMediaOpen] = useState(false)
-  const [guidelinesOpen, setGuidelinesOpen] = useState(false)
-  const [materialsOpen, setMaterialsOpen] = useState(false)
-  const mediaRef = useRef<HTMLDivElement>(null)
-  const guidelinesRef = useRef<HTMLDivElement>(null)
-  const materialsRef = useRef<HTMLDivElement>(null)
+  /** Mobile accordion: id of the expanded group. */
+  const [expandedGroup, setExpandedGroup] = useState<string | null>(null)
+  /** Desktop dropdown: id of the open group. */
+  const [openGroup, setOpenGroup] = useState<string | null>(null)
+  const dropdownRefs = useRef<Record<string, HTMLDivElement | null>>({})
   const navRef = useRef<HTMLElement>(null)
   const itemRefs = useRef<Record<string, HTMLElement | null>>({})
   const [indicator, setIndicator] = useState<{ left: number; right: number; transition: string } | null>(null)
@@ -38,30 +30,22 @@ export function AppHeader() {
     return pathname === path || pathname.startsWith(path + '/')
   }
 
-  const isMediaActive = MEDIA_DROPDOWN_LINKS.some((c) => isActive(c.path))
-  const isGuidelinesActive = GUIDELINES_DROPDOWN_LINKS.some((c) => isActive(c.path))
-  const isMaterialsActive = MATERIALS_DROPDOWN_LINKS.some((c) => isActive(c.path))
+  const isGroupActive = (group: (typeof NAV_GROUPS)[number]) => group.items.some((c) => isActive(c.path))
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       const t = e.target as Node
-      if (mediaRef.current && !mediaRef.current.contains(t)) setMediaOpen(false)
-      if (guidelinesRef.current && !guidelinesRef.current.contains(t)) setGuidelinesOpen(false)
-      if (materialsRef.current && !materialsRef.current.contains(t)) setMaterialsOpen(false)
+      setOpenGroup((id) => {
+        const el = id ? dropdownRefs.current[id] : null
+        return el && !el.contains(t) ? null : id
+      })
     }
     document.addEventListener('mousedown', handler)
     return () => document.removeEventListener('mousedown', handler)
   }, [])
 
   useEffect(() => {
-    const mainActive = MAIN_NAV_LINKS.find((item) => isActive(item.path))
-    const activeId = isMaterialsActive
-      ? 'materials'
-      : isGuidelinesActive
-        ? 'guidelines'
-        : isMediaActive
-          ? 'media'
-          : mainActive?.id ?? null
+    const activeId = NAV_GROUPS.find(isGroupActive)?.id ?? null
 
     if (!activeId || !navRef.current) {
       queueMicrotask(() => setIndicator(null))
@@ -126,158 +110,78 @@ export function AppHeader() {
           <Link href="/" className="flex items-center gap-4" aria-label="Brand assets home">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/logos/unicef-digital-impact-unboxed.svg"
-              alt="UNICEF Digital Impact Division"
-              className={`h-11 w-auto transition-smooth-transform ${overHero ? 'brightness-0 invert' : ''}`}
+              src={SITE.headerLogo.src}
+              alt={SITE.headerLogo.alt}
+              className={`${SITE.headerLogo.className} w-auto transition-smooth-transform ${overHero ? 'brightness-0 invert' : ''}`}
             />
           </Link>
         </div>
 
         <nav ref={navRef} className="relative hidden h-full items-center gap-1 lg:flex" aria-label="Main navigation">
-          {MAIN_NAV_LINKS.map((item) => {
-            const active = isActive(item.path)
+          {NAV_GROUPS.map((group) => {
+            const active = isGroupActive(group)
+            const colorClass = active
+              ? 'text-foreground'
+              : overHero
+                ? 'text-white/85 hover:text-white'
+                : 'text-muted-foreground hover:text-foreground'
+
+            if (group.items.length === 1) {
+              const item = group.items[0]
+              return (
+                <Link
+                  key={group.id}
+                  href={item.path}
+                  ref={(el) => {
+                    itemRefs.current[group.id] = el
+                  }}
+                  className={`relative z-10 rounded-full px-3 py-1.5 text-sm font-[500] transition-smooth ${colorClass}`}
+                >
+                  {item.label}
+                </Link>
+              )
+            }
+
+            const open = openGroup === group.id
             return (
-              <Link
-                key={item.id}
-                href={item.path}
+              <div
+                key={group.id}
+                className="relative z-[100]"
                 ref={(el) => {
-                  itemRefs.current[item.id] = el
+                  dropdownRefs.current[group.id] = el
                 }}
-                className={`relative z-10 rounded-full px-3 py-1.5 text-sm font-[500] transition-smooth ${
-                  active
-                    ? 'text-foreground'
-                    : overHero
-                      ? 'text-white/85 hover:text-white'
-                      : 'text-muted-foreground hover:text-foreground'
-                }`}
               >
-                {item.label}
-              </Link>
+                <button
+                  type="button"
+                  ref={(el) => {
+                    itemRefs.current[group.id] = el
+                  }}
+                  onClick={() => setOpenGroup((id) => (id === group.id ? null : group.id))}
+                  className={`relative z-10 flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-[500] transition-smooth focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${colorClass}`}
+                >
+                  {group.label}
+                  <ChevronDown
+                    className={`h-3.5 w-3.5 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+                    aria-hidden
+                  />
+                </button>
+                {open && (
+                  <div className="absolute right-0 top-full z-[100] mt-3 min-w-[180px] overflow-hidden rounded-2xl border border-border bg-card p-1.5 shadow-stripe-lg">
+                    {group.items.map((child) => (
+                      <Link
+                        key={child.id}
+                        href={child.path}
+                        onClick={() => setOpenGroup(null)}
+                        className="block rounded-xl px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:bg-accent focus-visible:text-foreground focus-visible:outline-none"
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             )
           })}
-
-          <div className="relative z-[100]" ref={mediaRef}>
-            <button
-              type="button"
-              ref={(el) => {
-                itemRefs.current.media = el
-              }}
-              onClick={() => {
-                setMediaOpen((v) => !v)
-                setGuidelinesOpen(false)
-                setMaterialsOpen(false)
-              }}
-              className={`relative z-10 flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-[500] transition-smooth focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
-                isMediaActive
-                  ? 'text-foreground'
-                  : overHero
-                    ? 'text-white/85 hover:text-white'
-                    : 'text-muted-foreground hover:text-foreground'
-              }`}
-            >
-              {MEDIA_LABEL}
-              <ChevronDown
-                className={`h-3.5 w-3.5 transition-transform duration-200 ${mediaOpen ? 'rotate-180' : ''}`}
-                aria-hidden
-              />
-            </button>
-            {mediaOpen && (
-              <div className="absolute right-0 top-full z-[100] mt-3 min-w-[170px] overflow-hidden rounded-2xl border border-border bg-card p-1.5 shadow-stripe-lg">
-                {MEDIA_DROPDOWN_LINKS.map((child) => (
-                  <Link
-                    key={child.id}
-                    href={child.path}
-                    onClick={() => setMediaOpen(false)}
-                    className="block rounded-xl px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:bg-accent focus-visible:text-foreground focus-visible:outline-none"
-                  >
-                    {child.label}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-
-          <div className="relative z-[100]" ref={guidelinesRef}>
-            <button
-              type="button"
-              ref={(el) => {
-                itemRefs.current.guidelines = el
-              }}
-              onClick={() => {
-                setGuidelinesOpen((v) => !v)
-                setMaterialsOpen(false)
-                setMediaOpen(false)
-              }}
-              className={`relative z-10 flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-[500] transition-smooth focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
-                isGuidelinesActive
-                  ? 'text-foreground'
-                  : overHero
-                    ? 'text-white/85 hover:text-white'
-                    : 'text-muted-foreground hover:text-foreground'
-              }`}
-            >
-              {GUIDELINES_LABEL}
-              <ChevronDown
-                className={`h-3.5 w-3.5 transition-transform duration-200 ${guidelinesOpen ? 'rotate-180' : ''}`}
-                aria-hidden
-              />
-            </button>
-            {guidelinesOpen && (
-              <div className="absolute right-0 top-full z-[100] mt-3 min-w-[160px] overflow-hidden rounded-2xl border border-border bg-card p-1.5 shadow-stripe-lg">
-                {GUIDELINES_DROPDOWN_LINKS.map((child) => (
-                  <Link
-                    key={child.id}
-                    href={child.path}
-                    onClick={() => setGuidelinesOpen(false)}
-                    className="block rounded-xl px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:bg-accent focus-visible:text-foreground focus-visible:outline-none"
-                  >
-                    {child.label}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-
-          <div className="relative z-[100]" ref={materialsRef}>
-            <button
-              type="button"
-              ref={(el) => {
-                itemRefs.current.materials = el
-              }}
-              onClick={() => {
-                setMaterialsOpen((v) => !v)
-                setGuidelinesOpen(false)
-                setMediaOpen(false)
-              }}
-              className={`relative z-10 flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-[500] transition-smooth focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
-                isMaterialsActive
-                  ? 'text-foreground'
-                  : overHero
-                    ? 'text-white/85 hover:text-white'
-                    : 'text-muted-foreground hover:text-foreground'
-              }`}
-            >
-              {MATERIALS_LABEL}
-              <ChevronDown
-                className={`h-3.5 w-3.5 transition-transform duration-200 ${materialsOpen ? 'rotate-180' : ''}`}
-                aria-hidden
-              />
-            </button>
-            {materialsOpen && (
-              <div className="absolute right-0 top-full z-[100] mt-3 min-w-[180px] overflow-hidden rounded-2xl border border-border bg-card p-1.5 shadow-stripe-lg">
-                {MATERIALS_DROPDOWN_LINKS.map((child) => (
-                  <Link
-                    key={child.id}
-                    href={child.path}
-                    onClick={() => setMaterialsOpen(false)}
-                    className="block rounded-xl px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:bg-accent focus-visible:text-foreground focus-visible:outline-none"
-                  >
-                    {child.label}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
 
           {indicator && (
             <span
@@ -298,149 +202,70 @@ export function AppHeader() {
             light={overHero}
             onOpenChange={(open) => {
               setIsMenuOpen(open)
-              if (!open) {
-                setExpandedMedia(false)
-                setExpandedGuidelines(false)
-                setExpandedMaterials(false)
-              }
+              if (!open) setExpandedGroup(null)
             }}
           >
             {(close) => (
               <div className="flex flex-col">
                 <nav className="flex flex-col divide-y divide-border">
-                  {MAIN_NAV_LINKS.map((item) => (
-                    <Link
-                      key={item.id}
-                      href={item.path}
-                      onClick={close}
-                      className="group flex w-full items-center justify-between py-5 text-left transition-colors hover:text-foreground/60 active:scale-[0.99]"
-                    >
-                      <span className="font-heading text-2xl font-medium leading-snug text-foreground">
-                        {item.label}
-                      </span>
-                      <ChevronRight className="h-5 w-5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1" aria-hidden />
-                    </Link>
-                  ))}
-
-                  <div className="flex flex-col">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setExpandedMedia((v) => !v)
-                        setExpandedGuidelines(false)
-                        setExpandedMaterials(false)
-                      }}
-                      aria-expanded={expandedMedia}
-                      aria-controls={MEDIA_SUB_ID}
-                      className="group flex w-full items-center justify-between py-5 text-left transition-colors hover:text-foreground/60 active:scale-[0.99]"
-                    >
-                      <span className="font-heading text-2xl font-medium leading-snug text-foreground">
-                        {MEDIA_LABEL}
-                      </span>
-                      <ChevronDown
-                        className={`h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200 ${expandedMedia ? 'rotate-180' : ''}`}
-                        aria-hidden
-                      />
-                    </button>
-                    <div
-                      id={MEDIA_SUB_ID}
-                      role="group"
-                      aria-label={MEDIA_LABEL}
-                      className={expandedMedia ? 'flex flex-col divide-y divide-border pl-4 pb-2' : 'hidden'}
-                    >
-                      {MEDIA_DROPDOWN_LINKS.map((child) => (
+                  {NAV_GROUPS.map((group) => {
+                    if (group.items.length === 1) {
+                      const item = group.items[0]
+                      return (
                         <Link
-                          key={child.id}
-                          href={child.path}
+                          key={group.id}
+                          href={item.path}
                           onClick={close}
-                          className="group flex w-full items-center justify-between py-3 text-left transition-colors hover:text-foreground/60 active:scale-[0.99]"
+                          className="group flex w-full items-center justify-between py-5 text-left transition-colors hover:text-foreground/60 active:scale-[0.99]"
                         >
-                          <span className="text-lg font-medium text-foreground">{child.label}</span>
-                          <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1" aria-hidden />
+                          <span className="font-heading text-2xl font-medium leading-snug text-foreground">
+                            {item.label}
+                          </span>
+                          <ChevronRight className="h-5 w-5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1" aria-hidden />
                         </Link>
-                      ))}
-                    </div>
-                  </div>
+                      )
+                    }
 
-                  <div className="flex flex-col">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setExpandedGuidelines((v) => !v)
-                        setExpandedMaterials(false)
-                        setExpandedMedia(false)
-                      }}
-                      aria-expanded={expandedGuidelines}
-                      aria-controls={GUIDELINES_SUB_ID}
-                      className="group flex w-full items-center justify-between py-5 text-left transition-colors hover:text-foreground/60 active:scale-[0.99]"
-                    >
-                      <span className="font-heading text-2xl font-medium leading-snug text-foreground">
-                        {GUIDELINES_LABEL}
-                      </span>
-                      <ChevronDown
-                        className={`h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200 ${expandedGuidelines ? 'rotate-180' : ''}`}
-                        aria-hidden
-                      />
-                    </button>
-                    <div
-                      id={GUIDELINES_SUB_ID}
-                      role="group"
-                      aria-label={GUIDELINES_LABEL}
-                      className={expandedGuidelines ? 'flex flex-col divide-y divide-border pl-4 pb-2' : 'hidden'}
-                    >
-                      {GUIDELINES_DROPDOWN_LINKS.map((child) => (
-                        <Link
-                          key={child.id}
-                          href={child.path}
-                          onClick={close}
-                          className="group flex w-full items-center justify-between py-3 text-left transition-colors hover:text-foreground/60 active:scale-[0.99]"
+                    const expanded = expandedGroup === group.id
+                    const subId = `nav-${group.id}-sub`
+                    return (
+                      <div key={group.id} className="flex flex-col">
+                        <button
+                          type="button"
+                          onClick={() => setExpandedGroup((id) => (id === group.id ? null : group.id))}
+                          aria-expanded={expanded}
+                          aria-controls={subId}
+                          className="group flex w-full items-center justify-between py-5 text-left transition-colors hover:text-foreground/60 active:scale-[0.99]"
                         >
-                          <span className="text-lg font-medium text-foreground">{child.label}</span>
-                          <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1" aria-hidden />
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setExpandedMaterials((v) => !v)
-                        setExpandedGuidelines(false)
-                        setExpandedMedia(false)
-                      }}
-                      aria-expanded={expandedMaterials}
-                      aria-controls={MATERIALS_SUB_ID}
-                      className="group flex w-full items-center justify-between py-5 text-left transition-colors hover:text-foreground/60 active:scale-[0.99]"
-                    >
-                      <span className="font-heading text-2xl font-medium leading-snug text-foreground">
-                        {MATERIALS_LABEL}
-                      </span>
-                      <ChevronDown
-                        className={`h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200 ${expandedMaterials ? 'rotate-180' : ''}`}
-                        aria-hidden
-                      />
-                    </button>
-                    <div
-                      id={MATERIALS_SUB_ID}
-                      role="group"
-                      aria-label={MATERIALS_LABEL}
-                      className={expandedMaterials ? 'flex flex-col divide-y divide-border pl-4 pb-2' : 'hidden'}
-                    >
-                      {MATERIALS_DROPDOWN_LINKS.map((child) => (
-                        <Link
-                          key={child.id}
-                          href={child.path}
-                          onClick={close}
-                          className="group flex w-full items-center justify-between py-3 text-left transition-colors hover:text-foreground/60 active:scale-[0.99]"
+                          <span className="font-heading text-2xl font-medium leading-snug text-foreground">
+                            {group.label}
+                          </span>
+                          <ChevronDown
+                            className={`h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`}
+                            aria-hidden
+                          />
+                        </button>
+                        <div
+                          id={subId}
+                          role="group"
+                          aria-label={group.label}
+                          className={expanded ? 'flex flex-col divide-y divide-border pl-4 pb-2' : 'hidden'}
                         >
-                          <span className="text-lg font-medium text-foreground">{child.label}</span>
-                          <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1" aria-hidden />
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
+                          {group.items.map((child) => (
+                            <Link
+                              key={child.id}
+                              href={child.path}
+                              onClick={close}
+                              className="group flex w-full items-center justify-between py-3 text-left transition-colors hover:text-foreground/60 active:scale-[0.99]"
+                            >
+                              <span className="text-lg font-medium text-foreground">{child.label}</span>
+                              <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1" aria-hidden />
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )
+                  })}
                 </nav>
               </div>
             )}

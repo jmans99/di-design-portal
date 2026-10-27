@@ -3,6 +3,9 @@
 import Link from 'next/link'
 import { motion, useReducedMotion, type Variants } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import { getSite } from '@/lib/site'
+
+const ORG = getSite().orgName
 
 const container: Variants = {
   hidden: {},
@@ -69,15 +72,15 @@ export function HomeHero() {
           variants={item}
           className="font-heading mx-auto max-w-4xl text-[clamp(2.6rem,6.4vw,4.75rem)] font-medium leading-[1.02] tracking-[-0.04em] text-white text-balance"
         >
-          Every Digital Inclusion asset, in one place
+          Every {ORG} asset, in one place
         </motion.h1>
 
         <motion.p
           variants={item}
           className="mx-auto mt-6 max-w-xl text-[17px] leading-relaxed text-white/85"
         >
-          Logos, colors, typography, illustrations, templates, and the AI skills the
-          Digital Inclusion team builds with. Correct by default, ready in a click.
+          Logos, colors, typography, illustrations, templates, and the AI skills the{' '}
+          {ORG} team builds with. Correct by default, ready in a click.
         </motion.p>
 
         <motion.div variants={item} className="mt-9 flex flex-wrap items-center justify-center gap-3">

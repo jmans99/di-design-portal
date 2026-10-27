@@ -5,6 +5,9 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { ExternalLink, ImageIcon, Mail } from 'lucide-react'
 import { VIDEO_GUIDELINES_ASSETS as ASSETS } from '@/lib/video-guidelines-assets'
+import { getSite } from '@/lib/site'
+
+const ORG = getSite().orgName
 
 const VIDEO_COLORS = [
   { name: 'Giga blue', hex: '#277aff' },
@@ -120,7 +123,7 @@ export function VideoBrandGuidelinesSection({
       <section className="space-y-4">
         <p className="text-base text-foreground leading-relaxed">
           In this section you will find all the branding guidelines and assets to use when
-          creating video content for Digital Inclusion. It includes which fonts to use, how and where to
+          creating video content for {ORG}. It includes which fonts to use, how and where to
           position the logos, how to apply lower thirds to identify speakers, and how to add
           on-screen text for video explainers and subtitles. You will also find all the necessary
           media assets, including After Effects templates, which you can download and customize.
@@ -164,7 +167,7 @@ export function VideoBrandGuidelinesSection({
                 <div>
                   <p className="font-heading text-lg font-medium text-foreground">Open Sans</p>
                   <p className="text-sm text-muted-foreground">
-                    Use in all Digital Inclusion multimedia assets: captions, subtitles, and lower thirds.
+                    Use in all {ORG} multimedia assets: captions, subtitles, and lower thirds.
                     Avoid bold weight; use semibold for body text when highlighting, and medium
                     for titles.
                   </p>
@@ -364,7 +367,7 @@ export function VideoBrandGuidelinesSection({
           Video signature / end slate
         </h3>
         <p className="text-base text-muted-foreground">
-          Apply Digital Inclusion’s stingers. Black background (preferred), white and blue versions available.
+          Apply {ORG}’s stingers. Black background (preferred), white and blue versions available.
         </p>
         <Button variant="outline" size="sm" asChild>
           <a href={ASSETS.stingersUrl} target="_blank" rel="noopener noreferrer">
@@ -399,7 +402,7 @@ export function VideoBrandGuidelinesSection({
       {/* Contact */}
       <section className="space-y-4">
         <h3 className="font-heading text-2xl font-medium text-foreground">
-          Digital Inclusion Multimedia focal point
+          {ORG} Multimedia focal point
         </h3>
         <p className="text-base text-muted-foreground">
           If you have any questions, please contact:

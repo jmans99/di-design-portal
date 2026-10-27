@@ -1,14 +1,17 @@
 import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
+import { getSite } from '@/lib/site'
 import './globals.css'
 
+const SITE = getSite()
+
 export const metadata: Metadata = {
-  title: 'Digital Inclusion Brand Asset Generator',
-  description: 'Generate brand-compliant visual assets for Digital Inclusion partners. Logos, colors, and typography — all in one operational tool.',
+  title: SITE.metadata.title,
+  description: SITE.metadata.description,
 }
 
 export const viewport: Viewport = {
-  themeColor: '#277aff',
+  themeColor: SITE.themeColor,
 }
 
 export default function RootLayout({
@@ -17,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-site={SITE.id}>
       <head>
         <link
           rel="preload"
@@ -36,17 +39,19 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased">
         {children}
-        {/* Hotjar Tracking Code for Gigabrand */}
-        <Script id="hotjar" strategy="afterInteractive">
-          {`(function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:6778103,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`}
-        </Script>
+        {/* Hotjar Tracking Code, only for sites with a Hotjar ID */}
+        {SITE.hotjarId !== null && (
+          <Script id="hotjar" strategy="afterInteractive">
+            {`(function(h,o,t,j,a,r){
+          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+          h._hjSettings={hjid:${SITE.hotjarId},hjsv:6};
+          a=o.getElementsByTagName('head')[0];
+          r=o.createElement('script');r.async=1;
+          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+          a.appendChild(r);
+      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`}
+          </Script>
+        )}
       </body>
     </html>
   )

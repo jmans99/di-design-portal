@@ -62,6 +62,51 @@ export const COLOR_SCALES: ColorScale[] = [
   },
 ]
 
+/**
+ * Digital Inclusion palette, shown in the "Digital Inclusion" tab of the
+ * Colors page on the DI site. Grey and Connectivity are shared with Giga
+ * because DI maps use them.
+ */
+export const DI_COLOR_SCALES: ColorScale[] = [
+  {
+    name: 'Primary',
+    description: 'UNICEF Blue (500) is the base.',
+    tokens: [
+      { name: '50', hex: '#EEF9FF' },
+      { name: '100', hex: '#DAF1FF' },
+      { name: '200', hex: '#B5E4FF' },
+      { name: '300', hex: '#82D3FF' },
+      { name: '400', hex: '#49BCF6' },
+      { name: '500', hex: '#00AEEF' },
+      { name: '600', hex: '#008AC5' },
+      { name: '700', hex: '#01689D' },
+      { name: '800', hex: '#0F4772' },
+      { name: '900', hex: '#1A2A3C' },
+    ],
+  },
+  {
+    name: 'Neutrals',
+    description: 'Navy for dark backgrounds and text, off-white for light backgrounds.',
+    tokens: [
+      { name: 'Navy', hex: '#1A2A3C' },
+      { name: 'Off-white', hex: '#F8F8F8' },
+    ],
+  },
+  {
+    name: 'Accent',
+    description: 'Single accent only: kickers and highlights',
+    tokens: [{ name: 'Orange', hex: '#F7761F' }],
+  },
+  ...COLOR_SCALES.filter((scale) => scale.name === 'Grey' || scale.name === 'Connectivity'),
+]
+
+/** Swatches of the "Main colors" row in the DI tab. */
+export const DI_MAIN_COLORS = [
+  { name: 'UNICEF Blue', hex: '#00AEEF' },
+  { name: 'Navy', hex: '#1A2A3C' },
+  { name: 'Off-white', hex: '#F8F8F8' },
+]
+
 export function getColorTokens() {
   return COLOR_SCALES
 }

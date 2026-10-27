@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ArrowUpRight, Mail, Share2, Shapes, Brush, Monitor } from 'lucide-react'
 import { Reveal } from '@/components/home/reveal'
+import { isRouteEnabled } from '@/lib/site'
 
 const TILE =
   'group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-border bg-card p-5 shadow-stripe transition-smooth hover-lift'
@@ -23,22 +24,24 @@ export function SystemBento() {
 
       <Reveal className="grid auto-rows-[minmax(200px,auto)] grid-cols-2 gap-4 lg:grid-cols-4">
         {/* AI Skills — featured by width, kept clean */}
-        <Link href="/materials/skills" className={`${TILE} col-span-2 !justify-end`}>
-          <div>
-            <span className="mb-3 inline-flex rounded-full bg-primary-600 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-white">
-              New
-            </span>
-            <h3 className="font-heading text-2xl font-medium text-foreground">AI Skills</h3>
-            <p className="mt-2 max-w-sm text-[14px] leading-relaxed text-muted-foreground">
-              The skills the Digital Inclusion team builds with, packaged and ready to install on
-              your AI platform.
-            </p>
-            <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary-600">
-              Get the skills
-              <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </span>
-          </div>
-        </Link>
+        {isRouteEnabled('/materials/skills') && (
+          <Link href="/materials/skills" className={`${TILE} col-span-2 !justify-end`}>
+            <div>
+              <span className="mb-3 inline-flex rounded-full bg-primary-600 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-white">
+                New
+              </span>
+              <h3 className="font-heading text-2xl font-medium text-foreground">AI Skills</h3>
+              <p className="mt-2 max-w-sm text-[14px] leading-relaxed text-muted-foreground">
+                The skills the Digital Inclusion team builds with, packaged and ready to install on
+                your AI platform.
+              </p>
+              <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary-600">
+                Get the skills
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </span>
+            </div>
+          </Link>
+        )}
 
         {/* Logos */}
         <Link href="/logos" className={TILE}>
@@ -114,20 +117,24 @@ export function SystemBento() {
         </Link>
 
         {/* Backgrounds */}
-        <Link href="/materials/backgrounds" className={TILE}>
-          <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary-50 text-primary-600">
-            <Monitor className="anim-bounce h-5 w-5" />
-          </span>
-          <TileLabel title="Backgrounds" sub="4K backgrounds for calls" className="pt-3" />
-        </Link>
+        {isRouteEnabled('/materials/backgrounds') && (
+          <Link href="/materials/backgrounds" className={TILE}>
+            <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary-50 text-primary-600">
+              <Monitor className="anim-bounce h-5 w-5" />
+            </span>
+            <TileLabel title="Backgrounds" sub="4K backgrounds for calls" className="pt-3" />
+          </Link>
+        )}
 
         {/* Email signature */}
-        <Link href="/materials/email-signature" className={TILE}>
-          <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary-50 text-primary-600">
-            <Mail className="anim-send h-5 w-5" />
-          </span>
-          <TileLabel title="Email signature" sub="Build and copy yours" className="pt-3" />
-        </Link>
+        {isRouteEnabled('/materials/email-signature') && (
+          <Link href="/materials/email-signature" className={TILE}>
+            <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary-50 text-primary-600">
+              <Mail className="anim-send h-5 w-5" />
+            </span>
+            <TileLabel title="Email signature" sub="Build and copy yours" className="pt-3" />
+          </Link>
+        )}
 
         {/* Social media */}
         <Link href="/materials/social-media" className={TILE}>
