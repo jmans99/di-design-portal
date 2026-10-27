@@ -126,6 +126,24 @@
     "audienceGroupId": "civil-society"
   },
   {
+    "id": "school-leader",
+    "name": "School leader",
+    "description": "An individual administrator or principal role.",
+    "audienceGroupId": "community"
+  },
+  {
+    "id": "teacher",
+    "name": "Teacher",
+    "description": "Instructional staff.",
+    "audienceGroupId": "community"
+  },
+  {
+    "id": "health-workforce",
+    "name": "Health workforce",
+    "description": "Clinical and health-facility staff.",
+    "audienceGroupId": "community"
+  },
+  {
     "id": "child",
     "name": "Child",
     "description": "General child beneficiary, in a rights-based framing.",

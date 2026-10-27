@@ -48,8 +48,8 @@ const AUDIENCE_GROUP_MAP = {
   'donors-private': 'private-sector-funders-donors',
   'operators-vendors': 'operators-providers',
   'civil-society': 'civil-society',
-  'school-institutions': null, // facilities, see FACILITIES
-  'health-institutions': null, // facilities, see FACILITIES
+  'school-institutions': null, // places are facilities (FACILITIES), people are in AUDIENCE_OVERRIDES
+  'health-institutions': null, // places are facilities (FACILITIES), people are in AUDIENCE_OVERRIDES
   'children-communities': 'community',
   'patients-mothers': 'community',
   'internal-unicef': 'unicef',
@@ -59,12 +59,18 @@ const AUDIENCE_GROUP_MAP = {
 const AUDIENCE_OVERRIDES = {
   'multilateral-igo': 'public-sector-partners', // UN agencies / IGOs in coordination and standard-setting roles, not funders
   'local-entrepreneur': 'community', // individual innovators, farmers, gig workers, not operators
+  // People from the cockpit's school and health institution groups (the
+  // places in those groups are facilities, see FACILITIES).
+  'school-leader': 'community',
+  teacher: 'community',
+  'health-workforce': 'community',
 }
 
 // ── Facilities ───────────────────────────────────────────────────────────
 // Schools and health institutions are facilities, not audiences. These
 // cockpit audiences (audGroups[].atoms[].id) become facilities, keeping
-// their needs links.
+// their needs links. Facilities are places, not people: the people in the
+// same cockpit groups are audiences (see AUDIENCE_OVERRIDES).
 const FACILITY_GROUPS = [
   { id: 'schools', name: 'Schools' },
   { id: 'health-institutions', name: 'Health institutions' },
@@ -72,12 +78,9 @@ const FACILITY_GROUPS = [
 
 const FACILITIES = {
   school: 'schools',
-  'school-leader': 'schools',
-  teacher: 'schools',
   'school-system': 'schools',
   'health-facility': 'health-institutions',
   'health-system': 'health-institutions',
-  'health-workforce': 'health-institutions',
   'health-information-system': 'health-institutions',
   'mnch-service': 'health-institutions',
   'child-facing-institution': 'health-institutions',

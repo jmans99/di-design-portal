@@ -576,6 +576,50 @@
     "needId": "sectors-plan-alone"
   },
   {
+    "audienceId": "health-workforce",
+    "needId": "ai-readiness-gap"
+  },
+  {
+    "audienceId": "health-workforce",
+    "needId": "cable-alone-insufficient"
+  },
+  {
+    "audienceId": "health-workforce",
+    "needId": "data-not-actioned"
+  },
+  {
+    "audienceId": "health-workforce",
+    "needId": "data-siloed"
+  },
+  {
+    "audienceId": "health-workforce",
+    "needId": "dropped-connection-fatal"
+  },
+  {
+    "audienceId": "health-workforce",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "audienceId": "health-workforce",
+    "needId": "no-skills-no-job"
+  },
+  {
+    "audienceId": "health-workforce",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "health-workforce",
+    "needId": "staff-cant-run-programmes"
+  },
+  {
+    "audienceId": "health-workforce",
+    "needId": "workforce-development-blocked"
+  },
+  {
+    "audienceId": "health-workforce",
+    "needId": "workforce-shortage"
+  },
+  {
     "audienceId": "household",
     "needId": "bill-exceeds-budget"
   },
@@ -1556,6 +1600,30 @@
     "needId": "same-children-left-behind"
   },
   {
+    "audienceId": "school-leader",
+    "needId": "bill-exceeds-budget"
+  },
+  {
+    "audienceId": "school-leader",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "audienceId": "school-leader",
+    "needId": "no-post-launch-funding"
+  },
+  {
+    "audienceId": "school-leader",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "school-leader",
+    "needId": "staff-cant-run-programmes"
+  },
+  {
+    "audienceId": "school-leader",
+    "needId": "unguided-use-backfires"
+  },
+  {
     "audienceId": "student-learner",
     "needId": "ai-hype-crowds-out-access"
   },
@@ -1634,6 +1702,42 @@
   {
     "audienceId": "student-learner",
     "needId": "unusable-in-practice"
+  },
+  {
+    "audienceId": "teacher",
+    "needId": "bill-exceeds-budget"
+  },
+  {
+    "audienceId": "teacher",
+    "needId": "cable-alone-insufficient"
+  },
+  {
+    "audienceId": "teacher",
+    "needId": "data-siloed"
+  },
+  {
+    "audienceId": "teacher",
+    "needId": "hidden-extra-costs"
+  },
+  {
+    "audienceId": "teacher",
+    "needId": "not-connected"
+  },
+  {
+    "audienceId": "teacher",
+    "needId": "staff-cant-run-programmes"
+  },
+  {
+    "audienceId": "teacher",
+    "needId": "unguided-use-backfires"
+  },
+  {
+    "audienceId": "teacher",
+    "needId": "workforce-development-blocked"
+  },
+  {
+    "audienceId": "teacher",
+    "needId": "workforce-shortage"
   },
   {
     "audienceId": "telecom-operator",

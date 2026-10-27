@@ -6,18 +6,6 @@
     "facilityGroupId": "schools"
   },
   {
-    "id": "school-leader",
-    "name": "School leader",
-    "description": "An individual administrator or principal role.",
-    "facilityGroupId": "schools"
-  },
-  {
-    "id": "teacher",
-    "name": "Teacher",
-    "description": "Instructional staff.",
-    "facilityGroupId": "schools"
-  },
-  {
     "id": "school-system",
     "name": "School system",
     "description": "The aggregated national or regional education delivery apparatus.",
@@ -33,12 +21,6 @@
     "id": "health-system",
     "name": "Health system",
     "description": "The aggregated national health-delivery apparatus.",
-    "facilityGroupId": "health-institutions"
-  },
-  {
-    "id": "health-workforce",
-    "name": "Health workforce",
-    "description": "Clinical and health-facility staff.",
     "facilityGroupId": "health-institutions"
   },
   {

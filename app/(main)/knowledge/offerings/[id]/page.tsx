@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { PageHeader } from '@/components/page-header'
 import { BackLink, BetaNote, KNOWLEDGE_MAIN, KnowledgeCard, SectionTitle, Tag } from '@/components/knowledge/knowledge-ui'
-import { OFFERINGS, audiencesForOffering, getOffering, getOfferingCategory } from '@/lib/knowledge'
+import { OFFERINGS, audiencesForOffering, facilitiesForOffering, getOffering, getOfferingCategory } from '@/lib/knowledge'
 
 export const dynamicParams = false
 
@@ -19,6 +19,7 @@ export default async function OfferingPage({ params }: { params: Promise<{ id: s
   if (!offering) notFound()
 
   const audienceGroups = audiencesForOffering(offering.id)
+  const facilityGroups = facilitiesForOffering(offering.id)
 
   return (
     <main className={KNOWLEDGE_MAIN}>
@@ -52,6 +53,28 @@ export default async function OfferingPage({ params }: { params: Promise<{ id: s
           <p className="mt-2 text-sm text-muted-foreground">No audiences linked to this offering yet.</p>
         )}
       </section>
+
+      {facilityGroups.length > 0 && (
+        <section aria-labelledby="facilities-title" className="mt-10">
+          <div id="facilities-title">
+            <SectionTitle>Facilities it serves</SectionTitle>
+          </div>
+          <div className="mt-4 flex flex-col gap-6">
+            {facilityGroups.map(({ group, facilities }) => (
+              <div key={group.id}>
+                <h3 className="text-sm font-semibold text-muted-foreground">{group.name}</h3>
+                <ul className="mt-2 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {facilities.map((f) => (
+                    <li key={f.id}>
+                      <KnowledgeCard href={`/knowledge/facilities/${f.id}`} title={f.name} description={f.description} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
     </main>
   )
 }

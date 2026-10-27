@@ -324,50 +324,6 @@
     "needId": "workforce-shortage"
   },
   {
-    "facilityId": "health-workforce",
-    "needId": "ai-readiness-gap"
-  },
-  {
-    "facilityId": "health-workforce",
-    "needId": "cable-alone-insufficient"
-  },
-  {
-    "facilityId": "health-workforce",
-    "needId": "data-not-actioned"
-  },
-  {
-    "facilityId": "health-workforce",
-    "needId": "data-siloed"
-  },
-  {
-    "facilityId": "health-workforce",
-    "needId": "dropped-connection-fatal"
-  },
-  {
-    "facilityId": "health-workforce",
-    "needId": "no-live-monitoring"
-  },
-  {
-    "facilityId": "health-workforce",
-    "needId": "no-skills-no-job"
-  },
-  {
-    "facilityId": "health-workforce",
-    "needId": "not-connected"
-  },
-  {
-    "facilityId": "health-workforce",
-    "needId": "staff-cant-run-programmes"
-  },
-  {
-    "facilityId": "health-workforce",
-    "needId": "workforce-development-blocked"
-  },
-  {
-    "facilityId": "health-workforce",
-    "needId": "workforce-shortage"
-  },
-  {
     "facilityId": "mnch-service",
     "needId": "data-siloed"
   },
@@ -540,30 +496,6 @@
     "needId": "workforce-shortage"
   },
   {
-    "facilityId": "school-leader",
-    "needId": "bill-exceeds-budget"
-  },
-  {
-    "facilityId": "school-leader",
-    "needId": "no-live-monitoring"
-  },
-  {
-    "facilityId": "school-leader",
-    "needId": "no-post-launch-funding"
-  },
-  {
-    "facilityId": "school-leader",
-    "needId": "not-connected"
-  },
-  {
-    "facilityId": "school-leader",
-    "needId": "staff-cant-run-programmes"
-  },
-  {
-    "facilityId": "school-leader",
-    "needId": "unguided-use-backfires"
-  },
-  {
     "facilityId": "school-system",
     "needId": "bill-exceeds-budget"
   },
@@ -617,42 +549,6 @@
   },
   {
     "facilityId": "school-system",
-    "needId": "workforce-shortage"
-  },
-  {
-    "facilityId": "teacher",
-    "needId": "bill-exceeds-budget"
-  },
-  {
-    "facilityId": "teacher",
-    "needId": "cable-alone-insufficient"
-  },
-  {
-    "facilityId": "teacher",
-    "needId": "data-siloed"
-  },
-  {
-    "facilityId": "teacher",
-    "needId": "hidden-extra-costs"
-  },
-  {
-    "facilityId": "teacher",
-    "needId": "not-connected"
-  },
-  {
-    "facilityId": "teacher",
-    "needId": "staff-cant-run-programmes"
-  },
-  {
-    "facilityId": "teacher",
-    "needId": "unguided-use-backfires"
-  },
-  {
-    "facilityId": "teacher",
-    "needId": "workforce-development-blocked"
-  },
-  {
-    "facilityId": "teacher",
     "needId": "workforce-shortage"
   }
 ]

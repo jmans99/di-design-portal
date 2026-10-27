@@ -121,3 +121,11 @@ export function audiencesForOffering(offeringId: string) {
     .map(({ group, audiences }) => ({ group, audiences: audiences.filter((a) => ids.has(a.id)) }))
     .filter((g) => g.audiences.length > 0)
 }
+
+/** Facilities an offering serves (through their needs), grouped by facility group. */
+export function facilitiesForOffering(offeringId: string) {
+  const ids = new Set(facilityOfferings.filter((l) => l.offeringId === offeringId).map((l) => l.facilityId))
+  return facilitiesByGroup()
+    .map(({ group, facilities }) => ({ group, facilities: facilities.filter((f) => ids.has(f.id)) }))
+    .filter((g) => g.facilities.length > 0)
+}
