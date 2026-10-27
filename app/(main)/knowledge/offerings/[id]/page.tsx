@@ -27,7 +27,7 @@ export default async function OfferingPage({ params }: { params: Promise<{ id: s
       <div className="mb-3">
         <Tag>{getOfferingCategory(offering.offeringCategoryId)?.name}</Tag>
       </div>
-      <PageHeader title={offering.name} description={offering.description} />
+      <PageHeader title={offering.name} description={offering.description ?? undefined} />
 
       <section aria-labelledby="audiences-title">
         <div id="audiences-title">

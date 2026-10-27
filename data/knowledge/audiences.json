@@ -126,66 +126,6 @@
     "audienceGroupId": "civil-society"
   },
   {
-    "id": "school",
-    "name": "School",
-    "description": "The physical or institutional site where education services are delivered.",
-    "audienceGroupId": null
-  },
-  {
-    "id": "school-leader",
-    "name": "School leader",
-    "description": "An individual administrator or principal role.",
-    "audienceGroupId": null
-  },
-  {
-    "id": "teacher",
-    "name": "Teacher",
-    "description": "Instructional staff.",
-    "audienceGroupId": null
-  },
-  {
-    "id": "school-system",
-    "name": "School system",
-    "description": "The aggregated national or regional education delivery apparatus.",
-    "audienceGroupId": null
-  },
-  {
-    "id": "health-facility",
-    "name": "Health facility",
-    "description": "The physical or institutional site where health services are delivered.",
-    "audienceGroupId": null
-  },
-  {
-    "id": "health-system",
-    "name": "Health system",
-    "description": "The aggregated national health-delivery apparatus.",
-    "audienceGroupId": null
-  },
-  {
-    "id": "health-workforce",
-    "name": "Health workforce",
-    "description": "Clinical and health-facility staff.",
-    "audienceGroupId": null
-  },
-  {
-    "id": "health-information-system",
-    "name": "Health information system",
-    "description": "Digital health data and reporting infrastructure (HMIS, surveillance).",
-    "audienceGroupId": null
-  },
-  {
-    "id": "mnch-service",
-    "name": "MNCH service",
-    "description": "Maternal, newborn and child health service line specifically.",
-    "audienceGroupId": null
-  },
-  {
-    "id": "child-facing-institution",
-    "name": "Child-facing institution",
-    "description": "Public institutions beyond schools and health facilities, such as protection systems.",
-    "audienceGroupId": null
-  },
-  {
     "id": "child",
     "name": "Child",
     "description": "General child beneficiary, in a rights-based framing.",

@@ -1,0 +1,658 @@
+[
+  {
+    "facilityId": "child-facing-institution",
+    "needId": "ai-readiness-gap"
+  },
+  {
+    "facilityId": "child-facing-institution",
+    "needId": "cable-alone-insufficient"
+  },
+  {
+    "facilityId": "child-facing-institution",
+    "needId": "compounding-infra-gaps"
+  },
+  {
+    "facilityId": "child-facing-institution",
+    "needId": "coverage-unaffordable"
+  },
+  {
+    "facilityId": "child-facing-institution",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "facilityId": "child-facing-institution",
+    "needId": "last-mile-uneconomical"
+  },
+  {
+    "facilityId": "child-facing-institution",
+    "needId": "no-post-launch-funding"
+  },
+  {
+    "facilityId": "child-facing-institution",
+    "needId": "not-connected"
+  },
+  {
+    "facilityId": "child-facing-institution",
+    "needId": "same-children-left-behind"
+  },
+  {
+    "facilityId": "child-facing-institution",
+    "needId": "unreliable-power"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "bill-exceeds-budget"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "cable-alone-insufficient"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "compounding-infra-gaps"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "cost-unknown"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "coverage-unaffordable"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "crisis-cuts-connectivity"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "data-not-actioned"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "data-siloed"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "data-trust-deficit"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "dropped-connection-fatal"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "fragmented-health-tools"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "hidden-extra-costs"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "last-mile-uneconomical"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "no-enforceable-standards"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "no-grid-access"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "no-investment-certainty"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "no-post-launch-funding"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "no-shared-standards"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "no-single-steward"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "not-connected"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "paper-based-records"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "preventable-deaths"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "same-children-left-behind"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "services-degrade-offline"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "staff-cant-run-programmes"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "unreliable-power"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "unusable-in-practice"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "weak-procurement"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "workforce-development-blocked"
+  },
+  {
+    "facilityId": "health-facility",
+    "needId": "workforce-shortage"
+  },
+  {
+    "facilityId": "health-information-system",
+    "needId": "compounding-infra-gaps"
+  },
+  {
+    "facilityId": "health-information-system",
+    "needId": "data-siloed"
+  },
+  {
+    "facilityId": "health-information-system",
+    "needId": "fragmented-health-tools"
+  },
+  {
+    "facilityId": "health-information-system",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "facilityId": "health-information-system",
+    "needId": "no-shared-standards"
+  },
+  {
+    "facilityId": "health-information-system",
+    "needId": "paper-based-records"
+  },
+  {
+    "facilityId": "health-information-system",
+    "needId": "workforce-development-blocked"
+  },
+  {
+    "facilityId": "health-information-system",
+    "needId": "workforce-shortage"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "bill-exceeds-budget"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "cable-alone-insufficient"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "causal-proof-missing"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "compounding-infra-gaps"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "coverage-unaffordable"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "crisis-cuts-connectivity"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "data-not-actioned"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "data-siloed"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "data-trust-deficit"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "dropped-connection-fatal"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "fragmented-health-tools"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "last-mile-uneconomical"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "no-enforceable-standards"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "no-fibre-backbone"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "no-investment-certainty"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "no-post-launch-funding"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "no-proof-no-funding"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "no-safety-standards"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "no-shared-standards"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "no-single-steward"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "not-connected"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "paper-based-records"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "preventable-deaths"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "same-children-left-behind"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "services-degrade-offline"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "staff-cant-run-programmes"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "unreliable-power"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "weak-procurement"
+  },
+  {
+    "facilityId": "health-system",
+    "needId": "workforce-shortage"
+  },
+  {
+    "facilityId": "health-workforce",
+    "needId": "ai-readiness-gap"
+  },
+  {
+    "facilityId": "health-workforce",
+    "needId": "cable-alone-insufficient"
+  },
+  {
+    "facilityId": "health-workforce",
+    "needId": "data-not-actioned"
+  },
+  {
+    "facilityId": "health-workforce",
+    "needId": "data-siloed"
+  },
+  {
+    "facilityId": "health-workforce",
+    "needId": "dropped-connection-fatal"
+  },
+  {
+    "facilityId": "health-workforce",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "facilityId": "health-workforce",
+    "needId": "no-skills-no-job"
+  },
+  {
+    "facilityId": "health-workforce",
+    "needId": "not-connected"
+  },
+  {
+    "facilityId": "health-workforce",
+    "needId": "staff-cant-run-programmes"
+  },
+  {
+    "facilityId": "health-workforce",
+    "needId": "workforce-development-blocked"
+  },
+  {
+    "facilityId": "health-workforce",
+    "needId": "workforce-shortage"
+  },
+  {
+    "facilityId": "mnch-service",
+    "needId": "data-siloed"
+  },
+  {
+    "facilityId": "mnch-service",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "facilityId": "mnch-service",
+    "needId": "paper-based-records"
+  },
+  {
+    "facilityId": "school",
+    "needId": "ai-readiness-gap"
+  },
+  {
+    "facilityId": "school",
+    "needId": "bill-exceeds-budget"
+  },
+  {
+    "facilityId": "school",
+    "needId": "cable-alone-insufficient"
+  },
+  {
+    "facilityId": "school",
+    "needId": "compounding-infra-gaps"
+  },
+  {
+    "facilityId": "school",
+    "needId": "cost-unknown"
+  },
+  {
+    "facilityId": "school",
+    "needId": "coverage-unaffordable"
+  },
+  {
+    "facilityId": "school",
+    "needId": "crisis-cuts-connectivity"
+  },
+  {
+    "facilityId": "school",
+    "needId": "data-not-actioned"
+  },
+  {
+    "facilityId": "school",
+    "needId": "data-siloed"
+  },
+  {
+    "facilityId": "school",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "facilityId": "school",
+    "needId": "facility-registry-drift"
+  },
+  {
+    "facilityId": "school",
+    "needId": "hidden-extra-costs"
+  },
+  {
+    "facilityId": "school",
+    "needId": "income-opportunity-lost"
+  },
+  {
+    "facilityId": "school",
+    "needId": "last-mile-uneconomical"
+  },
+  {
+    "facilityId": "school",
+    "needId": "life-chances-lost"
+  },
+  {
+    "facilityId": "school",
+    "needId": "more-exposure-with-access"
+  },
+  {
+    "facilityId": "school",
+    "needId": "no-affordable-filtering"
+  },
+  {
+    "facilityId": "school",
+    "needId": "no-emergency-restoration-plan"
+  },
+  {
+    "facilityId": "school",
+    "needId": "no-enforceable-standards"
+  },
+  {
+    "facilityId": "school",
+    "needId": "no-fibre-backbone"
+  },
+  {
+    "facilityId": "school",
+    "needId": "no-grid-access"
+  },
+  {
+    "facilityId": "school",
+    "needId": "no-investment-certainty"
+  },
+  {
+    "facilityId": "school",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "facilityId": "school",
+    "needId": "no-post-launch-funding"
+  },
+  {
+    "facilityId": "school",
+    "needId": "no-proof-no-funding"
+  },
+  {
+    "facilityId": "school",
+    "needId": "no-safety-standards"
+  },
+  {
+    "facilityId": "school",
+    "needId": "no-shared-standards"
+  },
+  {
+    "facilityId": "school",
+    "needId": "no-skills-no-job"
+  },
+  {
+    "facilityId": "school",
+    "needId": "not-connected"
+  },
+  {
+    "facilityId": "school",
+    "needId": "safeguards-an-afterthought"
+  },
+  {
+    "facilityId": "school",
+    "needId": "same-children-left-behind"
+  },
+  {
+    "facilityId": "school",
+    "needId": "sectors-plan-alone"
+  },
+  {
+    "facilityId": "school",
+    "needId": "services-degrade-offline"
+  },
+  {
+    "facilityId": "school",
+    "needId": "skills-without-connectivity"
+  },
+  {
+    "facilityId": "school",
+    "needId": "staff-cant-run-programmes"
+  },
+  {
+    "facilityId": "school",
+    "needId": "unguided-use-backfires"
+  },
+  {
+    "facilityId": "school",
+    "needId": "unreliable-power"
+  },
+  {
+    "facilityId": "school",
+    "needId": "unusable-in-practice"
+  },
+  {
+    "facilityId": "school",
+    "needId": "weak-procurement"
+  },
+  {
+    "facilityId": "school",
+    "needId": "workforce-shortage"
+  },
+  {
+    "facilityId": "school-leader",
+    "needId": "bill-exceeds-budget"
+  },
+  {
+    "facilityId": "school-leader",
+    "needId": "no-live-monitoring"
+  },
+  {
+    "facilityId": "school-leader",
+    "needId": "no-post-launch-funding"
+  },
+  {
+    "facilityId": "school-leader",
+    "needId": "not-connected"
+  },
+  {
+    "facilityId": "school-leader",
+    "needId": "staff-cant-run-programmes"
+  },
+  {
+    "facilityId": "school-leader",
+    "needId": "unguided-use-backfires"
+  },
+  {
+    "facilityId": "school-system",
+    "needId": "bill-exceeds-budget"
+  },
+  {
+    "facilityId": "school-system",
+    "needId": "compounding-infra-gaps"
+  },
+  {
+    "facilityId": "school-system",
+    "needId": "coverage-unaffordable"
+  },
+  {
+    "facilityId": "school-system",
+    "needId": "data-not-actioned"
+  },
+  {
+    "facilityId": "school-system",
+    "needId": "facilities-unmapped"
+  },
+  {
+    "facilityId": "school-system",
+    "needId": "last-mile-uneconomical"
+  },
+  {
+    "facilityId": "school-system",
+    "needId": "no-investment-certainty"
+  },
+  {
+    "facilityId": "school-system",
+    "needId": "no-post-launch-funding"
+  },
+  {
+    "facilityId": "school-system",
+    "needId": "no-single-steward"
+  },
+  {
+    "facilityId": "school-system",
+    "needId": "no-skills-no-job"
+  },
+  {
+    "facilityId": "school-system",
+    "needId": "not-connected"
+  },
+  {
+    "facilityId": "school-system",
+    "needId": "paper-based-records"
+  },
+  {
+    "facilityId": "school-system",
+    "needId": "unreliable-power"
+  },
+  {
+    "facilityId": "school-system",
+    "needId": "workforce-shortage"
+  },
+  {
+    "facilityId": "teacher",
+    "needId": "bill-exceeds-budget"
+  },
+  {
+    "facilityId": "teacher",
+    "needId": "cable-alone-insufficient"
+  },
+  {
+    "facilityId": "teacher",
+    "needId": "data-siloed"
+  },
+  {
+    "facilityId": "teacher",
+    "needId": "hidden-extra-costs"
+  },
+  {
+    "facilityId": "teacher",
+    "needId": "not-connected"
+  },
+  {
+    "facilityId": "teacher",
+    "needId": "staff-cant-run-programmes"
+  },
+  {
+    "facilityId": "teacher",
+    "needId": "unguided-use-backfires"
+  },
+  {
+    "facilityId": "teacher",
+    "needId": "workforce-development-blocked"
+  },
+  {
+    "facilityId": "teacher",
+    "needId": "workforce-shortage"
+  }
+]

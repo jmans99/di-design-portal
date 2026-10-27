@@ -13,6 +13,7 @@ import {
   Monitor,
   Palette,
   Presentation,
+  School,
   Share2,
   Shapes,
   Sparkles,
@@ -92,6 +93,7 @@ const ALL_NAV_GROUPS: NavGroup[] = [
     label: 'Knowledge',
     items: [
       { id: 'audiences', path: '/knowledge/audiences', label: 'Audiences', icon: Users },
+      { id: 'facilities', path: '/knowledge/facilities', label: 'Facilities', icon: School },
       { id: 'offerings', path: '/knowledge/offerings', label: 'Offerings', icon: Building2 },
       { id: 'kpis', path: '/knowledge/kpis', label: 'KPIs', icon: ChartColumn, soon: true },
       { id: 'case-studies', path: '/knowledge/case-studies', label: 'Case studies', icon: Waypoints, soon: true },

@@ -30,6 +30,8 @@ export const PAGE_ROUTES = [
   '/guidelines/brand',
   '/knowledge/audiences',
   '/knowledge/audiences/[id]',
+  '/knowledge/facilities',
+  '/knowledge/facilities/[id]',
   '/knowledge/offerings',
   '/knowledge/offerings/[id]',
 ] as const
@@ -142,6 +144,8 @@ const di: SiteConfig = {
     '/guidelines/brand',
     '/knowledge/audiences',
     '/knowledge/audiences/[id]',
+    '/knowledge/facilities',
+    '/knowledge/facilities/[id]',
     '/knowledge/offerings',
     '/knowledge/offerings/[id]',
   ],

@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { ArrowRight, Building2, Users } from 'lucide-react'
+import { ArrowRight, Building2, School, Users } from 'lucide-react'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { OUTPUT_OPTIONS, briefHref, type Brief, type OutputType } from '@/lib/brief'
 import { AUDIENCE_GROUPS } from '@/lib/knowledge'
@@ -59,6 +59,12 @@ const KNOWLEDGE_LINKS = [
     description: 'Who we talk to, in nine audience groups, with what each audience needs.',
     href: '/knowledge/audiences',
     icon: Users,
+  },
+  {
+    title: 'Facilities',
+    description: 'Schools and health institutions, with what they need and which offerings serve them.',
+    href: '/knowledge/facilities',
+    icon: School,
   },
   {
     title: 'Offerings',
@@ -173,7 +179,7 @@ export function DiHome() {
         <h2 id="knowledge-title" className="font-heading text-xl font-medium text-foreground">
           Knowledge
         </h2>
-        <ul className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2">
+        <ul className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-3">
           {KNOWLEDGE_LINKS.map(({ title, description, href, icon: Icon }) => (
             <li key={title}>
               <Link

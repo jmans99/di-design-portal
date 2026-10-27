@@ -56,7 +56,7 @@
     "needGroupId": "visibility-data",
     "offeringIds": [
       "dashboards",
-      "rtm"
+      "real-time-monitoring"
     ]
   },
   {
@@ -65,7 +65,7 @@
     "statement": "We need to know in real time if a connection goes down.",
     "needGroupId": "visibility-data",
     "offeringIds": [
-      "rtm"
+      "real-time-monitoring"
     ]
   },
   {
@@ -74,8 +74,8 @@
     "statement": "We need a reason and a moment to upgrade past data we only think is good enough.",
     "needGroupId": "visibility-data",
     "offeringIds": [
-      "rtm",
-      "evidence"
+      "real-time-monitoring",
+      "research"
     ]
   },
   {
@@ -84,7 +84,7 @@
     "statement": "We need our connectivity data independently verified, not just self-reported.",
     "needGroupId": "visibility-data",
     "offeringIds": [
-      "rtm",
+      "real-time-monitoring",
       "mapping"
     ]
   },
@@ -104,7 +104,7 @@
     "needGroupId": "financing-sustainability",
     "offeringIds": [
       "investment-case",
-      "evidence"
+      "research"
     ]
   },
   {
@@ -351,7 +351,7 @@
     "statement": "We need connectivity that holds up during emergencies, not just in normal conditions.",
     "needGroupId": "service-reliability",
     "offeringIds": [
-      "rtm"
+      "real-time-monitoring"
     ]
   },
   {
@@ -360,7 +360,7 @@
     "statement": "We need connections that are actually usable, not just technically present.",
     "needGroupId": "service-reliability",
     "offeringIds": [
-      "rtm"
+      "real-time-monitoring"
     ]
   },
   {
@@ -369,7 +369,7 @@
     "statement": "We need service delivery that doesn't collapse the moment connectivity dips.",
     "needGroupId": "service-reliability",
     "offeringIds": [
-      "rtm"
+      "real-time-monitoring"
     ]
   },
   {
@@ -392,7 +392,7 @@
     "statement": "We need connectivity reliable enough that losing it isn't a matter of life and death.",
     "needGroupId": "service-reliability",
     "offeringIds": [
-      "rtm"
+      "real-time-monitoring"
     ]
   },
   {
@@ -401,7 +401,7 @@
     "statement": "We need connected care that stops these deaths from being preventable and still happening.",
     "needGroupId": "outcome-deficit",
     "offeringIds": [
-      "evidence",
+      "research",
       "investment-case"
     ]
   },
@@ -411,7 +411,7 @@
     "statement": "We need connectivity that turns into real income and opportunity, not just access.",
     "needGroupId": "outcome-deficit",
     "offeringIds": [
-      "evidence",
+      "research",
       "investment-case"
     ]
   },
@@ -421,7 +421,7 @@
     "statement": "We need connectivity that closes the learning gap, not just adds a wire to the classroom.",
     "needGroupId": "outcome-deficit",
     "offeringIds": [
-      "evidence"
+      "research"
     ]
   },
   {
@@ -430,7 +430,7 @@
     "statement": "We need the quantified cost of inaction put in front of the people who decide budgets.",
     "needGroupId": "outcome-evidence",
     "offeringIds": [
-      "evidence",
+      "research",
       "investment-case"
     ]
   },
@@ -440,7 +440,7 @@
     "statement": "We need a credible, funder-ready evidence package before we ask for money.",
     "needGroupId": "outcome-evidence",
     "offeringIds": [
-      "evidence",
+      "research",
       "investment-case"
     ]
   },
@@ -450,7 +450,7 @@
     "statement": "We need real causal evidence that connectivity is what's driving the outcome, not just a correlation.",
     "needGroupId": "outcome-evidence",
     "offeringIds": [
-      "evidence"
+      "research"
     ]
   },
   {
@@ -496,7 +496,7 @@
     "statement": "We need evidence that's tied to a real decision, payment, or enforcement action, not just a report that sits on a shelf.",
     "needGroupId": "evidence-to-action",
     "offeringIds": [
-      "evidence",
+      "research",
       "investment-case",
       "supported-procurement"
     ]
@@ -570,7 +570,7 @@
     "statement": "We need to show real lived experience, not just describe our intentions.",
     "needGroupId": "voice-agency",
     "offeringIds": [
-      "evidence"
+      "research"
     ]
   },
   {

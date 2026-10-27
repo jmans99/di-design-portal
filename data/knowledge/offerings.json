@@ -1,110 +1,128 @@
 [
   {
-    "id": "mapping",
-    "name": "Mapping",
-    "description": "Geospatial connectivity maps.",
-    "offeringCategoryId": "network-data-solutions"
-  },
-  {
-    "id": "rtm",
-    "name": "Real time monitoring",
-    "description": "Telemetry-based live connectivity monitoring.",
-    "offeringCategoryId": "network-data-solutions"
-  },
-  {
-    "id": "dashboards",
-    "name": "Tailored analytical dashboards",
-    "description": "Custom dashboards built on connectivity data.",
-    "offeringCategoryId": "network-data-solutions"
-  },
-  {
     "id": "predictive-modelling",
-    "name": "Predictive policy & planning modelling",
+    "name": "Predictive policy and planning modelling",
+    "shortName": "Policy modelling",
     "description": "Socio-economic and infrastructure modelling for government policy and planning.",
     "offeringCategoryId": "modelling"
   },
   {
     "id": "infra-modelling",
     "name": "Infrastructure modelling",
+    "shortName": null,
     "description": "Technical modelling of infrastructure options and costs.",
     "offeringCategoryId": "modelling"
   },
   {
     "id": "funding-screening",
     "name": "Funding screening",
+    "shortName": null,
     "description": "Screening and identifying viable funding sources.",
     "offeringCategoryId": "finance"
   },
   {
     "id": "investment-case",
     "name": "Investment case",
+    "shortName": null,
     "description": "Building the case for connectivity investment.",
     "offeringCategoryId": "finance"
   },
   {
     "id": "ifi-engagement",
     "name": "IFI engagement strategy",
+    "shortName": "IFI engagement",
     "description": "Strategy for engaging international financial institutions.",
     "offeringCategoryId": "finance"
   },
   {
     "id": "investment-proposal",
     "name": "Investment proposal",
+    "shortName": null,
     "description": "A formal proposal package for investors/funders.",
     "offeringCategoryId": "finance"
   },
   {
     "id": "connectivity-credits",
     "name": "Connectivity credits",
+    "shortName": null,
     "description": "A financing/incentive mechanism for sustained connectivity.",
     "offeringCategoryId": "sustainable-business-models"
   },
   {
     "id": "x-as-a-hub",
     "name": "X as a hub",
+    "shortName": null,
     "description": "Model for facilities acting as multi-purpose connectivity hubs.",
     "offeringCategoryId": "sustainable-business-models"
   },
   {
-    "id": "delivery-toolkit",
-    "name": "Delivery solutions toolkit",
-    "description": "DIY, free toolkit supporting procurement delivery.",
-    "offeringCategoryId": "procurement"
+    "id": "mapping",
+    "name": "Mapping",
+    "shortName": null,
+    "description": "Geospatial connectivity maps.",
+    "offeringCategoryId": "network-data-solutions"
   },
   {
-    "id": "supported-procurement",
-    "name": "Supported public procurement",
-    "description": "TA supporting pre-contracting, contracting and contract management.",
-    "offeringCategoryId": "procurement"
+    "id": "real-time-monitoring",
+    "name": "Real-time monitoring",
+    "shortName": null,
+    "description": "Telemetry-based live connectivity monitoring.",
+    "offeringCategoryId": "network-data-solutions"
   },
   {
-    "id": "procurement-on-behalf",
-    "name": "Procurement on behalf of government",
-    "description": "Bulk procurement delivered as a service for a fee.",
-    "offeringCategoryId": "procurement"
+    "id": "dashboards",
+    "name": "Tailored analytical dashboards",
+    "shortName": "Analytical dashboards",
+    "description": "Custom dashboards built on connectivity data.",
+    "offeringCategoryId": "network-data-solutions"
   },
   {
     "id": "institutional-development",
     "name": "Institutional development",
+    "shortName": null,
     "description": "Whole-of-government engagement across sectoral ministries.",
     "offeringCategoryId": "ecosystem-readiness"
   },
   {
     "id": "in-country-implementation",
-    "name": "In-country implementation & support",
+    "name": "In-country implementation and support",
+    "shortName": "In-country support",
     "description": "Field-based implementation support with country office presence, including policy and planning advice.",
     "offeringCategoryId": "ecosystem-readiness"
   },
   {
     "id": "global-convening",
     "name": "Global convening",
+    "shortName": null,
     "description": "Ministerial and other global convening (e.g. GTEP, GEP).",
     "offeringCategoryId": "ecosystem-readiness"
   },
   {
-    "id": "evidence",
-    "name": "Evidence",
+    "id": "research",
+    "name": "Research",
+    "shortName": null,
     "description": "M&E, Geneva Research Lab, and academic collaboration.",
     "offeringCategoryId": "ecosystem-readiness"
+  },
+  {
+    "id": "delivery-toolkit",
+    "name": "Delivery solutions toolkit",
+    "shortName": "Delivery toolkit",
+    "description": "DIY, free toolkit supporting procurement delivery.",
+    "offeringCategoryId": "procurement"
+  },
+  {
+    "id": "supported-procurement",
+    "name": "Supported public procurement",
+    "shortName": "Supported procurement",
+    "description": "TA supporting pre-contracting, contracting and contract management.",
+    "offeringCategoryId": "procurement"
+  },
+  {
+    "id": "procurement-on-behalf",
+    "name": "Procurement on behalf of government",
+    "shortName": "Procurement for government",
+    "description": "Bulk procurement delivered as a service for a fee.",
+    "offeringCategoryId": "procurement"
   }
 ]
