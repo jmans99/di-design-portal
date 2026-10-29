@@ -1,5 +1,5 @@
-import { DiHome } from '@/components/di-home/di-home'
+import { DotHome } from '@/components/dot/dot-home'
 
 export default function HomePage() {
-  return <DiHome />
+  return <DotHome />
 }

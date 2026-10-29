@@ -75,6 +75,17 @@ const config: Config = {
           red: '#ed1c24',
         },
         navy: '#1a2a3c',
+        // DI text and line colours (docs/design/dot-home.md).
+        ink: {
+          DEFAULT: '#1A2A3C',
+          secondary: '#3B4A5A',
+          muted: '#5C6B7A',
+        },
+        line: {
+          card: '#E3E8EE',
+          divider: '#EBEEF2',
+          dashed: '#C9D2DB',
+        },
         'accent-orange': 'hsl(var(--accent-orange))',
         'accent-green': {
           50: '#d6ffe9',
