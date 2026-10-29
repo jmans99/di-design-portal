@@ -7,6 +7,7 @@ import { ArrowUpRight, ChevronDown, ChevronRight, Clock, PanelLeft, Search } fro
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
@@ -78,14 +79,19 @@ function AppSidebar() {
           <SheetDescription className="sr-only">{SITE.name} sections</SheetDescription>
         </>
       )}
-      <SidebarHeader className="gap-[18px] px-3 pb-0 pt-5">
-        <div className="flex h-7 items-center justify-between px-1 group-data-[collapsible=icon]:hidden">
-          <Link href="/" onClick={closeOnMobile} aria-label={`${SITE.name} home`} className="focus-ring flex items-center rounded">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={SITE.headerLogo.src} alt={SITE.headerLogo.alt} className="h-5 w-auto" />
+      <SidebarHeader className="gap-[18px] px-3 pb-0 pt-5 group-data-[collapsible=icon]:px-2">
+        <div className="flex items-center justify-between gap-2 px-1 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0">
+          <Link href="/" onClick={closeOnMobile} aria-label="Dot home" className="focus-ring flex min-w-0 items-center gap-2.5 rounded-lg">
+            <DotOrb size={28} />
+            <span className="flex min-w-0 flex-col group-data-[collapsible=icon]:hidden">
+              <span className="font-heading text-sm font-semibold leading-[18px] text-ink">Welcome to Dot</span>
+              <span className="text-xs leading-4 text-ink-muted">Your AI content designer</span>
+            </span>
           </Link>
           {/* The one orange accent. Navy on orange: 5.25:1. */}
-          <span className="rounded-full bg-accent-orange px-2 py-0.5 text-[11px] font-semibold leading-4 text-navy">Beta</span>
+          <span className="shrink-0 rounded-full bg-accent-orange px-2 py-0.5 text-[11px] font-semibold leading-4 text-navy group-data-[collapsible=icon]:hidden">
+            Beta
+          </span>
         </div>
         <SidebarMenu>
           <SidebarMenuItem>
@@ -107,7 +113,7 @@ function AppSidebar() {
         </SidebarMenu>
       </SidebarHeader>
 
-      <SidebarContent className="gap-[18px] px-3 pb-5 pt-[18px]">
+      <SidebarContent className="gap-[18px] px-3 pb-5 pt-[18px] group-data-[collapsible=icon]:px-2">
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild isActive={pathname === '/' && !active} tooltip="New chat" className={ROW}>
@@ -147,6 +153,14 @@ function AppSidebar() {
           </SidebarMenu>
         )}
       </SidebarContent>
+
+      {/* Pinned to the bottom: SidebarContent takes the free height and scrolls, so the footer never overlaps the groups. */}
+      <SidebarFooter className="border-t border-line-divider p-0 px-3 group-data-[collapsible=icon]:hidden">
+        <Link href="/" onClick={closeOnMobile} className="focus-ring flex rounded-lg px-2 py-3">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={SITE.headerLogo.src} alt={SITE.headerLogo.alt} className="h-4 w-auto" />
+        </Link>
+      </SidebarFooter>
       <SidebarRail />
     </Sidebar>
   )

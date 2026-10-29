@@ -45,7 +45,7 @@ export function EmptyHome() {
       <main className="flex flex-1 items-center justify-center px-8 pb-[120px] pt-10">
         <div className={cn('w-full max-w-[760px]', styles.container)}>
           <div className="mb-6 flex items-center justify-center gap-3.5">
-            <DotOrb size={40} />
+            <DotOrb size={40} animated />
             {/* There is no login yet; a user name replaces "there" later. */}
             <h1 className="font-heading text-[28px] font-semibold leading-[1.2] tracking-[-0.02em] text-ink">Hi there, what do you need today?</h1>
           </div>

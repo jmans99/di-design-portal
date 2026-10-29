@@ -1,0 +1,87 @@
+/*
+ * The animated home orb (docs/design/dot-home.md, "Dot orb animation").
+ * Three layers, transform and opacity only: the orb breathes (scale 1 → 1.04,
+ * 4s), a white highlight turns over it (10s), and a green glow behind it
+ * pulses with the breathing (opacity .35 → .6, 4s). Reduced motion: the
+ * static orb only.
+ */
+
+.wrap {
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+  isolation: isolate;
+}
+
+/* Glow behind the orb. */
+.wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 999px;
+  background: #22b99a;
+  filter: blur(12px);
+  opacity: 0.35;
+  animation: glow 4s ease-in-out infinite;
+  will-change: opacity;
+}
+
+.orb {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 999px;
+  transform-origin: center;
+  animation: breathe 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Highlight on top, clipped to the circle by .orb. */
+.orb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  /* White at 75% near the top left, transparent by 45% of the radius. */
+  background: radial-gradient(circle at 30% 26%, rgb(255 255 255 / 0.75) 0, rgb(255 255 255 / 0) calc(var(--orb-size) * 0.225));
+  animation: turn 10s linear infinite;
+  will-change: transform;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orb,
+  .orb::after {
+    animation: none;
+  }
+  .wrap::before,
+  .orb::after {
+    display: none;
+  }
+}
