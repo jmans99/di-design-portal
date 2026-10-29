@@ -25,6 +25,9 @@ export type PhotoAwardStory = {
 
 export const PHOTO_AWARD_INTRO = "Giga Photo Award: Stories on the Impact of Connectivity\n\nThis gallery features the winning images of the 2026 Giga Photo Award. The photos may be used for UNICEF advocacy purposes. For any other use externally, please contact UNICEF for permission."
 
+/** The Giga Photo Award photos are shared by DI and Giga (UNICEF advocacy use). */
+export const PHOTO_AWARD_BRAND: 'di' | 'giga' | 'both' = 'both'
+
 export const PHOTO_AWARD_STORIES: PhotoAwardStory[] = [
   {
     "slug": "sudan",

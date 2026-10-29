@@ -287,6 +287,230 @@
     ]
   },
   {
+    "id": "giga-unicef-itu-horizontal",
+    "title": "Giga logo with UNICEF and ITU, full colour, horizontal",
+    "type": "logo",
+    "brand": "both",
+    "colour": "full-colour",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/logos/giga-unicef-itu-horizontal.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/giga-unicef-itu-horizontal.png"
+      }
+    ],
+    "preview": "/logos/giga-unicef-itu-horizontal.svg",
+    "page": "/logos",
+    "tags": [
+      "giga",
+      "unicef",
+      "itu",
+      "partnership",
+      "lockup",
+      "bicolor"
+    ]
+  },
+  {
+    "id": "giga-unicef-itu-horizontal-giga-blue",
+    "title": "Giga logo with UNICEF and ITU, blue, horizontal",
+    "type": "logo",
+    "brand": "both",
+    "colour": "blue",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/giga-unicef-itu-horizontal-giga-blue.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/giga-unicef-itu-horizontal-giga-blue.png"
+      }
+    ],
+    "preview": "/generated/logos/giga-unicef-itu-horizontal-giga-blue.svg",
+    "page": "/logos",
+    "tags": [
+      "giga",
+      "unicef",
+      "itu",
+      "partnership",
+      "lockup",
+      "blue"
+    ]
+  },
+  {
+    "id": "giga-unicef-itu-horizontal-black",
+    "title": "Giga logo with UNICEF and ITU, black, horizontal",
+    "type": "logo",
+    "brand": "both",
+    "colour": "black",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/giga-unicef-itu-horizontal-black.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/giga-unicef-itu-horizontal-black.png"
+      }
+    ],
+    "preview": "/generated/logos/giga-unicef-itu-horizontal-black.svg",
+    "page": "/logos",
+    "tags": [
+      "giga",
+      "unicef",
+      "itu",
+      "partnership",
+      "lockup",
+      "black"
+    ]
+  },
+  {
+    "id": "giga-unicef-itu-horizontal-white",
+    "title": "Giga logo with UNICEF and ITU, white, horizontal",
+    "type": "logo",
+    "brand": "both",
+    "colour": "white",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/giga-unicef-itu-horizontal-white.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/giga-unicef-itu-horizontal-white.png"
+      }
+    ],
+    "preview": "/generated/logos/giga-unicef-itu-horizontal-white.svg",
+    "page": "/logos",
+    "tags": [
+      "giga",
+      "unicef",
+      "itu",
+      "partnership",
+      "lockup",
+      "white"
+    ]
+  },
+  {
+    "id": "giga-unicef-itu-vertical",
+    "title": "Giga logo with UNICEF and ITU, full colour, vertical",
+    "type": "logo",
+    "brand": "both",
+    "colour": "full-colour",
+    "layout": "vertical",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/logos/giga-unicef-itu-vertical.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/giga-unicef-itu-vertical.png"
+      }
+    ],
+    "preview": "/logos/giga-unicef-itu-vertical.svg",
+    "page": "/logos",
+    "tags": [
+      "giga",
+      "unicef",
+      "itu",
+      "partnership",
+      "lockup",
+      "bicolor"
+    ]
+  },
+  {
+    "id": "giga-unicef-itu-vertical-giga-blue",
+    "title": "Giga logo with UNICEF and ITU, blue, vertical",
+    "type": "logo",
+    "brand": "both",
+    "colour": "blue",
+    "layout": "vertical",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/giga-unicef-itu-vertical-giga-blue.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/giga-unicef-itu-vertical-giga-blue.png"
+      }
+    ],
+    "preview": "/generated/logos/giga-unicef-itu-vertical-giga-blue.svg",
+    "page": "/logos",
+    "tags": [
+      "giga",
+      "unicef",
+      "itu",
+      "partnership",
+      "lockup",
+      "blue"
+    ]
+  },
+  {
+    "id": "giga-unicef-itu-vertical-black",
+    "title": "Giga logo with UNICEF and ITU, black, vertical",
+    "type": "logo",
+    "brand": "both",
+    "colour": "black",
+    "layout": "vertical",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/giga-unicef-itu-vertical-black.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/giga-unicef-itu-vertical-black.png"
+      }
+    ],
+    "preview": "/generated/logos/giga-unicef-itu-vertical-black.svg",
+    "page": "/logos",
+    "tags": [
+      "giga",
+      "unicef",
+      "itu",
+      "partnership",
+      "lockup",
+      "black"
+    ]
+  },
+  {
+    "id": "giga-unicef-itu-vertical-white",
+    "title": "Giga logo with UNICEF and ITU, white, vertical",
+    "type": "logo",
+    "brand": "both",
+    "colour": "white",
+    "layout": "vertical",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/giga-unicef-itu-vertical-white.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/giga-unicef-itu-vertical-white.png"
+      }
+    ],
+    "preview": "/generated/logos/giga-unicef-itu-vertical-white.svg",
+    "page": "/logos",
+    "tags": [
+      "giga",
+      "unicef",
+      "itu",
+      "partnership",
+      "lockup",
+      "white"
+    ]
+  },
+  {
     "id": "giga-main-horizontal",
     "title": "Giga logo, full colour, horizontal",
     "type": "logo",
@@ -387,118 +611,6 @@
     ]
   },
   {
-    "id": "giga-unicef-itu-horizontal",
-    "title": "Giga logo with UNICEF and ITU, full colour, horizontal",
-    "type": "logo",
-    "brand": "giga",
-    "colour": "full-colour",
-    "layout": "horizontal",
-    "formats": [
-      {
-        "ext": "svg",
-        "url": "/logos/giga-unicef-itu-horizontal.svg"
-      },
-      {
-        "ext": "png",
-        "url": "/generated/logos/giga-unicef-itu-horizontal.png"
-      }
-    ],
-    "preview": "/logos/giga-unicef-itu-horizontal.svg",
-    "page": "/logos?brand=giga",
-    "tags": [
-      "giga",
-      "unicef",
-      "itu",
-      "partnership",
-      "lockup",
-      "bicolor"
-    ]
-  },
-  {
-    "id": "giga-unicef-itu-horizontal-giga-blue",
-    "title": "Giga logo with UNICEF and ITU, blue, horizontal",
-    "type": "logo",
-    "brand": "giga",
-    "colour": "blue",
-    "layout": "horizontal",
-    "formats": [
-      {
-        "ext": "svg",
-        "url": "/generated/logos/giga-unicef-itu-horizontal-giga-blue.svg"
-      },
-      {
-        "ext": "png",
-        "url": "/generated/logos/giga-unicef-itu-horizontal-giga-blue.png"
-      }
-    ],
-    "preview": "/generated/logos/giga-unicef-itu-horizontal-giga-blue.svg",
-    "page": "/logos?brand=giga",
-    "tags": [
-      "giga",
-      "unicef",
-      "itu",
-      "partnership",
-      "lockup",
-      "blue"
-    ]
-  },
-  {
-    "id": "giga-unicef-itu-horizontal-black",
-    "title": "Giga logo with UNICEF and ITU, black, horizontal",
-    "type": "logo",
-    "brand": "giga",
-    "colour": "black",
-    "layout": "horizontal",
-    "formats": [
-      {
-        "ext": "svg",
-        "url": "/generated/logos/giga-unicef-itu-horizontal-black.svg"
-      },
-      {
-        "ext": "png",
-        "url": "/generated/logos/giga-unicef-itu-horizontal-black.png"
-      }
-    ],
-    "preview": "/generated/logos/giga-unicef-itu-horizontal-black.svg",
-    "page": "/logos?brand=giga",
-    "tags": [
-      "giga",
-      "unicef",
-      "itu",
-      "partnership",
-      "lockup",
-      "black"
-    ]
-  },
-  {
-    "id": "giga-unicef-itu-horizontal-white",
-    "title": "Giga logo with UNICEF and ITU, white, horizontal",
-    "type": "logo",
-    "brand": "giga",
-    "colour": "white",
-    "layout": "horizontal",
-    "formats": [
-      {
-        "ext": "svg",
-        "url": "/generated/logos/giga-unicef-itu-horizontal-white.svg"
-      },
-      {
-        "ext": "png",
-        "url": "/generated/logos/giga-unicef-itu-horizontal-white.png"
-      }
-    ],
-    "preview": "/generated/logos/giga-unicef-itu-horizontal-white.svg",
-    "page": "/logos?brand=giga",
-    "tags": [
-      "giga",
-      "unicef",
-      "itu",
-      "partnership",
-      "lockup",
-      "white"
-    ]
-  },
-  {
     "id": "giga-main-vertical",
     "title": "Giga logo, full colour, vertical",
     "type": "logo",
@@ -595,118 +707,6 @@
     "tags": [
       "giga",
       "main",
-      "white"
-    ]
-  },
-  {
-    "id": "giga-unicef-itu-vertical",
-    "title": "Giga logo with UNICEF and ITU, full colour, vertical",
-    "type": "logo",
-    "brand": "giga",
-    "colour": "full-colour",
-    "layout": "vertical",
-    "formats": [
-      {
-        "ext": "svg",
-        "url": "/logos/giga-unicef-itu-vertical.svg"
-      },
-      {
-        "ext": "png",
-        "url": "/generated/logos/giga-unicef-itu-vertical.png"
-      }
-    ],
-    "preview": "/logos/giga-unicef-itu-vertical.svg",
-    "page": "/logos?brand=giga",
-    "tags": [
-      "giga",
-      "unicef",
-      "itu",
-      "partnership",
-      "lockup",
-      "bicolor"
-    ]
-  },
-  {
-    "id": "giga-unicef-itu-vertical-giga-blue",
-    "title": "Giga logo with UNICEF and ITU, blue, vertical",
-    "type": "logo",
-    "brand": "giga",
-    "colour": "blue",
-    "layout": "vertical",
-    "formats": [
-      {
-        "ext": "svg",
-        "url": "/generated/logos/giga-unicef-itu-vertical-giga-blue.svg"
-      },
-      {
-        "ext": "png",
-        "url": "/generated/logos/giga-unicef-itu-vertical-giga-blue.png"
-      }
-    ],
-    "preview": "/generated/logos/giga-unicef-itu-vertical-giga-blue.svg",
-    "page": "/logos?brand=giga",
-    "tags": [
-      "giga",
-      "unicef",
-      "itu",
-      "partnership",
-      "lockup",
-      "blue"
-    ]
-  },
-  {
-    "id": "giga-unicef-itu-vertical-black",
-    "title": "Giga logo with UNICEF and ITU, black, vertical",
-    "type": "logo",
-    "brand": "giga",
-    "colour": "black",
-    "layout": "vertical",
-    "formats": [
-      {
-        "ext": "svg",
-        "url": "/generated/logos/giga-unicef-itu-vertical-black.svg"
-      },
-      {
-        "ext": "png",
-        "url": "/generated/logos/giga-unicef-itu-vertical-black.png"
-      }
-    ],
-    "preview": "/generated/logos/giga-unicef-itu-vertical-black.svg",
-    "page": "/logos?brand=giga",
-    "tags": [
-      "giga",
-      "unicef",
-      "itu",
-      "partnership",
-      "lockup",
-      "black"
-    ]
-  },
-  {
-    "id": "giga-unicef-itu-vertical-white",
-    "title": "Giga logo with UNICEF and ITU, white, vertical",
-    "type": "logo",
-    "brand": "giga",
-    "colour": "white",
-    "layout": "vertical",
-    "formats": [
-      {
-        "ext": "svg",
-        "url": "/generated/logos/giga-unicef-itu-vertical-white.svg"
-      },
-      {
-        "ext": "png",
-        "url": "/generated/logos/giga-unicef-itu-vertical-white.png"
-      }
-    ],
-    "preview": "/generated/logos/giga-unicef-itu-vertical-white.svg",
-    "page": "/logos?brand=giga",
-    "tags": [
-      "giga",
-      "unicef",
-      "itu",
-      "partnership",
-      "lockup",
       "white"
     ]
   },
@@ -1911,7 +1911,7 @@
     "id": "illustration-general-adjustment-fill",
     "title": "Adjustment illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -1938,7 +1938,7 @@
     "id": "illustration-adjustment-white",
     "title": "Adjustment illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -1965,7 +1965,7 @@
     "id": "illustration-adjustment-blue",
     "title": "Adjustment illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -1992,7 +1992,7 @@
     "id": "illustration-general-alert-fill",
     "title": "Alert illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -2019,7 +2019,7 @@
     "id": "illustration-alert-white",
     "title": "Alert illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -2046,7 +2046,7 @@
     "id": "illustration-alert-blue",
     "title": "Alert illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -2073,7 +2073,7 @@
     "id": "illustration-general-antena-fill",
     "title": "Antena illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -2101,7 +2101,7 @@
     "id": "illustration-antena-white",
     "title": "Antena illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -2129,7 +2129,7 @@
     "id": "illustration-antena-blue",
     "title": "Antena illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -2157,7 +2157,7 @@
     "id": "illustration-general-buildings-fill",
     "title": "Buildings illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -2184,7 +2184,7 @@
     "id": "illustration-buildings-white",
     "title": "Buildings illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -2211,7 +2211,7 @@
     "id": "illustration-buildings-blue",
     "title": "Buildings illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -2238,7 +2238,7 @@
     "id": "illustration-general-check-data-01-fill",
     "title": "Check data 01 illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -2267,7 +2267,7 @@
     "id": "illustration-check-data-01-white",
     "title": "Check data 01 illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -2296,7 +2296,7 @@
     "id": "illustration-check-data-01-blue",
     "title": "Check data 01 illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -2325,7 +2325,7 @@
     "id": "illustration-general-check-data-02-fill",
     "title": "Check data 02 illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -2354,7 +2354,7 @@
     "id": "illustration-check-data-02-white",
     "title": "Check data 02 illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -2383,7 +2383,7 @@
     "id": "illustration-check-data-02-blue",
     "title": "Check data 02 illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -2412,7 +2412,7 @@
     "id": "illustration-general-cloud-fill",
     "title": "Cloud illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -2439,7 +2439,7 @@
     "id": "illustration-cloud-white",
     "title": "Cloud illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -2466,7 +2466,7 @@
     "id": "illustration-cloud-blue",
     "title": "Cloud illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -2493,7 +2493,7 @@
     "id": "illustration-general-code-fill",
     "title": "Code illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -2520,7 +2520,7 @@
     "id": "illustration-code-white",
     "title": "Code illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -2547,7 +2547,7 @@
     "id": "illustration-code-blue",
     "title": "Code illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -2574,7 +2574,7 @@
     "id": "illustration-general-compass-fill",
     "title": "Compass illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -2601,7 +2601,7 @@
     "id": "illustration-compass-white",
     "title": "Compass illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -2628,7 +2628,7 @@
     "id": "illustration-compass-blue",
     "title": "Compass illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -2655,7 +2655,7 @@
     "id": "illustration-general-computer-fill",
     "title": "Computer illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -2682,7 +2682,7 @@
     "id": "illustration-computer-white",
     "title": "Computer illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -2709,7 +2709,7 @@
     "id": "illustration-computer-blue",
     "title": "Computer illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -2736,7 +2736,7 @@
     "id": "illustration-general-congratulations-fill",
     "title": "Congratulations illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -2763,7 +2763,7 @@
     "id": "illustration-congratulations-white",
     "title": "Congratulations illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -2790,7 +2790,7 @@
     "id": "illustration-congratulations-blue",
     "title": "Congratulations illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -2817,7 +2817,7 @@
     "id": "illustration-general-connection-fill",
     "title": "Connection illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -2845,7 +2845,7 @@
     "id": "illustration-connection-white",
     "title": "Connection illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -2873,7 +2873,7 @@
     "id": "illustration-connection-blue",
     "title": "Connection illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -2901,7 +2901,7 @@
     "id": "illustration-general-cycle-data-fill",
     "title": "Cycle data illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -2929,7 +2929,7 @@
     "id": "illustration-cycle-data-white",
     "title": "Cycle data illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -2957,7 +2957,7 @@
     "id": "illustration-cycle-data-blue",
     "title": "Cycle data illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -2985,7 +2985,7 @@
     "id": "illustration-general-devices-fill",
     "title": "Devices illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -3012,7 +3012,7 @@
     "id": "illustration-devices-white",
     "title": "Devices illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -3039,7 +3039,7 @@
     "id": "illustration-devices-blue",
     "title": "Devices illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -3066,7 +3066,7 @@
     "id": "illustration-general-globe-01-fill",
     "title": "Globe 01 illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -3094,7 +3094,7 @@
     "id": "illustration-globe-01-white",
     "title": "Globe 01 illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -3122,7 +3122,7 @@
     "id": "illustration-globe-01-blue",
     "title": "Globe 01 illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -3150,7 +3150,7 @@
     "id": "illustration-general-globe-02-fill",
     "title": "Globe 02 illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -3178,7 +3178,7 @@
     "id": "illustration-globe-02-white",
     "title": "Globe 02 illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -3206,7 +3206,7 @@
     "id": "illustration-globe-02-blue",
     "title": "Globe 02 illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -3234,7 +3234,7 @@
     "id": "illustration-general-hierarchy-fill",
     "title": "Hierarchy illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -3262,7 +3262,7 @@
     "id": "illustration-hierarchy-white",
     "title": "Hierarchy illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -3290,7 +3290,7 @@
     "id": "illustration-hierarchy-blue",
     "title": "Hierarchy illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -3318,7 +3318,7 @@
     "id": "illustration-general-key-fill",
     "title": "Key illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -3345,7 +3345,7 @@
     "id": "illustration-key-white",
     "title": "Key illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -3372,7 +3372,7 @@
     "id": "illustration-key-blue",
     "title": "Key illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -3399,7 +3399,7 @@
     "id": "illustration-general-kid-fill",
     "title": "Kid illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -3427,7 +3427,7 @@
     "id": "illustration-kid-white",
     "title": "Kid illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -3455,7 +3455,7 @@
     "id": "illustration-kid-blue",
     "title": "Kid illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -3483,7 +3483,7 @@
     "id": "illustration-general-lens-fill",
     "title": "Lens illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -3511,7 +3511,7 @@
     "id": "illustration-lens-white",
     "title": "Lens illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -3539,7 +3539,7 @@
     "id": "illustration-lens-blue",
     "title": "Lens illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -3567,7 +3567,7 @@
     "id": "illustration-general-location-01-fill",
     "title": "Location 01 illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -3596,7 +3596,7 @@
     "id": "illustration-location-01-white",
     "title": "Location 01 illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -3625,7 +3625,7 @@
     "id": "illustration-location-01-blue",
     "title": "Location 01 illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -3654,7 +3654,7 @@
     "id": "illustration-general-location-02-fill",
     "title": "Location 02 illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -3683,7 +3683,7 @@
     "id": "illustration-location-02-white",
     "title": "Location 02 illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -3712,7 +3712,7 @@
     "id": "illustration-location-02-blue",
     "title": "Location 02 illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -3741,7 +3741,7 @@
     "id": "illustration-general-measure-cycle-fill",
     "title": "Measure cycle illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -3770,7 +3770,7 @@
     "id": "illustration-measure-cycle-white",
     "title": "Measure cycle illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -3799,7 +3799,7 @@
     "id": "illustration-measure-cycle-blue",
     "title": "Measure cycle illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -3828,7 +3828,7 @@
     "id": "illustration-general-network-fill",
     "title": "Network illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -3855,7 +3855,7 @@
     "id": "illustration-network-white",
     "title": "Network illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -3882,7 +3882,7 @@
     "id": "illustration-network-blue",
     "title": "Network illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -3909,7 +3909,7 @@
     "id": "illustration-general-not-mapped-fill",
     "title": "Not mapped illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -3938,7 +3938,7 @@
     "id": "illustration-not-mapped-white",
     "title": "Not mapped illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -3967,7 +3967,7 @@
     "id": "illustration-not-mapped-blue",
     "title": "Not mapped illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -3996,7 +3996,7 @@
     "id": "illustration-general-notification-fill",
     "title": "Notification illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -4023,7 +4023,7 @@
     "id": "illustration-notification-white",
     "title": "Notification illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -4050,7 +4050,7 @@
     "id": "illustration-notification-blue",
     "title": "Notification illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -4077,7 +4077,7 @@
     "id": "illustration-general-people-fill",
     "title": "People illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -4104,7 +4104,7 @@
     "id": "illustration-people-white",
     "title": "People illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -4131,7 +4131,7 @@
     "id": "illustration-people-blue",
     "title": "People illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -4158,7 +4158,7 @@
     "id": "illustration-general-person-location-fill",
     "title": "Person location illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -4186,7 +4186,7 @@
     "id": "illustration-person-location-white",
     "title": "Person location illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -4214,7 +4214,7 @@
     "id": "illustration-person-location-blue",
     "title": "Person location illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -4242,7 +4242,7 @@
     "id": "illustration-general-satellite-fill",
     "title": "Satellite illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -4270,7 +4270,7 @@
     "id": "illustration-satellite-white",
     "title": "Satellite illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -4298,7 +4298,7 @@
     "id": "illustration-satellite-blue",
     "title": "Satellite illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -4326,7 +4326,7 @@
     "id": "illustration-general-school-location-fill",
     "title": "School location illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -4353,7 +4353,7 @@
     "id": "illustration-school-location-white",
     "title": "School location illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -4380,7 +4380,7 @@
     "id": "illustration-school-location-blue",
     "title": "School location illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -4407,7 +4407,7 @@
     "id": "illustration-general-schools-fill",
     "title": "Schools illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -4433,7 +4433,7 @@
     "id": "illustration-schools-white",
     "title": "Schools illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -4459,7 +4459,7 @@
     "id": "illustration-schools-blue",
     "title": "Schools illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -4485,7 +4485,7 @@
     "id": "illustration-general-search-fill",
     "title": "Search illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -4512,7 +4512,7 @@
     "id": "illustration-search-white",
     "title": "Search illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -4539,7 +4539,7 @@
     "id": "illustration-search-blue",
     "title": "Search illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -4566,7 +4566,7 @@
     "id": "illustration-general-sharing-data-fill",
     "title": "Sharing data illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -4594,7 +4594,7 @@
     "id": "illustration-sharing-data-white",
     "title": "Sharing data illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -4622,7 +4622,7 @@
     "id": "illustration-sharing-data-blue",
     "title": "Sharing data illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -4650,7 +4650,7 @@
     "id": "illustration-general-team-fill",
     "title": "Team illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -4677,7 +4677,7 @@
     "id": "illustration-team-white",
     "title": "Team illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -4704,7 +4704,7 @@
     "id": "illustration-team-blue",
     "title": "Team illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -4731,7 +4731,7 @@
     "id": "illustration-general-update-fill",
     "title": "Update illustration, fill",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "full-colour",
     "layout": null,
     "formats": [
@@ -4758,7 +4758,7 @@
     "id": "illustration-update-white",
     "title": "Update illustration, outline, white",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "white",
     "layout": null,
     "formats": [
@@ -4785,7 +4785,7 @@
     "id": "illustration-update-blue",
     "title": "Update illustration, outline, blue",
     "type": "illustration",
-    "brand": "giga",
+    "brand": "both",
     "colour": "blue",
     "layout": null,
     "formats": [
@@ -4920,7 +4920,7 @@
     "id": "photo-sudan-01",
     "title": "Sudan",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -4946,7 +4946,7 @@
     "id": "photo-a-completely-normal-day-01",
     "title": "A Completely Normal Day",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -4972,7 +4972,7 @@
     "id": "photo-inside-prison-01",
     "title": "Inside prison - “The Phone Is Everything”, photo 1 of 13",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -4997,7 +4997,7 @@
     "id": "photo-inside-prison-02",
     "title": "Inside prison - “The Phone Is Everything”, photo 2 of 13",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5022,7 +5022,7 @@
     "id": "photo-inside-prison-03",
     "title": "Inside prison - “The Phone Is Everything”, photo 3 of 13",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5047,7 +5047,7 @@
     "id": "photo-inside-prison-04",
     "title": "Inside prison - “The Phone Is Everything”, photo 4 of 13",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5072,7 +5072,7 @@
     "id": "photo-inside-prison-05",
     "title": "Inside prison - “The Phone Is Everything”, photo 5 of 13",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5097,7 +5097,7 @@
     "id": "photo-inside-prison-06",
     "title": "Inside prison - “The Phone Is Everything”, photo 6 of 13",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5122,7 +5122,7 @@
     "id": "photo-inside-prison-07",
     "title": "Inside prison - “The Phone Is Everything”, photo 7 of 13",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5147,7 +5147,7 @@
     "id": "photo-inside-prison-08",
     "title": "Inside prison - “The Phone Is Everything”, photo 8 of 13",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5172,7 +5172,7 @@
     "id": "photo-inside-prison-09",
     "title": "Inside prison - “The Phone Is Everything”, photo 9 of 13",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5197,7 +5197,7 @@
     "id": "photo-inside-prison-10",
     "title": "Inside prison - “The Phone Is Everything”, photo 10 of 13",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5222,7 +5222,7 @@
     "id": "photo-inside-prison-11",
     "title": "Inside prison - “The Phone Is Everything”, photo 11 of 13",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5247,7 +5247,7 @@
     "id": "photo-inside-prison-12",
     "title": "Inside prison - “The Phone Is Everything”, photo 12 of 13",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5272,7 +5272,7 @@
     "id": "photo-inside-prison-13",
     "title": "Inside prison - “The Phone Is Everything”, photo 13 of 13",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5297,7 +5297,7 @@
     "id": "photo-energy-paradox-01",
     "title": "Energy Paradox, photo 1 of 12",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5322,7 +5322,7 @@
     "id": "photo-energy-paradox-02",
     "title": "Energy Paradox, photo 2 of 12",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5347,7 +5347,7 @@
     "id": "photo-energy-paradox-03",
     "title": "Energy Paradox, photo 3 of 12",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5372,7 +5372,7 @@
     "id": "photo-energy-paradox-04",
     "title": "Energy Paradox, photo 4 of 12",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5397,7 +5397,7 @@
     "id": "photo-energy-paradox-05",
     "title": "Energy Paradox, photo 5 of 12",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5422,7 +5422,7 @@
     "id": "photo-energy-paradox-06",
     "title": "Energy Paradox, photo 6 of 12",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5447,7 +5447,7 @@
     "id": "photo-energy-paradox-07",
     "title": "Energy Paradox, photo 7 of 12",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5472,7 +5472,7 @@
     "id": "photo-energy-paradox-08",
     "title": "Energy Paradox, photo 8 of 12",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5497,7 +5497,7 @@
     "id": "photo-energy-paradox-09",
     "title": "Energy Paradox, photo 9 of 12",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5522,7 +5522,7 @@
     "id": "photo-energy-paradox-10",
     "title": "Energy Paradox, photo 10 of 12",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5547,7 +5547,7 @@
     "id": "photo-energy-paradox-11",
     "title": "Energy Paradox, photo 11 of 12",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5572,7 +5572,7 @@
     "id": "photo-energy-paradox-12",
     "title": "Energy Paradox, photo 12 of 12",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5597,7 +5597,7 @@
     "id": "photo-internet-cafes-01",
     "title": "Internet Cafes",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "horizontal",
     "formats": [
@@ -5623,7 +5623,7 @@
     "id": "photo-donna-01",
     "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 1 of 20",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5649,7 +5649,7 @@
     "id": "photo-donna-02",
     "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 2 of 20",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5675,7 +5675,7 @@
     "id": "photo-donna-03",
     "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 3 of 20",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5701,7 +5701,7 @@
     "id": "photo-donna-04",
     "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 4 of 20",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5727,7 +5727,7 @@
     "id": "photo-donna-05",
     "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 5 of 20",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5753,7 +5753,7 @@
     "id": "photo-donna-06",
     "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 6 of 20",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5779,7 +5779,7 @@
     "id": "photo-donna-07",
     "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 7 of 20",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5805,7 +5805,7 @@
     "id": "photo-donna-08",
     "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 8 of 20",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5831,7 +5831,7 @@
     "id": "photo-donna-09",
     "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 9 of 20",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5857,7 +5857,7 @@
     "id": "photo-donna-10",
     "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 10 of 20",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5883,7 +5883,7 @@
     "id": "photo-donna-11",
     "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 11 of 20",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5909,7 +5909,7 @@
     "id": "photo-donna-12",
     "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 12 of 20",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5935,7 +5935,7 @@
     "id": "photo-donna-13",
     "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 13 of 20",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5961,7 +5961,7 @@
     "id": "photo-donna-14",
     "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 14 of 20",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -5987,7 +5987,7 @@
     "id": "photo-donna-15",
     "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 15 of 20",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -6013,7 +6013,7 @@
     "id": "photo-donna-16",
     "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 16 of 20",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -6039,7 +6039,7 @@
     "id": "photo-donna-17",
     "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 17 of 20",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -6065,7 +6065,7 @@
     "id": "photo-donna-18",
     "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 18 of 20",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -6091,7 +6091,7 @@
     "id": "photo-donna-19",
     "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 19 of 20",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [
@@ -6117,7 +6117,7 @@
     "id": "photo-donna-20",
     "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 20 of 20",
     "type": "photo",
-    "brand": "giga",
+    "brand": "both",
     "colour": null,
     "layout": "square",
     "formats": [

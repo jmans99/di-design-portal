@@ -2,7 +2,7 @@
 
 import { Fragment, useEffect, useState } from 'react'
 import Link from 'next/link'
-import { ArrowUp, Plus } from 'lucide-react'
+import { ArrowUp, ArrowUpRight, Plus } from 'lucide-react'
 import { SidePanelToggle } from '@/components/app-shell/app-shell'
 import { BriefingArt, PartnershipArt, SlidesArt } from '@/components/dot/dot-art'
 import { RecommendedPill, SmallFormatTiles } from '@/components/dot/format-tiles'
@@ -16,6 +16,7 @@ import { isSkip, matchAudienceGroup, matchIntent, matchTemplate, type DeckTempla
 import { addRecent } from '@/lib/dot/recent'
 import { DECK_TEMPLATES, getDeckTemplate } from '@/lib/dot/templates'
 import { AUDIENCE_GROUPS, getAudienceGroup } from '@/lib/knowledge'
+import { EXTERNAL_TOOLS, masterDeckAvailable } from '@/lib/external-tools'
 import { cn } from '@/lib/utils'
 import styles from './dot.module.css'
 
@@ -33,8 +34,13 @@ export function Conversation({ state }: { state: ConversationState }) {
   const format = state.format ? getFormat(state.format) : undefined
   const template = getDeckTemplate(state.templateId)
   const group = state.audience && state.audience !== SKIP_AUDIENCE ? getAudienceGroup(state.audience) : undefined
-  const isDeck = format?.type === 'deck'
-  const askAudience = !!format && !format.href && (!isDeck || !!template)
+  // Decks and two-pagers are made in the external builder (lib/external-tools.ts), and the DI
+  // Master deck is not available yet: Dot points to the builder instead of the in-portal flow.
+  const masterSoon = state.templateId === 'master-deck' && !masterDeckAvailable
+  const builder = format && (format.external || (format.type === 'deck' && masterSoon)) ? (format.external ?? EXTERNAL_TOOLS.deck) : null
+  // The in-portal deck flow below (template bento, audience step, "coming soon") stays for when the flag is turned on.
+  const isDeck = format?.type === 'deck' && !builder
+  const askAudience = !!format && !format.href && !builder && (!isDeck || !!template)
   const complete = askAudience && !!state.audience
 
   const go = (patch: Partial<ConversationState>) => push(conversationHref({ ...state, ...patch }))
@@ -102,6 +108,20 @@ export function Conversation({ state }: { state: ConversationState }) {
 
           {format?.href && <DotMessage text={`Opening the ${format.toolName}…`} />}
 
+          {builder && format && (
+            <DotMessage
+              text={
+                masterSoon
+                  ? 'The DI Master deck is coming soon. In the meantime, you can start a deck in the deck builder.'
+                  : format.type === 'deck'
+                    ? 'Decks are made in the deck builder.'
+                    : 'Two-pagers are made in the deck builder.'
+              }
+            >
+              <OpenBuilderButton href={builder} />
+            </DotMessage>
+          )}
+
           {isDeck && (
             <DotMessage text="Nice, a deck. Want to start from one of ours, or from scratch?">
               <TemplateBento selected={state.templateId} onPick={(templateId) => go({ templateId, audience: undefined })} />
@@ -136,7 +156,13 @@ export function Conversation({ state }: { state: ConversationState }) {
           ))}
         </ol>
 
-        <ReplyBar format={format} templateName={isDeck ? (template?.name ?? null) : undefined} audienceName={state.audience ? (group?.name ?? 'Skip') : null} onSend={reply} />
+        <ReplyBar
+          format={format}
+          templateName={isDeck ? (template?.name ?? null) : undefined}
+          audienceName={state.audience ? (group?.name ?? 'Skip') : null}
+          onSend={reply}
+          showBrief={!builder}
+        />
       </div>
     </div>
   )
@@ -290,7 +316,7 @@ export function ReplyBar({
             id="dot-reply"
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder="Reply to Dot, or pick one above"
+            placeholder={showBrief ? 'Reply to Dot, or pick one above' : 'Reply to Dot'}
             autoComplete="off"
             className="h-9 min-w-0 flex-1 rounded-lg bg-transparent px-1 text-[15px] text-ink outline-none placeholder:text-ink-muted focus-visible:ring-2 focus-visible:ring-primary-700"
           />
@@ -318,5 +344,21 @@ function BriefChip({ label, value, color }: { label: string; value: string | nul
       <span className="sr-only">{label}: </span>
       {value}
     </span>
+  )
+}
+
+/** Primary button that opens the deck builder in a new tab. */
+export function OpenBuilderButton({ href }: { href: string }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Open deck builder (opens in a new tab)"
+      className="focus-ring inline-flex h-10 items-center gap-2 rounded-full bg-primary-700 px-5 text-sm font-semibold text-white transition-colors hover:bg-primary-800"
+    >
+      Open deck builder
+      <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
+    </a>
   )
 }

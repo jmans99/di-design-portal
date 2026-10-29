@@ -30,6 +30,8 @@ export type NavItem = {
   soon?: boolean
   /** Small tag next to a working link, e.g. "Soon" for a format whose tool is not built (Dot keeps the brief). */
   tag?: string
+  /** Opens an external tool in a new tab (lib/external-tools.ts). */
+  external?: boolean
 }
 
 export type NavGroup = {
@@ -47,7 +49,8 @@ const CREATE_ITEMS: NavItem[] = FORMATS.map((format) => ({
   path: formatStartPath(format),
   label: format.label,
   icon: format.icon,
-  tag: format.href ? undefined : 'Soon',
+  tag: format.href || format.external ? undefined : 'Soon',
+  external: !!format.external,
 }))
 
 /** Side panel groups, in display order (docs/design/dot-home.md, section 1). */

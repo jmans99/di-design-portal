@@ -1,5 +1,5 @@
 {
-  "$comment": "Hand-set fields merged on top of what scripts/build-asset-index.mjs infers from file names. Keys are asset ids from data/assets.json. Confirmed by the portal owner: the UNICEF and UNICEF Digital Impact Division logos are brand di; the GEP and Connectivity Forum event logos are brand giga. The fonts (Manrope, Open Sans) are shared by both brands: brand both. The boxed UNICEF Digital Impact Division file named -black is the full-colour lockup (blue box, black text), so its colour is set to full-colour. Change any value here, then run npm run build or node scripts/build-asset-index.mjs.",
+  "$comment": "Hand-set fields merged on top of what scripts/build-asset-index.mjs infers from file names. Keys are asset ids from data/assets.json. Confirmed by the portal owner: the UNICEF and UNICEF Digital Impact Division logos are brand di; the GEP and Connectivity Forum event logos are brand giga. The fonts (Manrope, Open Sans) are shared by both brands: brand both. The boxed UNICEF Digital Impact Division file named -black is the full-colour lockup (blue box, black text), so its colour is set to full-colour. Change any value here, then run npm run build or node scripts/build-asset-index.mjs. Shared by DI and Giga (brand both, set by the portal owner): the Giga + UNICEF + ITU partnership logo (8), the Giga Photo Award photos (48) and the General illustrations (35 pictograms in 3 styles, 105). The same brand is set in each page's own list (lib/brand-registry.ts, lib/illustration-registry.ts, lib/photo-awards.ts); the index build warns when the two disagree.",
   "unicef-unicef-blue": {
     "brand": "di"
   },
@@ -50,6 +50,489 @@
     "brand": "both"
   },
   "font-open-sans": {
+    "brand": "both"
+  },
+  "giga-unicef-itu-horizontal": {
+    "brand": "both"
+  },
+  "giga-unicef-itu-horizontal-giga-blue": {
+    "brand": "both"
+  },
+  "giga-unicef-itu-horizontal-black": {
+    "brand": "both"
+  },
+  "giga-unicef-itu-horizontal-white": {
+    "brand": "both"
+  },
+  "giga-unicef-itu-vertical": {
+    "brand": "both"
+  },
+  "giga-unicef-itu-vertical-giga-blue": {
+    "brand": "both"
+  },
+  "giga-unicef-itu-vertical-black": {
+    "brand": "both"
+  },
+  "giga-unicef-itu-vertical-white": {
+    "brand": "both"
+  },
+  "illustration-general-adjustment-fill": {
+    "brand": "both"
+  },
+  "illustration-adjustment-white": {
+    "brand": "both"
+  },
+  "illustration-adjustment-blue": {
+    "brand": "both"
+  },
+  "illustration-general-alert-fill": {
+    "brand": "both"
+  },
+  "illustration-alert-white": {
+    "brand": "both"
+  },
+  "illustration-alert-blue": {
+    "brand": "both"
+  },
+  "illustration-general-antena-fill": {
+    "brand": "both"
+  },
+  "illustration-antena-white": {
+    "brand": "both"
+  },
+  "illustration-antena-blue": {
+    "brand": "both"
+  },
+  "illustration-general-buildings-fill": {
+    "brand": "both"
+  },
+  "illustration-buildings-white": {
+    "brand": "both"
+  },
+  "illustration-buildings-blue": {
+    "brand": "both"
+  },
+  "illustration-general-check-data-01-fill": {
+    "brand": "both"
+  },
+  "illustration-check-data-01-white": {
+    "brand": "both"
+  },
+  "illustration-check-data-01-blue": {
+    "brand": "both"
+  },
+  "illustration-general-check-data-02-fill": {
+    "brand": "both"
+  },
+  "illustration-check-data-02-white": {
+    "brand": "both"
+  },
+  "illustration-check-data-02-blue": {
+    "brand": "both"
+  },
+  "illustration-general-cloud-fill": {
+    "brand": "both"
+  },
+  "illustration-cloud-white": {
+    "brand": "both"
+  },
+  "illustration-cloud-blue": {
+    "brand": "both"
+  },
+  "illustration-general-code-fill": {
+    "brand": "both"
+  },
+  "illustration-code-white": {
+    "brand": "both"
+  },
+  "illustration-code-blue": {
+    "brand": "both"
+  },
+  "illustration-general-compass-fill": {
+    "brand": "both"
+  },
+  "illustration-compass-white": {
+    "brand": "both"
+  },
+  "illustration-compass-blue": {
+    "brand": "both"
+  },
+  "illustration-general-computer-fill": {
+    "brand": "both"
+  },
+  "illustration-computer-white": {
+    "brand": "both"
+  },
+  "illustration-computer-blue": {
+    "brand": "both"
+  },
+  "illustration-general-congratulations-fill": {
+    "brand": "both"
+  },
+  "illustration-congratulations-white": {
+    "brand": "both"
+  },
+  "illustration-congratulations-blue": {
+    "brand": "both"
+  },
+  "illustration-general-connection-fill": {
+    "brand": "both"
+  },
+  "illustration-connection-white": {
+    "brand": "both"
+  },
+  "illustration-connection-blue": {
+    "brand": "both"
+  },
+  "illustration-general-cycle-data-fill": {
+    "brand": "both"
+  },
+  "illustration-cycle-data-white": {
+    "brand": "both"
+  },
+  "illustration-cycle-data-blue": {
+    "brand": "both"
+  },
+  "illustration-general-devices-fill": {
+    "brand": "both"
+  },
+  "illustration-devices-white": {
+    "brand": "both"
+  },
+  "illustration-devices-blue": {
+    "brand": "both"
+  },
+  "illustration-general-globe-01-fill": {
+    "brand": "both"
+  },
+  "illustration-globe-01-white": {
+    "brand": "both"
+  },
+  "illustration-globe-01-blue": {
+    "brand": "both"
+  },
+  "illustration-general-globe-02-fill": {
+    "brand": "both"
+  },
+  "illustration-globe-02-white": {
+    "brand": "both"
+  },
+  "illustration-globe-02-blue": {
+    "brand": "both"
+  },
+  "illustration-general-hierarchy-fill": {
+    "brand": "both"
+  },
+  "illustration-hierarchy-white": {
+    "brand": "both"
+  },
+  "illustration-hierarchy-blue": {
+    "brand": "both"
+  },
+  "illustration-general-key-fill": {
+    "brand": "both"
+  },
+  "illustration-key-white": {
+    "brand": "both"
+  },
+  "illustration-key-blue": {
+    "brand": "both"
+  },
+  "illustration-general-kid-fill": {
+    "brand": "both"
+  },
+  "illustration-kid-white": {
+    "brand": "both"
+  },
+  "illustration-kid-blue": {
+    "brand": "both"
+  },
+  "illustration-general-lens-fill": {
+    "brand": "both"
+  },
+  "illustration-lens-white": {
+    "brand": "both"
+  },
+  "illustration-lens-blue": {
+    "brand": "both"
+  },
+  "illustration-general-location-01-fill": {
+    "brand": "both"
+  },
+  "illustration-location-01-white": {
+    "brand": "both"
+  },
+  "illustration-location-01-blue": {
+    "brand": "both"
+  },
+  "illustration-general-location-02-fill": {
+    "brand": "both"
+  },
+  "illustration-location-02-white": {
+    "brand": "both"
+  },
+  "illustration-location-02-blue": {
+    "brand": "both"
+  },
+  "illustration-general-measure-cycle-fill": {
+    "brand": "both"
+  },
+  "illustration-measure-cycle-white": {
+    "brand": "both"
+  },
+  "illustration-measure-cycle-blue": {
+    "brand": "both"
+  },
+  "illustration-general-network-fill": {
+    "brand": "both"
+  },
+  "illustration-network-white": {
+    "brand": "both"
+  },
+  "illustration-network-blue": {
+    "brand": "both"
+  },
+  "illustration-general-not-mapped-fill": {
+    "brand": "both"
+  },
+  "illustration-not-mapped-white": {
+    "brand": "both"
+  },
+  "illustration-not-mapped-blue": {
+    "brand": "both"
+  },
+  "illustration-general-notification-fill": {
+    "brand": "both"
+  },
+  "illustration-notification-white": {
+    "brand": "both"
+  },
+  "illustration-notification-blue": {
+    "brand": "both"
+  },
+  "illustration-general-people-fill": {
+    "brand": "both"
+  },
+  "illustration-people-white": {
+    "brand": "both"
+  },
+  "illustration-people-blue": {
+    "brand": "both"
+  },
+  "illustration-general-person-location-fill": {
+    "brand": "both"
+  },
+  "illustration-person-location-white": {
+    "brand": "both"
+  },
+  "illustration-person-location-blue": {
+    "brand": "both"
+  },
+  "illustration-general-satellite-fill": {
+    "brand": "both"
+  },
+  "illustration-satellite-white": {
+    "brand": "both"
+  },
+  "illustration-satellite-blue": {
+    "brand": "both"
+  },
+  "illustration-general-school-location-fill": {
+    "brand": "both"
+  },
+  "illustration-school-location-white": {
+    "brand": "both"
+  },
+  "illustration-school-location-blue": {
+    "brand": "both"
+  },
+  "illustration-general-schools-fill": {
+    "brand": "both"
+  },
+  "illustration-schools-white": {
+    "brand": "both"
+  },
+  "illustration-schools-blue": {
+    "brand": "both"
+  },
+  "illustration-general-search-fill": {
+    "brand": "both"
+  },
+  "illustration-search-white": {
+    "brand": "both"
+  },
+  "illustration-search-blue": {
+    "brand": "both"
+  },
+  "illustration-general-sharing-data-fill": {
+    "brand": "both"
+  },
+  "illustration-sharing-data-white": {
+    "brand": "both"
+  },
+  "illustration-sharing-data-blue": {
+    "brand": "both"
+  },
+  "illustration-general-team-fill": {
+    "brand": "both"
+  },
+  "illustration-team-white": {
+    "brand": "both"
+  },
+  "illustration-team-blue": {
+    "brand": "both"
+  },
+  "illustration-general-update-fill": {
+    "brand": "both"
+  },
+  "illustration-update-white": {
+    "brand": "both"
+  },
+  "illustration-update-blue": {
+    "brand": "both"
+  },
+  "photo-sudan-01": {
+    "brand": "both"
+  },
+  "photo-a-completely-normal-day-01": {
+    "brand": "both"
+  },
+  "photo-inside-prison-01": {
+    "brand": "both"
+  },
+  "photo-inside-prison-02": {
+    "brand": "both"
+  },
+  "photo-inside-prison-03": {
+    "brand": "both"
+  },
+  "photo-inside-prison-04": {
+    "brand": "both"
+  },
+  "photo-inside-prison-05": {
+    "brand": "both"
+  },
+  "photo-inside-prison-06": {
+    "brand": "both"
+  },
+  "photo-inside-prison-07": {
+    "brand": "both"
+  },
+  "photo-inside-prison-08": {
+    "brand": "both"
+  },
+  "photo-inside-prison-09": {
+    "brand": "both"
+  },
+  "photo-inside-prison-10": {
+    "brand": "both"
+  },
+  "photo-inside-prison-11": {
+    "brand": "both"
+  },
+  "photo-inside-prison-12": {
+    "brand": "both"
+  },
+  "photo-inside-prison-13": {
+    "brand": "both"
+  },
+  "photo-energy-paradox-01": {
+    "brand": "both"
+  },
+  "photo-energy-paradox-02": {
+    "brand": "both"
+  },
+  "photo-energy-paradox-03": {
+    "brand": "both"
+  },
+  "photo-energy-paradox-04": {
+    "brand": "both"
+  },
+  "photo-energy-paradox-05": {
+    "brand": "both"
+  },
+  "photo-energy-paradox-06": {
+    "brand": "both"
+  },
+  "photo-energy-paradox-07": {
+    "brand": "both"
+  },
+  "photo-energy-paradox-08": {
+    "brand": "both"
+  },
+  "photo-energy-paradox-09": {
+    "brand": "both"
+  },
+  "photo-energy-paradox-10": {
+    "brand": "both"
+  },
+  "photo-energy-paradox-11": {
+    "brand": "both"
+  },
+  "photo-energy-paradox-12": {
+    "brand": "both"
+  },
+  "photo-internet-cafes-01": {
+    "brand": "both"
+  },
+  "photo-donna-01": {
+    "brand": "both"
+  },
+  "photo-donna-02": {
+    "brand": "both"
+  },
+  "photo-donna-03": {
+    "brand": "both"
+  },
+  "photo-donna-04": {
+    "brand": "both"
+  },
+  "photo-donna-05": {
+    "brand": "both"
+  },
+  "photo-donna-06": {
+    "brand": "both"
+  },
+  "photo-donna-07": {
+    "brand": "both"
+  },
+  "photo-donna-08": {
+    "brand": "both"
+  },
+  "photo-donna-09": {
+    "brand": "both"
+  },
+  "photo-donna-10": {
+    "brand": "both"
+  },
+  "photo-donna-11": {
+    "brand": "both"
+  },
+  "photo-donna-12": {
+    "brand": "both"
+  },
+  "photo-donna-13": {
+    "brand": "both"
+  },
+  "photo-donna-14": {
+    "brand": "both"
+  },
+  "photo-donna-15": {
+    "brand": "both"
+  },
+  "photo-donna-16": {
+    "brand": "both"
+  },
+  "photo-donna-17": {
+    "brand": "both"
+  },
+  "photo-donna-18": {
+    "brand": "both"
+  },
+  "photo-donna-19": {
+    "brand": "both"
+  },
+  "photo-donna-20": {
     "brand": "both"
   }
 }

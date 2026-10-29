@@ -18,7 +18,12 @@ and no external API: everything is fixed rules over a JSON index. Builds on
 - On pages with brand tabs, material tagged `both` shows under both tabs. In
   the registries the pages use, that means `brand: 'both'` on the entry (Logos:
   `lib/brand-registry.ts`; Image galleries: `components/media-section.tsx`).
-  Nothing on those pages is tagged `both` yet.
+  On Logos, the Giga + UNICEF + ITU partnership logo is shared, so it is listed
+  under both tabs, after each brand's own logos.
+- A page's pill follows its own list: when every item on it is shared, a
+  Giga-only page's pill becomes "DI + Giga" (Photo awards). The Illustrations
+  page keeps the Giga pill while it still has Giga-only items (the pillar
+  pictograms and Giga Meter illustrations).
 - A tool that only has one brand's templates today is single-brand. The other
   brand is not invented.
 
@@ -29,8 +34,8 @@ Current pages (audit, October 2026):
 | Colors | DI and Giga, separate | brand tabs |
 | Logos | DI and Giga, separate | brand tabs |
 | Image galleries | DI and Giga, separate | brand tabs (Giga: Flickr, YouTube; DI: UNICEF WeShare and the DI SharePoint libraries) |
-| Illustrations | Giga | Giga pill |
-| Photo awards | Giga | Giga pill |
+| Illustrations | Giga (pillars, Giga Meter) and shared (the General set) | Giga pill (still has Giga-only items) |
+| Photo awards | shared (all 48 Giga Photo Award photos) | "DI + Giga" pill |
 | Video guidelines | Giga | Giga pill |
 | Typography | shared fonts (Manrope, Open Sans) | "DI + Giga" pill |
 | Social media, Email signature, Engagement map | DI templates that also carry the Giga logo | none |
@@ -130,6 +135,19 @@ sits on `#1A2A3C`, everything else on `#F8F8F8`.
   | UNICEF Digital Impact Division logos (boxed, unboxed) | di | **confirmed** by the portal owner |
   | GEP and Connectivity Forum event logos | giga | **confirmed** by the portal owner |
   | Manrope and Open Sans fonts | both | **confirmed** by the portal owner |
+  | Giga + UNICEF + ITU partnership logo (8: horizontal and vertical, 4 colours each) | both | **set** by the portal owner |
+  | Giga Photo Award photos (48) | both | **set** by the portal owner |
+  | General illustrations (35 pictograms in fill, outline white and outline blue: 105) | both | **set** by the portal owner |
+
+  Not shared, on purpose: the Grey and Connectivity colour scales (they stay
+  inside each palette), the pillar pictograms (15) and Giga Meter
+  illustrations (4), which stay Giga.
+
+  The shared brand is set in both places: in the overrides (search) and in
+  each page's own list (`lib/brand-registry.ts`, `lib/illustration-registry.ts`,
+  `PHOTO_AWARD_BRAND` in `lib/photo-awards.ts`, written by
+  `tools/photo-awards/build.mjs`). The index build warns when an asset's brand
+  in the index differs from its page, and `lib/search/brands.test.mjs` fails.
 
   The boxed Digital Impact Division file named `-black` is the full-colour
   lockup, so its colour is also overridden (`full-colour`).

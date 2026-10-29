@@ -1,6 +1,6 @@
 'use client'
 
-import { Plus } from 'lucide-react'
+import { ArrowUpRight, Plus } from 'lucide-react'
 import { FormatIcon } from '@/components/dot/format-icon'
 import {
   DropdownMenu,
@@ -11,11 +11,59 @@ import {
 } from '@/components/ui/dropdown-menu'
 import type { OutputType } from '@/lib/brief'
 import { getFormat } from '@/lib/dot/formats'
+import { externalLinkLabel } from '@/lib/external-tools'
 import { cn } from '@/lib/utils'
 import styles from './dot.module.css'
 
 /** Formats in the + menu (docs/design/dot-home.md, 2d). */
 const MORE_FORMATS: OutputType[] = ['map', 'engagement-map', 'background', 'email-signature']
+
+/**
+ * A tile or row that starts a format: a link that opens the external builder
+ * in a new tab (decks, two-pagers; lib/external-tools.ts), else a button.
+ * `label` is the visible action, used for the link's accessible name.
+ */
+export function StartTile({
+  type,
+  label,
+  onStart,
+  className,
+  children,
+}: {
+  type: OutputType
+  label: string
+  onStart: (format: OutputType) => void
+  className?: string
+  children: React.ReactNode
+}) {
+  const format = getFormat(type)
+  if (format.external) {
+    return (
+      <a href={format.external} target="_blank" rel="noopener noreferrer" aria-label={externalLinkLabel(label)} className={className}>
+        {children}
+      </a>
+    )
+  }
+  return (
+    <button type="button" onClick={() => onStart(type)} className={className}>
+      {children}
+    </button>
+  )
+}
+
+/** The 14px external-link mark after a label that opens a new tab. */
+export function ExternalMark({ className }: { className?: string }) {
+  return <ArrowUpRight className={cn('inline-block h-3.5 w-3.5 shrink-0 align-[-1px] text-ink-muted', className)} strokeWidth={2} aria-hidden />
+}
+
+/** "Coming soon" pill: the Recommended pill's size and shape, in neutral colours. */
+export function ComingSoonPill() {
+  return (
+    <span className="inline-flex rounded-full border border-line-card bg-white px-2 py-px text-[11px] font-semibold text-ink-muted">
+      Coming soon
+    </span>
+  )
+}
 
 export function RecommendedPill() {
   return (
@@ -58,15 +106,11 @@ export function SmallFormatTiles({ onStart }: { onStart: (format: OutputType) =>
       {(['deck', 'social-post', 'two-pager'] as const).map((type) => {
         const format = getFormat(type)
         return (
-          <button
-            key={type}
-            type="button"
-            onClick={() => onStart(type)}
-            className={cn(small, 'border-line-card bg-white hover:bg-[#F7F9FA]')}
-          >
+          <StartTile key={type} type={type} label={format.action} onStart={onStart} className={cn(small, 'border-line-card bg-white hover:bg-[#F7F9FA]')}>
             <FormatIcon format={format} size={22} />
             <span className="font-heading">{format.action}</span>
-          </button>
+            {format.external && <ExternalMark className="ml-auto" />}
+          </StartTile>
         )
       })}
       <MoreMenu onStart={onStart}>

@@ -20,6 +20,8 @@ export interface IllustrationAsset {
   id: string
   label: string
   category: IllustrationCategory
+  /** "both": shared by DI and Giga (the General set); "giga": Giga's own (pillars, Giga Meter). */
+  brand: 'giga' | 'both'
   /** Single-style asset (no fill/outline split). Used by category 'giga-meter'. */
   path?: string
   /** Pillar fill variant. */
@@ -87,6 +89,7 @@ function generalEntry(name: string): IllustrationAsset {
     id: `general-${slug}`,
     label: name,
     category: 'general',
+    brand: 'both',
     fillPath: `${BASE}/general/fill/${slug}.svg`,
     outlines: {
       white: `${BASE}/general/outlines/${slug}-white.svg`,
@@ -102,6 +105,7 @@ export const ILLUSTRATIONS: IllustrationAsset[] = [
     id: 'mapping',
     label: 'Mapping',
     category: 'pillars',
+    brand: 'giga',
     fillPath: `${BASE}/fill/mapping.svg`,
     outlines: {
       white: `${BASE}/outlines/mapping-white.svg`,
@@ -113,6 +117,7 @@ export const ILLUSTRATIONS: IllustrationAsset[] = [
     id: 'model',
     label: 'Model',
     category: 'pillars',
+    brand: 'giga',
     fillPath: `${BASE}/fill/model.svg`,
     outlines: {
       white: `${BASE}/outlines/model-white.svg`,
@@ -124,6 +129,7 @@ export const ILLUSTRATIONS: IllustrationAsset[] = [
     id: 'finance',
     label: 'Finance',
     category: 'pillars',
+    brand: 'giga',
     fillPath: `${BASE}/fill/finance.svg`,
     outlines: {
       white: `${BASE}/outlines/finance-white.svg`,
@@ -135,6 +141,7 @@ export const ILLUSTRATIONS: IllustrationAsset[] = [
     id: 'contract',
     label: 'Contract',
     category: 'pillars',
+    brand: 'giga',
     fillPath: `${BASE}/fill/contract.svg`,
     outlines: {
       white: `${BASE}/outlines/contract-white.svg`,
@@ -146,6 +153,7 @@ export const ILLUSTRATIONS: IllustrationAsset[] = [
     id: 'development',
     label: 'Development',
     category: 'pillars',
+    brand: 'giga',
     fillPath: `${BASE}/fill/development.svg`,
     outlines: {
       white: `${BASE}/outlines/capacity-development-white.svg`,
@@ -163,6 +171,7 @@ export const ILLUSTRATIONS: IllustrationAsset[] = [
     id: 'gigameter-computers',
     label: 'Computers',
     category: 'giga-meter',
+    brand: 'giga',
     path: `${BASE}/giga-meter/computers.svg`,
     keywords: ['laptops', 'devices', 'hardware', 'lab', 'workstations'],
   },
@@ -170,6 +179,7 @@ export const ILLUSTRATIONS: IllustrationAsset[] = [
     id: 'gigameter-connection',
     label: 'Connection',
     category: 'giga-meter',
+    brand: 'giga',
     path: `${BASE}/giga-meter/connection.svg`,
     keywords: ['connectivity', 'internet', 'wifi', 'online', 'broadband'],
   },
@@ -177,6 +187,7 @@ export const ILLUSTRATIONS: IllustrationAsset[] = [
     id: 'gigameter-contract',
     label: 'Contract',
     category: 'giga-meter',
+    brand: 'giga',
     path: `${BASE}/giga-meter/contract.svg`,
     keywords: ['agreement', 'procurement', 'document', 'signature', 'terms'],
   },
@@ -184,6 +195,7 @@ export const ILLUSTRATIONS: IllustrationAsset[] = [
     id: 'gigameter-people',
     label: 'People',
     category: 'giga-meter',
+    brand: 'giga',
     path: `${BASE}/giga-meter/people.svg`,
     keywords: ['users', 'community', 'group', 'students', 'persons'],
   },
@@ -254,3 +266,9 @@ export function generateIllustrationFilename(
   }
   return `${parts.join('-')}${resString}.${format}`
 }
+
+/**
+ * The brand of the Illustrations page as a whole: "both" once every
+ * illustration is shared, else "giga" (the pillars and Giga Meter are Giga's own).
+ */
+export const ILLUSTRATIONS_PAGE_BRAND: 'giga' | 'both' = ILLUSTRATIONS.every((i) => i.brand === 'both') ? 'both' : 'giga'
