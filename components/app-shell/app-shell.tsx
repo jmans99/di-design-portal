@@ -20,9 +20,8 @@ import {
 } from '@/components/ui/sidebar'
 import { SheetDescription, SheetTitle } from '@/components/ui/sheet'
 import { SIDEBAR_GROUPS, type NavItem } from '@/lib/nav'
-import { getSite } from '@/lib/site'
+import { SITE } from '@/lib/site'
 
-const SITE = getSite()
 /** DI uses thin outline icons. */
 const ICON_STROKE = 1.5
 
@@ -38,7 +37,7 @@ function pageTitle(pathname: string) {
 }
 
 /**
- * App shell for sites with shell "app" (DI): side panel on the left (icons
+ * App shell: side panel on the left (icons
  * only when collapsed on desktop, a sheet on mobile), a slim top bar with the
  * page title and a Beta badge, and the page on the right.
  */

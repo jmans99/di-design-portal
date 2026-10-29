@@ -64,7 +64,7 @@ export const COLOR_SCALES: ColorScale[] = [
 
 /**
  * Digital Inclusion palette, shown in the "Digital Inclusion" tab of the
- * Colors page on the DI site. Grey and Connectivity are shared with Giga
+ * Colors page. Grey and Connectivity are shared with Giga
  * because DI maps use them.
  */
 export const DI_COLOR_SCALES: ColorScale[] = [

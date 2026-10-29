@@ -1,7 +1,5 @@
-import { ColorPalette } from '@/components/color-palette'
 import { ColorPaletteTabs } from '@/components/color-palette-tabs'
 import { PageHeader } from '@/components/page-header'
-import { getSite } from '@/lib/site'
 
 export default function ColorsPage() {
   return (
@@ -10,7 +8,7 @@ export default function ColorsPage() {
         title="Colors"
         description="Brand palette and tokens: primary blue, deep navy, neutrals, and semantic scales with hex values and usage notes."
       />
-      {getSite().id === 'di' ? <ColorPaletteTabs /> : <ColorPalette />}
+      <ColorPaletteTabs />
     </main>
   )
 }

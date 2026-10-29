@@ -46,7 +46,7 @@ const MAIN_COLORS = [
 /** Scales not shown as their own section (they are summed up in "Connectivity"). */
 const HIDDEN_SCALES = ['Connectivity Red', 'Connectivity Green']
 
-/** Defaults to the Giga palette; the DI site passes its own scales and main colors. */
+/** Defaults to the Giga palette; the Digital Inclusion tab passes its own scales and main colors. */
 export function ColorPalette({
   scales = COLOR_SCALES,
   mainColors = MAIN_COLORS,

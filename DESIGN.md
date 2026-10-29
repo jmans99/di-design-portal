@@ -93,6 +93,8 @@ components:
 
 # Design System: Digital Inclusion Brand Asset Generator
 
+> **One portal.** This repo is the DI design portal: one site with the DI look (DI logo, DI app shell, DI colour tokens in `app/globals.css`), holding DI material and Giga material. The colour names and values below come from the earlier Giga site; the layout, type, spacing, tile, motion and Do/Don't rules are shared. The DI palette is on the Colors page.
+
 ## 1. Overview
 
 **Creative North Star: "The Bright Utility"**

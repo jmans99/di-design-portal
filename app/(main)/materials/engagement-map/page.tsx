@@ -1,8 +1,8 @@
 import { EngagementMapStudio } from '@/components/engagement-map/map-studio'
 import { PageHeader } from '@/components/page-header'
-import { getSite } from '@/lib/site'
+import { SITE } from '@/lib/site'
 
-const ORG = getSite().orgName
+const ORG = SITE.orgName
 
 export const metadata = {
   title: 'Engagement map — Brand asset generator',

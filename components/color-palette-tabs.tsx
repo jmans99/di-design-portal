@@ -9,7 +9,7 @@ import { DI_COLOR_SCALES, DI_MAIN_COLORS } from '@/lib/color-tokens'
 type Palette = 'di' | 'giga'
 
 /**
- * DI site Colors page: "Digital Inclusion" palette (default) and the Giga
+ * Colors page: "Digital Inclusion" palette (default) and the Giga
  * palette, one tab each. The tab lives in the URL (?palette=giga) so it can
  * be shared.
  */

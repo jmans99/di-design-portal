@@ -225,80 +225,48 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98.3%;
-    --foreground: 222 78% 14%;
-    --card: 0 0% 100%;
-    --card-foreground: 222 78% 14%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 78% 14%;
-    --primary: 214 100% 58%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222 47% 25%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 23% 45%;
-    --accent: 214 100% 95%;
-    --accent-foreground: 222 78% 14%;
-    --destructive: 357 88% 52%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 214 100% 58%;
-    --radius: 8px;
-    --radius-sm: 5px;
-    --radius-lg: 12px;
-    --radius-pill: 9999px;
-    --chart-1: 214 100% 58%;
-    --chart-2: 145 100% 42%;
-    --chart-3: 0 0% 32%;
-    --chart-4: 44 100% 62%;
-    --chart-5: 357 88% 52%;
-    --sidebar-background: 210 40% 98.3%;
-    --sidebar-foreground: 222 78% 14%;
-    --sidebar-primary: 214 100% 58%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 214 100% 95%;
-    --sidebar-accent-foreground: 222 78% 14%;
-    --sidebar-border: 214 32% 91%;
-    --sidebar-ring: 214 100% 58%;
-    /* Primary scale as RGB channels (Tailwind primary-50 … primary-900). */
-    --primary-50: 234 242 255; /* #EAF2FF */
-    --primary-100: 212 229 255; /* #D4E5FF */
-    --primary-200: 191 215 255; /* #BFD7FF */
-    --primary-300: 169 202 255; /* #A9CAFF */
-    --primary-400: 126 176 255; /* #7EB0FF */
-    --primary-500: 84 149 255; /* #5495FF */
-    --primary-600: 39 122 255; /* #277AFF */
-    --primary-700: 0 80 230; /* #0050E6 */
-    --primary-800: 0 45 156; /* #002D9C */
-    --primary-900: 0 45 118; /* #002D76 */
-  }
-
-  /* Digital Inclusion site (NEXT_PUBLIC_SITE=di, see lib/site.ts): colour
-     tokens only. Fonts, radii, shadows, spacing and motion stay shared.
-     Secondary, muted, border and input keep the Giga values: their slate hue
-     (210-215) already matches DI navy (212). */
-  [data-site='di'] {
+    /* Digital Inclusion colour tokens. Fonts, radii, shadows, spacing and motion
+       are shared. Secondary, muted, border and input keep their slate values:
+       their hue (210-215) already matches DI navy (212). */
     --background: 0 0% 97.3%; /* off-white #F8F8F8 */
     --foreground: 212 40% 16.9%; /* navy #1A2A3C */
+    --card: 0 0% 100%;
     --card-foreground: 212 40% 16.9%;
+    --popover: 0 0% 100%;
     --popover-foreground: 212 40% 16.9%;
     /* Primary (button backgrounds) = 700, so white text passes WCAG AA
        (6.05:1). White on 600 is 3.86:1 and on 500 #00AEEF 2.53:1. */
     --primary: 200 99% 31%; /* 700 #01689D */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;
     --secondary-foreground: 212 40% 16.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 23% 45%;
     --accent: 201 100% 96.7%; /* 50 #EEF9FF */
     --accent-foreground: 212 40% 16.9%;
+    --destructive: 357 88% 52%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
     --ring: 198 100% 38.6%;
+    --radius: 8px;
+    --radius-sm: 5px;
+    --radius-lg: 12px;
+    --radius-pill: 9999px;
     --chart-1: 198 100% 38.6%;
-    /* Single accent only (kickers and highlights). Not applied anywhere yet. */
-    --accent-orange: 24 93% 54.5%; /* #F7761F */
+    --chart-2: 145 100% 42%;
+    --chart-3: 0 0% 32%;
+    --chart-4: 44 100% 62%;
+    --chart-5: 357 88% 52%;
     --sidebar-background: 0 0% 97.3%;
     --sidebar-foreground: 212 40% 16.9%;
     --sidebar-primary: 200 99% 31%;
+    --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 201 100% 96.7%;
     --sidebar-accent-foreground: 212 40% 16.9%;
+    --sidebar-border: 214 32% 91%;
     --sidebar-ring: 198 100% 38.6%;
+    /* Primary scale as RGB channels (Tailwind primary-50 … primary-900). */
     --primary-50: 238 249 255; /* #EEF9FF */
     --primary-100: 218 241 255; /* #DAF1FF */
     --primary-200: 181 228 255; /* #B5E4FF */
@@ -309,6 +277,8 @@
     --primary-700: 1 104 157; /* #01689D */
     --primary-800: 15 71 114; /* #0F4772 */
     --primary-900: 26 42 60; /* #1A2A3C */
+    /* Single accent only (kickers and highlights). Not applied anywhere yet. */
+    --accent-orange: 24 93% 54.5%; /* #F7761F */
   }
 
   .dark {

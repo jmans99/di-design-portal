@@ -1,5 +1,7 @@
 # Product
 
+> **One portal.** This repo is the DI design portal: one site with the DI look, holding DI material and Giga material (Giga logos, colours and video guidelines). The older text below was written for the Giga brand site and is kept for its design rules; read "Giga" there as the Giga material inside this portal.
+
 ## Register
 
 product
