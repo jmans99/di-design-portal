@@ -156,9 +156,9 @@ function AppSidebar() {
 
       {/* Pinned to the bottom: SidebarContent takes the free height and scrolls, so the footer never overlaps the groups. */}
       <SidebarFooter className="border-t border-line-divider p-0 px-3 group-data-[collapsible=icon]:hidden">
-        <Link href="/" onClick={closeOnMobile} className="focus-ring flex rounded-lg px-2 py-4">
+        <Link href="/" onClick={closeOnMobile} className="focus-ring flex rounded-lg px-2 py-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={SITE.headerLogo.src} alt={SITE.headerLogo.alt} className="h-6 w-auto" />
+          <img src={SITE.headerLogo.src} alt={SITE.headerLogo.alt} className="h-4 w-auto" />
         </Link>
       </SidebarFooter>
       <SidebarRail />

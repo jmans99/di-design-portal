@@ -44,7 +44,7 @@ Replaces the current side panel styling and structure.
   two lines link to / (accessible name "Dot home"). "Beta" badge on the right
   (11px, 600, navy text on #F7761F, pill, 2px 8px).
 - Footer (shadcn SidebarFooter, pinned to the bottom): the DI logo
-  (/logos/unicef-digital-inclusion-blue.svg), 24px high, padding 16px 8px,
+  (/logos/unicef-digital-inclusion-blue.svg), 16px high (width auto), padding 12px 8px,
   left aligned with the rows, with a 1px #EBEEF2 line above it. It links to /
   (alt "UNICEF Digital Inclusion"). The groups scroll above it, so the footer
   stays at the bottom when they are short and never overlaps them when they
