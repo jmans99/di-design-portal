@@ -150,6 +150,9 @@ export type PhotoAwardStory = {
 
 export const PHOTO_AWARD_INTRO = ${JSON.stringify(intro)}
 
+/** The Giga Photo Award photos are shared by DI and Giga (UNICEF advocacy use). */
+export const PHOTO_AWARD_BRAND: 'di' | 'giga' | 'both' = 'both'
+
 export const PHOTO_AWARD_STORIES: PhotoAwardStory[] = ${JSON.stringify(out.map((s) => ({ ...s, images: s.images.map(({ sourceWidth, sourceHeight, ...i }) => i) })), null, 2)}
 `
 fs.writeFileSync(path.join(ROOT, 'lib/photo-awards.ts'), ts)

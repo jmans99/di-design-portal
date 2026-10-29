@@ -26,7 +26,7 @@ import { basename, dirname, extname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { logosForBrand, resolveGigaLogoPath } from '../lib/brand-registry.ts'
 import { ILLUSTRATIONS } from '../lib/illustration-registry.ts'
-import { PHOTO_AWARD_STORIES } from '../lib/photo-awards.ts'
+import { PHOTO_AWARD_BRAND, PHOTO_AWARD_STORIES } from '../lib/photo-awards.ts'
 import { COLOR_SCALES, DI_COLOR_SCALES, DI_MAIN_COLORS } from '../lib/color-tokens.ts'
 import { colorVariantToGigaVariant, recolorGigaLogo, recolorSvg } from './lib/svg-recolor.mjs'
 
@@ -155,9 +155,12 @@ async function thumbnail(srcUrl, thumbUrl) {
 
 const assets = []
 const inferred = [] // { id, missing: [...] } before overrides
+/** The brand each page's own list gives an asset (Logos, Illustrations, Photo awards), to check the index agrees. */
+const registryBrands = new Map()
 
-function add({ id, title, url, name, type, brand, colour, layout, formats, preview, page, tags = [], size = {} }) {
+function add({ id, title, url, name, type, brand, colour, layout, formats, preview, page, tags = [], size = {}, registryBrand }) {
   if (assets.some((a) => a.id === id)) throw new Error(`[assets] duplicate id ${id}`)
+  if (registryBrand) registryBrands.set(id, registryBrand)
   const folder = inferFromFolder(url)
   const asset = {
     id,
@@ -224,17 +227,19 @@ async function addLogoVariant({ asset, version, src, variantName, recolor, title
     layout,
     formats: [{ ext: 'svg', url: svgUrl }, ...(hasPng ? [{ ext: 'png', url: pngUrl }] : [])],
     preview: svgUrl,
-    page: `/logos?brand=${asset.brand}`,
+    // Shared logos are on both tabs; the default (DI) tab is enough.
+    page: asset.brand === 'both' ? '/logos' : `/logos?brand=${asset.brand}`,
+    registryBrand: asset.brand,
     tags: [...logoTags(asset), ...tags, variantName],
   })
 }
 
 // Logos: every brand, version and colour the Logos page offers, in the order of
 // its Digital Inclusion and Giga tabs (search keeps this order for ties).
-for (const asset of [...logosForBrand('di'), ...logosForBrand('giga')]) {
+for (const asset of new Set([...logosForBrand('di'), ...logosForBrand('giga')])) {
   if (asset.isGigaMainLogo) {
     for (const orientation of ['horizontal', 'vertical']) {
-      for (const combination of ['standalone', 'unicef-itu']) {
+      for (const combination of asset.combination ? [asset.combination] : ['standalone', 'unicef-itu']) {
         for (const variant of asset.allowedColorVariants) {
           await addLogoVariant({
             asset,
@@ -288,6 +293,7 @@ for (const ill of ILLUSTRATIONS) {
       preview: variant.url,
       page: '/illustrations',
       tags: [ill.label, ...(ill.keywords ?? []), ...CATEGORY_TAGS[ill.category], variant.label ?? ''],
+      registryBrand: ill.brand,
     })
   }
 }
@@ -306,6 +312,7 @@ for (const story of PHOTO_AWARD_STORIES) {
       formats: [{ ext: extname(image.src).slice(1), url: image.src }],
       preview: image.thumb,
       page: '/media/photo-awards',
+      registryBrand: PHOTO_AWARD_BRAND,
       tags: [story.photographer, story.location, 'photo award', 'giga photo award', 'connectivity'],
     })
   })
@@ -420,6 +427,13 @@ if (!existsSync(MANIFEST) || readFileSync(MANIFEST, 'utf8') !== manifestJson) wr
 const json = JSON.stringify(assets, null, 2) + '\n'
 const changed = !existsSync(OUT) || readFileSync(OUT, 'utf8') !== json
 if (changed) writeFileSync(OUT, json)
+
+// The pages read their own lists, search reads this index: the two must agree on brand.
+const brandMismatches = assets.filter((a) => registryBrands.has(a.id) && registryBrands.get(a.id) !== a.brand)
+if (brandMismatches.length) {
+  console.warn(`[assets] ${brandMismatches.length} assets have a different brand in the index than on their page:`)
+  for (const a of brandMismatches) console.warn(`  ✗ ${a.id}: index ${a.brand}, page ${registryBrands.get(a.id)} (set it in data/assets.overrides.json)`)
+}
 
 const stillMissing = inferred.filter(({ id, missing }) => missing.some((k) => !assets.find((a) => a.id === id)[k]))
 const byType = Object.entries(assets.reduce((m, a) => ({ ...m, [a.type]: (m[a.type] ?? 0) + 1 }), {}))

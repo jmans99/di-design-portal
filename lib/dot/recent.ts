@@ -54,6 +54,19 @@ export function addRecent(item: RecentItem) {
   window.dispatchEvent(new Event(CHANGE_EVENT))
 }
 
+/** Removes the items that match (e.g. briefs for a flow that is switched off). Storage errors are ignored. */
+export function dropRecent(match: (item: RecentItem) => boolean) {
+  const items = readRecent()
+  const kept = items.filter((item) => !match(item))
+  if (kept.length === items.length) return
+  try {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(kept))
+  } catch {
+    // Storage blocked: nothing to clean up.
+  }
+  window.dispatchEvent(new Event(CHANGE_EVENT))
+}
+
 function subscribe(onChange: () => void) {
   window.addEventListener(CHANGE_EVENT, onChange)
   window.addEventListener('storage', onChange)

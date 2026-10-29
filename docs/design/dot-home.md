@@ -199,6 +199,36 @@ add assets to the same index.
 - DESIGN.md: replace the old Giga colour names/values with the DI tokens above
   and link to docs/design/dot-home.md.
 
+## External tools
+
+Added after the first build of this spec.
+
+- Decks and two-pagers are made in the deck builder, which lives outside the
+  portal (https://un-deck-builder.vercel.app/). The URLs live in one place,
+  `lib/external-tools.ts` (`EXTERNAL_TOOLS.deck`, `EXTERNAL_TOOLS.twoPager`),
+  and everything else reads from there.
+- Every deck and two-pager entry point opens the builder in a new tab
+  (`target="_blank"`, `rel="noopener noreferrer"`), with a 14px external-link
+  icon (lucide ArrowUpRight) and an accessible name such as "Create a deck
+  (opens the deck builder in a new tab)". The entry points are the home bento
+  tiles, the side panel Create rows (no "Soon" tags), the ⌘K format rows, and
+  the small tiles in Dot's "couldn't match" reply.
+- Typed requests for a deck or a two-pager don't open a tab. Dot replies
+  "Decks are made in the deck builder." (or "Two-pagers are made in the deck
+  builder.") with a primary "Open deck builder" button. These replies are not
+  added to Recent. The side panel drops old "Soon" deck and two-pager briefs
+  from Recent on load.
+- The in-portal deck flow (template bento, audience step, "coming soon" reply)
+  is kept but switched off with `inPortalDeckFlow = false`. While it is off,
+  `/?new=deck` and `/?new=two-pager` show the same reply and button.
+- The DI Master deck is "Coming soon" (`masterDeckAvailable = false`).
+  - Its home tile keeps its look, with a "Coming soon" pill (white, `#5C6B7A`
+    text, 1px `#E3E8EE` border) instead of "Recommended".
+  - The tile is a plain block: no link, no hover, not focusable, and read as
+    "DI Master deck, coming soon".
+  - A typed "master deck" gets: "The DI Master deck is coming soon. In the
+    meantime, you can start a deck in the deck builder.", with the same button.
+
 ## Checks
 
 - npm run build passes; lint adds no new errors.

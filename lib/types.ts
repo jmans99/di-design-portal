@@ -33,6 +33,8 @@ export interface LogoAsset {
   svgPathByColorName?: Record<string, string>
   /** Whether this asset is the main Giga brand logo with full variant support. */
   isGigaMainLogo?: boolean
+  /** Giga main logo only: the one lockup this entry shows (no Combination control). */
+  combination?: LogoCombination
   allowedColorVariants: ColorVariant[]
   /**
    * Optional sub-versions of the same logo (e.g. boxed vs unboxed). When present,

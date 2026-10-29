@@ -90,7 +90,9 @@ export function LogoGenerator({ brandTab, initialColorVariant }: LogoGeneratorPr
 
   // Giga main logo extra config
   const [orientation, setOrientation] = useState<LogoOrientation>('horizontal')
-  const [combination, setCombination] = useState<LogoCombination>('standalone')
+  const [chosenCombination, setCombination] = useState<LogoCombination>('standalone')
+  // An entry with a fixed lockup (Giga, or Giga + UNICEF + ITU) shows only that one.
+  const combination = brand.combination ?? chosenCombination
 
   const [selectedFormat, setSelectedFormat] = useState<OutputFormat>('svg')
   const [selectedResolution, setSelectedResolution] = useState<Resolution>('2x')
@@ -195,9 +197,12 @@ export function LogoGenerator({ brandTab, initialColorVariant }: LogoGeneratorPr
   // When a brand has sub-versions, include the active version label in the filename
   // (e.g. "unicef-digital-impact-unboxed_unicef-blue.svg") so exported files are
   // self-describing.
+  // The Giga logo entries (Giga, Giga + UNICEF + ITU) keep the "giga" filenames; the lockup is in the combination part.
   const brandFilenameKey = activeVersion
     ? `${brand.brandName} ${activeVersion.label}`
-    : brand.brandName
+    : isGigaMain
+      ? 'Giga'
+      : brand.brandName
 
   const handleExport = async () => {
     if (!previewSvg) return
@@ -292,8 +297,8 @@ export function LogoGenerator({ brandTab, initialColorVariant }: LogoGeneratorPr
           </ControlSection>
         )}
 
-        {/* Giga-only: Combination */}
-        {isGigaMain && (
+        {/* Giga-only: Combination (entries with a fixed lockup skip it) */}
+        {isGigaMain && !brand.combination && (
           <ControlSection
             label="Combination"
             icon={<Layers className="h-3.5 w-3.5 text-muted-foreground" />}

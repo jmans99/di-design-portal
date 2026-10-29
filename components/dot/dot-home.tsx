@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation'
 import { ArrowUp, Plus } from 'lucide-react'
 import { SidePanelToggle } from '@/components/app-shell/app-shell'
 import { DotOrb } from '@/components/dot/dot-orb'
-import { MoreMenu, RecommendedPill } from '@/components/dot/format-tiles'
+import { ComingSoonPill, ExternalMark, MoreMenu, RecommendedPill, StartTile } from '@/components/dot/format-tiles'
 import { MasterDeckArt, SlidesArt, SocialPostArt, TwoPagerArt } from '@/components/dot/dot-art'
 import { Conversation } from '@/components/dot/conversation'
 import { SearchReply } from '@/components/dot/search-reply'
@@ -13,6 +13,7 @@ import { useDot } from '@/components/dot/use-dot'
 import { Switch } from '@/components/ui/switch'
 import { conversationFromParams, searchFromParams } from '@/lib/dot/conversation'
 import type { OutputType } from '@/lib/brief'
+import { masterDeckAvailable } from '@/lib/external-tools'
 import { cn } from '@/lib/utils'
 import styles from './dot.module.css'
 
@@ -160,17 +161,20 @@ export function DotBox({
 function FormatBento({ onStart }: { onStart: (format: OutputType, templateId?: 'master-deck') => void }) {
   return (
     <div className={cn('mt-4', styles.bento)}>
-      <button
-        type="button"
-        onClick={() => onStart('deck')}
+      <StartTile
+        type="deck"
+        label="Create a deck"
+        onStart={onStart}
         className={cn(TILE, styles.deck, 'flex items-center justify-between gap-3 border-line-card bg-[#F3F8FB] px-5')}
       >
         <span>
-          <span className={cn(TILE_TITLE, 'block')}>Create a deck</span>
+          <span className={cn(TILE_TITLE, 'block')}>
+            Create a deck <ExternalMark />
+          </span>
           <span className={cn(TILE_SUB, 'block')}>From a template or from scratch</span>
         </span>
         <SlidesArt />
-      </button>
+      </StartTile>
       <button
         type="button"
         onClick={() => onStart('social-post')}
@@ -181,16 +185,19 @@ function FormatBento({ onStart }: { onStart: (format: OutputType, templateId?: '
         </span>
         <span className={cn(TILE_TITLE, 'pr-10')}>Make a social post</span>
       </button>
-      <button
-        type="button"
-        onClick={() => onStart('two-pager')}
+      <StartTile
+        type="two-pager"
+        label="Write a two-pager"
+        onStart={onStart}
         className={cn(TILE, styles.twoPager, 'flex flex-col justify-end border-transparent bg-[#EEF0FF] p-4')}
       >
         <span className="absolute right-3 top-3">
           <TwoPagerArt />
         </span>
-        <span className={cn(TILE_TITLE, 'pr-10')}>Write a two-pager</span>
-      </button>
+        <span className={cn(TILE_TITLE, 'pr-10')}>
+          Write a two-pager <ExternalMark />
+        </span>
+      </StartTile>
       <MoreMenu onStart={onStart}>
         <button
           type="button"
@@ -206,20 +213,43 @@ function FormatBento({ onStart }: { onStart: (format: OutputType, templateId?: '
           <span className="text-xs text-ink-secondary">More</span>
         </button>
       </MoreMenu>
-      <button
-        type="button"
-        onClick={() => onStart('deck', 'master-deck')}
-        className={cn(TILE, styles.master, 'flex items-center justify-between gap-4 border-[#DAF1FF] bg-[#EEF9FF] px-5')}
-      >
-        <span className="min-w-0">
-          <RecommendedPill />
-          <span className="mt-1.5 block font-heading text-[17px] font-semibold text-ink">DI Master deck</span>
-          <span className={cn(TILE_SUB, 'block')}>All 18 offerings. Dot tailors it to your audience.</span>
-        </span>
-        <span className={styles.masterArt}>
-          <MasterDeckArt />
-        </span>
+      <MasterDeckTile onStart={() => onStart('deck', 'master-deck')} />
+    </div>
+  )
+}
+
+/**
+ * The DI Master deck tile. While it is not available (masterDeckAvailable in
+ * lib/external-tools.ts) it keeps its look but leads nowhere: a plain block,
+ * not focusable, read as "DI Master deck, coming soon".
+ */
+function MasterDeckTile({ onStart }: { onStart: () => void }) {
+  const body = (
+    <>
+      <span className="min-w-0">
+        {masterDeckAvailable ? <RecommendedPill /> : <ComingSoonPill />}
+        <span className="mt-1.5 block font-heading text-[17px] font-semibold text-ink">DI Master deck</span>
+        <span className={cn(TILE_SUB, 'block')}>All 18 offerings. Dot tailors it to your audience.</span>
+      </span>
+      <span className={styles.masterArt}>
+        <MasterDeckArt />
+      </span>
+    </>
+  )
+  const look = cn(styles.master, 'relative flex items-center justify-between gap-4 overflow-hidden rounded-2xl border border-[#DAF1FF] bg-[#EEF9FF] px-5 text-left')
+  if (masterDeckAvailable) {
+    return (
+      <button type="button" onClick={onStart} className={cn(TILE, look)}>
+        {body}
       </button>
+    )
+  }
+  return (
+    <div className={cn(look, 'cursor-default')}>
+      <span className="sr-only">DI Master deck, coming soon</span>
+      <span aria-hidden className="contents">
+        {body}
+      </span>
     </div>
   )
 }

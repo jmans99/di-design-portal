@@ -101,6 +101,16 @@ export const BRAND_ASSETS: LogoAsset[] = [
     brand: 'giga',
     assetType: 'logo',
     isGigaMainLogo: true,
+    combination: 'standalone',
+    allowedColorVariants: COLOR_VARIANTS,
+  },
+  {
+    // The partnership lockup, shared by DI and Giga (DI's email signature and engagement map use it).
+    brandName: 'Giga + UNICEF + ITU',
+    brand: 'both',
+    assetType: 'logo',
+    isGigaMainLogo: true,
+    combination: 'unicef-itu',
     allowedColorVariants: COLOR_VARIANTS,
   },
   {
@@ -225,9 +235,12 @@ export const BRAND_ASSETS: LogoAsset[] = [
   },
 ]
 
-/** Logos listed under one brand tab (shared "both" logos under both). Digital Inclusion's own logo comes first on the DI tab. */
+/**
+ * Logos listed under one brand tab: the brand's own logos, then the shared
+ * ("both") ones. Digital Inclusion's own logo comes first on the DI tab.
+ */
 export function logosForBrand(brand: 'di' | 'giga'): LogoAsset[] {
-  const logos = BRAND_ASSETS.filter((asset) => asset.brand === brand || asset.brand === 'both')
+  const logos = [...BRAND_ASSETS.filter((asset) => asset.brand === brand), ...BRAND_ASSETS.filter((asset) => asset.brand === 'both')]
   return brand === 'di'
     ? [...logos.filter((l) => l.brandName === 'UNICEF Digital Inclusion'), ...logos.filter((l) => l.brandName !== 'UNICEF Digital Inclusion')]
     : logos

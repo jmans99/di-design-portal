@@ -3,7 +3,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Command as CommandPrimitive } from 'cmdk'
-import { Download, Search } from 'lucide-react'
+import { ArrowUpRight, Download, Search } from 'lucide-react'
 import { BrandPill } from '@/components/brand/brand-tabs'
 import { AssetPreview } from '@/components/search/asset-card'
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog'
@@ -11,6 +11,7 @@ import { searchItems, type SearchItem } from '@/lib/search'
 import { ASSETS, downloadAsset } from '@/lib/search/assets'
 import { hasAssetFacets, parseQuery, searchAssets } from '@/lib/search/match'
 import type { Asset } from '@/lib/search/types'
+import { externalLinkLabel } from '@/lib/external-tools'
 
 const MAX_ASSETS = 8
 
@@ -94,6 +95,12 @@ function SearchPalette({
     onOpenChange(false)
     router.push(href)
   }
+  /** The deck builder and other external tools open in a new tab. */
+  const openItem = (item: SearchItem) => {
+    if (!item.external) return go(item.href)
+    onOpenChange(false)
+    window.open(item.href, '_blank', 'noopener,noreferrer')
+  }
   const assetFor = (value: string) => assets.find((a) => `asset-${a.id}` === value)
 
   return (
@@ -139,7 +146,7 @@ function SearchPalette({
             {formats.length > 0 && (
               <CommandPrimitive.Group heading="Formats" className={GROUP}>
                 {formats.map((item) => (
-                  <LinkRow key={item.id} item={item} onSelect={() => go(item.href)} />
+                  <LinkRow key={item.id} item={item} onSelect={() => openItem(item)} />
                 ))}
               </CommandPrimitive.Group>
             )}
@@ -167,9 +174,15 @@ function SearchPalette({
 function LinkRow({ item, onSelect }: { item: SearchItem; onSelect: () => void }) {
   const Icon = item.icon
   return (
-    <CommandPrimitive.Item value={item.id} onSelect={onSelect} className={`${ITEM} h-9`}>
+    <CommandPrimitive.Item
+      value={item.id}
+      onSelect={onSelect}
+      aria-label={item.external ? externalLinkLabel(item.title) : undefined}
+      className={`${ITEM} h-9`}
+    >
       <Icon className="h-4 w-4 shrink-0" style={item.color ? { color: item.color } : undefined} strokeWidth={1.75} aria-hidden />
       {item.title}
+      {item.external && <ArrowUpRight className="ml-auto !h-3.5 !w-3.5 shrink-0 text-ink-muted" strokeWidth={1.75} aria-hidden />}
     </CommandPrimitive.Item>
   )
 }

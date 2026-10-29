@@ -16,10 +16,12 @@ export type SearchItem = {
   icon: LucideIcon
   /** Icon colour for formats. */
   color?: string
+  /** Opens an external tool in a new tab (the deck builder). */
+  external?: boolean
 }
 
 export const SEARCH_INDEX: SearchItem[] = [
-  ...FORMATS.map((f) => ({ id: `format-${f.type}`, title: f.action, section: 'Formats', href: formatStartPath(f), icon: f.icon, color: f.color })),
+  ...FORMATS.map((f) => ({ id: `format-${f.type}`, title: f.action, section: 'Formats', href: formatStartPath(f), icon: f.icon, color: f.color, external: !!f.external })),
   ...SIDEBAR_GROUPS.filter((g) => g.id !== 'create').flatMap((g) =>
     g.items.filter((i) => !i.soon).map((i) => ({ id: `page-${i.id}`, title: i.label, section: g.label, href: i.path, icon: i.icon })),
   ),

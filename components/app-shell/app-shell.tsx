@@ -1,9 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname, useSearchParams } from 'next/navigation'
-import { ChevronDown, ChevronRight, Clock, PanelLeft, Search } from 'lucide-react'
+import { ArrowUpRight, ChevronDown, ChevronRight, Clock, PanelLeft, Search } from 'lucide-react'
 import {
   Sidebar,
   SidebarContent,
@@ -20,7 +20,8 @@ import { SheetDescription, SheetTitle } from '@/components/ui/sheet'
 import { DotOrb } from '@/components/dot/dot-orb'
 import { SearchProvider, useSearchPalette } from '@/components/search/search-palette'
 import { AI_SKILLS_ITEM, SIDEBAR_GROUPS, activeNavItem, type NavGroup, type NavItem } from '@/lib/nav'
-import { useRecent } from '@/lib/dot/recent'
+import { dropRecent, useRecent } from '@/lib/dot/recent'
+import { externalLinkLabel, inPortalDeckFlow } from '@/lib/external-tools'
 import { SITE } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
@@ -62,6 +63,11 @@ function AppSidebar() {
   const { setOpen: setSearchOpen } = useSearchPalette()
   const recent = useRecent()
   const closeOnMobile = () => setOpenMobile(false)
+
+  // Decks and two-pagers open the external builder now: drop old "Soon" briefs for them from Recent.
+  useEffect(() => {
+    if (!inPortalDeckFlow) dropRecent((item) => /^\/\?(.*&)?new=(deck|two-pager)(&|$)/.test(item.href))
+  }, [])
   const active = activeNavItem(pathname, newParam)
 
   return (
@@ -212,6 +218,14 @@ function ChildRow({ item, active, onNavigate }: { item: NavItem; active: boolean
         <span className="truncate">{item.label}</span>
         <span className={TAG}>Soon</span>
       </span>
+    )
+  }
+  if (item.external) {
+    return (
+      <a href={item.path} target="_blank" rel="noopener noreferrer" onClick={onNavigate} aria-label={externalLinkLabel(item.label)} className={CHILD_ROW}>
+        <span className="truncate">{item.label}</span>
+        <ArrowUpRight className="ml-auto h-3.5 w-3.5 shrink-0 text-ink-muted" strokeWidth={1.75} aria-hidden />
+      </a>
     )
   }
   return (
