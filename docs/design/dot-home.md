@@ -38,8 +38,19 @@ Replaces the current side panel styling and structure.
 - Width 264px, background #FAFAFA, right border 1px #EBEEF2,
   padding 20px 12px, gap 18px between blocks. Keep the existing shadcn Sidebar
   behaviour (collapse, mobile off-canvas, cookie for state).
-- Top: the real DI logo (/logos/unicef-digital-inclusion-blue.svg) on the left,
-  "Beta" badge on the right (11px, 600, navy text on #F7761F, pill, 2px 8px).
+- Header: the Dot orb (28px, static) and, 10px to its right, two lines:
+  "Welcome to Dot" (Manrope 600, 14px, #1A2A3C) and the caption
+  "Your AI content designer" (Open Sans 400, 12px, #5C6B7A). The orb and the
+  two lines link to / (accessible name "Dot home"). "Beta" badge on the right
+  (11px, 600, navy text on #F7761F, pill, 2px 8px).
+- Footer (shadcn SidebarFooter, pinned to the bottom): the DI logo
+  (/logos/unicef-digital-inclusion-blue.svg), 24px high, padding 16px 8px,
+  left aligned with the rows, with a 1px #EBEEF2 line above it. It links to /
+  (alt "UNICEF Digital Inclusion"). The groups scroll above it, so the footer
+  stays at the bottom when they are short and never overlaps them when they
+  are long.
+- Collapsed (icons only): the header shows only the orb; the footer is hidden.
+  The mobile sheet has the same header and footer as desktop.
 - Search button: full width, 34px high, radius 8, background #F3F5F7,
   border 1px #E6EAEE, text #5C6B7A 14px, search icon 16px, label "Search",
   "⌘K" key hint on the right (11px, white bg, border #E3E8EE, radius 6).
@@ -75,6 +86,8 @@ a) Heading row (centred, gap 14px, margin-bottom 24px):
    40px Dot orb + h1 "Hi there, what do you need today?"
    (Manrope 600, 28px, letter-spacing -0.02em, line-height 1.2).
    There is no login yet; when a user name exists later, it replaces "there".
+   This orb is the only animated one (`<DotOrb animated />`, see "Dot orb
+   animation" below); every other orb is static.
 
 b) Dot's box: white, border 1px #E3E8EE, radius 22px,
    shadow 0 10px 32px rgba(26,42,60,.07).
@@ -198,6 +211,29 @@ add assets to the same index.
   (check nothing else references them).
 - DESIGN.md: replace the old Giga colour names/values with the DI tokens above
   and link to docs/design/dot-home.md.
+
+## Dot orb animation
+
+Only the 40px orb in the home heading moves. The side panel orb, the New chat
+row and Dot's messages stay static. CSS only (components/dot/dot-orb.module.css),
+no animation library, and only transform and opacity animate (never
+box-shadow or background), so it stays smooth.
+
+- Look: unchanged, the same radial gradient
+  (circle at 32% 28%, #FFFFFF 0%, #D9FFF0 18%, #6EF2C4 46%, #22B99A 68%,
+  #0B6E5C 100%) and shadow.
+- Breathing: the orb scales 1 → 1.04 → 1 from its centre, 4s, ease-in-out,
+  infinite.
+- Moving highlight: a pseudo-element on top, a soft white radial highlight
+  (white at 75% opacity near the top left, transparent by 45% of the radius).
+  It turns around the orb's centre, 10s, linear, infinite, clipped to the
+  circle (overflow hidden, radius 999px), like light moving over a glass ball.
+- Glow: a pseudo-element behind the orb, a #22B99A circle with 12px blur. Its
+  opacity goes 0.35 → 0.6 → 0.35, 4s, in step with the breathing.
+- Reduced motion (prefers-reduced-motion: reduce): no animation; the static
+  orb with its usual shadow, no highlight or glow.
+- The orb is decorative (aria-hidden). Its box keeps its size, so the scaling
+  never moves the heading text.
 
 ## External tools
 

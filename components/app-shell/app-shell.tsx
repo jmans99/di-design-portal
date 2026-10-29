@@ -113,7 +113,7 @@ function AppSidebar() {
         </SidebarMenu>
       </SidebarHeader>
 
-      <SidebarContent className="gap-[18px] px-3 pb-5 pt-[18px]">
+      <SidebarContent className="gap-[18px] px-3 pb-5 pt-[18px] group-data-[collapsible=icon]:px-2">
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild isActive={pathname === '/' && !active} tooltip="New chat" className={ROW}>
