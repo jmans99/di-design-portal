@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import * as TabsPrimitive from '@radix-ui/react-tabs'
-import { BRANDS, BRAND_LABELS, brandFromParams, withBrand, type Brand } from '@/lib/brand'
+import { BRANDS, BRAND_LABELS, brandFromParams, withBrand, type AssetBrand, type Brand } from '@/lib/brand'
 import { cn } from '@/lib/utils'
 
 /** The brand shown on this page, from ?brand= (or the old ?palette=giga). */
@@ -63,13 +63,22 @@ export function BrandTabsContent({ brand, children, className }: { brand: Brand;
   )
 }
 
-/** "Giga" next to the title of a page that only has Giga material. DI pages get no pill. */
-export function BrandPill({ brand, className }: { brand: Brand; className?: string }) {
+const PILL_COLOURS: Record<AssetBrand, string> = {
+  di: 'bg-primary-50 text-primary-700',
+  giga: 'bg-[#EEF1F4] text-ink',
+  both: 'bg-[#F2F4F6] text-ink-secondary',
+}
+
+/**
+ * Brand pill: "Giga" or "DI + Giga" next to the title of a Giga-only or shared
+ * page (DI pages get none), and on every search result.
+ */
+export function BrandPill({ brand, className }: { brand: AssetBrand; className?: string }) {
   return (
     <span
       className={cn(
-        'inline-flex shrink-0 items-center rounded-full px-2.5 py-0.5 font-sans text-xs font-semibold',
-        brand === 'giga' ? 'bg-[#EEF1F4] text-ink' : 'bg-primary-50 text-primary-700',
+        'inline-flex shrink-0 items-center whitespace-nowrap rounded-full px-2.5 py-0.5 font-sans text-xs font-semibold',
+        PILL_COLOURS[brand],
         className,
       )}
     >

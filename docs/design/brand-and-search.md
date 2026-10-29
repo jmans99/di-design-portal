@@ -7,10 +7,18 @@ and no external API: everything is fixed rules over a JSON index. Builds on
 
 ## 1. Brand rules
 
+- Material has one of three brand values: `di`, `giga`, or `both` (shared by
+  DI and Giga, e.g. the fonts).
 - DI is the default brand. A page with only DI material gets no brand marker.
-- A page with **both** DI and Giga material gets **brand tabs** in its title
+- A page with separate DI material and Giga material gets **brand tabs** in its title
   row. "Digital Inclusion" is always the first tab and the default.
 - A page with **only Giga** material gets a **Giga pill** next to its title.
+- A page whose material is **shared** by both brands, and so has no tabs, gets
+  a **"DI + Giga" pill** next to its title (Typography).
+- On pages with brand tabs, material tagged `both` shows under both tabs. In
+  the registries the pages use, that means `brand: 'both'` on the entry (Logos:
+  `lib/brand-registry.ts`; Image galleries: `components/media-section.tsx`).
+  Nothing on those pages is tagged `both` yet.
 - A tool that only has one brand's templates today is single-brand. The other
   brand is not invented.
 
@@ -18,13 +26,13 @@ Current pages (audit, October 2026):
 
 | Page | Brand | Marker |
 | --- | --- | --- |
-| Colors | both | brand tabs |
-| Logos | both | brand tabs |
-| Image galleries | both | brand tabs (Giga: Flickr, YouTube; DI: UNICEF WeShare and the DI SharePoint libraries) |
+| Colors | DI and Giga, separate | brand tabs |
+| Logos | DI and Giga, separate | brand tabs |
+| Image galleries | DI and Giga, separate | brand tabs (Giga: Flickr, YouTube; DI: UNICEF WeShare and the DI SharePoint libraries) |
 | Illustrations | Giga | Giga pill |
 | Photo awards | Giga | Giga pill |
 | Video guidelines | Giga | Giga pill |
-| Typography | shared fonts (Manrope, Open Sans) | none |
+| Typography | shared fonts (Manrope, Open Sans) | "DI + Giga" pill |
 | Social media, Email signature, Engagement map | DI templates that also carry the Giga logo | none |
 | Backgrounds, Maps, Brand guidelines, Knowledge, AI skills | DI (Maps and Backgrounds use Giga Maps data) | none |
 
@@ -44,11 +52,13 @@ Current pages (audit, October 2026):
 Contrast: white on `#01689D` and `#01689D` on white are both 6.05:1.
 
 **Brand pills** (`<BrandPill />`): 12px, 600, radius 999px, padding 2px 10px.
+The same size and shape for every brand.
 
-| Brand | Background | Text |
-| --- | --- | --- |
-| Giga | `#EEF1F4` | `#1A2A3C` |
-| Digital Inclusion (result cards only) | `#EEF9FF` | `#01689D` |
+| Brand | Label | Background | Text | Where |
+| --- | --- | --- | --- | --- |
+| giga | Giga | `#EEF1F4` | `#1A2A3C` | Giga-only page titles, result cards, ⌘K |
+| both | DI + Giga | `#F2F4F6` | `#3B4A5A` | shared page titles (Typography), result cards, ⌘K |
+| di | Digital Inclusion | `#EEF9FF` | `#01689D` | result cards and ⌘K only (DI pages get no pill) |
 
 **Result previews**: 4:3, radius 12px, contain-fit with padding. White artwork
 sits on `#1A2A3C`, everything else on `#F8F8F8`.
@@ -76,7 +86,7 @@ sits on `#1A2A3C`, everything else on `#F8F8F8`.
 {
   id, title,            // "Digital Inclusion logo, black, horizontal"
   type,                 // logo | illustration | photo | icon | background | template | font | palette | guideline
-  brand,                // di | giga
+  brand,                // di | giga | both (shared by DI and Giga)
   colour,               // full-colour | black | white | blue | navy | null
   layout,               // horizontal | vertical | stacked | square | null
   formats: [{ ext, url }],
@@ -111,7 +121,18 @@ sits on `#1A2A3C`, everything else on `#F8F8F8`.
     the image's proportions (≥ 1.6 horizontal, ≤ 0.85 vertical, else square).
 - **Overrides**: `data/assets.overrides.json` (`{ "<id>": { "brand": "di" } }`)
   is hand-edited and merged on top. The script lists every asset whose brand,
-  type or colour it could not infer.
+  type or colour it could not infer. `both` is only ever set here; names never
+  imply it.
+
+  | Assets | Brand | Status |
+  | --- | --- | --- |
+  | UNICEF logo (blue, black, white) | di | **confirmed** by the portal owner |
+  | UNICEF Digital Impact Division logos (boxed, unboxed) | di | **confirmed** by the portal owner |
+  | GEP and Connectivity Forum event logos | giga | **confirmed** by the portal owner |
+  | Manrope and Open Sans fonts | both | **confirmed** by the portal owner |
+
+  The boxed Digital Impact Division file named `-black` is the full-colour
+  lockup, so its colour is also overridden (`full-colour`).
 
 ## 5. Keyword matching (`lib/search/`)
 
@@ -141,15 +162,17 @@ sits on `#1A2A3C`, everything else on `#F8F8F8`.
 
 3. **Filler words** are dropped: i, want, need, the, a, an, of, in, for, me,
    please, can, you, give, show, find, get, download, some, our, with, to, my.
-4. **Filter**: a named brand returns only that brand; a named type returns
-   only that type.
+4. **Filter**: a named type returns only that type. A named brand returns that
+   brand plus shared material: "di" returns `di` + `both`, "giga" returns
+   `giga` + `both`. No brand named returns every brand.
 5. **Score**: colour +3, layout +2, format +1, and +1 for each other word found
    in the title or tags (a plural "s" is ignored). With no brand or type, only
    assets that score are returned.
-6. **Sort**: by score, then DI before Giga when no brand was named, then the
-   order the asset pages list them in (the index order), then title. Page
-   order puts the DI logo first and the main Giga logo before product and
-   event logos.
+6. **Sort**: by score, then brand, then the order the asset pages list them in
+   (the index order), then title. Brand order with no brand named: DI, then
+   both, then Giga. With a brand named: that brand, then both. Page order
+   puts the DI logo first and the main Giga logo before product and event
+   logos.
 7. **Returns** `{ facets, results }`. For example "I want the logo of Digital
    Inclusion in black" returns `{ type: 'logo', brand: 'di', colour: 'black' }`.
 

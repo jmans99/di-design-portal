@@ -225,9 +225,9 @@ export const BRAND_ASSETS: LogoAsset[] = [
   },
 ]
 
-/** Logos listed under one brand tab. Digital Inclusion's own logo comes first on the DI tab. */
+/** Logos listed under one brand tab (shared "both" logos under both). Digital Inclusion's own logo comes first on the DI tab. */
 export function logosForBrand(brand: 'di' | 'giga'): LogoAsset[] {
-  const logos = BRAND_ASSETS.filter((asset) => asset.brand === brand)
+  const logos = BRAND_ASSETS.filter((asset) => asset.brand === brand || asset.brand === 'both')
   return brand === 'di'
     ? [...logos.filter((l) => l.brandName === 'UNICEF Digital Inclusion'), ...logos.filter((l) => l.brandName !== 'UNICEF Digital Inclusion')]
     : logos

@@ -1,12 +1,12 @@
 'use client'
 
 import { ArrowUpRight, ImageIcon } from 'lucide-react'
-import type { Brand } from '@/lib/brand'
+import { inBrandTab, type AssetBrand, type Brand } from '@/lib/brand'
 
 const GALLERIES = [
   {
     id: 'flickr',
-    brand: 'giga' as Brand,
+    brand: 'giga' as AssetBrand,
     title: 'Public Events Photos',
     description: `Giga's public Flickr albums — event coverage, field visits, and community moments shared openly.`,
     tags: ['Flickr', 'Images'],
@@ -17,7 +17,7 @@ const GALLERIES = [
   },
   {
     id: 'weshare',
-    brand: 'di' as Brand,
+    brand: 'di' as AssetBrand,
     title: 'UNICEF Official Gallery',
     description: "High-resolution photography from UNICEF's official media library — professionally curated for editorial use.",
     tags: ['UNICEF', 'Images'],
@@ -28,7 +28,7 @@ const GALLERIES = [
   },
   {
     id: 'impact-stories',
-    brand: 'di' as Brand,
+    brand: 'di' as AssetBrand,
     title: 'Impact Stories',
     description: `Visual documentation of Digital Inclusion's impact — stories from schools, communities, and partners around the world.`,
     tags: ['SharePoint', 'Images', 'Videos'],
@@ -39,7 +39,7 @@ const GALLERIES = [
   },
   {
     id: 'events',
-    brand: 'di' as Brand,
+    brand: 'di' as AssetBrand,
     title: 'Event Coverage',
     description: `Photos and media from Digital Inclusion events — conferences, launches, field missions, and partner meetings.`,
     tags: ['SharePoint', 'Images', 'Videos'],
@@ -50,7 +50,7 @@ const GALLERIES = [
   },
   {
     id: 'product',
-    brand: 'di' as Brand,
+    brand: 'di' as AssetBrand,
     title: 'Product Photos & Footage',
     description: `Photos and video footage of Digital Inclusion's products, tools, and technology — for presentations and communications.`,
     tags: ['SharePoint', 'Images', 'Videos'],
@@ -61,7 +61,7 @@ const GALLERIES = [
   },
   {
     id: 'youtube',
-    brand: 'giga' as Brand,
+    brand: 'giga' as AssetBrand,
     title: 'YouTube Channel',
     description: `Giga's official YouTube channel — documentaries, explainers, event recordings, and partner stories.`,
     tags: ['YouTube', 'Videos'],
@@ -77,7 +77,7 @@ export function MediaSection({ brand }: { brand: Brand }) {
   return (
     <div className="animate-in fade-in duration-300 ease-out">
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {GALLERIES.filter((gallery) => gallery.brand === brand).map((gallery) => (
+        {GALLERIES.filter((gallery) => inBrandTab(gallery.brand, brand)).map((gallery) => (
           <a
             key={gallery.id}
             href={gallery.href}

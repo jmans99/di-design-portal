@@ -1,5 +1,5 @@
 {
-  "$comment": "Hand-set fields merged on top of what scripts/build-asset-index.mjs infers from file names. Keys are asset ids from data/assets.json. These brands were guessed when the index was first built (UNICEF and Digital Impact logos sit on the Logos page's Digital Inclusion tab; GEP and the Connectivity Forum are Giga events; the fonts are shared by both brands and filed under Digital Inclusion). Change any value here, then run npm run build or node scripts/build-asset-index.mjs. The boxed UNICEF Digital Impact Division file named -black is the full-colour lockup (blue box, black text), so its colour is set to full-colour here.",
+  "$comment": "Hand-set fields merged on top of what scripts/build-asset-index.mjs infers from file names. Keys are asset ids from data/assets.json. Confirmed by the portal owner: the UNICEF and UNICEF Digital Impact Division logos are brand di; the GEP and Connectivity Forum event logos are brand giga. The fonts (Manrope, Open Sans) are shared by both brands: brand both. The boxed UNICEF Digital Impact Division file named -black is the full-colour lockup (blue box, black text), so its colour is set to full-colour. Change any value here, then run npm run build or node scripts/build-asset-index.mjs.",
   "unicef-unicef-blue": {
     "brand": "di"
   },
@@ -47,9 +47,9 @@
     "brand": "giga"
   },
   "font-manrope": {
-    "brand": "di"
+    "brand": "both"
   },
   "font-open-sans": {
-    "brand": "di"
+    "brand": "both"
   }
 }

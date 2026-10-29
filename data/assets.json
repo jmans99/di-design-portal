@@ -6438,7 +6438,7 @@
     "id": "font-manrope",
     "title": "Manrope font",
     "type": "font",
-    "brand": "di",
+    "brand": "both",
     "colour": null,
     "layout": null,
     "formats": [
@@ -6460,7 +6460,7 @@
     "id": "font-open-sans",
     "title": "Open Sans font",
     "type": "font",
-    "brand": "di",
+    "brand": "both",
     "colour": null,
     "layout": null,
     "formats": [

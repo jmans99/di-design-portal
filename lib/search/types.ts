@@ -4,7 +4,8 @@ export type Asset = {
   /** "Digital Inclusion logo, black, horizontal". */
   title: string
   type: 'logo' | 'illustration' | 'photo' | 'icon' | 'background' | 'template' | 'font' | 'palette' | 'guideline'
-  brand: 'di' | 'giga'
+  /** "both": shared by DI and Giga (e.g. the fonts). */
+  brand: 'di' | 'giga' | 'both'
   colour: 'full-colour' | 'black' | 'white' | 'blue' | 'navy' | null
   layout: 'horizontal' | 'vertical' | 'stacked' | 'square' | null
   /** One entry per downloadable file of the same asset. */

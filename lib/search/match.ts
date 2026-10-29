@@ -78,9 +78,11 @@ export function scoreAsset(asset: Asset, facets: Facets, words: string[]): numbe
 }
 
 /**
- * Searches the assets. A named brand or type filters; everything else scores.
- * With no brand or type, only assets that score are returned. Sorted by score,
- * then Digital Inclusion before Giga (when no brand was named), then the order
+ * Searches the assets. A named brand or type filters (a named brand also keeps
+ * assets shared by both, brand "both"); everything else scores. With no brand
+ * or type, only assets that score are returned. Sorted by score, then brand
+ * (no brand named: DI, then both, then Giga; a brand named: that brand, then
+ * both), then the order
  * the asset pages list them in (the index order: the Digital Inclusion logo
  * first, the main Giga logo before product and event logos), then title.
  * `without` drops facets the user removed (the chips in Dot's reply).
@@ -88,9 +90,11 @@ export function scoreAsset(asset: Asset, facets: Facets, words: string[]): numbe
 export function searchAssets(query: string, assets: Asset[], without: Facet[] = []): SearchResult {
   const { facets: all, words } = parseQuery(query)
   const facets: Facets = Object.fromEntries(Object.entries(all).filter(([k]) => !without.includes(k as Facet)))
-  const filtered = assets.filter((a) => (!facets.brand || a.brand === facets.brand) && (!facets.type || a.type === facets.type))
+  const filtered = assets.filter(
+    (a) => (!facets.brand || a.brand === facets.brand || a.brand === 'both') && (!facets.type || a.type === facets.type),
+  )
   const needsScore = !facets.brand && !facets.type
-  const brandOrder = (a: Asset) => (facets.brand ? 0 : a.brand === 'di' ? 0 : 1)
+  const brandOrder = (a: Asset) => (facets.brand ? (a.brand === 'both' ? 1 : 0) : { di: 0, both: 1, giga: 2 }[a.brand])
   const results = filtered
     .map((asset, order) => ({ asset, order, score: scoreAsset(asset, facets, words) }))
     .filter(({ score }) => !needsScore || score > 0)
