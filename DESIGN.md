@@ -104,7 +104,7 @@ components:
 
 # Design System: Digital Inclusion Brand Asset Generator
 
-> **One portal.** This repo is the DI design portal: one site with the DI look (DI logo, DI app shell, DI colour tokens in `app/globals.css`), holding DI material and Giga material. The colours below are the DI tokens. The home page and side panel follow [Dot home: Direction C](docs/design/dot-home.md), which has the full token list, the Dot orb and the format colours. The Giga palette stays on the Colors page (`/colors?palette=giga`).
+> **One portal.** This repo is the DI design portal: one site with the DI look (DI logo, DI app shell, DI colour tokens in `app/globals.css`), holding DI material and Giga material. The colours below are the DI tokens. The home page and side panel follow [Dot home: Direction C](docs/design/dot-home.md), which has the full token list, the Dot orb and the format colours. Brand tabs, the Giga pill, the asset index and keyword search follow [Brand tabs and search](docs/design/brand-and-search.md). The Giga palette stays on the Colors page (`/colors?palette=giga`).
 
 ## 1. Overview
 

@@ -1,0 +1,6558 @@
+[
+  {
+    "id": "unicef-digital-inclusion-blue",
+    "title": "Digital Inclusion logo, blue, horizontal",
+    "type": "logo",
+    "brand": "di",
+    "colour": "blue",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/logos/unicef-digital-inclusion-blue.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/unicef-digital-inclusion-blue.png"
+      }
+    ],
+    "preview": "/logos/unicef-digital-inclusion-blue.svg",
+    "page": "/logos?brand=di",
+    "tags": [
+      "unicef",
+      "digital",
+      "inclusion",
+      "blue"
+    ]
+  },
+  {
+    "id": "unicef-digital-inclusion-black",
+    "title": "Digital Inclusion logo, black, horizontal",
+    "type": "logo",
+    "brand": "di",
+    "colour": "black",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/logos/unicef-digital-inclusion-black.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/unicef-digital-inclusion-black.png"
+      }
+    ],
+    "preview": "/logos/unicef-digital-inclusion-black.svg",
+    "page": "/logos?brand=di",
+    "tags": [
+      "unicef",
+      "digital",
+      "inclusion",
+      "black"
+    ]
+  },
+  {
+    "id": "unicef-digital-inclusion-white",
+    "title": "Digital Inclusion logo, white, horizontal",
+    "type": "logo",
+    "brand": "di",
+    "colour": "white",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/logos/unicef-digital-inclusion-white.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/unicef-digital-inclusion-white.png"
+      }
+    ],
+    "preview": "/logos/unicef-digital-inclusion-white.svg",
+    "page": "/logos?brand=di",
+    "tags": [
+      "unicef",
+      "digital",
+      "inclusion",
+      "white"
+    ]
+  },
+  {
+    "id": "unicef-unicef-blue",
+    "title": "UNICEF logo, blue, horizontal",
+    "type": "logo",
+    "brand": "di",
+    "colour": "blue",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/unicef-unicef-blue.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/unicef-unicef-blue.png"
+      }
+    ],
+    "preview": "/generated/logos/unicef-unicef-blue.svg",
+    "page": "/logos?brand=di",
+    "tags": [
+      "unicef",
+      "blue"
+    ]
+  },
+  {
+    "id": "unicef-black",
+    "title": "UNICEF logo, black, horizontal",
+    "type": "logo",
+    "brand": "di",
+    "colour": "black",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/unicef-black.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/unicef-black.png"
+      }
+    ],
+    "preview": "/generated/logos/unicef-black.svg",
+    "page": "/logos?brand=di",
+    "tags": [
+      "unicef",
+      "black"
+    ]
+  },
+  {
+    "id": "unicef-white",
+    "title": "UNICEF logo, white, horizontal",
+    "type": "logo",
+    "brand": "di",
+    "colour": "white",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/unicef-white.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/unicef-white.png"
+      }
+    ],
+    "preview": "/generated/logos/unicef-white.svg",
+    "page": "/logos?brand=di",
+    "tags": [
+      "unicef",
+      "white"
+    ]
+  },
+  {
+    "id": "unicef-digital-impact-division-black",
+    "title": "UNICEF Digital Impact Division logo (boxed), black, horizontal",
+    "type": "logo",
+    "brand": "di",
+    "colour": "full-colour",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/logos/unicef-digital-impact-division-black.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/unicef-digital-impact-division-black.png"
+      }
+    ],
+    "preview": "/logos/unicef-digital-impact-division-black.svg",
+    "page": "/logos?brand=di",
+    "tags": [
+      "unicef",
+      "digital",
+      "impact",
+      "boxed",
+      "bicolor",
+      "positive"
+    ]
+  },
+  {
+    "id": "unicef-digital-impact-division-white",
+    "title": "UNICEF Digital Impact Division logo (boxed), white, horizontal",
+    "type": "logo",
+    "brand": "di",
+    "colour": "white",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/logos/unicef-digital-impact-division-white.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/unicef-digital-impact-division-white.png"
+      }
+    ],
+    "preview": "/logos/unicef-digital-impact-division-white.svg",
+    "page": "/logos?brand=di",
+    "tags": [
+      "unicef",
+      "digital",
+      "impact",
+      "boxed",
+      "bicolor",
+      "negative"
+    ]
+  },
+  {
+    "id": "unicef-digital-impact-unboxed-unicef-blue",
+    "title": "UNICEF Digital Impact Division logo (unboxed), blue, horizontal",
+    "type": "logo",
+    "brand": "di",
+    "colour": "blue",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/unicef-digital-impact-unboxed-unicef-blue.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/unicef-digital-impact-unboxed-unicef-blue.png"
+      }
+    ],
+    "preview": "/generated/logos/unicef-digital-impact-unboxed-unicef-blue.svg",
+    "page": "/logos?brand=di",
+    "tags": [
+      "unicef",
+      "digital",
+      "impact",
+      "unboxed",
+      "blue"
+    ]
+  },
+  {
+    "id": "unicef-digital-impact-unboxed",
+    "title": "UNICEF Digital Impact Division logo (unboxed), black, horizontal",
+    "type": "logo",
+    "brand": "di",
+    "colour": "black",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/logos/unicef-digital-impact-unboxed.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/unicef-digital-impact-unboxed.png"
+      }
+    ],
+    "preview": "/logos/unicef-digital-impact-unboxed.svg",
+    "page": "/logos?brand=di",
+    "tags": [
+      "unicef",
+      "digital",
+      "impact",
+      "unboxed",
+      "black"
+    ]
+  },
+  {
+    "id": "unicef-digital-impact-unboxed-white",
+    "title": "UNICEF Digital Impact Division logo (unboxed), white, horizontal",
+    "type": "logo",
+    "brand": "di",
+    "colour": "white",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/unicef-digital-impact-unboxed-white.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/unicef-digital-impact-unboxed-white.png"
+      }
+    ],
+    "preview": "/generated/logos/unicef-digital-impact-unboxed-white.svg",
+    "page": "/logos?brand=di",
+    "tags": [
+      "unicef",
+      "digital",
+      "impact",
+      "unboxed",
+      "white"
+    ]
+  },
+  {
+    "id": "giga-main-horizontal",
+    "title": "Giga logo, full colour, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/logos/giga-main-horizontal.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/giga-main-horizontal.png"
+      }
+    ],
+    "preview": "/logos/giga-main-horizontal.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "giga",
+      "main",
+      "bicolor"
+    ]
+  },
+  {
+    "id": "giga-main-horizontal-giga-blue",
+    "title": "Giga logo, blue, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/giga-main-horizontal-giga-blue.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/giga-main-horizontal-giga-blue.png"
+      }
+    ],
+    "preview": "/generated/logos/giga-main-horizontal-giga-blue.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "giga",
+      "main",
+      "blue"
+    ]
+  },
+  {
+    "id": "giga-main-horizontal-black",
+    "title": "Giga logo, black, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "black",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/giga-main-horizontal-black.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/giga-main-horizontal-black.png"
+      }
+    ],
+    "preview": "/generated/logos/giga-main-horizontal-black.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "giga",
+      "main",
+      "black"
+    ]
+  },
+  {
+    "id": "giga-main-horizontal-white",
+    "title": "Giga logo, white, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "white",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/giga-main-horizontal-white.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/giga-main-horizontal-white.png"
+      }
+    ],
+    "preview": "/generated/logos/giga-main-horizontal-white.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "giga",
+      "main",
+      "white"
+    ]
+  },
+  {
+    "id": "giga-unicef-itu-horizontal",
+    "title": "Giga logo with UNICEF and ITU, full colour, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/logos/giga-unicef-itu-horizontal.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/giga-unicef-itu-horizontal.png"
+      }
+    ],
+    "preview": "/logos/giga-unicef-itu-horizontal.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "giga",
+      "unicef",
+      "itu",
+      "partnership",
+      "lockup",
+      "bicolor"
+    ]
+  },
+  {
+    "id": "giga-unicef-itu-horizontal-giga-blue",
+    "title": "Giga logo with UNICEF and ITU, blue, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/giga-unicef-itu-horizontal-giga-blue.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/giga-unicef-itu-horizontal-giga-blue.png"
+      }
+    ],
+    "preview": "/generated/logos/giga-unicef-itu-horizontal-giga-blue.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "giga",
+      "unicef",
+      "itu",
+      "partnership",
+      "lockup",
+      "blue"
+    ]
+  },
+  {
+    "id": "giga-unicef-itu-horizontal-black",
+    "title": "Giga logo with UNICEF and ITU, black, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "black",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/giga-unicef-itu-horizontal-black.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/giga-unicef-itu-horizontal-black.png"
+      }
+    ],
+    "preview": "/generated/logos/giga-unicef-itu-horizontal-black.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "giga",
+      "unicef",
+      "itu",
+      "partnership",
+      "lockup",
+      "black"
+    ]
+  },
+  {
+    "id": "giga-unicef-itu-horizontal-white",
+    "title": "Giga logo with UNICEF and ITU, white, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "white",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/giga-unicef-itu-horizontal-white.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/giga-unicef-itu-horizontal-white.png"
+      }
+    ],
+    "preview": "/generated/logos/giga-unicef-itu-horizontal-white.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "giga",
+      "unicef",
+      "itu",
+      "partnership",
+      "lockup",
+      "white"
+    ]
+  },
+  {
+    "id": "giga-main-vertical",
+    "title": "Giga logo, full colour, vertical",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": "vertical",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/logos/giga-main-vertical.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/giga-main-vertical.png"
+      }
+    ],
+    "preview": "/logos/giga-main-vertical.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "giga",
+      "main",
+      "bicolor"
+    ]
+  },
+  {
+    "id": "giga-main-vertical-giga-blue",
+    "title": "Giga logo, blue, vertical",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": "vertical",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/giga-main-vertical-giga-blue.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/giga-main-vertical-giga-blue.png"
+      }
+    ],
+    "preview": "/generated/logos/giga-main-vertical-giga-blue.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "giga",
+      "main",
+      "blue"
+    ]
+  },
+  {
+    "id": "giga-main-vertical-black",
+    "title": "Giga logo, black, vertical",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "black",
+    "layout": "vertical",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/giga-main-vertical-black.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/giga-main-vertical-black.png"
+      }
+    ],
+    "preview": "/generated/logos/giga-main-vertical-black.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "giga",
+      "main",
+      "black"
+    ]
+  },
+  {
+    "id": "giga-main-vertical-white",
+    "title": "Giga logo, white, vertical",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "white",
+    "layout": "vertical",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/giga-main-vertical-white.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/giga-main-vertical-white.png"
+      }
+    ],
+    "preview": "/generated/logos/giga-main-vertical-white.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "giga",
+      "main",
+      "white"
+    ]
+  },
+  {
+    "id": "giga-unicef-itu-vertical",
+    "title": "Giga logo with UNICEF and ITU, full colour, vertical",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": "vertical",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/logos/giga-unicef-itu-vertical.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/giga-unicef-itu-vertical.png"
+      }
+    ],
+    "preview": "/logos/giga-unicef-itu-vertical.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "giga",
+      "unicef",
+      "itu",
+      "partnership",
+      "lockup",
+      "bicolor"
+    ]
+  },
+  {
+    "id": "giga-unicef-itu-vertical-giga-blue",
+    "title": "Giga logo with UNICEF and ITU, blue, vertical",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": "vertical",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/giga-unicef-itu-vertical-giga-blue.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/giga-unicef-itu-vertical-giga-blue.png"
+      }
+    ],
+    "preview": "/generated/logos/giga-unicef-itu-vertical-giga-blue.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "giga",
+      "unicef",
+      "itu",
+      "partnership",
+      "lockup",
+      "blue"
+    ]
+  },
+  {
+    "id": "giga-unicef-itu-vertical-black",
+    "title": "Giga logo with UNICEF and ITU, black, vertical",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "black",
+    "layout": "vertical",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/giga-unicef-itu-vertical-black.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/giga-unicef-itu-vertical-black.png"
+      }
+    ],
+    "preview": "/generated/logos/giga-unicef-itu-vertical-black.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "giga",
+      "unicef",
+      "itu",
+      "partnership",
+      "lockup",
+      "black"
+    ]
+  },
+  {
+    "id": "giga-unicef-itu-vertical-white",
+    "title": "Giga logo with UNICEF and ITU, white, vertical",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "white",
+    "layout": "vertical",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/giga-unicef-itu-vertical-white.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/giga-unicef-itu-vertical-white.png"
+      }
+    ],
+    "preview": "/generated/logos/giga-unicef-itu-vertical-white.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "giga",
+      "unicef",
+      "itu",
+      "partnership",
+      "lockup",
+      "white"
+    ]
+  },
+  {
+    "id": "product-gigasync-giga-blue",
+    "title": "GigaSync logo, blue, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/product-gigasync-giga-blue.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/product-gigasync-giga-blue.png"
+      }
+    ],
+    "preview": "/generated/logos/product-gigasync-giga-blue.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "gigasync",
+      "product",
+      "sync",
+      "giga",
+      "blue"
+    ]
+  },
+  {
+    "id": "product-gigasync-black",
+    "title": "GigaSync logo, black, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "black",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/product-gigasync-black.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/product-gigasync-black.png"
+      }
+    ],
+    "preview": "/generated/logos/product-gigasync-black.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "gigasync",
+      "product",
+      "sync",
+      "black"
+    ]
+  },
+  {
+    "id": "product-gigasync-white",
+    "title": "GigaSync logo, white, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "white",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/product-gigasync-white.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/product-gigasync-white.png"
+      }
+    ],
+    "preview": "/generated/logos/product-gigasync-white.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "gigasync",
+      "product",
+      "sync",
+      "white"
+    ]
+  },
+  {
+    "id": "product-gigascore-giga-blue",
+    "title": "GigaScore logo, blue, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/product-gigascore-giga-blue.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/product-gigascore-giga-blue.png"
+      }
+    ],
+    "preview": "/generated/logos/product-gigascore-giga-blue.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "gigascore",
+      "product",
+      "score",
+      "giga",
+      "blue"
+    ]
+  },
+  {
+    "id": "product-gigascore-black",
+    "title": "GigaScore logo, black, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "black",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/product-gigascore-black.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/product-gigascore-black.png"
+      }
+    ],
+    "preview": "/generated/logos/product-gigascore-black.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "gigascore",
+      "product",
+      "score",
+      "black"
+    ]
+  },
+  {
+    "id": "product-gigascore-white",
+    "title": "GigaScore logo, white, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "white",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/product-gigascore-white.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/product-gigascore-white.png"
+      }
+    ],
+    "preview": "/generated/logos/product-gigascore-white.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "gigascore",
+      "product",
+      "score",
+      "white"
+    ]
+  },
+  {
+    "id": "product-gigablocks-giga-blue",
+    "title": "GigaBlocks logo, blue, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/product-gigablocks-giga-blue.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/product-gigablocks-giga-blue.png"
+      }
+    ],
+    "preview": "/generated/logos/product-gigablocks-giga-blue.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "gigablocks",
+      "product",
+      "blocks",
+      "giga",
+      "blue"
+    ]
+  },
+  {
+    "id": "product-gigablocks-black",
+    "title": "GigaBlocks logo, black, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "black",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/product-gigablocks-black.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/product-gigablocks-black.png"
+      }
+    ],
+    "preview": "/generated/logos/product-gigablocks-black.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "gigablocks",
+      "product",
+      "blocks",
+      "black"
+    ]
+  },
+  {
+    "id": "product-gigablocks-white",
+    "title": "GigaBlocks logo, white, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "white",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/product-gigablocks-white.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/product-gigablocks-white.png"
+      }
+    ],
+    "preview": "/generated/logos/product-gigablocks-white.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "gigablocks",
+      "product",
+      "blocks",
+      "white"
+    ]
+  },
+  {
+    "id": "product-gigavalidate-giga-blue",
+    "title": "GigaValidate logo, blue, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/product-gigavalidate-giga-blue.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/product-gigavalidate-giga-blue.png"
+      }
+    ],
+    "preview": "/generated/logos/product-gigavalidate-giga-blue.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "gigavalidate",
+      "product",
+      "validate",
+      "giga",
+      "blue"
+    ]
+  },
+  {
+    "id": "product-gigavalidate-black",
+    "title": "GigaValidate logo, black, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "black",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/product-gigavalidate-black.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/product-gigavalidate-black.png"
+      }
+    ],
+    "preview": "/generated/logos/product-gigavalidate-black.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "gigavalidate",
+      "product",
+      "validate",
+      "black"
+    ]
+  },
+  {
+    "id": "product-gigavalidate-white",
+    "title": "GigaValidate logo, white, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "white",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/product-gigavalidate-white.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/product-gigavalidate-white.png"
+      }
+    ],
+    "preview": "/generated/logos/product-gigavalidate-white.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "gigavalidate",
+      "product",
+      "validate",
+      "white"
+    ]
+  },
+  {
+    "id": "product-gigamaps-giga-blue",
+    "title": "GigaMaps logo, blue, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/product-gigamaps-giga-blue.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/product-gigamaps-giga-blue.png"
+      }
+    ],
+    "preview": "/generated/logos/product-gigamaps-giga-blue.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "gigamaps",
+      "product",
+      "maps",
+      "giga",
+      "blue"
+    ]
+  },
+  {
+    "id": "product-gigamaps-black",
+    "title": "GigaMaps logo, black, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "black",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/product-gigamaps-black.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/product-gigamaps-black.png"
+      }
+    ],
+    "preview": "/generated/logos/product-gigamaps-black.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "gigamaps",
+      "product",
+      "maps",
+      "black"
+    ]
+  },
+  {
+    "id": "product-gigamaps-white",
+    "title": "GigaMaps logo, white, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "white",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/product-gigamaps-white.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/product-gigamaps-white.png"
+      }
+    ],
+    "preview": "/generated/logos/product-gigamaps-white.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "gigamaps",
+      "product",
+      "maps",
+      "white"
+    ]
+  },
+  {
+    "id": "product-gigamapsapi-giga-blue",
+    "title": "GigaMaps API logo, blue, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/product-gigamapsapi-giga-blue.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/product-gigamapsapi-giga-blue.png"
+      }
+    ],
+    "preview": "/generated/logos/product-gigamapsapi-giga-blue.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "gigamaps",
+      "api",
+      "product",
+      "maps",
+      "giga",
+      "blue"
+    ]
+  },
+  {
+    "id": "product-gigamapsapi-black",
+    "title": "GigaMaps API logo, black, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "black",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/product-gigamapsapi-black.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/product-gigamapsapi-black.png"
+      }
+    ],
+    "preview": "/generated/logos/product-gigamapsapi-black.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "gigamaps",
+      "api",
+      "product",
+      "maps",
+      "black"
+    ]
+  },
+  {
+    "id": "product-gigamapsapi-white",
+    "title": "GigaMaps API logo, white, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "white",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/product-gigamapsapi-white.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/product-gigamapsapi-white.png"
+      }
+    ],
+    "preview": "/generated/logos/product-gigamapsapi-white.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "gigamaps",
+      "api",
+      "product",
+      "maps",
+      "white"
+    ]
+  },
+  {
+    "id": "product-gigameter-giga-blue",
+    "title": "GigaMeter logo, blue, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/product-gigameter-giga-blue.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/product-gigameter-giga-blue.png"
+      }
+    ],
+    "preview": "/generated/logos/product-gigameter-giga-blue.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "gigameter",
+      "product",
+      "meter",
+      "giga",
+      "blue"
+    ]
+  },
+  {
+    "id": "product-gigameter-black",
+    "title": "GigaMeter logo, black, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "black",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/product-gigameter-black.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/product-gigameter-black.png"
+      }
+    ],
+    "preview": "/generated/logos/product-gigameter-black.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "gigameter",
+      "product",
+      "meter",
+      "black"
+    ]
+  },
+  {
+    "id": "product-gigameter-white",
+    "title": "GigaMeter logo, white, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "white",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/product-gigameter-white.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/product-gigameter-white.png"
+      }
+    ],
+    "preview": "/generated/logos/product-gigameter-white.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "gigameter",
+      "product",
+      "meter",
+      "white"
+    ]
+  },
+  {
+    "id": "product-gigaspatial-black",
+    "title": "GigaSpatial logo, black, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "black",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/product-gigaspatial-black.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/product-gigaspatial-black.png"
+      }
+    ],
+    "preview": "/generated/logos/product-gigaspatial-black.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "gigaspatial",
+      "product",
+      "spatial",
+      "black"
+    ]
+  },
+  {
+    "id": "product-gigaspatial-white",
+    "title": "GigaSpatial logo, white, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "white",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/product-gigaspatial-white.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/product-gigaspatial-white.png"
+      }
+    ],
+    "preview": "/generated/logos/product-gigaspatial-white.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "gigaspatial",
+      "product",
+      "spatial",
+      "white"
+    ]
+  },
+  {
+    "id": "event-gep-giga-blue",
+    "title": "GEP logo, blue, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/event-gep-giga-blue.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/event-gep-giga-blue.png"
+      }
+    ],
+    "preview": "/generated/logos/event-gep-giga-blue.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "gep",
+      "event",
+      "giga",
+      "blue"
+    ]
+  },
+  {
+    "id": "event-gep-black",
+    "title": "GEP logo, black, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "black",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/event-gep-black.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/event-gep-black.png"
+      }
+    ],
+    "preview": "/generated/logos/event-gep-black.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "gep",
+      "event",
+      "black"
+    ]
+  },
+  {
+    "id": "event-gep-white",
+    "title": "GEP logo, white, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "white",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/event-gep-white.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/event-gep-white.png"
+      }
+    ],
+    "preview": "/generated/logos/event-gep-white.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "gep",
+      "event",
+      "white"
+    ]
+  },
+  {
+    "id": "event-connectivity-forum",
+    "title": "Giga Connectivity Forum logo, full colour, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/logos/event-connectivity-forum.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/event-connectivity-forum.png"
+      }
+    ],
+    "preview": "/logos/event-connectivity-forum.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "giga",
+      "connectivity",
+      "forum",
+      "event",
+      "bicolor"
+    ]
+  },
+  {
+    "id": "event-connectivity-forum-giga-blue",
+    "title": "Giga Connectivity Forum logo, blue, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/event-connectivity-forum-giga-blue.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/event-connectivity-forum-giga-blue.png"
+      }
+    ],
+    "preview": "/generated/logos/event-connectivity-forum-giga-blue.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "giga",
+      "connectivity",
+      "forum",
+      "event",
+      "blue"
+    ]
+  },
+  {
+    "id": "event-connectivity-forum-black",
+    "title": "Giga Connectivity Forum logo, black, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "black",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/event-connectivity-forum-black.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/event-connectivity-forum-black.png"
+      }
+    ],
+    "preview": "/generated/logos/event-connectivity-forum-black.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "giga",
+      "connectivity",
+      "forum",
+      "event",
+      "black"
+    ]
+  },
+  {
+    "id": "event-connectivity-forum-white",
+    "title": "Giga Connectivity Forum logo, white, horizontal",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "white",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/event-connectivity-forum-white.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/event-connectivity-forum-white.png"
+      }
+    ],
+    "preview": "/generated/logos/event-connectivity-forum-white.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "giga",
+      "connectivity",
+      "forum",
+      "event",
+      "white"
+    ]
+  },
+  {
+    "id": "illustration-mapping-fill",
+    "title": "Mapping illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/fill/mapping.svg"
+      }
+    ],
+    "preview": "/illustrations/fill/mapping.svg",
+    "page": "/illustrations",
+    "tags": [
+      "mapping",
+      "map",
+      "geolocation",
+      "coordinates",
+      "school",
+      "pin",
+      "pillar",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-mapping-white",
+    "title": "Mapping illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/outlines/mapping-white.svg"
+      }
+    ],
+    "preview": "/illustrations/outlines/mapping-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "mapping",
+      "map",
+      "geolocation",
+      "coordinates",
+      "school",
+      "pin",
+      "pillar",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-mapping-blue",
+    "title": "Mapping illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/outlines/mapping-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/outlines/mapping-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "mapping",
+      "map",
+      "geolocation",
+      "coordinates",
+      "school",
+      "pin",
+      "pillar",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-model-fill",
+    "title": "Model illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/fill/model.svg"
+      }
+    ],
+    "preview": "/illustrations/fill/model.svg",
+    "page": "/illustrations",
+    "tags": [
+      "model",
+      "modelling",
+      "analysis",
+      "simulation",
+      "data",
+      "forecast",
+      "pillar",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-model-white",
+    "title": "Model illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/outlines/model-white.svg"
+      }
+    ],
+    "preview": "/illustrations/outlines/model-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "model",
+      "modelling",
+      "analysis",
+      "simulation",
+      "data",
+      "forecast",
+      "pillar",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-model-blue",
+    "title": "Model illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/outlines/model-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/outlines/model-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "model",
+      "modelling",
+      "analysis",
+      "simulation",
+      "data",
+      "forecast",
+      "pillar",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-finance-fill",
+    "title": "Finance illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/fill/finance.svg"
+      }
+    ],
+    "preview": "/illustrations/fill/finance.svg",
+    "page": "/illustrations",
+    "tags": [
+      "finance",
+      "funding",
+      "money",
+      "investment",
+      "budget",
+      "cost",
+      "pillar",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-finance-white",
+    "title": "Finance illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/outlines/finance-white.svg"
+      }
+    ],
+    "preview": "/illustrations/outlines/finance-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "finance",
+      "funding",
+      "money",
+      "investment",
+      "budget",
+      "cost",
+      "pillar",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-finance-blue",
+    "title": "Finance illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/outlines/finance-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/outlines/finance-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "finance",
+      "funding",
+      "money",
+      "investment",
+      "budget",
+      "cost",
+      "pillar",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-contract-fill",
+    "title": "Contract illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/fill/contract.svg"
+      }
+    ],
+    "preview": "/illustrations/fill/contract.svg",
+    "page": "/illustrations",
+    "tags": [
+      "contract",
+      "agreement",
+      "procurement",
+      "document",
+      "signature",
+      "terms",
+      "pillar",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-contract-white",
+    "title": "Contract illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/outlines/contract-white.svg"
+      }
+    ],
+    "preview": "/illustrations/outlines/contract-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "contract",
+      "agreement",
+      "procurement",
+      "document",
+      "signature",
+      "terms",
+      "pillar",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-contract-blue",
+    "title": "Contract illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/outlines/contract-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/outlines/contract-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "contract",
+      "agreement",
+      "procurement",
+      "document",
+      "signature",
+      "terms",
+      "pillar",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-development-fill",
+    "title": "Development illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/fill/development.svg"
+      }
+    ],
+    "preview": "/illustrations/fill/development.svg",
+    "page": "/illustrations",
+    "tags": [
+      "development",
+      "capacity",
+      "training",
+      "growth",
+      "skills",
+      "building",
+      "pillar",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-capacity-development-white",
+    "title": "Development illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/outlines/capacity-development-white.svg"
+      }
+    ],
+    "preview": "/illustrations/outlines/capacity-development-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "development",
+      "capacity",
+      "training",
+      "growth",
+      "skills",
+      "building",
+      "pillar",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-capacity-development-blue",
+    "title": "Development illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/outlines/capacity-development-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/outlines/capacity-development-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "development",
+      "capacity",
+      "training",
+      "growth",
+      "skills",
+      "building",
+      "pillar",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-adjustment-fill",
+    "title": "Adjustment illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/adjustment.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/adjustment.svg",
+    "page": "/illustrations",
+    "tags": [
+      "adjustment",
+      "settings",
+      "sliders",
+      "configure",
+      "tune",
+      "preferences",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-adjustment-white",
+    "title": "Adjustment illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/adjustment-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/adjustment-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "adjustment",
+      "settings",
+      "sliders",
+      "configure",
+      "tune",
+      "preferences",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-adjustment-blue",
+    "title": "Adjustment illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/adjustment-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/adjustment-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "adjustment",
+      "settings",
+      "sliders",
+      "configure",
+      "tune",
+      "preferences",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-alert-fill",
+    "title": "Alert illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/alert.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/alert.svg",
+    "page": "/illustrations",
+    "tags": [
+      "alert",
+      "warning",
+      "attention",
+      "error",
+      "caution",
+      "exclamation",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-alert-white",
+    "title": "Alert illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/alert-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/alert-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "alert",
+      "warning",
+      "attention",
+      "error",
+      "caution",
+      "exclamation",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-alert-blue",
+    "title": "Alert illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/alert-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/alert-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "alert",
+      "warning",
+      "attention",
+      "error",
+      "caution",
+      "exclamation",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-antena-fill",
+    "title": "Antena illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/antena.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/antena.svg",
+    "page": "/illustrations",
+    "tags": [
+      "antena",
+      "antenna",
+      "signal",
+      "tower",
+      "broadcast",
+      "radio",
+      "transmitter",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-antena-white",
+    "title": "Antena illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/antena-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/antena-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "antena",
+      "antenna",
+      "signal",
+      "tower",
+      "broadcast",
+      "radio",
+      "transmitter",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-antena-blue",
+    "title": "Antena illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/antena-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/antena-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "antena",
+      "antenna",
+      "signal",
+      "tower",
+      "broadcast",
+      "radio",
+      "transmitter",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-buildings-fill",
+    "title": "Buildings illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/buildings.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/buildings.svg",
+    "page": "/illustrations",
+    "tags": [
+      "buildings",
+      "city",
+      "urban",
+      "offices",
+      "houses",
+      "infrastructure",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-buildings-white",
+    "title": "Buildings illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/buildings-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/buildings-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "buildings",
+      "city",
+      "urban",
+      "offices",
+      "houses",
+      "infrastructure",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-buildings-blue",
+    "title": "Buildings illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/buildings-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/buildings-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "buildings",
+      "city",
+      "urban",
+      "offices",
+      "houses",
+      "infrastructure",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-check-data-01-fill",
+    "title": "Check data 01 illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/check-data-01.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/check-data-01.svg",
+    "page": "/illustrations",
+    "tags": [
+      "check",
+      "data",
+      "01",
+      "validate",
+      "verify",
+      "quality",
+      "checklist",
+      "approved",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-check-data-01-white",
+    "title": "Check data 01 illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/check-data-01-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/check-data-01-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "check",
+      "data",
+      "01",
+      "validate",
+      "verify",
+      "quality",
+      "checklist",
+      "approved",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-check-data-01-blue",
+    "title": "Check data 01 illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/check-data-01-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/check-data-01-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "check",
+      "data",
+      "01",
+      "validate",
+      "verify",
+      "quality",
+      "checklist",
+      "approved",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-check-data-02-fill",
+    "title": "Check data 02 illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/check-data-02.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/check-data-02.svg",
+    "page": "/illustrations",
+    "tags": [
+      "check",
+      "data",
+      "02",
+      "validate",
+      "verify",
+      "quality",
+      "checklist",
+      "approved",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-check-data-02-white",
+    "title": "Check data 02 illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/check-data-02-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/check-data-02-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "check",
+      "data",
+      "02",
+      "validate",
+      "verify",
+      "quality",
+      "checklist",
+      "approved",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-check-data-02-blue",
+    "title": "Check data 02 illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/check-data-02-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/check-data-02-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "check",
+      "data",
+      "02",
+      "validate",
+      "verify",
+      "quality",
+      "checklist",
+      "approved",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-cloud-fill",
+    "title": "Cloud illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/cloud.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/cloud.svg",
+    "page": "/illustrations",
+    "tags": [
+      "cloud",
+      "storage",
+      "server",
+      "hosting",
+      "saas",
+      "upload",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-cloud-white",
+    "title": "Cloud illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/cloud-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/cloud-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "cloud",
+      "storage",
+      "server",
+      "hosting",
+      "saas",
+      "upload",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-cloud-blue",
+    "title": "Cloud illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/cloud-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/cloud-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "cloud",
+      "storage",
+      "server",
+      "hosting",
+      "saas",
+      "upload",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-code-fill",
+    "title": "Code illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/code.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/code.svg",
+    "page": "/illustrations",
+    "tags": [
+      "code",
+      "developer",
+      "programming",
+      "api",
+      "software",
+      "engineering",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-code-white",
+    "title": "Code illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/code-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/code-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "code",
+      "developer",
+      "programming",
+      "api",
+      "software",
+      "engineering",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-code-blue",
+    "title": "Code illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/code-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/code-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "code",
+      "developer",
+      "programming",
+      "api",
+      "software",
+      "engineering",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-compass-fill",
+    "title": "Compass illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/compass.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/compass.svg",
+    "page": "/illustrations",
+    "tags": [
+      "compass",
+      "direction",
+      "navigate",
+      "orientation",
+      "explore",
+      "north",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-compass-white",
+    "title": "Compass illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/compass-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/compass-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "compass",
+      "direction",
+      "navigate",
+      "orientation",
+      "explore",
+      "north",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-compass-blue",
+    "title": "Compass illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/compass-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/compass-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "compass",
+      "direction",
+      "navigate",
+      "orientation",
+      "explore",
+      "north",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-computer-fill",
+    "title": "Computer illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/computer.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/computer.svg",
+    "page": "/illustrations",
+    "tags": [
+      "computer",
+      "laptop",
+      "desktop",
+      "pc",
+      "device",
+      "workstation",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-computer-white",
+    "title": "Computer illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/computer-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/computer-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "computer",
+      "laptop",
+      "desktop",
+      "pc",
+      "device",
+      "workstation",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-computer-blue",
+    "title": "Computer illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/computer-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/computer-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "computer",
+      "laptop",
+      "desktop",
+      "pc",
+      "device",
+      "workstation",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-congratulations-fill",
+    "title": "Congratulations illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/congratulations.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/congratulations.svg",
+    "page": "/illustrations",
+    "tags": [
+      "congratulations",
+      "celebrate",
+      "success",
+      "achievement",
+      "award",
+      "win",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-congratulations-white",
+    "title": "Congratulations illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/congratulations-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/congratulations-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "congratulations",
+      "celebrate",
+      "success",
+      "achievement",
+      "award",
+      "win",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-congratulations-blue",
+    "title": "Congratulations illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/congratulations-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/congratulations-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "congratulations",
+      "celebrate",
+      "success",
+      "achievement",
+      "award",
+      "win",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-connection-fill",
+    "title": "Connection illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/connection.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/connection.svg",
+    "page": "/illustrations",
+    "tags": [
+      "connection",
+      "connectivity",
+      "internet",
+      "link",
+      "online",
+      "broadband",
+      "wifi",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-connection-white",
+    "title": "Connection illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/connection-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/connection-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "connection",
+      "connectivity",
+      "internet",
+      "link",
+      "online",
+      "broadband",
+      "wifi",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-connection-blue",
+    "title": "Connection illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/connection-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/connection-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "connection",
+      "connectivity",
+      "internet",
+      "link",
+      "online",
+      "broadband",
+      "wifi",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-cycle-data-fill",
+    "title": "Cycle data illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/cycle-data.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/cycle-data.svg",
+    "page": "/illustrations",
+    "tags": [
+      "cycle",
+      "data",
+      "loop",
+      "refresh",
+      "sync",
+      "pipeline",
+      "process",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-cycle-data-white",
+    "title": "Cycle data illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/cycle-data-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/cycle-data-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "cycle",
+      "data",
+      "loop",
+      "refresh",
+      "sync",
+      "pipeline",
+      "process",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-cycle-data-blue",
+    "title": "Cycle data illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/cycle-data-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/cycle-data-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "cycle",
+      "data",
+      "loop",
+      "refresh",
+      "sync",
+      "pipeline",
+      "process",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-devices-fill",
+    "title": "Devices illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/devices.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/devices.svg",
+    "page": "/illustrations",
+    "tags": [
+      "devices",
+      "hardware",
+      "gadgets",
+      "tablet",
+      "phone",
+      "equipment",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-devices-white",
+    "title": "Devices illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/devices-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/devices-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "devices",
+      "hardware",
+      "gadgets",
+      "tablet",
+      "phone",
+      "equipment",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-devices-blue",
+    "title": "Devices illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/devices-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/devices-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "devices",
+      "hardware",
+      "gadgets",
+      "tablet",
+      "phone",
+      "equipment",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-globe-01-fill",
+    "title": "Globe 01 illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/globe-01.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/globe-01.svg",
+    "page": "/illustrations",
+    "tags": [
+      "globe",
+      "01",
+      "world",
+      "earth",
+      "global",
+      "planet",
+      "international",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-globe-01-white",
+    "title": "Globe 01 illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/globe-01-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/globe-01-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "globe",
+      "01",
+      "world",
+      "earth",
+      "global",
+      "planet",
+      "international",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-globe-01-blue",
+    "title": "Globe 01 illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/globe-01-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/globe-01-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "globe",
+      "01",
+      "world",
+      "earth",
+      "global",
+      "planet",
+      "international",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-globe-02-fill",
+    "title": "Globe 02 illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/globe-02.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/globe-02.svg",
+    "page": "/illustrations",
+    "tags": [
+      "globe",
+      "02",
+      "world",
+      "earth",
+      "global",
+      "planet",
+      "international",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-globe-02-white",
+    "title": "Globe 02 illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/globe-02-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/globe-02-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "globe",
+      "02",
+      "world",
+      "earth",
+      "global",
+      "planet",
+      "international",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-globe-02-blue",
+    "title": "Globe 02 illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/globe-02-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/globe-02-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "globe",
+      "02",
+      "world",
+      "earth",
+      "global",
+      "planet",
+      "international",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-hierarchy-fill",
+    "title": "Hierarchy illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/hierarchy.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/hierarchy.svg",
+    "page": "/illustrations",
+    "tags": [
+      "hierarchy",
+      "tree",
+      "org",
+      "chart",
+      "structure",
+      "levels",
+      "taxonomy",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-hierarchy-white",
+    "title": "Hierarchy illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/hierarchy-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/hierarchy-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "hierarchy",
+      "tree",
+      "org",
+      "chart",
+      "structure",
+      "levels",
+      "taxonomy",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-hierarchy-blue",
+    "title": "Hierarchy illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/hierarchy-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/hierarchy-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "hierarchy",
+      "tree",
+      "org",
+      "chart",
+      "structure",
+      "levels",
+      "taxonomy",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-key-fill",
+    "title": "Key illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/key.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/key.svg",
+    "page": "/illustrations",
+    "tags": [
+      "key",
+      "access",
+      "security",
+      "password",
+      "unlock",
+      "credentials",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-key-white",
+    "title": "Key illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/key-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/key-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "key",
+      "access",
+      "security",
+      "password",
+      "unlock",
+      "credentials",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-key-blue",
+    "title": "Key illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/key-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/key-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "key",
+      "access",
+      "security",
+      "password",
+      "unlock",
+      "credentials",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-kid-fill",
+    "title": "Kid illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/kid.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/kid.svg",
+    "page": "/illustrations",
+    "tags": [
+      "kid",
+      "child",
+      "student",
+      "pupil",
+      "learner",
+      "boy",
+      "girl",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-kid-white",
+    "title": "Kid illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/kid-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/kid-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "kid",
+      "child",
+      "student",
+      "pupil",
+      "learner",
+      "boy",
+      "girl",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-kid-blue",
+    "title": "Kid illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/kid-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/kid-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "kid",
+      "child",
+      "student",
+      "pupil",
+      "learner",
+      "boy",
+      "girl",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-lens-fill",
+    "title": "Lens illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/lens.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/lens.svg",
+    "page": "/illustrations",
+    "tags": [
+      "lens",
+      "magnify",
+      "zoom",
+      "inspect",
+      "magnifier",
+      "detail",
+      "focus",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-lens-white",
+    "title": "Lens illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/lens-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/lens-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "lens",
+      "magnify",
+      "zoom",
+      "inspect",
+      "magnifier",
+      "detail",
+      "focus",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-lens-blue",
+    "title": "Lens illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/lens-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/lens-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "lens",
+      "magnify",
+      "zoom",
+      "inspect",
+      "magnifier",
+      "detail",
+      "focus",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-location-01-fill",
+    "title": "Location 01 illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/location-01.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/location-01.svg",
+    "page": "/illustrations",
+    "tags": [
+      "location",
+      "01",
+      "pin",
+      "map",
+      "marker",
+      "place",
+      "gps",
+      "geolocation",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-location-01-white",
+    "title": "Location 01 illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/location-01-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/location-01-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "location",
+      "01",
+      "pin",
+      "map",
+      "marker",
+      "place",
+      "gps",
+      "geolocation",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-location-01-blue",
+    "title": "Location 01 illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/location-01-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/location-01-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "location",
+      "01",
+      "pin",
+      "map",
+      "marker",
+      "place",
+      "gps",
+      "geolocation",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-location-02-fill",
+    "title": "Location 02 illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/location-02.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/location-02.svg",
+    "page": "/illustrations",
+    "tags": [
+      "location",
+      "02",
+      "pin",
+      "map",
+      "marker",
+      "place",
+      "gps",
+      "geolocation",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-location-02-white",
+    "title": "Location 02 illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/location-02-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/location-02-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "location",
+      "02",
+      "pin",
+      "map",
+      "marker",
+      "place",
+      "gps",
+      "geolocation",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-location-02-blue",
+    "title": "Location 02 illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/location-02-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/location-02-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "location",
+      "02",
+      "pin",
+      "map",
+      "marker",
+      "place",
+      "gps",
+      "geolocation",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-measure-cycle-fill",
+    "title": "Measure cycle illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/measure-cycle.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/measure-cycle.svg",
+    "page": "/illustrations",
+    "tags": [
+      "measure",
+      "cycle",
+      "metrics",
+      "monitoring",
+      "measurement",
+      "kpi",
+      "speed",
+      "test",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-measure-cycle-white",
+    "title": "Measure cycle illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/measure-cycle-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/measure-cycle-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "measure",
+      "cycle",
+      "metrics",
+      "monitoring",
+      "measurement",
+      "kpi",
+      "speed",
+      "test",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-measure-cycle-blue",
+    "title": "Measure cycle illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/measure-cycle-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/measure-cycle-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "measure",
+      "cycle",
+      "metrics",
+      "monitoring",
+      "measurement",
+      "kpi",
+      "speed",
+      "test",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-network-fill",
+    "title": "Network illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/network.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/network.svg",
+    "page": "/illustrations",
+    "tags": [
+      "network",
+      "nodes",
+      "mesh",
+      "topology",
+      "graph",
+      "infrastructure",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-network-white",
+    "title": "Network illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/network-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/network-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "network",
+      "nodes",
+      "mesh",
+      "topology",
+      "graph",
+      "infrastructure",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-network-blue",
+    "title": "Network illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/network-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/network-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "network",
+      "nodes",
+      "mesh",
+      "topology",
+      "graph",
+      "infrastructure",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-not-mapped-fill",
+    "title": "Not mapped illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/not-mapped.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/not-mapped.svg",
+    "page": "/illustrations",
+    "tags": [
+      "not",
+      "mapped",
+      "unmapped",
+      "missing",
+      "unknown",
+      "offline",
+      "no",
+      "data",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-not-mapped-white",
+    "title": "Not mapped illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/not-mapped-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/not-mapped-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "not",
+      "mapped",
+      "unmapped",
+      "missing",
+      "unknown",
+      "offline",
+      "no",
+      "data",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-not-mapped-blue",
+    "title": "Not mapped illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/not-mapped-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/not-mapped-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "not",
+      "mapped",
+      "unmapped",
+      "missing",
+      "unknown",
+      "offline",
+      "no",
+      "data",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-notification-fill",
+    "title": "Notification illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/notification.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/notification.svg",
+    "page": "/illustrations",
+    "tags": [
+      "notification",
+      "bell",
+      "alert",
+      "reminder",
+      "message",
+      "push",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-notification-white",
+    "title": "Notification illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/notification-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/notification-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "notification",
+      "bell",
+      "alert",
+      "reminder",
+      "message",
+      "push",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-notification-blue",
+    "title": "Notification illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/notification-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/notification-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "notification",
+      "bell",
+      "alert",
+      "reminder",
+      "message",
+      "push",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-people-fill",
+    "title": "People illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/people.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/people.svg",
+    "page": "/illustrations",
+    "tags": [
+      "people",
+      "group",
+      "users",
+      "community",
+      "persons",
+      "crowd",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-people-white",
+    "title": "People illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/people-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/people-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "people",
+      "group",
+      "users",
+      "community",
+      "persons",
+      "crowd",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-people-blue",
+    "title": "People illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/people-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/people-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "people",
+      "group",
+      "users",
+      "community",
+      "persons",
+      "crowd",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-person-location-fill",
+    "title": "Person location illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/person-location.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/person-location.svg",
+    "page": "/illustrations",
+    "tags": [
+      "person",
+      "location",
+      "user",
+      "pin",
+      "where",
+      "tracking",
+      "geolocated",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-person-location-white",
+    "title": "Person location illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/person-location-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/person-location-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "person",
+      "location",
+      "user",
+      "pin",
+      "where",
+      "tracking",
+      "geolocated",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-person-location-blue",
+    "title": "Person location illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/person-location-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/person-location-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "person",
+      "location",
+      "user",
+      "pin",
+      "where",
+      "tracking",
+      "geolocated",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-satellite-fill",
+    "title": "Satellite illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/satellite.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/satellite.svg",
+    "page": "/illustrations",
+    "tags": [
+      "satellite",
+      "space",
+      "orbit",
+      "signal",
+      "remote",
+      "sensing",
+      "imagery",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-satellite-white",
+    "title": "Satellite illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/satellite-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/satellite-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "satellite",
+      "space",
+      "orbit",
+      "signal",
+      "remote",
+      "sensing",
+      "imagery",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-satellite-blue",
+    "title": "Satellite illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/satellite-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/satellite-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "satellite",
+      "space",
+      "orbit",
+      "signal",
+      "remote",
+      "sensing",
+      "imagery",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-school-location-fill",
+    "title": "School location illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/school-location.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/school-location.svg",
+    "page": "/illustrations",
+    "tags": [
+      "school",
+      "location",
+      "pin",
+      "map",
+      "mapped",
+      "geolocation",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-school-location-white",
+    "title": "School location illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/school-location-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/school-location-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "school",
+      "location",
+      "pin",
+      "map",
+      "mapped",
+      "geolocation",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-school-location-blue",
+    "title": "School location illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/school-location-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/school-location-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "school",
+      "location",
+      "pin",
+      "map",
+      "mapped",
+      "geolocation",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-schools-fill",
+    "title": "Schools illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/schools.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/schools.svg",
+    "page": "/illustrations",
+    "tags": [
+      "schools",
+      "education",
+      "classroom",
+      "institution",
+      "learning",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-schools-white",
+    "title": "Schools illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/schools-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/schools-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "schools",
+      "education",
+      "classroom",
+      "institution",
+      "learning",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-schools-blue",
+    "title": "Schools illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/schools-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/schools-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "schools",
+      "education",
+      "classroom",
+      "institution",
+      "learning",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-search-fill",
+    "title": "Search illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/search.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/search.svg",
+    "page": "/illustrations",
+    "tags": [
+      "search",
+      "find",
+      "lookup",
+      "query",
+      "magnifier",
+      "discover",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-search-white",
+    "title": "Search illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/search-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/search-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "search",
+      "find",
+      "lookup",
+      "query",
+      "magnifier",
+      "discover",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-search-blue",
+    "title": "Search illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/search-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/search-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "search",
+      "find",
+      "lookup",
+      "query",
+      "magnifier",
+      "discover",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-sharing-data-fill",
+    "title": "Sharing data illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/sharing-data.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/sharing-data.svg",
+    "page": "/illustrations",
+    "tags": [
+      "sharing",
+      "data",
+      "share",
+      "exchange",
+      "transfer",
+      "open",
+      "distribute",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-sharing-data-white",
+    "title": "Sharing data illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/sharing-data-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/sharing-data-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "sharing",
+      "data",
+      "share",
+      "exchange",
+      "transfer",
+      "open",
+      "distribute",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-sharing-data-blue",
+    "title": "Sharing data illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/sharing-data-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/sharing-data-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "sharing",
+      "data",
+      "share",
+      "exchange",
+      "transfer",
+      "open",
+      "distribute",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-team-fill",
+    "title": "Team illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/team.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/team.svg",
+    "page": "/illustrations",
+    "tags": [
+      "team",
+      "collaboration",
+      "group",
+      "staff",
+      "together",
+      "partners",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-team-white",
+    "title": "Team illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/team-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/team-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "team",
+      "collaboration",
+      "group",
+      "staff",
+      "together",
+      "partners",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-team-blue",
+    "title": "Team illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/team-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/team-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "team",
+      "collaboration",
+      "group",
+      "staff",
+      "together",
+      "partners",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-general-update-fill",
+    "title": "Update illustration, fill",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/fill/update.svg"
+      }
+    ],
+    "preview": "/illustrations/general/fill/update.svg",
+    "page": "/illustrations",
+    "tags": [
+      "update",
+      "refresh",
+      "sync",
+      "reload",
+      "upgrade",
+      "latest",
+      "general",
+      "pictogram",
+      "fill"
+    ]
+  },
+  {
+    "id": "illustration-update-white",
+    "title": "Update illustration, outline, white",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "white",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/update-white.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/update-white.svg",
+    "page": "/illustrations",
+    "tags": [
+      "update",
+      "refresh",
+      "sync",
+      "reload",
+      "upgrade",
+      "latest",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-update-blue",
+    "title": "Update illustration, outline, blue",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "blue",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/general/outlines/update-blue.svg"
+      }
+    ],
+    "preview": "/illustrations/general/outlines/update-blue.svg",
+    "page": "/illustrations",
+    "tags": [
+      "update",
+      "refresh",
+      "sync",
+      "reload",
+      "upgrade",
+      "latest",
+      "general",
+      "pictogram",
+      "outline"
+    ]
+  },
+  {
+    "id": "illustration-gigameter-computers-full-colour",
+    "title": "Computers illustration",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/giga-meter/computers.svg"
+      }
+    ],
+    "preview": "/illustrations/giga-meter/computers.svg",
+    "page": "/illustrations",
+    "tags": [
+      "computers",
+      "laptops",
+      "devices",
+      "hardware",
+      "lab",
+      "workstations",
+      "giga",
+      "meter",
+      "gigameter"
+    ]
+  },
+  {
+    "id": "illustration-gigameter-connection-full-colour",
+    "title": "Connection illustration",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/giga-meter/connection.svg"
+      }
+    ],
+    "preview": "/illustrations/giga-meter/connection.svg",
+    "page": "/illustrations",
+    "tags": [
+      "connection",
+      "connectivity",
+      "internet",
+      "wifi",
+      "online",
+      "broadband",
+      "giga",
+      "meter",
+      "gigameter"
+    ]
+  },
+  {
+    "id": "illustration-gigameter-contract-full-colour",
+    "title": "Contract illustration",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/giga-meter/contract.svg"
+      }
+    ],
+    "preview": "/illustrations/giga-meter/contract.svg",
+    "page": "/illustrations",
+    "tags": [
+      "contract",
+      "agreement",
+      "procurement",
+      "document",
+      "signature",
+      "terms",
+      "giga",
+      "meter",
+      "gigameter"
+    ]
+  },
+  {
+    "id": "illustration-gigameter-people-full-colour",
+    "title": "People illustration",
+    "type": "illustration",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/illustrations/giga-meter/people.svg"
+      }
+    ],
+    "preview": "/illustrations/giga-meter/people.svg",
+    "page": "/illustrations",
+    "tags": [
+      "people",
+      "users",
+      "community",
+      "group",
+      "students",
+      "persons",
+      "giga",
+      "meter",
+      "gigameter"
+    ]
+  },
+  {
+    "id": "photo-sudan-01",
+    "title": "Sudan",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/sudan/01.jpg"
+      }
+    ],
+    "preview": "/photo-awards/sudan/01-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "faiz",
+      "abubakr",
+      "mohamed",
+      "sudan",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-a-completely-normal-day-01",
+    "title": "A Completely Normal Day",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/a-completely-normal-day/01.jpg"
+      }
+    ],
+    "preview": "/photo-awards/a-completely-normal-day/01-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "antti",
+      "yrj",
+      "nen",
+      "ukraine",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-inside-prison-01",
+    "title": "Inside prison - “The Phone Is Everything”, photo 1 of 13",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/inside-prison/01.jpg"
+      }
+    ],
+    "preview": "/photo-awards/inside-prison/01-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "magali",
+      "druscovich",
+      "argentina",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-inside-prison-02",
+    "title": "Inside prison - “The Phone Is Everything”, photo 2 of 13",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/inside-prison/02.jpg"
+      }
+    ],
+    "preview": "/photo-awards/inside-prison/02-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "magali",
+      "druscovich",
+      "argentina",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-inside-prison-03",
+    "title": "Inside prison - “The Phone Is Everything”, photo 3 of 13",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/inside-prison/03.jpg"
+      }
+    ],
+    "preview": "/photo-awards/inside-prison/03-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "magali",
+      "druscovich",
+      "argentina",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-inside-prison-04",
+    "title": "Inside prison - “The Phone Is Everything”, photo 4 of 13",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/inside-prison/04.jpg"
+      }
+    ],
+    "preview": "/photo-awards/inside-prison/04-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "magali",
+      "druscovich",
+      "argentina",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-inside-prison-05",
+    "title": "Inside prison - “The Phone Is Everything”, photo 5 of 13",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/inside-prison/05.jpg"
+      }
+    ],
+    "preview": "/photo-awards/inside-prison/05-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "magali",
+      "druscovich",
+      "argentina",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-inside-prison-06",
+    "title": "Inside prison - “The Phone Is Everything”, photo 6 of 13",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/inside-prison/06.jpg"
+      }
+    ],
+    "preview": "/photo-awards/inside-prison/06-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "magali",
+      "druscovich",
+      "argentina",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-inside-prison-07",
+    "title": "Inside prison - “The Phone Is Everything”, photo 7 of 13",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/inside-prison/07.jpg"
+      }
+    ],
+    "preview": "/photo-awards/inside-prison/07-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "magali",
+      "druscovich",
+      "argentina",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-inside-prison-08",
+    "title": "Inside prison - “The Phone Is Everything”, photo 8 of 13",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/inside-prison/08.jpg"
+      }
+    ],
+    "preview": "/photo-awards/inside-prison/08-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "magali",
+      "druscovich",
+      "argentina",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-inside-prison-09",
+    "title": "Inside prison - “The Phone Is Everything”, photo 9 of 13",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/inside-prison/09.jpg"
+      }
+    ],
+    "preview": "/photo-awards/inside-prison/09-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "magali",
+      "druscovich",
+      "argentina",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-inside-prison-10",
+    "title": "Inside prison - “The Phone Is Everything”, photo 10 of 13",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/inside-prison/10.jpg"
+      }
+    ],
+    "preview": "/photo-awards/inside-prison/10-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "magali",
+      "druscovich",
+      "argentina",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-inside-prison-11",
+    "title": "Inside prison - “The Phone Is Everything”, photo 11 of 13",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/inside-prison/11.jpg"
+      }
+    ],
+    "preview": "/photo-awards/inside-prison/11-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "magali",
+      "druscovich",
+      "argentina",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-inside-prison-12",
+    "title": "Inside prison - “The Phone Is Everything”, photo 12 of 13",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/inside-prison/12.jpg"
+      }
+    ],
+    "preview": "/photo-awards/inside-prison/12-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "magali",
+      "druscovich",
+      "argentina",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-inside-prison-13",
+    "title": "Inside prison - “The Phone Is Everything”, photo 13 of 13",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/inside-prison/13.jpg"
+      }
+    ],
+    "preview": "/photo-awards/inside-prison/13-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "magali",
+      "druscovich",
+      "argentina",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-energy-paradox-01",
+    "title": "Energy Paradox, photo 1 of 12",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/energy-paradox/01.jpg"
+      }
+    ],
+    "preview": "/photo-awards/energy-paradox/01-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "francis",
+      "ogunyemi",
+      "nigeria",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-energy-paradox-02",
+    "title": "Energy Paradox, photo 2 of 12",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/energy-paradox/02.jpg"
+      }
+    ],
+    "preview": "/photo-awards/energy-paradox/02-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "francis",
+      "ogunyemi",
+      "nigeria",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-energy-paradox-03",
+    "title": "Energy Paradox, photo 3 of 12",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/energy-paradox/03.jpg"
+      }
+    ],
+    "preview": "/photo-awards/energy-paradox/03-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "francis",
+      "ogunyemi",
+      "nigeria",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-energy-paradox-04",
+    "title": "Energy Paradox, photo 4 of 12",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/energy-paradox/04.jpg"
+      }
+    ],
+    "preview": "/photo-awards/energy-paradox/04-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "francis",
+      "ogunyemi",
+      "nigeria",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-energy-paradox-05",
+    "title": "Energy Paradox, photo 5 of 12",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/energy-paradox/05.jpg"
+      }
+    ],
+    "preview": "/photo-awards/energy-paradox/05-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "francis",
+      "ogunyemi",
+      "nigeria",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-energy-paradox-06",
+    "title": "Energy Paradox, photo 6 of 12",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/energy-paradox/06.jpg"
+      }
+    ],
+    "preview": "/photo-awards/energy-paradox/06-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "francis",
+      "ogunyemi",
+      "nigeria",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-energy-paradox-07",
+    "title": "Energy Paradox, photo 7 of 12",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/energy-paradox/07.jpg"
+      }
+    ],
+    "preview": "/photo-awards/energy-paradox/07-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "francis",
+      "ogunyemi",
+      "nigeria",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-energy-paradox-08",
+    "title": "Energy Paradox, photo 8 of 12",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/energy-paradox/08.jpg"
+      }
+    ],
+    "preview": "/photo-awards/energy-paradox/08-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "francis",
+      "ogunyemi",
+      "nigeria",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-energy-paradox-09",
+    "title": "Energy Paradox, photo 9 of 12",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/energy-paradox/09.jpg"
+      }
+    ],
+    "preview": "/photo-awards/energy-paradox/09-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "francis",
+      "ogunyemi",
+      "nigeria",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-energy-paradox-10",
+    "title": "Energy Paradox, photo 10 of 12",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/energy-paradox/10.jpg"
+      }
+    ],
+    "preview": "/photo-awards/energy-paradox/10-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "francis",
+      "ogunyemi",
+      "nigeria",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-energy-paradox-11",
+    "title": "Energy Paradox, photo 11 of 12",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/energy-paradox/11.jpg"
+      }
+    ],
+    "preview": "/photo-awards/energy-paradox/11-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "francis",
+      "ogunyemi",
+      "nigeria",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-energy-paradox-12",
+    "title": "Energy Paradox, photo 12 of 12",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/energy-paradox/12.jpg"
+      }
+    ],
+    "preview": "/photo-awards/energy-paradox/12-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "francis",
+      "ogunyemi",
+      "nigeria",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-internet-cafes-01",
+    "title": "Internet Cafes",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/internet-cafes/01.jpg"
+      }
+    ],
+    "preview": "/photo-awards/internet-cafes/01-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "ammar",
+      "abubaker",
+      "south",
+      "sudan",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-donna-01",
+    "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 1 of 20",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/donna/01.jpg"
+      }
+    ],
+    "preview": "/photo-awards/donna/01-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "thomas",
+      "morel",
+      "fort",
+      "france",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-donna-02",
+    "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 2 of 20",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/donna/02.jpg"
+      }
+    ],
+    "preview": "/photo-awards/donna/02-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "thomas",
+      "morel",
+      "fort",
+      "france",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-donna-03",
+    "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 3 of 20",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/donna/03.jpg"
+      }
+    ],
+    "preview": "/photo-awards/donna/03-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "thomas",
+      "morel",
+      "fort",
+      "france",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-donna-04",
+    "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 4 of 20",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/donna/04.jpg"
+      }
+    ],
+    "preview": "/photo-awards/donna/04-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "thomas",
+      "morel",
+      "fort",
+      "france",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-donna-05",
+    "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 5 of 20",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/donna/05.jpg"
+      }
+    ],
+    "preview": "/photo-awards/donna/05-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "thomas",
+      "morel",
+      "fort",
+      "france",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-donna-06",
+    "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 6 of 20",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/donna/06.jpg"
+      }
+    ],
+    "preview": "/photo-awards/donna/06-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "thomas",
+      "morel",
+      "fort",
+      "france",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-donna-07",
+    "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 7 of 20",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/donna/07.jpg"
+      }
+    ],
+    "preview": "/photo-awards/donna/07-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "thomas",
+      "morel",
+      "fort",
+      "france",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-donna-08",
+    "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 8 of 20",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/donna/08.jpg"
+      }
+    ],
+    "preview": "/photo-awards/donna/08-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "thomas",
+      "morel",
+      "fort",
+      "france",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-donna-09",
+    "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 9 of 20",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/donna/09.jpg"
+      }
+    ],
+    "preview": "/photo-awards/donna/09-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "thomas",
+      "morel",
+      "fort",
+      "france",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-donna-10",
+    "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 10 of 20",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/donna/10.jpg"
+      }
+    ],
+    "preview": "/photo-awards/donna/10-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "thomas",
+      "morel",
+      "fort",
+      "france",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-donna-11",
+    "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 11 of 20",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/donna/11.jpg"
+      }
+    ],
+    "preview": "/photo-awards/donna/11-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "thomas",
+      "morel",
+      "fort",
+      "france",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-donna-12",
+    "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 12 of 20",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/donna/12.jpg"
+      }
+    ],
+    "preview": "/photo-awards/donna/12-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "thomas",
+      "morel",
+      "fort",
+      "france",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-donna-13",
+    "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 13 of 20",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/donna/13.jpg"
+      }
+    ],
+    "preview": "/photo-awards/donna/13-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "thomas",
+      "morel",
+      "fort",
+      "france",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-donna-14",
+    "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 14 of 20",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/donna/14.jpg"
+      }
+    ],
+    "preview": "/photo-awards/donna/14-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "thomas",
+      "morel",
+      "fort",
+      "france",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-donna-15",
+    "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 15 of 20",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/donna/15.jpg"
+      }
+    ],
+    "preview": "/photo-awards/donna/15-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "thomas",
+      "morel",
+      "fort",
+      "france",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-donna-16",
+    "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 16 of 20",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/donna/16.jpg"
+      }
+    ],
+    "preview": "/photo-awards/donna/16-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "thomas",
+      "morel",
+      "fort",
+      "france",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-donna-17",
+    "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 17 of 20",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/donna/17.jpg"
+      }
+    ],
+    "preview": "/photo-awards/donna/17-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "thomas",
+      "morel",
+      "fort",
+      "france",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-donna-18",
+    "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 18 of 20",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/donna/18.jpg"
+      }
+    ],
+    "preview": "/photo-awards/donna/18-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "thomas",
+      "morel",
+      "fort",
+      "france",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-donna-19",
+    "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 19 of 20",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/donna/19.jpg"
+      }
+    ],
+    "preview": "/photo-awards/donna/19-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "thomas",
+      "morel",
+      "fort",
+      "france",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "photo-donna-20",
+    "title": "DONNA, technology as the only way to strengthen family relationships through a life of exile, photo 20 of 20",
+    "type": "photo",
+    "brand": "giga",
+    "colour": null,
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "jpg",
+        "url": "/photo-awards/donna/20.jpg"
+      }
+    ],
+    "preview": "/photo-awards/donna/20-thumb.jpg",
+    "page": "/media/photo-awards",
+    "tags": [
+      "thomas",
+      "morel",
+      "fort",
+      "france",
+      "photo",
+      "award",
+      "giga",
+      "connectivity"
+    ]
+  },
+  {
+    "id": "background-map-01-dark",
+    "title": "Virtual background, standard 1, dark",
+    "type": "background",
+    "brand": "di",
+    "colour": "black",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "png",
+        "url": "/backgrounds/map-01-dark.png"
+      }
+    ],
+    "preview": "/generated/thumbs/background-map-01-dark.jpg",
+    "page": "/materials/backgrounds",
+    "tags": [
+      "virtual",
+      "background",
+      "teams",
+      "zoom",
+      "meet",
+      "video",
+      "call",
+      "map",
+      "4k"
+    ]
+  },
+  {
+    "id": "background-map-01-light",
+    "title": "Virtual background, standard 1, light",
+    "type": "background",
+    "brand": "di",
+    "colour": "white",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "png",
+        "url": "/backgrounds/map-01-light.png"
+      }
+    ],
+    "preview": "/generated/thumbs/background-map-01-light.jpg",
+    "page": "/materials/backgrounds",
+    "tags": [
+      "virtual",
+      "background",
+      "teams",
+      "zoom",
+      "meet",
+      "video",
+      "call",
+      "map",
+      "4k"
+    ]
+  },
+  {
+    "id": "background-map-02-dark",
+    "title": "Virtual background, standard 2, dark",
+    "type": "background",
+    "brand": "di",
+    "colour": "black",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "png",
+        "url": "/backgrounds/map-02-dark.png"
+      }
+    ],
+    "preview": "/generated/thumbs/background-map-02-dark.jpg",
+    "page": "/materials/backgrounds",
+    "tags": [
+      "virtual",
+      "background",
+      "teams",
+      "zoom",
+      "meet",
+      "video",
+      "call",
+      "map",
+      "4k"
+    ]
+  },
+  {
+    "id": "background-map-02-light",
+    "title": "Virtual background, standard 2, light",
+    "type": "background",
+    "brand": "di",
+    "colour": "white",
+    "layout": "horizontal",
+    "formats": [
+      {
+        "ext": "png",
+        "url": "/backgrounds/map-02-light.png"
+      }
+    ],
+    "preview": "/generated/thumbs/background-map-02-light.jpg",
+    "page": "/materials/backgrounds",
+    "tags": [
+      "virtual",
+      "background",
+      "teams",
+      "zoom",
+      "meet",
+      "video",
+      "call",
+      "map",
+      "4k"
+    ]
+  },
+  {
+    "id": "guideline-video-explainers-example",
+    "title": "Video guideline, explainers example",
+    "type": "guideline",
+    "brand": "giga",
+    "colour": null,
+    "layout": null,
+    "formats": [
+      {
+        "ext": "png",
+        "url": "/images/video-guidelines/explainers-example.png"
+      }
+    ],
+    "preview": "/generated/thumbs/guideline-video-explainers-example.jpg",
+    "page": "/guidelines/video",
+    "tags": [
+      "video",
+      "guidelines",
+      "explainers",
+      "example"
+    ]
+  },
+  {
+    "id": "guideline-video-explainers-safe-area-square",
+    "title": "Video guideline, explainers safe area square",
+    "type": "guideline",
+    "brand": "giga",
+    "colour": null,
+    "layout": null,
+    "formats": [
+      {
+        "ext": "png",
+        "url": "/images/video-guidelines/explainers-safe-area-square.png"
+      }
+    ],
+    "preview": "/generated/thumbs/guideline-video-explainers-safe-area-square.jpg",
+    "page": "/guidelines/video",
+    "tags": [
+      "video",
+      "guidelines",
+      "explainers",
+      "safe",
+      "area",
+      "square"
+    ]
+  },
+  {
+    "id": "guideline-video-location-pin-example",
+    "title": "Video guideline, location pin example",
+    "type": "guideline",
+    "brand": "giga",
+    "colour": null,
+    "layout": null,
+    "formats": [
+      {
+        "ext": "png",
+        "url": "/images/video-guidelines/location-pin-example.png"
+      }
+    ],
+    "preview": "/generated/thumbs/guideline-video-location-pin-example.jpg",
+    "page": "/guidelines/video",
+    "tags": [
+      "video",
+      "guidelines",
+      "location",
+      "pin",
+      "example"
+    ]
+  },
+  {
+    "id": "guideline-video-lower-thirds-example",
+    "title": "Video guideline, lower thirds example",
+    "type": "guideline",
+    "brand": "giga",
+    "colour": null,
+    "layout": null,
+    "formats": [
+      {
+        "ext": "png",
+        "url": "/images/video-guidelines/lower-thirds-example.png"
+      }
+    ],
+    "preview": "/generated/thumbs/guideline-video-lower-thirds-example.jpg",
+    "page": "/guidelines/video",
+    "tags": [
+      "video",
+      "guidelines",
+      "lower",
+      "thirds",
+      "example"
+    ]
+  },
+  {
+    "id": "guideline-video-lower-thirds-safe-area-9-16",
+    "title": "Video guideline, lower thirds safe area 9:16",
+    "type": "guideline",
+    "brand": "giga",
+    "colour": null,
+    "layout": null,
+    "formats": [
+      {
+        "ext": "png",
+        "url": "/images/video-guidelines/lower-thirds-safe-area-9-16.png"
+      }
+    ],
+    "preview": "/generated/thumbs/guideline-video-lower-thirds-safe-area-9-16.jpg",
+    "page": "/guidelines/video",
+    "tags": [
+      "video",
+      "guidelines",
+      "lower",
+      "thirds",
+      "safe",
+      "area",
+      "9",
+      "16"
+    ]
+  },
+  {
+    "id": "guideline-video-subtitles-example",
+    "title": "Video guideline, subtitles example",
+    "type": "guideline",
+    "brand": "giga",
+    "colour": null,
+    "layout": null,
+    "formats": [
+      {
+        "ext": "png",
+        "url": "/images/video-guidelines/subtitles-example.png"
+      }
+    ],
+    "preview": "/generated/thumbs/guideline-video-subtitles-example.jpg",
+    "page": "/guidelines/video",
+    "tags": [
+      "video",
+      "guidelines",
+      "subtitles",
+      "example"
+    ]
+  },
+  {
+    "id": "guideline-video-subtitles-safe-area-16-9",
+    "title": "Video guideline, subtitles safe area 16:9",
+    "type": "guideline",
+    "brand": "giga",
+    "colour": null,
+    "layout": null,
+    "formats": [
+      {
+        "ext": "png",
+        "url": "/images/video-guidelines/subtitles-safe-area-16-9.png"
+      }
+    ],
+    "preview": "/generated/thumbs/guideline-video-subtitles-safe-area-16-9.jpg",
+    "page": "/guidelines/video",
+    "tags": [
+      "video",
+      "guidelines",
+      "subtitles",
+      "safe",
+      "area",
+      "16",
+      "9"
+    ]
+  },
+  {
+    "id": "guideline-video-video-signature-example",
+    "title": "Video guideline, video signature example",
+    "type": "guideline",
+    "brand": "giga",
+    "colour": null,
+    "layout": null,
+    "formats": [
+      {
+        "ext": "png",
+        "url": "/images/video-guidelines/video-signature-example.png"
+      }
+    ],
+    "preview": "/generated/thumbs/guideline-video-video-signature-example.jpg",
+    "page": "/guidelines/video",
+    "tags": [
+      "video",
+      "guidelines",
+      "signature",
+      "example"
+    ]
+  },
+  {
+    "id": "font-manrope",
+    "title": "Manrope font",
+    "type": "font",
+    "brand": "both",
+    "colour": null,
+    "layout": null,
+    "formats": [
+      {
+        "ext": "woff2",
+        "url": "/fonts/manrope-var-normal-latin.woff2"
+      }
+    ],
+    "preview": null,
+    "page": "/typography",
+    "tags": [
+      "manrope",
+      "headings",
+      "google",
+      "fonts"
+    ]
+  },
+  {
+    "id": "font-open-sans",
+    "title": "Open Sans font",
+    "type": "font",
+    "brand": "both",
+    "colour": null,
+    "layout": null,
+    "formats": [
+      {
+        "ext": "woff2",
+        "url": "/fonts/open-sans-var-normal-latin.woff2"
+      }
+    ],
+    "preview": null,
+    "page": "/typography",
+    "tags": [
+      "open",
+      "sans",
+      "body",
+      "text",
+      "google",
+      "fonts"
+    ]
+  },
+  {
+    "id": "palette-di",
+    "title": "Digital Inclusion palette",
+    "type": "palette",
+    "brand": "di",
+    "colour": null,
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/palettes/di-palette.svg"
+      }
+    ],
+    "preview": "/generated/palettes/di-palette.svg",
+    "page": "/colors?brand=di",
+    "tags": [
+      "primary",
+      "neutrals",
+      "accent",
+      "grey",
+      "connectivity",
+      "unicef",
+      "blue",
+      "navy",
+      "off",
+      "white",
+      "eef9ff",
+      "daf1ff",
+      "b5e4ff",
+      "82d3ff",
+      "49bcf6",
+      "00aeef",
+      "008ac5",
+      "01689d",
+      "0f4772",
+      "1a2a3c",
+      "tokens",
+      "swatches"
+    ]
+  },
+  {
+    "id": "palette-giga",
+    "title": "Giga palette",
+    "type": "palette",
+    "brand": "giga",
+    "colour": null,
+    "layout": null,
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/palettes/giga-palette.svg"
+      }
+    ],
+    "preview": "/generated/palettes/giga-palette.svg",
+    "page": "/colors?brand=giga",
+    "tags": [
+      "primary",
+      "grey",
+      "connectivity",
+      "green",
+      "red",
+      "eaf2ff",
+      "d4e5ff",
+      "bfd7ff",
+      "a9caff",
+      "7eb0ff",
+      "5495ff",
+      "277aff",
+      "0050e6",
+      "002d9c",
+      "002d76",
+      "tokens",
+      "swatches"
+    ]
+  }
+]

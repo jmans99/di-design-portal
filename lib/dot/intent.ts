@@ -1,15 +1,20 @@
 /**
  * Dot's keyword matcher. No AI: typed text is lowercased and matched against
  * fixed keyword lists. Pure functions, no imports with side effects, so they
- * can be unit tested (`npm test`) and the next step can add asset search here.
+ * can be unit tested (`npm test`). Decides between making something (create
+ * flow) and finding an asset (lib/search); docs/design/brand-and-search.md.
  */
 
 import type { OutputType } from '../brief'
+import { parseQuery } from '../search/match.ts'
+import { CREATE_VERBS, FIND_PHRASES } from '../search/synonyms.ts'
 
 export type DeckTemplateId = 'from-scratch' | 'master-deck' | 'partnership-deck' | 'government-briefing'
 
 export type Intent =
   | { kind: 'format'; outputType: OutputType; templateId?: DeckTemplateId }
+  /** Asset search. `offerBackground`: also offer the virtual background tool ("background" is both). */
+  | { kind: 'search'; query: string; offerBackground: boolean }
   | { kind: 'none' }
 
 /** Lowercase, trim and collapse whitespace. */
@@ -56,14 +61,32 @@ export function matchTemplate(text: string): DeckTemplateId | null {
   return TEMPLATE_KEYWORDS.find(({ words }) => words.some((w) => hasWord(t, w)))?.id ?? null
 }
 
-/** Format, plus Master deck when "master" appears with Deck. */
-export function matchIntent(text: string): Intent {
-  const outputType = matchFormat(text)
-  if (!outputType) return { kind: 'none' }
+/** A format, plus Master deck when "master" appears with Deck. */
+function formatIntent(text: string, outputType: OutputType): Intent {
   if (outputType === 'deck' && hasWord(normalize(text), 'master')) {
     return { kind: 'format', outputType, templateId: 'master-deck' }
   }
   return { kind: 'format', outputType }
+}
+
+/**
+ * Create or find, in this order:
+ * 1. a create verb (make, create, write…) with a format word: create;
+ * 2. a format word and no asset type word: create;
+ * 3. an asset type word, or a find verb (find, get, download, need the, where is): search;
+ *    "background" is both a format and an asset type, so a search for one also offers the tool;
+ * 4. nothing: none ("I couldn't match that yet").
+ */
+export function matchIntent(text: string): Intent {
+  const t = normalize(text)
+  const outputType = matchFormat(text)
+  const assetType = parseQuery(text).facets.type
+  const createVerb = CREATE_VERBS.some((v) => hasWord(t, v))
+  if (outputType && (createVerb || !assetType)) return formatIntent(text, outputType)
+  if (assetType || FIND_PHRASES.some((p) => hasWord(t, p))) {
+    return { kind: 'search', query: text.trim(), offerBackground: outputType === 'background' || assetType === 'background' }
+  }
+  return { kind: 'none' }
 }
 
 const SKIP_WORDS = ['skip', 'anyone', 'no one', 'nobody', 'everyone', 'not sure']

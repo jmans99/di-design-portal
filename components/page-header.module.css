@@ -1,0 +1,24 @@
+/* Title row: title (and pill) on the left, brand tabs on the right. Under a
+   640px content width the tabs drop below the title at full width. */
+.header {
+  container-type: inline-size;
+}
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 24px;
+}
+@container (max-width: 639px) {
+  .titleRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .actions,
+  .actions [role='tablist'] {
+    width: 100%;
+  }
+  .actions [role='tab'] {
+    flex: 1 1 0;
+  }
+}

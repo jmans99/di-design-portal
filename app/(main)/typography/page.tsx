@@ -6,6 +6,7 @@ export default function TypographyPage() {
     <main className="mx-auto min-w-0 w-full max-w-6xl flex-1 overflow-visible px-6 pb-12 pt-6">
       <PageHeader
         title="Typography"
+        brand="both"
         description="Manrope for headings, Open Sans for body: scales, weights, and usage across digital and print."
       />
       <TypographySection />

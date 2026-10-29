@@ -21,6 +21,8 @@ export interface LogoVersion {
 
 export interface LogoAsset {
   brandName: string
+  /** Which brand tab the logo is listed under on the Logos page; "both" lists it under both. */
+  brand: 'di' | 'giga' | 'both'
   assetType: 'logo' | 'product' | 'event'
   /** For product logos, a single SVG path. For Giga main logo, not used (resolved by config). */
   svgPath?: string
