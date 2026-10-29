@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 import { briefHref, type OutputType } from '@/lib/brief'
-import { SKIP_AUDIENCE, conversationHref, type ConversationState } from '@/lib/dot/conversation'
+import { SKIP_AUDIENCE, conversationHref, searchHref, type ConversationState } from '@/lib/dot/conversation'
 import { getFormat } from '@/lib/dot/formats'
 import { matchIntent } from '@/lib/dot/intent'
 import { addRecent } from '@/lib/dot/recent'
@@ -31,12 +31,17 @@ export function useDot() {
     router.push(href)
   }
 
-  /** Typed text from Dot's box: a matched format starts; anything else opens "couldn't match". */
+  /**
+   * Typed text from Dot's box: a format starts the create flow, an asset
+   * request opens the search reply (not added to Recent), anything else opens
+   * "couldn't match".
+   */
   const send = (text: string, useKnowledge: boolean) => {
     const q = text.trim()
     if (!q) return
     const intent = matchIntent(q)
     if (intent.kind === 'format') start({ format: intent.outputType, templateId: intent.templateId, q, useKnowledge })
+    else if (intent.kind === 'search') router.push(searchHref({ query: q, without: [] }))
     else router.push(conversationHref({ q, useKnowledge }))
   }
 

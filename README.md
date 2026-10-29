@@ -24,6 +24,10 @@ Open http://localhost:3000. `npm run build` makes a production build and
   Assets, Brand, AI skills). Add a new page here to put it in the menu.
 - `lib/site.ts`: portal name, page title and description, header logo and
   browser theme colour.
+- `data/assets.json`: the asset index for search (Dot's box and ⌘K), built by
+  `scripts/build-asset-index.mjs` before every build (`prebuild`). Fix a
+  brand, type or colour the script cannot infer in `data/assets.overrides.json`.
+  Rules: [docs/design/brand-and-search.md](docs/design/brand-and-search.md).
 - `app/globals.css`: the DI colour tokens. The Giga palette stays available on
   the Colors page (`/colors?palette=giga`).
 

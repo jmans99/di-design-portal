@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/select'
 import { Badge } from '@/components/ui/badge'
 import {
-  BRAND_ASSETS,
+  logosForBrand,
   resolveGigaLogoPath,
 } from '@/lib/brand-registry'
 import {
@@ -44,13 +44,16 @@ const RESOLUTIONS: { label: string; value: Resolution; scale: number }[] = [
 ]
 
 interface LogoGeneratorProps {
+  /** Brand tab: only that brand's logos are listed. */
+  brandTab: 'di' | 'giga'
   /** When set (e.g. from Video guidelines), preselect this color variant on mount. */
   initialColorVariant?: string | null
 }
 
-export function LogoGenerator({ initialColorVariant }: LogoGeneratorProps) {
+export function LogoGenerator({ brandTab, initialColorVariant }: LogoGeneratorProps) {
+  const BRAND_ASSETS = logosForBrand(brandTab)
   const [selectedBrand, setSelectedBrand] = useState(BRAND_ASSETS[0].brandName)
-  const brand = BRAND_ASSETS.find((b) => b.brandName === selectedBrand)!
+  const brand = BRAND_ASSETS.find((b) => b.brandName === selectedBrand) ?? BRAND_ASSETS[0]
 
   // Sub-version (e.g. boxed/unboxed for UNICEF Digital Impact). null = brand has
   // no versions or falls back to the default. Stored as the version id.

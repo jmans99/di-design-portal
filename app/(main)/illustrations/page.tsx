@@ -6,6 +6,7 @@ export default function IllustrationsPage() {
     <main className="mx-auto min-w-0 w-full max-w-6xl flex-1 overflow-visible px-6 pb-12 pt-6">
       <PageHeader
         title="Illustrations"
+        brand="giga"
         description="Choose a pictogram, pick fill or outline and color, then download in SVG, PNG, or JPEG."
       />
       <IllustrationConfigurator />

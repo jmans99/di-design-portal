@@ -8,9 +8,10 @@ import { DotOrb } from '@/components/dot/dot-orb'
 import { MoreMenu, RecommendedPill } from '@/components/dot/format-tiles'
 import { MasterDeckArt, SlidesArt, SocialPostArt, TwoPagerArt } from '@/components/dot/dot-art'
 import { Conversation } from '@/components/dot/conversation'
+import { SearchReply } from '@/components/dot/search-reply'
 import { useDot } from '@/components/dot/use-dot'
 import { Switch } from '@/components/ui/switch'
-import { conversationFromParams } from '@/lib/dot/conversation'
+import { conversationFromParams, searchFromParams } from '@/lib/dot/conversation'
 import type { OutputType } from '@/lib/brief'
 import { cn } from '@/lib/utils'
 import styles from './dot.module.css'
@@ -21,8 +22,11 @@ const TILE_SUB = 'mt-0.5 text-xs text-ink-secondary'
 
 /** Home page: Dot's box with format tiles, or the conversation once something is picked (state in the URL). */
 export function DotHome() {
-  const state = conversationFromParams(useSearchParams())
+  const params = useSearchParams()
   // Keyed on the URL so a new step starts with fresh local state.
+  const search = searchFromParams(params)
+  if (search) return <SearchReply key={JSON.stringify(search)} state={search} />
+  const state = conversationFromParams(params)
   if (state) return <Conversation key={JSON.stringify(state)} state={state} />
   return <EmptyHome />
 }

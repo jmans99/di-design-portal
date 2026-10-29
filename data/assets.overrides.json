@@ -1,0 +1,55 @@
+{
+  "$comment": "Hand-set fields merged on top of what scripts/build-asset-index.mjs infers from file names. Keys are asset ids from data/assets.json. These brands were guessed when the index was first built (UNICEF and Digital Impact logos sit on the Logos page's Digital Inclusion tab; GEP and the Connectivity Forum are Giga events; the fonts are shared by both brands and filed under Digital Inclusion). Change any value here, then run npm run build or node scripts/build-asset-index.mjs. The boxed UNICEF Digital Impact Division file named -black is the full-colour lockup (blue box, black text), so its colour is set to full-colour here.",
+  "unicef-unicef-blue": {
+    "brand": "di"
+  },
+  "unicef-black": {
+    "brand": "di"
+  },
+  "unicef-white": {
+    "brand": "di"
+  },
+  "unicef-digital-impact-division-black": {
+    "brand": "di",
+    "colour": "full-colour"
+  },
+  "unicef-digital-impact-division-white": {
+    "brand": "di"
+  },
+  "unicef-digital-impact-unboxed-unicef-blue": {
+    "brand": "di"
+  },
+  "unicef-digital-impact-unboxed": {
+    "brand": "di"
+  },
+  "unicef-digital-impact-unboxed-white": {
+    "brand": "di"
+  },
+  "event-gep-giga-blue": {
+    "brand": "giga"
+  },
+  "event-gep-black": {
+    "brand": "giga"
+  },
+  "event-gep-white": {
+    "brand": "giga"
+  },
+  "event-connectivity-forum": {
+    "brand": "giga"
+  },
+  "event-connectivity-forum-giga-blue": {
+    "brand": "giga"
+  },
+  "event-connectivity-forum-black": {
+    "brand": "giga"
+  },
+  "event-connectivity-forum-white": {
+    "brand": "giga"
+  },
+  "font-manrope": {
+    "brand": "di"
+  },
+  "font-open-sans": {
+    "brand": "di"
+  }
+}

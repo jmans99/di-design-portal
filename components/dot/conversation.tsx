@@ -142,7 +142,7 @@ export function Conversation({ state }: { state: ConversationState }) {
   )
 }
 
-function UserMessage({ format, children }: { format?: Format; children: React.ReactNode }) {
+export function UserMessage({ format, children }: { format?: Format; children: React.ReactNode }) {
   return (
     <li className="flex justify-end">
       <span className="sr-only">You: </span>
@@ -154,7 +154,7 @@ function UserMessage({ format, children }: { format?: Format; children: React.Re
   )
 }
 
-function DotMessage({ text, children }: { text: string; children?: React.ReactNode }) {
+export function DotMessage({ text, children }: { text: string; children?: React.ReactNode }) {
   return (
     <li className="flex gap-3">
       <DotOrb size={28} />
@@ -242,19 +242,22 @@ function AudienceChips({ selected, onPick }: { selected?: string; onPick: (audie
 }
 
 /**
- * Sticky reply bar: the brief so far as chips, then the reply input.
+ * Sticky reply bar: the brief so far as chips (create flow only), then the reply input.
  * `templateName`: undefined = no Template chip (not a deck); null = not chosen yet.
  */
-function ReplyBar({
+export function ReplyBar({
   format,
   templateName,
   audienceName,
   onSend,
+  showBrief = true,
 }: {
   format?: Format
-  templateName: string | null | undefined
-  audienceName: string | null
+  templateName?: string | null
+  audienceName?: string | null
   onSend: (text: string) => void
+  /** False for Dot's search reply: brief chips belong to the create flow. */
+  showBrief?: boolean
 }) {
   const [text, setText] = useState('')
   const canSend = text.trim().length > 0
@@ -271,13 +274,15 @@ function ReplyBar({
         }}
         className="rounded-[20px] border border-line-card bg-white px-4 pb-2.5 pt-3 shadow-[0_10px_32px_rgba(26,42,60,.07)]"
       >
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="text-xs text-ink-muted">Brief</span>
-          <BriefChip label="Format" value={format?.label ?? null} color={color} />
-          {templateName !== undefined && <BriefChip label="Template" value={templateName} color={color} />}
-          <BriefChip label="Audience" value={audienceName} color={color} />
-        </div>
-        <div className="mt-2 flex items-center gap-2">
+        {showBrief && (
+          <div className="mb-2 flex flex-wrap items-center gap-2">
+            <span className="text-xs text-ink-muted">Brief</span>
+            <BriefChip label="Format" value={format?.label ?? null} color={color} />
+            {templateName !== undefined && <BriefChip label="Template" value={templateName} color={color} />}
+            <BriefChip label="Audience" value={audienceName ?? null} color={color} />
+          </div>
+        )}
+        <div className="flex items-center gap-2">
           <label htmlFor="dot-reply" className="sr-only">
             Reply to Dot
           </label>

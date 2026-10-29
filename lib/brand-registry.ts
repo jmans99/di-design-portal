@@ -98,18 +98,21 @@ export function resolveGigaLogoPath(
 export const BRAND_ASSETS: LogoAsset[] = [
   {
     brandName: 'Giga',
+    brand: 'giga',
     assetType: 'logo',
     isGigaMainLogo: true,
     allowedColorVariants: COLOR_VARIANTS,
   },
   {
     brandName: 'UNICEF',
+    brand: 'di',
     assetType: 'logo',
     svgPath: '/logos/unicef.svg',
     allowedColorVariants: UNICEF_MONOCHROME_VARIANTS,
   },
   {
     brandName: 'UNICEF Digital Impact',
+    brand: 'di',
     assetType: 'logo',
     // Top-level fields mirror the default version (boxed) so code unaware of
     // `versions` keeps working with the existing 2-color boxed lockup.
@@ -140,6 +143,7 @@ export const BRAND_ASSETS: LogoAsset[] = [
   },
   {
     brandName: 'UNICEF Digital Inclusion',
+    brand: 'di',
     assetType: 'logo',
     svgPath: '/logos/unicef-digital-inclusion-blue.svg',
     svgPathByColorName: {
@@ -151,62 +155,80 @@ export const BRAND_ASSETS: LogoAsset[] = [
   },
   {
     brandName: 'GigaSync',
+    brand: 'giga',
     assetType: 'product',
     svgPath: '/logos/product-gigasync.svg',
     allowedColorVariants: MONOCHROME_VARIANTS,
   },
   {
     brandName: 'GigaScore',
+    brand: 'giga',
     assetType: 'product',
     svgPath: '/logos/product-gigascore.svg',
     allowedColorVariants: MONOCHROME_VARIANTS,
   },
   {
     brandName: 'GigaBlocks',
+    brand: 'giga',
     assetType: 'product',
     svgPath: '/logos/product-gigablocks.svg',
     allowedColorVariants: MONOCHROME_VARIANTS,
   },
   {
     brandName: 'GigaValidate',
+    brand: 'giga',
     assetType: 'product',
     svgPath: '/logos/product-gigavalidate.svg',
     allowedColorVariants: MONOCHROME_VARIANTS,
   },
   {
     brandName: 'GigaMaps',
+    brand: 'giga',
     assetType: 'product',
     svgPath: '/logos/product-gigamaps.svg',
     allowedColorVariants: MONOCHROME_VARIANTS,
   },
   {
     brandName: 'GigaMaps API',
+    brand: 'giga',
     assetType: 'product',
     svgPath: '/logos/product-gigamapsapi.svg',
     allowedColorVariants: MONOCHROME_VARIANTS,
   },
   {
     brandName: 'GigaMeter',
+    brand: 'giga',
     assetType: 'product',
     svgPath: '/logos/product-gigameter.svg',
     allowedColorVariants: MONOCHROME_VARIANTS,
   },
   {
     brandName: 'GigaSpatial',
+    brand: 'giga',
     assetType: 'product',
     svgPath: '/logos/product-gigaspatial.svg',
     allowedColorVariants: BLACK_WHITE_VARIANTS,
   },
   {
     brandName: 'GEP',
+    brand: 'giga',
     assetType: 'event',
     svgPath: '/logos/event-gep.svg',
     allowedColorVariants: MONOCHROME_VARIANTS,
   },
   {
     brandName: 'Giga Connectivity Forum',
+    brand: 'giga',
     assetType: 'event',
     svgPath: '/logos/event-connectivity-forum.svg',
     allowedColorVariants: COLOR_VARIANTS,
   },
 ]
+
+/** Logos listed under one brand tab. Digital Inclusion's own logo comes first on the DI tab. */
+export function logosForBrand(brand: 'di' | 'giga'): LogoAsset[] {
+  const logos = BRAND_ASSETS.filter((asset) => asset.brand === brand)
+  return brand === 'di'
+    ? [...logos.filter((l) => l.brandName === 'UNICEF Digital Inclusion'), ...logos.filter((l) => l.brandName !== 'UNICEF Digital Inclusion')]
+    : logos
+}
