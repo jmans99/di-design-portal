@@ -1,9 +1,9 @@
 'use client'
 
 import { ArrowUpRight, ImageIcon } from 'lucide-react'
-import { getSite } from '@/lib/site'
+import { SITE } from '@/lib/site'
 
-const ORG = getSite().orgName
+const ORG = SITE.orgName
 
 const GALLERIES = [
   {

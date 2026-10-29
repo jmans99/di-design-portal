@@ -44,7 +44,7 @@ const config: Config = {
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
-          // Values live in app/globals.css (Giga in :root, DI under [data-site='di']).
+          // Values live in app/globals.css (:root).
           50: 'rgb(var(--primary-50) / <alpha-value>)',
           100: 'rgb(var(--primary-100) / <alpha-value>)',
           200: 'rgb(var(--primary-200) / <alpha-value>)',

@@ -5,9 +5,9 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { ExternalLink, ImageIcon, Mail } from 'lucide-react'
 import { VIDEO_GUIDELINES_ASSETS as ASSETS } from '@/lib/video-guidelines-assets'
-import { getSite } from '@/lib/site'
 
-const ORG = getSite().orgName
+// Giga video material (Giga logos, stingers and focal point), so the copy names Giga.
+const ORG = 'Giga'
 
 const VIDEO_COLORS = [
   { name: 'Giga blue', hex: '#277aff' },

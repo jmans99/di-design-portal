@@ -1,5 +1,5 @@
 /**
- * Knowledge data (DI site): audiences, facilities, systems, needs and offerings,
+ * Knowledge data: audiences, facilities, systems, needs and offerings,
  * imported from the review cockpit by scripts/import-knowledge.mjs into
  * data/knowledge/.
  */
