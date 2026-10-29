@@ -3,19 +3,14 @@ import {
   BookOpen,
   Building2,
   ChartColumn,
-  FileText,
-  Globe,
-  House,
+  FolderOpen,
   ImageIcon,
   Images,
-  Mail,
-  MapIcon,
+  Library,
   Network,
-  Monitor,
   Palette,
-  Presentation,
+  PenLine,
   School,
-  Share2,
   Shapes,
   Sparkles,
   Trophy,
@@ -24,44 +19,45 @@ import {
   Video,
   Waypoints,
 } from 'lucide-react'
+import { FORMATS, formatStartPath } from '@/lib/dot/formats'
 
 export type NavItem = {
   id: string
   path: string
   label: string
-  /** Side panel icon. */
   icon: LucideIcon
-  /** Planned page: listed in the side panel as disabled with "Soon". */
+  /** Planned page with no route yet: listed as disabled with "Soon". */
   soon?: boolean
+  /** Small tag next to a working link, e.g. "Soon" for a format whose tool is not built (Dot keeps the brief). */
+  tag?: string
 }
-export type NavGroup = { id: string; label: string; items: NavItem[] }
 
-/**
- * Side panel: every group and item, in display order. Items marked `soon` are
- * planned pages, shown as disabled with a "Soon" label.
- */
+export type NavGroup = {
+  id: string
+  label: string
+  icon: LucideIcon
+  /** Open when the page loads. */
+  defaultOpen: boolean
+  items: NavItem[]
+}
+
+/** Create: every format Dot can start, in the side panel order. */
+const CREATE_ITEMS: NavItem[] = FORMATS.map((format) => ({
+  id: format.type,
+  path: formatStartPath(format),
+  label: format.label,
+  icon: format.icon,
+  tag: format.href ? undefined : 'Soon',
+}))
+
+/** Side panel groups, in display order (docs/design/dot-home.md, section 1). */
 export const SIDEBAR_GROUPS: NavGroup[] = [
-  {
-    id: 'home',
-    label: 'Home',
-    items: [{ id: 'home', path: '/', label: 'Home', icon: House }],
-  },
-  {
-    id: 'create',
-    label: 'Create',
-    items: [
-      { id: 'maps', path: '/materials/maps', label: 'Maps', icon: MapIcon },
-      { id: 'social-media', path: '/materials/social-media', label: 'Social media', icon: Share2 },
-      { id: 'engagement-map', path: '/materials/engagement-map', label: 'Engagement map', icon: Globe },
-      { id: 'email-signature', path: '/materials/email-signature', label: 'Email signature', icon: Mail },
-      { id: 'backgrounds', path: '/materials/backgrounds', label: 'Backgrounds', icon: Monitor },
-      { id: 'slides', path: '/slides', label: 'Slides', icon: Presentation, soon: true },
-      { id: 'two-pagers', path: '/two-pagers', label: 'Two-pagers', icon: FileText, soon: true },
-    ],
-  },
+  { id: 'create', label: 'Create', icon: PenLine, defaultOpen: true, items: CREATE_ITEMS },
   {
     id: 'knowledge',
     label: 'Knowledge',
+    icon: Library,
+    defaultOpen: false,
     items: [
       { id: 'audiences', path: '/knowledge/audiences', label: 'Audiences', icon: Users },
       { id: 'facilities', path: '/knowledge/facilities', label: 'Facilities', icon: School },
@@ -74,6 +70,8 @@ export const SIDEBAR_GROUPS: NavGroup[] = [
   {
     id: 'assets',
     label: 'Assets',
+    icon: FolderOpen,
+    defaultOpen: true,
     items: [
       { id: 'logos', path: '/logos', label: 'Logos', icon: Shapes },
       { id: 'illustrations', path: '/illustrations', label: 'Illustrations', icon: ImageIcon },
@@ -84,6 +82,8 @@ export const SIDEBAR_GROUPS: NavGroup[] = [
   {
     id: 'brand',
     label: 'Brand',
+    icon: Palette,
+    defaultOpen: false,
     items: [
       { id: 'colors', path: '/colors', label: 'Colors', icon: Palette },
       { id: 'typography', path: '/typography', label: 'Typography', icon: Type },
@@ -91,9 +91,22 @@ export const SIDEBAR_GROUPS: NavGroup[] = [
       { id: 'video-guidelines', path: '/guidelines/video', label: 'Video guidelines', icon: Video },
     ],
   },
-  {
-    id: 'ai-skills',
-    label: 'AI skills',
-    items: [{ id: 'skills', path: '/materials/skills', label: 'AI skills', icon: Sparkles }],
-  },
 ]
+
+/** AI skills: a single row after the groups, no children. */
+export const AI_SKILLS_ITEM: NavItem = { id: 'skills', path: '/materials/skills', label: 'AI skills', icon: Sparkles }
+
+/** Every link in the side panel (planned "Soon" pages left out). */
+export const SIDEBAR_LINKS: NavItem[] = [...SIDEBAR_GROUPS.flatMap((g) => g.items), AI_SKILLS_ITEM].filter((i) => !i.soon)
+
+/**
+ * The side panel item for a URL: on the home page, the format in `?new=`;
+ * elsewhere the item with the longest matching path, so /media/photo-awards
+ * picks Photo awards, not Image galleries. Undefined = nothing (New chat on /).
+ */
+export function activeNavItem(pathname: string, newParam: string | null): NavItem | undefined {
+  if (pathname === '/') return newParam ? SIDEBAR_LINKS.find((i) => i.path === `/?new=${newParam}`) : undefined
+  return SIDEBAR_LINKS.filter((i) => !i.path.includes('?') && (pathname === i.path || pathname.startsWith(i.path + '/'))).sort(
+    (a, b) => b.path.length - a.path.length,
+  )[0]
+}

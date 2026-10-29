@@ -137,7 +137,7 @@ export function VideoBrandGuidelinesSection({
             rel="noopener noreferrer"
           >
             <ExternalLink className="mr-2 h-3.5 w-3.5" />
-            Digital Inclusion Brand Guidelines
+            Giga brand guidelines
           </a>
         </Button>
       </section>

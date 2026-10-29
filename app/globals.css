@@ -258,13 +258,13 @@
     --chart-3: 0 0% 32%;
     --chart-4: 44 100% 62%;
     --chart-5: 357 88% 52%;
-    --sidebar-background: 0 0% 97.3%;
+    --sidebar-background: 0 0% 98%; /* #FAFAFA */
     --sidebar-foreground: 212 40% 16.9%;
     --sidebar-primary: 200 99% 31%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 201 100% 96.7%;
     --sidebar-accent-foreground: 212 40% 16.9%;
-    --sidebar-border: 214 32% 91%;
+    --sidebar-border: 214 21% 93.5%; /* #EBEEF2 */
     --sidebar-ring: 198 100% 38.6%;
     /* Primary scale as RGB channels (Tailwind primary-50 … primary-900). */
     --primary-50: 238 249 255; /* #EEF9FF */
@@ -332,6 +332,13 @@
   }
   .font-heading {
     font-weight: 500;
+  }
+}
+
+@layer components {
+  /* Focus ring for the Dot home and side panel: 2px DI blue 700, offset 2px. */
+  .focus-ring {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-primary-700 focus-visible:ring-offset-2;
   }
 }
 
