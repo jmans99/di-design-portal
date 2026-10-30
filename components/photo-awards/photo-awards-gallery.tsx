@@ -65,8 +65,8 @@ function StoryTile({ story, onOpen }: { story: PhotoAwardStory; onOpen: (index: 
         />
 
         {story.rank && (
-          <span className="pointer-events-none absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-white/95 px-2.5 py-1 text-[11px] font-semibold text-foreground shadow-stripe">
-            <Award className="h-3 w-3 text-primary" aria-hidden />
+          <span className="pointer-events-none absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-card/95 px-2.5 py-1 text-[11px] font-semibold text-foreground shadow-stripe">
+            <Award className="h-3 w-3 text-link" aria-hidden />
             {RANK_LABEL[story.rank]}
           </span>
         )}
@@ -90,7 +90,7 @@ function StoryTile({ story, onOpen }: { story: PhotoAwardStory; onOpen: (index: 
           {story.photographer}
           {story.location ? ` · ${story.location}` : ''}
         </p>
-        {many && <p className="mt-0.5 text-xs text-muted-foreground/80">{story.images.length} photos</p>}
+        {many && <p className="mt-0.5 text-xs text-muted-foreground">{story.images.length} photos</p>}
       </button>
     </article>
   )
@@ -116,7 +116,7 @@ function TileArrow({
         onClick()
       }}
       className={cn(
-        'absolute top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-foreground shadow-stripe-md transition-[opacity,transform,background-color] duration-200 hover:scale-105 hover:bg-white focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+        'absolute top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-card/95 text-foreground shadow-stripe-md transition-[opacity,transform,background-color] duration-200 hover:scale-105 hover:bg-card focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
         // Hidden until the tile is hovered or something inside it has focus.
         'opacity-0 group-hover:opacity-100 group-focus-within:opacity-100',
         side === 'left' ? 'left-3' : 'right-3',

@@ -110,7 +110,7 @@ export function SocialMediaStudio() {
               className={cn(
                 'flex items-center justify-between rounded-2xl border px-3 py-2 text-left text-sm font-medium transition-smooth-transform active:scale-[0.99]',
                 taglinePreset === preset.id
-                  ? 'border-primary-300 bg-primary-50/70 text-foreground'
+                  ? 'border-chosen-border bg-chosen/70 text-foreground'
                   : 'border-border bg-card text-foreground hover:bg-secondary/60'
               )}
             >
@@ -156,7 +156,7 @@ export function SocialMediaStudio() {
         </p>
         <p className="mt-1 text-xs text-muted-foreground">
           Date: <span className="font-medium text-foreground">{formattedDate}</span>
-          <span className="ml-1 text-muted-foreground/70">(auto)</span>
+          <span className="ml-1 text-muted-foreground">(auto)</span>
         </p>
         {exportError && <p className="mt-2 text-xs text-destructive">{exportError}</p>}
         <div className="mt-3 flex items-start gap-2 rounded-md bg-muted/50 px-3 py-2 text-[11px] leading-relaxed text-muted-foreground">

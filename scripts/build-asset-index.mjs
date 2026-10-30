@@ -28,6 +28,7 @@ import { logosForBrand, resolveGigaLogoPath } from '../lib/brand-registry.ts'
 import { ILLUSTRATIONS } from '../lib/illustration-registry.ts'
 import { PHOTO_AWARD_BRAND, PHOTO_AWARD_STORIES } from '../lib/photo-awards.ts'
 import { COLOR_SCALES, DI_COLOR_SCALES, DI_MAIN_COLORS } from '../lib/color-tokens.ts'
+import svgpath from 'svgpath'
 import { colorVariantToGigaVariant, recolorGigaLogo, recolorSvg } from './lib/svg-recolor.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
@@ -268,6 +269,63 @@ for (const asset of new Set([...logosForBrand('di'), ...logosForBrand('giga')]))
         tags: version ? [version.label] : [],
       })
     }
+  }
+}
+
+// Giga symbol: the paper plane and its nodes from the main Giga logo, without
+// the "giga" wordmark. The wordmark paths start right of the symbol (x ≥ 115 in
+// the 201 × 94 file), so the symbol is every path left of that, cropped to its
+// box. The original file is not edited; the symbol is written to
+// public/generated/logos/ (full colour, white, black).
+const GIGA_SYMBOL_SOURCE = '/logos/giga-main-horizontal.svg'
+const WORDMARK_START_X = 115
+
+function pathBox(d) {
+  const xs = []
+  const ys = []
+  // Absolute coordinates, curve control points included: a box that can only be slightly larger than the shape.
+  svgpath(d).abs().unarc().unshort().iterate((seg) => {
+    for (let i = 1; i + 1 < seg.length; i += 2) {
+      xs.push(seg[i])
+      ys.push(seg[i + 1])
+    }
+  })
+  return { minX: Math.min(...xs), minY: Math.min(...ys), maxX: Math.max(...xs), maxY: Math.max(...ys) }
+}
+
+function gigaSymbolSvg(source) {
+  const paths = (source.match(/<path\b[^>]*\/>/g) ?? []).filter((p) => pathBox(p.match(/\sd="([^"]+)"/)[1]).minX < WORDMARK_START_X)
+  const boxes = paths.map((p) => pathBox(p.match(/\sd="([^"]+)"/)[1]))
+  const width = Math.ceil(Math.max(...boxes.map((b) => b.maxX)))
+  const height = Math.ceil(Math.max(...boxes.map((b) => b.maxY)))
+  return `<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" fill="none" xmlns="http://www.w3.org/2000/svg">\n${paths.join('\n')}\n</svg>\n`
+}
+
+{
+  const symbol = gigaSymbolSvg(read(GIGA_SYMBOL_SOURCE))
+  for (const [variant, colour, svg] of [
+    ['full colour', 'full-colour', symbol],
+    ['white', 'white', recolorSvg(symbol, '#FFFFFF')],
+    ['black', 'black', recolorSvg(symbol, '#000000')],
+  ]) {
+    const id = colour === 'full-colour' ? 'giga-symbol' : `giga-symbol-${colour}`
+    const svgUrl = `${GENERATED}/logos/${id}.svg`
+    writeIfChanged(svgUrl, svg)
+    const pngUrl = `${GENERATED}/logos/${id}.png`
+    const hasPng = await svgToPng(svgUrl, pngUrl)
+    add({
+      id,
+      title: `Giga symbol, ${variant}`,
+      url: svgUrl,
+      name: id,
+      brand: 'giga',
+      colour,
+      layout: 'square',
+      formats: [{ ext: 'svg', url: svgUrl }, ...(hasPng ? [{ ext: 'png', url: pngUrl }] : [])],
+      preview: svgUrl,
+      page: '/logos?brand=giga',
+      tags: ['giga', 'symbol', 'icon', 'mark', 'paper plane', 'logo'],
+    })
   }
 }
 

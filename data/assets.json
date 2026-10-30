@@ -1503,6 +1503,93 @@
     ]
   },
   {
+    "id": "giga-symbol",
+    "title": "Giga symbol, full colour",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "full-colour",
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/giga-symbol.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/giga-symbol.png"
+      }
+    ],
+    "preview": "/generated/logos/giga-symbol.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "giga",
+      "symbol",
+      "icon",
+      "mark",
+      "paper",
+      "plane",
+      "logo"
+    ]
+  },
+  {
+    "id": "giga-symbol-white",
+    "title": "Giga symbol, white",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "white",
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/giga-symbol-white.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/giga-symbol-white.png"
+      }
+    ],
+    "preview": "/generated/logos/giga-symbol-white.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "giga",
+      "symbol",
+      "icon",
+      "mark",
+      "paper",
+      "plane",
+      "logo"
+    ]
+  },
+  {
+    "id": "giga-symbol-black",
+    "title": "Giga symbol, black",
+    "type": "logo",
+    "brand": "giga",
+    "colour": "black",
+    "layout": "square",
+    "formats": [
+      {
+        "ext": "svg",
+        "url": "/generated/logos/giga-symbol-black.svg"
+      },
+      {
+        "ext": "png",
+        "url": "/generated/logos/giga-symbol-black.png"
+      }
+    ],
+    "preview": "/generated/logos/giga-symbol-black.svg",
+    "page": "/logos?brand=giga",
+    "tags": [
+      "giga",
+      "symbol",
+      "icon",
+      "mark",
+      "paper",
+      "plane",
+      "logo"
+    ]
+  },
+  {
     "id": "illustration-mapping-fill",
     "title": "Mapping illustration, fill",
     "type": "illustration",

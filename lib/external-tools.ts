@@ -9,7 +9,7 @@ import type { OutputType } from './brief'
 /** The deck builder (decks and two-pagers), built outside this portal. */
 export const EXTERNAL_TOOLS = {
   deck: 'https://un-deck-builder.vercel.app/',
-  twoPager: 'https://un-deck-builder.vercel.app/',
+  twoPager: 'https://un-deck-builder.vercel.app/two-pager',
 } as const
 
 /**
@@ -29,5 +29,12 @@ export function externalToolFor(type: OutputType): string | null {
   return null
 }
 
-/** Accessible name for a link that opens the deck builder in a new tab: "Create a deck (opens the deck builder in a new tab)". */
-export const externalLinkLabel = (label: string) => `${label} (opens the deck builder in a new tab)`
+/** The builder's name for a format: "deck builder", "two-pager builder". */
+export const builderName = (type: OutputType = 'deck') => (type === 'two-pager' ? 'two-pager builder' : 'deck builder')
+
+/**
+ * Accessible name for a link that opens the builder in a new tab:
+ * "Create a deck (opens the deck builder in a new tab)",
+ * "Write a two-pager (opens the two-pager builder in a new tab)".
+ */
+export const externalLinkLabel = (label: string, type: OutputType = 'deck') => `${label} (opens the ${builderName(type)} in a new tab)`

@@ -224,31 +224,36 @@
 .group:hover .anim-twist { animation: icon-twist 0.55s ease-out; }
 
 @layer base {
+  /*
+   * Theme tokens (docs/design/dot-home.md, "Theme"). Light is :root, dark is
+   * .dark on <html> (next-themes, class strategy). Components read these
+   * through Tailwind (tailwind.config.ts), so they switch with the theme:
+   * no hex values for surfaces, text, borders or buttons in components.
+   * shadcn tokens are HSL channels; the DI tokens below them are RGB channels
+   * (so Tailwind's /opacity modifiers work) or full colours (tiles).
+   */
   :root {
-    /* Digital Inclusion colour tokens. Fonts, radii, shadows, spacing and motion
-       are shared. Secondary, muted, border and input keep their slate values:
-       their hue (210-215) already matches DI navy (212). */
-    --background: 0 0% 97.3%; /* off-white #F8F8F8 */
-    --foreground: 212 40% 16.9%; /* navy #1A2A3C */
-    --card: 0 0% 100%;
-    --card-foreground: 212 40% 16.9%;
+    --background: 0 0% 100%; /* main area and its top bar #FFFFFF: lighter than the side panel */
+    --foreground: 211.8 39.5% 16.9%; /* #1A2A3C */
+    --card: 0 0% 100%; /* surfaces: Dot's box, cards, menus, dialogs */
+    --card-foreground: 211.8 39.5% 16.9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 212 40% 16.9%;
-    /* Primary (button backgrounds) = 700, so white text passes WCAG AA
-       (6.05:1). White on 600 is 3.86:1 and on 500 #00AEEF 2.53:1. */
-    --primary: 200 99% 31%; /* 700 #01689D */
+    --popover-foreground: 211.8 39.5% 16.9%;
+    /* Primary buttons = DI 700, so white text passes AA (6.05:1). */
+    --primary: 200.4 98.7% 31%; /* #01689D */
     --primary-foreground: 0 0% 100%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 212 40% 16.9%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 23% 45%;
+    --primary-hover: 206.1 76.7% 25.3%; /* 800 #0F4772 */
+    --secondary: 210 18.2% 95.7%; /* #F2F4F6 */
+    --secondary-foreground: 211.8 39.5% 16.9%;
+    --muted: 210 18.2% 95.7%;
+    --muted-foreground: 210 14% 42%; /* #5C6B7A */
     --accent: 201 100% 96.7%; /* 50 #EEF9FF */
-    --accent-foreground: 212 40% 16.9%;
+    --accent-foreground: 211.8 39.5% 16.9%;
     --destructive: 357 88% 52%;
     --destructive-foreground: 0 0% 100%;
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 198 100% 38.6%;
+    --border: 212.7 24.4% 91.2%; /* #E3E8EE */
+    --input: 212.7 24.4% 91.2%;
+    --ring: 200.4 98.7% 31%; /* focus ring #01689D */
     --radius: 8px;
     --radius-sm: 5px;
     --radius-lg: 12px;
@@ -258,15 +263,63 @@
     --chart-3: 0 0% 32%;
     --chart-4: 44 100% 62%;
     --chart-5: 357 88% 52%;
-    --sidebar-background: 0 0% 98%; /* #FAFAFA */
-    --sidebar-foreground: 212 40% 16.9%;
-    --sidebar-primary: 200 99% 31%;
+    --sidebar-background: 220 17.6% 96.7%; /* #F5F6F8 */
+    --sidebar-foreground: 211.8 39.5% 16.9%;
+    --sidebar-primary: 200.4 98.7% 31%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 201 100% 96.7%;
-    --sidebar-accent-foreground: 212 40% 16.9%;
-    --sidebar-border: 214 21% 93.5%; /* #EBEEF2 */
-    --sidebar-ring: 198 100% 38.6%;
-    /* Primary scale as RGB channels (Tailwind primary-50 … primary-900). */
+    --sidebar-accent: 210 22.2% 92.9%; /* #E9EDF1 */
+    --sidebar-accent-foreground: 211.8 39.5% 16.9%;
+    --sidebar-border: 214.3 21.2% 93.5%; /* #EBEEF2 */
+    --sidebar-ring: 200.4 98.7% 31%;
+
+    /* Text */
+    --ink: 26 42 60; /* #1A2A3C */
+    --ink-secondary: 59 74 90; /* #3B4A5A */
+    --ink-muted: 92 107 122; /* #5C6B7A */
+    --ink-soft: 107 119 133; /* #6B7785: side panel group titles, toggle icons */
+    --link: 1 104 157; /* #01689D */
+    --link-hover: 15 71 114; /* #0F4772 */
+    /* Lines */
+    --line-card: 227 232 238; /* #E3E8EE */
+    --line-divider: 235 238 242; /* #EBEEF2 */
+    --line-dashed: 201 210 219; /* #C9D2DB */
+    /* Fills */
+    --subtle: 242 244 246; /* #F2F4F6: chips, bubbles, toggle track, + circles */
+    --selected: 238 241 244; /* #EEF1F4: selected row */
+    --hover: 241 243 245; /* #F1F3F5: row hover */
+    --hover-soft: 247 249 250; /* #F7F9FA: hover on a card-coloured chip or tile */
+    --field: 255 255 255; /* #FFFFFF: side panel search button */
+    --field-border: 227 232 238; /* #E3E8EE */
+    /* Side panel rows, group titles and theme toggle (the panel is darker than the main area) */
+    --sidebar-selected: 233 237 241; /* #E9EDF1 */
+    --sidebar-hover: 237 240 243; /* #EDF0F3 */
+    /* Group titles (title, icon, chevron): darker when closed, very gray when open (the small 12px label). */
+    --sidebar-group-title: 59 74 90; /* #3B4A5A, closed */
+    --sidebar-group-title-hover: 26 42 60; /* #1A2A3C */
+    --sidebar-group-title-open: 98 110 124; /* #626E7C, open (4.8:1 on #F5F6F8; #6B7785 was 4.2:1) */
+    --sidebar-group-title-open-hover: 59 74 90; /* #3B4A5A */
+    --toggle-track: 233 237 241; /* #E9EDF1 */
+    --thumb: 255 255 255; /* selected theme toggle circle */
+    --thumb-shadow: 0 1px 3px rgba(26, 42, 60, 0.18);
+    /* A chosen option (format, colour variant, tagline…): fill and border; text uses --link. */
+    --chosen: 238 249 255; /* DI 50 #EEF9FF */
+    --chosen-border: 130 211 255; /* DI 300 #82D3FF */
+    /* Pills */
+    --pill: 255 255 255; /* "Coming soon", "Recommended" */
+    --pill-muted-foreground: 92 107 122; /* "Coming soon" text */
+    --pill-accent-border: 218 241 255; /* "Recommended" border #DAF1FF */
+    /* Home bento tiles */
+    --tile-map: #e5f6fd;
+    --tile-two-pager: #eef0ff;
+    --tile-master: #eef9ff;
+    --tile-master-border: #daf1ff;
+    /* Shadows */
+    --shadow-box: 0 10px 32px rgba(26, 42, 60, 0.07);
+    --shadow-menu: 0 16px 40px rgba(26, 42, 60, 0.16);
+    --shadow-tile: 0 6px 18px rgba(26, 42, 60, 0.08);
+
+    /* DI blue scale as RGB channels (Tailwind primary-50 … primary-900). Brand
+       colours: the same in both themes (art, swatches). */
     --primary-50: 238 249 255; /* #EEF9FF */
     --primary-100: 218 241 255; /* #DAF1FF */
     --primary-200: 181 228 255; /* #B5E4FF */
@@ -277,43 +330,81 @@
     --primary-700: 1 104 157; /* #01689D */
     --primary-800: 15 71 114; /* #0F4772 */
     --primary-900: 26 42 60; /* #1A2A3C */
-    /* Single accent only (kickers and highlights). Not applied anywhere yet. */
+    /* Single accent only (the Beta badge). */
     --accent-orange: 24 93% 54.5%; /* #F7761F */
   }
 
   .dark {
-    --background: 0 0% 9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 214 100% 58%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 22%;
-    --muted-foreground: 0 0% 79%;
-    --accent: 0 0% 22%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 357 88% 52%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 22%;
-    --input: 0 0% 22%;
-    --ring: 214 100% 58%;
-    --chart-1: 214 100% 58%;
+    --background: 212.1 41.2% 13.3%; /* main area #142130 */
+    --foreground: 0 0% 97.3%; /* #F8F8F8 */
+    --card: 211.8 39.5% 16.9%; /* surfaces #1A2A3C */
+    --card-foreground: 0 0% 97.3%;
+    --popover: 211.8 39.5% 16.9%;
+    --popover-foreground: 0 0% 97.3%;
+    --primary: 200.1 90.6% 62.5%; /* #49BCF6 */
+    --primary-foreground: 213 40% 9.8%; /* #0F1823 */
+    --primary-hover: 201.1 100% 75.5%; /* #82D3FF */
+    --secondary: 211.4 38.2% 21.6%; /* #22364C */
+    --secondary-foreground: 0 0% 97.3%;
+    --muted: 211.4 38.2% 21.6%;
+    --muted-foreground: 210 20.3% 76.9%; /* #B8C4D0 (secondary text) */
+    --accent: 211.4 38.2% 21.6%;
+    --accent-foreground: 0 0% 97.3%;
+    --destructive: 357 88% 68%; /* 4.9:1 on the surfaces */
+    --destructive-foreground: 213 40% 9.8%;
+    --border: 212.1 33.9% 24.9%; /* #2A3E55 */
+    --input: 212.1 33.9% 24.9%;
+    --ring: 201.1 100% 75.5%; /* focus ring #82D3FF */
+    --chart-1: 200.1 90.6% 62.5%;
     --chart-2: 145 100% 42%;
     --chart-3: 0 0% 60%;
     --chart-4: 44 100% 62%;
-    --chart-5: 357 88% 52%;
-    --sidebar-background: 0 0% 9%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 214 100% 58%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 22%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 0 0% 22%;
-    --sidebar-ring: 214 100% 58%;
+    --chart-5: 357 88% 68%;
+    --sidebar-background: 213 40% 9.8%; /* #0F1823 */
+    --sidebar-foreground: 0 0% 97.3%;
+    --sidebar-primary: 200.1 90.6% 62.5%;
+    --sidebar-primary-foreground: 213 40% 9.8%;
+    --sidebar-accent: 211.4 38.2% 21.6%; /* #22364C */
+    --sidebar-accent-foreground: 0 0% 97.3%;
+    --sidebar-border: 211.4 38.2% 21.6%; /* #22364C */
+    --sidebar-ring: 201.1 100% 75.5%;
+
+    --ink: 248 248 248; /* #F8F8F8 */
+    --ink-secondary: 184 196 208; /* #B8C4D0 */
+    --ink-muted: 138 154 171; /* #8A9AAB */
+    --ink-soft: 138 154 171; /* #8A9AAB */
+    --link: 130 211 255; /* #82D3FF */
+    --link-hover: 181 228 255; /* #B5E4FF */
+    --line-card: 42 62 85; /* #2A3E55 */
+    --line-divider: 34 54 76; /* #22364C */
+    --line-dashed: 58 80 104; /* #3A5068 */
+    --subtle: 34 54 76; /* #22364C */
+    --selected: 34 54 76;
+    --hover: 34 54 76;
+    --hover-soft: 34 54 76;
+    --field: 26 42 60; /* #1A2A3C */
+    --field-border: 42 62 85; /* #2A3E55 */
+    --sidebar-selected: 34 54 76; /* #22364C */
+    --sidebar-hover: 26 42 60; /* #1A2A3C */
+    --sidebar-group-title: 218 226 234; /* #DAE2EA, closed */
+    --sidebar-group-title-hover: 248 248 248; /* #F8F8F8 */
+    --sidebar-group-title-open: 138 154 171; /* #8A9AAB, open */
+    --sidebar-group-title-open-hover: 218 226 234; /* #DAE2EA */
+    --toggle-track: 34 54 76; /* #22364C */
+    --thumb: 42 62 85; /* #2A3E55 */
+    --thumb-shadow: none;
+    --chosen: 34 54 76; /* #22364C */
+    --chosen-border: 73 188 246; /* #49BCF6 */
+    --pill: 34 54 76; /* #22364C */
+    --pill-muted-foreground: 218 241 255; /* #DAF1FF */
+    --pill-accent-border: 34 54 76;
+    --tile-map: rgba(0, 174, 239, 0.14);
+    --tile-two-pager: rgba(126, 140, 255, 0.16);
+    --tile-master: rgba(0, 174, 239, 0.1);
+    --tile-master-border: rgba(0, 174, 239, 0.25);
+    --shadow-box: 0 10px 32px rgba(0, 0, 0, 0.28);
+    --shadow-menu: 0 16px 40px rgba(0, 0, 0, 0.45);
+    --shadow-tile: 0 6px 18px rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -336,9 +427,9 @@
 }
 
 @layer components {
-  /* Focus ring for the Dot home and side panel: 2px DI blue 700, offset 2px. */
+    /* Focus ring: 2px #01689D (light) / #82D3FF (dark), offset 2px on the page colour. */
   .focus-ring {
-    @apply outline-none focus-visible:ring-2 focus-visible:ring-primary-700 focus-visible:ring-offset-2;
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
   }
 }
 

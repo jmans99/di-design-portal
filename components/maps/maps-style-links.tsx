@@ -33,7 +33,7 @@ function StyleLink({ href, active, children }: { href: string; active: boolean; 
       aria-current={active ? 'page' : undefined}
       className={cn(
         'inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium transition-smooth-transform active:scale-[0.98]',
-        active ? 'bg-primary-50 text-primary-700' : 'text-muted-foreground hover:text-foreground',
+        active ? 'bg-chosen text-link' : 'text-muted-foreground hover:text-foreground',
       )}
     >
       {children}

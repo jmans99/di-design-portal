@@ -85,7 +85,7 @@ export function StoryLightbox({
   return (
     <DialogPrimitive.Root open={open} onOpenChange={(o) => !o && onClose()}>
       <DialogPrimitive.Portal>
-        <DialogPrimitive.Overlay className="fixed inset-0 z-[200] bg-[#0A0A0C]/70 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
+        <DialogPrimitive.Overlay className="fixed inset-0 z-[200] bg-black/70 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
         <DialogPrimitive.Content
           className="fixed left-1/2 top-1/2 z-[201] flex h-[min(92vh,920px)] w-[min(96vw,1480px)] -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-stripe-lg focus:outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-1/2 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-1/2 data-[state=open]:duration-200 data-[state=closed]:duration-150 lg:flex-row"
           aria-describedby={undefined}
@@ -110,7 +110,7 @@ export function StoryLightbox({
                       <NavButton side="right" onClick={next} label="Next photo">
                         <ChevronRight className="h-5 w-5" />
                       </NavButton>
-                      <span className="absolute bottom-4 left-4 rounded-full bg-white/95 px-2.5 py-1 text-[11px] font-semibold text-foreground shadow-stripe lg:bottom-7 lg:left-7">
+                      <span className="absolute bottom-4 left-4 rounded-full bg-card/95 px-2.5 py-1 text-[11px] font-semibold text-foreground shadow-stripe lg:bottom-7 lg:left-7">
                         {index + 1} / {images.length}
                       </span>
                     </>
@@ -152,7 +152,7 @@ export function StoryLightbox({
                   </div>
                   <div className="flex shrink-0 items-center gap-2">
                     {displayed.rank && (
-                      <span className="inline-flex items-center gap-1 rounded-full border border-primary-300 bg-primary-50 px-2.5 py-1 text-[11px] font-semibold text-primary-700">
+                      <span className="inline-flex items-center gap-1 rounded-full border border-chosen-border bg-chosen px-2.5 py-1 text-[11px] font-semibold text-link">
                         <Award className="h-3 w-3" aria-hidden />
                         {RANK_LABEL[displayed.rank]}
                       </span>
@@ -177,7 +177,7 @@ export function StoryLightbox({
                     <button
                       type="button"
                       onClick={() => setExpanded((e) => !e)}
-                      className="mt-1.5 text-xs font-semibold text-primary transition-smooth hover:text-primary-700"
+                      className="mt-1.5 text-xs font-semibold text-link transition-smooth hover:text-link-hover"
                     >
                       {expanded ? 'Show less' : 'Read more'}
                     </button>
@@ -231,7 +231,7 @@ function NavButton({
       onClick={onClick}
       aria-label={label}
       className={cn(
-        'absolute top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-white/95 text-foreground shadow-stripe-md transition-smooth hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring active:scale-[0.96]',
+        'absolute top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card/95 text-foreground shadow-stripe-md transition-smooth hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring active:scale-[0.96]',
         side === 'left' ? 'left-3 lg:left-6' : 'right-3 lg:right-6',
       )}
     >

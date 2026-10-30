@@ -8,19 +8,10 @@ import { Switch } from '@/components/ui/switch'
 import { BackgroundToggle } from '@/components/maps/abstract/background-toggle'
 import { Input } from '@/components/ui/input'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from '@/components/ui/command'
+import { AreaPicker } from '@/components/maps/area-picker'
 import {
   Check,
   ChevronDown,
-  ChevronsUpDown,
   Copy,
   Download,
   Globe,
@@ -94,7 +85,6 @@ export function AbstractMapGenerator() {
   const [scope, setScope] = useState<'country' | 'region'>('country')
   const [region, setRegion] = useState<GigaMapRegion>(REGIONS.find((r) => r.code === 'africa') ?? REGIONS[0])
   const [layer, setLayer] = useState<DataLayer>('school')
-  const [pickerOpen, setPickerOpen] = useState(false)
   const [settings, setSettings] = useState<AbstractMapOptions>(DEFAULT_ABSTRACT_OPTIONS)
   const [sizePreset, setSizePreset] = useState<SizePreset>('full')
   const [custom, setCustom] = useState({ width: '1920', height: '1080' })
@@ -306,87 +296,21 @@ export function AbstractMapGenerator() {
           icon={<Globe className="h-3.5 w-3.5 text-muted-foreground" />}
           className="lg:pt-4 lg:pb-2.5"
         >
-          <Popover open={pickerOpen} onOpenChange={setPickerOpen}>
-            <PopoverTrigger asChild>
-              <button
-                type="button"
-                role="combobox"
-                aria-expanded={pickerOpen}
-                aria-controls="abstract-map-area-list"
-                disabled={scope === 'country' && !country}
-                className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm transition-smooth-transform focus:outline-none focus:ring-2 focus:ring-ring disabled:opacity-60"
-              >
-                <span className="flex items-center gap-2 truncate">
-                  {scope === 'country' && (
-                    <span className="inline-flex h-5 min-w-[28px] items-center justify-center rounded bg-muted px-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-                      {country?.code ?? '…'}
-                    </span>
-                  )}
-                  <span className="truncate text-foreground">
-                    {scope === 'region'
-                      ? region.name
-                      : (country?.name ?? (countriesError ? 'Unavailable' : 'Loading countries…'))}
-                  </span>
-                </span>
-                <ChevronsUpDown className="h-4 w-4 shrink-0 opacity-50" />
-              </button>
-            </PopoverTrigger>
-            <PopoverContent id="abstract-map-area-list" className="w-[var(--radix-popover-trigger-width)] p-0" align="start">
-              <Command>
-                <CommandInput placeholder="Search a region or country..." />
-                <CommandList>
-                  <CommandEmpty>No region or country found.</CommandEmpty>
-                  <CommandGroup heading="Regions">
-                    {REGIONS.map((r) => (
-                      <CommandItem
-                        key={r.code}
-                        value={`${r.name} ${r.code}`}
-                        onSelect={() => {
-                          setRegion(r)
-                          setScope('region')
-                          setPickerOpen(false)
-                        }}
-                      >
-                        <span className="flex-1 truncate">{r.name}</span>
-                        <Check
-                          className={cn(
-                            'ml-2 h-4 w-4',
-                            scope === 'region' && region.code === r.code ? 'opacity-100' : 'opacity-0',
-                          )}
-                        />
-                      </CommandItem>
-                    ))}
-                  </CommandGroup>
-                  {countries.length > 0 && (
-                    <CommandGroup heading="Countries">
-                      {countries.map((c) => (
-                        <CommandItem
-                          key={c.code}
-                          value={`${c.name} ${c.code}`}
-                          onSelect={() => {
-                            setCountry(c)
-                            setScope('country')
-                            setPickerOpen(false)
-                          }}
-                        >
-                          <span className="mr-2 inline-flex h-5 min-w-[28px] items-center justify-center rounded bg-muted px-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-                            {c.code}
-                          </span>
-                          <span className="flex-1 truncate">{c.name}</span>
-                          <Check
-                            className={cn(
-                              'ml-2 h-4 w-4',
-                              scope === 'country' && country?.code === c.code ? 'opacity-100' : 'opacity-0',
-                            )}
-                          />
-                        </CommandItem>
-                      ))}
-                    </CommandGroup>
-                  )}
-                </CommandList>
-              </Command>
-            </PopoverContent>
-          </Popover>
+          <AreaPicker
+            scope={scope}
+            region={region}
+            country={country}
+            countries={countries}
+            countriesError={countriesError}
+            onRegion={(r) => {
+              setRegion(r)
+              setScope('region')
+            }}
+            onCountry={(c) => {
+              setCountry(c)
+              setScope('country')
+            }}
+          />
           {countriesError && <p className="text-xs text-destructive">{countriesError}</p>}
           {scope === 'region' && (
             <p className="text-[11px] text-muted-foreground">
@@ -454,13 +378,13 @@ export function AbstractMapGenerator() {
           <CollapsibleTrigger
             className={cn(
               'relative flex w-full items-center gap-3 rounded-2xl border border-border bg-card px-4 py-3 text-left transition-smooth-transform hover:bg-secondary/60 active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-              (advancedOpen || advancedChanged) && 'border-primary-300',
+              (advancedOpen || advancedChanged) && 'border-chosen-border',
             )}
           >
             {/* Sits on the top border so it never squeezes the label. */}
             {advancedChanged && (
-              <span className="absolute -top-2 right-4 inline-flex items-center gap-1 rounded-full border border-primary-300 bg-primary-50 px-1.5 py-px text-[10px] font-semibold uppercase tracking-wider text-primary-700">
-                <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-primary-600" />
+              <span className="absolute -top-2 right-4 inline-flex items-center gap-1 rounded-full border border-chosen-border bg-chosen px-1.5 py-px text-[10px] font-semibold uppercase tracking-wider text-link">
+                <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-link" />
                 Changed
               </span>
             )}
@@ -829,7 +753,7 @@ function ToggleButton({
       className={cn(
         'flex-1 whitespace-nowrap rounded-full border px-4 py-2.5 text-sm font-medium transition-smooth-transform active:scale-[0.98]',
         active
-          ? 'border-primary-300 bg-primary-50 text-primary-700'
+          ? 'border-chosen-border bg-chosen text-link'
           : 'border-border bg-card text-foreground hover:bg-secondary/60',
       )}
     >

@@ -268,7 +268,8 @@ export function generateIllustrationFilename(
 }
 
 /**
- * The brand of the Illustrations page as a whole: "both" once every
- * illustration is shared, else "giga" (the pillars and Giga Meter are Giga's own).
+ * The brand of the illustrations as a whole: "both" once every illustration
+ * is shared, else "giga" (the pillars and Giga Meter are Giga's own). The page
+ * itself now has the All / Digital Inclusion / Giga filter instead of a pill.
  */
 export const ILLUSTRATIONS_PAGE_BRAND: 'giga' | 'both' = ILLUSTRATIONS.every((i) => i.brand === 'both') ? 'both' : 'giga'

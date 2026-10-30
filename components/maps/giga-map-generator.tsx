@@ -5,16 +5,8 @@ import type { Map as MapLibreMap } from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import { PreviewPanel, PreviewThemeToggle } from '@/components/ui/preview-panel'
 import { Button } from '@/components/ui/button'
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from '@/components/ui/command'
-import { Download, Check, ChevronsUpDown, Globe, Maximize2, Loader2 } from 'lucide-react'
+import { AreaPicker } from '@/components/maps/area-picker'
+import { Download, Globe, Maximize2, Loader2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import {
   CONNECTIVITY_LEGEND,
@@ -70,7 +62,6 @@ export function GigaMapGenerator({
   const [resolutionChoice, setResolution] = useState<Resolution>('2x')
   const resolution: Resolution = isBackground ? '2x' : resolutionChoice
   const [overlayUrl, setOverlayUrl] = useState<string | null>(null)
-  const [pickerOpen, setPickerOpen] = useState(false)
   const [renderState, setRenderState] = useState<RenderState>('loading')
   const [renderError, setRenderError] = useState<string | null>(null)
   const [isExporting, setIsExporting] = useState(false)
@@ -221,87 +212,21 @@ export function GigaMapGenerator({
           icon={<Globe className="h-3.5 w-3.5 text-muted-foreground" />}
           className={sidebarTop ? undefined : 'lg:pt-4 lg:pb-2.5'}
         >
-          <Popover open={pickerOpen} onOpenChange={setPickerOpen}>
-            <PopoverTrigger asChild>
-              <button
-                type="button"
-                role="combobox"
-                aria-expanded={pickerOpen}
-                disabled={scope === 'country' && !country}
-                className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm transition-smooth-transform focus:outline-none focus:ring-2 focus:ring-ring disabled:opacity-60"
-              >
-                <span className="flex items-center gap-2 truncate">
-                  {scope === 'country' && (
-                    <span className="inline-flex h-5 min-w-[28px] items-center justify-center rounded bg-muted px-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-                      {country?.code ?? '…'}
-                    </span>
-                  )}
-                  <span className="truncate text-foreground">
-                    {scope === 'region'
-                      ? region.name
-                      : (country?.name ?? (countriesError ? 'Unavailable' : 'Loading countries…'))}
-                  </span>
-                </span>
-                <ChevronsUpDown className="h-4 w-4 shrink-0 opacity-50" />
-              </button>
-            </PopoverTrigger>
-            <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-0" align="start">
-              <Command>
-                <CommandInput placeholder="Search a region or country..." />
-                <CommandList>
-                  <CommandEmpty>No region or country found.</CommandEmpty>
-                  {/* One list, two sections: regions (World first, as in REGIONS), then countries. */}
-                  <CommandGroup heading="Regions">
-                    {REGIONS.map((r) => (
-                      <CommandItem
-                        key={r.code}
-                        value={`${r.name} ${r.code}`}
-                        onSelect={() => {
-                          setRegion(r)
-                          setScope('region')
-                          setPickerOpen(false)
-                        }}
-                      >
-                        <span className="flex-1 truncate">{r.name}</span>
-                        <Check
-                          className={cn(
-                            'ml-2 h-4 w-4',
-                            scope === 'region' && region.code === r.code ? 'opacity-100' : 'opacity-0'
-                          )}
-                        />
-                      </CommandItem>
-                    ))}
-                  </CommandGroup>
-                  {countries.length > 0 && (
-                    <CommandGroup heading="Countries">
-                      {countries.map((c) => (
-                        <CommandItem
-                          key={c.code}
-                          value={`${c.name} ${c.code}`}
-                          onSelect={() => {
-                            setCountry(c)
-                            setScope('country')
-                            setPickerOpen(false)
-                          }}
-                        >
-                          <span className="mr-2 inline-flex h-5 min-w-[28px] items-center justify-center rounded bg-muted px-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-                            {c.code}
-                          </span>
-                          <span className="flex-1 truncate">{c.name}</span>
-                          <Check
-                            className={cn(
-                              'ml-2 h-4 w-4',
-                              scope === 'country' && country?.code === c.code ? 'opacity-100' : 'opacity-0'
-                            )}
-                          />
-                        </CommandItem>
-                      ))}
-                    </CommandGroup>
-                  )}
-                </CommandList>
-              </Command>
-            </PopoverContent>
-          </Popover>
+          <AreaPicker
+            scope={scope}
+            region={region}
+            country={country}
+            countries={countries}
+            countriesError={countriesError}
+            onRegion={(r) => {
+              setRegion(r)
+              setScope('region')
+            }}
+            onCountry={(c) => {
+              setCountry(c)
+              setScope('country')
+            }}
+          />
           {countriesError && <p className="text-xs text-destructive">{countriesError}</p>}
           {scope === 'region' && (
             <p className="text-[11px] text-muted-foreground">
@@ -515,7 +440,7 @@ function ToggleButton({
       className={cn(
         'flex-1 whitespace-nowrap rounded-full border px-4 py-2.5 text-sm font-medium transition-smooth-transform active:scale-[0.98]',
         active
-          ? 'border-primary-300 bg-primary-50 text-primary-700'
+          ? 'border-chosen-border bg-chosen text-link'
           : 'border-border bg-card text-foreground hover:bg-secondary/60'
       )}
     >

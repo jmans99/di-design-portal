@@ -44,7 +44,7 @@ export function SearchReply({ state }: { state: SearchState }) {
         <SidePanelToggle />
         <span aria-hidden className="h-4 w-px bg-line-divider" />
         <h1 className="truncate text-sm font-semibold text-ink">Search</h1>
-        <Link href="/" className="focus-ring ml-auto rounded text-sm font-semibold text-primary-700 hover:text-primary-800">
+        <Link href="/" className="focus-ring ml-auto rounded text-sm font-semibold text-link hover:text-link-hover">
           Start over
         </Link>
       </header>
@@ -64,7 +64,7 @@ export function SearchReply({ state }: { state: SearchState }) {
                         type="button"
                         onClick={() => push(searchHref({ query: state.query, without: [...state.without, facet] }))}
                         aria-label={`Remove ${label}`}
-                        className="focus-ring inline-flex h-7 items-center gap-1 rounded-full bg-[#F2F4F6] pl-3 pr-2 text-xs font-semibold text-ink hover:bg-[#E8ECF0]"
+                        className="focus-ring inline-flex h-7 items-center gap-1 rounded-full bg-subtle pl-3 pr-2 text-xs font-semibold text-ink hover:bg-selected"
                       >
                         {label}
                         <X className="h-3.5 w-3.5 text-ink-muted" strokeWidth={2} aria-hidden />
@@ -83,7 +83,7 @@ export function SearchReply({ state }: { state: SearchState }) {
                   <button
                     type="button"
                     onClick={() => openWith(state.query)}
-                    className="focus-ring rounded text-sm font-semibold text-primary-700 hover:text-primary-800"
+                    className="focus-ring rounded text-sm font-semibold text-link hover:text-link-hover"
                   >
                     See all {results.length} results
                   </button>
@@ -92,13 +92,13 @@ export function SearchReply({ state }: { state: SearchState }) {
               </div>
             </DotMessage>
           ) : (
-            <DotMessage text="I couldn't find that. Try 'DI logo' or browse Assets.">
+            <DotMessage text="I couldn't find that. Try 'DI logo' or browse Brand assets.">
               <div className="flex flex-wrap gap-2">
                 {ASSET_PAGES.map((page) => (
                   <Link
                     key={page.href}
                     href={page.href}
-                    className="focus-ring inline-flex h-8 items-center rounded-full border border-line-card bg-white px-3 text-[13px] text-ink-secondary hover:bg-[#F7F9FA]"
+                    className="focus-ring inline-flex h-8 items-center rounded-full border border-line-card bg-card px-3 text-[13px] text-ink-secondary hover:bg-hover-soft"
                   >
                     {page.label}
                   </Link>
@@ -120,7 +120,7 @@ function BackgroundOffer({ onClick }: { onClick: () => void }) {
     <button
       type="button"
       onClick={onClick}
-      className="focus-ring inline-flex h-8 items-center gap-2 rounded-full border border-line-card bg-white pl-1.5 pr-3 text-[13px] font-semibold text-ink hover:bg-[#F7F9FA]"
+      className="focus-ring inline-flex h-8 items-center gap-2 rounded-full border border-line-card bg-card pl-1.5 pr-3 text-[13px] font-semibold text-ink hover:bg-hover-soft"
     >
       <span aria-hidden className="flex h-5 w-5 items-center justify-center rounded-full text-white" style={{ backgroundColor: format.color }}>
         <format.icon className="h-3 w-3" strokeWidth={2} />

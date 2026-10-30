@@ -11,7 +11,8 @@ matched with simple keywords.
 
 ## Design tokens
 
-Use the existing Tailwind/CSS variables where they exist.
+Use the existing Tailwind/CSS variables where they exist. The values below
+are the light theme; the dark theme is in "Theme" at the end.
 
 - DI blue: 50 #EEF9FF, 100 #DAF1FF, 200 #B5E4FF, 300 #82D3FF, 400 #49BCF6,
   500 #00AEEF, 600 #008AC5, 700 #01689D, 800 #0F4772, 900 #1A2A3C (navy).
@@ -35,7 +36,8 @@ Use the existing Tailwind/CSS variables where they exist.
 
 Replaces the current side panel styling and structure.
 
-- Width 264px, background #FAFAFA, right border 1px #EBEEF2,
+- Width 264px, background #F5F6F8 (darker than the white main area), right
+  border 1px #EBEEF2,
   padding 20px 12px, gap 18px between blocks. Keep the existing shadcn Sidebar
   behaviour (collapse, mobile off-canvas, cookie for state).
 - Header: the Dot orb (28px, static) and, 10px to its right, two lines:
@@ -43,39 +45,74 @@ Replaces the current side panel styling and structure.
   "Your AI content designer" (Open Sans 400, 12px, #5C6B7A). The orb and the
   two lines link to / (accessible name "Dot home"). "Beta" badge on the right
   (11px, 600, navy text on #F7761F, pill, 2px 8px).
-- Footer (shadcn SidebarFooter, pinned to the bottom): the DI logo
-  (/logos/unicef-digital-inclusion-blue.svg), 16px high (width auto), padding 12px 8px,
-  left aligned with the rows, with a 1px #EBEEF2 line above it. It links to /
-  (alt "UNICEF Digital Inclusion"). The groups scroll above it, so the footer
-  stays at the bottom when they are short and never overlaps them when they
+- Footer (shadcn SidebarFooter, pinned to the bottom), one row with a 1px
+  #EBEEF2 line above it: the DI logo on the left and the theme toggle on the
+  right (see "Theme"), vertically centred. The logo
+  (/logos/unicef-digital-inclusion-blue.svg; the existing white file
+  /logos/unicef-digital-inclusion-white.svg in the dark theme) is 16px high
+  (width auto), and its left edge lines up with the row icons above. It links
+  to / (alt "UNICEF Digital Inclusion"). The groups scroll above the footer, so
+  it stays at the bottom when they are short and never overlaps them when they
   are long.
 - Collapsed (icons only): the header shows only the orb; the footer is hidden.
   The mobile sheet has the same header and footer as desktop.
-- Search button: full width, 34px high, radius 8, background #F3F5F7,
-  border 1px #E6EAEE, text #5C6B7A 14px, search icon 16px, label "Search",
-  "⌘K" key hint on the right (11px, white bg, border #E3E8EE, radius 6).
+- Search button: full width, 34px high, radius 8, background #FFFFFF,
+  border 1px #E3E8EE, text #5C6B7A 14px, search icon 16px, label "Search",
+  "⌘K" key hint on the right (11px, #F2F4F6 bg, border #E3E8EE, radius 6;
+  dark: #1A2A3C bg).
   Opens the search/command palette (see section 4). ⌘K / Ctrl+K also opens it.
 - "New chat" row: 16px Dot orb + "New chat". Goes to / and clears any
   conversation state.
-- Groups (rows 34px, 14px, #3B4A5A, 16px lucide icons, radius 8, gap 10px;
-  chevron right when closed, down when open; children rows 30px, 13px,
-  left padding 36px):
-  - Create (open by default): Deck, Social post, Two-pager, Map,
-    Engagement map, Virtual background, Email signature.
-    Deck and Two-pager keep a small "Soon" tag if those tools are not built.
-    Each goes to its existing tool page (Deck goes to the deck step, section 3).
-  - Knowledge (closed by default): Audiences, Facilities, Systems, Offerings,
-    plus the existing "Soon" items.
-  - Assets (open by default): Logos, Illustrations, Image galleries, Photo awards.
-  - Brand (closed by default): Colors, Typography, Brand guidelines,
+- Menu order, top to bottom: Welcome header, Search, New chat, Create,
+  Brand assets, Brand guidelines, AI skills, Knowledge, then Recent (if any),
+  then the footer (`SIDEBAR_MENU` in lib/nav.ts).
+- Groups (radius 8, gap 10px between icon and label; children rows 30px,
+  13px, #1A2A3C / dark #F8F8F8, left padding 36px, so they start where the
+  group label starts):
+  - Group titles (Create, Brand assets, Brand guidelines, Knowledge, Recent):
+    the title, icon and chevron share one colour, which is only very gray when
+    the group is open. Each colour is one token in app/globals.css:
+
+    | State | Token | Light | Dark |
+    | --- | --- | --- | --- |
+    | Closed | `--sidebar-group-title` | #3B4A5A | #DAE2EA |
+    | Closed, hover | `--sidebar-group-title-hover` | #1A2A3C | #F8F8F8 |
+    | Open (12px label) | `--sidebar-group-title-open` | #626E7C | #8A9AAB |
+    | Open, hover | `--sidebar-group-title-open-hover` | #3B4A5A | #DAE2EA |
+
+    All pass AA on the side panel (#F5F6F8 light, #0F1823 dark): closed 8.4:1
+    / 13.7:1, open 4.8:1 / 6.2:1. On the hover fill (#EDF0F3 light, #1A2A3C
+    dark) the hover colours are 12.8:1 / 13.7:1 (closed) and 7.9:1 / 11.1:1
+    (open). The open light colour was #6B7785 (4.2:1, under AA for the 12px
+    label) and is now #626E7C, the closest value that passes.
+  - Closed: row 34px, label 14px weight 500, icon 16px. Open: row 28px, label
+    12px weight 600, icon 14px (kept in a 16px slot). The change animates
+    (150ms ease); with prefers-reduced-motion it is instant.
+  - The chevron sits right after the label (gap 6px), 12px, in the title
+    colour: right-pointing when closed, down when open.
+  - Links (all sub-items, plus New chat and AI skills): #1A2A3C (dark
+    #F8F8F8), not gray.
+  - Every group is closed by default, Recent included. The group that holds
+    the current page opens by itself, so the selected item shows. Open and
+    closed groups are not saved between visits.
+  - Create: Deck, Social post, Two-pager, Map, Engagement map,
+    Virtual background, Email signature. Deck and Two-pager open the external
+    builder (see "External tools"); the others go to their tool page.
+  - Brand assets: Logos, Illustrations, Image galleries, Photo awards.
+  - Brand guidelines: Colors, Typography, DI guidelines (/guidelines/brand),
     Video guidelines.
   - AI skills (single row, no children).
-- Recent (open by default, only shown if not empty): last 3 items started from
+  - Knowledge: Audiences, Facilities, Systems, Offerings, plus the existing
+    "Soon" items.
+  - Renamed in October 2026: "Assets" became "Brand assets", "Brand" became
+    "Brand guidelines", and its child "Brand guidelines" became "DI guidelines"
+    (no two items share a name). ⌘K still finds the old names.
+- Recent (closed by default, only shown if not empty): last 3 items started from
   Dot (format + template/audience if any, e.g. "Deck · Master deck"),
   stored in localStorage (wrap every read/write in try/catch). No "See all" yet.
 - Selected state (for New chat on the home page, and for the current page):
-  background #EEF1F4, text #1A2A3C, weight 600. Same style everywhere so the
-  hierarchy stays even.
+  background #E9EDF1 (dark #22364C), text #1A2A3C, weight 600. Hover
+  #EDF0F3 (dark #1A2A3C). Same style everywhere so the hierarchy stays even.
 
 ## 2. Home page (/)
 
@@ -94,9 +131,12 @@ b) Dot's box: white, border 1px #E3E8EE, radius 22px,
    - Textarea, 2 rows, auto-grow to ~6 rows, no border, padding 20px 22px 4px,
      Open Sans 15px/1.5, placeholder "Describe what you want to make or find".
      Visually hidden label "Ask Dot".
-   - Bottom row, right aligned: "Use DI knowledge" switch (on by default,
-     track #01689D when on, 13px label #3B4A5A) and a 36px round send button
-     (#01689D, white up-arrow icon, aria-label "Send to Dot").
+   - Bottom row, right aligned: a 36px round send button (#01689D, white
+     up-arrow icon, aria-label "Send to Dot").
+   - The "Use DI knowledge" switch (track #01689D when on, 13px label #3B4A5A)
+     is hidden, in Dot's box and the reply bar: `showKnowledgeToggle = false`
+     in lib/dot/settings.ts. Its code is kept; set the flag to true to bring it
+     back. The brief keeps useKnowledge = true by default.
    - Enter sends, Shift+Enter adds a line. Send is disabled when empty.
    - "Use DI knowledge" is stored in the brief (lib/brief.ts, add
      useKnowledge: boolean). Tools that already read knowledge data may use it;
@@ -105,37 +145,54 @@ b) Dot's box: white, border 1px #E3E8EE, radius 22px,
 c) Bento under the box: margin-top 16px, CSS grid,
    columns 2fr 1fr 1fr 0.55fr, rows 96px 112px, gap 10px, tiles radius 16px.
    - Row 1, col 1, "Create a deck" + sub "From a template or from scratch".
-     Background #F3F8FB, border 1px #E3E8EE. Art on the right: three
+     Background #FFFFFF, border 1px #E3E8EE. Art on the right: three
      overlapping rounded "slide" cards (64x44, radius 8): back one
      linear-gradient(160deg,#82D3FF,#01689D) rotated -9deg; middle and front ones
      frosted glass (white gradient over rgba of 500/300, white 1px border)
      rotated -3deg and 5deg. Title Manrope 600 15px, sub 12px #3B4A5A.
      Opens the deck step (section 3).
-   - Row 1, col 2, "Make a social post": background #FDEEF2, small art top right
-     (34x40 #EC6A8C card with two white lines). Goes to the social media tool.
+   - Row 1, col 2, "Make a map": background #E5F6FD, small art top right
+     (40x36 folded map, three panels in #00AEEF, with a white location pin).
+     Goes to the Maps page (/materials/maps). It replaced "Make a social
+     post", which moved to the + menu.
    - Row 1, col 3, "Write a two-pager": background #EEF0FF, art top right
-     (32x42 white page, border #C9CEFF, lines #7E8CFF/#C9CEFF). Goes to the
-     two-pager tool, or if it is "Soon", Dot replies (see section 3e).
+     (32x42 white page, border #C9CEFF, lines #7E8CFF/#C9CEFF). Opens the
+     two-pager builder (see "External tools").
    - Col 4, rows 1-2, "More": white, 1px dashed #C9D2DB, centred 30px grey
      circle (#F2F4F6) with a + icon, label "More" 12px #3B4A5A.
      Opens the + menu (2d).
-   - Row 2, cols 1-3, "DI Master deck": background #EEF9FF, border 1px #DAF1FF.
+   - Row 2, cols 1-2, "DI Master deck": background #EEF9FF, border 1px #DAF1FF.
      Left: "Recommended" pill (11px 600, #01689D text, white bg, border #DAF1FF),
      title "DI Master deck" (Manrope 600 17px), sub "All 18 offerings. Dot
      tailors it to your audience." (12px #3B4A5A).
-     Right: a small grid of mini slides (columns 76px 52px 52px, rows 38px 38px,
-     gap 6px): a tall blue cover (gradient 500 to 700, two white lines) spanning
-     both rows, then four white mini slides with 1px #DAF1FF border showing a
-     palette strip, two text lines, a 3-bar chart, and a 2x2 card grid in DI blues.
-     Opens the deck step with "Master deck" already picked.
-   - Responsive: under 720px wide, 2 columns (Deck and Master deck full width,
-     More becomes a normal full-width tile). Under 420px, 1 column.
+     Right: three mini slides (columns 76px 52px, rows 38px 38px, gap 6px): a
+     tall blue cover (gradient 500 to 700, two white lines) spanning both rows,
+     then two white mini slides with 1px #DAF1FF border showing two text lines
+     and a 3-bar chart. Opens the deck step with "Master deck" already picked
+     (while it is "Coming soon", see "External tools").
+   - Row 2, col 3, "Get a logo": background #FFFFFF, border 1px #E3E8EE,
+     title "Get a logo", sub "DI and Giga logos" (12px #3B4A5A). Art top
+     right, at the same offsets as the two-pager page art (12px from the top
+     and right): a 42x42 card, #FFFFFF in both themes, border 1px #DAF1FF,
+     radius 8px, with the full-colour Giga symbol (no "giga" word) centred
+     inside, 26px wide, keeping its aspect ratio. No DI logo. There is no
+     symbol-only Giga file, so scripts/build-asset-index.mjs generates one
+     from /logos/giga-main-horizontal.svg (every path left of the wordmark,
+     cropped) into /generated/logos/giga-symbol{,-white,-black}.svg and adds
+     it to the asset index as "Giga symbol". The original file is not edited.
+     Links to the Logos page (/logos).
+   - Responsive (container queries on the content column): under 720px wide,
+     2 columns: Deck, Master deck and Get a logo each take a full row, Map and
+     Two-pager share a row, More becomes a normal full-width tile at the end.
+     Under 420px, 1 column (the Master deck art is hidden).
 
 d) + menu (shadcn DropdownMenu or Popover, anchored to the More tile, 260px
    wide, radius 14, shadow 0 16px 40px rgba(26,42,60,.16), padding 6px):
    heading "More formats" (12px #5C6B7A), then items with 22px coloured icon
-   squares: Make a map, Make an engagement map, Make a virtual background,
-   Make an email signature. Each goes to its tool. Full keyboard support.
+   squares: Make a social post (icon #EC6A8C), Make a map, Make an engagement
+   map, Make a virtual background, Make an email signature. Each goes to its
+   tool. Full keyboard support. Typed requests for social posts still go to
+   the social media tool.
 
 ## 3. Conversation (scripted, no AI)
 
@@ -240,18 +297,24 @@ box-shadow or background), so it stays smooth.
 Added after the first build of this spec.
 
 - Decks and two-pagers are made in the deck builder, which lives outside the
-  portal (https://un-deck-builder.vercel.app/). The URLs live in one place,
-  `lib/external-tools.ts` (`EXTERNAL_TOOLS.deck`, `EXTERNAL_TOOLS.twoPager`),
-  and everything else reads from there.
+  portal. Decks open https://un-deck-builder.vercel.app/ and two-pagers open
+  its two-pager builder, https://un-deck-builder.vercel.app/two-pager. The URLs
+  live in one place, `lib/external-tools.ts` (`EXTERNAL_TOOLS.deck`,
+  `EXTERNAL_TOOLS.twoPager`), and everything else reads from there.
 - Every deck and two-pager entry point opens the builder in a new tab
   (`target="_blank"`, `rel="noopener noreferrer"`), with a 14px external-link
   icon (lucide ArrowUpRight) and an accessible name such as "Create a deck
-  (opens the deck builder in a new tab)". The entry points are the home bento
+  (opens the deck builder in a new tab)" or "Write a two-pager (opens the
+  two-pager builder in a new tab)". The entry points are the home bento
   tiles, the side panel Create rows (no "Soon" tags), the ⌘K format rows, and
   the small tiles in Dot's "couldn't match" reply.
+- On the bento tiles the icon stays on the line of the title's last word
+  (`<ExternalTitle>`, no break between them), so "Write a two-pager ↗" never
+  puts the icon alone on a new line.
 - Typed requests for a deck or a two-pager don't open a tab. Dot replies
-  "Decks are made in the deck builder." (or "Two-pagers are made in the deck
-  builder.") with a primary "Open deck builder" button. These replies are not
+  "Decks are made in the deck builder." with a primary "Open deck builder"
+  button, or "Two-pagers are made in the deck builder." with a primary "Open
+  two-pager builder" button (to the two-pager link). These replies are not
   added to Recent. The side panel drops old "Soon" deck and two-pager briefs
   from Recent on load.
 - The in-portal deck flow (template bento, audience step, "coming soon" reply)
@@ -259,11 +322,75 @@ Added after the first build of this spec.
   `/?new=deck` and `/?new=two-pager` show the same reply and button.
 - The DI Master deck is "Coming soon" (`masterDeckAvailable = false`).
   - Its home tile keeps its look, with a "Coming soon" pill (white, `#5C6B7A`
-    text, 1px `#E3E8EE` border) instead of "Recommended".
+    text, 1px `#E3E8EE` border; dark: `#22364C`, `#DAF1FF` text) instead of
+    "Recommended".
   - The tile is a plain block: no link, no hover, not focusable, and read as
     "DI Master deck, coming soon".
   - A typed "master deck" gets: "The DI Master deck is coming soon. In the
     meantime, you can start a deck in the deck builder.", with the same button.
+
+## Theme
+
+Added in October 2026. Light, dark or system.
+
+- next-themes (`components/theme-provider.tsx`, in `app/layout.tsx`), class
+  strategy on `<html>`, default "system", saved per browser (localStorage
+  `theme`). Its inline script sets the class before the page paints, so there
+  is no flash of the wrong theme; `<html>` has `suppressHydrationWarning`.
+- Every colour is a CSS variable in `app/globals.css` (`:root` for light,
+  `.dark` for dark): the shadcn tokens plus the DI tokens (`ink`, `link`,
+  `line`, `subtle`, `selected`, `hover`, `field`, `chosen`, `pill`, `tile`,
+  shadows), exposed through `tailwind.config.ts`. Components use the tokens,
+  never hex values for surfaces, text, borders or buttons. Hex values stay
+  only in decorative art (`dot-art.tsx`), format colours and the tools'
+  generated output.
+- The main area is lighter than the side panel in both themes.
+- Light: main area and its top bar #FFFFFF, side panel #F5F6F8 (right border
+  #EBEEF2), surfaces #FFFFFF. Cards, tiles and tool panels on the page are
+  #FFFFFF with a 1px #E3E8EE border.
+- Dark:
+
+  | Token | Value |
+  | --- | --- |
+  | Main area | `#142130` |
+  | Side panel | `#0F1823`, right border `#22364C` |
+  | Surfaces (Dot's box, cards, menus, ⌘K, dialogs) | `#1A2A3C` |
+  | Hover / selected row | `#22364C` (side panel hover `#1A2A3C`) |
+  | Borders / dashed borders | `#2A3E55` / `#3A5068` |
+  | Text main / secondary / muted | `#F8F8F8` / `#B8C4D0` / `#8A9AAB` |
+  | Side panel group titles | closed `#DAE2EA` (hover `#F8F8F8`), open `#8A9AAB` (hover `#DAE2EA`) |
+  | Toggle icons | `#8A9AAB` |
+  | Primary buttons | `#49BCF6`, text `#0F1823`, hover `#82D3FF` (8.4:1) |
+  | Links | `#82D3FF` (hover `#B5E4FF`) |
+  | Focus ring | 2px `#82D3FF` |
+  | Chosen option (format, colour variant…) | `#22364C`, border `#49BCF6`, text `#82D3FF` |
+  | Pills | `#22364C` with `#DAF1FF` (Coming soon), `#82D3FF` (Recommended, DI) |
+  | Destructive | `#F5666D`, text `#0F1823` |
+
+- Bento tiles in dark: Create a deck and Get a logo `#1A2A3C` with border
+  `#2A3E55`; Make a map `rgba(0,174,239,.14)`; Write a two-pager
+  `rgba(126,140,255,.16)`; Master deck `rgba(0,174,239,.10)` with border
+  `rgba(0,174,239,.25)`; More dashed `#3A5068`.
+- Unchanged in both themes: the Dot orb, the BrandTabs track (`#01689D`,
+  white text and selected segment), the deck template previews, and asset
+  previews (white artwork on navy, dark artwork on light; Logos,
+  Illustrations and Email signature previews stay white) because they show
+  the real file. Tools with their own canvases (maps, social post, email
+  signature, backgrounds, engagement map) theme the controls around them; the
+  generated output never changes.
+- Theme toggle (`components/app-shell/theme-toggle.tsx`), on the right of the
+  side panel footer: a segmented control of three round buttons, System
+  (lucide Monitor), Light (Sun), Dark (Moon).
+  - Track: 32px high, radius 999px, padding 3px, #E9EDF1 (dark #22364C).
+  - Buttons: 26px circles, 16px icons. Unselected icon #6B7785 (dark #8A9AAB).
+    Selected: #FFFFFF circle, shadow 0 1px 3px rgba(26,42,60,.18), icon
+    #1A2A3C (dark: #2A3E55 circle, icon #F8F8F8).
+  - `role="radiogroup"` ("Theme"), each button `role="radio"` named "System
+    theme", "Light theme", "Dark theme". Arrow keys move the choice and focus
+    (wrapping); only the selected button is in the tab order; visible focus
+    ring.
+  - Hidden with the footer when the side panel is collapsed to icons; the
+    mobile sheet has the same footer.
 
 ## Checks
 

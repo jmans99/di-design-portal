@@ -3,18 +3,12 @@
 import { useState, useEffect, useCallback } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { SearchableSelect, type SearchableSelectOption } from '@/components/ui/searchable-select'
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
-import { Badge } from '@/components/ui/badge'
-import {
-  logosForBrand,
+  logosForFilter,
   resolveGigaLogoPath,
 } from '@/lib/brand-registry'
+import { BRAND_LABELS, type BrandFilter } from '@/lib/brand'
 import {
   loadSvg,
   recolorGigaLogo,
@@ -44,15 +38,36 @@ const RESOLUTIONS: { label: string; value: Resolution; scale: number }[] = [
 ]
 
 interface LogoGeneratorProps {
-  /** Brand tab: only that brand's logos are listed. */
-  brandTab: 'di' | 'giga'
+  /** Brand filter: All, or one brand's logos plus the shared ones. */
+  filter: BrandFilter
   /** When set (e.g. from Video guidelines), preselect this color variant on mount. */
   initialColorVariant?: string | null
 }
 
-export function LogoGenerator({ brandTab, initialColorVariant }: LogoGeneratorProps) {
-  const BRAND_ASSETS = logosForBrand(brandTab)
+/** Brand selector groups, in order; only the ones the filter allows show. */
+const BRAND_GROUPS = [BRAND_LABELS.di, BRAND_LABELS.both, BRAND_LABELS.giga]
+
+export function LogoGenerator({ filter, initialColorVariant }: LogoGeneratorProps) {
+  const BRAND_ASSETS = logosForFilter(filter)
   const [selectedBrand, setSelectedBrand] = useState(BRAND_ASSETS[0].brandName)
+  // When the filter hides the selected logo, select the first one it allows.
+  const [shownFilter, setShownFilter] = useState(filter)
+  if (shownFilter !== filter) {
+    setShownFilter(filter)
+    if (!BRAND_ASSETS.some((b) => b.brandName === selectedBrand)) setSelectedBrand(BRAND_ASSETS[0].brandName)
+  }
+  // Searchable by name, group (brand), type tag, versions and the colours each logo comes in ("black").
+  const brandOptions: SearchableSelectOption[] = BRAND_ASSETS.map((asset) => ({
+    value: asset.brandName,
+    label: asset.brandName,
+    group: BRAND_LABELS[asset.brand],
+    tag: asset.assetType,
+    keywords: [
+      asset.brand === 'giga' ? 'Giga' : asset.brand === 'di' ? 'DI' : 'DI Giga shared',
+      ...(asset.versions?.map((v) => v.label) ?? []),
+      ...new Set([asset, ...(asset.versions ?? [])].flatMap((v) => v.allowedColorVariants.map((c) => c.name))),
+    ],
+  }))
   const brand = BRAND_ASSETS.find((b) => b.brandName === selectedBrand) ?? BRAND_ASSETS[0]
 
   // Sub-version (e.g. boxed/unboxed for UNICEF Digital Impact). null = brand has
@@ -250,26 +265,17 @@ export function LogoGenerator({ brandTab, initialColorVariant }: LogoGeneratorPr
       <div className="order-2 flex w-full flex-col gap-0 lg:order-1 lg:sticky lg:top-[calc(4rem+24px)] lg:w-80 lg:shrink-0 lg:rounded-2xl lg:border lg:border-border lg:bg-card lg:shadow-stripe">
         {/* Brand selector */}
         <ControlSection label="Brand" className="lg:pt-4 lg:pb-2.5">
-          <Select value={selectedBrand} onValueChange={setSelectedBrand}>
-            <SelectTrigger className="rounded-md transition-smooth-transform">
-              <SelectValue placeholder="Choose a brand" />
-            </SelectTrigger>
-            <SelectContent>
-              {BRAND_ASSETS.map((asset) => (
-                <SelectItem key={asset.brandName} value={asset.brandName}>
-                  <span className="flex items-center gap-2">
-                    {asset.brandName}
-                    <Badge
-                      variant="secondary"
-                      className="rounded text-xs font-medium"
-                    >
-                      {asset.assetType}
-                    </Badge>
-                  </span>
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          <SearchableSelect
+            value={brand.brandName}
+            onValueChange={setSelectedBrand}
+            options={brandOptions}
+            groups={BRAND_GROUPS}
+            label="Brand"
+            placeholder="Choose a brand"
+            searchPlaceholder="Search logos..."
+            emptyText="No logo found."
+            tagInTrigger
+          />
         </ControlSection>
 
         {/* Giga-only: Orientation */}
@@ -351,7 +357,7 @@ export function LogoGenerator({ brandTab, initialColorVariant }: LogoGeneratorPr
                   onClick={() => setSelectedColorName(v.name)}
                   className={`flex items-center gap-3 rounded-2xl border px-4 py-3 text-left text-sm font-medium transition-smooth-transform active:scale-[0.99] ${
                     selectedColorName === v.name
-                      ? 'border-primary-300 bg-primary-50/70 text-foreground'
+                      ? 'border-chosen-border bg-chosen/70 text-foreground'
                       : 'border-border bg-card text-foreground hover:bg-secondary/60'
                   }`}
                 >
@@ -540,7 +546,7 @@ function ToggleButton({
       onClick={onClick}
       className={`flex-1 rounded-full border px-4 py-2.5 text-sm font-medium transition-smooth-transform active:scale-[0.98] ${
         active
-          ? 'border-primary-300 bg-primary-50 text-primary-700'
+          ? 'border-chosen-border bg-chosen text-link'
           : 'border-border bg-card text-foreground hover:bg-secondary/60'
       } ${className}`}
     >
@@ -565,7 +571,7 @@ function OptionCard({
       onClick={onClick}
       className={`flex flex-col items-start rounded-2xl border px-4 py-3 text-left transition-smooth-transform active:scale-[0.99] ${
         active
-          ? 'border-primary-300 bg-primary-50/70 text-foreground'
+          ? 'border-chosen-border bg-chosen/70 text-foreground'
           : 'border-border bg-card text-foreground hover:bg-secondary/60'
       }`}
     >

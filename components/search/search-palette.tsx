@@ -64,7 +64,7 @@ export function SearchProvider({ children }: { children: React.ReactNode }) {
 }
 
 const ITEM =
-  'flex cursor-pointer items-center gap-2.5 rounded-lg px-2.5 text-sm text-ink-secondary data-[selected=true]:bg-[#EEF1F4] data-[selected=true]:text-ink'
+  'flex cursor-pointer items-center gap-2.5 rounded-lg px-2.5 text-sm text-ink-secondary data-[selected=true]:bg-selected data-[selected=true]:text-ink'
 const GROUP =
   '[&_[cmdk-group-heading]]:px-2.5 [&_[cmdk-group-heading]]:pb-1 [&_[cmdk-group-heading]]:pt-2 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:text-ink-muted'
 
@@ -105,7 +105,7 @@ function SearchPalette({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="top-[14%] max-w-[600px] translate-y-0 gap-0 overflow-hidden rounded-[14px] border-line-card p-0 shadow-[0_16px_40px_rgba(26,42,60,.16)] [&>button]:hidden">
+      <DialogContent className="top-[14%] max-w-[600px] translate-y-0 gap-0 overflow-hidden rounded-[14px] border-line-card p-0 shadow-menu [&>button]:hidden">
         <DialogTitle className="sr-only">Search</DialogTitle>
         <DialogDescription className="sr-only">
           Search assets, formats and pages. Enter opens the result; Command or Control and Enter downloads an asset.
@@ -177,7 +177,7 @@ function LinkRow({ item, onSelect }: { item: SearchItem; onSelect: () => void })
     <CommandPrimitive.Item
       value={item.id}
       onSelect={onSelect}
-      aria-label={item.external ? externalLinkLabel(item.title) : undefined}
+      aria-label={item.external ? externalLinkLabel(item.title, item.outputType) : undefined}
       className={`${ITEM} h-9`}
     >
       <Icon className="h-4 w-4 shrink-0" style={item.color ? { color: item.color } : undefined} strokeWidth={1.75} aria-hidden />
@@ -206,7 +206,7 @@ function AssetRow({ asset, onOpen }: { asset: Asset; onOpen: () => void }) {
             e.stopPropagation()
             downloadAsset(asset)
           }}
-          className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-ink-muted hover:bg-white hover:text-primary-700"
+          className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-ink-muted hover:bg-card hover:text-link"
         >
           <Download className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
         </button>

@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { ArrowUp, ArrowUpRight, Plus } from 'lucide-react'
 import { SidePanelToggle } from '@/components/app-shell/app-shell'
 import { BriefingArt, PartnershipArt, SlidesArt } from '@/components/dot/dot-art'
-import { RecommendedPill, SmallFormatTiles } from '@/components/dot/format-tiles'
+import { RecommendedPill, SEND_BUTTON, SmallFormatTiles } from '@/components/dot/format-tiles'
 import { DotOrb } from '@/components/dot/dot-orb'
 import { FormatIcon } from '@/components/dot/format-icon'
 import { recentLabel, useDot } from '@/components/dot/use-dot'
@@ -16,7 +16,7 @@ import { isSkip, matchAudienceGroup, matchIntent, matchTemplate, type DeckTempla
 import { addRecent } from '@/lib/dot/recent'
 import { DECK_TEMPLATES, getDeckTemplate } from '@/lib/dot/templates'
 import { AUDIENCE_GROUPS, getAudienceGroup } from '@/lib/knowledge'
-import { EXTERNAL_TOOLS, masterDeckAvailable } from '@/lib/external-tools'
+import { EXTERNAL_TOOLS, builderName, masterDeckAvailable } from '@/lib/external-tools'
 import { cn } from '@/lib/utils'
 import styles from './dot.module.css'
 
@@ -91,7 +91,7 @@ export function Conversation({ state }: { state: ConversationState }) {
         <SidePanelToggle />
         <span aria-hidden className="h-4 w-px bg-line-divider" />
         <h1 className="truncate text-sm font-semibold text-ink">{format?.title ?? 'New chat'}</h1>
-        <Link href="/" className="focus-ring ml-auto rounded text-sm font-semibold text-primary-700 hover:text-primary-800">
+        <Link href="/" className="focus-ring ml-auto rounded text-sm font-semibold text-link hover:text-link-hover">
           Start over
         </Link>
       </header>
@@ -118,7 +118,7 @@ export function Conversation({ state }: { state: ConversationState }) {
                     : 'Two-pagers are made in the deck builder.'
               }
             >
-              <OpenBuilderButton href={builder} />
+              <OpenBuilderButton href={builder} type={masterSoon ? 'deck' : format.type} />
             </DotMessage>
           )}
 
@@ -172,7 +172,7 @@ export function UserMessage({ format, children }: { format?: Format; children: R
   return (
     <li className="flex justify-end">
       <span className="sr-only">You: </span>
-      <p className="flex max-w-[85%] items-center gap-2.5 rounded-[14px] bg-[#F2F4F6] px-3.5 py-2.5 text-[15px] leading-[1.5] text-ink">
+      <p className="flex max-w-[85%] items-center gap-2.5 rounded-[14px] bg-subtle px-3.5 py-2.5 text-[15px] leading-[1.5] text-ink">
         {format && <FormatIcon format={format} size={20} />}
         <span className="min-w-0 break-words">{children}</span>
       </p>
@@ -195,7 +195,7 @@ export function DotMessage({ text, children }: { text: string; children?: React.
   )
 }
 
-const TEMPLATE_TILE = 'focus-ring relative flex flex-col overflow-hidden rounded-[18px] border p-4 text-left transition-shadow hover:shadow-[0_6px_18px_rgba(26,42,60,.08)] aria-pressed:ring-2 aria-pressed:ring-primary-700 aria-pressed:ring-offset-2'
+const TEMPLATE_TILE = 'focus-ring relative flex flex-col overflow-hidden rounded-[18px] border p-4 text-left transition-shadow hover:shadow-tile aria-pressed:ring-2 aria-pressed:ring-ring aria-pressed:ring-offset-2'
 
 /** Deck templates (docs/design/dot-home.md, 3b). */
 function TemplateBento({ selected, onPick }: { selected?: DeckTemplateId; onPick: (id: DeckTemplateId) => void }) {
@@ -204,8 +204,8 @@ function TemplateBento({ selected, onPick }: { selected?: DeckTemplateId; onPick
 
   return (
     <div className={styles.templates}>
-      <button {...pressed('from-scratch')} className={cn(TEMPLATE_TILE, styles.scratch, 'justify-between border-dashed border-line-dashed bg-white')}>
-        <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#F2F4F6] text-ink-secondary">
+      <button {...pressed('from-scratch')} className={cn(TEMPLATE_TILE, styles.scratch, 'justify-between border-dashed border-line-dashed bg-card')}>
+        <span className="flex h-9 w-9 items-center justify-center rounded-full bg-subtle text-ink-secondary">
           <Plus className="h-4 w-4" strokeWidth={1.75} aria-hidden />
         </span>
         <span>
@@ -214,7 +214,7 @@ function TemplateBento({ selected, onPick }: { selected?: DeckTemplateId; onPick
         </span>
       </button>
 
-      <button {...pressed('master-deck')} className={cn(TEMPLATE_TILE, styles.masterTemplate, 'justify-between gap-4 border-line-card bg-[#F3F8FB] p-5')}>
+      <button {...pressed('master-deck')} className={cn(TEMPLATE_TILE, styles.masterTemplate, 'justify-between gap-4 border-line-card bg-card p-5')}>
         <span className="flex items-start justify-between gap-3">
           <RecommendedPill />
           <SlidesArt scale={1.875} />
@@ -225,20 +225,21 @@ function TemplateBento({ selected, onPick }: { selected?: DeckTemplateId; onPick
         </span>
       </button>
 
-      <button {...pressed('partnership-deck')} className={cn(TEMPLATE_TILE, styles.partnership, 'justify-end border-transparent bg-[#1A2A3C]')}>
+      <button {...pressed('partnership-deck')} className={cn(TEMPLATE_TILE, styles.partnership, 'justify-end border-transparent bg-navy')}>
         <span className="absolute right-4 top-4">
           <PartnershipArt />
         </span>
         <span className="block font-heading text-[15px] font-semibold text-white">{t['partnership-deck'].name}</span>
-        <span className="mt-0.5 block text-xs text-[#DAF1FF]">{t['partnership-deck'].description}</span>
+        <span className="mt-0.5 block text-xs text-primary-100">{t['partnership-deck'].description}</span>
       </button>
 
-      <button {...pressed('government-briefing')} className={cn(TEMPLATE_TILE, styles.government, 'justify-end border-transparent bg-[#DAF1FF]')}>
+      <button {...pressed('government-briefing')} className={cn(TEMPLATE_TILE, styles.government, 'justify-end border-transparent bg-primary-100')}>
         <span className="absolute right-4 top-4">
           <BriefingArt />
         </span>
-        <span className="block font-heading text-[15px] font-semibold text-ink">{t['government-briefing'].name}</span>
-        <span className="mt-0.5 block text-xs text-[#0F4772]">{t['government-briefing'].description}</span>
+        {/* Template previews keep their own colours in both themes. */}
+        <span className="block font-heading text-[15px] font-semibold text-navy">{t['government-briefing'].name}</span>
+        <span className="mt-0.5 block text-xs text-primary-800">{t['government-briefing'].description}</span>
       </button>
     </div>
   )
@@ -247,7 +248,7 @@ function TemplateBento({ selected, onPick }: { selected?: DeckTemplateId; onPick
 /** Audience groups from data/knowledge, plus Skip. */
 function AudienceChips({ selected, onPick }: { selected?: string; onPick: (audience: string) => void }) {
   const chip =
-    'focus-ring h-8 rounded-full border border-line-card bg-white px-3 text-[13px] text-ink-secondary transition-colors hover:bg-[#F7F9FA] aria-pressed:border-transparent aria-pressed:bg-[#EEF1F4] aria-pressed:font-semibold aria-pressed:text-ink'
+    'focus-ring h-8 rounded-full border border-line-card bg-card px-3 text-[13px] text-ink-secondary transition-colors hover:bg-hover-soft aria-pressed:border-transparent aria-pressed:bg-selected aria-pressed:font-semibold aria-pressed:text-ink'
   return (
     <div className="flex flex-wrap gap-2" role="group" aria-label="Audience">
       {AUDIENCE_GROUPS.map((g) => (
@@ -298,7 +299,7 @@ export function ReplyBar({
           onSend(text)
           setText('')
         }}
-        className="rounded-[20px] border border-line-card bg-white px-4 pb-2.5 pt-3 shadow-[0_10px_32px_rgba(26,42,60,.07)]"
+        className="rounded-[20px] border border-line-card bg-card px-4 pb-2.5 pt-3 shadow-box"
       >
         {showBrief && (
           <div className="mb-2 flex flex-wrap items-center gap-2">
@@ -318,13 +319,13 @@ export function ReplyBar({
             onChange={(e) => setText(e.target.value)}
             placeholder={showBrief ? 'Reply to Dot, or pick one above' : 'Reply to Dot'}
             autoComplete="off"
-            className="h-9 min-w-0 flex-1 rounded-lg bg-transparent px-1 text-[15px] text-ink outline-none placeholder:text-ink-muted focus-visible:ring-2 focus-visible:ring-primary-700"
+            className="h-9 min-w-0 flex-1 rounded-lg bg-transparent px-1 text-[15px] text-ink outline-none placeholder:text-ink-muted focus-visible:ring-2 focus-visible:ring-ring"
           />
           <button
             type="submit"
             disabled={!canSend}
             aria-label="Send to Dot"
-            className="focus-ring flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary-700 text-white transition-colors hover:bg-primary-800 disabled:cursor-not-allowed disabled:bg-line-dashed"
+            className={SEND_BUTTON}
           >
             <ArrowUp className="h-[18px] w-[18px]" strokeWidth={2} aria-hidden />
           </button>
@@ -339,7 +340,7 @@ function BriefChip({ label, value, color }: { label: string; value: string | nul
     return <span className="inline-flex h-7 items-center rounded-full border border-dashed border-line-dashed px-2.5 text-xs text-ink-muted">{label}</span>
   }
   return (
-    <span className="inline-flex h-7 items-center gap-1.5 rounded-full bg-[#F2F4F6] pl-1.5 pr-2.5 text-xs text-ink">
+    <span className="inline-flex h-7 items-center gap-1.5 rounded-full bg-subtle pl-1.5 pr-2.5 text-xs text-ink">
       <span aria-hidden className="h-4 w-4 rounded-[4px]" style={{ backgroundColor: color }} />
       <span className="sr-only">{label}: </span>
       {value}
@@ -347,17 +348,18 @@ function BriefChip({ label, value, color }: { label: string; value: string | nul
   )
 }
 
-/** Primary button that opens the deck builder in a new tab. */
-export function OpenBuilderButton({ href }: { href: string }) {
+/** Primary button that opens the builder in a new tab: "Open deck builder" or "Open two-pager builder". */
+export function OpenBuilderButton({ href, type = 'deck' }: { href: string; type?: Format['type'] }) {
+  const label = `Open ${builderName(type)}`
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Open deck builder (opens in a new tab)"
-      className="focus-ring inline-flex h-10 items-center gap-2 rounded-full bg-primary-700 px-5 text-sm font-semibold text-white transition-colors hover:bg-primary-800"
+      aria-label={`${label} (opens in a new tab)`}
+      className="focus-ring inline-flex h-10 items-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover"
     >
-      Open deck builder
+      {label}
       <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
     </a>
   )

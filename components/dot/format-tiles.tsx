@@ -15,8 +15,12 @@ import { externalLinkLabel } from '@/lib/external-tools'
 import { cn } from '@/lib/utils'
 import styles from './dot.module.css'
 
-/** Formats in the + menu (docs/design/dot-home.md, 2d). */
-const MORE_FORMATS: OutputType[] = ['map', 'engagement-map', 'background', 'email-signature']
+/** The round send button in Dot's box and the reply bar: primary, disabled when there is no text. */
+export const SEND_BUTTON =
+  'focus-ring flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:bg-line-dashed disabled:text-background'
+
+/** Formats in the + menu (docs/design/dot-home.md, 2d). Social post moved here when "Make a map" took its home tile. */
+const MORE_FORMATS: OutputType[] = ['social-post', 'map', 'engagement-map', 'background', 'email-signature']
 
 /**
  * A tile or row that starts a format: a link that opens the external builder
@@ -39,7 +43,7 @@ export function StartTile({
   const format = getFormat(type)
   if (format.external) {
     return (
-      <a href={format.external} target="_blank" rel="noopener noreferrer" aria-label={externalLinkLabel(label)} className={className}>
+      <a href={format.external} target="_blank" rel="noopener noreferrer" aria-label={externalLinkLabel(label, type)} className={className}>
         {children}
       </a>
     )
@@ -56,10 +60,24 @@ export function ExternalMark({ className }: { className?: string }) {
   return <ArrowUpRight className={cn('inline-block h-3.5 w-3.5 shrink-0 align-[-1px] text-ink-muted', className)} strokeWidth={2} aria-hidden />
 }
 
+/** A title ending in the external-link mark, kept on one line with its last word so the mark never wraps alone. */
+export function ExternalTitle({ children }: { children: string }) {
+  const cut = children.lastIndexOf(' ')
+  return (
+    <>
+      {children.slice(0, cut + 1)}
+      <span className="whitespace-nowrap">
+        {children.slice(cut + 1)}
+        <ExternalMark className="ml-1" />
+      </span>
+    </>
+  )
+}
+
 /** "Coming soon" pill: the Recommended pill's size and shape, in neutral colours. */
 export function ComingSoonPill() {
   return (
-    <span className="inline-flex rounded-full border border-line-card bg-white px-2 py-px text-[11px] font-semibold text-ink-muted">
+    <span className="inline-flex rounded-full border border-line-card bg-pill px-2 py-px text-[11px] font-semibold text-pill-muted-foreground">
       Coming soon
     </span>
   )
@@ -67,7 +85,7 @@ export function ComingSoonPill() {
 
 export function RecommendedPill() {
   return (
-    <span className="inline-flex rounded-full border border-[#DAF1FF] bg-white px-2 py-px text-[11px] font-semibold text-primary-700">
+    <span className="inline-flex rounded-full border border-pill-accent-border bg-pill px-2 py-px text-[11px] font-semibold text-link">
       Recommended
     </span>
   )
@@ -78,7 +96,7 @@ export function MoreMenu({ onStart, children }: { onStart: (format: OutputType) 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
-      <DropdownMenuContent align="end" sideOffset={8} className="w-[260px] rounded-[14px] border-line-card p-1.5 shadow-[0_16px_40px_rgba(26,42,60,.16)]">
+      <DropdownMenuContent align="end" sideOffset={8} className="w-[260px] rounded-[14px] border-line-card p-1.5 shadow-menu">
         <DropdownMenuLabel className="px-2 pb-1 pt-1.5 text-xs font-normal text-ink-muted">More formats</DropdownMenuLabel>
         {MORE_FORMATS.map((type) => {
           const format = getFormat(type)
@@ -86,7 +104,7 @@ export function MoreMenu({ onStart, children }: { onStart: (format: OutputType) 
             <DropdownMenuItem
               key={type}
               onSelect={() => onStart(type)}
-              className="h-9 cursor-pointer gap-2.5 rounded-lg px-2 text-sm text-ink-secondary focus:bg-[#EEF1F4] focus:text-ink"
+              className="h-9 cursor-pointer gap-2.5 rounded-lg px-2 text-sm text-ink-secondary focus:bg-selected focus:text-ink"
             >
               <FormatIcon format={format} size={22} />
               {format.action}
@@ -106,7 +124,7 @@ export function SmallFormatTiles({ onStart }: { onStart: (format: OutputType) =>
       {(['deck', 'social-post', 'two-pager'] as const).map((type) => {
         const format = getFormat(type)
         return (
-          <StartTile key={type} type={type} label={format.action} onStart={onStart} className={cn(small, 'border-line-card bg-white hover:bg-[#F7F9FA]')}>
+          <StartTile key={type} type={type} label={format.action} onStart={onStart} className={cn(small, 'border-line-card bg-card hover:bg-hover-soft')}>
             <FormatIcon format={format} size={22} />
             <span className="font-heading">{format.action}</span>
             {format.external && <ExternalMark className="ml-auto" />}
@@ -114,8 +132,8 @@ export function SmallFormatTiles({ onStart }: { onStart: (format: OutputType) =>
         )
       })}
       <MoreMenu onStart={onStart}>
-        <button type="button" className={cn(small, 'border-dashed border-line-dashed bg-white font-normal text-ink-secondary hover:bg-[#F7F9FA]')}>
-          <span className="flex h-[22px] w-[22px] items-center justify-center rounded-full bg-[#F2F4F6]">
+        <button type="button" className={cn(small, 'border-dashed border-line-dashed bg-card font-normal text-ink-secondary hover:bg-hover-soft')}>
+          <span className="flex h-[22px] w-[22px] items-center justify-center rounded-full bg-subtle">
             <Plus className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden />
           </span>
           More

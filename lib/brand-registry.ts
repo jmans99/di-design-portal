@@ -236,6 +236,17 @@ export const BRAND_ASSETS: LogoAsset[] = [
 ]
 
 /**
+ * Logos for a brand filter (Logos page). All: Digital Inclusion's own logos
+ * (its logo first), then the shared ones, then Giga's. One brand: see
+ * logosForBrand.
+ */
+export function logosForFilter(filter: 'all' | 'di' | 'giga'): LogoAsset[] {
+  if (filter !== 'all') return logosForBrand(filter)
+  const di = logosForBrand('di').filter((l) => l.brand === 'di')
+  return [...di, ...BRAND_ASSETS.filter((l) => l.brand === 'both'), ...BRAND_ASSETS.filter((l) => l.brand === 'giga')]
+}
+
+/**
  * Logos listed under one brand tab: the brand's own logos, then the shared
  * ("both") ones. Digital Inclusion's own logo comes first on the DI tab.
  */
