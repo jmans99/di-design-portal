@@ -4,6 +4,8 @@ import { useState, useEffect, useCallback } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { IllustrationPicker } from '@/components/illustration-picker'
+import { useBrandFilter } from '@/components/brand/brand-tabs'
+import { inBrandFilter } from '@/lib/brand'
 import {
   ILLUSTRATIONS,
   hasStyleVariants,
@@ -33,7 +35,16 @@ const RESOLUTIONS: { label: string; value: Resolution; scale: number }[] = [
 ]
 
 export function IllustrationConfigurator() {
-  const [selectedId, setSelectedId] = useState<string>('mapping')
+  // The page's All / Digital Inclusion / Giga filter. When it hides the selected illustration, the first one it allows is selected.
+  const filter = useBrandFilter()
+  const visible = ILLUSTRATIONS.filter((a) => inBrandFilter(a.brand, filter))
+  const firstVisible = (id: string) => (visible.some((a) => a.id === id) ? id : visible[0].id)
+  const [selectedId, setSelectedId] = useState<string>(() => firstVisible('mapping'))
+  const [shownFilter, setShownFilter] = useState(filter)
+  if (shownFilter !== filter) {
+    setShownFilter(filter)
+    setSelectedId(firstVisible(selectedId))
+  }
   const [style, setStyle] = useState<IllustrationStyle>('fill')
   const [outlineColor, setOutlineColor] = useState<OutlineColor>('blue')
 
@@ -118,7 +129,7 @@ export function IllustrationConfigurator() {
       {/* Sidebar — below preview on mobile */}
       <div className="order-2 flex w-full flex-col gap-0 lg:order-1 lg:sticky lg:top-[calc(4rem+24px)] lg:w-80 lg:shrink-0 lg:rounded-2xl lg:border lg:border-border lg:bg-card lg:shadow-stripe">
         <ControlSection label="Illustration">
-          <IllustrationPicker value={selectedId} onChange={setSelectedId} />
+          <IllustrationPicker value={selectedId} onChange={setSelectedId} items={visible} />
         </ControlSection>
 
         {supportsVariants && (<>

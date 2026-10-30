@@ -62,19 +62,6 @@ const CREATE_ITEMS: NavItem[] = FORMATS.map((format) => ({
 export const SIDEBAR_GROUPS: NavGroup[] = [
   { id: 'create', label: 'Create', icon: PenLine, items: CREATE_ITEMS },
   {
-    id: 'knowledge',
-    label: 'Knowledge',
-    icon: Library,
-    items: [
-      { id: 'audiences', path: '/knowledge/audiences', label: 'Audiences', icon: Users },
-      { id: 'facilities', path: '/knowledge/facilities', label: 'Facilities', icon: School },
-      { id: 'systems', path: '/knowledge/systems', label: 'Systems', icon: Network },
-      { id: 'offerings', path: '/knowledge/offerings', label: 'Offerings', icon: Building2 },
-      { id: 'kpis', path: '/knowledge/kpis', label: 'KPIs', icon: ChartColumn, soon: true },
-      { id: 'case-studies', path: '/knowledge/case-studies', label: 'Case studies', icon: Waypoints, soon: true },
-    ],
-  },
-  {
     id: 'assets',
     label: 'Brand assets',
     aliases: ['assets'],
@@ -98,10 +85,35 @@ export const SIDEBAR_GROUPS: NavGroup[] = [
       { id: 'video-guidelines', path: '/guidelines/video', label: 'Video guidelines', icon: Video },
     ],
   },
+  {
+    id: 'knowledge',
+    label: 'Knowledge',
+    icon: Library,
+    items: [
+      { id: 'audiences', path: '/knowledge/audiences', label: 'Audiences', icon: Users },
+      { id: 'facilities', path: '/knowledge/facilities', label: 'Facilities', icon: School },
+      { id: 'systems', path: '/knowledge/systems', label: 'Systems', icon: Network },
+      { id: 'offerings', path: '/knowledge/offerings', label: 'Offerings', icon: Building2 },
+      { id: 'kpis', path: '/knowledge/kpis', label: 'KPIs', icon: ChartColumn, soon: true },
+      { id: 'case-studies', path: '/knowledge/case-studies', label: 'Case studies', icon: Waypoints, soon: true },
+    ],
+  },
 ]
 
-/** AI skills: a single row after the groups, no children. */
+/** AI skills: a single row, no children. */
 export const AI_SKILLS_ITEM: NavItem = { id: 'skills', path: '/materials/skills', label: 'AI skills', icon: Sparkles }
+
+export type SidebarEntry = { group: NavGroup } | { link: NavItem }
+
+/**
+ * The side panel menu under New chat, top to bottom: Create, Brand assets,
+ * Brand guidelines, AI skills, then Knowledge (Recent follows, if any).
+ */
+export const SIDEBAR_MENU: SidebarEntry[] = [
+  ...SIDEBAR_GROUPS.filter((g) => g.id !== 'knowledge').map((group) => ({ group })),
+  { link: AI_SKILLS_ITEM },
+  ...SIDEBAR_GROUPS.filter((g) => g.id === 'knowledge').map((group) => ({ group })),
+]
 
 /** Every link in the side panel (planned "Soon" pages left out). */
 export const SIDEBAR_LINKS: NavItem[] = [...SIDEBAR_GROUPS.flatMap((g) => g.items), AI_SKILLS_ITEM].filter((i) => !i.soon)

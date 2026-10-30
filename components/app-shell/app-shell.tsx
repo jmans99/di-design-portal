@@ -21,7 +21,7 @@ import { SheetDescription, SheetTitle } from '@/components/ui/sheet'
 import { DotOrb } from '@/components/dot/dot-orb'
 import { ThemeToggle } from '@/components/app-shell/theme-toggle'
 import { SearchProvider, useSearchPalette } from '@/components/search/search-palette'
-import { AI_SKILLS_ITEM, SIDEBAR_GROUPS, activeNavItem, type NavGroup, type NavItem } from '@/lib/nav'
+import { SIDEBAR_MENU, activeNavItem, type NavGroup, type NavItem } from '@/lib/nav'
 import { dropRecent, useRecent } from '@/lib/dot/recent'
 import { externalLinkLabel, inPortalDeckFlow } from '@/lib/external-tools'
 import type { OutputType } from '@/lib/brief'
@@ -33,15 +33,28 @@ const SIDEBAR_WIDTH = '264px'
 
 /**
  * Rows (docs/design/dot-home.md, section 1): 34px, 14px. Links (New chat, AI
- * skills, sub-items) use the main text colour; group titles are gray, 600.
- * Selected = the selected fill, main text, 600.
+ * skills, sub-items) use the main text colour. Selected = the side panel's
+ * selected fill, main text, 600.
  */
 const ROW =
-  'focus-ring h-[34px] gap-2.5 rounded-lg px-2.5 text-sm text-ink hover:bg-hover hover:text-ink active:bg-hover active:text-ink data-[active=true]:bg-selected data-[active=true]:font-semibold data-[active=true]:text-ink [&>svg]:size-4'
-// Gray titles pass AA on the panel (4.6:1 light, 5.6:1 dark); on the hover fill they turn to the main text colour to keep it.
-const GROUP_ROW = cn(ROW, 'font-semibold text-ink-soft hover:text-ink active:text-ink data-[state=open]:hover:bg-hover data-[state=open]:hover:text-ink')
+  'focus-ring h-[34px] gap-2.5 rounded-lg px-2.5 text-sm text-ink hover:bg-sidebar-hover hover:text-ink active:bg-sidebar-selected active:text-ink data-[active=true]:bg-sidebar-selected data-[active=true]:font-semibold data-[active=true]:text-ink [&>svg]:size-4'
+/**
+ * Group titles: the --sidebar-group-title colour (lighter than AA text; see the
+ * token), darker on hover. Closed: 34px, 14px, 500, 16px icon. Open: 28px,
+ * 12px, 600, 14px icon (kept in a 16px slot, so the label and the children
+ * line up). The size change animates (150ms); reduced motion turns it off
+ * (app/globals.css).
+ */
+const GROUP_ROW = cn(
+  ROW,
+  'font-medium text-sidebar-group-title transition-[height,font-size,font-weight,color,background-color] duration-150 ease-[ease]',
+  'hover:bg-sidebar-hover hover:text-sidebar-group-title-hover active:bg-sidebar-hover active:text-sidebar-group-title-hover',
+  'data-[state=open]:h-7 data-[state=open]:text-xs data-[state=open]:font-semibold data-[state=open]:hover:bg-sidebar-hover data-[state=open]:hover:text-sidebar-group-title-hover',
+  '[&>svg:first-child]:transition-[width,height,margin] [&>svg:first-child]:duration-150 data-[state=open]:[&>svg:first-child]:mx-px data-[state=open]:[&>svg:first-child]:size-3.5',
+  'group-data-[collapsible=icon]:[&>svg:first-child]:!mx-0 group-data-[collapsible=icon]:[&>svg:first-child]:!size-4',
+)
 const CHILD_ROW =
-  'focus-ring flex h-[30px] w-full min-w-0 items-center gap-2 rounded-lg pl-9 pr-2.5 text-[13px] text-ink hover:bg-hover data-[active=true]:bg-selected data-[active=true]:font-semibold'
+  'focus-ring flex h-[30px] w-full min-w-0 items-center gap-2 rounded-lg pl-9 pr-2.5 text-[13px] text-ink hover:bg-sidebar-hover data-[active=true]:bg-sidebar-selected data-[active=true]:font-semibold'
 const TAG = 'ml-auto shrink-0 text-[11px] font-normal text-ink-muted'
 
 /**
@@ -109,11 +122,11 @@ function AppSidebar() {
                 closeOnMobile()
                 setSearchOpen(true)
               }}
-              className="focus-ring h-[34px] gap-2 rounded-lg border border-field-border bg-field px-2.5 text-sm text-ink-muted hover:bg-selected hover:text-ink-muted active:bg-selected active:text-ink-muted [&>svg]:size-4"
+              className="focus-ring h-[34px] gap-2 rounded-lg border border-field-border bg-field px-2.5 text-sm text-ink-muted hover:bg-sidebar-hover hover:text-ink-muted active:bg-sidebar-selected active:text-ink-muted [&>svg]:size-4"
             >
               <Search strokeWidth={ICON_STROKE} aria-hidden />
               <span>Search</span>
-              <kbd className="ml-auto rounded-md border border-line-card bg-card px-1.5 font-sans text-[11px] leading-[18px] text-ink-muted group-data-[collapsible=icon]:hidden">
+              <kbd className="ml-auto rounded-md border border-line-card bg-subtle px-1.5 font-sans text-[11px] leading-[18px] text-ink-muted group-data-[collapsible=icon]:hidden">
                 ⌘K
               </kbd>
             </SidebarMenuButton>
@@ -134,17 +147,20 @@ function AppSidebar() {
         </SidebarMenu>
 
         <SidebarMenu className="gap-0.5">
-          {SIDEBAR_GROUPS.map((group) => (
-            <SidebarGroupRow key={group.id} group={group} activeId={active?.id} onNavigate={closeOnMobile} />
-          ))}
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild isActive={active?.id === AI_SKILLS_ITEM.id} tooltip={AI_SKILLS_ITEM.label} className={ROW}>
-              <Link href={AI_SKILLS_ITEM.path} onClick={closeOnMobile} aria-current={active?.id === AI_SKILLS_ITEM.id ? 'page' : undefined}>
-                <AI_SKILLS_ITEM.icon strokeWidth={ICON_STROKE} aria-hidden />
-                <span>{AI_SKILLS_ITEM.label}</span>
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
+          {SIDEBAR_MENU.map((entry) =>
+            'group' in entry ? (
+              <SidebarGroupRow key={entry.group.id} group={entry.group} activeId={active?.id} onNavigate={closeOnMobile} />
+            ) : (
+              <SidebarMenuItem key={entry.link.id}>
+                <SidebarMenuButton asChild isActive={active?.id === entry.link.id} tooltip={entry.link.label} className={ROW}>
+                  <Link href={entry.link.path} onClick={closeOnMobile} aria-current={active?.id === entry.link.id ? 'page' : undefined}>
+                    <entry.link.icon strokeWidth={ICON_STROKE} aria-hidden />
+                    <span>{entry.link.label}</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            ),
+          )}
         </SidebarMenu>
 
         {recent.length > 0 && (
@@ -226,8 +242,9 @@ function CollapsibleRow({
         <CollapsibleTrigger asChild>
           <SidebarMenuButton tooltip={label} className={GROUP_ROW}>
             <Icon strokeWidth={ICON_STROKE} aria-hidden />
-            <span>{label}</span>
-            <Chevron className="ml-auto !size-3.5 group-data-[collapsible=icon]:hidden" strokeWidth={ICON_STROKE} aria-hidden />
+            <span className="min-w-0 truncate">{label}</span>
+            {/* Right after the label (gap 6px), in the title colour. */}
+            <Chevron className="-ml-1 !size-3 shrink-0 group-data-[collapsible=icon]:hidden" strokeWidth={1.75} aria-hidden />
           </SidebarMenuButton>
         </CollapsibleTrigger>
         <CollapsibleContent>

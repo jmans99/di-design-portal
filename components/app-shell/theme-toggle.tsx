@@ -36,7 +36,7 @@ export function ThemeToggle({ className }: { className?: string }) {
   }
 
   return (
-    <div role="radiogroup" aria-label="Theme" className={cn('inline-flex h-8 shrink-0 items-center gap-0.5 rounded-full bg-subtle p-[3px]', className)}>
+    <div role="radiogroup" aria-label="Theme" className={cn('inline-flex h-8 shrink-0 items-center gap-0.5 rounded-full bg-toggle-track p-[3px]', className)}>
       {OPTIONS.map(({ value, label, icon: Icon }, i) => {
         const checked = current === value
         return (

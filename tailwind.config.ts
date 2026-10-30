@@ -103,6 +103,7 @@ const config: Config = {
           border: 'rgb(var(--field-border) / <alpha-value>)',
         },
         thumb: 'rgb(var(--thumb) / <alpha-value>)',
+        'toggle-track': 'rgb(var(--toggle-track) / <alpha-value>)',
         chosen: {
           DEFAULT: 'rgb(var(--chosen) / <alpha-value>)',
           border: 'rgb(var(--chosen-border) / <alpha-value>)',
@@ -174,6 +175,10 @@ const config: Config = {
           'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))',
+          selected: 'rgb(var(--sidebar-selected) / <alpha-value>)',
+          hover: 'rgb(var(--sidebar-hover) / <alpha-value>)',
+          'group-title': 'rgb(var(--sidebar-group-title) / <alpha-value>)',
+          'group-title-hover': 'rgb(var(--sidebar-group-title-hover) / <alpha-value>)',
         },
       },
       boxShadow: {

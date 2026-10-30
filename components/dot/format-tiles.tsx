@@ -60,6 +60,20 @@ export function ExternalMark({ className }: { className?: string }) {
   return <ArrowUpRight className={cn('inline-block h-3.5 w-3.5 shrink-0 align-[-1px] text-ink-muted', className)} strokeWidth={2} aria-hidden />
 }
 
+/** A title ending in the external-link mark, kept on one line with its last word so the mark never wraps alone. */
+export function ExternalTitle({ children }: { children: string }) {
+  const cut = children.lastIndexOf(' ')
+  return (
+    <>
+      {children.slice(0, cut + 1)}
+      <span className="whitespace-nowrap">
+        {children.slice(cut + 1)}
+        <ExternalMark className="ml-1" />
+      </span>
+    </>
+  )
+}
+
 /** "Coming soon" pill: the Recommended pill's size and shape, in neutral colours. */
 export function ComingSoonPill() {
   return (

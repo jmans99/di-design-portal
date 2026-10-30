@@ -6,7 +6,7 @@ import { useSearchParams } from 'next/navigation'
 import { ArrowUp, Plus } from 'lucide-react'
 import { SidePanelToggle } from '@/components/app-shell/app-shell'
 import { DotOrb } from '@/components/dot/dot-orb'
-import { ComingSoonPill, ExternalMark, MoreMenu, RecommendedPill, SEND_BUTTON, StartTile } from '@/components/dot/format-tiles'
+import { ComingSoonPill, ExternalTitle, MoreMenu, RecommendedPill, SEND_BUTTON, StartTile } from '@/components/dot/format-tiles'
 import { LogoArt, MapArt, MasterDeckArt, SlidesArt, TwoPagerArt } from '@/components/dot/dot-art'
 import { Conversation } from '@/components/dot/conversation'
 import { SearchReply } from '@/components/dot/search-reply'
@@ -172,7 +172,7 @@ function FormatBento({ onStart }: { onStart: (format: OutputType, templateId?: '
       >
         <span>
           <span className={cn(TILE_TITLE, 'block')}>
-            Create a deck <ExternalMark />
+            <ExternalTitle>Create a deck</ExternalTitle>
           </span>
           <span className={cn(TILE_SUB, 'block')}>From a template or from scratch</span>
         </span>
@@ -194,7 +194,7 @@ function FormatBento({ onStart }: { onStart: (format: OutputType, templateId?: '
           <TwoPagerArt />
         </span>
         <span className={cn(TILE_TITLE, 'pr-10')}>
-          Write a two-pager <ExternalMark />
+          <ExternalTitle>Write a two-pager</ExternalTitle>
         </span>
       </StartTile>
       <MoreMenu onStart={onStart}>

@@ -1,7 +1,8 @@
 'use client'
 
 import { ArrowUpRight, ImageIcon } from 'lucide-react'
-import { inBrandTab, type AssetBrand, type Brand } from '@/lib/brand'
+import { useBrandFilter } from '@/components/brand/brand-tabs'
+import { ASSET_BRAND_ORDER, inBrandFilter, type AssetBrand } from '@/lib/brand'
 
 const GALLERIES = [
   {
@@ -72,12 +73,19 @@ const GALLERIES = [
   },
 ]
 
-/** Galleries for one brand: Giga's Flickr and YouTube; the UNICEF and DI SharePoint libraries for Digital Inclusion. */
-export function MediaSection({ brand }: { brand: Brand }) {
+/**
+ * Galleries for the page's brand filter: Giga's Flickr and YouTube; the UNICEF
+ * and DI SharePoint libraries for Digital Inclusion. All lists DI first.
+ */
+export function MediaSection() {
+  const filter = useBrandFilter()
+  const galleries = GALLERIES.filter((gallery) => inBrandFilter(gallery.brand, filter)).sort(
+    (a, b) => ASSET_BRAND_ORDER.indexOf(a.brand) - ASSET_BRAND_ORDER.indexOf(b.brand),
+  )
   return (
     <div className="animate-in fade-in duration-300 ease-out">
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {GALLERIES.filter((gallery) => inBrandTab(gallery.brand, brand)).map((gallery) => (
+        {galleries.map((gallery) => (
           <a
             key={gallery.id}
             href={gallery.href}

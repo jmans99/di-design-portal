@@ -233,7 +233,7 @@
    * (so Tailwind's /opacity modifiers work) or full colours (tiles).
    */
   :root {
-    --background: 0 0% 97.3%; /* main area #F8F8F8 */
+    --background: 0 0% 100%; /* main area and its top bar #FFFFFF: lighter than the side panel */
     --foreground: 211.8 39.5% 16.9%; /* #1A2A3C */
     --card: 0 0% 100%; /* surfaces: Dot's box, cards, menus, dialogs */
     --card-foreground: 211.8 39.5% 16.9%;
@@ -263,11 +263,11 @@
     --chart-3: 0 0% 32%;
     --chart-4: 44 100% 62%;
     --chart-5: 357 88% 52%;
-    --sidebar-background: 0 0% 100%; /* #FFFFFF */
+    --sidebar-background: 220 17.6% 96.7%; /* #F5F6F8 */
     --sidebar-foreground: 211.8 39.5% 16.9%;
     --sidebar-primary: 200.4 98.7% 31%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 21.4% 94.5%; /* #EEF1F4 */
+    --sidebar-accent: 210 22.2% 92.9%; /* #E9EDF1 */
     --sidebar-accent-foreground: 211.8 39.5% 16.9%;
     --sidebar-border: 214.3 21.2% 93.5%; /* #EBEEF2 */
     --sidebar-ring: 200.4 98.7% 31%;
@@ -288,8 +288,14 @@
     --selected: 238 241 244; /* #EEF1F4: selected row */
     --hover: 241 243 245; /* #F1F3F5: row hover */
     --hover-soft: 247 249 250; /* #F7F9FA: hover on a card-coloured chip or tile */
-    --field: 243 245 247; /* #F3F5F7: side panel search button */
-    --field-border: 230 234 238; /* #E6EAEE */
+    --field: 255 255 255; /* #FFFFFF: side panel search button */
+    --field-border: 227 232 238; /* #E3E8EE */
+    /* Side panel rows, group titles and theme toggle (the panel is darker than the main area) */
+    --sidebar-selected: 233 237 241; /* #E9EDF1 */
+    --sidebar-hover: 237 240 243; /* #EDF0F3 */
+    --sidebar-group-title: 125 138 152; /* #7D8A98: lighter than AA (3.4:1); AA fallback #6B7785 */
+    --sidebar-group-title-hover: 59 74 90; /* #3B4A5A */
+    --toggle-track: 233 237 241; /* #E9EDF1 */
     --thumb: 255 255 255; /* selected theme toggle circle */
     --thumb-shadow: 0 1px 3px rgba(26, 42, 60, 0.18);
     /* A chosen option (format, colour variant, tagline…): fill and border; text uses --link. */
@@ -326,7 +332,7 @@
   }
 
   .dark {
-    --background: 213 40% 9.8%; /* main area #0F1823 */
+    --background: 212.1 41.2% 13.3%; /* main area #142130 */
     --foreground: 0 0% 97.3%; /* #F8F8F8 */
     --card: 211.8 39.5% 16.9%; /* surfaces #1A2A3C */
     --card-foreground: 0 0% 97.3%;
@@ -351,7 +357,7 @@
     --chart-3: 0 0% 60%;
     --chart-4: 44 100% 62%;
     --chart-5: 357 88% 68%;
-    --sidebar-background: 212.1 41.2% 13.3%; /* #142130 */
+    --sidebar-background: 213 40% 9.8%; /* #0F1823 */
     --sidebar-foreground: 0 0% 97.3%;
     --sidebar-primary: 200.1 90.6% 62.5%;
     --sidebar-primary-foreground: 213 40% 9.8%;
@@ -375,6 +381,11 @@
     --hover-soft: 34 54 76;
     --field: 26 42 60; /* #1A2A3C */
     --field-border: 42 62 85; /* #2A3E55 */
+    --sidebar-selected: 34 54 76; /* #22364C */
+    --sidebar-hover: 26 42 60; /* #1A2A3C */
+    --sidebar-group-title: 127 143 160; /* #7F8FA0: lighter than AA; AA fallback #8A9AAB */
+    --sidebar-group-title-hover: 218 226 234; /* #DAE2EA */
+    --toggle-track: 34 54 76; /* #22364C */
     --thumb: 42 62 85; /* #2A3E55 */
     --thumb-shadow: none;
     --chosen: 34 54 76; /* #22364C */
