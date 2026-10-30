@@ -134,7 +134,7 @@ export function SearchableSelect({
         </button>
       </PopoverTrigger>
       <PopoverContent className="w-[var(--radix-popover-trigger-width)] min-w-[240px] p-0" align="start">
-        <Command filter={filterRow} defaultValue={selected ? rowValue(selected) : undefined} label={label}>
+        <Command filter={filterRow} defaultValue={selected ? rowValue(selected) : undefined}>
           <CommandInput placeholder={searchPlaceholder} value={search} onValueChange={setSearch} aria-label={`Search ${label.toLowerCase()}`} />
           <CommandList id={listId}>
             <CommandEmpty>{emptyText}</CommandEmpty>

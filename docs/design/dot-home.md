@@ -36,7 +36,8 @@ are the light theme; the dark theme is in "Theme" at the end.
 
 Replaces the current side panel styling and structure.
 
-- Width 264px, background #FFFFFF, right border 1px #EBEEF2,
+- Width 264px, background #F5F6F8 (darker than the white main area), right
+  border 1px #EBEEF2,
   padding 20px 12px, gap 18px between blocks. Keep the existing shadcn Sidebar
   behaviour (collapse, mobile off-canvas, cookie for state).
 - Header: the Dot orb (28px, static) and, 10px to its right, two lines:
@@ -55,31 +56,44 @@ Replaces the current side panel styling and structure.
   are long.
 - Collapsed (icons only): the header shows only the orb; the footer is hidden.
   The mobile sheet has the same header and footer as desktop.
-- Search button: full width, 34px high, radius 8, background #F3F5F7,
-  border 1px #E6EAEE, text #5C6B7A 14px, search icon 16px, label "Search",
-  "⌘K" key hint on the right (11px, white bg, border #E3E8EE, radius 6).
+- Search button: full width, 34px high, radius 8, background #FFFFFF,
+  border 1px #E3E8EE, text #5C6B7A 14px, search icon 16px, label "Search",
+  "⌘K" key hint on the right (11px, #F2F4F6 bg, border #E3E8EE, radius 6;
+  dark: #1A2A3C bg).
   Opens the search/command palette (see section 4). ⌘K / Ctrl+K also opens it.
 - "New chat" row: 16px Dot orb + "New chat". Goes to / and clears any
   conversation state.
-- Groups (rows 34px, 16px lucide icons, radius 8, gap 10px; chevron right
-  when closed, down when open; children rows 30px, 13px, left padding 36px):
-  - Group titles (Create, Knowledge, Brand assets, Brand guidelines, Recent),
-    with their icons and chevrons: gray #6B7785, Open Sans 600, 14px. On the
-    hover fill they turn #1A2A3C, so they keep AA contrast (#6B7785 on white
-    is 4.6:1, on the hover fill only 4.1:1).
-  - Links (all sub-items, plus New chat and AI skills): #1A2A3C.
+- Menu order, top to bottom: Welcome header, Search, New chat, Create,
+  Brand assets, Brand guidelines, AI skills, Knowledge, then Recent (if any),
+  then the footer (`SIDEBAR_MENU` in lib/nav.ts).
+- Groups (radius 8, gap 10px between icon and label; children rows 30px,
+  13px, #1A2A3C / dark #F8F8F8, left padding 36px, so they start where the
+  group label starts):
+  - Group titles (Create, Brand assets, Brand guidelines, Knowledge, Recent),
+    with their icons and chevrons, use one token, `--sidebar-group-title`:
+    #7D8A98 (dark #7F8FA0). On hover the title, icon and chevron turn #3B4A5A
+    (dark #DAE2EA). The light value is lighter than AA text contrast (3.25:1
+    on #F5F6F8, measured); the AA fallback is #6B7785 (dark #8A9AAB). The
+    dark value passes AA on #0F1823.
+  - Closed: row 34px, label 14px weight 500, icon 16px. Open: row 28px, label
+    12px weight 600, icon 14px (kept in a 16px slot). The change animates
+    (150ms ease); with prefers-reduced-motion it is instant.
+  - The chevron sits right after the label (gap 6px), 12px, in the title
+    colour: right-pointing when closed, down when open.
+  - Links (all sub-items, plus New chat and AI skills): #1A2A3C (dark
+    #F8F8F8), not gray.
   - Every group is closed by default, Recent included. The group that holds
     the current page opens by itself, so the selected item shows. Open and
     closed groups are not saved between visits.
   - Create: Deck, Social post, Two-pager, Map, Engagement map,
     Virtual background, Email signature. Deck and Two-pager open the external
     builder (see "External tools"); the others go to their tool page.
-  - Knowledge: Audiences, Facilities, Systems, Offerings, plus the existing
-    "Soon" items.
   - Brand assets: Logos, Illustrations, Image galleries, Photo awards.
   - Brand guidelines: Colors, Typography, DI guidelines (/guidelines/brand),
     Video guidelines.
   - AI skills (single row, no children).
+  - Knowledge: Audiences, Facilities, Systems, Offerings, plus the existing
+    "Soon" items.
   - Renamed in October 2026: "Assets" became "Brand assets", "Brand" became
     "Brand guidelines", and its child "Brand guidelines" became "DI guidelines"
     (no two items share a name). ⌘K still finds the old names.
@@ -87,8 +101,8 @@ Replaces the current side panel styling and structure.
   Dot (format + template/audience if any, e.g. "Deck · Master deck"),
   stored in localStorage (wrap every read/write in try/catch). No "See all" yet.
 - Selected state (for New chat on the home page, and for the current page):
-  background #EEF1F4, text #1A2A3C, weight 600. Same style everywhere so the
-  hierarchy stays even.
+  background #E9EDF1 (dark #22364C), text #1A2A3C, weight 600. Hover
+  #EDF0F3 (dark #1A2A3C). Same style everywhere so the hierarchy stays even.
 
 ## 2. Home page (/)
 
@@ -147,9 +161,14 @@ c) Bento under the box: margin-top 16px, CSS grid,
      and a 3-bar chart. Opens the deck step with "Master deck" already picked
      (while it is "Coming soon", see "External tools").
    - Row 2, col 3, "Get a logo": background #FFFFFF, border 1px #E3E8EE,
-     title "Get a logo", sub "DI and Giga logos" (12px #3B4A5A). Art top right:
-     the real DI logo (13px high) and Giga logo (18px high, its mark has more
-     air) from /public/logos, stacked; their white versions in the dark theme.
+     title "Get a logo", sub "DI and Giga logos" (12px #3B4A5A). Art top right,
+     stacked: the real DI logo (12px high) and the Giga symbol without the
+     word "giga" (24px high, so the compact symbol and the wide wordmark weigh
+     about the same); their white versions in the dark theme. There is no
+     symbol-only Giga file, so scripts/build-asset-index.mjs generates one
+     from /logos/giga-main-horizontal.svg (every path left of the wordmark,
+     cropped) into /generated/logos/giga-symbol{,-white,-black}.svg and adds
+     it to the asset index as "Giga symbol". The original file is not edited.
      Links to the Logos page (/logos).
    - Responsive (container queries on the content column): under 720px wide,
      2 columns: Deck, Master deck and Get a logo each take a full row, Map and
@@ -278,6 +297,9 @@ Added after the first build of this spec.
   two-pager builder in a new tab)". The entry points are the home bento
   tiles, the side panel Create rows (no "Soon" tags), the ⌘K format rows, and
   the small tiles in Dot's "couldn't match" reply.
+- On the bento tiles the icon stays on the line of the title's last word
+  (`<ExternalTitle>`, no break between them), so "Write a two-pager ↗" never
+  puts the icon alone on a new line.
 - Typed requests for a deck or a two-pager don't open a tab. Dot replies
   "Decks are made in the deck builder." with a primary "Open deck builder"
   button, or "Two-pagers are made in the deck builder." with a primary "Open
@@ -311,19 +333,22 @@ Added in October 2026. Light, dark or system.
   never hex values for surfaces, text, borders or buttons. Hex values stay
   only in decorative art (`dot-art.tsx`), format colours and the tools'
   generated output.
-- Light: main area #F8F8F8, side panel #FFFFFF (right border #EBEEF2),
-  surfaces #FFFFFF. Cards on the page are #FFFFFF with a 1px #E3E8EE border.
+- The main area is lighter than the side panel in both themes.
+- Light: main area and its top bar #FFFFFF, side panel #F5F6F8 (right border
+  #EBEEF2), surfaces #FFFFFF. Cards, tiles and tool panels on the page are
+  #FFFFFF with a 1px #E3E8EE border.
 - Dark:
 
   | Token | Value |
   | --- | --- |
-  | Main area | `#0F1823` |
-  | Side panel | `#142130`, right border `#22364C` |
+  | Main area | `#142130` |
+  | Side panel | `#0F1823`, right border `#22364C` |
   | Surfaces (Dot's box, cards, menus, ⌘K, dialogs) | `#1A2A3C` |
-  | Hover / selected row | `#22364C` |
+  | Hover / selected row | `#22364C` (side panel hover `#1A2A3C`) |
   | Borders / dashed borders | `#2A3E55` / `#3A5068` |
   | Text main / secondary / muted | `#F8F8F8` / `#B8C4D0` / `#8A9AAB` |
-  | Side panel group titles, toggle icons | `#8A9AAB` |
+  | Side panel group titles | `#7F8FA0` (hover `#DAE2EA`) |
+  | Toggle icons | `#8A9AAB` |
   | Primary buttons | `#49BCF6`, text `#0F1823`, hover `#82D3FF` (8.4:1) |
   | Links | `#82D3FF` (hover `#B5E4FF`) |
   | Focus ring | 2px `#82D3FF` |
@@ -345,7 +370,7 @@ Added in October 2026. Light, dark or system.
 - Theme toggle (`components/app-shell/theme-toggle.tsx`), on the right of the
   side panel footer: a segmented control of three round buttons, System
   (lucide Monitor), Light (Sun), Dark (Moon).
-  - Track: 32px high, radius 999px, padding 3px, #F2F4F6 (dark #22364C).
+  - Track: 32px high, radius 999px, padding 3px, #E9EDF1 (dark #22364C).
   - Buttons: 26px circles, 16px icons. Unselected icon #6B7785 (dark #8A9AAB).
     Selected: #FFFFFF circle, shadow 0 1px 3px rgba(26,42,60,.18), icon
     #1A2A3C (dark: #2A3E55 circle, icon #F8F8F8).

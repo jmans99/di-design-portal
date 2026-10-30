@@ -11,7 +11,11 @@ and no external API: everything is fixed rules over a JSON index. Builds on
   DI and Giga, e.g. the fonts).
 - DI is the default brand. A page with only DI material gets no brand marker.
 - A page with separate DI material and Giga material gets **brand tabs** in its title
-  row. "Digital Inclusion" is always the first tab and the default.
+  row. Asset pages (Logos, Illustrations, Image galleries) get the **brand
+  filter**: "All" (the default), "Digital Inclusion", "Giga". All shows
+  everything; Digital Inclusion shows `di` + `both`; Giga shows `giga` +
+  `both`. Colors keeps the two tabs ("Digital Inclusion" first and default),
+  with no "All".
 - A page with **only Giga** material gets a **Giga pill** next to its title.
 - A page whose material is **shared** by both brands, and so has no tabs, gets
   a **"DI + Giga" pill** next to its title (Typography).
@@ -21,9 +25,9 @@ and no external API: everything is fixed rules over a JSON index. Builds on
   On Logos, the Giga + UNICEF + ITU partnership logo is shared, so it is listed
   under both tabs, after each brand's own logos.
 - A page's pill follows its own list: when every item on it is shared, a
-  Giga-only page's pill becomes "DI + Giga" (Photo awards). The Illustrations
-  page keeps the Giga pill while it still has Giga-only items (the pillar
-  pictograms and Giga Meter illustrations).
+  Giga-only page's pill becomes "DI + Giga" (Photo awards). A page with the
+  brand filter has no pill: Illustrations dropped its Giga pill when it got
+  the filter (its Digital Inclusion view is the shared General set).
 - A tool that only has one brand's templates today is single-brand. The other
   brand is not invented.
 
@@ -32,9 +36,9 @@ Current pages (audit, October 2026):
 | Page | Brand | Marker |
 | --- | --- | --- |
 | Colors | DI and Giga, separate | brand tabs |
-| Logos | DI and Giga, separate | brand tabs |
-| Image galleries | DI and Giga, separate | brand tabs (Giga: Flickr, YouTube; DI: UNICEF WeShare and the DI SharePoint libraries) |
-| Illustrations | Giga (pillars, Giga Meter) and shared (the General set) | Giga pill (still has Giga-only items) |
+| Logos | DI, Giga and shared | brand filter (All, DI, Giga) |
+| Image galleries | DI and Giga, separate | brand filter (Giga: Flickr, YouTube; DI: UNICEF WeShare and the DI SharePoint libraries) |
+| Illustrations | Giga (pillars, Giga Meter) and shared (the General set) | brand filter (no pill) |
 | Photo awards | shared (all 48 Giga Photo Award photos) | "DI + Giga" pill |
 | Video guidelines | Giga | Giga pill |
 | Typography | shared fonts (Manrope, Open Sans) | "DI + Giga" pill |
@@ -73,19 +77,60 @@ Dark theme: every pill is on `#22364C`, with text `#F8F8F8` (giga), `#B8C4D0`
 sits on `#1A2A3C`, everything else on `#F8F8F8`, in both themes: the preview
 shows the real file. The card around it follows the theme.
 
-## 3. Brand tabs behaviour
+## 3. Brand tabs and filter behaviour
 
 - Placement: in `PageHeader`'s `actions` slot. The title is on the left and the
   tabs on the right, centred with the title. Under a 640px content width (a
   container query on the header), the tabs move below the title at full width,
-  in two equal segments.
+  in equal segments.
 - Built on Radix Tabs: arrow keys move between tabs, with tab and tabpanel roles.
-- The choice lives in the URL, `?brand=di|giga` (default `di`), so links and
-  Back work. The old Colors link `?palette=giga` opens the Giga tab.
-- Page code: wrap the page in `<BrandTabsRoot>`, put `<BrandTabs />` in the
-  header, and add one `<BrandTabsContent brand="di|giga">` per brand.
-- Logos: each entry in `lib/brand-registry.ts` has a `brand`; the generator
-  lists one tab's logos. UNICEF Digital Inclusion comes first on the DI tab.
+  The filter has the same look, with "All" first.
+- The choice lives in the URL, so links and Back work.
+  - Filter pages: `?brand=all|di|giga`. No parameter means All, and choosing
+    All removes it. Old links still work: `?brand=di`, `?brand=giga`, and
+    `?palette=giga` (opens Giga).
+  - Colors: `?brand=di|giga` (default `di`); `?palette=giga` opens Giga.
+- Page code (`components/brand/brand-tabs.tsx`):
+  - Colors: `<BrandTabsRoot>`, `<BrandTabs />` in the header, one
+    `<BrandTabsContent brand="di|giga">` per brand.
+  - Filter pages: `<BrandTabsRoot withAll>`, `<BrandTabs />` in the header,
+    and the page in one `<BrandTabsPanel>`. Components read the filter with
+    `useBrandFilter()` and `inBrandFilter()` (`lib/brand.ts`). The panel stays
+    mounted, so the page keeps its selection.
+- When the filter hides the selected item (a logo, an illustration), the first
+  item the filter allows is selected. An item that is still allowed stays
+  selected.
+- Logos: each entry in `lib/brand-registry.ts` has a `brand`;
+  `logosForFilter()` lists All as Digital Inclusion's logos (its own logo
+  first), then the shared ones, then Giga's. Image galleries list DI first
+  under All.
+
+## 3a. Searchable dropdowns
+
+Every dropdown with more than 7 options uses `<SearchableSelect>`
+(`components/ui/searchable-select.tsx`), the pattern of the old Illustrations
+picker: a search field at the top, a grouped list, a check mark on the
+selected row, and an optional tag on the right of each row (the category or
+type) or a code chip on the left (country codes).
+
+- Search: every typed word must appear in the row's label, group, tag, code or
+  keywords; rows whose label starts with the first word come first.
+- Keyboard: on the trigger, Enter, Space or the arrow keys open the list, and
+  typing a letter opens it with that letter in the search. In the list, type
+  to filter, arrows move (starting from the selected row), Enter picks, Esc
+  closes and returns focus to the trigger.
+
+| Dropdown | Options | Groups | Searches |
+| --- | --- | --- | --- |
+| Logos, Brand | 16 | Digital Inclusion, DI + Giga, Giga (only the ones the filter allows) | name, group, brand, type tag ("logo", "product", "event"), versions, and the colours each logo comes in ("black") |
+| Illustrations | 44 | Pillars, General, Giga Meter | name, category, synonyms |
+| Social post, Country | 222 | none | name, country code |
+| Maps and Abstract maps, Area | regions + countries | Regions, Countries | name, code |
+
+Left as plain selects (7 options or fewer): Backgrounds "Background"
+(3: Standard 1, Standard 2, Custom map) and Email signature "Office location"
+(2: Geneva, Barcelona). The home + menu (5 formats) is an action menu, not a
+select.
 
 ## 4. Asset index
 
@@ -143,6 +188,13 @@ shows the real file. The card around it follows the theme.
   | Giga + UNICEF + ITU partnership logo (8: horizontal and vertical, 4 colours each) | both | **set** by the portal owner |
   | Giga Photo Award photos (48) | both | **set** by the portal owner |
   | General illustrations (35 pictograms in fill, outline white and outline blue: 105) | both | **set** by the portal owner |
+
+- **Giga symbol**: there is no symbol-only Giga file, so the script writes one
+  from `/logos/giga-main-horizontal.svg`: every path left of the "giga"
+  wordmark (x < 115), cropped to its box, as
+  `/generated/logos/giga-symbol.svg` (full colour), `-white` and `-black`,
+  with PNGs. They are indexed as "Giga symbol, full colour / white / black"
+  (brand giga, page `/logos?brand=giga`). The original file is not edited.
 
   Not shared, on purpose: the Grey and Connectivity colour scales (they stay
   inside each palette), the pillar pictograms (15) and Giga Meter

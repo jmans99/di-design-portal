@@ -50,7 +50,7 @@ const GROUP_ROW = cn(
   'font-medium text-sidebar-group-title transition-[height,font-size,font-weight,color,background-color] duration-150 ease-[ease]',
   'hover:bg-sidebar-hover hover:text-sidebar-group-title-hover active:bg-sidebar-hover active:text-sidebar-group-title-hover',
   'data-[state=open]:h-7 data-[state=open]:text-xs data-[state=open]:font-semibold data-[state=open]:hover:bg-sidebar-hover data-[state=open]:hover:text-sidebar-group-title-hover',
-  '[&>svg:first-child]:transition-[width,height,margin] [&>svg:first-child]:duration-150 data-[state=open]:[&>svg:first-child]:mx-px data-[state=open]:[&>svg:first-child]:size-3.5',
+  '[&>svg:first-child]:transition-[width,height,margin] [&>svg:first-child]:duration-150 [&[data-state=open]>svg:first-child]:mx-px [&[data-state=open]>svg:first-child]:size-3.5',
   'group-data-[collapsible=icon]:[&>svg:first-child]:!mx-0 group-data-[collapsible=icon]:[&>svg:first-child]:!size-4',
 )
 const CHILD_ROW =
@@ -126,7 +126,7 @@ function AppSidebar() {
             >
               <Search strokeWidth={ICON_STROKE} aria-hidden />
               <span>Search</span>
-              <kbd className="ml-auto rounded-md border border-line-card bg-subtle px-1.5 font-sans text-[11px] leading-[18px] text-ink-muted group-data-[collapsible=icon]:hidden">
+              <kbd className="ml-auto rounded-md border border-line-card bg-subtle px-1.5 dark:bg-field font-sans text-[11px] leading-[18px] text-ink-muted group-data-[collapsible=icon]:hidden">
                 ⌘K
               </kbd>
             </SidebarMenuButton>
