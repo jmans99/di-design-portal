@@ -1,9 +1,16 @@
 /*
  * The animated home orb (docs/design/dot-home.md, "Dot orb animation").
- * Three layers, transform and opacity only: the orb breathes (scale 1 → 1.04,
- * 4s), a white highlight turns over it (10s), and a green glow behind it
- * pulses with the breathing (opacity .35 → .6, 4s). Reduced motion: the
- * static orb only.
+ * Transform and opacity only, and exactly one light source:
+ * - .orb breathes (scale 1 → 1.04, 4s) and clips its contents to the circle.
+ *   It keeps the outer drop shadow; the fixed inset shadow is gone.
+ * - .light carries the orb's whole gradient (white highlight to dark edge) and
+ *   sways between rotate(15deg) and rotate(71deg), 6s, so the highlight and
+ *   the shaded side move together as one light from above. The gradient's
+ *   highlight sits 43° left of the top at rest, so this swings it evenly from
+ *   upper-left (-28°) to upper-right (+28°) across the top.
+ * - The green glow behind the orb pulses with the breathing (opacity .35 → .6,
+ *   4s); it is not a light on the surface.
+ * Reduced motion: no animation, .light at rotate(0) (the original look), no glow.
  */
 
 .wrap {
@@ -37,15 +44,14 @@
   will-change: transform;
 }
 
-/* Highlight on top, clipped to the circle by .orb. */
-.orb::after {
-  content: '';
+/* The one light: the full gradient, a circle the size of the orb, turning about its centre. */
+.light {
   position: absolute;
   inset: 0;
   border-radius: 999px;
-  /* White at 75% near the top left, transparent by 45% of the radius. */
-  background: radial-gradient(circle at 30% 26%, rgb(255 255 255 / 0.75) 0, rgb(255 255 255 / 0) calc(var(--orb-size) * 0.225));
-  animation: turn 10s linear infinite;
+  transform: rotate(15deg);
+  transform-origin: center;
+  animation: sway 6s ease-in-out infinite alternate;
   will-change: transform;
 }
 
@@ -69,19 +75,24 @@
   }
 }
 
-@keyframes turn {
+@keyframes sway {
+  from {
+    transform: rotate(15deg);
+  }
   to {
-    transform: rotate(360deg);
+    transform: rotate(71deg);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .orb,
-  .orb::after {
+  .light {
     animation: none;
   }
-  .wrap::before,
-  .orb::after {
+  .light {
+    transform: none;
+  }
+  .wrap::before {
     display: none;
   }
 }
