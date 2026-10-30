@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next'
+import { ThemeProvider } from '@/components/theme-provider'
 import { SITE } from '@/lib/site'
 import './globals.css'
 
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: SITE.themeColor,
+  colorScheme: 'light dark',
 }
 
 export default function RootLayout({
@@ -17,7 +19,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    // next-themes sets the theme class on <html> before the page paints (no flash), so the server and client markup differ there.
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link
           rel="preload"
@@ -34,7 +37,12 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        {/* Light, dark or system (the default), saved per browser (docs/design/dot-home.md, "Theme"). */}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 }

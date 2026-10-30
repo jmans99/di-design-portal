@@ -10,6 +10,8 @@ export type PreviewTheme = 'light' | 'dark'
  * The canonical preview surface used across the site (Logos, Illustrations, ...).
  * A bordered, rounded card with optional floating controls in the top-right and
  * centered content. No "Live Preview" heading: the box speaks for itself.
+ * The canvas shows the real file, so it is white (or near-black with `dark`)
+ * in both site themes.
  */
 export function PreviewPanel({
   children,
@@ -28,7 +30,7 @@ export function PreviewPanel({
     <div
       className={cn(
         'relative flex min-h-[320px] items-center justify-center overflow-hidden rounded-2xl border transition-smooth lg:min-h-[400px]',
-        dark ? 'border-[#393939] bg-[#161616]' : 'border-border bg-card',
+        dark ? 'border-preview-dark-border bg-preview-dark' : 'border-border bg-preview-light',
         className,
       )}
     >

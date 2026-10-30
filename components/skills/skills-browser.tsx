@@ -120,12 +120,12 @@ function FilterPill({
       onClick={onClick}
       className={`inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-smooth active:scale-[0.97] ${
         active
-          ? 'border-primary-300 bg-primary-50 text-primary-700'
+          ? 'border-chosen-border bg-chosen text-link'
           : 'border-border bg-card text-muted-foreground hover:bg-secondary/60 hover:text-foreground'
       }`}
     >
       {children}
-      <span className={`tabular-nums text-xs ${active ? 'text-primary-700/70' : 'text-muted-foreground/70'}`}>
+      <span className={`tabular-nums text-xs ${active ? 'text-link/70' : 'text-muted-foreground/70'}`}>
         {count}
       </span>
     </button>
@@ -155,20 +155,20 @@ function SkillCard({
       {/* Icon tile anchor + optional command badge */}
       <div className="flex items-start justify-between">
         <span
-          className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary-50 text-primary-600"
+          className="flex h-10 w-10 items-center justify-center rounded-2xl bg-chosen text-link"
           aria-hidden
         >
           <Icon className="h-5 w-5" />
         </span>
         {skill.command && (
-          <span className="inline-flex items-center gap-1 rounded-md bg-secondary px-1.5 py-0.5 font-mono text-[11px] text-grey-700">
+          <span className="inline-flex items-center gap-1 rounded-md bg-secondary px-1.5 py-0.5 font-mono text-[11px] text-ink-secondary">
             <Terminal className="h-3 w-3" aria-hidden />
             {skill.command}
           </span>
         )}
       </div>
 
-      <p className="mt-4 text-[11px] font-semibold uppercase tracking-wide text-grey-500">
+      <p className="mt-4 text-[11px] font-semibold uppercase tracking-wide text-ink-muted">
         {categoryLabel}
       </p>
       <h3 className="mt-1 font-heading text-lg font-medium leading-snug tracking-[-0.01em] text-foreground">
@@ -178,7 +178,7 @@ function SkillCard({
 
       <div className="mt-3 border-t border-border pt-3">
         <p className="text-xs leading-relaxed text-muted-foreground">
-          <span className="font-semibold uppercase tracking-wide text-grey-600">Use when</span>{' '}
+          <span className="font-semibold uppercase tracking-wide text-ink-muted">Use when</span>{' '}
           {skill.useWhen}
         </p>
       </div>
@@ -213,8 +213,8 @@ function SkillCard({
           download
           onClick={onDownload}
           aria-label={`Download ${skill.title} skill`}
-          className={`inline-flex w-full items-center justify-center gap-2 rounded-full h-12 px-7 text-[15px] font-semibold text-white transition-smooth active:scale-[0.98] ${
-            downloaded ? 'bg-accent-green-600' : 'bg-primary-700 hover:bg-primary-800'
+          className={`inline-flex w-full items-center justify-center gap-2 rounded-full h-12 px-7 text-[15px] font-semibold transition-smooth active:scale-[0.98] ${
+            downloaded ? 'bg-accent-green-600 text-white' : 'bg-primary text-primary-foreground hover:bg-primary-hover'
           }`}
         >
           {downloaded ? (
@@ -261,7 +261,7 @@ function InstallGuideDialog() {
           type="button"
           className="inline-flex shrink-0 items-center gap-2 self-start rounded-full h-10 px-5 text-sm font-medium text-foreground border border-border bg-card hover:bg-secondary/60 transition-smooth active:scale-[0.98] sm:self-auto"
         >
-          <BookOpen className="h-4 w-4 text-primary-600" aria-hidden />
+          <BookOpen className="h-4 w-4 text-link" aria-hidden />
           How to install
         </button>
       </DialogTrigger>
@@ -280,7 +280,7 @@ function InstallGuideDialog() {
           {INSTALL_STEPS.map((step, i) => (
             <li key={step.title} className="flex gap-3.5">
               <span
-                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary-50 font-heading text-sm font-medium tabular-nums text-primary-700"
+                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-chosen font-heading text-sm font-medium tabular-nums text-link"
                 aria-hidden
               >
                 {i + 1}
@@ -294,16 +294,16 @@ function InstallGuideDialog() {
         </ol>
 
         <div className="mt-1 flex items-start gap-2.5 rounded-xl bg-secondary px-4 py-3">
-          <Terminal className="mt-0.5 h-4 w-4 shrink-0 text-grey-600" aria-hidden />
-          <p className="text-xs leading-relaxed text-grey-700">
+          <Terminal className="mt-0.5 h-4 w-4 shrink-0 text-ink-muted" aria-hidden />
+          <p className="text-xs leading-relaxed text-ink-secondary">
             <span className="font-semibold">Using Claude Code instead?</span> Unzip the package
             into{' '}
-            <code className="rounded bg-grey-100 px-1 py-0.5 font-mono text-[11px] text-grey-900">
+            <code className="rounded bg-subtle px-1 py-0.5 font-mono text-[11px] text-ink">
               ~/.claude/skills/
             </code>{' '}
             and the skill is available across every project. Skills that ship a slash command also
             work as{' '}
-            <code className="rounded bg-grey-100 px-1 py-0.5 font-mono text-[11px] text-grey-900">
+            <code className="rounded bg-subtle px-1 py-0.5 font-mono text-[11px] text-ink">
               /commands
             </code>
             .

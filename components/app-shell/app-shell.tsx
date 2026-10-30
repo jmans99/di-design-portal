@@ -19,21 +19,28 @@ import {
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import { SheetDescription, SheetTitle } from '@/components/ui/sheet'
 import { DotOrb } from '@/components/dot/dot-orb'
+import { ThemeToggle } from '@/components/app-shell/theme-toggle'
 import { SearchProvider, useSearchPalette } from '@/components/search/search-palette'
 import { AI_SKILLS_ITEM, SIDEBAR_GROUPS, activeNavItem, type NavGroup, type NavItem } from '@/lib/nav'
 import { dropRecent, useRecent } from '@/lib/dot/recent'
 import { externalLinkLabel, inPortalDeckFlow } from '@/lib/external-tools'
+import type { OutputType } from '@/lib/brief'
 import { SITE } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
 const ICON_STROKE = 1.5
 const SIDEBAR_WIDTH = '264px'
 
-/** Rows: 34px, 14px, secondary text; selected = #EEF1F4, main text, 600 (docs/design/dot-home.md, section 1). */
+/**
+ * Rows (docs/design/dot-home.md, section 1): 34px, 14px. Links (New chat, AI
+ * skills, sub-items) use the main text colour; group titles are gray, 600.
+ * Selected = the selected fill, main text, 600.
+ */
 const ROW =
-  'focus-ring h-[34px] gap-2.5 rounded-lg px-2.5 text-sm text-ink-secondary hover:bg-[#F1F3F5] hover:text-ink data-[active=true]:bg-[#EEF1F4] data-[active=true]:font-semibold data-[active=true]:text-ink [&>svg]:size-4'
+  'focus-ring h-[34px] gap-2.5 rounded-lg px-2.5 text-sm text-ink hover:bg-hover hover:text-ink active:bg-hover active:text-ink data-[active=true]:bg-selected data-[active=true]:font-semibold data-[active=true]:text-ink [&>svg]:size-4'
+const GROUP_ROW = cn(ROW, 'font-semibold text-ink-soft hover:text-ink-soft active:text-ink-soft data-[state=open]:hover:bg-hover data-[state=open]:hover:text-ink-soft')
 const CHILD_ROW =
-  'focus-ring flex h-[30px] w-full min-w-0 items-center gap-2 rounded-lg pl-9 pr-2.5 text-[13px] text-ink-secondary hover:bg-[#F1F3F5] hover:text-ink data-[active=true]:bg-[#EEF1F4] data-[active=true]:font-semibold data-[active=true]:text-ink'
+  'focus-ring flex h-[30px] w-full min-w-0 items-center gap-2 rounded-lg pl-9 pr-2.5 text-[13px] text-ink hover:bg-hover data-[active=true]:bg-selected data-[active=true]:font-semibold'
 const TAG = 'ml-auto shrink-0 text-[11px] font-normal text-ink-muted'
 
 /**
@@ -101,11 +108,11 @@ function AppSidebar() {
                 closeOnMobile()
                 setSearchOpen(true)
               }}
-              className="focus-ring h-[34px] gap-2 rounded-lg border border-[#E6EAEE] bg-[#F3F5F7] px-2.5 text-sm text-ink-muted hover:bg-[#EEF1F4] hover:text-ink-muted [&>svg]:size-4"
+              className="focus-ring h-[34px] gap-2 rounded-lg border border-field-border bg-field px-2.5 text-sm text-ink-muted hover:bg-selected hover:text-ink-muted active:bg-selected active:text-ink-muted [&>svg]:size-4"
             >
               <Search strokeWidth={ICON_STROKE} aria-hidden />
               <span>Search</span>
-              <kbd className="ml-auto rounded-md border border-line-card bg-white px-1.5 font-sans text-[11px] leading-[18px] text-ink-muted group-data-[collapsible=icon]:hidden">
+              <kbd className="ml-auto rounded-md border border-line-card bg-card px-1.5 font-sans text-[11px] leading-[18px] text-ink-muted group-data-[collapsible=icon]:hidden">
                 ⌘K
               </kbd>
             </SidebarMenuButton>
@@ -141,7 +148,7 @@ function AppSidebar() {
 
         {recent.length > 0 && (
           <SidebarMenu className="group-data-[collapsible=icon]:hidden">
-            <CollapsibleRow label="Recent" icon={Clock} defaultOpen>
+            <CollapsibleRow label="Recent" icon={Clock} defaultOpen={false}>
               {recent.map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} onClick={closeOnMobile} className={CHILD_ROW} title={item.label}>
@@ -155,11 +162,15 @@ function AppSidebar() {
       </SidebarContent>
 
       {/* Pinned to the bottom: SidebarContent takes the free height and scrolls, so the footer never overlaps the groups. */}
-      <SidebarFooter className="border-t border-line-divider p-0 px-3 group-data-[collapsible=icon]:hidden">
-        <Link href="/" onClick={closeOnMobile} className="focus-ring flex rounded-lg px-2 py-3">
+      <SidebarFooter className="flex-row items-center justify-between gap-2 border-t border-line-divider px-3 py-2 group-data-[collapsible=icon]:hidden">
+        {/* px-2.5 lines the logo up with the row icons above. The white logo is an existing file, used in the dark theme. */}
+        <Link href="/" onClick={closeOnMobile} className="focus-ring flex rounded-lg px-2.5 py-2">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={SITE.headerLogo.src} alt={SITE.headerLogo.alt} className="h-4 w-auto" />
+          <img src={SITE.headerLogo.src} alt={SITE.headerLogo.alt} className="h-4 w-auto dark:hidden" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={SITE.headerLogo.darkSrc} alt={SITE.headerLogo.alt} className="hidden h-4 w-auto dark:block" />
         </Link>
+        <ThemeToggle />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
@@ -169,7 +180,7 @@ function AppSidebar() {
 function SidebarGroupRow({ group, activeId, onNavigate }: { group: NavGroup; activeId?: string; onNavigate: () => void }) {
   const hasActive = group.items.some((i) => i.id === activeId)
   return (
-    <CollapsibleRow label={group.label} icon={group.icon} defaultOpen={group.defaultOpen || hasActive}>
+    <CollapsibleRow label={group.label} icon={group.icon} defaultOpen={hasActive}>
       {group.items.map((item) => (
         <li key={item.id}>
           <ChildRow item={item} active={item.id === activeId} onNavigate={onNavigate} />
@@ -191,7 +202,8 @@ function CollapsibleRow({
   defaultOpen: boolean
   children: React.ReactNode
 }) {
-  // null = follow defaultOpen (it opens when the current page moves into the group); a click makes it explicit.
+  // Closed by default and not remembered between visits. null = follow defaultOpen (the group opens when the
+  // current page moves into it); a click makes it explicit.
   const [userOpen, setUserOpen] = useState<boolean | null>(null)
   const open = userOpen ?? defaultOpen
   const { state, setOpen: setSidebarOpen } = useSidebar()
@@ -211,10 +223,10 @@ function CollapsibleRow({
     >
       <SidebarMenuItem>
         <CollapsibleTrigger asChild>
-          <SidebarMenuButton tooltip={label} className={ROW}>
+          <SidebarMenuButton tooltip={label} className={GROUP_ROW}>
             <Icon strokeWidth={ICON_STROKE} aria-hidden />
             <span>{label}</span>
-            <Chevron className="ml-auto !size-3.5 text-ink-muted group-data-[collapsible=icon]:hidden" strokeWidth={ICON_STROKE} aria-hidden />
+            <Chevron className="ml-auto !size-3.5 group-data-[collapsible=icon]:hidden" strokeWidth={ICON_STROKE} aria-hidden />
           </SidebarMenuButton>
         </CollapsibleTrigger>
         <CollapsibleContent>
@@ -236,7 +248,7 @@ function ChildRow({ item, active, onNavigate }: { item: NavItem; active: boolean
   }
   if (item.external) {
     return (
-      <a href={item.path} target="_blank" rel="noopener noreferrer" onClick={onNavigate} aria-label={externalLinkLabel(item.label)} className={CHILD_ROW}>
+      <a href={item.path} target="_blank" rel="noopener noreferrer" onClick={onNavigate} aria-label={externalLinkLabel(item.label, item.id as OutputType)} className={CHILD_ROW}>
         <span className="truncate">{item.label}</span>
         <ArrowUpRight className="ml-auto h-3.5 w-3.5 shrink-0 text-ink-muted" strokeWidth={1.75} aria-hidden />
       </a>
@@ -269,7 +281,7 @@ export function SidePanelToggle() {
     <button
       type="button"
       onClick={toggleSidebar}
-      className="focus-ring -ml-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-ink-muted transition-colors hover:bg-[#EEF1F4] hover:text-ink"
+      className="focus-ring -ml-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-ink-muted transition-colors hover:bg-selected hover:text-ink"
       aria-label="Toggle side panel"
     >
       <PanelLeft className="h-[18px] w-[18px]" strokeWidth={ICON_STROKE} aria-hidden />

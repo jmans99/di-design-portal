@@ -155,7 +155,7 @@ export function IllustrationConfigurator() {
                   onClick={() => setOutlineColor(opt.value)}
                   className={`flex items-center gap-3 rounded-2xl border px-4 py-3 text-left text-sm font-medium transition-smooth-transform active:scale-[0.99] ${
                     outlineColor === opt.value
-                      ? 'border-primary-300 bg-primary-50/70 text-foreground'
+                      ? 'border-chosen-border bg-chosen/70 text-foreground'
                       : 'border-border bg-card text-foreground hover:bg-secondary/60'
                   }`}
                 >
@@ -314,7 +314,7 @@ function ToggleButton({
       onClick={onClick}
       className={`flex-1 rounded-full border px-4 py-2.5 text-sm font-medium transition-smooth-transform active:scale-[0.98] ${
         active
-          ? 'border-primary-300 bg-primary-50 text-primary-700'
+          ? 'border-chosen-border bg-chosen text-link'
           : 'border-border bg-card text-foreground hover:bg-secondary/60'
       } ${className}`}
     >

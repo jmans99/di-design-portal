@@ -38,7 +38,7 @@ export function BackgroundToggle({
             title={label}
             onClick={() => onChange(mode)}
             className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium capitalize transition-smooth-transform active:scale-[0.97] ${
-              active ? 'bg-primary-50 text-primary-700' : 'text-muted-foreground hover:text-foreground'
+              active ? 'bg-chosen text-link' : 'text-muted-foreground hover:text-foreground'
             }`}
           >
             {mode === 'light' ? (

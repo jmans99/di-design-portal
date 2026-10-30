@@ -454,13 +454,13 @@ export function AbstractMapGenerator() {
           <CollapsibleTrigger
             className={cn(
               'relative flex w-full items-center gap-3 rounded-2xl border border-border bg-card px-4 py-3 text-left transition-smooth-transform hover:bg-secondary/60 active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-              (advancedOpen || advancedChanged) && 'border-primary-300',
+              (advancedOpen || advancedChanged) && 'border-chosen-border',
             )}
           >
             {/* Sits on the top border so it never squeezes the label. */}
             {advancedChanged && (
-              <span className="absolute -top-2 right-4 inline-flex items-center gap-1 rounded-full border border-primary-300 bg-primary-50 px-1.5 py-px text-[10px] font-semibold uppercase tracking-wider text-primary-700">
-                <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-primary-600" />
+              <span className="absolute -top-2 right-4 inline-flex items-center gap-1 rounded-full border border-chosen-border bg-chosen px-1.5 py-px text-[10px] font-semibold uppercase tracking-wider text-link">
+                <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-link" />
                 Changed
               </span>
             )}
@@ -829,7 +829,7 @@ function ToggleButton({
       className={cn(
         'flex-1 whitespace-nowrap rounded-full border px-4 py-2.5 text-sm font-medium transition-smooth-transform active:scale-[0.98]',
         active
-          ? 'border-primary-300 bg-primary-50 text-primary-700'
+          ? 'border-chosen-border bg-chosen text-link'
           : 'border-border bg-card text-foreground hover:bg-secondary/60',
       )}
     >

@@ -5,6 +5,8 @@
 
 export type SiteLogo = {
   src: string
+  /** White version for the dark theme (an existing file; the original is never edited). */
+  darkSrc: string
   alt: string
   /** Height class; the logos have different aspect ratios. */
   className: string
@@ -29,6 +31,9 @@ export const SITE: SiteConfig = {
     description:
       'Generate brand-compliant visual assets for Digital Inclusion partners. Logos, colors, and typography — all in one operational tool.',
   },
-  headerLogo: { src: '/logos/unicef-digital-inclusion-blue.svg', alt: 'UNICEF Digital Inclusion', className: 'h-7' },
+  headerLogo: {
+    src: '/logos/unicef-digital-inclusion-blue.svg',
+    darkSrc: '/logos/unicef-digital-inclusion-white.svg',
+    alt: 'UNICEF Digital Inclusion', className: 'h-7' },
   themeColor: '#00AEEF',
 }

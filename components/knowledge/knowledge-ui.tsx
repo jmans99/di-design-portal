@@ -7,7 +7,7 @@ const ICON_STROKE = 1.5
 /** Shown at the top of every Knowledge page. */
 export function BetaNote() {
   return (
-    <p className="mb-6 flex items-start gap-2 rounded-xl border border-primary-100 bg-primary-50 px-4 py-3 text-sm text-primary-800">
+    <p className="mb-6 flex items-start gap-2 rounded-xl border border-pill-accent-border bg-chosen px-4 py-3 text-sm text-link-hover">
       <Info className="mt-0.5 h-4 w-4 shrink-0" strokeWidth={ICON_STROKE} aria-hidden />
       Beta: this content is still being validated by the team.
     </p>

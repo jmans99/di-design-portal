@@ -29,20 +29,14 @@ export function SlidesArt({ scale = 1 }: { scale?: number }) {
   )
 }
 
-/** Mini slides for the DI Master deck tile: a cover across two rows, then four content slides. */
+/** Mini slides for the DI Master deck tile: a tall cover, then two small content slides. */
 export function MasterDeckArt() {
   const slide = 'rounded-[5px] border border-[#DAF1FF] bg-white p-1.5'
   return (
-    <span aria-hidden className="grid shrink-0 gap-1.5" style={{ gridTemplateColumns: '76px 52px 52px', gridTemplateRows: '38px 38px' }}>
+    <span aria-hidden className="grid shrink-0 gap-1.5" style={{ gridTemplateColumns: '76px 52px', gridTemplateRows: '38px 38px' }}>
       <span className="row-span-2 flex flex-col justify-end gap-1 rounded-[6px] bg-gradient-to-b from-[#00AEEF] to-[#01689D] p-2">
         <span className="block h-1 w-3/4 rounded-full bg-white" />
         <span className="block h-1 w-1/2 rounded-full bg-white/70" />
-      </span>
-      {/* Palette strip */}
-      <span className={`${slide} flex items-end gap-0.5`}>
-        {['#0F4772', '#01689D', '#00AEEF', '#82D3FF'].map((c) => (
-          <span key={c} className="block h-3 flex-1 rounded-[2px]" style={{ backgroundColor: c }} />
-        ))}
       </span>
       {/* Two text lines */}
       <span className={`${slide} flex flex-col justify-center gap-1`}>
@@ -55,12 +49,39 @@ export function MasterDeckArt() {
           <span key={h} className="block w-2 rounded-t-[2px]" style={{ height: `${h}%`, backgroundColor: ['#B5E4FF', '#49BCF6', '#01689D'][i] }} />
         ))}
       </span>
-      {/* 2x2 cards */}
-      <span className={`${slide} grid grid-cols-2 gap-[3px]`}>
-        {['#DAF1FF', '#82D3FF', '#00AEEF', '#01689D'].map((c) => (
-          <span key={c} className="block rounded-[2px]" style={{ backgroundColor: c }} />
-        ))}
-      </span>
+    </span>
+  )
+}
+
+/** A folded map (three panels) with a location pin, for "Make a map". */
+export function MapArt() {
+  return (
+    <svg aria-hidden width="40" height="36" viewBox="0 0 40 36" className="block shrink-0">
+      <path d="M2 6 14 2v28L2 34Z" fill="#00AEEF" />
+      <path d="M14 2l12 4v28l-12-4Z" fill="#00AEEF" fillOpacity=".62" />
+      <path d="M26 6 38 2v28l-12 4Z" fill="#00AEEF" />
+      <path d="M20 7.5c-3.3 0-6 2.6-6 5.9 0 4.4 6 10.1 6 10.1s6-5.7 6-10.1c0-3.3-2.7-5.9-6-5.9Z" fill="#FFFFFF" />
+      <circle cx="20" cy="13.4" r="2.2" fill="#01689D" />
+    </svg>
+  )
+}
+
+/** The real DI and Giga logos, small and stacked, for "Get a logo". White versions in the dark theme. */
+export function LogoArt() {
+  const logos = [
+    { light: '/logos/unicef-digital-inclusion-blue.svg', dark: '/logos/unicef-digital-inclusion-white.svg', height: 13 },
+    { light: '/logos/giga-main-horizontal.svg', dark: '/generated/logos/giga-main-horizontal-white.svg', height: 18 },
+  ]
+  return (
+    <span aria-hidden className="flex shrink-0 flex-col items-end gap-1.5">
+      {logos.map((logo) => (
+        <span key={logo.light} className="block">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={logo.light} alt="" className="block w-auto dark:hidden" style={{ height: logo.height }} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={logo.dark} alt="" className="hidden w-auto dark:block" style={{ height: logo.height }} />
+        </span>
+      ))}
     </span>
   )
 }

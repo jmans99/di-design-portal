@@ -91,7 +91,7 @@ export function BackgroundsPicker() {
       {/* Preview panel */}
       <div className="order-1 flex min-h-0 flex-1 flex-col gap-4 lg:order-2 lg:sticky lg:top-[calc(4rem+24px)] lg:h-fit lg:min-w-0">
         <PreviewPanel dark className="min-h-0" contentClassName="p-0">
-          <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#0a0a0a]">
+          <div className="relative aspect-[16/9] w-full overflow-hidden bg-preview-dark">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={preset.src}

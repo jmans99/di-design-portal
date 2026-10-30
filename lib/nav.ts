@@ -32,14 +32,16 @@ export type NavItem = {
   tag?: string
   /** Opens an external tool in a new tab (lib/external-tools.ts). */
   external?: boolean
+  /** Search words besides the label, e.g. an old name ("Brand guidelines"). */
+  aliases?: string[]
 }
 
 export type NavGroup = {
   id: string
   label: string
   icon: LucideIcon
-  /** Open when the page loads. */
-  defaultOpen: boolean
+  /** Search words besides the label, e.g. an old name ("Assets"). */
+  aliases?: string[]
   items: NavItem[]
 }
 
@@ -53,14 +55,16 @@ const CREATE_ITEMS: NavItem[] = FORMATS.map((format) => ({
   external: !!format.external,
 }))
 
-/** Side panel groups, in display order (docs/design/dot-home.md, section 1). */
+/**
+ * Side panel groups, in display order (docs/design/dot-home.md, section 1).
+ * Every group starts closed; the one holding the current page opens itself.
+ */
 export const SIDEBAR_GROUPS: NavGroup[] = [
-  { id: 'create', label: 'Create', icon: PenLine, defaultOpen: true, items: CREATE_ITEMS },
+  { id: 'create', label: 'Create', icon: PenLine, items: CREATE_ITEMS },
   {
     id: 'knowledge',
     label: 'Knowledge',
     icon: Library,
-    defaultOpen: false,
     items: [
       { id: 'audiences', path: '/knowledge/audiences', label: 'Audiences', icon: Users },
       { id: 'facilities', path: '/knowledge/facilities', label: 'Facilities', icon: School },
@@ -72,9 +76,9 @@ export const SIDEBAR_GROUPS: NavGroup[] = [
   },
   {
     id: 'assets',
-    label: 'Assets',
+    label: 'Brand assets',
+    aliases: ['assets'],
     icon: FolderOpen,
-    defaultOpen: true,
     items: [
       { id: 'logos', path: '/logos', label: 'Logos', icon: Shapes },
       { id: 'illustrations', path: '/illustrations', label: 'Illustrations', icon: ImageIcon },
@@ -84,13 +88,13 @@ export const SIDEBAR_GROUPS: NavGroup[] = [
   },
   {
     id: 'brand',
-    label: 'Brand',
+    label: 'Brand guidelines',
+    aliases: ['brand'],
     icon: Palette,
-    defaultOpen: false,
     items: [
       { id: 'colors', path: '/colors', label: 'Colors', icon: Palette },
       { id: 'typography', path: '/typography', label: 'Typography', icon: Type },
-      { id: 'brand-guidelines', path: '/guidelines/brand', label: 'Brand guidelines', icon: BookOpen },
+      { id: 'brand-guidelines', path: '/guidelines/brand', label: 'DI guidelines', icon: BookOpen, aliases: ['brand guidelines'] },
       { id: 'video-guidelines', path: '/guidelines/video', label: 'Video guidelines', icon: Video },
     ],
   },

@@ -110,7 +110,7 @@ export function SocialMediaStudio() {
               className={cn(
                 'flex items-center justify-between rounded-2xl border px-3 py-2 text-left text-sm font-medium transition-smooth-transform active:scale-[0.99]',
                 taglinePreset === preset.id
-                  ? 'border-primary-300 bg-primary-50/70 text-foreground'
+                  ? 'border-chosen-border bg-chosen/70 text-foreground'
                   : 'border-border bg-card text-foreground hover:bg-secondary/60'
               )}
             >

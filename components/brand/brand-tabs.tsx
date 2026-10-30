@@ -45,7 +45,8 @@ export function BrandTabs({ className }: { className?: string }) {
           className={cn(
             'inline-flex items-center justify-center whitespace-nowrap rounded-full px-4 font-sans text-sm font-semibold text-white transition-colors',
             'hover:bg-white/[.14] data-[state=active]:bg-white data-[state=active]:text-primary-700 data-[state=active]:shadow-[0_1px_2px_rgba(26,42,60,.15)]',
-            'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1A2A3C]',
+            // The track stays DI 700 with white text in both themes; the focus outline follows the theme's text colour.
+            'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink',
           )}
         >
           {BRAND_LABELS[brand]}
@@ -63,10 +64,11 @@ export function BrandTabsContent({ brand, children, className }: { brand: Brand;
   )
 }
 
+/** Light: DI 50 / DI 700, #EEF1F4 / main text, #F2F4F6 / secondary text. Dark: all on #22364C, text #82D3FF, #F8F8F8, #B8C4D0. */
 const PILL_COLOURS: Record<AssetBrand, string> = {
-  di: 'bg-primary-50 text-primary-700',
-  giga: 'bg-[#EEF1F4] text-ink',
-  both: 'bg-[#F2F4F6] text-ink-secondary',
+  di: 'bg-accent text-link',
+  giga: 'bg-selected text-ink',
+  both: 'bg-subtle text-ink-secondary',
 }
 
 /**

@@ -44,6 +44,7 @@ const config: Config = {
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
+          hover: 'hsl(var(--primary-hover))',
           // Values live in app/globals.css (:root).
           50: 'rgb(var(--primary-50) / <alpha-value>)',
           100: 'rgb(var(--primary-100) / <alpha-value>)',
@@ -75,16 +76,55 @@ const config: Config = {
           red: '#ed1c24',
         },
         navy: '#1a2a3c',
-        // DI text and line colours (docs/design/dot-home.md).
+        // DI theme tokens (app/globals.css; docs/design/dot-home.md, "Theme").
         ink: {
-          DEFAULT: '#1A2A3C',
-          secondary: '#3B4A5A',
-          muted: '#5C6B7A',
+          DEFAULT: 'rgb(var(--ink) / <alpha-value>)',
+          secondary: 'rgb(var(--ink-secondary) / <alpha-value>)',
+          muted: 'rgb(var(--ink-muted) / <alpha-value>)',
+          soft: 'rgb(var(--ink-soft) / <alpha-value>)',
+        },
+        link: {
+          DEFAULT: 'rgb(var(--link) / <alpha-value>)',
+          hover: 'rgb(var(--link-hover) / <alpha-value>)',
         },
         line: {
-          card: '#E3E8EE',
-          divider: '#EBEEF2',
-          dashed: '#C9D2DB',
+          card: 'rgb(var(--line-card) / <alpha-value>)',
+          divider: 'rgb(var(--line-divider) / <alpha-value>)',
+          dashed: 'rgb(var(--line-dashed) / <alpha-value>)',
+        },
+        subtle: 'rgb(var(--subtle) / <alpha-value>)',
+        selected: 'rgb(var(--selected) / <alpha-value>)',
+        hover: {
+          DEFAULT: 'rgb(var(--hover) / <alpha-value>)',
+          soft: 'rgb(var(--hover-soft) / <alpha-value>)',
+        },
+        field: {
+          DEFAULT: 'rgb(var(--field) / <alpha-value>)',
+          border: 'rgb(var(--field-border) / <alpha-value>)',
+        },
+        thumb: 'rgb(var(--thumb) / <alpha-value>)',
+        chosen: {
+          DEFAULT: 'rgb(var(--chosen) / <alpha-value>)',
+          border: 'rgb(var(--chosen-border) / <alpha-value>)',
+        },
+        pill: {
+          DEFAULT: 'rgb(var(--pill) / <alpha-value>)',
+          'muted-foreground': 'rgb(var(--pill-muted-foreground) / <alpha-value>)',
+          'accent-border': 'rgb(var(--pill-accent-border) / <alpha-value>)',
+        },
+        // Asset preview canvases. Fixed in both themes: they show the real file.
+        preview: {
+          light: '#FFFFFF',
+          canvas: '#F8F8F8',
+          navy: '#1A2A3C',
+          dark: '#161616',
+          'dark-border': '#393939',
+        },
+        tile: {
+          map: 'var(--tile-map)',
+          'two-pager': 'var(--tile-two-pager)',
+          master: 'var(--tile-master)',
+          'master-border': 'var(--tile-master-border)',
         },
         'accent-orange': 'hsl(var(--accent-orange))',
         'accent-green': {
@@ -135,6 +175,15 @@ const config: Config = {
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))',
         },
+      },
+      boxShadow: {
+        box: 'var(--shadow-box)',
+        menu: 'var(--shadow-menu)',
+        tile: 'var(--shadow-tile)',
+        thumb: 'var(--thumb-shadow)',
+      },
+      ringOffsetColor: {
+        DEFAULT: 'hsl(var(--background))',
       },
       borderRadius: {
         DEFAULT: 'var(--radius)',
