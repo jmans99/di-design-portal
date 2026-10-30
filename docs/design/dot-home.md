@@ -290,19 +290,25 @@ row and Dot's messages stay static. CSS only (components/dot/dot-orb.module.css)
 no animation library, and only transform and opacity animate (never
 box-shadow or background), so it stays smooth.
 
-- Look: unchanged, the same radial gradient
+- Look: the same radial gradient as the static orb
   (circle at 32% 28%, #FFFFFF 0%, #D9FFF0 18%, #6EF2C4 46%, #22B99A 68%,
-  #0B6E5C 100%) and shadow.
+  #0B6E5C 100%) and the outer drop shadow 0 6px 18px rgba(34,185,154,.35).
+  The fixed inset shadow (inset 0 -3px 8px …) is not used on the animated orb:
+  it would read as a second, fixed light.
+- One light source, and it moves: the whole gradient (its white highlight and
+  its dark edge) is on an inner layer, a circle the size of the orb, clipped by
+  the orb (overflow hidden, radius 999px). That layer sways with transform:
+  rotate(-40deg) ↔ rotate(40deg), 6s, ease-in-out, infinite, alternate, so the
+  highlight and the shaded side move together and the light always comes from
+  above. There is no separate highlight layer.
 - Breathing: the orb scales 1 → 1.04 → 1 from its centre, 4s, ease-in-out,
   infinite.
-- Moving highlight: a pseudo-element on top, a soft white radial highlight
-  (white at 75% opacity near the top left, transparent by 45% of the radius).
-  It turns around the orb's centre, 10s, linear, infinite, clipped to the
-  circle (overflow hidden, radius 999px), like light moving over a glass ball.
 - Glow: a pseudo-element behind the orb, a #22B99A circle with 12px blur. Its
-  opacity goes 0.35 → 0.6 → 0.35, 4s, in step with the breathing.
-- Reduced motion (prefers-reduced-motion: reduce): no animation; the static
-  orb with its usual shadow, no highlight or glow.
+  opacity goes 0.35 → 0.6 → 0.35, 4s, in step with the breathing. It is not a
+  light on the orb's surface.
+- Reduced motion (prefers-reduced-motion: reduce): no animation; the inner
+  layer stays at rotate(0), the original static look, with the drop shadow
+  and no glow.
 - The orb is decorative (aria-hidden). Its box keeps its size, so the scaling
   never moves the heading text.
 
