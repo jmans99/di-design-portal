@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useSyncExternalStore } from 'react'
 import { useTheme } from 'next-themes'
 import { Monitor, Moon, Sun } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -11,6 +11,8 @@ const OPTIONS = [
   { value: 'dark', label: 'Dark theme', icon: Moon },
 ] as const
 
+const noop = () => () => {}
+
 /**
  * Theme switch in the side panel footer: a segmented control of three round
  * buttons (System, Light, Dark). A radio group: arrow keys move the choice,
@@ -19,8 +21,11 @@ const OPTIONS = [
 export function ThemeToggle({ className }: { className?: string }) {
   const { theme, setTheme } = useTheme()
   // The saved theme is only known in the browser: select nothing until then, so the server markup matches.
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => setMounted(true), [])
+  const mounted = useSyncExternalStore(
+    noop,
+    () => true,
+    () => false,
+  )
   const current = mounted ? (theme ?? 'system') : null
   const refs = useRef<(HTMLButtonElement | null)[]>([])
 
