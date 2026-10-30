@@ -4,8 +4,10 @@
  * - .orb breathes (scale 1 → 1.04, 4s) and clips its contents to the circle.
  *   It keeps the outer drop shadow; the fixed inset shadow is gone.
  * - .light carries the orb's whole gradient (white highlight to dark edge) and
- *   sways between rotate(-28deg) and rotate(28deg), 6s, so the highlight and
- *   the shaded side move together as one light from above.
+ *   sways between rotate(15deg) and rotate(71deg), 6s, so the highlight and
+ *   the shaded side move together as one light from above. The gradient's
+ *   highlight sits 43° left of the top at rest, so this swings it evenly from
+ *   upper-left (-28°) to upper-right (+28°) across the top.
  * - The green glow behind the orb pulses with the breathing (opacity .35 → .6,
  *   4s); it is not a light on the surface.
  * Reduced motion: no animation, .light at rotate(0) (the original look), no glow.
@@ -47,7 +49,7 @@
   position: absolute;
   inset: 0;
   border-radius: 999px;
-  transform: rotate(-28deg);
+  transform: rotate(15deg);
   transform-origin: center;
   animation: sway 6s ease-in-out infinite alternate;
   will-change: transform;
@@ -75,10 +77,10 @@
 
 @keyframes sway {
   from {
-    transform: rotate(-28deg);
+    transform: rotate(15deg);
   }
   to {
-    transform: rotate(28deg);
+    transform: rotate(71deg);
   }
 }
 

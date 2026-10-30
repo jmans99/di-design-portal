@@ -298,9 +298,11 @@ box-shadow or background), so it stays smooth.
 - One light source, and it moves: the whole gradient (its white highlight and
   its dark edge) is on an inner layer, a circle the size of the orb, clipped by
   the orb (overflow hidden, radius 999px). That layer sways with transform:
-  rotate(-28deg) ↔ rotate(28deg), 6s, ease-in-out, infinite, alternate, so the
+  rotate(15deg) ↔ rotate(71deg), 6s, ease-in-out, infinite, alternate, so the
   highlight and the shaded side move together and the light always comes from
-  above. There is no separate highlight layer.
+  above. At rotate(0) the gradient's highlight sits 43° left of the top, so
+  this range swings it evenly across the top, from upper-left (about −28°) to
+  upper-right (about +28°). There is no separate highlight layer.
 - Breathing: the orb scales 1 → 1.04 → 1 from its centre, 4s, ease-in-out,
   infinite.
 - Glow: a pseudo-element behind the orb, a #22B99A circle with 12px blur. Its
