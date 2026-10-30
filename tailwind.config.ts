@@ -104,6 +104,7 @@ const config: Config = {
         },
         thumb: 'rgb(var(--thumb) / <alpha-value>)',
         'toggle-track': 'rgb(var(--toggle-track) / <alpha-value>)',
+        'switch-thumb': 'rgb(var(--switch-thumb) / <alpha-value>)',
         chosen: {
           DEFAULT: 'rgb(var(--chosen) / <alpha-value>)',
           border: 'rgb(var(--chosen-border) / <alpha-value>)',

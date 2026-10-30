@@ -1,6 +1,8 @@
 'use client'
 
+import { useId } from 'react'
 import { ArrowUpRight, Plus } from 'lucide-react'
+import { Switch } from '@/components/ui/switch'
 import { FormatIcon } from '@/components/dot/format-icon'
 import {
   DropdownMenu,
@@ -18,6 +20,30 @@ import styles from './dot.module.css'
 /** The round send button in Dot's box and the reply bar: primary, disabled when there is no text. */
 export const SEND_BUTTON =
   'focus-ring flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:bg-line-dashed disabled:text-background'
+
+/**
+ * "Use DI knowledge" (Dot's box and the reply bar, while showKnowledgeToggle is
+ * on in lib/dot/settings.ts). It only sets useKnowledge in the brief.
+ * Track: primary when on (#01689D / #49BCF6), dashed-line colour when off
+ * (#C9D2DB / #3A5068); knob #FFFFFF / #0F1823; label secondary text. Space
+ * toggles it (Radix Switch is a button with role="switch").
+ */
+export function KnowledgeSwitch({ checked, onCheckedChange }: { checked: boolean; onCheckedChange: (value: boolean) => void }) {
+  const id = useId()
+  return (
+    <div className="flex shrink-0 items-center gap-2">
+      <Switch
+        id={id}
+        checked={checked}
+        onCheckedChange={onCheckedChange}
+        className="focus-ring h-5 w-9 data-[state=checked]:bg-primary data-[state=unchecked]:bg-line-dashed [&>span]:h-4 [&>span]:w-4 [&>span]:bg-switch-thumb [&>span]:shadow-sm [&>span]:data-[state=checked]:translate-x-4"
+      />
+      <label htmlFor={id} className="cursor-pointer whitespace-nowrap text-[13px] text-ink-secondary">
+        Use DI knowledge
+      </label>
+    </div>
+  )
+}
 
 /** Formats in the + menu (docs/design/dot-home.md, 2d). Social post moved here when "Make a map" took its home tile. */
 const MORE_FORMATS: OutputType[] = ['social-post', 'map', 'engagement-map', 'background', 'email-signature']

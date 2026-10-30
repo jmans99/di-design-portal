@@ -4,7 +4,8 @@
  */
 
 /**
- * The "Use DI knowledge" switch in Dot's box (home and reply bar). Hidden for
- * now: the brief keeps useKnowledge = true by default.
+ * The "Use DI knowledge" switch in Dot's box (home and reply bar). Shown for a
+ * proof-of-concept demo: it only sets useKnowledge in the brief (on by
+ * default) and changes nothing else yet. Set to false to hide it again.
  */
-export const showKnowledgeToggle = false
+export const showKnowledgeToggle = true
