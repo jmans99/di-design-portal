@@ -11,7 +11,8 @@ matched with simple keywords.
 
 ## Design tokens
 
-Use the existing Tailwind/CSS variables where they exist.
+Use the existing Tailwind/CSS variables where they exist. The values below
+are the light theme; the dark theme is in "Theme" at the end.
 
 - DI blue: 50 #EEF9FF, 100 #DAF1FF, 200 #B5E4FF, 300 #82D3FF, 400 #49BCF6,
   500 #00AEEF, 600 #008AC5, 700 #01689D, 800 #0F4772, 900 #1A2A3C (navy).
@@ -35,7 +36,7 @@ Use the existing Tailwind/CSS variables where they exist.
 
 Replaces the current side panel styling and structure.
 
-- Width 264px, background #FAFAFA, right border 1px #EBEEF2,
+- Width 264px, background #FFFFFF, right border 1px #EBEEF2,
   padding 20px 12px, gap 18px between blocks. Keep the existing shadcn Sidebar
   behaviour (collapse, mobile off-canvas, cookie for state).
 - Header: the Dot orb (28px, static) and, 10px to its right, two lines:
@@ -43,11 +44,14 @@ Replaces the current side panel styling and structure.
   "Your AI content designer" (Open Sans 400, 12px, #5C6B7A). The orb and the
   two lines link to / (accessible name "Dot home"). "Beta" badge on the right
   (11px, 600, navy text on #F7761F, pill, 2px 8px).
-- Footer (shadcn SidebarFooter, pinned to the bottom): the DI logo
-  (/logos/unicef-digital-inclusion-blue.svg), 16px high (width auto), padding 12px 8px,
-  left aligned with the rows, with a 1px #EBEEF2 line above it. It links to /
-  (alt "UNICEF Digital Inclusion"). The groups scroll above it, so the footer
-  stays at the bottom when they are short and never overlaps them when they
+- Footer (shadcn SidebarFooter, pinned to the bottom), one row with a 1px
+  #EBEEF2 line above it: the DI logo on the left and the theme toggle on the
+  right (see "Theme"), vertically centred. The logo
+  (/logos/unicef-digital-inclusion-blue.svg; the existing white file
+  /logos/unicef-digital-inclusion-white.svg in the dark theme) is 16px high
+  (width auto), and its left edge lines up with the row icons above. It links
+  to / (alt "UNICEF Digital Inclusion"). The groups scroll above the footer, so
+  it stays at the bottom when they are short and never overlaps them when they
   are long.
 - Collapsed (icons only): the header shows only the orb; the footer is hidden.
   The mobile sheet has the same header and footer as desktop.
@@ -57,20 +61,29 @@ Replaces the current side panel styling and structure.
   Opens the search/command palette (see section 4). ⌘K / Ctrl+K also opens it.
 - "New chat" row: 16px Dot orb + "New chat". Goes to / and clears any
   conversation state.
-- Groups (rows 34px, 14px, #3B4A5A, 16px lucide icons, radius 8, gap 10px;
-  chevron right when closed, down when open; children rows 30px, 13px,
-  left padding 36px):
-  - Create (open by default): Deck, Social post, Two-pager, Map,
-    Engagement map, Virtual background, Email signature.
-    Deck and Two-pager keep a small "Soon" tag if those tools are not built.
-    Each goes to its existing tool page (Deck goes to the deck step, section 3).
-  - Knowledge (closed by default): Audiences, Facilities, Systems, Offerings,
-    plus the existing "Soon" items.
-  - Assets (open by default): Logos, Illustrations, Image galleries, Photo awards.
-  - Brand (closed by default): Colors, Typography, Brand guidelines,
+- Groups (rows 34px, 16px lucide icons, radius 8, gap 10px; chevron right
+  when closed, down when open; children rows 30px, 13px, left padding 36px):
+  - Group titles (Create, Knowledge, Brand assets, Brand guidelines, Recent),
+    with their icons and chevrons: gray #6B7785, Open Sans 600, 14px. On the
+    hover fill they turn #1A2A3C, so they keep AA contrast (#6B7785 on white
+    is 4.6:1, on the hover fill only 4.1:1).
+  - Links (all sub-items, plus New chat and AI skills): #1A2A3C.
+  - Every group is closed by default, Recent included. The group that holds
+    the current page opens by itself, so the selected item shows. Open and
+    closed groups are not saved between visits.
+  - Create: Deck, Social post, Two-pager, Map, Engagement map,
+    Virtual background, Email signature. Deck and Two-pager open the external
+    builder (see "External tools"); the others go to their tool page.
+  - Knowledge: Audiences, Facilities, Systems, Offerings, plus the existing
+    "Soon" items.
+  - Brand assets: Logos, Illustrations, Image galleries, Photo awards.
+  - Brand guidelines: Colors, Typography, DI guidelines (/guidelines/brand),
     Video guidelines.
   - AI skills (single row, no children).
-- Recent (open by default, only shown if not empty): last 3 items started from
+  - Renamed in October 2026: "Assets" became "Brand assets", "Brand" became
+    "Brand guidelines", and its child "Brand guidelines" became "DI guidelines"
+    (no two items share a name). ⌘K still finds the old names.
+- Recent (closed by default, only shown if not empty): last 3 items started from
   Dot (format + template/audience if any, e.g. "Deck · Master deck"),
   stored in localStorage (wrap every read/write in try/catch). No "See all" yet.
 - Selected state (for New chat on the home page, and for the current page):
@@ -94,9 +107,12 @@ b) Dot's box: white, border 1px #E3E8EE, radius 22px,
    - Textarea, 2 rows, auto-grow to ~6 rows, no border, padding 20px 22px 4px,
      Open Sans 15px/1.5, placeholder "Describe what you want to make or find".
      Visually hidden label "Ask Dot".
-   - Bottom row, right aligned: "Use DI knowledge" switch (on by default,
-     track #01689D when on, 13px label #3B4A5A) and a 36px round send button
-     (#01689D, white up-arrow icon, aria-label "Send to Dot").
+   - Bottom row, right aligned: a 36px round send button (#01689D, white
+     up-arrow icon, aria-label "Send to Dot").
+   - The "Use DI knowledge" switch (track #01689D when on, 13px label #3B4A5A)
+     is hidden, in Dot's box and the reply bar: `showKnowledgeToggle = false`
+     in lib/dot/settings.ts. Its code is kept; set the flag to true to bring it
+     back. The brief keeps useKnowledge = true by default.
    - Enter sends, Shift+Enter adds a line. Send is disabled when empty.
    - "Use DI knowledge" is stored in the brief (lib/brief.ts, add
      useKnowledge: boolean). Tools that already read knowledge data may use it;
@@ -105,37 +121,48 @@ b) Dot's box: white, border 1px #E3E8EE, radius 22px,
 c) Bento under the box: margin-top 16px, CSS grid,
    columns 2fr 1fr 1fr 0.55fr, rows 96px 112px, gap 10px, tiles radius 16px.
    - Row 1, col 1, "Create a deck" + sub "From a template or from scratch".
-     Background #F3F8FB, border 1px #E3E8EE. Art on the right: three
+     Background #FFFFFF, border 1px #E3E8EE. Art on the right: three
      overlapping rounded "slide" cards (64x44, radius 8): back one
      linear-gradient(160deg,#82D3FF,#01689D) rotated -9deg; middle and front ones
      frosted glass (white gradient over rgba of 500/300, white 1px border)
      rotated -3deg and 5deg. Title Manrope 600 15px, sub 12px #3B4A5A.
      Opens the deck step (section 3).
-   - Row 1, col 2, "Make a social post": background #FDEEF2, small art top right
-     (34x40 #EC6A8C card with two white lines). Goes to the social media tool.
+   - Row 1, col 2, "Make a map": background #E5F6FD, small art top right
+     (40x36 folded map, three panels in #00AEEF, with a white location pin).
+     Goes to the Maps page (/materials/maps). It replaced "Make a social
+     post", which moved to the + menu.
    - Row 1, col 3, "Write a two-pager": background #EEF0FF, art top right
-     (32x42 white page, border #C9CEFF, lines #7E8CFF/#C9CEFF). Goes to the
-     two-pager tool, or if it is "Soon", Dot replies (see section 3e).
+     (32x42 white page, border #C9CEFF, lines #7E8CFF/#C9CEFF). Opens the
+     two-pager builder (see "External tools").
    - Col 4, rows 1-2, "More": white, 1px dashed #C9D2DB, centred 30px grey
      circle (#F2F4F6) with a + icon, label "More" 12px #3B4A5A.
      Opens the + menu (2d).
-   - Row 2, cols 1-3, "DI Master deck": background #EEF9FF, border 1px #DAF1FF.
+   - Row 2, cols 1-2, "DI Master deck": background #EEF9FF, border 1px #DAF1FF.
      Left: "Recommended" pill (11px 600, #01689D text, white bg, border #DAF1FF),
      title "DI Master deck" (Manrope 600 17px), sub "All 18 offerings. Dot
      tailors it to your audience." (12px #3B4A5A).
-     Right: a small grid of mini slides (columns 76px 52px 52px, rows 38px 38px,
-     gap 6px): a tall blue cover (gradient 500 to 700, two white lines) spanning
-     both rows, then four white mini slides with 1px #DAF1FF border showing a
-     palette strip, two text lines, a 3-bar chart, and a 2x2 card grid in DI blues.
-     Opens the deck step with "Master deck" already picked.
-   - Responsive: under 720px wide, 2 columns (Deck and Master deck full width,
-     More becomes a normal full-width tile). Under 420px, 1 column.
+     Right: three mini slides (columns 76px 52px, rows 38px 38px, gap 6px): a
+     tall blue cover (gradient 500 to 700, two white lines) spanning both rows,
+     then two white mini slides with 1px #DAF1FF border showing two text lines
+     and a 3-bar chart. Opens the deck step with "Master deck" already picked
+     (while it is "Coming soon", see "External tools").
+   - Row 2, col 3, "Get a logo": background #FFFFFF, border 1px #E3E8EE,
+     title "Get a logo", sub "DI and Giga logos" (12px #3B4A5A). Art top right:
+     the real DI logo (13px high) and Giga logo (18px high, its mark has more
+     air) from /public/logos, stacked; their white versions in the dark theme.
+     Links to the Logos page (/logos).
+   - Responsive (container queries on the content column): under 720px wide,
+     2 columns: Deck, Master deck and Get a logo each take a full row, Map and
+     Two-pager share a row, More becomes a normal full-width tile at the end.
+     Under 420px, 1 column (the Master deck art is hidden).
 
 d) + menu (shadcn DropdownMenu or Popover, anchored to the More tile, 260px
    wide, radius 14, shadow 0 16px 40px rgba(26,42,60,.16), padding 6px):
    heading "More formats" (12px #5C6B7A), then items with 22px coloured icon
-   squares: Make a map, Make an engagement map, Make a virtual background,
-   Make an email signature. Each goes to its tool. Full keyboard support.
+   squares: Make a social post (icon #EC6A8C), Make a map, Make an engagement
+   map, Make a virtual background, Make an email signature. Each goes to its
+   tool. Full keyboard support. Typed requests for social posts still go to
+   the social media tool.
 
 ## 3. Conversation (scripted, no AI)
 
@@ -240,18 +267,21 @@ box-shadow or background), so it stays smooth.
 Added after the first build of this spec.
 
 - Decks and two-pagers are made in the deck builder, which lives outside the
-  portal (https://un-deck-builder.vercel.app/). The URLs live in one place,
-  `lib/external-tools.ts` (`EXTERNAL_TOOLS.deck`, `EXTERNAL_TOOLS.twoPager`),
-  and everything else reads from there.
+  portal. Decks open https://un-deck-builder.vercel.app/ and two-pagers open
+  its two-pager builder, https://un-deck-builder.vercel.app/two-pager. The URLs
+  live in one place, `lib/external-tools.ts` (`EXTERNAL_TOOLS.deck`,
+  `EXTERNAL_TOOLS.twoPager`), and everything else reads from there.
 - Every deck and two-pager entry point opens the builder in a new tab
   (`target="_blank"`, `rel="noopener noreferrer"`), with a 14px external-link
   icon (lucide ArrowUpRight) and an accessible name such as "Create a deck
-  (opens the deck builder in a new tab)". The entry points are the home bento
+  (opens the deck builder in a new tab)" or "Write a two-pager (opens the
+  two-pager builder in a new tab)". The entry points are the home bento
   tiles, the side panel Create rows (no "Soon" tags), the ⌘K format rows, and
   the small tiles in Dot's "couldn't match" reply.
 - Typed requests for a deck or a two-pager don't open a tab. Dot replies
-  "Decks are made in the deck builder." (or "Two-pagers are made in the deck
-  builder.") with a primary "Open deck builder" button. These replies are not
+  "Decks are made in the deck builder." with a primary "Open deck builder"
+  button, or "Two-pagers are made in the deck builder." with a primary "Open
+  two-pager builder" button (to the two-pager link). These replies are not
   added to Recent. The side panel drops old "Soon" deck and two-pager briefs
   from Recent on load.
 - The in-portal deck flow (template bento, audience step, "coming soon" reply)
@@ -259,11 +289,72 @@ Added after the first build of this spec.
   `/?new=deck` and `/?new=two-pager` show the same reply and button.
 - The DI Master deck is "Coming soon" (`masterDeckAvailable = false`).
   - Its home tile keeps its look, with a "Coming soon" pill (white, `#5C6B7A`
-    text, 1px `#E3E8EE` border) instead of "Recommended".
+    text, 1px `#E3E8EE` border; dark: `#22364C`, `#DAF1FF` text) instead of
+    "Recommended".
   - The tile is a plain block: no link, no hover, not focusable, and read as
     "DI Master deck, coming soon".
   - A typed "master deck" gets: "The DI Master deck is coming soon. In the
     meantime, you can start a deck in the deck builder.", with the same button.
+
+## Theme
+
+Added in October 2026. Light, dark or system.
+
+- next-themes (`components/theme-provider.tsx`, in `app/layout.tsx`), class
+  strategy on `<html>`, default "system", saved per browser (localStorage
+  `theme`). Its inline script sets the class before the page paints, so there
+  is no flash of the wrong theme; `<html>` has `suppressHydrationWarning`.
+- Every colour is a CSS variable in `app/globals.css` (`:root` for light,
+  `.dark` for dark): the shadcn tokens plus the DI tokens (`ink`, `link`,
+  `line`, `subtle`, `selected`, `hover`, `field`, `chosen`, `pill`, `tile`,
+  shadows), exposed through `tailwind.config.ts`. Components use the tokens,
+  never hex values for surfaces, text, borders or buttons. Hex values stay
+  only in decorative art (`dot-art.tsx`), format colours and the tools'
+  generated output.
+- Light: main area #F8F8F8, side panel #FFFFFF (right border #EBEEF2),
+  surfaces #FFFFFF. Cards on the page are #FFFFFF with a 1px #E3E8EE border.
+- Dark:
+
+  | Token | Value |
+  | --- | --- |
+  | Main area | `#0F1823` |
+  | Side panel | `#142130`, right border `#22364C` |
+  | Surfaces (Dot's box, cards, menus, ⌘K, dialogs) | `#1A2A3C` |
+  | Hover / selected row | `#22364C` |
+  | Borders / dashed borders | `#2A3E55` / `#3A5068` |
+  | Text main / secondary / muted | `#F8F8F8` / `#B8C4D0` / `#8A9AAB` |
+  | Side panel group titles, toggle icons | `#8A9AAB` |
+  | Primary buttons | `#49BCF6`, text `#0F1823`, hover `#82D3FF` (8.4:1) |
+  | Links | `#82D3FF` (hover `#B5E4FF`) |
+  | Focus ring | 2px `#82D3FF` |
+  | Chosen option (format, colour variant…) | `#22364C`, border `#49BCF6`, text `#82D3FF` |
+  | Pills | `#22364C` with `#DAF1FF` (Coming soon), `#82D3FF` (Recommended, DI) |
+  | Destructive | `#F5666D`, text `#0F1823` |
+
+- Bento tiles in dark: Create a deck and Get a logo `#1A2A3C` with border
+  `#2A3E55`; Make a map `rgba(0,174,239,.14)`; Write a two-pager
+  `rgba(126,140,255,.16)`; Master deck `rgba(0,174,239,.10)` with border
+  `rgba(0,174,239,.25)`; More dashed `#3A5068`.
+- Unchanged in both themes: the Dot orb, the BrandTabs track (`#01689D`,
+  white text and selected segment), the deck template previews, and asset
+  previews (white artwork on navy, dark artwork on light; Logos,
+  Illustrations and Email signature previews stay white) because they show
+  the real file. Tools with their own canvases (maps, social post, email
+  signature, backgrounds, engagement map) theme the controls around them; the
+  generated output never changes.
+- Theme toggle (`components/app-shell/theme-toggle.tsx`), on the right of the
+  side panel footer: a segmented control of three round buttons, System
+  (lucide Monitor), Light (Sun), Dark (Moon).
+  - Track: 32px high, radius 999px, padding 3px, #F2F4F6 (dark #22364C).
+  - Buttons: 26px circles, 16px icons. Unselected icon #6B7785 (dark #8A9AAB).
+    Selected: #FFFFFF circle, shadow 0 1px 3px rgba(26,42,60,.18), icon
+    #1A2A3C (dark: #2A3E55 circle, icon #F8F8F8).
+  - `role="radiogroup"` ("Theme"), each button `role="radio"` named "System
+    theme", "Light theme", "Dark theme". Arrow keys move the choice and focus
+    (wrapping); only the selected button is in the tab order; visible focus
+    ring.
+  - Hidden with the footer when the side panel is collapsed to icons; the
+    mobile sheet has the same footer.
 
 ## Checks
 

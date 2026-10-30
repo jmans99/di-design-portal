@@ -39,7 +39,7 @@ Current pages (audit, October 2026):
 | Video guidelines | Giga | Giga pill |
 | Typography | shared fonts (Manrope, Open Sans) | "DI + Giga" pill |
 | Social media, Email signature, Engagement map | DI templates that also carry the Giga logo | none |
-| Backgrounds, Maps, Brand guidelines, Knowledge, AI skills | DI (Maps and Backgrounds use Giga Maps data) | none |
+| Backgrounds, Maps, DI guidelines, Knowledge, AI skills | DI (Maps and Backgrounds use Giga Maps data) | none |
 
 ## 2. Tokens
 
@@ -51,10 +51,11 @@ Current pages (audit, October 2026):
 | Segment | Open Sans 600, 14px, padding 0 16px, radius 999px |
 | Selected | background `#FFFFFF`, text `#01689D`, shadow `0 1px 2px rgba(26,42,60,.15)` |
 | Unselected | transparent, text `#FFFFFF`, hover `rgba(255,255,255,.14)` |
-| Focus | 2px `#1A2A3C` outline, offset 2px |
+| Focus | 2px outline in the main text colour (`#1A2A3C`; dark theme `#F8F8F8`), offset 2px |
 | Labels | "Digital Inclusion", "Giga" |
 
-Contrast: white on `#01689D` and `#01689D` on white are both 6.05:1.
+Contrast: white on `#01689D` and `#01689D` on white are both 6.05:1. The
+track keeps these colours in the dark theme too (it reads well on `#0F1823`).
 
 **Brand pills** (`<BrandPill />`): 12px, 600, radius 999px, padding 2px 10px.
 The same size and shape for every brand.
@@ -65,8 +66,12 @@ The same size and shape for every brand.
 | both | DI + Giga | `#F2F4F6` | `#3B4A5A` | shared page titles (Typography), result cards, ⌘K |
 | di | Digital Inclusion | `#EEF9FF` | `#01689D` | result cards and ⌘K only (DI pages get no pill) |
 
+Dark theme: every pill is on `#22364C`, with text `#F8F8F8` (giga), `#B8C4D0`
+(both) and `#82D3FF` (di), all above 6.9:1.
+
 **Result previews**: 4:3, radius 12px, contain-fit with padding. White artwork
-sits on `#1A2A3C`, everything else on `#F8F8F8`.
+sits on `#1A2A3C`, everything else on `#F8F8F8`, in both themes: the preview
+shows the real file. The card around it follows the theme.
 
 ## 3. Brand tabs behaviour
 
@@ -220,7 +225,7 @@ The search reply lives at `/?find=<query>&without=<facets>`.
   page".
 - With more than 6 results, "See all N results" opens ⌘K with the query.
 - With no results, Dot says: "I couldn't find that. Try 'DI logo' or browse
-  Assets.", with links to the Assets pages.
+  Brand assets.", with links to the Brand assets pages.
 - Searches are not added to Recent. Brief chips belong to the create flow only.
 
 ## 7. ⌘K
@@ -228,6 +233,10 @@ The search reply lives at `/?find=<query>&without=<facets>`.
 - It uses the same index and matcher. Groups appear in this order: Assets
   (when the query has asset words, meaning any facet), Formats, Pages. An
   empty query shows Formats and Pages.
+- Page rows are grouped under their side panel group ("Pages · Brand assets",
+  "Pages · Brand guidelines"). A page is found by its title first, then by its
+  other names (DI guidelines still answers to "brand guidelines"), then by its
+  group's names, old ones included ("assets", "brand").
 - Asset rows have a 32px thumbnail, title and brand pill. Enter opens the
   asset's page. ⌘Enter (Ctrl+Enter), or the row's download button, downloads
   the first format.
