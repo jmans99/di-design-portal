@@ -296,7 +296,7 @@
     /* Group titles (title, icon, chevron): darker when closed, very gray when open (the small 12px label). */
     --sidebar-group-title: 59 74 90; /* #3B4A5A, closed */
     --sidebar-group-title-hover: 26 42 60; /* #1A2A3C */
-    --sidebar-group-title-open: 107 119 133; /* #6B7785, open */
+    --sidebar-group-title-open: 98 110 124; /* #626E7C, open (4.8:1 on #F5F6F8; #6B7785 was 4.2:1) */
     --sidebar-group-title-open-hover: 59 74 90; /* #3B4A5A */
     --toggle-track: 233 237 241; /* #E9EDF1 */
     --thumb: 255 255 255; /* selected theme toggle circle */

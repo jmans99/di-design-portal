@@ -77,13 +77,14 @@ Replaces the current side panel styling and structure.
     | --- | --- | --- | --- |
     | Closed | `--sidebar-group-title` | #3B4A5A | #DAE2EA |
     | Closed, hover | `--sidebar-group-title-hover` | #1A2A3C | #F8F8F8 |
-    | Open (12px label) | `--sidebar-group-title-open` | #6B7785 | #8A9AAB |
+    | Open (12px label) | `--sidebar-group-title-open` | #626E7C | #8A9AAB |
     | Open, hover | `--sidebar-group-title-open-hover` | #3B4A5A | #DAE2EA |
 
-    Contrast on the side panel (#F5F6F8 light, #0F1823 dark): closed 8.4:1 /
-    13.7:1, open dark 6.2:1. The open light value, #6B7785, is 4.2:1, just
-    under AA for its 12px label; #626E7C (4.8:1, 4.5:1 on hover fill) is the closest value that
-    passes, if wanted.
+    All pass AA on the side panel (#F5F6F8 light, #0F1823 dark): closed 8.4:1
+    / 13.7:1, open 4.8:1 / 6.2:1. On the hover fill (#EDF0F3 light, #1A2A3C
+    dark) the hover colours are 12.8:1 / 13.7:1 (closed) and 7.9:1 / 11.1:1
+    (open). The open light colour was #6B7785 (4.2:1, under AA for the 12px
+    label) and is now #626E7C, the closest value that passes.
   - Closed: row 34px, label 14px weight 500, icon 16px. Open: row 28px, label
     12px weight 600, icon 14px (kept in a 16px slot). The change animates
     (150ms ease); with prefers-reduced-motion it is instant.
