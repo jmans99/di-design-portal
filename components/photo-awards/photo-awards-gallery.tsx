@@ -90,7 +90,7 @@ function StoryTile({ story, onOpen }: { story: PhotoAwardStory; onOpen: (index: 
           {story.photographer}
           {story.location ? ` · ${story.location}` : ''}
         </p>
-        {many && <p className="mt-0.5 text-xs text-muted-foreground/80">{story.images.length} photos</p>}
+        {many && <p className="mt-0.5 text-xs text-muted-foreground">{story.images.length} photos</p>}
       </button>
     </article>
   )

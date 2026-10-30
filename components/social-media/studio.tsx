@@ -156,7 +156,7 @@ export function SocialMediaStudio() {
         </p>
         <p className="mt-1 text-xs text-muted-foreground">
           Date: <span className="font-medium text-foreground">{formattedDate}</span>
-          <span className="ml-1 text-muted-foreground/70">(auto)</span>
+          <span className="ml-1 text-muted-foreground">(auto)</span>
         </p>
         {exportError && <p className="mt-2 text-xs text-destructive">{exportError}</p>}
         <div className="mt-3 flex items-start gap-2 rounded-md bg-muted/50 px-3 py-2 text-[11px] leading-relaxed text-muted-foreground">

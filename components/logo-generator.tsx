@@ -251,7 +251,7 @@ export function LogoGenerator({ brandTab, initialColorVariant }: LogoGeneratorPr
         {/* Brand selector */}
         <ControlSection label="Brand" className="lg:pt-4 lg:pb-2.5">
           <Select value={selectedBrand} onValueChange={setSelectedBrand}>
-            <SelectTrigger className="rounded-md transition-smooth-transform">
+            <SelectTrigger aria-label="Brand" className="rounded-md transition-smooth-transform">
               <SelectValue placeholder="Choose a brand" />
             </SelectTrigger>
             <SelectContent>

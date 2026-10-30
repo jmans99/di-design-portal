@@ -113,7 +113,7 @@ export function MediaSection({ brand }: { brand: Brand }) {
                 ))}
               </div>
               <div className="mt-2">
-                <span className="flex items-center gap-1.5 text-sm font-semibold text-foreground/60 transition-colors group-hover:text-foreground">
+                <span className="flex items-center gap-1.5 text-sm font-semibold text-muted-foreground transition-colors group-hover:text-foreground">
                   Browse gallery
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
                 </span>

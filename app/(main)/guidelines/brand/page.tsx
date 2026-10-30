@@ -9,7 +9,7 @@ export default function BrandGuidelinesPage() {
         Coming soon
       </Badge>
       <PageHeader
-        title="Brand guidelines"
+        title="DI guidelines"
         description="The Digital Inclusion brand guidelines are being prepared."
       />
     </main>

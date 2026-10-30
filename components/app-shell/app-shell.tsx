@@ -38,7 +38,8 @@ const SIDEBAR_WIDTH = '264px'
  */
 const ROW =
   'focus-ring h-[34px] gap-2.5 rounded-lg px-2.5 text-sm text-ink hover:bg-hover hover:text-ink active:bg-hover active:text-ink data-[active=true]:bg-selected data-[active=true]:font-semibold data-[active=true]:text-ink [&>svg]:size-4'
-const GROUP_ROW = cn(ROW, 'font-semibold text-ink-soft hover:text-ink-soft active:text-ink-soft data-[state=open]:hover:bg-hover data-[state=open]:hover:text-ink-soft')
+// Gray titles pass AA on the panel (4.6:1 light, 5.6:1 dark); on the hover fill they turn to the main text colour to keep it.
+const GROUP_ROW = cn(ROW, 'font-semibold text-ink-soft hover:text-ink active:text-ink data-[state=open]:hover:bg-hover data-[state=open]:hover:text-ink')
 const CHILD_ROW =
   'focus-ring flex h-[30px] w-full min-w-0 items-center gap-2 rounded-lg pl-9 pr-2.5 text-[13px] text-ink hover:bg-hover data-[active=true]:bg-selected data-[active=true]:font-semibold'
 const TAG = 'ml-auto shrink-0 text-[11px] font-normal text-ink-muted'

@@ -341,8 +341,8 @@
     --muted-foreground: 210 20.3% 76.9%; /* #B8C4D0 (secondary text) */
     --accent: 211.4 38.2% 21.6%;
     --accent-foreground: 0 0% 97.3%;
-    --destructive: 357 88% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 357 88% 68%; /* 4.9:1 on the surfaces */
+    --destructive-foreground: 213 40% 9.8%;
     --border: 212.1 33.9% 24.9%; /* #2A3E55 */
     --input: 212.1 33.9% 24.9%;
     --ring: 201.1 100% 75.5%; /* focus ring #82D3FF */
@@ -350,7 +350,7 @@
     --chart-2: 145 100% 42%;
     --chart-3: 0 0% 60%;
     --chart-4: 44 100% 62%;
-    --chart-5: 357 88% 60%;
+    --chart-5: 357 88% 68%;
     --sidebar-background: 212.1 41.2% 13.3%; /* #142130 */
     --sidebar-foreground: 0 0% 97.3%;
     --sidebar-primary: 200.1 90.6% 62.5%;

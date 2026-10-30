@@ -21,8 +21,10 @@ export type SearchItem = {
   external?: boolean
   /** The format a Formats row starts. */
   outputType?: OutputType
-  /** Other words that find the item: its group's name and old names ("Assets", "Brand guidelines"). */
+  /** Other names that find the item, e.g. its old name ("Brand guidelines" for DI guidelines). */
   keywords?: string[]
+  /** Its group's names ("Brand assets", and the old "Assets"), searched last. */
+  groupKeywords?: string[]
 }
 
 export const SEARCH_INDEX: SearchItem[] = [
@@ -36,16 +38,17 @@ export const SEARCH_INDEX: SearchItem[] = [
         section: g.label,
         href: i.path,
         icon: i.icon,
-        keywords: [g.label, ...(g.aliases ?? []), ...(i.aliases ?? [])],
+        keywords: i.aliases,
+        groupKeywords: [g.label, ...(g.aliases ?? [])],
       })),
   ),
   { id: `page-${AI_SKILLS_ITEM.id}`, title: AI_SKILLS_ITEM.label, section: 'AI skills', href: AI_SKILLS_ITEM.path, icon: AI_SKILLS_ITEM.icon },
 ]
 
 /**
- * Items whose title (or title plus keywords) has every word of the query,
- * case-insensitive. Titles that start with the query come first, then other
- * title matches, then keyword matches. An empty query returns the whole index.
+ * Items that have every word of the query, case-insensitive: titles that start
+ * with the query first, then other title matches, then matches on the item's
+ * other names, then on its group's names. An empty query returns the whole index.
  */
 export function searchItems(query: string, items: SearchItem[] = SEARCH_INDEX): SearchItem[] {
   const words = query.toLowerCase().split(/\s+/).filter(Boolean)
@@ -55,8 +58,12 @@ export function searchItems(query: string, items: SearchItem[] = SEARCH_INDEX): 
     const title = item.title.toLowerCase()
     if (title.startsWith(q)) return 0
     if (words.every((w) => title.includes(w))) return 1
-    const text = [title, ...(item.keywords ?? [])].join(' ').toLowerCase()
-    return words.every((w) => text.includes(w)) ? 2 : -1
+    const has = (names: string[]) => {
+      const text = [title, ...names].join(' ').toLowerCase()
+      return words.every((w) => text.includes(w))
+    }
+    if (has(item.keywords ?? [])) return 2
+    return has([...(item.keywords ?? []), ...(item.groupKeywords ?? [])]) ? 3 : -1
   }
   return items
     .map((item) => ({ item, rank: rank(item) }))
