@@ -171,10 +171,11 @@ c) Bento under the box: margin-top 16px, CSS grid,
      and a 3-bar chart. Opens the deck step with "Master deck" already picked
      (while it is "Coming soon", see "External tools").
    - Row 2, col 3, "Get a logo": background #FFFFFF, border 1px #E3E8EE,
-     title "Get a logo", sub "DI and Giga logos" (12px #3B4A5A). Art top right,
-     stacked: the real DI logo (12px high) and the Giga symbol without the
-     word "giga" (24px high, so the compact symbol and the wide wordmark weigh
-     about the same); their white versions in the dark theme. There is no
+     title "Get a logo", sub "DI and Giga logos" (12px #3B4A5A). Art top
+     right, at the same offsets as the two-pager page art (12px from the top
+     and right): a 42x42 card, #FFFFFF in both themes, border 1px #DAF1FF,
+     radius 8px, with the full-colour Giga symbol (no "giga" word) centred
+     inside, 26px wide, keeping its aspect ratio. No DI logo. There is no
      symbol-only Giga file, so scripts/build-asset-index.mjs generates one
      from /logos/giga-main-horizontal.svg (every path left of the wordmark,
      cropped) into /generated/logos/giga-symbol{,-white,-black}.svg and adds
