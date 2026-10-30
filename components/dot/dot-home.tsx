@@ -6,12 +6,11 @@ import { useSearchParams } from 'next/navigation'
 import { ArrowUp, Plus } from 'lucide-react'
 import { SidePanelToggle } from '@/components/app-shell/app-shell'
 import { DotOrb } from '@/components/dot/dot-orb'
-import { ComingSoonPill, ExternalTitle, MoreMenu, RecommendedPill, SEND_BUTTON, StartTile } from '@/components/dot/format-tiles'
+import { ComingSoonPill, ExternalTitle, KnowledgeSwitch, MoreMenu, RecommendedPill, SEND_BUTTON, StartTile } from '@/components/dot/format-tiles'
 import { LogoArt, MapArt, MasterDeckArt, SlidesArt, TwoPagerArt } from '@/components/dot/dot-art'
 import { Conversation } from '@/components/dot/conversation'
 import { SearchReply } from '@/components/dot/search-reply'
 import { useDot } from '@/components/dot/use-dot'
-import { Switch } from '@/components/ui/switch'
 import { conversationFromParams, searchFromParams } from '@/lib/dot/conversation'
 import type { OutputType } from '@/lib/brief'
 import { masterDeckAvailable } from '@/lib/external-tools'
@@ -35,7 +34,7 @@ export function DotHome() {
 }
 
 export function EmptyHome() {
-  // On by default; the switch is hidden while showKnowledgeToggle is false (lib/dot/settings.ts).
+  // On by default; the switch shows while showKnowledgeToggle is true (lib/dot/settings.ts).
   const [useKnowledge, setUseKnowledge] = useState(true)
   const { start, send } = useDot()
   const startFormat = (format: OutputType, templateId?: 'master-deck') => start({ format, templateId, useKnowledge })
@@ -134,19 +133,7 @@ export function DotBox({
         className="block w-full resize-none rounded-t-[22px] border-0 bg-transparent px-[22px] pb-1 pt-5 font-sans text-[15px] leading-[1.5] text-ink outline-none placeholder:text-ink-muted focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
       />
       <div className="flex items-center justify-end gap-4 px-3 pb-3 pt-1">
-        {useKnowledge !== undefined && onUseKnowledgeChange && (
-          <div className="flex items-center gap-2">
-            <Switch
-              id={`${id}-knowledge`}
-              checked={useKnowledge}
-              onCheckedChange={onUseKnowledgeChange}
-              className="focus-ring h-5 w-9 data-[state=checked]:bg-primary data-[state=unchecked]:bg-line-dashed [&>span]:h-4 [&>span]:w-4 [&>span]:data-[state=checked]:translate-x-4"
-            />
-            <label htmlFor={`${id}-knowledge`} className="cursor-pointer text-[13px] text-ink-secondary">
-              Use DI knowledge
-            </label>
-          </div>
-        )}
+        {useKnowledge !== undefined && onUseKnowledgeChange && <KnowledgeSwitch checked={useKnowledge} onCheckedChange={onUseKnowledgeChange} />}
         <button
           type="submit"
           disabled={!canSend}

@@ -131,12 +131,26 @@ b) Dot's box: white, border 1px #E3E8EE, radius 22px,
    - Textarea, 2 rows, auto-grow to ~6 rows, no border, padding 20px 22px 4px,
      Open Sans 15px/1.5, placeholder "Describe what you want to make or find".
      Visually hidden label "Ask Dot".
-   - Bottom row, right aligned: a 36px round send button (#01689D, white
-     up-arrow icon, aria-label "Send to Dot").
-   - The "Use DI knowledge" switch (track #01689D when on, 13px label #3B4A5A)
-     is hidden, in Dot's box and the reply bar: `showKnowledgeToggle = false`
-     in lib/dot/settings.ts. Its code is kept; set the flag to true to bring it
-     back. The brief keeps useKnowledge = true by default.
+   - Bottom row, right aligned: the "Use DI knowledge" switch, then a 36px
+     round send button (#01689D, white up-arrow icon, aria-label "Send to
+     Dot").
+   - "Use DI knowledge" is shown again for a proof-of-concept demo
+     (`showKnowledgeToggle = true` in lib/dot/settings.ts; false hides it).
+     It is in Dot's box on the home page and in the reply bar (between the
+     input and the send button). It has no effect yet: it only sets
+     useKnowledge in the brief, on by default. One component,
+     `<KnowledgeSwitch>` (components/dot/format-tiles.tsx), on the theme
+     tokens:
+
+     | Part | Light | Dark |
+     | --- | --- | --- |
+     | Track, on | #01689D | #49BCF6 |
+     | Track, off | #C9D2DB | #3A5068 |
+     | Knob | #FFFFFF | #0F1823 |
+     | Label (13px) | #3B4A5A | #B8C4D0 |
+
+     36x20px track, 16px knob, visible focus ring (2px, the theme's ring
+     colour); Space toggles it, and clicking the label does too.
    - Enter sends, Shift+Enter adds a line. Send is disabled when empty.
    - "Use DI knowledge" is stored in the brief (lib/brief.ts, add
      useKnowledge: boolean). Tools that already read knowledge data may use it;

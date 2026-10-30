@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import { X } from 'lucide-react'
 import { SidePanelToggle } from '@/components/app-shell/app-shell'
@@ -32,6 +33,8 @@ const ASSET_PAGES = [
  */
 export function SearchReply({ state }: { state: SearchState }) {
   const { start, send, push } = useDot()
+  // "Use DI knowledge" in the reply bar (on by default); it only goes into the brief of what starts next.
+  const [useKnowledge, setUseKnowledge] = useState(true)
   const { openWith } = useSearchPalette()
   const { facets, results } = searchAssets(state.query, ASSETS, state.without)
   const intent = matchIntent(state.query)
@@ -88,7 +91,7 @@ export function SearchReply({ state }: { state: SearchState }) {
                     See all {results.length} results
                   </button>
                 )}
-                {offerBackground && <BackgroundOffer onClick={() => start({ format: 'background', useKnowledge: true })} />}
+                {offerBackground && <BackgroundOffer onClick={() => start({ format: 'background', useKnowledge })} />}
               </div>
             </DotMessage>
           ) : (
@@ -103,12 +106,12 @@ export function SearchReply({ state }: { state: SearchState }) {
                     {page.label}
                   </Link>
                 ))}
-                {offerBackground && <BackgroundOffer onClick={() => start({ format: 'background', useKnowledge: true })} />}
+                {offerBackground && <BackgroundOffer onClick={() => start({ format: 'background', useKnowledge })} />}
               </div>
             </DotMessage>
           )}
         </ol>
-        <ReplyBar showBrief={false} onSend={(text) => send(text, true)} />
+        <ReplyBar showBrief={false} onSend={(text) => send(text, useKnowledge)} useKnowledge={useKnowledge} onUseKnowledgeChange={setUseKnowledge} />
       </div>
     </div>
   )

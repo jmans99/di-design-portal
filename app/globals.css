@@ -300,6 +300,7 @@
     --sidebar-group-title-open-hover: 59 74 90; /* #3B4A5A */
     --toggle-track: 233 237 241; /* #E9EDF1 */
     --thumb: 255 255 255; /* selected theme toggle circle */
+    --switch-thumb: 255 255 255; /* "Use DI knowledge" switch knob */
     --thumb-shadow: 0 1px 3px rgba(26, 42, 60, 0.18);
     /* A chosen option (format, colour variant, tagline…): fill and border; text uses --link. */
     --chosen: 238 249 255; /* DI 50 #EEF9FF */
@@ -392,6 +393,7 @@
     --sidebar-group-title-open-hover: 218 226 234; /* #DAE2EA */
     --toggle-track: 34 54 76; /* #22364C */
     --thumb: 42 62 85; /* #2A3E55 */
+    --switch-thumb: 15 24 35; /* #0F1823 on the #49BCF6 track */
     --thumb-shadow: none;
     --chosen: 34 54 76; /* #22364C */
     --chosen-border: 73 188 246; /* #49BCF6 */

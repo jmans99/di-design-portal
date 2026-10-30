@@ -5,7 +5,8 @@ import Link from 'next/link'
 import { ArrowUp, ArrowUpRight, Plus } from 'lucide-react'
 import { SidePanelToggle } from '@/components/app-shell/app-shell'
 import { BriefingArt, PartnershipArt, SlidesArt } from '@/components/dot/dot-art'
-import { RecommendedPill, SEND_BUTTON, SmallFormatTiles } from '@/components/dot/format-tiles'
+import { KnowledgeSwitch, RecommendedPill, SEND_BUTTON, SmallFormatTiles } from '@/components/dot/format-tiles'
+import { showKnowledgeToggle } from '@/lib/dot/settings'
 import { DotOrb } from '@/components/dot/dot-orb'
 import { FormatIcon } from '@/components/dot/format-icon'
 import { recentLabel, useDot } from '@/components/dot/use-dot'
@@ -30,6 +31,8 @@ const NO_MATCH_AGAIN = "I couldn't match that yet. Pick one above, or try other 
 export function Conversation({ state }: { state: ConversationState }) {
   const { start, push, replace } = useDot()
   const [notes, setNotes] = useState<string[]>([])
+  // "Use DI knowledge" in the reply bar: starts from the brief's value; it only goes into the brief of what starts next.
+  const [useKnowledge, setUseKnowledge] = useState(state.useKnowledge)
 
   const format = state.format ? getFormat(state.format) : undefined
   const template = getDeckTemplate(state.templateId)
@@ -79,11 +82,11 @@ export function Conversation({ state }: { state: ConversationState }) {
       if (audience) return go({ audience })
     }
     const intent = matchIntent(q)
-    if (intent.kind === 'format') return start({ format: intent.outputType, templateId: intent.templateId, q, useKnowledge: state.useKnowledge })
+    if (intent.kind === 'format') return start({ format: intent.outputType, templateId: intent.templateId, q, useKnowledge })
     setNotes((n) => [...n, q])
   }
 
-  const startFormat = (type: Format['type']) => start({ format: type, useKnowledge: state.useKnowledge })
+  const startFormat = (type: Format['type']) => start({ format: type, useKnowledge })
 
   return (
     <div className="flex min-h-svh flex-col">
@@ -162,6 +165,8 @@ export function Conversation({ state }: { state: ConversationState }) {
           audienceName={state.audience ? (group?.name ?? 'Skip') : null}
           onSend={reply}
           showBrief={!builder}
+          useKnowledge={useKnowledge}
+          onUseKnowledgeChange={setUseKnowledge}
         />
       </div>
     </div>
@@ -278,6 +283,8 @@ export function ReplyBar({
   audienceName,
   onSend,
   showBrief = true,
+  useKnowledge,
+  onUseKnowledgeChange,
 }: {
   format?: Format
   templateName?: string | null
@@ -285,10 +292,14 @@ export function ReplyBar({
   onSend: (text: string) => void
   /** False for Dot's search reply: brief chips belong to the create flow. */
   showBrief?: boolean
+  /** "Use DI knowledge", shown before the send button while showKnowledgeToggle is on. */
+  useKnowledge?: boolean
+  onUseKnowledgeChange?: (value: boolean) => void
 }) {
   const [text, setText] = useState('')
   const canSend = text.trim().length > 0
   const color = format?.color ?? '#5C6B7A'
+  const knowledge = showKnowledgeToggle && useKnowledge !== undefined && onUseKnowledgeChange
 
   return (
     <div className="sticky bottom-0 bg-gradient-to-t from-background from-70% to-transparent pb-4 pt-6">
@@ -309,7 +320,9 @@ export function ReplyBar({
             <BriefChip label="Audience" value={audienceName ?? null} color={color} />
           </div>
         )}
-        <div className="flex items-center gap-2">
+        {/* With the knowledge switch: 16px between input, switch and send (as in Dot's box); on a phone the
+            input takes its own line and the switch and send button sit right-aligned under it. */}
+        <div className={cn('flex items-center', knowledge ? 'flex-wrap gap-x-4 gap-y-1' : 'gap-2')}>
           <label htmlFor="dot-reply" className="sr-only">
             Reply to Dot
           </label>
@@ -319,8 +332,16 @@ export function ReplyBar({
             onChange={(e) => setText(e.target.value)}
             placeholder={showBrief ? 'Reply to Dot, or pick one above' : 'Reply to Dot'}
             autoComplete="off"
-            className="h-9 min-w-0 flex-1 rounded-lg bg-transparent px-1 text-[15px] text-ink outline-none placeholder:text-ink-muted focus-visible:ring-2 focus-visible:ring-ring"
+            className={cn(
+              'h-9 min-w-0 flex-1 rounded-lg bg-transparent px-1 text-[15px] text-ink outline-none placeholder:text-ink-muted focus-visible:ring-2 focus-visible:ring-ring',
+              knowledge && 'basis-full sm:basis-0',
+            )}
           />
+          {knowledge && (
+            <span className="ml-auto sm:ml-0">
+              <KnowledgeSwitch checked={useKnowledge} onCheckedChange={onUseKnowledgeChange} />
+            </span>
+          )}
           <button
             type="submit"
             disabled={!canSend}
