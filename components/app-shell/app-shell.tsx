@@ -39,8 +39,9 @@ const SIDEBAR_WIDTH = '264px'
 const ROW =
   'focus-ring h-[34px] gap-2.5 rounded-lg px-2.5 text-sm text-ink hover:bg-sidebar-hover hover:text-ink active:bg-sidebar-selected active:text-ink data-[active=true]:bg-sidebar-selected data-[active=true]:font-semibold data-[active=true]:text-ink [&>svg]:size-4'
 /**
- * Group titles: the --sidebar-group-title colour (lighter than AA text; see the
- * token), darker on hover. Closed: 34px, 14px, 500, 16px icon. Open: 28px,
+ * Group titles (title, icon and chevron share the colour): --sidebar-group-title
+ * when closed, the grayer --sidebar-group-title-open when open, each darker on
+ * hover (app/globals.css). Closed: 34px, 14px, 500, 16px icon. Open: 28px,
  * 12px, 600, 14px icon (kept in a 16px slot, so the label and the children
  * line up). The size change animates (150ms); reduced motion turns it off
  * (app/globals.css).
@@ -49,7 +50,8 @@ const GROUP_ROW = cn(
   ROW,
   'font-medium text-sidebar-group-title transition-[height,font-size,font-weight,color,background-color] duration-150 ease-[ease]',
   'hover:bg-sidebar-hover hover:text-sidebar-group-title-hover active:bg-sidebar-hover active:text-sidebar-group-title-hover',
-  'data-[state=open]:h-7 data-[state=open]:text-xs data-[state=open]:font-semibold data-[state=open]:hover:bg-sidebar-hover data-[state=open]:hover:text-sidebar-group-title-hover',
+  'data-[state=open]:h-7 data-[state=open]:text-xs data-[state=open]:font-semibold data-[state=open]:text-sidebar-group-title-open',
+  'data-[state=open]:hover:bg-sidebar-hover data-[state=open]:hover:text-sidebar-group-title-open-hover data-[state=open]:active:text-sidebar-group-title-open-hover',
   '[&>svg:first-child]:transition-[width,height,margin] [&>svg:first-child]:duration-150 [&[data-state=open]>svg:first-child]:mx-px [&[data-state=open]>svg:first-child]:size-3.5',
   'group-data-[collapsible=icon]:[&>svg:first-child]:!mx-0 group-data-[collapsible=icon]:[&>svg:first-child]:!size-4',
 )

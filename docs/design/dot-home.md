@@ -69,12 +69,21 @@ Replaces the current side panel styling and structure.
 - Groups (radius 8, gap 10px between icon and label; children rows 30px,
   13px, #1A2A3C / dark #F8F8F8, left padding 36px, so they start where the
   group label starts):
-  - Group titles (Create, Brand assets, Brand guidelines, Knowledge, Recent),
-    with their icons and chevrons, use one token, `--sidebar-group-title`:
-    #7D8A98 (dark #7F8FA0). On hover the title, icon and chevron turn #3B4A5A
-    (dark #DAE2EA). The light value is lighter than AA text contrast (3.25:1
-    on #F5F6F8, measured); the AA fallback is #6B7785 (dark #8A9AAB). The
-    dark value passes AA on #0F1823.
+  - Group titles (Create, Brand assets, Brand guidelines, Knowledge, Recent):
+    the title, icon and chevron share one colour, which is only very gray when
+    the group is open. Each colour is one token in app/globals.css:
+
+    | State | Token | Light | Dark |
+    | --- | --- | --- | --- |
+    | Closed | `--sidebar-group-title` | #3B4A5A | #DAE2EA |
+    | Closed, hover | `--sidebar-group-title-hover` | #1A2A3C | #F8F8F8 |
+    | Open (12px label) | `--sidebar-group-title-open` | #6B7785 | #8A9AAB |
+    | Open, hover | `--sidebar-group-title-open-hover` | #3B4A5A | #DAE2EA |
+
+    Contrast on the side panel (#F5F6F8 light, #0F1823 dark): closed 8.4:1 /
+    13.7:1, open dark 6.2:1. The open light value, #6B7785, is 4.2:1, just
+    under AA for its 12px label; #626E7C (4.8:1, 4.5:1 on hover fill) is the closest value that
+    passes, if wanted.
   - Closed: row 34px, label 14px weight 500, icon 16px. Open: row 28px, label
     12px weight 600, icon 14px (kept in a 16px slot). The change animates
     (150ms ease); with prefers-reduced-motion it is instant.
@@ -347,7 +356,7 @@ Added in October 2026. Light, dark or system.
   | Hover / selected row | `#22364C` (side panel hover `#1A2A3C`) |
   | Borders / dashed borders | `#2A3E55` / `#3A5068` |
   | Text main / secondary / muted | `#F8F8F8` / `#B8C4D0` / `#8A9AAB` |
-  | Side panel group titles | `#7F8FA0` (hover `#DAE2EA`) |
+  | Side panel group titles | closed `#DAE2EA` (hover `#F8F8F8`), open `#8A9AAB` (hover `#DAE2EA`) |
   | Toggle icons | `#8A9AAB` |
   | Primary buttons | `#49BCF6`, text `#0F1823`, hover `#82D3FF` (8.4:1) |
   | Links | `#82D3FF` (hover `#B5E4FF`) |

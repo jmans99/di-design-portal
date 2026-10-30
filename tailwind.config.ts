@@ -179,6 +179,8 @@ const config: Config = {
           hover: 'rgb(var(--sidebar-hover) / <alpha-value>)',
           'group-title': 'rgb(var(--sidebar-group-title) / <alpha-value>)',
           'group-title-hover': 'rgb(var(--sidebar-group-title-hover) / <alpha-value>)',
+          'group-title-open': 'rgb(var(--sidebar-group-title-open) / <alpha-value>)',
+          'group-title-open-hover': 'rgb(var(--sidebar-group-title-open-hover) / <alpha-value>)',
         },
       },
       boxShadow: {

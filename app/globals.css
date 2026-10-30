@@ -293,8 +293,11 @@
     /* Side panel rows, group titles and theme toggle (the panel is darker than the main area) */
     --sidebar-selected: 233 237 241; /* #E9EDF1 */
     --sidebar-hover: 237 240 243; /* #EDF0F3 */
-    --sidebar-group-title: 125 138 152; /* #7D8A98: lighter than AA (3.4:1); AA fallback #6B7785 */
-    --sidebar-group-title-hover: 59 74 90; /* #3B4A5A */
+    /* Group titles (title, icon, chevron): darker when closed, very gray when open (the small 12px label). */
+    --sidebar-group-title: 59 74 90; /* #3B4A5A, closed */
+    --sidebar-group-title-hover: 26 42 60; /* #1A2A3C */
+    --sidebar-group-title-open: 107 119 133; /* #6B7785, open */
+    --sidebar-group-title-open-hover: 59 74 90; /* #3B4A5A */
     --toggle-track: 233 237 241; /* #E9EDF1 */
     --thumb: 255 255 255; /* selected theme toggle circle */
     --thumb-shadow: 0 1px 3px rgba(26, 42, 60, 0.18);
@@ -383,8 +386,10 @@
     --field-border: 42 62 85; /* #2A3E55 */
     --sidebar-selected: 34 54 76; /* #22364C */
     --sidebar-hover: 26 42 60; /* #1A2A3C */
-    --sidebar-group-title: 127 143 160; /* #7F8FA0: lighter than AA; AA fallback #8A9AAB */
-    --sidebar-group-title-hover: 218 226 234; /* #DAE2EA */
+    --sidebar-group-title: 218 226 234; /* #DAE2EA, closed */
+    --sidebar-group-title-hover: 248 248 248; /* #F8F8F8 */
+    --sidebar-group-title-open: 138 154 171; /* #8A9AAB, open */
+    --sidebar-group-title-open-hover: 218 226 234; /* #DAE2EA */
     --toggle-track: 34 54 76; /* #22364C */
     --thumb: 42 62 85; /* #2A3E55 */
     --thumb-shadow: none;
