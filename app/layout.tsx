@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { ThemeProvider } from '@/components/theme-provider'
+import { GigaNotice } from '@/components/giga-notice'
 import { SITE } from '@/lib/site'
 import './globals.css'
 
@@ -41,6 +42,7 @@ export default function RootLayout({
         {/* Light, dark or system (the default), saved per browser (docs/design/dot-home.md, "Theme"). */}
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
+          <GigaNotice />
         </ThemeProvider>
       </body>
     </html>
