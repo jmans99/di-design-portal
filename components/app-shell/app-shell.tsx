@@ -289,7 +289,10 @@ function AppTopBar() {
     <header className="sticky top-0 z-40 flex h-14 shrink-0 items-center gap-3 border-b border-border bg-background/85 px-4 backdrop-blur-[10.7px] md:px-6">
       <SidePanelToggle />
       <span aria-hidden className="h-4 w-px bg-border" />
-      <p className="truncate font-heading text-[15px] font-medium text-foreground">{activeNavItem(pathname, null)?.label ?? ''}</p>
+      {/* While the Giga notice shows, leave room for it so a long title shortens before the card (components/giga-notice.tsx). */}
+      <p className="mr-[max(0px,calc(var(--giga-notice-space,0px)_-_1rem))] truncate font-heading text-[15px] font-medium text-foreground md:mr-[max(0px,calc(var(--giga-notice-space,0px)_-_1.5rem))]">
+        {activeNavItem(pathname, null)?.label ?? ''}
+      </p>
     </header>
   )
 }
