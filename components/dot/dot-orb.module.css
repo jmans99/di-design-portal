@@ -36,7 +36,7 @@
   border-radius: 999px;
   background: #22b99a;
   filter: blur(12px);
-  opacity: 0.35;
+  opacity: 0.2;
   animation: glow 4s ease-in-out infinite;
   will-change: opacity;
 }
@@ -145,8 +145,8 @@
   50% { transform: scale(1.04); }
 }
 @keyframes glow {
-  0%, 100% { opacity: 0.35; }
-  50% { opacity: 0.6; }
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.35; }
 }
 
 @media (prefers-reduced-motion: reduce) {
