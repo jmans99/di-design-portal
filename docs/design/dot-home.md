@@ -304,17 +304,15 @@ box-shadow or background), so it stays smooth.
   - On top, fixed: a 1px white hairline (35%) and a soft white bloom at the
     top, the glass surface.
   - Only translate, scale and opacity animate (never box-shadow or
-    background). Outer drop shadow, lighter than the static orb's:
-    0 4px 14px rgba(34,185,154,.18).
+    background). No drop shadow.
 - Floating: the whole orb, glow included, drifts up by 8% of its size
   (3px at 40px) and back, 3.6s, ease-in-out, infinite (translate, so the
   heading text never moves).
 - Breathing: the orb scales 1 → 1.04 → 1 from its centre, 4s, ease-in-out,
   infinite.
-- Glow: a pseudo-element behind the orb, a #22B99A circle with 12px blur. Its
-  opacity goes 0.2 → 0.35 → 0.2, 4s, in step with the breathing.
+- No glow behind the orb (removed 3 Nov 2026).
 - Reduced motion (prefers-reduced-motion: reduce): no animation, the colours
-  at rest, with the drop shadow and no glow.
+  at rest.
 - The orb is decorative (aria-hidden). Its box keeps its size, so the scaling
   never moves the heading text.
 

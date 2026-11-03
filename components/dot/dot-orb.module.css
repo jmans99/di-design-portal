@@ -10,8 +10,7 @@
  *   melted with a radial mask (3.2s and 4s loops).
  * - .mint: a brighter mint patch (3.5s). .white: a white sheen (2.8s).
  * - .glass: a faint white hairline and top bloom on the surface, fixed.
- * - The green glow behind the orb pulses with the breathing.
- * - .wrap floats: up and down by 8% of the size, 3.6s, glow included.
+ * - .wrap floats: up and down by 8% of the size, 3.6s. No shadow, no glow.
  * Only transform-type properties (translate, scale) and opacity animate.
  * Blur scales with the orb (--dot-size). Reduced motion: everything at rest.
  */
@@ -25,20 +24,6 @@
   /* Floats: drifts up and down by 8% of its size (3px at 40px). */
   animation: float 3.6s ease-in-out infinite;
   will-change: translate;
-}
-
-/* Glow behind the orb. */
-.wrap::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: 999px;
-  background: #22b99a;
-  filter: blur(12px);
-  opacity: 0.2;
-  animation: glow 4s ease-in-out infinite;
-  will-change: opacity;
 }
 
 .orb {
@@ -144,10 +129,6 @@
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.04); }
 }
-@keyframes glow {
-  0%, 100% { opacity: 0.2; }
-  50% { opacity: 0.35; }
-}
 
 @media (prefers-reduced-motion: reduce) {
   .wrap,
@@ -157,8 +138,5 @@
   .mint,
   .white {
     animation: none;
-  }
-  .wrap::before {
-    display: none;
   }
 }
