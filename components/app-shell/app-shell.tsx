@@ -103,10 +103,9 @@ function AppSidebar() {
         </>
       )}
       <SidebarHeader className="gap-[18px] px-3 pb-0 pt-5 group-data-[collapsible=icon]:px-2">
-        <div className="flex items-center justify-between gap-2 px-1 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-0">
+        <div className="flex items-center justify-between gap-2 px-1 group-data-[collapsible=icon]:hidden">
           <Link href="/" onClick={closeOnMobile} aria-label="Dot home" className="focus-ring flex min-w-0 items-center gap-2.5 rounded-lg">
-            <DotOrb size={28} />
-            <span className="flex min-w-0 flex-col group-data-[collapsible=icon]:hidden">
+            <span className="flex min-w-0 flex-col">
               <span className="font-heading text-sm font-semibold leading-[18px] text-ink">Welcome to Dot</span>
               <span className="text-xs leading-4 text-ink-muted">Your AI content designer</span>
             </span>
