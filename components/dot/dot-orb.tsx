@@ -8,18 +8,24 @@ const ORB_SHADOW = `${ORB_DROP_SHADOW}, inset 0 -3px 8px rgba(11,110,92,.35)`
 
 /**
  * Dot, the portal's assistant: a green orb. Sizes of 28px and up get the soft
- * shadow. `animated` (the home heading only) uses dot-orb.module.css: the orb
- * breathes, the glow behind it pulses, and its one light source sways (the
- * whole gradient, highlight and shaded side together, turns on an inner
- * layer). The animated orb drops the fixed inset shadow, which would read as a
- * second light. Reduced motion shows the gradient at rest.
+ * shadow. `animated` (the home heading only) uses dot-orb.module.css: the UN
+ * Deck Builder's generate sphere in Dot's greens, soft pieces of colour
+ * wandering inside a round pane of glass, breathing and floating, no shadow.
+ * Reduced motion shows it at rest.
  */
 export function DotOrb({ size, animated = false, className }: { size: number; animated?: boolean; className?: string }) {
   if (animated) {
     return (
-      <span aria-hidden data-animated="" className={cn(styles.wrap, className)} style={{ width: size, height: size }}>
-        <span className={styles.orb} style={{ boxShadow: size >= 28 ? ORB_DROP_SHADOW : undefined }}>
-          <span className={styles.light} style={{ background: ORB_BACKGROUND }} />
+      <span
+        aria-hidden
+        data-animated=""
+        className={cn(styles.wrap, className)}
+        style={{ width: size, height: size, ['--dot-size' as string]: `${size}px` }}
+      >
+        <span className={styles.orb}>
+          <span className={styles.mint} />
+          <span className={styles.white} />
+          <span className={styles.glass} />
         </span>
       </span>
     )

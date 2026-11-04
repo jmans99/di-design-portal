@@ -40,9 +40,9 @@ Replaces the current side panel styling and structure.
   border 1px #EBEEF2,
   padding 20px 12px, gap 18px between blocks. Keep the existing shadcn Sidebar
   behaviour (collapse, mobile off-canvas, cookie for state).
-- Header: the Dot orb (28px, static) and, 10px to its right, two lines:
+- Header (no orb since 3 Nov 2026): two lines:
   "Welcome to Dot" (Manrope 600, 14px, #1A2A3C) and the caption
-  "Your AI content designer" (Open Sans 400, 12px, #5C6B7A). The orb and the
+  "Your AI content designer" (Open Sans 400, 12px, #5C6B7A). The
   two lines link to / (accessible name "Dot home"). "Beta" badge on the right
   (11px, 600, navy text on #F7761F, pill, 2px 8px).
 - Footer (shadcn SidebarFooter, pinned to the bottom), one row with a 1px
@@ -54,7 +54,7 @@ Replaces the current side panel styling and structure.
   to / (alt "UNICEF Digital Inclusion"). The groups scroll above the footer, so
   it stays at the bottom when they are short and never overlaps them when they
   are long.
-- Collapsed (icons only): the header shows only the orb; the footer is hidden.
+- Collapsed (icons only): the header row and the footer are hidden.
   The mobile sheet has the same header and footer as desktop.
 - Search button: full width, 34px high, radius 8, background #FFFFFF,
   border 1px #E3E8EE, text #5C6B7A 14px, search icon 16px, label "Search",
@@ -285,32 +285,34 @@ add assets to the same index.
 
 ## Dot orb animation
 
-Only the 40px orb in the home heading moves. The side panel orb, the New chat
+Only the 40px orb in the home heading moves. The New chat
 row and Dot's messages stay static. CSS only (components/dot/dot-orb.module.css),
 no animation library, and only transform and opacity animate (never
 box-shadow or background), so it stays smooth.
 
-- Look: the same radial gradient as the static orb
-  (circle at 32% 28%, #FFFFFF 0%, #D9FFF0 18%, #6EF2C4 46%, #22B99A 68%,
-  #0B6E5C 100%) and the outer drop shadow 0 6px 18px rgba(34,185,154,.35).
-  The fixed inset shadow (inset 0 -3px 8px …) is not used on the animated orb:
-  it would read as a second, fixed light.
-- One light source, and it moves: the whole gradient (its white highlight and
-  its dark edge) is on an inner layer, a circle the size of the orb, clipped by
-  the orb (overflow hidden, radius 999px). That layer sways with transform:
-  rotate(15deg) ↔ rotate(71deg), 6s, ease-in-out, infinite, alternate, so the
-  highlight and the shaded side move together and the light always comes from
-  above. At rotate(0) the gradient's highlight sits 43° left of the top, so
-  this range swings it evenly across the top, from upper-left (about −28°) to
-  upper-right (about +28°). There is no separate highlight layer.
+- Motion: the UN Deck Builder's generate sphere, in Dot's greens. Soft
+  pieces of colour wander inside a round pane of glass, each on its own loop
+  of a different length, so the colours mix and shift without repeating the
+  same picture or showing an edge. All layers are clipped by the orb
+  (overflow hidden, radius 999px).
+  - Base: radial-gradient(circle at 50% 20%, #E6FFF5 0%, #A8F7DA 50%,
+    #5FDCB6 100%).
+  - Two pieces of a linear-gradient(0deg, #1FA287, #45D2AC 55%, #7FF4CA),
+    edges melted with a radial mask, on 3.2s and 4s loops.
+  - A brighter mint patch (rgba(140,255,205)) on a 3.5s loop and a white
+    sheen on a 2.8s loop, both blurred by 7 to 8% of the orb's size.
+  - On top, fixed: a 1px white hairline (35%) and a soft white bloom at the
+    top, the glass surface.
+  - Only translate, scale and opacity animate (never box-shadow or
+    background). No drop shadow.
+- Floating: the whole orb, glow included, drifts up by 8% of its size
+  (3px at 40px) and back, 3.6s, ease-in-out, infinite (translate, so the
+  heading text never moves).
 - Breathing: the orb scales 1 → 1.04 → 1 from its centre, 4s, ease-in-out,
   infinite.
-- Glow: a pseudo-element behind the orb, a #22B99A circle with 12px blur. Its
-  opacity goes 0.35 → 0.6 → 0.35, 4s, in step with the breathing. It is not a
-  light on the orb's surface.
-- Reduced motion (prefers-reduced-motion: reduce): no animation; the inner
-  layer stays at rotate(0), the original static look, with the drop shadow
-  and no glow.
+- No glow behind the orb (removed 3 Nov 2026).
+- Reduced motion (prefers-reduced-motion: reduce): no animation, the colours
+  at rest.
 - The orb is decorative (aria-hidden). Its box keeps its size, so the scaling
   never moves the heading text.
 
