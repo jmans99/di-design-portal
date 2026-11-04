@@ -1,6 +1,7 @@
 'use client'
 
 import { useId } from 'react'
+import Link from 'next/link'
 import { ArrowUpRight, Plus } from 'lucide-react'
 import { Switch } from '@/components/ui/switch'
 import { FormatIcon } from '@/components/dot/format-icon'
@@ -9,10 +10,12 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import type { OutputType } from '@/lib/brief'
 import { getFormat } from '@/lib/dot/formats'
+import { showDeckDemo } from '@/lib/dot/settings'
 import { externalLinkLabel } from '@/lib/external-tools'
 import { cn } from '@/lib/utils'
 import styles from './dot.module.css'
@@ -101,10 +104,10 @@ export function ExternalTitle({ children }: { children: string }) {
 }
 
 /** "Coming soon" pill: the Recommended pill's size and shape, in neutral colours. */
-export function ComingSoonPill() {
+export function ComingSoonPill({ children = 'Coming soon' }: { children?: string }) {
   return (
     <span className="inline-flex rounded-full border border-line-card bg-pill px-2 py-px text-[11px] font-semibold text-pill-muted-foreground">
-      Coming soon
+      {children}
     </span>
   )
 }
@@ -137,6 +140,21 @@ export function MoreMenu({ onStart, children }: { onStart: (format: OutputType) 
             </DropdownMenuItem>
           )
         })}
+        {showDeckDemo && (
+          <>
+            <DropdownMenuSeparator />
+            {/* Testing only (lib/dot/settings.ts): opens the deck demo in this tab, not the external builder. */}
+            <DropdownMenuItem
+              asChild
+              className="min-h-9 cursor-pointer gap-2.5 rounded-lg px-2 py-1.5 text-sm text-ink-secondary focus:bg-selected focus:text-ink"
+            >
+              <Link href="/?demo=deck">
+                <FormatIcon format={getFormat('deck')} size={22} />
+                Create a deck (for testing purposes)
+              </Link>
+            </DropdownMenuItem>
+          </>
+        )}
       </DropdownMenuContent>
     </DropdownMenu>
   )

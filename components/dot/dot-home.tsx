@@ -9,12 +9,13 @@ import { DotOrb } from '@/components/dot/dot-orb'
 import { ComingSoonPill, ExternalTitle, KnowledgeSwitch, MoreMenu, RecommendedPill, SEND_BUTTON, StartTile } from '@/components/dot/format-tiles'
 import { LogoArt, MapArt, MasterDeckArt, SlidesArt, TwoPagerArt } from '@/components/dot/dot-art'
 import { Conversation } from '@/components/dot/conversation'
+import { DeckDemo, deckDemoFromParams } from '@/components/dot/deck-demo'
 import { SearchReply } from '@/components/dot/search-reply'
 import { useDot } from '@/components/dot/use-dot'
 import { conversationFromParams, searchFromParams } from '@/lib/dot/conversation'
 import type { OutputType } from '@/lib/brief'
 import { masterDeckAvailable } from '@/lib/external-tools'
-import { showKnowledgeToggle } from '@/lib/dot/settings'
+import { showDeckDemo, showKnowledgeToggle } from '@/lib/dot/settings'
 import { cn } from '@/lib/utils'
 import styles from './dot.module.css'
 
@@ -25,6 +26,9 @@ const TILE_SUB = 'mt-0.5 text-xs text-ink-secondary'
 /** Home page: Dot's box with format tiles, or the conversation once something is picked (state in the URL). */
 export function DotHome() {
   const params = useSearchParams()
+  // The deck demo (testing only, showDeckDemo in lib/dot/settings.ts) comes before the other checks.
+  const demo = showDeckDemo ? deckDemoFromParams(params) : null
+  if (demo) return <DeckDemo key={JSON.stringify(demo)} state={demo} />
   // Keyed on the URL so a new step starts with fresh local state.
   const search = searchFromParams(params)
   if (search) return <SearchReply key={JSON.stringify(search)} state={search} />
