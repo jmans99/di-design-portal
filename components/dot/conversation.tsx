@@ -185,10 +185,10 @@ export function UserMessage({ format, children }: { format?: Format; children: R
   )
 }
 
-export function DotMessage({ text, children }: { text: string; children?: React.ReactNode }) {
+export function DotMessage({ text, children, animated = false }: { text: string; children?: React.ReactNode; animated?: boolean }) {
   return (
     <li className="flex gap-3">
-      <DotOrb size={28} />
+      <DotOrb size={28} animated={animated} />
       <div className="min-w-0 flex-1">
         <p className="pt-0.5 text-[15px] leading-[1.55] text-ink">
           <span className="sr-only">Dot: </span>
@@ -203,7 +203,7 @@ export function DotMessage({ text, children }: { text: string; children?: React.
 const TEMPLATE_TILE = 'focus-ring relative flex flex-col overflow-hidden rounded-[18px] border p-4 text-left transition-shadow hover:shadow-tile aria-pressed:ring-2 aria-pressed:ring-ring aria-pressed:ring-offset-2'
 
 /** Deck templates (docs/design/dot-home.md, 3b). */
-function TemplateBento({ selected, onPick }: { selected?: DeckTemplateId; onPick: (id: DeckTemplateId) => void }) {
+export function TemplateBento({ selected, onPick }: { selected?: DeckTemplateId; onPick: (id: DeckTemplateId) => void }) {
   const t = Object.fromEntries(DECK_TEMPLATES.map((d) => [d.id, d])) as Record<DeckTemplateId, (typeof DECK_TEMPLATES)[number]>
   const pressed = (id: DeckTemplateId) => ({ 'aria-pressed': selected === id, onClick: () => onPick(id), type: 'button' as const })
 
@@ -250,10 +250,13 @@ function TemplateBento({ selected, onPick }: { selected?: DeckTemplateId; onPick
   )
 }
 
+/** The answer chips under Dot's questions. */
+export const CHIP =
+  'focus-ring h-8 rounded-full border border-line-card bg-card px-3 text-[13px] text-ink-secondary transition-colors hover:bg-hover-soft aria-pressed:border-transparent aria-pressed:bg-selected aria-pressed:font-semibold aria-pressed:text-ink'
+
 /** Audience groups from data/knowledge, plus Skip. */
-function AudienceChips({ selected, onPick }: { selected?: string; onPick: (audience: string) => void }) {
-  const chip =
-    'focus-ring h-8 rounded-full border border-line-card bg-card px-3 text-[13px] text-ink-secondary transition-colors hover:bg-hover-soft aria-pressed:border-transparent aria-pressed:bg-selected aria-pressed:font-semibold aria-pressed:text-ink'
+export function AudienceChips({ selected, onPick }: { selected?: string; onPick: (audience: string) => void }) {
+  const chip = CHIP
   return (
     <div className="flex flex-wrap gap-2" role="group" aria-label="Audience">
       {AUDIENCE_GROUPS.map((g) => (
@@ -285,6 +288,8 @@ export function ReplyBar({
   showBrief = true,
   useKnowledge,
   onUseKnowledgeChange,
+  chips,
+  placeholder,
 }: {
   format?: Format
   templateName?: string | null
@@ -295,6 +300,10 @@ export function ReplyBar({
   /** "Use DI knowledge", shown before the send button while showKnowledgeToggle is on. */
   useKnowledge?: boolean
   onUseKnowledgeChange?: (value: boolean) => void
+  /** Brief chips to show instead of Format, Template and Audience (the deck demo has its own). */
+  chips?: { label: string; value: string | null }[]
+  /** Input placeholder; the default depends on `showBrief`. */
+  placeholder?: string
 }) {
   const [text, setText] = useState('')
   const canSend = text.trim().length > 0
@@ -315,9 +324,15 @@ export function ReplyBar({
         {showBrief && (
           <div className="mb-2 flex flex-wrap items-center gap-2">
             <span className="text-xs text-ink-muted">Brief</span>
-            <BriefChip label="Format" value={format?.label ?? null} color={color} />
-            {templateName !== undefined && <BriefChip label="Template" value={templateName} color={color} />}
-            <BriefChip label="Audience" value={audienceName ?? null} color={color} />
+            {chips ? (
+              chips.map((chip) => <BriefChip key={chip.label} label={chip.label} value={chip.value} color={color} />)
+            ) : (
+              <>
+                <BriefChip label="Format" value={format?.label ?? null} color={color} />
+                {templateName !== undefined && <BriefChip label="Template" value={templateName} color={color} />}
+                <BriefChip label="Audience" value={audienceName ?? null} color={color} />
+              </>
+            )}
           </div>
         )}
         {/* With the knowledge switch: 16px between input, switch and send (as in Dot's box); on a phone the
@@ -330,7 +345,7 @@ export function ReplyBar({
             id="dot-reply"
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder={showBrief ? 'Reply to Dot, or pick one above' : 'Reply to Dot'}
+            placeholder={placeholder ?? (showBrief ? 'Reply to Dot, or pick one above' : 'Reply to Dot')}
             autoComplete="off"
             className={cn(
               'h-9 min-w-0 flex-1 rounded-lg bg-transparent px-1 text-[15px] text-ink outline-none placeholder:text-ink-muted focus-visible:ring-2 focus-visible:ring-ring',

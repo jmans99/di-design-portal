@@ -351,6 +351,78 @@ Added after the first build of this spec.
   - A typed "master deck" gets: "The DI Master deck is coming soon. In the
     meantime, you can start a deck in the deck builder.", with the same button.
 
+## Deck demo (testing)
+
+Added in November 2026. For testing only: it shows the team the planned
+"Create a deck" flow. **It makes nothing real.** The deck builder is still the
+external tool (see "External tools"), and the real "Create a deck" tile, the
+side panel row, ⌘K and `/?new=deck` are unchanged.
+
+- Where it is reached: the last item in the + "More" menu, after a separator,
+  "Create a deck (for testing purposes)" (`MoreMenu` in
+  `components/dot/format-tiles.tsx`, so it shows wherever that menu is used). It
+  opens `/?demo=deck` in the same tab. It is not in the side panel, ⌘K or the
+  home bento.
+- The switch: `showDeckDemo = true` in `lib/dot/settings.ts`. When false, the
+  menu item is hidden and `/?demo=deck` shows the normal home.
+- Code: `components/dot/deck-demo.tsx` (its own component; `DotHome` renders it
+  when `?demo=deck` is in the URL, before the other checks) and
+  `lib/dot/deck-demo.ts` (URL parse/build, typed-reply matching and the outline
+  rules, tested in `lib/dot/deck-demo.test.mjs`). It reuses `UserMessage`,
+  `DotMessage`, `ReplyBar`, `TemplateBento`, `AudienceChips` and
+  `OpenBuilderButton` from `conversation.tsx`.
+- Layout: as the scripted conversation. Top bar "New deck" with a neutral "Demo"
+  pill (the Coming soon pill style) and "Start over". One question at a time; each
+  answer becomes a user bubble. Reply bar Brief chips: Template, Audience, Goal,
+  Offerings, Length. Every question has Skip unless noted.
+- Steps, in order:
+  1. Template: the four templates, all selectable (Master deck too). No Skip.
+  2. Audience group (the groups in data/knowledge).
+  3. Specific audience: only when the group has audiences.
+  4. Goal: "Introduce Digital Inclusion", "Ask for funding", "Propose a
+     partnership", "Report on progress", or typed text (cut to 60 characters).
+  5. Offerings: the 18, checkable, under their 6 categories. Pre-selected from
+     the specific audience (`offeringsForAudience`), else none. Continue with none
+     picked means all. Not asked for the Master deck (always all 18).
+  6. Length: Short (5 to 8 slides), Standard (10 to 15), Long (20 or more). No
+     Skip; typed text that matches nothing becomes Standard.
+  7. Country or region: typed text, or Skip.
+  8. Review: a card with every answer. "Change" goes back to that question and
+     clears the answers after it. "Generate deck" starts the result.
+- Typed replies: lowercased and matched loosely against the chip labels, with
+  `isSkip` for skip. No match: "I didn't catch that. Pick one above, or try other
+  words."
+- URL params (all answers are in the URL, so refresh and Back work):
+
+  | Param | Value |
+  | --- | --- |
+  | `demo` | `deck` (turns the demo on) |
+  | `template` | `from-scratch`, `master-deck`, `partnership-deck`, `government-briefing` |
+  | `audience` | audience group id, or `skip` |
+  | `who` | audience id, or `skip` |
+  | `goal` | the goal text, or `skip` |
+  | `offerings` | `all`, or offering ids separated by commas |
+  | `length` | `short`, `standard`, `long` |
+  | `region` | the text, or `skip` |
+  | `generate` | `1` after "Generate deck" |
+
+  An unknown value is dropped, and a missing answer clears the later ones.
+- "Generating": a progress list (`aria-live="polite"`) ticks through in about 3
+  seconds: "Reading DI knowledge", "Picking offerings for your audience",
+  "Writing the story", "Laying out slides", next to the animated Dot orb. With
+  reduced motion the result shows straight away.
+- The result: "Here's a preview of how your deck could look." and a grid of
+  16:9 slide cards built from the answers by fixed rules (no AI): Title (goal,
+  audience, country), Why it matters (up to 3 needs of the specific audience, or
+  a generic line), one slide per offering category with selected offerings, How
+  we work together (funding or partnership goals only), The ask (funding or
+  partnership) or Next steps, Contact. A short length merges categories; a small
+  brief is padded with one slide per offering, then generic slides, as well as it
+  can. Under the grid: "This is a demo. No deck was made. Real decks are made in
+  the deck builder.", "Open deck builder" (external, new tab) and "Start over".
+- It makes nothing real: demo briefs are not added to Recent, and no AI or
+  external API is called.
+
 ## Theme
 
 Added in October 2026. Light, dark or system.

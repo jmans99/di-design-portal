@@ -9,3 +9,12 @@
  * default) and changes nothing else yet. Set to false to hide it again.
  */
 export const showKnowledgeToggle = true
+
+/**
+ * The deck demo, for testing only (docs/design/dot-home.md, "Deck demo
+ * (testing)"). Shows "Create a deck (for testing purposes)" in the + More menu
+ * and turns on /?demo=deck: Dot asks a few questions and shows a made-up deck
+ * outline. Nothing real is made; the deck builder is still the external tool.
+ * Set to false to hide the menu item and send /?demo=deck to the normal home.
+ */
+export const showDeckDemo = true
