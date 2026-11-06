@@ -42,7 +42,7 @@ Replaces the current side panel styling and structure.
   behaviour (collapse, mobile off-canvas, cookie for state).
 - Header (no orb since 3 Nov 2026): two lines:
   "Welcome to Dot" (Manrope 600, 14px, #1A2A3C) and the caption
-  "Your AI content designer" (Open Sans 400, 12px, #5C6B7A). The
+  "Your AI designer" (Open Sans 400, 12px, #5C6B7A). The
   two lines link to / (accessible name "Dot home"). "Beta" badge on the right
   (11px, 600, navy text on #F7761F, pill, 2px 8px).
 - Footer (shadcn SidebarFooter, pinned to the bottom), one row with a 1px
@@ -65,7 +65,9 @@ Replaces the current side panel styling and structure.
   conversation state.
 - Menu order, top to bottom: Welcome header, Search, New chat, Create,
   Brand assets, Brand guidelines, AI skills, Knowledge, then Recent (if any),
-  then the footer (`SIDEBAR_MENU` in lib/nav.ts).
+  then the footer (`SIDEBAR_MENU` in lib/nav.ts). A thin divider (the Separator
+  component, `border` colour, 1px) sits between: Create | Brand assets and
+  Brand guidelines | AI skills | Knowledge.
 - Groups (radius 8, gap 10px between icon and label; children rows 30px,
   13px, #1A2A3C / dark #F8F8F8, left padding 36px, so they start where the
   group label starts):
@@ -92,10 +94,12 @@ Replaces the current side panel styling and structure.
     colour: right-pointing when closed, down when open.
   - Links (all sub-items, plus New chat and AI skills): #1A2A3C (dark
     #F8F8F8), not gray.
-  - Every group is closed by default, Recent included. The group that holds
-    the current page opens by itself, so the selected item shows. Open and
-    closed groups are not saved between visits.
-  - Create: Deck, Social post, Two-pager, Map, Engagement map,
+  - Every group is closed by default, Recent included, except Create: it is
+    the fallback and is open when no side panel page is current (for example
+    on the home page). The group that holds the current page opens by itself,
+    so the selected item shows. Open and closed groups are not saved between
+    visits.
+  - Create: Deck, Social post, Two-pager, Country map, Engagement map,
     Virtual background, Email signature. Deck and Two-pager open the external
     builder (see "External tools"); the others go to their tool page.
   - Brand assets: Logos, Illustrations, Image galleries, Photo awards.
@@ -103,7 +107,10 @@ Replaces the current side panel styling and structure.
     Video guidelines.
   - AI skills (single row, no children).
   - Knowledge: Audiences, Facilities, Systems, Offerings, plus the existing
-    "Soon" items.
+    "Soon" items. The Knowledge row and its four working pages carry a small
+    "Draft" pill (`<DraftPill>`, components/ui/draft-pill.tsx), also in ⌘K;
+    the "Soon" items keep their "Soon" tag. Set by `draft: true` on the group
+    in lib/nav.ts.
   - Renamed in October 2026: "Assets" became "Brand assets", "Brand" became
     "Brand guidelines", and its child "Brand guidelines" became "DI guidelines"
     (no two items share a name). ⌘K still finds the old names.
@@ -138,7 +145,11 @@ b) Dot's box: white, border 1px #E3E8EE, radius 22px,
      (`showKnowledgeToggle = true` in lib/dot/settings.ts; false hides it).
      It is in Dot's box on the home page and in the reply bar (between the
      input and the send button). It has no effect yet: it only sets
-     useKnowledge in the brief, on by default. One component,
+     useKnowledge in the brief. It is currently disabled
+     (`knowledgeToggleDisabled = true` in lib/dot/settings.ts): shown off and
+     greyed out (not-allowed cursor, 50% opacity), not clickable, and
+     useKnowledge is always false, also from the URL. Set the flag to false to
+     bring it back (on by default). One component,
      `<KnowledgeSwitch>` (components/dot/format-tiles.tsx), on the theme
      tokens:
 
@@ -165,7 +176,7 @@ c) Bento under the box: margin-top 16px, CSS grid,
      frosted glass (white gradient over rgba of 500/300, white 1px border)
      rotated -3deg and 5deg. Title Manrope 600 15px, sub 12px #3B4A5A.
      Opens the deck step (section 3).
-   - Row 1, col 2, "Make a map": background #E5F6FD, small art top right
+   - Row 1, col 2, "Generate a country map": background #E5F6FD, small art top right
      (40x36 folded map, three panels in #00AEEF, with a white location pin).
      Goes to the Maps page (/materials/maps). It replaced "Make a social
      post", which moved to the + menu.
@@ -203,7 +214,7 @@ c) Bento under the box: margin-top 16px, CSS grid,
 d) + menu (shadcn DropdownMenu or Popover, anchored to the More tile, 260px
    wide, radius 14, shadow 0 16px 40px rgba(26,42,60,.16), padding 6px):
    heading "More formats" (12px #5C6B7A), then items with 22px coloured icon
-   squares: Make a social post (icon #EC6A8C), Make a map, Make an engagement
+   squares: Make a social post (icon #EC6A8C), Generate a country map, Make an engagement
    map, Make a virtual background, Make an email signature. Each goes to its
    tool. Full keyboard support. Typed requests for social posts still go to
    the social media tool.
@@ -464,7 +475,7 @@ Added in October 2026. Light, dark or system.
   | Destructive | `#F5666D`, text `#0F1823` |
 
 - Bento tiles in dark: Create a deck and Get a logo `#1A2A3C` with border
-  `#2A3E55`; Make a map `rgba(0,174,239,.14)`; Write a two-pager
+  `#2A3E55`; Generate a country map `rgba(0,174,239,.14)`; Write a two-pager
   `rgba(126,140,255,.16)`; Master deck `rgba(0,174,239,.10)` with border
   `rgba(0,174,239,.25)`; More dashed `#3A5068`.
 - Unchanged in both themes: the Dot orb, the BrandTabs track (`#01689D`,

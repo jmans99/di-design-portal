@@ -42,6 +42,8 @@ export type NavGroup = {
   icon: LucideIcon
   /** Search words besides the label, e.g. an old name ("Assets"). */
   aliases?: string[]
+  /** Still a draft: the group and each of its working pages get a "Draft" pill (planned "Soon" pages keep "Soon"). */
+  draft?: boolean
   items: NavItem[]
 }
 
@@ -89,6 +91,7 @@ export const SIDEBAR_GROUPS: NavGroup[] = [
     id: 'knowledge',
     label: 'Knowledge',
     icon: Library,
+    draft: true,
     items: [
       { id: 'audiences', path: '/knowledge/audiences', label: 'Audiences', icon: Users },
       { id: 'facilities', path: '/knowledge/facilities', label: 'Facilities', icon: School },
@@ -103,16 +106,18 @@ export const SIDEBAR_GROUPS: NavGroup[] = [
 /** AI skills: a single row, no children. */
 export const AI_SKILLS_ITEM: NavItem = { id: 'skills', path: '/materials/skills', label: 'AI skills', icon: Sparkles }
 
-export type SidebarEntry = { group: NavGroup } | { link: NavItem }
+/** A group or a single link; `dividerBefore` draws a thin line above it. */
+export type SidebarEntry = ({ group: NavGroup } | { link: NavItem }) & { dividerBefore?: boolean }
 
 /**
  * The side panel menu under New chat, top to bottom: Create, Brand assets,
- * Brand guidelines, AI skills, then Knowledge (Recent follows, if any).
+ * Brand guidelines, AI skills, then Knowledge (Recent follows, if any). A thin
+ * divider separates: Create | Brand assets + Brand guidelines | AI skills | Knowledge.
  */
 export const SIDEBAR_MENU: SidebarEntry[] = [
-  ...SIDEBAR_GROUPS.filter((g) => g.id !== 'knowledge').map((group) => ({ group })),
-  { link: AI_SKILLS_ITEM },
-  ...SIDEBAR_GROUPS.filter((g) => g.id === 'knowledge').map((group) => ({ group })),
+  ...SIDEBAR_GROUPS.filter((g) => g.id !== 'knowledge').map((group): SidebarEntry => ({ group, dividerBefore: group.id === 'assets' })),
+  { link: AI_SKILLS_ITEM, dividerBefore: true },
+  ...SIDEBAR_GROUPS.filter((g) => g.id === 'knowledge').map((group): SidebarEntry => ({ group, dividerBefore: true })),
 ]
 
 /** Every link in the side panel (planned "Soon" pages left out). */

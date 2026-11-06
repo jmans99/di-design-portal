@@ -7,6 +7,7 @@ import { ArrowUpRight, Download, Search } from 'lucide-react'
 import { BrandPill } from '@/components/brand/brand-tabs'
 import { AssetPreview } from '@/components/search/asset-card'
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog'
+import { DraftPill } from '@/components/ui/draft-pill'
 import { searchItems, type SearchItem } from '@/lib/search'
 import { ASSETS, downloadAsset } from '@/lib/search/assets'
 import { hasAssetFacets, parseQuery, searchAssets } from '@/lib/search/match'
@@ -182,6 +183,7 @@ function LinkRow({ item, onSelect }: { item: SearchItem; onSelect: () => void })
     >
       <Icon className="h-4 w-4 shrink-0" style={item.color ? { color: item.color } : undefined} strokeWidth={1.75} aria-hidden />
       {item.title}
+      {item.draft && <DraftPill className="ml-auto" />}
       {item.external && <ArrowUpRight className="ml-auto !h-3.5 !w-3.5 shrink-0 text-ink-muted" strokeWidth={1.75} aria-hidden />}
     </CommandPrimitive.Item>
   )

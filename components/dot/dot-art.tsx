@@ -53,7 +53,7 @@ export function MasterDeckArt() {
   )
 }
 
-/** A folded map (three panels) with a location pin, for "Make a map". */
+/** A folded map (three panels) with a location pin, for "Generate a country map". */
 export function MapArt() {
   return (
     <svg aria-hidden width="40" height="36" viewBox="0 0 40 36" className="block shrink-0">

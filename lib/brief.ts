@@ -5,6 +5,8 @@
  * now; it is the hand-off point for the deck builder later.
  */
 
+import { resolveUseKnowledge } from './dot/settings.ts'
+
 export type OutputType = 'map' | 'social-post' | 'engagement-map' | 'email-signature' | 'background' | 'deck' | 'two-pager'
 
 export type Brief = {
@@ -30,7 +32,7 @@ export const OUTPUT_OPTIONS: OutputOption[] = [
   { type: 'deck', label: 'Deck', href: null },
   { type: 'social-post', label: 'Social post', href: '/materials/social-media' },
   { type: 'two-pager', label: 'Two-pager', href: null },
-  { type: 'map', label: 'Map', href: '/materials/maps' },
+  { type: 'map', label: 'Country map', href: '/materials/maps' },
   { type: 'engagement-map', label: 'Engagement map', href: '/materials/engagement-map' },
   { type: 'background', label: 'Virtual background', href: '/materials/backgrounds' },
   { type: 'email-signature', label: 'Email signature', href: '/materials/email-signature' },
@@ -65,7 +67,7 @@ export function briefFromQuery(query: URLSearchParams | string): Brief | null {
     templateId: params.get(QUERY_KEYS.templateId) ?? undefined,
     audienceGroupId: params.get(QUERY_KEYS.audienceGroupId) ?? undefined,
     audienceId: params.get(QUERY_KEYS.audienceId) ?? undefined,
-    useKnowledge: params.get(QUERY_KEYS.useKnowledge) !== 'off',
+    useKnowledge: resolveUseKnowledge(params.get(QUERY_KEYS.useKnowledge) !== 'off'),
   }
 }
 

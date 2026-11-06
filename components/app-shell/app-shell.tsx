@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { ArrowUpRight, ChevronDown, ChevronRight, Clock, PanelLeft, Search } from 'lucide-react'
@@ -17,6 +17,8 @@ import {
   useSidebar,
 } from '@/components/ui/sidebar'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
+import { DraftPill } from '@/components/ui/draft-pill'
+import { Separator } from '@/components/ui/separator'
 import { SheetDescription, SheetTitle } from '@/components/ui/sheet'
 import { DotOrb } from '@/components/dot/dot-orb'
 import { ThemeToggle } from '@/components/app-shell/theme-toggle'
@@ -58,6 +60,8 @@ const GROUP_ROW = cn(
 const CHILD_ROW =
   'focus-ring flex h-[30px] w-full min-w-0 items-center gap-2 rounded-lg pl-9 pr-2.5 text-[13px] text-ink hover:bg-sidebar-hover data-[active=true]:bg-sidebar-selected data-[active=true]:font-semibold'
 const TAG = 'ml-auto shrink-0 text-[11px] font-normal text-ink-muted'
+/** The group that is open when no page of the side panel is current (the home page, or a page that is in no group). */
+const FALLBACK_OPEN_GROUP = 'create'
 
 /**
  * App shell: side panel on the left (icons only when collapsed on desktop, a
@@ -107,7 +111,7 @@ function AppSidebar() {
           <Link href="/" onClick={closeOnMobile} aria-label="Dot home" className="focus-ring flex min-w-0 items-center gap-2.5 rounded-lg">
             <span className="flex min-w-0 flex-col">
               <span className="font-heading text-sm font-semibold leading-[18px] text-ink">Welcome to Dot</span>
-              <span className="text-xs leading-4 text-ink-muted">Your AI content designer</span>
+              <span className="text-xs leading-4 text-ink-muted">Your AI designer</span>
             </span>
           </Link>
           {/* The one orange accent. Navy on orange: 5.25:1. */}
@@ -148,20 +152,23 @@ function AppSidebar() {
         </SidebarMenu>
 
         <SidebarMenu className="gap-0.5">
-          {SIDEBAR_MENU.map((entry) =>
-            'group' in entry ? (
-              <SidebarGroupRow key={entry.group.id} group={entry.group} activeId={active?.id} onNavigate={closeOnMobile} />
-            ) : (
-              <SidebarMenuItem key={entry.link.id}>
-                <SidebarMenuButton asChild isActive={active?.id === entry.link.id} tooltip={entry.link.label} className={ROW}>
-                  <Link href={entry.link.path} onClick={closeOnMobile} aria-current={active?.id === entry.link.id ? 'page' : undefined}>
-                    <entry.link.icon strokeWidth={ICON_STROKE} aria-hidden />
-                    <span>{entry.link.label}</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            ),
-          )}
+          {SIDEBAR_MENU.map((entry) => (
+            <Fragment key={'group' in entry ? entry.group.id : entry.link.id}>
+              {entry.dividerBefore && <SidebarDivider />}
+              {'group' in entry ? (
+                <SidebarGroupRow group={entry.group} activeId={active?.id} onNavigate={closeOnMobile} />
+              ) : (
+                <SidebarMenuItem>
+                  <SidebarMenuButton asChild isActive={active?.id === entry.link.id} tooltip={entry.link.label} className={ROW}>
+                    <Link href={entry.link.path} onClick={closeOnMobile} aria-current={active?.id === entry.link.id ? 'page' : undefined}>
+                      <entry.link.icon strokeWidth={ICON_STROKE} aria-hidden />
+                      <span>{entry.link.label}</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              )}
+            </Fragment>
+          ))}
         </SidebarMenu>
 
         {recent.length > 0 && (
@@ -195,13 +202,24 @@ function AppSidebar() {
   )
 }
 
+/** A thin, light line between menu groups: the border colour via the Separator, with a little space above and below. */
+function SidebarDivider() {
+  return (
+    <li aria-hidden className="px-2.5 py-1.5 group-data-[collapsible=icon]:px-1">
+      <Separator />
+    </li>
+  )
+}
+
 function SidebarGroupRow({ group, activeId, onNavigate }: { group: NavGroup; activeId?: string; onNavigate: () => void }) {
   const hasActive = group.items.some((i) => i.id === activeId)
+  // Create is the fallback: it is open while nothing in the side panel is current (e.g. on the home page).
+  const defaultOpen = hasActive || (group.id === FALLBACK_OPEN_GROUP && activeId === undefined)
   return (
-    <CollapsibleRow label={group.label} icon={group.icon} defaultOpen={hasActive}>
+    <CollapsibleRow label={group.label} icon={group.icon} defaultOpen={defaultOpen} draft={group.draft}>
       {group.items.map((item) => (
         <li key={item.id}>
-          <ChildRow item={item} active={item.id === activeId} onNavigate={onNavigate} />
+          <ChildRow item={item} active={item.id === activeId} draft={group.draft} onNavigate={onNavigate} />
         </li>
       ))}
     </CollapsibleRow>
@@ -213,11 +231,14 @@ function CollapsibleRow({
   label,
   icon: Icon,
   defaultOpen,
+  draft,
   children,
 }: {
   label: string
   icon: NavGroup['icon']
   defaultOpen: boolean
+  /** Adds the "Draft" pill at the end of the row. */
+  draft?: boolean
   children: React.ReactNode
 }) {
   // Closed by default and not remembered between visits. null = follow defaultOpen (the group opens when the
@@ -246,6 +267,7 @@ function CollapsibleRow({
             <span className="min-w-0 truncate">{label}</span>
             {/* Right after the label (gap 6px), in the title colour. */}
             <Chevron className="-ml-1 !size-3 shrink-0 group-data-[collapsible=icon]:hidden" strokeWidth={1.75} aria-hidden />
+            {draft && <DraftPill className="ml-auto group-data-[collapsible=icon]:hidden" />}
           </SidebarMenuButton>
         </CollapsibleTrigger>
         <CollapsibleContent>
@@ -256,7 +278,7 @@ function CollapsibleRow({
   )
 }
 
-function ChildRow({ item, active, onNavigate }: { item: NavItem; active: boolean; onNavigate: () => void }) {
+function ChildRow({ item, active, draft, onNavigate }: { item: NavItem; active: boolean; draft?: boolean; onNavigate: () => void }) {
   if (item.soon) {
     return (
       <span aria-disabled className={cn(CHILD_ROW, 'cursor-default text-ink-muted hover:bg-transparent hover:text-ink-muted')}>
@@ -277,6 +299,7 @@ function ChildRow({ item, active, onNavigate }: { item: NavItem; active: boolean
     <Link href={item.path} onClick={onNavigate} data-active={active} aria-current={active ? 'page' : undefined} className={CHILD_ROW}>
       <span className="truncate">{item.label}</span>
       {item.tag && <span className={TAG}>{item.tag}</span>}
+      {draft && <DraftPill className="ml-auto" />}
     </Link>
   )
 }

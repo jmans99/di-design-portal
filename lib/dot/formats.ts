@@ -27,7 +27,7 @@ const DETAILS: Record<OutputType, Omit<Format, 'type' | 'label' | 'href' | 'exte
   deck: { action: 'Create a deck', title: 'New deck', color: '#01689D', icon: Presentation, toolName: 'deck builder' },
   'social-post': { action: 'Make a social post', title: 'New social post', color: '#EC6A8C', icon: Share2, toolName: 'social media tool' },
   'two-pager': { action: 'Write a two-pager', title: 'New two-pager', color: '#7E8CFF', icon: FileText, toolName: 'two-pager tool' },
-  map: { action: 'Make a map', title: 'New map', color: '#00AEEF', icon: MapIcon, toolName: 'map tool' },
+  map: { action: 'Generate a country map', title: 'New map', color: '#00AEEF', icon: MapIcon, toolName: 'map tool' },
   'engagement-map': { action: 'Make an engagement map', title: 'New engagement map', color: '#22B99A', icon: Globe, toolName: 'engagement map tool' },
   background: { action: 'Make a virtual background', title: 'New virtual background', color: '#5C6B7A', icon: Monitor, toolName: 'backgrounds tool' },
   'email-signature': { action: 'Make an email signature', title: 'New email signature', color: '#1A2A3C', icon: Mail, toolName: 'email signature tool' },

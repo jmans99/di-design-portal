@@ -11,6 +11,7 @@ import { useSearchPalette } from '@/components/search/search-palette'
 import { searchHref, type SearchState } from '@/lib/dot/conversation'
 import { getFormat } from '@/lib/dot/formats'
 import { matchIntent } from '@/lib/dot/intent'
+import { resolveUseKnowledge } from '@/lib/dot/settings'
 import { ASSETS } from '@/lib/search/assets'
 import { searchAssets } from '@/lib/search/match'
 import { FACET_LABELS, type Facet } from '@/lib/search/synonyms'
@@ -33,8 +34,8 @@ const ASSET_PAGES = [
  */
 export function SearchReply({ state }: { state: SearchState }) {
   const { start, send, push } = useDot()
-  // "Use DI knowledge" in the reply bar (on by default); it only goes into the brief of what starts next.
-  const [useKnowledge, setUseKnowledge] = useState(true)
+  // "Use DI knowledge" in the reply bar (on by default, off while the switch is disabled); it only goes into the brief of what starts next.
+  const [useKnowledge, setUseKnowledge] = useState(resolveUseKnowledge(true))
   const { openWith } = useSearchPalette()
   const { facets, results } = searchAssets(state.query, ASSETS, state.without)
   const intent = matchIntent(state.query)
