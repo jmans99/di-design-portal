@@ -25,6 +25,8 @@ export type SearchItem = {
   keywords?: string[]
   /** Its group's names ("Brand assets", and the old "Assets"), searched last. */
   groupKeywords?: string[]
+  /** Still a draft: shown with a "Draft" pill (the Knowledge pages). */
+  draft?: boolean
 }
 
 export const SEARCH_INDEX: SearchItem[] = [
@@ -40,6 +42,7 @@ export const SEARCH_INDEX: SearchItem[] = [
         icon: i.icon,
         keywords: i.aliases,
         groupKeywords: [g.label, ...(g.aliases ?? [])],
+        draft: g.draft,
       })),
   ),
   { id: `page-${AI_SKILLS_ITEM.id}`, title: AI_SKILLS_ITEM.label, section: 'AI skills', href: AI_SKILLS_ITEM.path, icon: AI_SKILLS_ITEM.icon },

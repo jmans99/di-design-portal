@@ -7,6 +7,7 @@
 import { OUTPUT_OPTIONS, type OutputType } from '@/lib/brief'
 import type { Facet } from '@/lib/search/synonyms'
 import { matchIntent, type DeckTemplateId } from '@/lib/dot/intent'
+import { resolveUseKnowledge } from '@/lib/dot/settings'
 import { DECK_TEMPLATES } from '@/lib/dot/templates'
 
 /** "skip" in `audience` means the user chose no particular audience. */
@@ -38,7 +39,7 @@ export function conversationFromParams(params: URLSearchParams): ConversationSta
     q,
     templateId: DECK_TEMPLATES.find((t) => t.id === template)?.id,
     audience: params.get('audience') || undefined,
-    useKnowledge: params.get('knowledge') !== 'off',
+    useKnowledge: resolveUseKnowledge(params.get('knowledge') !== 'off'),
   }
 }
 

@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import type { OutputType } from '@/lib/brief'
 import { getFormat } from '@/lib/dot/formats'
-import { showDeckDemo } from '@/lib/dot/settings'
+import { knowledgeToggleDisabled, showDeckDemo } from '@/lib/dot/settings'
 import { externalLinkLabel } from '@/lib/external-tools'
 import { cn } from '@/lib/utils'
 import styles from './dot.module.css'
@@ -30,8 +30,19 @@ export const SEND_BUTTON =
  * Track: primary when on (#01689D / #49BCF6), dashed-line colour when off
  * (#C9D2DB / #3A5068); knob #FFFFFF / #0F1823; label secondary text. Space
  * toggles it (Radix Switch is a button with role="switch").
+ * While knowledgeToggleDisabled is on (lib/dot/settings.ts) it is shown off and
+ * disabled: the Switch's own disabled style (not-allowed cursor, 50% opacity),
+ * repeated on the label.
  */
-export function KnowledgeSwitch({ checked, onCheckedChange }: { checked: boolean; onCheckedChange: (value: boolean) => void }) {
+export function KnowledgeSwitch({
+  checked,
+  onCheckedChange,
+  disabled = knowledgeToggleDisabled,
+}: {
+  checked: boolean
+  onCheckedChange: (value: boolean) => void
+  disabled?: boolean
+}) {
   const id = useId()
   return (
     <div className="flex shrink-0 items-center gap-2">
@@ -39,16 +50,17 @@ export function KnowledgeSwitch({ checked, onCheckedChange }: { checked: boolean
         id={id}
         checked={checked}
         onCheckedChange={onCheckedChange}
+        disabled={disabled}
         className="focus-ring h-5 w-9 data-[state=checked]:bg-primary data-[state=unchecked]:bg-line-dashed [&>span]:h-4 [&>span]:w-4 [&>span]:bg-switch-thumb [&>span]:shadow-sm [&>span]:data-[state=checked]:translate-x-4"
       />
-      <label htmlFor={id} className="cursor-pointer whitespace-nowrap text-[13px] text-ink-secondary">
+      <label htmlFor={id} className={cn('whitespace-nowrap text-[13px] text-ink-secondary', disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer')}>
         Use DI knowledge
       </label>
     </div>
   )
 }
 
-/** Formats in the + menu (docs/design/dot-home.md, 2d). Social post moved here when "Make a map" took its home tile. */
+/** Formats in the + menu (docs/design/dot-home.md, 2d). Social post moved here when "Generate a country map" took its home tile. */
 const MORE_FORMATS: OutputType[] = ['social-post', 'map', 'engagement-map', 'background', 'email-signature']
 
 /**

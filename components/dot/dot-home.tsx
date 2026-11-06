@@ -15,7 +15,7 @@ import { useDot } from '@/components/dot/use-dot'
 import { conversationFromParams, searchFromParams } from '@/lib/dot/conversation'
 import type { OutputType } from '@/lib/brief'
 import { masterDeckAvailable } from '@/lib/external-tools'
-import { showDeckDemo, showKnowledgeToggle } from '@/lib/dot/settings'
+import { resolveUseKnowledge, showDeckDemo, showKnowledgeToggle } from '@/lib/dot/settings'
 import { cn } from '@/lib/utils'
 import styles from './dot.module.css'
 
@@ -38,8 +38,9 @@ export function DotHome() {
 }
 
 export function EmptyHome() {
-  // On by default; the switch shows while showKnowledgeToggle is true (lib/dot/settings.ts).
-  const [useKnowledge, setUseKnowledge] = useState(true)
+  // On by default, unless the switch is disabled (knowledgeToggleDisabled): then it stays off.
+  // The switch shows while showKnowledgeToggle is true (lib/dot/settings.ts).
+  const [useKnowledge, setUseKnowledge] = useState(resolveUseKnowledge(true))
   const { start, send } = useDot()
   const startFormat = (format: OutputType, templateId?: 'master-deck') => start({ format, templateId, useKnowledge })
 
@@ -173,7 +174,8 @@ function FormatBento({ onStart }: { onStart: (format: OutputType, templateId?: '
         <span className="absolute right-3 top-3">
           <MapArt />
         </span>
-        <span className={cn(TILE_TITLE, 'pr-10')}>Make a map</span>
+        {/* Longer than the other tile titles: 14px and less right padding keep it to two lines in this tile. */}
+        <span className={cn(TILE_TITLE, 'pr-3 text-sm leading-tight')}>Generate a country map</span>
       </button>
       <StartTile
         type="two-pager"
