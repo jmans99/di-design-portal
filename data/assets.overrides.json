@@ -1,5 +1,5 @@
 {
-  "$comment": "Hand-set fields merged on top of what scripts/build-asset-index.mjs infers from file names. Keys are asset ids from data/assets.json. Confirmed by the portal owner: the UNICEF and UNICEF Digital Impact Division logos are brand di; the GEP and Connectivity Forum event logos are brand giga. The fonts (Manrope, Open Sans) are shared by both brands: brand both. The boxed UNICEF Digital Impact Division file named -black is the full-colour lockup (blue box, black text), so its colour is set to full-colour. Change any value here, then run npm run build or node scripts/build-asset-index.mjs. Shared by DI and Giga (brand both, set by the portal owner): the Giga + UNICEF + ITU partnership logo (8), the Giga Photo Award photos (48) and the General illustrations (35 pictograms in 3 styles, 105). The same brand is set in each page's own list (lib/brand-registry.ts, lib/illustration-registry.ts, lib/photo-awards.ts); the index build warns when the two disagree.",
+  "$comment": "Hand-set fields merged on top of what scripts/build-asset-index.mjs infers from file names. Keys are asset ids from data/assets.json. Confirmed by the portal owner: the UNICEF and UNICEF Digital Impact Division logos are brand di; the GEP and Connectivity Forum event logos are brand giga. The fonts (Manrope, Open Sans) are shared by both brands: brand both. The boxed UNICEF Digital Impact Division file named -black is the full-colour lockup (blue box, black text), so its colour is set to full-colour. Change any value here, then run npm run build or node scripts/build-asset-index.mjs. Shared by DI and Giga (brand both, set by the portal owner): the Giga + UNICEF + ITU partnership logo (8), the Giga Photo Award photos (120) and the General illustrations (35 pictograms in 3 styles, 105). The same brand is set in each page's own list (lib/brand-registry.ts, lib/illustration-registry.ts, lib/photo-awards.ts); the index build warns when the two disagree.",
   "unicef-unicef-blue": {
     "brand": "di"
   },
@@ -533,6 +533,222 @@
     "brand": "both"
   },
   "photo-donna-20": {
+    "brand": "both"
+  },
+  "photo-tibetan-country-doctor-01": {
+    "brand": "both"
+  },
+  "photo-tibetan-country-doctor-02": {
+    "brand": "both"
+  },
+  "photo-tibetan-country-doctor-03": {
+    "brand": "both"
+  },
+  "photo-tibetan-country-doctor-04": {
+    "brand": "both"
+  },
+  "photo-tibetan-country-doctor-05": {
+    "brand": "both"
+  },
+  "photo-tibetan-country-doctor-06": {
+    "brand": "both"
+  },
+  "photo-tibetan-country-doctor-07": {
+    "brand": "both"
+  },
+  "photo-tibetan-country-doctor-08": {
+    "brand": "both"
+  },
+  "photo-tibetan-country-doctor-09": {
+    "brand": "both"
+  },
+  "photo-tibetan-country-doctor-10": {
+    "brand": "both"
+  },
+  "photo-tibetan-country-doctor-11": {
+    "brand": "both"
+  },
+  "photo-tibetan-country-doctor-12": {
+    "brand": "both"
+  },
+  "photo-tibetan-country-doctor-13": {
+    "brand": "both"
+  },
+  "photo-tibetan-country-doctor-14": {
+    "brand": "both"
+  },
+  "photo-from-streets-to-screens-a-generation-rises-01": {
+    "brand": "both"
+  },
+  "photo-learning-through-connection-01": {
+    "brand": "both"
+  },
+  "photo-illuminated-dreams-01": {
+    "brand": "both"
+  },
+  "photo-staying-close-01": {
+    "brand": "both"
+  },
+  "photo-acompanantas-01": {
+    "brand": "both"
+  },
+  "photo-acompanantas-02": {
+    "brand": "both"
+  },
+  "photo-acompanantas-03": {
+    "brand": "both"
+  },
+  "photo-acompanantas-04": {
+    "brand": "both"
+  },
+  "photo-acompanantas-05": {
+    "brand": "both"
+  },
+  "photo-acompanantas-06": {
+    "brand": "both"
+  },
+  "photo-acompanantas-07": {
+    "brand": "both"
+  },
+  "photo-acompanantas-08": {
+    "brand": "both"
+  },
+  "photo-acompanantas-09": {
+    "brand": "both"
+  },
+  "photo-acompanantas-10": {
+    "brand": "both"
+  },
+  "photo-acompanantas-11": {
+    "brand": "both"
+  },
+  "photo-acompanantas-12": {
+    "brand": "both"
+  },
+  "photo-acompanantas-13": {
+    "brand": "both"
+  },
+  "photo-acompanantas-14": {
+    "brand": "both"
+  },
+  "photo-acompanantas-15": {
+    "brand": "both"
+  },
+  "photo-acompanantas-16": {
+    "brand": "both"
+  },
+  "photo-acompanantas-17": {
+    "brand": "both"
+  },
+  "photo-acompanantas-18": {
+    "brand": "both"
+  },
+  "photo-acompanantas-19": {
+    "brand": "both"
+  },
+  "photo-acompanantas-20": {
+    "brand": "both"
+  },
+  "photo-map-of-memories-2020-ongoing-01": {
+    "brand": "both"
+  },
+  "photo-map-of-memories-2020-ongoing-02": {
+    "brand": "both"
+  },
+  "photo-map-of-memories-2020-ongoing-03": {
+    "brand": "both"
+  },
+  "photo-map-of-memories-2020-ongoing-04": {
+    "brand": "both"
+  },
+  "photo-map-of-memories-2020-ongoing-05": {
+    "brand": "both"
+  },
+  "photo-map-of-memories-2020-ongoing-06": {
+    "brand": "both"
+  },
+  "photo-map-of-memories-2020-ongoing-07": {
+    "brand": "both"
+  },
+  "photo-map-of-memories-2020-ongoing-08": {
+    "brand": "both"
+  },
+  "photo-map-of-memories-2020-ongoing-09": {
+    "brand": "both"
+  },
+  "photo-map-of-memories-2020-ongoing-10": {
+    "brand": "both"
+  },
+  "photo-map-of-memories-2020-ongoing-11": {
+    "brand": "both"
+  },
+  "photo-map-of-memories-2020-ongoing-12": {
+    "brand": "both"
+  },
+  "photo-map-of-memories-2020-ongoing-13": {
+    "brand": "both"
+  },
+  "photo-map-of-memories-2020-ongoing-14": {
+    "brand": "both"
+  },
+  "photo-map-of-memories-2020-ongoing-15": {
+    "brand": "both"
+  },
+  "photo-map-of-memories-2020-ongoing-16": {
+    "brand": "both"
+  },
+  "photo-map-of-memories-2020-ongoing-17": {
+    "brand": "both"
+  },
+  "photo-map-of-memories-2020-ongoing-18": {
+    "brand": "both"
+  },
+  "photo-map-of-memories-2020-ongoing-19": {
+    "brand": "both"
+  },
+  "photo-map-of-memories-2020-ongoing-20": {
+    "brand": "both"
+  },
+  "photo-the-stuffs-of-live-streamers-01": {
+    "brand": "both"
+  },
+  "photo-the-stuffs-of-live-streamers-02": {
+    "brand": "both"
+  },
+  "photo-the-stuffs-of-live-streamers-03": {
+    "brand": "both"
+  },
+  "photo-the-stuffs-of-live-streamers-04": {
+    "brand": "both"
+  },
+  "photo-the-stuffs-of-live-streamers-05": {
+    "brand": "both"
+  },
+  "photo-the-stuffs-of-live-streamers-06": {
+    "brand": "both"
+  },
+  "photo-the-stuffs-of-live-streamers-07": {
+    "brand": "both"
+  },
+  "photo-the-stuffs-of-live-streamers-08": {
+    "brand": "both"
+  },
+  "photo-the-stuffs-of-live-streamers-09": {
+    "brand": "both"
+  },
+  "photo-reclaim-the-night-01": {
+    "brand": "both"
+  },
+  "photo-the-phone-number-on-the-wall-01": {
+    "brand": "both"
+  },
+  "photo-noon-selfie-01": {
+    "brand": "both"
+  },
+  "photo-illuminated-dreams-2025-01": {
+    "brand": "both"
+  },
+  "photo-adeeshas-life-story-01": {
     "brand": "both"
   }
 }

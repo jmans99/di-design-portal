@@ -39,7 +39,7 @@ Current pages (audit, October 2026):
 | Logos | DI, Giga and shared | brand filter (All, DI, Giga) |
 | Image galleries | DI and Giga, separate | brand filter (Giga: Flickr, YouTube; DI: UNICEF WeShare and the DI SharePoint libraries) |
 | Illustrations | Giga (pillars, Giga Meter) and shared (the General set) | brand filter (no pill) |
-| Photo awards | shared (all 48 Giga Photo Award photos) | "DI + Giga" pill |
+| Photo awards | shared (all 120 Giga Photo Award photos) | "DI + Giga" pill |
 | Video guidelines | Giga | Giga pill |
 | Typography | shared fonts (Manrope, Open Sans) | "DI + Giga" pill |
 | Social media, Email signature, Engagement map | DI templates that also carry the Giga logo | none |
@@ -188,7 +188,7 @@ select.
   | GEP and Connectivity Forum event logos | giga | **confirmed** by the portal owner |
   | Manrope and Open Sans fonts | both | **confirmed** by the portal owner |
   | Giga + UNICEF + ITU partnership logo (8: horizontal and vertical, 4 colours each) | both | **set** by the portal owner |
-  | Giga Photo Award photos (48) | both | **set** by the portal owner |
+  | Giga Photo Award photos (120) | both | **set** by the portal owner |
   | General illustrations (35 pictograms in fill, outline white and outline blue: 105) | both | **set** by the portal owner |
 
 - **Giga symbol**: there is no symbol-only Giga file, so the script writes one
