@@ -205,11 +205,11 @@ export function GigaMapGenerator({
   return (
     <div className="flex flex-col gap-8 lg:flex-row lg:items-start">
       {/* Sidebar */}
-      <div className="order-2 flex w-full flex-col gap-0 lg:order-1 lg:sticky lg:top-[calc(4rem+24px)] lg:w-80 lg:shrink-0 lg:rounded-2xl lg:border lg:border-border lg:bg-card lg:shadow-stripe">
+      <div className="order-2 flex w-full flex-col gap-0 lg:order-1 lg:sticky lg:top-[calc(4rem+24px)] lg:w-80 lg:shrink-0 lg:rounded-2xl lg:border lg:border-line-card lg:bg-card">
         {sidebarTop}
         <ControlSection
           label="Area"
-          icon={<Globe className="h-3.5 w-3.5 text-muted-foreground" />}
+          icon={<Globe className="h-3.5 w-3.5 text-ink-secondary" />}
           className={sidebarTop ? undefined : 'lg:pt-4 lg:pb-2.5'}
         >
           <AreaPicker
@@ -229,7 +229,7 @@ export function GigaMapGenerator({
           />
           {countriesError && <p className="text-xs text-destructive">{countriesError}</p>}
           {scope === 'region' && (
-            <p className="text-[11px] text-muted-foreground">
+            <p className="text-[11px] text-ink-secondary">
               Region maps load a few MB of live data; the first render can take a little longer.
             </p>
           )}
@@ -244,7 +244,7 @@ export function GigaMapGenerator({
             ))}
           </div>
           {counts && (
-            <p className="text-[11px] text-muted-foreground">
+            <p className="text-[11px] text-ink-secondary">
               {counts.countries !== 1 ? `${counts.countries} countries · ` : ''}
               {formatCount(counts.schools)} schools · {formatCount(counts.health)} health centers mapped
             </p>
@@ -254,7 +254,7 @@ export function GigaMapGenerator({
         {!isBackground && (
         <ControlSection
           label="Resolution"
-          icon={<Maximize2 className="h-3.5 w-3.5 text-muted-foreground" />}
+          icon={<Maximize2 className="h-3.5 w-3.5 text-ink-secondary" />}
         >
           <div className="flex gap-2">
             {RESOLUTIONS.map((res) => (
@@ -267,7 +267,7 @@ export function GigaMapGenerator({
               </ToggleButton>
             ))}
           </div>
-          <p className="text-[11px] text-muted-foreground">
+          <p className="text-[11px] text-ink-secondary">
             {resolution === '2x' ? '3840 × 2160' : '1920 × 1080'} PNG
           </p>
         </ControlSection>
@@ -286,11 +286,11 @@ export function GigaMapGenerator({
                 ? 'Rendering map…'
                 : 'Download PNG'}
           </Button>
-          <p className="mt-2 text-xs text-muted-foreground">
-            File: <span className="font-medium text-foreground">{filename}</span>
+          <p className="mt-2 text-xs text-ink-secondary">
+            File: <span className="font-semibold text-ink-secondary">{filename}</span>
           </p>
           {exportError && <p className="mt-2 text-xs text-destructive">{exportError}</p>}
-          <p className="mt-3 text-[11px] leading-relaxed text-muted-foreground">
+          <p className="mt-3 text-[11px] leading-relaxed text-ink-secondary">
             {isBackground
               ? 'The map from the Maps page with the Digital Impact Division lockup on top. 3840 × 2160 PNG, ready for Teams, Zoom and Google Meet.'
               : 'Rendered in your browser from live Giga Maps facility data. The download matches the preview exactly.'}
@@ -301,7 +301,7 @@ export function GigaMapGenerator({
       {/* Preview */}
       <div className="order-1 flex min-h-0 flex-1 flex-col gap-4 lg:order-2 lg:sticky lg:top-[calc(4rem+24px)] lg:h-fit lg:min-w-0">
         <div className="flex items-center justify-between">
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-ink-secondary">
             {legend.map((item) => (
               <span key={item.label} className="inline-flex items-center gap-1.5">
                 <span className="h-2 w-2 rounded-full" style={{ background: item.color }} />
@@ -326,7 +326,7 @@ export function GigaMapGenerator({
               href={target.kind === 'country' ? `https://maps.giga.global/map/country/${target.country.code}` : 'https://maps.giga.global/map'}
               target="_blank"
               rel="noreferrer"
-              className="text-xs font-medium text-muted-foreground transition-smooth hover:text-foreground"
+              className="text-xs font-medium text-ink-secondary transition-smooth hover:text-ink"
             >
               Open on maps.giga.global
             </a>
@@ -364,7 +364,7 @@ export function GigaMapGenerator({
             )}
             {renderState === 'loading' && (
               <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/30">
-                <span className="inline-flex items-center gap-2 rounded-full bg-black/70 px-3 py-1.5 text-xs font-medium text-white shadow-stripe backdrop-blur">
+                <span className="inline-flex items-center gap-2 rounded-full bg-black/70 px-3 py-1.5 text-xs font-medium text-white backdrop-blur">
                   <Loader2 className="h-3.5 w-3.5 animate-spin" />
                   {scope === 'region' ? 'Loading live data for the whole region…' : 'Loading school data…'}
                 </span>
@@ -378,7 +378,7 @@ export function GigaMapGenerator({
           </div>
         </PreviewPanel>
 
-        <p className="text-xs leading-relaxed text-muted-foreground">
+        <p className="text-xs leading-relaxed text-ink-secondary">
           The preview is rendered at native 1920×1080 and downscaled for your
           screen. Basemap © OpenMapTiles © OpenStreetMap contributors, facility
           data from Giga Maps.
@@ -409,7 +409,7 @@ function ControlSection({
 }) {
   return (
     <div className={cn('flex flex-col gap-1.5 lg:px-5 lg:py-2.5', className)}>
-      <label className="text-[11px] font-semibold uppercase tracking-[0.07em] text-muted-foreground">
+      <label className="font-heading text-[13px] font-semibold text-ink">
         {icon ? (
           <span className="flex items-center gap-1.5">
             {icon}
@@ -438,10 +438,10 @@ function ToggleButton({
       type="button"
       onClick={onClick}
       className={cn(
-        'flex-1 whitespace-nowrap rounded-full border px-4 py-2.5 text-sm font-medium transition-smooth-transform active:scale-[0.98]',
+        'flex-1 whitespace-nowrap focus-ring rounded-full border px-4 py-2 text-[13px] font-semibold transition-colors',
         active
           ? 'border-chosen-border bg-chosen text-link'
-          : 'border-border bg-card text-foreground hover:bg-secondary/60'
+          : 'border-line-card bg-card text-ink hover:bg-hover-soft'
       )}
     >
       {children}

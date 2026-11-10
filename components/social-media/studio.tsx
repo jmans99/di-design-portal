@@ -88,7 +88,7 @@ export function SocialMediaStudio() {
     <>
       <ControlSection
         label="Country"
-        icon={<Globe className="h-3.5 w-3.5 text-muted-foreground" />}
+        icon={<Globe className="h-3.5 w-3.5 text-ink-secondary" />}
         className="lg:pt-4"
       >
         <CountryPicker value={country} onChange={setCountry} />
@@ -96,7 +96,7 @@ export function SocialMediaStudio() {
 
       <ControlSection
         label="Tagline"
-        icon={<Type className="h-3.5 w-3.5 text-muted-foreground" />}
+        icon={<Type className="h-3.5 w-3.5 text-ink-secondary" />}
       >
         <div className="flex flex-col gap-2">
           {TAGLINE_PRESETS.map((preset) => (
@@ -108,10 +108,10 @@ export function SocialMediaStudio() {
                 if (preset.id !== 'custom') setTaglineCustom(preset.value)
               }}
               className={cn(
-                'flex items-center justify-between rounded-2xl border px-3 py-2 text-left text-sm font-medium transition-smooth-transform active:scale-[0.99]',
+                'focus-ring flex items-center justify-between rounded-[14px] border px-3.5 py-2 text-left text-[13px] font-semibold transition-colors',
                 taglinePreset === preset.id
-                  ? 'border-chosen-border bg-chosen/70 text-foreground'
-                  : 'border-border bg-card text-foreground hover:bg-secondary/60'
+                  ? 'border-chosen-border bg-chosen/70 text-ink'
+                  : 'border-line-card bg-card text-ink hover:bg-hover-soft'
               )}
             >
               <span>{preset.label}</span>
@@ -130,10 +130,10 @@ export function SocialMediaStudio() {
 
       <ControlSection
         label="Engaged country number"
-        icon={<Hash className="h-3.5 w-3.5 text-muted-foreground" />}
+        icon={<Hash className="h-3.5 w-3.5 text-ink-secondary" />}
       >
         <div className="flex items-center gap-2">
-          <span className="shrink-0 text-xs text-muted-foreground">as our</span>
+          <span className="shrink-0 text-xs text-ink-secondary">as our</span>
           <Input
             type="number"
             min={1}
@@ -142,7 +142,7 @@ export function SocialMediaStudio() {
             onChange={(e) => setEngagedNumber(Math.max(1, Number(e.target.value) || 1))}
             className="h-9 w-20"
           />
-          <span className="text-xs text-muted-foreground">engaged country</span>
+          <span className="text-xs text-ink-secondary">engaged country</span>
         </div>
       </ControlSection>
 
@@ -151,15 +151,15 @@ export function SocialMediaStudio() {
           <Download className="shrink-0" />
           {isExporting ? 'Generating…' : 'Download PNG'}
         </Button>
-        <p className="mt-2 text-xs text-muted-foreground">
-          File: <span className="font-medium text-foreground">{filename}</span>
+        <p className="mt-2 text-xs text-ink-secondary">
+          File: <span className="font-semibold text-ink-secondary">{filename}</span>
         </p>
-        <p className="mt-1 text-xs text-muted-foreground">
-          Date: <span className="font-medium text-foreground">{formattedDate}</span>
-          <span className="ml-1 text-muted-foreground">(auto)</span>
+        <p className="mt-1 text-xs text-ink-secondary">
+          Date: <span className="font-semibold text-ink-secondary">{formattedDate}</span>
+          <span className="ml-1 text-ink-secondary">(auto)</span>
         </p>
         {exportError && <p className="mt-2 text-xs text-destructive">{exportError}</p>}
-        <div className="mt-3 flex items-start gap-2 rounded-md bg-muted/50 px-3 py-2 text-[11px] leading-relaxed text-muted-foreground">
+        <div className="mt-3 flex items-start gap-2 rounded-[10px] bg-subtle px-3 py-2 text-[11px] leading-relaxed text-ink-secondary">
           <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden />
           <span>Flag rendering depends on your operating system. On Windows the glyph may differ.</span>
         </div>

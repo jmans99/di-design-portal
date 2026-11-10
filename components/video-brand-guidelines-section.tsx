@@ -74,13 +74,13 @@ function VideoColorSwatch({ name, hex }: { name: string; hex: string }) {
     <button
       type="button"
       onClick={handleCopy}
-      className="hover-lift flex w-full min-w-0 flex-col rounded-2xl border border-border bg-card shadow-stripe overflow-hidden focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+      className="flex w-full min-w-0 flex-col rounded-2xl border border-line-card bg-card overflow-hidden focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
       title={`Copy ${hex}`}
     >
       <div className="h-12 w-full min-w-[100px]" style={{ backgroundColor: hex }} aria-hidden />
       <div className="bg-card px-3 py-2 text-left">
-        <span className="text-xs font-semibold text-foreground">{name}</span>
-        <span className="block font-mono text-[11px] text-muted-foreground">
+        <span className="text-xs font-semibold text-ink">{name}</span>
+        <span className="block font-mono text-[11px] text-ink-secondary">
           {copied ? 'Copied!' : hex}
         </span>
       </div>
@@ -98,11 +98,11 @@ function ImagePlaceholder({
 }) {
   return (
     <div
-      className={`flex flex-col items-center justify-center gap-2 rounded-2xl bg-card border border-border shadow-stripe ${aspectRatio} w-full min-h-[140px]`}
+      className={`flex flex-col items-center justify-center gap-2 rounded-2xl bg-card border border-line-card ${aspectRatio} w-full min-h-[140px]`}
       aria-label={`Placeholder: ${label}`}
     >
-      <ImageIcon className="h-10 w-10 text-muted-foreground" aria-hidden />
-      <span className="text-sm text-muted-foreground text-center px-4">
+      <ImageIcon className="h-10 w-10 text-ink-secondary" aria-hidden />
+      <span className="text-sm text-ink-secondary text-center px-4">
         {label}
       </span>
     </div>
@@ -121,7 +121,7 @@ export function VideoBrandGuidelinesSection({
     <div className="flex min-w-0 flex-col gap-12">
       {/* Intro */}
       <section className="space-y-4">
-        <p className="text-base text-foreground leading-relaxed">
+        <p className="text-base text-ink leading-relaxed">
           In this section you will find all the branding guidelines and assets to use when
           creating video content for {ORG}. It includes which fonts to use, how and where to
           position the logos, how to apply lower thirds to identify speakers, and how to add
@@ -144,14 +144,14 @@ export function VideoBrandGuidelinesSection({
 
       {/* Font */}
       <section className="space-y-4">
-        <h3 className="font-heading text-2xl font-medium text-foreground">Font</h3>
+        <h3 className="font-heading text-xl font-semibold tracking-[-0.02em] text-ink">Font</h3>
         <div className="grid min-w-0 gap-4 md:grid-cols-2">
-          <Card className="hover-lift min-w-0 rounded-2xl border border-border bg-card shadow-stripe">
+          <Card className="min-w-0 rounded-2xl border border-line-card bg-card shadow-none">
             <CardContent className="flex min-w-0 flex-col gap-2 p-6">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="font-heading text-lg font-medium text-foreground">Manrope</p>
-                  <p className="text-sm text-muted-foreground">Used for headings.</p>
+                  <p className="font-heading text-[15px] font-semibold text-ink">Manrope</p>
+                  <p className="text-sm text-ink-secondary">Used for headings.</p>
                 </div>
                 <Button variant="outline" size="sm" className="shrink-0" asChild>
                   <a href={ASSETS.manropeUrl} target="_blank" rel="noopener noreferrer">
@@ -161,12 +161,12 @@ export function VideoBrandGuidelinesSection({
               </div>
             </CardContent>
           </Card>
-          <Card className="hover-lift min-w-0 rounded-2xl border border-border bg-card shadow-stripe">
+          <Card className="min-w-0 rounded-2xl border border-line-card bg-card shadow-none">
             <CardContent className="flex min-w-0 flex-col gap-2 p-6">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="font-heading text-lg font-medium text-foreground">Open Sans</p>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="font-heading text-[15px] font-semibold text-ink">Open Sans</p>
+                  <p className="text-sm text-ink-secondary">
                     Use in all {ORG} multimedia assets: captions, subtitles, and lower thirds.
                     Avoid bold weight; use semibold for body text when highlighting, and medium
                     for titles.
@@ -185,7 +185,7 @@ export function VideoBrandGuidelinesSection({
 
       {/* Colors */}
       <section className="space-y-4">
-        <h3 className="font-heading text-2xl font-medium text-foreground">Colors</h3>
+        <h3 className="font-heading text-xl font-semibold tracking-[-0.02em] text-ink">Colors</h3>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
           {VIDEO_COLORS.map((c) => (
             <VideoColorSwatch key={c.name} name={c.name} hex={c.hex} />
@@ -196,10 +196,10 @@ export function VideoBrandGuidelinesSection({
       {/* Logo positioning */}
       <section className="space-y-6">
         <div>
-          <h3 className="font-heading text-2xl font-medium text-foreground">
+          <h3 className="font-heading text-xl font-semibold tracking-[-0.02em] text-ink">
             Giga logo positioning on videos
           </h3>
-          <p className="mt-1 text-sm text-muted-foreground">
+          <p className="mt-1 text-sm text-ink-secondary">
             Choose your format and use the reference image plus specs below. Download the templates or original files as needed.
           </p>
         </div>
@@ -208,9 +208,9 @@ export function VideoBrandGuidelinesSection({
           {LOGO_FORMATS.map((item) => (
             <article
               key={item.format}
-              className="hover-lift flex min-h-[380px] flex-col rounded-2xl border border-border bg-card shadow-stripe overflow-hidden"
+              className="flex min-h-[380px] flex-col rounded-2xl border border-line-card bg-card overflow-hidden"
             >
-              <div className="flex h-[400px] shrink-0 items-center justify-center overflow-hidden bg-muted/50">
+              <div className="flex h-[400px] shrink-0 items-center justify-center overflow-hidden bg-subtle">
                 <img
                   src={item.imageSrc}
                   alt={`Logo positioning – ${item.format}`}
@@ -219,23 +219,23 @@ export function VideoBrandGuidelinesSection({
               </div>
               <div className="flex flex-1 flex-col gap-3 p-4">
                 <div>
-                  <h4 className="font-heading text-lg font-medium text-foreground">
+                  <h4 className="font-heading text-[15px] font-semibold text-ink">
                     {item.format}
                   </h4>
-                  <p className="text-xs text-muted-foreground">{item.note}</p>
+                  <p className="text-xs text-ink-secondary">{item.note}</p>
                 </div>
                 <dl className="space-y-1.5 text-xs">
                   <div className="flex flex-wrap gap-x-2">
-                    <dt className="text-muted-foreground">Canvas</dt>
-                    <dd className="font-mono text-foreground">{item.canvas}</dd>
+                    <dt className="text-ink-secondary">Canvas</dt>
+                    <dd className="font-mono text-ink">{item.canvas}</dd>
                   </div>
                   <div className="flex flex-wrap gap-x-2">
-                    <dt className="text-muted-foreground">Logo size</dt>
-                    <dd className="font-mono text-foreground">{item.logoSize}</dd>
+                    <dt className="text-ink-secondary">Logo size</dt>
+                    <dd className="font-mono text-ink">{item.logoSize}</dd>
                   </div>
                   <div className="flex flex-wrap gap-x-2">
-                    <dt className="text-muted-foreground">Margins</dt>
-                    <dd className="text-foreground">{item.margins}</dd>
+                    <dt className="text-ink-secondary">Margins</dt>
+                    <dd className="text-ink">{item.margins}</dd>
                   </div>
                 </dl>
                 <div className="mt-auto flex flex-wrap gap-2 pt-1">
@@ -273,30 +273,30 @@ export function VideoBrandGuidelinesSection({
           ))}
         </div>
 
-        <p className="rounded-2xl border border-border bg-card shadow-stripe px-4 py-3 text-sm text-muted-foreground">
-          <strong className="font-semibold text-foreground">Alternative:</strong> Use horizontal logos (Giga + UNICEF + ITU) at top right for horizontal, and Giga only for square and vertical. Apply 75% opacity.
+        <p className="rounded-2xl border border-line-card bg-card px-4 py-3 text-sm text-ink-secondary">
+          <strong className="font-semibold text-ink">Alternative:</strong> Use horizontal logos (Giga + UNICEF + ITU) at top right for horizontal, and Giga only for square and vertical. Apply 75% opacity.
         </p>
       </section>
 
       {/* Subtitles */}
       <section className="space-y-4">
-        <h3 className="font-heading text-2xl font-medium text-foreground">Subtitles</h3>
-        <p className="text-base text-muted-foreground">
+        <h3 className="font-heading text-xl font-semibold tracking-[-0.02em] text-ink">Subtitles</h3>
+        <p className="text-base text-ink-secondary">
           White Open Sans Medium on grey background with reasonable opacity applied.
         </p>
         <img
           src="/images/video-guidelines/subtitles-example.png"
           alt="Subtitles example – white text on semi-transparent dark background"
-          className="w-full max-w-2xl rounded-2xl border border-border bg-card shadow-stripe object-contain"
+          className="w-full max-w-2xl rounded-2xl border border-line-card bg-card object-contain"
         />
       </section>
 
       {/* Lower thirds */}
       <section className="space-y-4">
-        <h3 className="font-heading text-2xl font-medium text-foreground">
+        <h3 className="font-heading text-xl font-semibold tracking-[-0.02em] text-ink">
           Lower thirds (template)
         </h3>
-        <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+        <ul className="list-disc list-inside text-sm text-ink-secondary space-y-1">
           <li>Line 1: Name and last name</li>
           <li>Line 2: Official job title</li>
           <li>Line 3: Organization / country (when applicable)</li>
@@ -313,23 +313,23 @@ export function VideoBrandGuidelinesSection({
             </a>
           </Button>
         </div>
-        <p className="text-xs text-muted-foreground">
+        <p className="text-xs text-ink-secondary">
           Available in Horizontal 16:9, Square 1:1 and Vertical 9:16. If you don’t use After
           Effects, use the Alpha versions and apply content with fade-in text as an alternative.
         </p>
         <img
           src="/images/video-guidelines/lower-thirds-example.png"
           alt="Lower thirds example – name, job title and organisation on blue bar"
-          className="w-full max-w-2xl rounded-2xl border border-border bg-card shadow-stripe object-contain"
+          className="w-full max-w-2xl rounded-2xl border border-line-card bg-card object-contain"
         />
       </section>
 
       {/* Explainers */}
       <section className="space-y-4">
-        <h3 className="font-heading text-2xl font-medium text-foreground">
+        <h3 className="font-heading text-xl font-semibold tracking-[-0.02em] text-ink">
           Explainers: text on screen
         </h3>
-        <p className="text-base text-muted-foreground">
+        <p className="text-base text-ink-secondary">
           White Open Sans Medium on blue background with key words in bold: up to 3 lines of
           text (15 words max).
         </p>
@@ -357,16 +357,16 @@ export function VideoBrandGuidelinesSection({
         <img
           src="/images/video-guidelines/explainers-example.png"
           alt="Explainers: text on screen – white text on blue with key words emphasised"
-          className="w-full max-w-2xl rounded-2xl border border-border bg-card shadow-stripe object-contain"
+          className="w-full max-w-2xl rounded-2xl border border-line-card bg-card object-contain"
         />
       </section>
 
       {/* Video signature / end slate */}
       <section className="space-y-4">
-        <h3 className="font-heading text-2xl font-medium text-foreground">
+        <h3 className="font-heading text-xl font-semibold tracking-[-0.02em] text-ink">
           Video signature / end slate
         </h3>
-        <p className="text-base text-muted-foreground">
+        <p className="text-base text-ink-secondary">
           Apply {ORG}’s stingers. Black background (preferred), white and blue versions available.
         </p>
         <Button variant="outline" size="sm" asChild>
@@ -377,13 +377,13 @@ export function VideoBrandGuidelinesSection({
         <img
           src="/images/video-guidelines/video-signature-example.png"
           alt="Video signature – Giga, UNICEF and ITU logos on black (preferred version)"
-          className="w-full max-w-2xl rounded-2xl border border-border bg-card shadow-stripe object-contain"
+          className="w-full max-w-2xl rounded-2xl border border-line-card bg-card object-contain"
         />
       </section>
 
       {/* Location pin */}
       <section className="space-y-4">
-        <h3 className="font-heading text-2xl font-medium text-foreground">
+        <h3 className="font-heading text-xl font-semibold tracking-[-0.02em] text-ink">
           Location pin template
         </h3>
         <Button variant="outline" size="sm" asChild>
@@ -395,16 +395,16 @@ export function VideoBrandGuidelinesSection({
         <img
           src="/images/video-guidelines/location-pin-example.png"
           alt="Location pin template – pin icon with location text (e.g. Geneva, Switzerland)"
-          className="w-full max-w-2xl rounded-2xl border border-border bg-card shadow-stripe object-contain"
+          className="w-full max-w-2xl rounded-2xl border border-line-card bg-card object-contain"
         />
       </section>
 
       {/* Contact */}
       <section className="space-y-4">
-        <h3 className="font-heading text-2xl font-medium text-foreground">
+        <h3 className="font-heading text-xl font-semibold tracking-[-0.02em] text-ink">
           {ORG} Multimedia focal point
         </h3>
-        <p className="text-base text-muted-foreground">
+        <p className="text-base text-ink-secondary">
           If you have any questions, please contact:
         </p>
         <Button variant="outline" size="sm" asChild>

@@ -23,7 +23,7 @@ export function BackgroundToggle({
     <div
       role="radiogroup"
       aria-label="Background"
-      className="flex items-center gap-1 rounded-full border border-border bg-card/95 p-1 shadow-stripe-md backdrop-blur"
+      className="flex items-center gap-0.5 rounded-full bg-toggle-track p-[3px]"
     >
       {(Object.keys(DOT_BACKGROUNDS) as DotBackground[]).map((mode) => {
         const active = value === mode
@@ -37,8 +37,8 @@ export function BackgroundToggle({
             aria-label={label}
             title={label}
             onClick={() => onChange(mode)}
-            className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium capitalize transition-smooth-transform active:scale-[0.97] ${
-              active ? 'bg-chosen text-link' : 'text-muted-foreground hover:text-foreground'
+            className={`focus-ring flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold capitalize transition-colors ${
+              active ? 'bg-thumb text-ink shadow-thumb' : 'text-ink-muted hover:text-ink'
             }`}
           >
             {mode === 'light' ? (
@@ -48,7 +48,7 @@ export function BackgroundToggle({
             ) : (
               <span
                 aria-hidden
-                className="h-3.5 w-3.5 shrink-0 rounded-full border border-border"
+                className="h-3.5 w-3.5 shrink-0 rounded-full border border-line-card"
                 style={{ background: DOT_BACKGROUNDS[mode].fill ?? CHECKER }}
               />
             )}
