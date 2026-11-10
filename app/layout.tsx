@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { ThemeProvider } from '@/components/theme-provider'
 import { GigaNotice } from '@/components/giga-notice'
+import { Contentsquare } from '@/components/contentsquare'
 import { SITE } from '@/lib/site'
 import './globals.css'
 
@@ -44,6 +45,7 @@ export default function RootLayout({
           {children}
           <GigaNotice />
         </ThemeProvider>
+        <Contentsquare />
       </body>
     </html>
   )
