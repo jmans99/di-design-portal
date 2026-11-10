@@ -13,11 +13,6 @@ const EDITION_THEME: Record<number, string> = {
   2026: 'The Urgency of Connectivity',
 }
 
-// Each category is one row. It has three stories, or four when a Students'
-// Choice sits beside the podium, and the row takes that many columns so it
-// always spans the page.
-const ROW_COLUMNS: Record<number, string> = { 4: 'lg:grid-cols-4' }
-
 // One section per edition, newest first. Inside it one group per category,
 // podium order; a prize outside the podium (Students' Choice) closes its group.
 const EDITIONS = [...new Set(PHOTO_AWARD_STORIES.map((s) => s.year))]
@@ -33,7 +28,7 @@ const EDITIONS = [...new Set(PHOTO_AWARD_STORIES.map((s) => s.year))]
   }))
 
 /**
- * Photo awards, one section per edition and one row per category. Each
+ * Photo awards, one section per edition and one three-column grid per category. Each
  * story is a tile in the Dot home style (docs/design/dot-home.md): 16px radius,
  * hairline border, the photograph on top and the text underneath. Multi-photo
  * stories carry their own small carousel inside the tile (arrows on hover,
@@ -61,7 +56,7 @@ export function PhotoAwardsGallery() {
           {groups.map(({ category, stories }) => (
             <div key={category} className="flex min-w-0 flex-col gap-3">
               <h3 className="font-heading text-[13px] font-semibold text-ink-secondary">{category}</h3>
-              <div className={cn('grid gap-3 sm:grid-cols-2', ROW_COLUMNS[stories.length] ?? 'lg:grid-cols-3')}>
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {stories.map((story) => (
                   <StoryTile key={story.slug} story={story} onOpen={(index) => setOpen({ story, index })} />
                 ))}
