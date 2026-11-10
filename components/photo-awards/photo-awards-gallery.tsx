@@ -13,6 +13,9 @@ const EDITION_THEME: Record<number, string> = {
   2026: 'The Urgency of Connectivity',
 }
 
+// Columns of a section on wide screens: one per category present.
+const COLUMNS: Record<number, string> = { 1: '', 2: 'lg:grid-cols-2', 3: 'lg:grid-cols-3' }
+
 // One section per edition, newest first. Inside it one group per category,
 // podium order; a prize outside the podium (Students' Choice) closes its group.
 const EDITIONS = [...new Set(PHOTO_AWARD_STORIES.map((s) => s.year))]
@@ -28,7 +31,7 @@ const EDITIONS = [...new Set(PHOTO_AWARD_STORIES.map((s) => s.year))]
   }))
 
 /**
- * Photo awards, one section per edition and one grid per category. Each story is a photo tile with the text underneath,
+ * Photo awards, one section per edition and one column per category. Each story is a photo tile with the text underneath,
  * the way listing and photo sites do it: no card chrome, the photograph is
  * the card. Multi-photo stories carry their own small carousel inside the
  * tile (arrows on hover, dots underneath the photo) so the story can be
@@ -53,16 +56,26 @@ export function PhotoAwardsGallery() {
               </span>
             )}
           </h2>
-          {groups.map(({ category, stories }) => (
-            <div key={category} className="flex flex-col gap-4">
-              <h3 className="text-sm font-semibold text-muted-foreground">{category}</h3>
-              <div className="grid gap-x-6 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
-                {stories.map((story) => (
-                  <StoryTile key={story.slug} story={story} onOpen={(index) => setOpen({ story, index })} />
-                ))}
+          {/* Categories sit side by side, one column each, so the section
+              always spans the page whatever each category holds; places read
+              down the column. A lone category falls back to a plain grid. */}
+          <div className={cn('grid items-start gap-x-6 gap-y-10', COLUMNS[groups.length])}>
+            {groups.map(({ category, stories }) => (
+              <div key={category} className="flex min-w-0 flex-col gap-4">
+                <h3 className="text-sm font-semibold text-muted-foreground">{category}</h3>
+                <div
+                  className={cn(
+                    'grid gap-x-6 gap-y-9 sm:grid-cols-2',
+                    groups.length > 1 ? 'lg:grid-cols-1' : 'lg:grid-cols-3',
+                  )}
+                >
+                  {stories.map((story) => (
+                    <StoryTile key={story.slug} story={story} onOpen={(index) => setOpen({ story, index })} />
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </section>
       ))}
 
