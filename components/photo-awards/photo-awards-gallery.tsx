@@ -1,10 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import { Award, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { PHOTO_AWARD_CATEGORIES, PHOTO_AWARD_STORIES, type PhotoAwardStory } from '@/lib/photo-awards'
 import { StoryLightbox } from '@/components/photo-awards/story-lightbox'
-import { placeLabel } from '@/components/photo-awards/labels'
+import { PILL_ACCENT, placeLabel } from '@/components/photo-awards/labels'
 import { cn } from '@/lib/utils'
 
 /** Each edition's theme, shown next to its year. */
@@ -31,12 +31,12 @@ const EDITIONS = [...new Set(PHOTO_AWARD_STORIES.map((s) => s.year))]
   }))
 
 /**
- * Photo awards, one section per edition and one column per category. Each story is a photo tile with the text underneath,
- * the way listing and photo sites do it: no card chrome, the photograph is
- * the card. Multi-photo stories carry their own small carousel inside the
- * tile (arrows on hover, dots underneath the photo) so the story can be
- * browsed before it is opened; clicking the photo opens the viewer on the
- * photo currently shown.
+ * Photo awards, one section per edition and one column per category. Each
+ * story is a tile in the Dot home style (docs/design/dot-home.md): 16px radius,
+ * hairline border, the photograph on top and the text underneath. Multi-photo
+ * stories carry their own small carousel inside the tile (arrows on hover,
+ * dots on the photo) so the story can be browsed before it is opened; clicking
+ * the tile opens the viewer on the photo currently shown.
  */
 export function PhotoAwardsGallery() {
   const [open, setOpen] = useState<{ story: PhotoAwardStory; index: number } | null>(null)
@@ -47,11 +47,11 @@ export function PhotoAwardsGallery() {
         <section key={year} aria-labelledby={`photo-awards-${year}`} className="flex flex-col gap-8">
           <h2
             id={`photo-awards-${year}`}
-            className="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-b border-border pb-3 font-heading text-2xl font-medium tracking-[-0.02em] text-foreground"
+            className="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-b border-line-divider pb-3 font-heading text-xl font-semibold tracking-[-0.02em] text-ink"
           >
             {year} winners
             {EDITION_THEME[year] && (
-              <span className="font-sans text-sm font-normal tracking-normal text-muted-foreground">
+              <span className="font-sans text-[13px] font-normal tracking-normal text-ink-secondary">
                 {EDITION_THEME[year]}
               </span>
             )}
@@ -59,13 +59,13 @@ export function PhotoAwardsGallery() {
           {/* Categories sit side by side, one column each, so the section
               always spans the page whatever each category holds; places read
               down the column. A lone category falls back to a plain grid. */}
-          <div className={cn('grid items-start gap-x-6 gap-y-10', COLUMNS[groups.length])}>
+          <div className={cn('grid items-start gap-x-3 gap-y-8', COLUMNS[groups.length])}>
             {groups.map(({ category, stories }) => (
               <div key={category} className="flex min-w-0 flex-col gap-4">
-                <h3 className="text-sm font-semibold text-muted-foreground">{category}</h3>
+                <h3 className="font-heading text-[13px] font-semibold text-ink-secondary">{category}</h3>
                 <div
                   className={cn(
-                    'grid gap-x-6 gap-y-9 sm:grid-cols-2',
+                    'grid gap-3 sm:grid-cols-2',
                     groups.length > 1 ? 'lg:grid-cols-1' : 'lg:grid-cols-3',
                   )}
                 >
@@ -97,8 +97,8 @@ function StoryTile({ story, onOpen }: { story: PhotoAwardStory; onOpen: (index: 
   const place = placeLabel(story)
 
   return (
-    <article className="group flex flex-col gap-2.5">
-      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-muted">
+    <article className="group relative flex flex-col overflow-hidden rounded-[16px] border border-line-card bg-card transition-colors hover:bg-hover-soft focus-within:bg-hover-soft">
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-subtle">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           key={image.src}
@@ -107,40 +107,35 @@ function StoryTile({ story, onOpen }: { story: PhotoAwardStory; onOpen: (index: 
           loading="lazy"
           className="h-full w-full object-cover animate-in fade-in duration-200"
         />
-        <button
-          type="button"
-          onClick={() => onOpen(index)}
-          aria-label={`Open ${story.title}`}
-          className="absolute inset-0 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-        />
-
-        {place && (
-          <span className="pointer-events-none absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-card/95 px-2.5 py-1 text-[11px] font-semibold text-foreground shadow-stripe">
-            <Award className="h-3 w-3 text-link" aria-hidden />
-            {place}
-          </span>
-        )}
+        {place && <span className={cn(PILL_ACCENT, 'pointer-events-none absolute left-3 top-3')}>{place}</span>}
 
         {many && (
           <>
             <TileArrow side="left" label="Previous photo" onClick={() => go(-1)}>
-              <ChevronLeft className="h-4 w-4" />
+              <ChevronLeft className="h-4 w-4" strokeWidth={1.75} />
             </TileArrow>
             <TileArrow side="right" label="Next photo" onClick={() => go(1)}>
-              <ChevronRight className="h-4 w-4" />
+              <ChevronRight className="h-4 w-4" strokeWidth={1.75} />
             </TileArrow>
             <Dots count={story.images.length} index={index} />
           </>
         )}
       </div>
 
-      <button type="button" onClick={() => onOpen(index)} className="flex flex-col items-start text-left focus-visible:outline-none">
-        <h4 className="font-heading text-[15px] font-medium leading-snug text-foreground line-clamp-2">{story.title}</h4>
-        <p className="mt-0.5 text-sm text-muted-foreground">
+      {/* One button for the whole tile; the carousel arrows sit above it. */}
+      <button
+        type="button"
+        onClick={() => onOpen(index)}
+        className="flex flex-col items-start px-4 pb-4 pt-3.5 text-left focus-visible:outline-none after:absolute after:inset-0 after:rounded-[16px] focus-visible:after:ring-2 focus-visible:after:ring-inset focus-visible:after:ring-ring"
+      >
+        <h4 className="font-heading text-[15px] font-semibold leading-snug tracking-[-0.01em] text-ink line-clamp-2">
+          {story.title}
+        </h4>
+        <p className="mt-1 text-xs text-ink-secondary">
           {story.photographer}
           {story.country ? ` · ${story.country}` : ''}
+          {many ? ` · ${story.images.length} photos` : ''}
         </p>
-        {many && <p className="mt-0.5 text-xs text-muted-foreground">{story.images.length} photos</p>}
       </button>
     </article>
   )
@@ -166,7 +161,7 @@ function TileArrow({
         onClick()
       }}
       className={cn(
-        'absolute top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-card/95 text-foreground shadow-stripe-md transition-[opacity,transform,background-color] duration-200 hover:scale-105 hover:bg-card focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+        'focus-ring absolute top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border border-line-card bg-card text-ink shadow-tile transition-[opacity,background-color] duration-200 hover:bg-hover-soft focus-visible:opacity-100',
         // Hidden until the tile is hovered or something inside it has focus.
         'opacity-0 group-hover:opacity-100 group-focus-within:opacity-100',
         side === 'left' ? 'left-3' : 'right-3',

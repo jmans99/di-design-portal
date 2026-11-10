@@ -10,20 +10,25 @@ export default function PhotoAwardsPage() {
         brand={PHOTO_AWARD_BRAND}
         description={
           <>
-            The winning stories of the Giga Photo Award: The Joy of Connection (2025) and The Urgency of Connectivity
-            (2026), selected from more than 8,000 photographs from around the world. From families staying close across
-            borders to children learning through a phone screen, these stories show how connectivity shapes daily life.
-            The photographs may be used for UNICEF advocacy purposes. For any other use, please contact UNICEF for
-            permission. Learn more at{' '}
-            <a
-              href="https://gigaphotoaward.global"
-              target="_blank"
-              rel="noreferrer"
-              className="font-medium text-link transition-smooth hover:text-link-hover"
-            >
-              gigaphotoaward.global
-            </a>
-            .
+            <span className="block text-pretty">
+              The winning stories of the Giga Photo Award: The Joy of Connection (2025) and The Urgency of Connectivity
+              (2026), selected from more than 8,000 photographs from around the world. From families staying close
+              across borders to children learning through a phone screen, these stories show how connectivity shapes
+              daily life.
+            </span>
+            <span className="mt-2 block text-pretty text-[13px]">
+              The photographs may be used for UNICEF advocacy purposes. For any other use, please contact UNICEF for
+              permission. Learn more at{' '}
+              <a
+                href="https://gigaphotoaward.global"
+                target="_blank"
+                rel="noreferrer"
+                className="focus-ring whitespace-nowrap rounded font-semibold text-link transition-colors hover:text-link-hover"
+              >
+                gigaphotoaward.global
+              </a>
+              .
+            </span>
           </>
         }
       />

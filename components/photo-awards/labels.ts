@@ -8,3 +8,9 @@ export function placeLabel(story: Pick<PhotoAwardStory, 'rank' | 'studentsChoice
     .filter(Boolean)
     .join(' · ')
 }
+
+/** The portal's pills, as on the Dot home ("Coming soon" and "Recommended"). */
+export const PILL =
+  'inline-flex shrink-0 items-center rounded-full border border-line-card bg-pill px-2 py-px text-[11px] font-semibold leading-4 text-pill-muted-foreground'
+export const PILL_ACCENT =
+  'inline-flex shrink-0 items-center rounded-full border border-pill-accent-border bg-pill px-2 py-px text-[11px] font-semibold leading-4 text-link'
