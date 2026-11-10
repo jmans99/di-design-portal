@@ -1,5 +1,6 @@
 import type { AssetBrand } from '@/lib/brand'
 import { BrandPill } from '@/components/brand/brand-tabs'
+import { cn } from '@/lib/utils'
 import styles from './page-header.module.css'
 
 /**
@@ -12,11 +13,14 @@ import styles from './page-header.module.css'
 export function PageHeader({
   title,
   description,
+  descriptionClassName,
   brand,
   actions,
 }: {
   title: string
   description?: React.ReactNode
+  /** Overrides the description's measure, e.g. to lay a long intro out across the page. */
+  descriptionClassName?: string
   /** "giga" and "both" show a pill; Digital Inclusion is the default and gets none. */
   brand?: AssetBrand
   actions?: React.ReactNode
@@ -33,7 +37,9 @@ export function PageHeader({
         {actions && <div className={styles.actions}>{actions}</div>}
       </div>
       {description ? (
-        <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-muted-foreground">{description}</p>
+        <p className={cn('mt-3 max-w-2xl text-[15px] leading-relaxed text-muted-foreground', descriptionClassName)}>
+          {description}
+        </p>
       ) : null}
     </div>
   )

@@ -8,6 +8,8 @@ export default function PhotoAwardsPage() {
       <PageHeader
         title="Photo awards"
         brand={PHOTO_AWARD_BRAND}
+        // The intro spans the page: the story on the left, the usage note on the right.
+        descriptionClassName="grid max-w-none gap-x-12 gap-y-2 lg:grid-cols-[minmax(0,1fr)_minmax(0,19rem)]"
         description={
           <>
             <span className="block text-pretty">
@@ -16,7 +18,7 @@ export default function PhotoAwardsPage() {
               across borders to children learning through a phone screen, these stories show how connectivity shapes
               daily life.
             </span>
-            <span className="mt-2 block text-pretty text-[13px]">
+            <span className="block text-pretty text-[13px] lg:pt-0.5">
               The photographs may be used for UNICEF advocacy purposes. For any other use, please contact UNICEF for
               permission. Learn more at{' '}
               <a
