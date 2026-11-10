@@ -36,7 +36,7 @@ export function BackgroundsPicker() {
   const backgroundSelect = (
     <ControlSection
       label="Background"
-      icon={<ImageIcon className="h-3.5 w-3.5 text-muted-foreground" />}
+      icon={<ImageIcon className="h-3.5 w-3.5 text-ink-secondary" />}
       className="lg:pt-4 lg:pb-2.5"
     >
       <Select value={selection} onValueChange={(v) => setSelection(v as Selection)}>
@@ -72,17 +72,17 @@ export function BackgroundsPicker() {
   return (
     <div className="flex flex-col gap-8 lg:flex-row lg:items-start">
       {/* Sidebar */}
-      <div className="order-2 flex w-full flex-col gap-0 lg:order-1 lg:sticky lg:top-[calc(4rem+24px)] lg:w-80 lg:shrink-0 lg:rounded-2xl lg:border lg:border-border lg:bg-card lg:shadow-stripe">
+      <div className="order-2 flex w-full flex-col gap-0 lg:order-1 lg:sticky lg:top-[calc(4rem+24px)] lg:w-80 lg:shrink-0 lg:rounded-2xl lg:border lg:border-line-card lg:bg-card">
         {backgroundSelect}
         <div className="lg:px-5 lg:pb-4 lg:pt-2">
           <Button onClick={handlePresetDownload} className="w-full">
             <Download />
             Download PNG
           </Button>
-          <p className="mt-2 text-xs text-muted-foreground">
-            File: <span className="font-medium text-foreground">{preset.filename}</span>
+          <p className="mt-2 text-xs text-ink-secondary">
+            File: <span className="font-semibold text-ink-secondary">{preset.filename}</span>
           </p>
-          <p className="mt-3 text-[11px] leading-relaxed text-muted-foreground">
+          <p className="mt-3 text-[11px] leading-relaxed text-ink-secondary">
             3840 × 2160 PNG, dark theme, ready for Teams, Zoom, and Google Meet.
           </p>
         </div>
@@ -118,7 +118,7 @@ function ControlSection({
 }) {
   return (
     <div className={cn('flex flex-col gap-1.5 lg:px-5 lg:py-2.5', className)}>
-      <label className="text-[11px] font-semibold uppercase tracking-[0.07em] text-muted-foreground">
+      <label className="font-heading text-[13px] font-semibold text-ink">
         {icon ? (
           <span className="flex items-center gap-1.5">
             {icon}

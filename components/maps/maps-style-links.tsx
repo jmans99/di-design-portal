@@ -1,26 +1,24 @@
 import Link from 'next/link'
-import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
 
 /**
- * Style switch of the Maps pages: two links, so each style has its own URL
+ * Style switch of the Maps pages, in the look of the brand tabs: two links, so each style has its own URL
  * (Map at /materials/maps, Abstract at /materials/maps/abstract).
  */
 export function MapsStyleLinks({ active }: { active: 'map' | 'abstract' }) {
   return (
     <nav
       aria-label="Map style"
-      className="flex w-fit items-center gap-1 rounded-full border border-border bg-card p-1"
+      className="flex h-8 w-fit items-stretch gap-0.5 rounded-full bg-toggle-track p-[3px]"
     >
-      <span className="px-3 text-[11px] font-semibold uppercase tracking-[0.07em] text-muted-foreground">Style</span>
       <StyleLink href="/materials/maps" active={active === 'map'}>
         Map
       </StyleLink>
       <StyleLink href="/materials/maps/abstract" active={active === 'abstract'}>
         Abstract
-        <Badge variant="secondary" className="px-1.5 py-0 text-[10px] uppercase tracking-wider">
+        <span className="rounded-full border border-line-card bg-pill px-1.5 text-[11px] font-semibold leading-4 text-pill-muted-foreground">
           Beta
-        </Badge>
+        </span>
       </StyleLink>
     </nav>
   )
@@ -32,8 +30,8 @@ function StyleLink({ href, active, children }: { href: string; active: boolean; 
       href={href}
       aria-current={active ? 'page' : undefined}
       className={cn(
-        'inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium transition-smooth-transform active:scale-[0.98]',
-        active ? 'bg-chosen text-link' : 'text-muted-foreground hover:text-foreground',
+        'focus-ring inline-flex items-center gap-1.5 rounded-full px-3.5 text-[13px] font-semibold transition-colors',
+        active ? 'bg-thumb text-ink shadow-thumb' : 'text-ink-secondary hover:text-ink',
       )}
     >
       {children}

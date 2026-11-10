@@ -290,10 +290,10 @@ export function AbstractMapGenerator() {
   return (
     <div className="flex flex-col gap-8 lg:flex-row lg:items-start">
       {/* Sidebar */}
-      <div className="order-2 flex w-full flex-col gap-0 lg:order-1 lg:sticky lg:top-[calc(4rem+24px)] lg:w-80 lg:shrink-0 lg:rounded-2xl lg:border lg:border-border lg:bg-card lg:shadow-stripe">
+      <div className="order-2 flex w-full flex-col gap-0 lg:order-1 lg:sticky lg:top-[calc(4rem+24px)] lg:w-80 lg:shrink-0 lg:rounded-2xl lg:border lg:border-line-card lg:bg-card">
         <ControlSection
           label="Area"
-          icon={<Globe className="h-3.5 w-3.5 text-muted-foreground" />}
+          icon={<Globe className="h-3.5 w-3.5 text-ink-secondary" />}
           className="lg:pt-4 lg:pb-2.5"
         >
           <AreaPicker
@@ -313,7 +313,7 @@ export function AbstractMapGenerator() {
           />
           {countriesError && <p className="text-xs text-destructive">{countriesError}</p>}
           {scope === 'region' && (
-            <p className="text-[11px] text-muted-foreground">
+            <p className="text-[11px] text-ink-secondary">
               Region maps load a few MB of live data; the first render can take a little longer.
             </p>
           )}
@@ -327,15 +327,15 @@ export function AbstractMapGenerator() {
               </ToggleButton>
             ))}
           </div>
-          <p className="text-[11px] text-muted-foreground">Schools are circles, health centers are squares.</p>
+          <p className="text-[11px] text-ink-secondary">Schools are circles, health centers are squares.</p>
           {ready && (
-            <p className="text-[11px] text-muted-foreground">
+            <p className="text-[11px] text-ink-secondary">
               {formatCount(dots.length)} dots shown · {formatCount(loadedCount)} facilities loaded
             </p>
           )}
         </ControlSection>
 
-        <ControlSection label="Size" icon={<Maximize2 className="h-3.5 w-3.5 text-muted-foreground" />}>
+        <ControlSection label="Size" icon={<Maximize2 className="h-3.5 w-3.5 text-ink-secondary" />}>
           <div className="grid grid-cols-2 gap-2">
             {SIZES.map((x) => (
               <ToggleButton key={x.id} active={sizePreset === x.id} onClick={() => setSizePreset(x.id)}>
@@ -355,7 +355,7 @@ export function AbstractMapGenerator() {
                 onChange={(e) => setCustom((c) => ({ ...c, width: e.target.value }))}
                 className="h-9"
               />
-              <span className="text-xs text-muted-foreground">×</span>
+              <span className="text-xs text-ink-secondary">×</span>
               <Input
                 type="number"
                 inputMode="numeric"
@@ -368,7 +368,7 @@ export function AbstractMapGenerator() {
               />
             </div>
           ) : null}
-          <p className="text-[11px] text-muted-foreground">
+          <p className="text-[11px] text-ink-secondary">
             {size.width} × {size.height} px
             {sizePreset === 'custom' ? ` (${CUSTOM_MIN} to ${CUSTOM_MAX})` : ''}
           </p>
@@ -377,24 +377,24 @@ export function AbstractMapGenerator() {
         <Collapsible open={advancedOpen} onOpenChange={setAdvancedOpen} className="lg:px-5 lg:py-2.5">
           <CollapsibleTrigger
             className={cn(
-              'relative flex w-full items-center gap-3 rounded-2xl border border-border bg-card px-4 py-3 text-left transition-smooth-transform hover:bg-secondary/60 active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+              'focus-ring relative flex w-full items-center gap-3 rounded-[14px] border border-line-card bg-card px-3.5 py-2.5 text-left transition-colors hover:bg-hover-soft',
               (advancedOpen || advancedChanged) && 'border-chosen-border',
             )}
           >
             {/* Sits on the top border so it never squeezes the label. */}
             {advancedChanged && (
-              <span className="absolute -top-2 right-4 inline-flex items-center gap-1 rounded-full border border-chosen-border bg-chosen px-1.5 py-px text-[10px] font-semibold uppercase tracking-wider text-link">
+              <span className="absolute -top-2 right-4 inline-flex items-center gap-1 rounded-full border border-chosen-border bg-chosen px-1.5 py-px text-[11px] font-semibold text-link">
                 <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-link" />
                 Changed
               </span>
             )}
-            <SlidersHorizontal className="h-4 w-4 shrink-0 text-muted-foreground" />
+            <SlidersHorizontal className="h-4 w-4 shrink-0 text-ink-secondary" />
             <span className="flex min-w-0 flex-1 flex-col">
-              <span className="whitespace-nowrap text-sm font-medium text-foreground">Advanced settings</span>
-              <span className="text-[11px] text-muted-foreground">Padding, dot size, density, grid, colour</span>
+              <span className="whitespace-nowrap text-[13px] font-semibold text-ink">Advanced settings</span>
+              <span className="text-[11px] text-ink-secondary">Padding, dot size, density, grid, colour</span>
             </span>
             <ChevronDown
-              className={cn('h-4 w-4 shrink-0 text-muted-foreground transition-transform', advancedOpen && 'rotate-180')}
+              className={cn('h-4 w-4 shrink-0 text-ink-secondary transition-transform', advancedOpen && 'rotate-180')}
             />
           </CollapsibleTrigger>
           <CollapsibleContent className="flex flex-col gap-1 pt-2">
@@ -476,7 +476,7 @@ export function AbstractMapGenerator() {
                       title={c.label}
                       onClick={() => set('singleColor', c.value)}
                       className={cn(
-                        'h-8 w-8 rounded-full border border-border transition-smooth-transform active:scale-[0.95]',
+                        'h-8 w-8 rounded-full border border-line-card transition-smooth-transform active:scale-[0.95]',
                         settings.singleColor === c.value && 'ring-2 ring-primary ring-offset-2 ring-offset-background',
                       )}
                       style={{ background: c.value }}
@@ -507,7 +507,7 @@ export function AbstractMapGenerator() {
                   New seed
                 </Button>
               </div>
-              <p className="text-[11px] text-muted-foreground">
+              <p className="text-[11px] text-ink-secondary">
                 Picks which facilities are shown when density is below 100%. The same seed and settings always
                 give the same image.
               </p>
@@ -528,8 +528,8 @@ export function AbstractMapGenerator() {
         </Collapsible>
 
         <ControlSection label="Legend">
-          <label className="flex items-center justify-between gap-3 text-sm text-foreground">
-            <span className={cn(!legendAvailable && 'text-muted-foreground')}>Show legend on the image</span>
+          <label className="flex items-center justify-between gap-3 text-sm text-ink">
+            <span className={cn(!legendAvailable && 'text-ink-secondary')}>Show legend on the image</span>
             <Switch
               checked={settings.legend && legendAvailable}
               disabled={!legendAvailable}
@@ -537,7 +537,7 @@ export function AbstractMapGenerator() {
             />
           </label>
           {!legendAvailable && (
-            <p className="text-[11px] text-muted-foreground">
+            <p className="text-[11px] text-ink-secondary">
               Nothing to explain with one colour and one facility type.
             </p>
           )}
@@ -551,7 +551,7 @@ export function AbstractMapGenerator() {
               </ToggleButton>
             ))}
           </div>
-          <p className="text-[11px] text-muted-foreground">
+          <p className="text-[11px] text-ink-secondary">
             {opts.width * resolution} × {opts.height * resolution} PNG
           </p>
         </ControlSection>
@@ -566,12 +566,12 @@ export function AbstractMapGenerator() {
             {busy === 'svg' ? <Loader2 className="animate-spin" /> : <Download />}
             {busy === 'svg' ? 'Exporting…' : 'Download SVG'}
           </Button>
-          <p className="text-xs text-muted-foreground">
-            File: <span className="font-medium text-foreground">{baseName}</span>
+          <p className="text-xs text-ink-secondary">
+            File: <span className="font-semibold text-ink-secondary">{baseName}</span>
           </p>
           {svgNote?.for === dots && <p className="text-xs text-amber-700 dark:text-amber-300">{svgNote.text}</p>}
           {exportError && <p className="text-xs text-destructive">{exportError}</p>}
-          <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground">
+          <p className="mt-1 text-[11px] leading-relaxed text-ink-secondary">
             The country shape comes only from where the facilities are. SVG works in PowerPoint and Figma;
             Google Slides only takes the PNG.
           </p>
@@ -580,7 +580,7 @@ export function AbstractMapGenerator() {
 
       {/* Preview */}
       <div className="order-1 flex min-h-0 flex-1 flex-col gap-4 lg:order-2 lg:sticky lg:top-[calc(4rem+24px)] lg:h-fit lg:min-w-0">
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-ink-secondary">
           {opts.colorMode === 'status' &&
             CONNECTIVITY_LEGEND.map((item) => (
               <span key={item.label} className="inline-flex items-center gap-1.5">
@@ -616,7 +616,7 @@ export function AbstractMapGenerator() {
             <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
             {loadState === 'loading' && (
               <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/30">
-                <span className="inline-flex items-center gap-2 rounded-full bg-black/70 px-3 py-1.5 text-xs font-medium text-white shadow-stripe backdrop-blur">
+                <span className="inline-flex items-center gap-2 rounded-full bg-black/70 px-3 py-1.5 text-xs font-medium text-white backdrop-blur">
                   <Loader2 className="h-3.5 w-3.5 animate-spin" />
                   {scope === 'region' ? 'Loading live data for the whole region…' : 'Loading facility data…'}
                 </span>
@@ -631,11 +631,11 @@ export function AbstractMapGenerator() {
         </PreviewPanel>
 
         <div className="flex items-start justify-between gap-3">
-          <p className="select-all text-xs leading-relaxed text-muted-foreground">{sourceLine}</p>
+          <p className="select-all text-xs leading-relaxed text-ink-secondary">{sourceLine}</p>
           <button
             type="button"
             onClick={copySource}
-            className="inline-flex shrink-0 items-center gap-1.5 text-xs font-medium text-muted-foreground transition-smooth hover:text-foreground"
+            className="inline-flex shrink-0 items-center gap-1.5 text-xs font-medium text-ink-secondary transition-smooth hover:text-ink"
           >
             {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
             {copied ? 'Copied' : 'Copy'}
@@ -686,7 +686,7 @@ function LabeledSlider({
         onValueChange={([v]) => onChange(v)}
         aria-label={label}
       />
-      <p className="text-[11px] text-muted-foreground">{format(value)}</p>
+      <p className="text-[11px] text-ink-secondary">{format(value)}</p>
     </div>
   )
 }
@@ -721,7 +721,7 @@ function ControlSection({
 }) {
   return (
     <div className={cn('flex flex-col gap-1.5 lg:px-5 lg:py-2.5', className)}>
-      <span className="text-[11px] font-semibold uppercase tracking-[0.07em] text-muted-foreground">
+      <span className="font-heading text-[13px] font-semibold text-ink">
         {icon ? (
           <span className="flex items-center gap-1.5">
             {icon}
@@ -751,10 +751,10 @@ function ToggleButton({
       onClick={onClick}
       aria-pressed={active}
       className={cn(
-        'flex-1 whitespace-nowrap rounded-full border px-4 py-2.5 text-sm font-medium transition-smooth-transform active:scale-[0.98]',
+        'flex-1 whitespace-nowrap focus-ring rounded-full border px-4 py-2 text-[13px] font-semibold transition-colors',
         active
           ? 'border-chosen-border bg-chosen text-link'
-          : 'border-border bg-card text-foreground hover:bg-secondary/60',
+          : 'border-line-card bg-card text-ink hover:bg-hover-soft',
       )}
     >
       {children}

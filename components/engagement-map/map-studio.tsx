@@ -82,10 +82,10 @@ export function EngagementMapStudio() {
     <>
       <ControlSection
         label="Data source"
-        icon={<Info className="h-3.5 w-3.5 text-muted-foreground" />}
+        icon={<Info className="h-3.5 w-3.5 text-ink-secondary" />}
         className="lg:pt-4"
       >
-        <div className="flex flex-col gap-1 text-xs text-muted-foreground">
+        <div className="flex flex-col gap-1 text-xs text-ink-secondary">
           {mapLoading && !mapData && <span>Loading data from SharePoint…</span>}
           {mapError && (
             <span className="text-destructive">Error: {mapError}</span>
@@ -94,13 +94,13 @@ export function EngagementMapStudio() {
             <>
               <div className="flex items-center justify-between">
                 <span>Engaged</span>
-                <span className="font-medium text-foreground">
+                <span className="font-semibold text-ink-secondary">
                   {mapData.engaged.length}
                 </span>
               </div>
               <div className="flex items-center justify-between">
                 <span>Early interest</span>
-                <span className="font-medium text-foreground">
+                <span className="font-semibold text-ink-secondary">
                   {mapData.earlyInterest.length}
                 </span>
               </div>
@@ -129,7 +129,7 @@ export function EngagementMapStudio() {
             type="button"
             onClick={() => loadMapData(true)}
             disabled={mapLoading}
-            className="mt-2 inline-flex w-fit items-center gap-1.5 rounded-md border border-input bg-background px-2.5 py-1.5 font-medium text-foreground transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-50"
+            className="mt-2 inline-flex w-fit items-center gap-1.5 rounded-md border border-input bg-background px-2.5 py-1.5 font-medium text-ink transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-50"
           >
             <RefreshCw
               className={`h-3.5 w-3.5 shrink-0 ${mapLoading ? 'animate-spin' : ''}`}
@@ -148,8 +148,8 @@ export function EngagementMapStudio() {
           <Download className="shrink-0" />
           {isExporting ? 'Generating…' : 'Download PNG'}
         </Button>
-        <p className="mt-2 text-xs text-muted-foreground">
-          File: <span className="font-medium text-foreground">{filename}</span>
+        <p className="mt-2 text-xs text-ink-secondary">
+          File: <span className="font-semibold text-ink-secondary">{filename}</span>
         </p>
         {exportError && (
           <p className="mt-2 text-xs text-destructive">{exportError}</p>

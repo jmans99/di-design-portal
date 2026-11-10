@@ -127,7 +127,7 @@ export function IllustrationConfigurator() {
   return (
     <div className="flex flex-col gap-8 lg:flex-row lg:items-start">
       {/* Sidebar — below preview on mobile */}
-      <div className="order-2 flex w-full flex-col gap-0 lg:order-1 lg:sticky lg:top-[calc(4rem+24px)] lg:w-80 lg:shrink-0 lg:rounded-2xl lg:border lg:border-border lg:bg-card lg:shadow-stripe">
+      <div className="order-2 flex w-full flex-col gap-0 lg:order-1 lg:sticky lg:top-[calc(4rem+24px)] lg:w-80 lg:shrink-0 lg:rounded-2xl lg:border lg:border-line-card lg:bg-card">
         <ControlSection label="Illustration">
           <IllustrationPicker value={selectedId} onChange={setSelectedId} items={visible} />
         </ControlSection>
@@ -164,21 +164,21 @@ export function IllustrationConfigurator() {
                 <button
                   key={opt.value}
                   onClick={() => setOutlineColor(opt.value)}
-                  className={`flex items-center gap-3 rounded-2xl border px-4 py-3 text-left text-sm font-medium transition-smooth-transform active:scale-[0.99] ${
+                  className={`focus-ring flex items-center gap-3 rounded-[14px] border px-3.5 py-2.5 text-left text-[13px] font-semibold transition-colors ${
                     outlineColor === opt.value
-                      ? 'border-chosen-border bg-chosen/70 text-foreground'
-                      : 'border-border bg-card text-foreground hover:bg-secondary/60'
+                      ? 'border-chosen-border bg-chosen text-ink'
+                      : 'border-line-card bg-card text-ink hover:bg-hover-soft'
                   }`}
                 >
                   <span className="flex shrink-0 items-center gap-0.5">
                     <span
-                      className="inline-block h-5 w-5 rounded-[2px] border border-border"
+                      className="inline-block h-5 w-5 rounded-[5px] border border-line-card"
                       style={{ backgroundColor: opt.hex }}
                     />
                   </span>
                   <span className="flex flex-col items-start">
                     <span>{opt.label}</span>
-                    <span className="text-xs font-normal text-muted-foreground">
+                    <span className="text-xs font-normal text-ink-secondary">
                       {opt.description}
                     </span>
                   </span>
@@ -227,11 +227,11 @@ export function IllustrationConfigurator() {
             className="w-full"
           >
             <Download />
-            {isExporting ? 'Exporting...' : 'Download Asset'}
+            {isExporting ? 'Exporting...' : 'Download asset'}
           </Button>
-          <p className="mt-2 text-xs text-muted-foreground">
+          <p className="mt-2 text-xs text-ink-muted">
             File:{' '}
-            <span className="font-medium text-foreground">
+            <span className="font-semibold text-ink-secondary">
               {previewFilename}
             </span>
           </p>
@@ -248,7 +248,7 @@ export function IllustrationConfigurator() {
           {isLoading ? (
             <div className="flex min-h-48 flex-col items-center justify-center gap-3">
               <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
-              <p className="text-sm text-muted-foreground">Loading asset...</p>
+              <p className="text-sm text-ink-secondary">Loading asset...</p>
             </div>
           ) : previewSvg ? (
             <div className="flex w-full min-w-0 items-center justify-center">
@@ -259,18 +259,18 @@ export function IllustrationConfigurator() {
               />
             </div>
           ) : (
-            <p className="text-sm text-muted-foreground">Select options to preview</p>
+            <p className="text-sm text-ink-secondary">Select options to preview</p>
           )}
         </PreviewPanel>
 
         {selectedFormat === 'png' && previewSvg && !isLoading && (
-          <Card className="overflow-hidden rounded-2xl border border-border bg-card shadow-stripe">
+          <Card className="overflow-hidden rounded-2xl border border-line-card bg-card shadow-none">
             <CardContent className="p-4">
-              <p className="mb-3 text-xs font-medium text-muted-foreground">
-                Transparency Preview
+              <p className="mb-3 font-heading text-[13px] font-semibold text-ink">
+                Transparency preview
               </p>
               <div
-                className="flex items-center justify-center rounded-md p-8"
+                className="flex items-center justify-center rounded-[10px] p-8"
                 style={{
                   backgroundImage:
                     'linear-gradient(45deg, #e9e9e9 25%, transparent 25%), linear-gradient(-45deg, #e9e9e9 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #e9e9e9 75%), linear-gradient(-45deg, transparent 75%, #e9e9e9 75%)',
@@ -303,7 +303,7 @@ function ControlSection({
 }) {
   return (
     <div className={cn('flex flex-col gap-2 lg:px-5 lg:pt-5 lg:pb-3', className)}>
-      <label className="text-[11px] font-semibold uppercase tracking-[0.07em] text-muted-foreground">{label}</label>
+      <label className="font-heading text-[13px] font-semibold text-ink">{label}</label>
       {children}
     </div>
   )
@@ -323,10 +323,10 @@ function ToggleButton({
   return (
     <button
       onClick={onClick}
-      className={`flex-1 rounded-full border px-4 py-2.5 text-sm font-medium transition-smooth-transform active:scale-[0.98] ${
+      className={`focus-ring flex-1 rounded-full border px-4 py-2 text-[13px] font-semibold transition-colors ${
         active
           ? 'border-chosen-border bg-chosen text-link'
-          : 'border-border bg-card text-foreground hover:bg-secondary/60'
+          : 'border-line-card bg-card text-ink-secondary hover:bg-hover-soft hover:text-ink'
       } ${className}`}
     >
       {children}

@@ -62,17 +62,17 @@ export function BrandTabs({ className }: { className?: string }) {
   return (
     <TabsPrimitive.List
       aria-label={withAll ? 'Brand filter' : 'Brand'}
-      className={cn('inline-flex h-9 shrink-0 items-stretch rounded-full bg-primary-700 p-[3px]', className)}
+      className={cn('inline-flex h-8 shrink-0 items-stretch gap-0.5 rounded-full bg-toggle-track p-[3px]', className)}
     >
       {options.map((brand) => (
         <TabsPrimitive.Trigger
           key={brand}
           value={brand}
           className={cn(
-            'inline-flex items-center justify-center whitespace-nowrap rounded-full px-4 font-sans text-sm font-semibold text-white transition-colors',
-            'hover:bg-white/[.14] data-[state=active]:bg-white data-[state=active]:text-primary-700 data-[state=active]:shadow-[0_1px_2px_rgba(26,42,60,.15)]',
-            // The track stays DI 700 with white text in both themes; the focus outline follows the theme's text colour.
-            'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink',
+            'inline-flex items-center justify-center whitespace-nowrap rounded-full px-3.5 font-sans text-[13px] font-semibold text-ink-secondary transition-colors',
+            // Same quiet track and white thumb as the theme toggle in the side panel.
+            'hover:text-ink data-[state=active]:bg-thumb data-[state=active]:text-ink data-[state=active]:shadow-thumb',
+            'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',
           )}
         >
           {BRAND_FILTER_LABELS[brand]}

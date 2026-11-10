@@ -23,24 +23,24 @@ export function TypographySection() {
   return (
     <div className="flex min-w-0 flex-col gap-8">
       <div className="flex flex-col gap-2">
-        <h2 className="font-heading text-3xl font-medium text-foreground" id="typography-type">
+        <h2 className="font-heading text-xl font-semibold tracking-[-0.02em] text-ink" id="typography-type">
           Typography
         </h2>
-        <p className="text-base text-muted-foreground">
+        <p className="text-base text-ink-secondary">
           Two fonts only. Manrope for headings, Open Sans for everything else.
         </p>
       </div>
 
       {/* Font Cards */}
       <div className="grid min-w-0 gap-4 md:grid-cols-2">
-        <div className="min-w-0 rounded-2xl border border-border bg-card shadow-stripe hover-lift">
+        <div className="min-w-0 rounded-2xl border border-line-card bg-card">
           <div className="flex min-w-0 flex-col gap-4 p-6">
             <div className="flex min-w-0 items-start justify-between gap-3">
               <div className="min-w-0 flex-1">
-                <h3 className="font-heading text-2xl font-medium text-foreground">
+                <h3 className="font-heading text-xl font-semibold tracking-[-0.02em] text-ink">
                   Manrope
                 </h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-ink-secondary">
                   Headings only — weight 500
                 </p>
               </div>
@@ -55,34 +55,34 @@ export function TypographySection() {
                 </a>
               </Button>
             </div>
-            <div className="min-w-0 overflow-hidden rounded-md border border-border bg-secondary/50 p-4">
-              <p className="font-heading text-4xl font-medium text-foreground break-words">
+            <div className="min-w-0 overflow-hidden rounded-md border border-line-card bg-subtle p-4">
+              <p className="font-heading text-4xl font-medium text-ink break-words">
                 Aa Bb Cc Dd
               </p>
-              <p className="font-heading text-xl font-medium text-muted-foreground break-words">
+              <p className="font-heading text-xl font-medium text-ink-secondary break-words">
                 {'ABCDEFGHIJKLMNOPQRSTUVWXYZ'}
               </p>
-              <p className="font-heading text-xl font-medium text-muted-foreground break-words">
+              <p className="font-heading text-xl font-medium text-ink-secondary break-words">
                 {'abcdefghijklmnopqrstuvwxyz'}
               </p>
-              <p className="font-heading text-xl font-medium text-muted-foreground break-words">
+              <p className="font-heading text-xl font-medium text-ink-secondary break-words">
                 {'0123456789'}
               </p>
             </div>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-ink-secondary">
               Used for text-2xl (24px) through text-9xl (128px). Always weight 500.
             </p>
           </div>
         </div>
 
-        <div className="min-w-0 rounded-2xl border border-border bg-card shadow-stripe hover-lift">
+        <div className="min-w-0 rounded-2xl border border-line-card bg-card">
           <div className="flex min-w-0 flex-col gap-4 p-6">
             <div className="flex min-w-0 items-start justify-between gap-3">
               <div className="min-w-0 flex-1">
-                <h3 className="font-heading text-2xl font-medium text-foreground">
+                <h3 className="font-heading text-xl font-semibold tracking-[-0.02em] text-ink">
                   Open Sans
                 </h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-ink-secondary">
                   Body text — weights 400, 500, 600
                 </p>
               </div>
@@ -97,21 +97,21 @@ export function TypographySection() {
                 </a>
               </Button>
             </div>
-            <div className="min-w-0 overflow-hidden rounded-md border border-border bg-secondary/50 p-4">
-              <p className="font-sans text-4xl font-normal text-foreground break-words">
+            <div className="min-w-0 overflow-hidden rounded-md border border-line-card bg-subtle p-4">
+              <p className="font-sans text-4xl font-normal text-ink break-words">
                 Aa Bb Cc Dd
               </p>
-              <p className="font-sans text-xl font-normal text-muted-foreground break-words">
+              <p className="font-sans text-xl font-normal text-ink-secondary break-words">
                 {'ABCDEFGHIJKLMNOPQRSTUVWXYZ'}
               </p>
-              <p className="font-sans text-xl font-medium text-muted-foreground break-words">
+              <p className="font-sans text-xl font-medium text-ink-secondary break-words">
                 {'abcdefghijklmnopqrstuvwxyz'}
               </p>
-              <p className="font-sans text-xl font-semibold text-muted-foreground break-words">
+              <p className="font-sans text-xl font-semibold text-ink-secondary break-words">
                 {'0123456789'}
               </p>
             </div>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-ink-secondary">
               Used for text-xs (12px) through text-xl (20px). Weights: 400 body, 500 interactive, 600 section titles.
             </p>
           </div>
@@ -119,22 +119,22 @@ export function TypographySection() {
       </div>
 
       {/* Heading Scale */}
-      <div className="min-w-0 rounded-2xl border border-border bg-card shadow-stripe hover-lift">
+      <div className="min-w-0 rounded-2xl border border-line-card bg-card">
         <div className="flex min-w-0 flex-col gap-6 p-6">
-          <h3 className="font-heading text-[11px] font-medium uppercase tracking-[0.07em] text-muted-foreground">
+          <h3 className="font-heading text-[13px] font-semibold text-ink">
             Heading Scale — Manrope 500
           </h3>
           <div className="flex flex-col gap-6">
             {HEADING_SAMPLES.map((sample) => (
               <div
                 key={sample.label}
-                className="flex flex-col gap-1 border-b border-border pb-4 last:border-0 last:pb-0"
+                className="flex flex-col gap-1 border-b border-line-card pb-4 last:border-0 last:pb-0"
               >
-                <span className="text-xs text-muted-foreground">
+                <span className="text-xs text-ink-secondary">
                   {sample.label} / {sample.lineHeight}
                 </span>
                 <p
-                  className={`font-heading ${sample.size} font-medium text-foreground`}
+                  className={`font-heading ${sample.size} font-medium text-ink`}
                 >
                   Connecting every school
                 </p>
@@ -145,22 +145,22 @@ export function TypographySection() {
       </div>
 
       {/* Body Scale */}
-      <div className="min-w-0 rounded-2xl border border-border bg-card shadow-stripe hover-lift">
+      <div className="min-w-0 rounded-2xl border border-line-card bg-card">
         <div className="flex min-w-0 flex-col gap-6 p-6">
-          <h3 className="font-heading text-[11px] font-medium uppercase tracking-[0.07em] text-muted-foreground">
+          <h3 className="font-heading text-[13px] font-semibold text-ink">
             Body Scale — Open Sans
           </h3>
           <div className="flex flex-col gap-4">
             {BODY_SAMPLES.map((sample, i) => (
               <div
                 key={i}
-                className="flex flex-col gap-1 border-b border-border pb-3 last:border-0 last:pb-0"
+                className="flex flex-col gap-1 border-b border-line-card pb-3 last:border-0 last:pb-0"
               >
-                <span className="text-xs text-muted-foreground">
+                <span className="text-xs text-ink-secondary">
                   {sample.label}
                 </span>
                 <p
-                  className={`font-sans ${sample.size} ${sample.weight} text-foreground`}
+                  className={`font-sans ${sample.size} ${sample.weight} text-ink`}
                 >
                   {sample.content}
                 </p>

@@ -4,7 +4,8 @@ import { cn } from '@/lib/utils'
 import styles from './page-header.module.css'
 
 /**
- * Shared page intro: Manrope headline with tight tracking, one muted line.
+ * Shared page intro: the home page's headline (Manrope 600, 28px, -0.02em) and
+ * one line of secondary text.
  * `brand="giga"` adds the Giga pill (Giga-only pages) and `brand="both"` the
  * "DI + Giga" pill (shared material, e.g. Typography); `actions` goes on the
  * right of the title row, e.g. <BrandTabs /> on pages with both brands.
@@ -29,7 +30,7 @@ export function PageHeader({
     <div className={`mb-10 ${styles.header}`}>
       <div className={styles.titleRow}>
         <div className="flex min-w-0 items-center gap-3">
-          <h1 className="font-heading text-[clamp(2rem,4vw,2.75rem)] font-medium leading-[1.1] tracking-[-0.03em] text-foreground text-balance">
+          <h1 className="font-heading text-[28px] font-semibold leading-[1.2] tracking-[-0.02em] text-ink text-balance">
             {title}
           </h1>
           {brand && brand !== 'di' && <BrandPill brand={brand} />}
@@ -37,7 +38,7 @@ export function PageHeader({
         {actions && <div className={styles.actions}>{actions}</div>}
       </div>
       {description ? (
-        <p className={cn('mt-3 max-w-2xl text-[15px] leading-relaxed text-muted-foreground', descriptionClassName)}>
+        <p className={cn('mt-3 max-w-2xl text-[15px] leading-relaxed text-ink-secondary', descriptionClassName)}>
           {description}
         </p>
       ) : null}

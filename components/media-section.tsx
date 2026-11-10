@@ -9,7 +9,7 @@ const GALLERIES = [
     id: 'flickr',
     brand: 'giga' as AssetBrand,
     title: 'Public Events Photos',
-    description: `Giga's public Flickr albums — event coverage, field visits, and community moments shared openly.`,
+    description: `Giga's public Flickr albums: event coverage, field visits, and community moments shared openly.`,
     tags: ['Flickr', 'Images'],
     href: 'https://www.flickr.com/photos/gigaglobal/albums/',
     svg: (
@@ -20,7 +20,7 @@ const GALLERIES = [
     id: 'weshare',
     brand: 'di' as AssetBrand,
     title: 'UNICEF Official Gallery',
-    description: "High-resolution photography from UNICEF's official media library — professionally curated for editorial use.",
+    description: "High-resolution photography from UNICEF's official media library, professionally curated for editorial use.",
     tags: ['UNICEF', 'Images'],
     href: 'https://weshare.unicef.org/',
     svg: (
@@ -31,7 +31,7 @@ const GALLERIES = [
     id: 'impact-stories',
     brand: 'di' as AssetBrand,
     title: 'Impact Stories',
-    description: `Visual documentation of Digital Inclusion's impact — stories from schools, communities, and partners around the world.`,
+    description: `Visual documentation of Digital Inclusion's impact: stories from schools, communities, and partners around the world.`,
     tags: ['SharePoint', 'Images', 'Videos'],
     href: 'https://unicef.sharepoint.com/:f:/r/teams/ICTD-DIDI/DocumentLibrary1/005%20Communication%20and%20External%20Relations/02_Communications/000%20-%20COMMS%20HUB%20ALPHA/MULTIMEDIA%20CENTRE/IMPACT%20STORIES?csf=1&web=1&e=DeBXbe',
     svg: (
@@ -42,7 +42,7 @@ const GALLERIES = [
     id: 'events',
     brand: 'di' as AssetBrand,
     title: 'Event Coverage',
-    description: `Photos and media from Digital Inclusion events — conferences, launches, field missions, and partner meetings.`,
+    description: `Photos and media from Digital Inclusion events: conferences, launches, field missions, and partner meetings.`,
     tags: ['SharePoint', 'Images', 'Videos'],
     href: 'https://unicef.sharepoint.com/teams/ICTD-DIDI/DocumentLibrary1/Forms/AllItems.aspx?csf=1&web=1&e=QQLhHm&CID=e70b14e6%2Dcbca%2D46d7%2D807f%2D410bceffa2af&FolderCTID=0x012000817466FC87269A4FA817DD253A5243D5&id=%2Fteams%2FICTD%2DDIDI%2FDocumentLibrary1%2F005%20Communication%20and%20External%20Relations%2F02%5FCommunications%2F000%20%2D%20COMMS%20HUB%20ALPHA%2FMULTIMEDIA%20CENTRE%2FEVENT%20COVERAGE',
     svg: (
@@ -53,7 +53,7 @@ const GALLERIES = [
     id: 'product',
     brand: 'di' as AssetBrand,
     title: 'Product Photos & Footage',
-    description: `Photos and video footage of Digital Inclusion's products, tools, and technology — for presentations and communications.`,
+    description: `Photos and video footage of Digital Inclusion's products, tools, and technology, for presentations and communications.`,
     tags: ['SharePoint', 'Images', 'Videos'],
     href: 'https://unicef.sharepoint.com/:f:/r/teams/ICTD-DIDI/DocumentLibrary1/005%20Communication%20and%20External%20Relations/02_Communications/000%20-%20COMMS%20HUB%20ALPHA/MULTIMEDIA%20CENTRE/PRODUCT%20PHOTOS%20AND%20FOOTAGE?csf=1&web=1&e=UdyYd3',
     svg: (
@@ -64,7 +64,7 @@ const GALLERIES = [
     id: 'youtube',
     brand: 'giga' as AssetBrand,
     title: 'YouTube Channel',
-    description: `Giga's official YouTube channel — documentaries, explainers, event recordings, and partner stories.`,
+    description: `Giga's official YouTube channel: documentaries, explainers, event recordings, and partner stories.`,
     tags: ['YouTube', 'Videos'],
     href: 'https://www.youtube.com/@GigaGlobal',
     svg: (
@@ -84,44 +84,44 @@ export function MediaSection() {
   )
   return (
     <div className="animate-in fade-in duration-300 ease-out">
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {galleries.map((gallery) => (
           <a
             key={gallery.id}
             href={gallery.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-stripe transition-smooth hover-lift"
+            className="focus-ring group relative flex flex-col overflow-hidden rounded-2xl border border-line-card bg-card transition-colors hover:bg-hover-soft"
           >
             {/* Thumbnail */}
             <div className="relative h-44 w-full overflow-hidden shrink-0">
               {gallery.svg}
-              <div className="absolute bottom-3 right-3 flex items-center gap-1.5 rounded-full bg-black/40 px-2.5 py-1 backdrop-blur-sm">
-                <ImageIcon className="h-3 w-3 text-white/80" />
-                <span className="text-[11px] font-medium text-white/90">{gallery.tags[0]}</span>
-              </div>
+              <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full border border-line-card bg-pill px-2 py-px text-[11px] font-semibold leading-4 text-pill-muted-foreground">
+                <ImageIcon className="h-3 w-3" aria-hidden />
+                {gallery.tags[0]}
+              </span>
             </div>
 
             {/* Content */}
-            <div className="flex flex-1 flex-col gap-3 p-5">
-              <h3 className="font-heading text-base font-medium text-foreground leading-snug">
+            <div className="flex flex-1 flex-col gap-2 px-4 pb-4 pt-3.5">
+              <h3 className="font-heading text-[15px] font-semibold leading-snug tracking-[-0.01em] text-ink">
                 {gallery.title}
               </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+              <p className="flex-1 text-[13px] leading-relaxed text-ink-secondary">
                 {gallery.description}
               </p>
               <div className="flex flex-wrap gap-1.5 pt-1">
                 {gallery.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="inline-flex items-center rounded-full border border-border bg-muted/60 px-2.5 py-0.5 text-xs font-medium text-muted-foreground"
+                    className="inline-flex items-center rounded-full border border-line-card bg-pill px-2 py-px text-[11px] font-semibold leading-4 text-pill-muted-foreground"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
-              <div className="mt-2">
-                <span className="flex items-center gap-1.5 text-sm font-semibold text-muted-foreground transition-colors group-hover:text-foreground">
+              <div className="mt-1.5">
+                <span className="flex items-center gap-1 text-[13px] font-semibold text-link transition-colors group-hover:text-link-hover">
                   Browse gallery
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
                 </span>
