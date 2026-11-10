@@ -30,7 +30,7 @@ export function PreviewPanel({
     <div
       className={cn(
         'relative flex min-h-[320px] items-center justify-center overflow-hidden rounded-2xl border transition-smooth lg:min-h-[400px]',
-        dark ? 'border-preview-dark-border bg-preview-dark' : 'border-border bg-preview-light',
+        dark ? 'border-preview-dark-border bg-preview-dark' : 'border-line-card bg-preview-light',
         className,
       )}
     >
@@ -51,7 +51,7 @@ export function PreviewThemeToggle({
   onChange: (value: PreviewTheme) => void
 }) {
   return (
-    <div className="flex items-center gap-1 rounded-full border border-border bg-card/95 p-1 shadow-stripe-md backdrop-blur">
+    <div className="flex items-center gap-0.5 rounded-full bg-toggle-track p-[3px]">
       {(['light', 'dark'] as const).map((mode) => {
         const Icon = mode === 'light' ? Sun : Moon
         const active = value === mode
@@ -60,8 +60,9 @@ export function PreviewThemeToggle({
             key={mode}
             type="button"
             onClick={() => onChange(mode)}
-            className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium capitalize transition-smooth-transform active:scale-[0.97] ${
-              active ? 'bg-primary-50 text-primary-700' : 'text-muted-foreground hover:text-foreground'
+            aria-pressed={active}
+            className={`focus-ring flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold capitalize transition-colors ${
+              active ? 'bg-thumb text-ink shadow-thumb' : 'text-ink-muted hover:text-ink'
             }`}
           >
             <Icon className="h-3.5 w-3.5" />

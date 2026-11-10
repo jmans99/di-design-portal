@@ -262,7 +262,7 @@ export function LogoGenerator({ filter, initialColorVariant }: LogoGeneratorProp
   return (
     <div className="flex flex-col gap-8 lg:flex-row lg:items-start">
       {/* Sidebar: sticky, height fits content */}
-      <div className="order-2 flex w-full flex-col gap-0 lg:order-1 lg:sticky lg:top-[calc(4rem+24px)] lg:w-80 lg:shrink-0 lg:rounded-2xl lg:border lg:border-border lg:bg-card lg:shadow-stripe">
+      <div className="order-2 flex w-full flex-col gap-0 lg:order-1 lg:sticky lg:top-[calc(4rem+24px)] lg:w-80 lg:shrink-0 lg:rounded-2xl lg:border lg:border-line-card lg:bg-card">
         {/* Brand selector */}
         <ControlSection label="Brand" className="lg:pt-4 lg:pb-2.5">
           <SearchableSelect
@@ -282,7 +282,7 @@ export function LogoGenerator({ filter, initialColorVariant }: LogoGeneratorProp
         {isGigaMain && (
           <ControlSection
             label="Orientation"
-            icon={<ArrowUpDown className="h-3.5 w-3.5 text-muted-foreground" />}
+            icon={<ArrowUpDown className="h-3.5 w-3.5 text-ink-muted" />}
           >
             <div className="flex gap-2">
               {(
@@ -307,7 +307,7 @@ export function LogoGenerator({ filter, initialColorVariant }: LogoGeneratorProp
         {isGigaMain && !brand.combination && (
           <ControlSection
             label="Combination"
-            icon={<Layers className="h-3.5 w-3.5 text-muted-foreground" />}
+            icon={<Layers className="h-3.5 w-3.5 text-ink-muted" />}
           >
             <div className="flex flex-col gap-2">
               {(
@@ -345,7 +345,7 @@ export function LogoGenerator({ filter, initialColorVariant }: LogoGeneratorProp
         )}
 
         {/* Color variant: bicolor only for Giga + Giga Connectivity Forum; monochrome for products + GEP */}
-        <ControlSection label="Color Variant">
+        <ControlSection label="Color variant">
           <div className="flex flex-col gap-2">
             {effectiveAllowedVariants.map((v) => {
               const swatchColors = v.secondaryHex
@@ -355,17 +355,17 @@ export function LogoGenerator({ filter, initialColorVariant }: LogoGeneratorProp
                 <button
                   key={v.name}
                   onClick={() => setSelectedColorName(v.name)}
-                  className={`flex items-center gap-3 rounded-2xl border px-4 py-3 text-left text-sm font-medium transition-smooth-transform active:scale-[0.99] ${
+                  className={`focus-ring flex items-center gap-3 rounded-[14px] border px-3.5 py-2.5 text-left text-[13px] font-semibold transition-colors ${
                     selectedColorName === v.name
-                      ? 'border-chosen-border bg-chosen/70 text-foreground'
-                      : 'border-border bg-card text-foreground hover:bg-secondary/60'
+                      ? 'border-chosen-border bg-chosen text-ink'
+                      : 'border-line-card bg-card text-ink hover:bg-hover-soft'
                   }`}
                 >
                   <span className="flex shrink-0 items-center gap-0.5">
                     {swatchColors.map((c, i) => (
                       <span
                         key={i}
-                        className="inline-block h-5 w-5 rounded-[2px] border border-border"
+                        className="inline-block h-5 w-5 rounded-[5px] border border-line-card"
                         style={{ backgroundColor: c }}
                       />
                     ))}
@@ -418,11 +418,11 @@ export function LogoGenerator({ filter, initialColorVariant }: LogoGeneratorProp
             className="w-full"
           >
             <Download />
-            {isExporting ? 'Exporting...' : 'Download Asset'}
+            {isExporting ? 'Exporting...' : 'Download asset'}
           </Button>
-          <p className="mt-2 text-xs text-muted-foreground">
+          <p className="mt-2 text-xs text-ink-muted">
             File:{' '}
-            <span className="font-medium text-foreground">
+            <span className="font-semibold text-ink-secondary">
               {previewFilename}
             </span>
           </p>
@@ -439,7 +439,7 @@ export function LogoGenerator({ filter, initialColorVariant }: LogoGeneratorProp
           {isLoading ? (
             <div className="flex flex-col items-center gap-3">
               <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
-              <p className="text-sm text-muted-foreground">Loading asset...</p>
+              <p className="text-sm text-ink-secondary">Loading asset...</p>
             </div>
           ) : previewSvg ? (
             <img
@@ -456,19 +456,19 @@ export function LogoGenerator({ filter, initialColorVariant }: LogoGeneratorProp
               )}
             />
           ) : (
-            <p className="text-sm text-muted-foreground">Select options to preview</p>
+            <p className="text-sm text-ink-secondary">Select options to preview</p>
           )}
         </PreviewPanel>
 
         {/* Transparency preview for PNG */}
         {selectedFormat === 'png' && previewSvg && !isLoading && (
-          <Card className="overflow-hidden rounded-2xl border border-border bg-card shadow-stripe">
+          <Card className="overflow-hidden rounded-2xl border border-line-card bg-card shadow-none">
             <CardContent className="p-4">
-              <p className="mb-3 text-xs font-medium text-muted-foreground">
-                Transparency Preview
+              <p className="mb-3 font-heading text-[13px] font-semibold text-ink">
+                Transparency preview
               </p>
               <div
-                className="flex items-center justify-center rounded-md p-8"
+                className="flex items-center justify-center rounded-[10px] p-8"
                 style={{
                   backgroundImage:
                     'linear-gradient(45deg, #e9e9e9 25%, transparent 25%), linear-gradient(-45deg, #e9e9e9 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #e9e9e9 75%), linear-gradient(-45deg, transparent 75%, #e9e9e9 75%)',
@@ -515,7 +515,7 @@ function ControlSection({
     <div
       className={cn('flex flex-col gap-1.5 lg:px-5 lg:py-2.5', className)}
     >
-      <label className="text-[11px] font-semibold uppercase tracking-[0.07em] text-muted-foreground">
+      <label className="font-heading text-[13px] font-semibold text-ink">
         {icon ? (
           <span className="flex items-center gap-1.5">
             {icon}
@@ -544,10 +544,10 @@ function ToggleButton({
   return (
     <button
       onClick={onClick}
-      className={`flex-1 rounded-full border px-4 py-2.5 text-sm font-medium transition-smooth-transform active:scale-[0.98] ${
+      className={`focus-ring flex-1 rounded-full border px-4 py-2 text-[13px] font-semibold transition-colors ${
         active
           ? 'border-chosen-border bg-chosen text-link'
-          : 'border-border bg-card text-foreground hover:bg-secondary/60'
+          : 'border-line-card bg-card text-ink-secondary hover:bg-hover-soft hover:text-ink'
       } ${className}`}
     >
       {children}
@@ -569,15 +569,15 @@ function OptionCard({
   return (
     <button
       onClick={onClick}
-      className={`flex flex-col items-start rounded-2xl border px-4 py-3 text-left transition-smooth-transform active:scale-[0.99] ${
+      className={`focus-ring flex flex-col items-start rounded-[14px] border px-3.5 py-2.5 text-left transition-colors ${
         active
-          ? 'border-chosen-border bg-chosen/70 text-foreground'
-          : 'border-border bg-card text-foreground hover:bg-secondary/60'
+          ? 'border-chosen-border bg-chosen text-ink'
+          : 'border-line-card bg-card text-ink hover:bg-hover-soft'
       }`}
     >
-      <span className="text-sm font-medium">{label}</span>
+      <span className="text-[13px] font-semibold">{label}</span>
       {description ? (
-        <span className="text-xs text-muted-foreground">{description}</span>
+        <span className="text-xs text-ink-secondary">{description}</span>
       ) : null}
     </button>
   )
