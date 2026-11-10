@@ -51,15 +51,17 @@ Current pages (audit, October 2026):
 
 | Part | Value |
 | --- | --- |
-| Track | `#01689D` (DI 700), radius 999px, padding 3px, height 36px |
-| Segment | Open Sans 600, 14px, padding 0 16px, radius 999px |
-| Selected | background `#FFFFFF`, text `#01689D`, shadow `0 1px 2px rgba(26,42,60,.15)` |
-| Unselected | transparent, text `#FFFFFF`, hover `rgba(255,255,255,.14)` |
-| Focus | 2px outline in the main text colour (`#1A2A3C`; dark theme `#F8F8F8`), offset 2px |
+| Track | `#E9EDF1` (`toggle-track`; dark `#22364C`), radius 999px, padding 3px, height 32px |
+| Segment | Open Sans 600, 13px, padding 0 14px, radius 999px |
+| Selected | background `#FFFFFF` (`thumb`; dark `#2A3E55`), text `#1A2A3C` (dark `#F8F8F8`), shadow `0 1px 3px rgba(26,42,60,.18)` |
+| Unselected | transparent, text `#3B4A5A` (dark `#B8C4D0`), hover text `#1A2A3C` (dark `#F8F8F8`) |
+| Focus | 2px outline in the ring colour (`#01689D`), offset 2px |
 | Labels | "Digital Inclusion", "Giga" |
 
-Contrast: white on `#01689D` and `#01689D` on white are both 6.05:1. The
-track keeps these colours in the dark theme too (it reads well on `#0F1823`).
+Same look as the theme toggle in the side panel (changed on 10 Nov 2026; the
+track was solid DI 700 before, which read too heavy next to the page title).
+Contrast: `#3B4A5A` on `#E9EDF1` is 7.5:1 and `#1A2A3C` on white 14.6:1. The
+Light / Dark switch on previews and the map background switch share it.
 
 **Brand pills** (`<BrandPill />`): 12px, 600, radius 999px, padding 2px 10px.
 The same size and shape for every brand.

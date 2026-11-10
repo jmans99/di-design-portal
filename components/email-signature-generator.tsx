@@ -33,7 +33,7 @@ function ControlSection({
 }) {
   return (
     <div className={cn('flex flex-col gap-1.5 lg:px-5 lg:py-2.5', className)}>
-      <label className="text-[11px] font-semibold uppercase tracking-[0.07em] text-muted-foreground">
+      <label className="font-heading text-[13px] font-semibold text-ink">
         {label}
       </label>
       {children}
@@ -56,10 +56,10 @@ function ToggleButton({
     <button
       type="button"
       onClick={onClick}
-      className={`flex-1 rounded-full border px-4 py-2.5 text-sm font-medium transition-smooth-transform active:scale-[0.98] ${
+      className={`flex-1 focus-ring rounded-full border px-4 py-2 text-[13px] font-semibold transition-colors ${
         active
           ? 'border-chosen-border bg-chosen text-link'
-          : 'border-border bg-card text-foreground hover:bg-secondary/60'
+          : 'border-line-card bg-card text-ink hover:bg-hover-soft'
       } ${className}`}
     >
       {children}
@@ -182,7 +182,7 @@ export function EmailSignatureGenerator() {
 
   return (
     <div className="flex flex-col gap-8 lg:flex-row lg:items-start">
-      <div className="order-2 flex w-full flex-col gap-0 lg:order-1 lg:sticky lg:top-[calc(4rem+24px)] lg:w-80 lg:shrink-0 lg:rounded-2xl lg:border lg:border-border lg:bg-card lg:shadow-stripe">
+      <div className="order-2 flex w-full flex-col gap-0 lg:order-1 lg:sticky lg:top-[calc(4rem+24px)] lg:w-80 lg:shrink-0 lg:rounded-2xl lg:border lg:border-line-card lg:bg-card">
         <ControlSection label="Name" className="lg:pt-4 lg:pb-2.5">
           <Input
             value={name}
@@ -235,8 +235,8 @@ export function EmailSignatureGenerator() {
             <Copy className="shrink-0" />
             {logosLoading ? 'Preparing logos…' : 'Copy signature'}
           </Button>
-          {copyHint && <p className="text-center text-xs text-muted-foreground">{copyHint}</p>}
-          <p className="text-xs text-muted-foreground leading-relaxed">
+          {copyHint && <p className="text-center text-xs text-ink-secondary">{copyHint}</p>}
+          <p className="text-xs text-ink-secondary leading-relaxed">
             Click Copy signature, then in Outlook go to Settings {'>'} Signatures and paste your signature.
           </p>
         </div>

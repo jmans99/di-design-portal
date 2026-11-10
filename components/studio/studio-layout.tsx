@@ -46,14 +46,14 @@ export function StudioLayout({
   return (
     <div className="flex flex-col gap-8 lg:flex-row lg:items-start">
       {/* Sidebar */}
-      <div className="order-2 flex w-full flex-col gap-0 lg:order-1 lg:sticky lg:top-[calc(4rem+24px)] lg:w-80 lg:shrink-0 lg:rounded-2xl lg:border lg:border-border lg:bg-card lg:shadow-stripe">
+      <div className="order-2 flex w-full flex-col gap-0 lg:order-1 lg:sticky lg:top-[calc(4rem+24px)] lg:w-80 lg:shrink-0 lg:rounded-2xl lg:border lg:border-line-card lg:bg-card">
         {sidebar}
       </div>
 
       {/* Preview */}
       <div className="order-1 flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto lg:order-2 lg:sticky lg:top-[calc(4rem+24px)] lg:h-fit lg:min-w-0">
         <div className="flex items-center justify-end">
-          <span className="text-xs font-medium text-muted-foreground">
+          <span className="text-xs font-medium text-ink-secondary">
             {previewWidth} × {previewHeight}
           </span>
         </div>
@@ -88,7 +88,7 @@ export function StudioLayout({
           </div>
         </PreviewPanel>
 
-        <p className="text-xs leading-relaxed text-muted-foreground">
+        <p className="text-xs leading-relaxed text-ink-secondary">
           The preview is rendered at native {previewWidth}×{previewHeight} and downscaled for your screen. The downloaded PNG is the full-resolution capture.
         </p>
       </div>
@@ -109,7 +109,7 @@ export function ControlSection({
 }) {
   return (
     <div className={cn('flex flex-col gap-1.5 lg:px-5 lg:py-2.5', className)}>
-      <label className="text-[11px] font-semibold uppercase tracking-[0.07em] text-muted-foreground">
+      <label className="font-heading text-[13px] font-semibold text-ink">
         {icon ? (
           <span className="flex items-center gap-1.5">
             {icon}

@@ -118,14 +118,14 @@ function FilterPill({
       role="tab"
       aria-selected={active}
       onClick={onClick}
-      className={`inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-smooth active:scale-[0.97] ${
+      className={`focus-ring inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-[13px] font-semibold transition-colors ${
         active
           ? 'border-chosen-border bg-chosen text-link'
-          : 'border-border bg-card text-muted-foreground hover:bg-secondary/60 hover:text-foreground'
+          : 'border-line-card bg-card text-ink-secondary hover:bg-hover-soft hover:text-ink'
       }`}
     >
       {children}
-      <span className={`tabular-nums text-xs ${active ? 'text-link/70' : 'text-muted-foreground/70'}`}>
+      <span className={`tabular-nums text-xs ${active ? 'text-link/70' : 'text-ink-muted'}`}>
         {count}
       </span>
     </button>

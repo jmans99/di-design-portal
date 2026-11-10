@@ -11,7 +11,7 @@ export default function AbstractMapsPage() {
       />
       <div className="mb-6 flex flex-col gap-2">
         <MapsStyleLinks active="abstract" />
-        <p className="text-xs text-muted-foreground">This style is new. Share feedback with the design team.</p>
+        <p className="text-xs text-ink-secondary">This style is new. Share feedback with the design team.</p>
       </div>
       <AbstractMapGenerator />
     </main>
