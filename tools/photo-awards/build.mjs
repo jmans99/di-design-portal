@@ -7,16 +7,19 @@
  * Reads:
  *   tools/photo-awards/winners.csv        the sheet, exported as CSV
  *   tools/photo-awards/descriptions.json  project descriptions by slug (not in the sheet)
+ *   tools/photo-awards/drive-files.json   public Drive file ids by slug, in frame order
  *
  * Writes:
  *   public/photo-awards/<story>/<nn>.jpg        display + download, 2400px long edge
  *   public/photo-awards/<story>/<nn>-thumb.jpg  grid thumbnail, 800px
  *   lib/photo-awards.ts                         typed data (GENERATED)
  *
- * Each row links its photo on Google Drive. A photo already in
- * public/photo-awards is kept as it is. Otherwise the raw file is looked up in
- * the cache folder as <drive id>.<ext>, and downloaded there first when Drive
- * serves it without a login. A story with a photo that cannot be found is left
+ * A photo already in public/photo-awards is kept as it is. Otherwise the raw
+ * file is looked up in the cache folder as <drive id>.<ext>, and downloaded
+ * there first when Drive serves it without a login. The links in the sheet
+ * need a login, so drive-files.json lists the ids of the public copies (the
+ * shared "2026 Winners" and 2025 "Winning Images" folders), matched to each
+ * story and frame by folder and by the number that starts each file name. A story with a photo that cannot be found is left
  * out and reported, so a partial run never publishes half a story.
  *
  * To refresh the sheet:
@@ -31,6 +34,8 @@ const ROOT = path.resolve(import.meta.dirname, '../..')
 const OUT = path.join(ROOT, 'public/photo-awards')
 const CSV = path.join(import.meta.dirname, 'winners.csv')
 const DESCRIPTIONS = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, 'descriptions.json'), 'utf8'))
+// Public copies of the photos, by story slug and in frame order (see the header).
+const DRIVE_FILES = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, 'drive-files.json'), 'utf8'))
 const FULL_EDGE = 2400
 const THUMB_EDGE = 800
 
@@ -142,7 +147,7 @@ for (const s of stories) {
     const full = path.join(dir, `${nn}.jpg`)
     const thumb = path.join(dir, `${nn}-thumb.jpg`)
     if (!fs.existsSync(full) || !fs.existsSync(thumb)) {
-      const raw = await rawFile(f.id)
+      const raw = await rawFile(DRIVE_FILES[s.slug]?.[i] ?? f.id)
       if (!raw) { missing.push(f.frame); continue }
       fs.mkdirSync(dir, { recursive: true })
       const img = sharp(raw).rotate()

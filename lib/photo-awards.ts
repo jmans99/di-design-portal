@@ -150,6 +150,133 @@ export const PHOTO_AWARD_STORIES: PhotoAwardStory[] = [
     ]
   },
   {
+    "slug": "tibetan-country-doctor",
+    "year": 2026,
+    "category": "Multiple Image",
+    "title": "Tibetan Country Doctor",
+    "photographer": "Jake Homovich",
+    "country": "United States",
+    "description": "",
+    "place": "2nd Place",
+    "rank": 2,
+    "studentsChoice": false,
+    "credit": "© Jake Homovich / Giga Photo Award 2026",
+    "images": [
+      {
+        "src": "/photo-awards/tibetan-country-doctor/01.jpg",
+        "thumb": "/photo-awards/tibetan-country-doctor/01-thumb.jpg",
+        "width": 2400,
+        "height": 2234,
+        "title": "Quiet Strength",
+        "caption": "“These two children from my extended family never attended school, yet taught themselves Tibetan and Mandarin through phones and television. In my hometown, children like this are not uncommon.”"
+      },
+      {
+        "src": "/photo-awards/tibetan-country-doctor/02.jpg",
+        "thumb": "/photo-awards/tibetan-country-doctor/02-thumb.jpg",
+        "width": 2400,
+        "height": 2234,
+        "title": "Jaundice",
+        "caption": "“I combine Tibetan, Chinese, and Western medicine, applying what I learn to better treat patients and address their needs.”"
+      },
+      {
+        "src": "/photo-awards/tibetan-country-doctor/03.jpg",
+        "thumb": "/photo-awards/tibetan-country-doctor/03-thumb.jpg",
+        "width": 2232,
+        "height": 2400,
+        "title": "Zerenji",
+        "caption": "“Zerenji studied Tibetan medical theory for five years and came to learn clinical practice with me. She was later accepted into university and chose to study Tibetan calligraphy instead, a path I still regret she could not continue in medicine.”"
+      },
+      {
+        "src": "/photo-awards/tibetan-country-doctor/04.jpg",
+        "thumb": "/photo-awards/tibetan-country-doctor/04-thumb.jpg",
+        "width": 2400,
+        "height": 2236,
+        "title": "Zheng",
+        "caption": "“I mark each patient I see using the character “正”, with each mark representing five people. These notebooks record a lifetime of care.”"
+      },
+      {
+        "src": "/photo-awards/tibetan-country-doctor/05.jpg",
+        "thumb": "/photo-awards/tibetan-country-doctor/05-thumb.jpg",
+        "width": 2400,
+        "height": 2236,
+        "title": "A Common Cold",
+        "caption": "“Even an ordinary illness can bring fear. Here, routine sickness can still cost a young life.”"
+      },
+      {
+        "src": "/photo-awards/tibetan-country-doctor/06.jpg",
+        "thumb": "/photo-awards/tibetan-country-doctor/06-thumb.jpg",
+        "width": 2400,
+        "height": 2239,
+        "title": "Sun and Moon",
+        "caption": "“Women on the plateau carry the weight of home and work alike, caring for families while riding into the mountains to gather medicinal plants.”"
+      },
+      {
+        "src": "/photo-awards/tibetan-country-doctor/07.jpg",
+        "thumb": "/photo-awards/tibetan-country-doctor/07-thumb.jpg",
+        "width": 2233,
+        "height": 2400,
+        "title": "Prescription",
+        "caption": "“I prepare Tibetan medicine mostly as powders, made from herbs I gather myself. I mark each packet with simple sun and moon symbols to show when to take it.”"
+      },
+      {
+        "src": "/photo-awards/tibetan-country-doctor/08.jpg",
+        "thumb": "/photo-awards/tibetan-country-doctor/08-thumb.jpg",
+        "width": 2400,
+        "height": 2231,
+        "title": "Blessings",
+        "caption": "“All my good wishes and sincere blessings are written here.”"
+      },
+      {
+        "src": "/photo-awards/tibetan-country-doctor/09.jpg",
+        "thumb": "/photo-awards/tibetan-country-doctor/09-thumb.jpg",
+        "width": 2234,
+        "height": 2400,
+        "title": "My Ambulance",
+        "caption": "“This old Prado is used to reach remote areas and respond to emergencies. On the grasslands, it serves as our ambulance.”"
+      },
+      {
+        "src": "/photo-awards/tibetan-country-doctor/10.jpg",
+        "thumb": "/photo-awards/tibetan-country-doctor/10-thumb.jpg",
+        "width": 2400,
+        "height": 2236,
+        "title": "Deji",
+        "caption": "“Each child I help deliver is given the name Deji, meaning happiness. The names written here are some of those I’ve given.”"
+      },
+      {
+        "src": "/photo-awards/tibetan-country-doctor/11.jpg",
+        "thumb": "/photo-awards/tibetan-country-doctor/11-thumb.jpg",
+        "width": 2400,
+        "height": 2237,
+        "title": "Moxibustion",
+        "caption": "“She is a mother of more than ten children. Living at high altitude, combined with a lifetime of constant labor and years spent in tents exposed to cold and damp, has left her suffering from arthritis, rheumatoid arthritis, and chronic rheumatic pain. I treated her using moxibustion from traditional Chinese medicine, warming the meridians to help relieve her pain.”"
+      },
+      {
+        "src": "/photo-awards/tibetan-country-doctor/12.jpg",
+        "thumb": "/photo-awards/tibetan-country-doctor/12-thumb.jpg",
+        "width": 2233,
+        "height": 2400,
+        "title": "Vitality",
+        "caption": "“She is 86, childless, and in remarkable health, fully independent and strong. Her vitality feels like a quiet blessing.”"
+      },
+      {
+        "src": "/photo-awards/tibetan-country-doctor/13.jpg",
+        "thumb": "/photo-awards/tibetan-country-doctor/13-thumb.jpg",
+        "width": 2400,
+        "height": 2240,
+        "title": "To Become a Lama",
+        "caption": "“They are studying Tibetan Buddhist rituals, hoping to become lamas. Their path requires years of language study, exams, and formal training.”"
+      },
+      {
+        "src": "/photo-awards/tibetan-country-doctor/14.jpg",
+        "thumb": "/photo-awards/tibetan-country-doctor/14-thumb.jpg",
+        "width": 2400,
+        "height": 2234,
+        "title": "Mountains as Buddha",
+        "caption": "“This was my first time painting. I drew three figures in meditation. Technique mattered less than the moment of clarity.”"
+      }
+    ]
+  },
+  {
     "slug": "energy-paradox",
     "year": 2026,
     "category": "Multiple Image",
@@ -249,6 +376,28 @@ export const PHOTO_AWARD_STORIES: PhotoAwardStory[] = [
     ]
   },
   {
+    "slug": "from-streets-to-screens-a-generation-rises",
+    "year": 2026,
+    "category": "Single Image",
+    "title": "From Streets to Screens: A Generation Rises",
+    "photographer": "Samson Otieno",
+    "country": "Kenya",
+    "description": "",
+    "place": "1st Place",
+    "rank": 1,
+    "studentsChoice": false,
+    "credit": "© Samson Otieno / Giga Photo Award 2026",
+    "images": [
+      {
+        "src": "/photo-awards/from-streets-to-screens-a-generation-rises/01.jpg",
+        "thumb": "/photo-awards/from-streets-to-screens-a-generation-rises/01-thumb.jpg",
+        "width": 2400,
+        "height": 1600,
+        "caption": "In June 2025, the death of Albert Ojwang sparked a wave of youth-led protests across Kenya, becoming a symbol of anger over police brutality and political crisis. Led largely by Gen Z, the movement unfolded both on the streets and online. Social media platforms became central infrastructure. Young people used them to organize demonstrations, share real-time updates, document police actions, and mobilize nationwide support, often bypassing traditional media. Grief turned into collective action through hashtags, videos, and digital campaigns. One year later, the protests are remembered not only as a moment of uprising, but as evidence of the power of youth and digital activism in demanding accountability and justice."
+      }
+    ]
+  },
+  {
     "slug": "sudan",
     "year": 2026,
     "category": "Single Image",
@@ -289,6 +438,247 @@ export const PHOTO_AWARD_STORIES: PhotoAwardStory[] = [
         "width": 2400,
         "height": 1600,
         "caption": "Olena Mykhailivna Loboda, a mathematics teacher in Chernihiv, northern Ukraine, teaches an online class in 2025 as security risks and air-raid alerts force schools to switch between classroom and remote learning. “This is a completely normal day,” she says. “Some pupils can get online, others have a weak connection. We share the materials and help them catch up.”"
+      }
+    ]
+  },
+  {
+    "slug": "learning-through-connection",
+    "year": 2026,
+    "category": "Junior Visual Storyteller",
+    "title": "Learning Through Connection",
+    "photographer": "Rajsi",
+    "country": "India",
+    "description": "",
+    "place": "1st Place",
+    "rank": 1,
+    "studentsChoice": false,
+    "credit": "© Rajsi / Giga Photo Award 2026",
+    "images": [
+      {
+        "src": "/photo-awards/learning-through-connection/01.jpg",
+        "thumb": "/photo-awards/learning-through-connection/01-thumb.jpg",
+        "width": 2400,
+        "height": 1594,
+        "caption": "A child studies at home through lessons on a mobile phone, illustrating how connectivity, in a modest domestic space, becomes not a convenience but a gateway to education, inclusion, and future opportunity."
+      }
+    ]
+  },
+  {
+    "slug": "illuminated-dreams",
+    "year": 2026,
+    "category": "Junior Visual Storyteller",
+    "title": "Illuminated Dreams",
+    "photographer": "Nan Meng Hor",
+    "country": "Cambodia",
+    "description": "",
+    "place": "2nd Place",
+    "rank": 2,
+    "studentsChoice": false,
+    "credit": "© Nan Meng Hor / Giga Photo Award 2026",
+    "images": [
+      {
+        "src": "/photo-awards/illuminated-dreams/01.jpg",
+        "thumb": "/photo-awards/illuminated-dreams/01-thumb.jpg",
+        "width": 2400,
+        "height": 1800,
+        "caption": "A tangle of cables on a Phnom Penh street becomes a monument to Cambodia’s rapid digital growth, carrying the urgent weight of connection, aspiration, and everyday life."
+      }
+    ]
+  },
+  {
+    "slug": "staying-close",
+    "year": 2026,
+    "category": "Junior Visual Storyteller",
+    "title": "Staying Close",
+    "photographer": "Sreynou Ann",
+    "country": "Cambodia",
+    "description": "",
+    "place": "3rd Place",
+    "rank": 3,
+    "studentsChoice": false,
+    "credit": "© Sreynou Ann / Giga Photo Award 2026",
+    "images": [
+      {
+        "src": "/photo-awards/staying-close/01.jpg",
+        "thumb": "/photo-awards/staying-close/01-thumb.jpg",
+        "width": 2400,
+        "height": 1697,
+        "caption": "Sreykea, 28, and her niece Sreylin, 8, share a joyful video call with Sreykea’s husband, who works in the province, from their rental room in Phnom Penh. Mobile connectivity allows them to stay connected to their loved ones, even when they are in different provinces."
+      }
+    ]
+  },
+  {
+    "slug": "acompanantas",
+    "year": 2025,
+    "category": "Multiple Image",
+    "title": "AcompañantAs",
+    "photographer": "Mahé Elipe",
+    "country": "France",
+    "description": "",
+    "place": "1st Place",
+    "rank": 1,
+    "studentsChoice": false,
+    "credit": "© Mahé Elipe / Giga Photo Award 2025",
+    "images": [
+      {
+        "src": "/photo-awards/acompanantas/01.jpg",
+        "thumb": "/photo-awards/acompanantas/01-thumb.jpg",
+        "width": 1597,
+        "height": 2400,
+        "title": "Clandestine abortion",
+        "caption": "In El Salvador, abortion is a crime punishable by up to 40 years in prison, even in cases of rape or risk to the mother’s life. Abortion providers continue their work despite the risk of prosecution and violence. San Salvador, 26 March 2023."
+      },
+      {
+        "src": "/photo-awards/acompanantas/02.jpg",
+        "thumb": "/photo-awards/acompanantas/02-thumb.jpg",
+        "width": 2400,
+        "height": 1598,
+        "title": "Virtual abortion accompaniment",
+        "caption": "Acompañanta in her room giving advice to a young woman wanting to proceed with an abortion. Depending on each woman, the process can be followed at a distance, virtually, and when necessary, the follow-up is done in person (either because the woman herself requests it or because the case is considered too complex). When the accompaniment is done in person, a safe space is found for the woman who wishes to terminate her pregnancy. October 20, 2021, Piedras Negras, Coahuila, Mexico."
+      },
+      {
+        "src": "/photo-awards/acompanantas/03.jpg",
+        "thumb": "/photo-awards/acompanantas/03-thumb.jpg",
+        "width": 1596,
+        "height": 2400,
+        "title": "Positive pregnancy tests",
+        "caption": "Positive pregnancy tests and abortion medication for a young woman in California. Despite legal protection up to 24 weeks, access is under pressure even in progressive states. Riverside, California, 30 October 2024."
+      },
+      {
+        "src": "/photo-awards/acompanantas/04.jpg",
+        "thumb": "/photo-awards/acompanantas/04-thumb.jpg",
+        "width": 2400,
+        "height": 1583,
+        "title": "Predominance of church",
+        "caption": "Green glitter, the emblematic colour of the “marea verde”, applied to a print of a church cross in Piedras Negras, a border city dominated by church and conservative groups. Coahuila, Mexico, 21 October 2021."
+      },
+      {
+        "src": "/photo-awards/acompanantas/05.jpg",
+        "thumb": "/photo-awards/acompanantas/05-thumb.jpg",
+        "width": 2400,
+        "height": 1596,
+        "title": "Abortion kits",
+        "caption": "A member of the Matamoros Decide collective prepares abortion kits before delivery. Matamoros, Tamaulipas, Mexico, 13 September 2024."
+      },
+      {
+        "src": "/photo-awards/acompanantas/06.jpg",
+        "thumb": "/photo-awards/acompanantas/06-thumb.jpg",
+        "width": 1597,
+        "height": 2400,
+        "title": "Ruda",
+        "caption": "An Acompañanta holds ruda, a plant traditionally used in Latin America to induce abortion and a symbol of the fight for safe and legal abortion. Xochimilco, Mexico City, 19 April 2023."
+      },
+      {
+        "src": "/photo-awards/acompanantas/07.jpg",
+        "thumb": "/photo-awards/acompanantas/07-thumb.jpg",
+        "width": 2400,
+        "height": 1597,
+        "title": "Green glitter",
+        "caption": "Plastic intervention with green glitter on a photo of the town of Saltillo, Coahuila. Even though Mexico’s highest court considers the penalization of abortion at the federal level to be “unconstitutional”, since September 6, 2023, social stigma regarding reproductive rights has persisted, forcing many abortion doulas to act in the shadows. In recent years, it has been mainly young women who have organized themselves to form abortion support groups, particularly in the central city of Saltillo. Organization involves training in the medical abortion procedure, knowledge of emergency interventions, knowledge of sexual and reproductive rights, and the linking of collectives in different regions of the state. A genuine network to help women exercise their right to decide. October 19, 2021, Saltillo, Coahuila, Mexico"
+      },
+      {
+        "src": "/photo-awards/acompanantas/08.jpg",
+        "thumb": "/photo-awards/acompanantas/08-thumb.jpg",
+        "width": 2400,
+        "height": 1598,
+        "title": "Border line",
+        "caption": "C. and M., Acompañantas with the Bloodys collective in Tijuana, support Mexican women, migrants and women across the US border, in person or virtually. Playas de Tijuana, Baja California, 29 September 2022."
+      },
+      {
+        "src": "/photo-awards/acompanantas/09.jpg",
+        "thumb": "/photo-awards/acompanantas/09-thumb.jpg",
+        "width": 2400,
+        "height": 1597,
+        "title": "Los Angeles Abortion Support Collective",
+        "caption": "Members of the Los Angeles Abortion Support Collective. They support each other in their activism for access to information on reproductive rights and the defense of abortion rights. Abortion access in California in the context of the US presidential elections, when political polarization and recent changes in the Supreme Court cast a shadow of uncertainty even in traditionally progressive states like California. Although this state is perceived as a bastion of reproductive rights, the prospect of federal restrictions makes this right vulnerable and raises concerns. The acompañantas collective, made up mainly of members of the Latino and queer communities, testifies to the importance of self-help networks by mobilizing to provide emotional and logistical support in the face of financial, social and geographical barriers, particularly in rural areas of California. Los Angeles, California, USA. October 26, 2024"
+      },
+      {
+        "src": "/photo-awards/acompanantas/10.jpg",
+        "thumb": "/photo-awards/acompanantas/10-thumb.jpg",
+        "width": 2400,
+        "height": 1597,
+        "title": "Restrictive context",
+        "caption": "Prior to the SCJN ruling, in the state of Coahuila, anyone who terminated a pregnancy was subject to a penalty of up to three years in prison. This criminalization, coupled with social prejudices based on religious beliefs and a very conservative view of women’s sexuality, was challenged in the SCJN investigation. Despite this environment, as of 2018, in Coahuila, several young women began to organize to provide abortion counseling on a voluntary basis and completely free of charge. They started among friends and then by word of mouth but always in hiding. October 20, 2021, Piedras Negras, Coahuila, Mexico."
+      },
+      {
+        "src": "/photo-awards/acompanantas/11.jpg",
+        "thumb": "/photo-awards/acompanantas/11-thumb.jpg",
+        "width": 2400,
+        "height": 1597,
+        "title": "Matamoros Decide collective",
+        "caption": "Green lozenges protect the anonymity of Matamoros Decide members, who distribute medication to Mexican and US women and follow up through a secure app. Matamoros, Tamaulipas, 13 September 2024."
+      },
+      {
+        "src": "/photo-awards/acompanantas/12.jpg",
+        "thumb": "/photo-awards/acompanantas/12-thumb.jpg",
+        "width": 2400,
+        "height": 1597,
+        "title": "Intergenerational transmission",
+        "caption": "Lupita, an abortion doula, rests her head on her mother Hilda’s shoulder, symbolizing intergenerational transmission and family support in the abortion-support process. Within the abortion doula community, the involvement of mothers strengthens the work of young activists, who thus benefit from advice and reassurance in their commitment to abortion rights. This mother-daughter bond, imbued with solidarity and compassion, embodies a form of sisterhood passed down from generation to generation, in a common struggle for reproductive rights. Long Beach, California, USA October 29, 2024."
+      },
+      {
+        "src": "/photo-awards/acompanantas/13.jpg",
+        "thumb": "/photo-awards/acompanantas/13-thumb.jpg",
+        "width": 2400,
+        "height": 1598,
+        "title": "Mix",
+        "caption": "Mix, 28, learned she could accompany other women through abortion after meeting a feminist activist from Monterrey in 2018. Saltillo, Coahuila, 25 October 2021."
+      },
+      {
+        "src": "/photo-awards/acompanantas/14.jpg",
+        "thumb": "/photo-awards/acompanantas/14-thumb.jpg",
+        "width": 1597,
+        "height": 2400,
+        "title": "Pill delivery",
+        "caption": "Delivery of an abortion pill kit stamped with the Matamoros Decide logo, the words “I accompany you” and handmade instructions. Matamoros, Tamaulipas, 11 September 2024."
+      },
+      {
+        "src": "/photo-awards/acompanantas/15.jpg",
+        "thumb": "/photo-awards/acompanantas/15-thumb.jpg",
+        "width": 2400,
+        "height": 1596,
+        "title": "Pro-choice protest",
+        "caption": "La Marea Verde (The Green Tide) gathers feminist collectives in front of Congress to support decriminalising abortion. Mexico City, 7 November 2024."
+      },
+      {
+        "src": "/photo-awards/acompanantas/16.jpg",
+        "thumb": "/photo-awards/acompanantas/16-thumb.jpg",
+        "width": 1597,
+        "height": 2400,
+        "title": "El Salvador collective",
+        "caption": "Women’s groups in El Salvador provide physical and emotional support for safe abortions despite a total ban. San Salvador, 26 March 2023."
+      },
+      {
+        "src": "/photo-awards/acompanantas/17.jpg",
+        "thumb": "/photo-awards/acompanantas/17-thumb.jpg",
+        "width": 2400,
+        "height": 1597,
+        "title": "Emotional care workshop",
+        "caption": "Emotional care workshop for abortion doulas. (No caption supplied with the file.)"
+      },
+      {
+        "src": "/photo-awards/acompanantas/18.jpg",
+        "thumb": "/photo-awards/acompanantas/18-thumb.jpg",
+        "width": 1598,
+        "height": 2400,
+        "title": "Leading reproductive rights activist",
+        "caption": "Veronica Cruz of Las Libres, which has provided abortion pills to women from restrictive US states, at a meeting of abortion providers. Matamoros, Tamaulipas, 22 January 2022."
+      },
+      {
+        "src": "/photo-awards/acompanantas/19.jpg",
+        "thumb": "/photo-awards/acompanantas/19-thumb.jpg",
+        "width": 2400,
+        "height": 1661,
+        "title": "Collaborative project",
+        "caption": "This project is based on collaboration and the active involvement of abortion doulas in content creation to stimulate their creativity. To foster exchange, participants explore different artistic techniques, such as this plant-based installation representing a uterus with abortion plants, encouraging them to develop their own artistic expression. Riverside, California, USA, October 30, 2024."
+      },
+      {
+        "src": "/photo-awards/acompanantas/20.jpg",
+        "thumb": "/photo-awards/acompanantas/20-thumb.jpg",
+        "width": 2400,
+        "height": 1597,
+        "title": "Transnational meeting",
+        "caption": "In January 2022, several abortion providers' collectives from northwestern Mexico, Guanajuato, and Mérida met with organizations in Texas in an effort to facilitate access to safe and free abortions for women and pregnant people across the border in the US. This was a response to a new Texas law, effective September 2021, that restricts the right to choose. The accompanying women form a real network on the whole Mexican territory and try today more than ever, to widen in a transnational way in particular following the cancellation of the judgement authorizing the abortion in the United States. January 21, 2022, Matamoros, Tamaulipas, Mexico."
       }
     ]
   },
@@ -448,6 +838,270 @@ export const PHOTO_AWARD_STORIES: PhotoAwardStory[] = [
     ]
   },
   {
+    "slug": "map-of-memories-2020-ongoing",
+    "year": 2025,
+    "category": "Multiple Image",
+    "title": "Map of Memories (2020–ongoing)",
+    "photographer": "Pasha Kritchko",
+    "country": "Belarus, based in Germany",
+    "description": "",
+    "place": "3rd Place",
+    "rank": 3,
+    "studentsChoice": false,
+    "credit": "© Pasha Kritchko / Giga Photo Award 2025",
+    "images": [
+      {
+        "src": "/photo-awards/map-of-memories-2020-ongoing/01.jpg",
+        "thumb": "/photo-awards/map-of-memories-2020-ongoing/01-thumb.jpg",
+        "width": 2400,
+        "height": 1602,
+        "caption": "Riot police disperse a protest against Lukashenko on the day of his secret inauguration. Minsk, 23 September 2020."
+      },
+      {
+        "src": "/photo-awards/map-of-memories-2020-ongoing/02.jpg",
+        "thumb": "/photo-awards/map-of-memories-2020-ongoing/02-thumb.jpg",
+        "width": 2400,
+        "height": 1602,
+        "caption": "Twice forced Belarusian migrant Vesta in a temporary shelter in Warsaw, Poland, on March 3, 2022. On the night of August 28-29, 2020, due to possible political persecution, Vesta and her husband Stas fled from Belarus to Kiev, Ukraine, which became their home. At the end of 2021 and beginning of 2022, they were considering the option of buying a house near Odessa and were preparing documents. On February 26, 2022, after Russia started a full-scale invasion, they went to Lviv but faced the problem of being unable to rent an apartment due to the fact that they are Belarusians. They spent a night in Lviv in the gym, where temporary housing was organized for those in need. When they crossed the border between Ukraine and Poland, Ukrainian border guards asked, “Where will you run away, Belarusians?”"
+      },
+      {
+        "src": "/photo-awards/map-of-memories-2020-ongoing/03.jpg",
+        "thumb": "/photo-awards/map-of-memories-2020-ongoing/03-thumb.jpg",
+        "width": 2400,
+        "height": 1600,
+        "caption": "A wall on the border with Belarus near the settlement of Białowieża, Poland, on 8 May 2024. The border wall, built in response to the 2021 migrant crisis, spans approximately 186 kilometers and serves as a physical barrier amid rising tensions between Poland and Belarus. The area along the wall has been designated as a buffer zone, with strict access controls preventing entry for civilians, journalists, and NGOs. This restriction has sparked criticism for hindering transparency and limiting aid to migrants stranded in the area. The buffer zone also isolates local communities and disrupts cross-border cultural and familial ties. The construction of the wall and establishment of the restricted zone exacerbated tensions in a region already fraught with geopolitical and environmental challenges. Belarus’s use of migrants as a political tool and its close alliance with Russia amid the Ukraine conflict have added to the strain. Environmentalists have raised concerns about the impact on the Białowieża Forest, a UNESCO World Heritage site, as the wall fragments habitats and disrupts wildlife corridors. The wall, while aimed at enhancing security, has become a focal point of broader disputes over human rights, sovereignty, and regional stability."
+      },
+      {
+        "src": "/photo-awards/map-of-memories-2020-ongoing/04.jpg",
+        "thumb": "/photo-awards/map-of-memories-2020-ongoing/04-thumb.jpg",
+        "width": 2400,
+        "height": 1602,
+        "caption": "Polina watches dinner being cooked at the House of Peace for Belarusian political refugees. Her father fled after posting an online comment. Warsaw, 17 November 2021."
+      },
+      {
+        "src": "/photo-awards/map-of-memories-2020-ongoing/05.jpg",
+        "thumb": "/photo-awards/map-of-memories-2020-ongoing/05-thumb.jpg",
+        "width": 2400,
+        "height": 1602,
+        "caption": "Belarusians gather for a Freedom Day rally and a meeting with Sviatlana Tsikhanouskaya. Warsaw, 25 March 2022."
+      },
+      {
+        "src": "/photo-awards/map-of-memories-2020-ongoing/06.jpg",
+        "thumb": "/photo-awards/map-of-memories-2020-ongoing/06-thumb.jpg",
+        "width": 2400,
+        "height": 1602,
+        "caption": "Gleb, 18, call sign “Sych”, a volunteer fighter wounded in Ukraine, receives support from his girlfriend. Grójec, Poland, 24 November 2022."
+      },
+      {
+        "src": "/photo-awards/map-of-memories-2020-ongoing/07.jpg",
+        "thumb": "/photo-awards/map-of-memories-2020-ongoing/07-thumb.jpg",
+        "width": 2400,
+        "height": 1602,
+        "caption": "Hands of a Belarusian volunteer fighter, Gleb (18 years old), also known as “Sych,” who went to war in Ukraine in early March 2022. 24 November 2022, Grojec, Poland. Gleb left the front line and the Kalinouski regiment in July 2022 with shrapnel wounds in his legs, persistent nightmares, and post-traumatic stress disorder. Now, he is recovering and trying to rebuild his life. This period is marked by profound uncertainty and a struggle to find his place in the world—unsure whether to return to the war in Ukraine or pursue a different path."
+      },
+      {
+        "src": "/photo-awards/map-of-memories-2020-ongoing/08.jpg",
+        "thumb": "/photo-awards/map-of-memories-2020-ongoing/08-thumb.jpg",
+        "width": 1920,
+        "height": 2400,
+        "caption": "Natalya Suslova at the Kalinouski Regiment base. After her son was killed in May 2022, she joined the regiment herself. Kyiv, 4 August 2022."
+      },
+      {
+        "src": "/photo-awards/map-of-memories-2020-ongoing/09.jpg",
+        "thumb": "/photo-awards/map-of-memories-2020-ongoing/09-thumb.jpg",
+        "width": 2400,
+        "height": 1602,
+        "caption": "A woman with flowers waits outside the Okrestina detention centre for the release of basketball player Elena Leuchanka after 15 days in detention. Minsk, 15 October 2020."
+      },
+      {
+        "src": "/photo-awards/map-of-memories-2020-ongoing/10.jpg",
+        "thumb": "/photo-awards/map-of-memories-2020-ongoing/10-thumb.jpg",
+        "width": 2400,
+        "height": 1602,
+        "caption": "Advisers to Sviatlana Tsikhanouskaya during the Nobel Peace Prize ceremony honouring imprisoned activist Ales Bialiatski. Oslo, 9 December 2022."
+      },
+      {
+        "src": "/photo-awards/map-of-memories-2020-ongoing/11.jpg",
+        "thumb": "/photo-awards/map-of-memories-2020-ongoing/11-thumb.jpg",
+        "width": 2400,
+        "height": 1600,
+        "caption": "Musician Anastasiya Rydlevskaya (right) is congratulated after performing at the Belarusian festival “Varshunyak”. Warsaw, 21 December 2024."
+      },
+      {
+        "src": "/photo-awards/map-of-memories-2020-ongoing/12.jpg",
+        "thumb": "/photo-awards/map-of-memories-2020-ongoing/12-thumb.jpg",
+        "width": 2400,
+        "height": 1600,
+        "caption": "Self-portrait in a rented room during a work trip to the Belarusian border. Hajnówka, Poland, 23 December 2024."
+      },
+      {
+        "src": "/photo-awards/map-of-memories-2020-ongoing/13.jpg",
+        "thumb": "/photo-awards/map-of-memories-2020-ongoing/13-thumb.jpg",
+        "width": 2400,
+        "height": 1602,
+        "caption": "Participants of the “March of Partizan” against Lukashenka’s regime on 18 October 2020, named for its route along Partizanski Avenue, near the “Belarus” department store in Minsk, Belarus. The mass protests in Belarus following the disputed August 2020 presidential election marked a historic moment for the country. Beginning on August 16, with record-breaking Sunday marches, demonstrations continued through late 2020 as a key form of resistance. In Minsk, Sunday marches often gathered up to 200,000 to 300,000 participants, with protests also occurring in cities like Brest, Gomel, and Vitebsk. Despite brutal government crackdowns, including mass arrests and widespread repression, these demonstrations persisted into late November and December, albeit with diminishing participation as state repression intensified."
+      },
+      {
+        "src": "/photo-awards/map-of-memories-2020-ongoing/14.jpg",
+        "thumb": "/photo-awards/map-of-memories-2020-ongoing/14-thumb.jpg",
+        "width": 2400,
+        "height": 1602,
+        "caption": "Belarusian refugee Ivan at the home of Dr Valentin, a refuge for many Belarusians. Gdańsk, Poland, 30 October 2021."
+      },
+      {
+        "src": "/photo-awards/map-of-memories-2020-ongoing/15.jpg",
+        "thumb": "/photo-awards/map-of-memories-2020-ongoing/15-thumb.jpg",
+        "width": 2400,
+        "height": 1602,
+        "caption": "Actress Zoya Belakhvostsik, formerly of the Kupala Theatre, performs in “Geese-Humans-Swans”, based on Alherd Bakharevich’s “Dogs of Europe”. Lublin, Poland, 17 June 2022."
+      },
+      {
+        "src": "/photo-awards/map-of-memories-2020-ongoing/16.jpg",
+        "thumb": "/photo-awards/map-of-memories-2020-ongoing/16-thumb.jpg",
+        "width": 2400,
+        "height": 1602,
+        "caption": "A screening of the film “Courage” marks the anniversary of the arrest of Maria Kalesnikava and Maksim Znak. Warsaw, 7 September 2021."
+      },
+      {
+        "src": "/photo-awards/map-of-memories-2020-ongoing/17.jpg",
+        "thumb": "/photo-awards/map-of-memories-2020-ongoing/17-thumb.jpg",
+        "width": 2400,
+        "height": 1600,
+        "caption": "Ayaa, daughter of Belarusian singer Rusya, at a costume fitting for the “Varshunyak” festival. Warsaw, 21 December 2024."
+      },
+      {
+        "src": "/photo-awards/map-of-memories-2020-ongoing/18.jpg",
+        "thumb": "/photo-awards/map-of-memories-2020-ongoing/18-thumb.jpg",
+        "width": 2400,
+        "height": 1602,
+        "caption": "Armed forces guard the Palace of Independence during a Sunday march on Lukashenka’s birthday. Minsk, 30 August 2020."
+      },
+      {
+        "src": "/photo-awards/map-of-memories-2020-ongoing/19.jpg",
+        "thumb": "/photo-awards/map-of-memories-2020-ongoing/19-thumb.jpg",
+        "width": 2400,
+        "height": 1602,
+        "caption": "A fighter of the Kalinouski Regiment, nicknamed “Chili,” and his cat at the regiment’s base in Kyiv, Ukraine, on 2 August 2022. “Chili” is a Belarusian who has been living in Ukraine for 15 years. When the war began, he and his wife were in Lviv. They decided to relocate to Kyiv and turned their apartment in Lviv into a temporary shelter for refugees, providing a safe haven for those fleeing the conflict. The Kalinouski Regiment is one of the most prominent Belarusian volunteer formations fighting in Ukraine. Established in March 2022, it was named after Konstanty Kalinouski, a 19th-century Belarusian national hero who led an uprising against the Russian Empire. The regiment consists of Belarusians opposing the Lukashenko regime and Russian aggression, with many seeing the fight in Ukraine as directly tied to the struggle for Belarus’s freedom. Thousands of Belarusians have joined Ukraine’s Armed Forces, despite the risks of persecution or imprisonment if they return to Belarus."
+      },
+      {
+        "src": "/photo-awards/map-of-memories-2020-ongoing/20.jpg",
+        "thumb": "/photo-awards/map-of-memories-2020-ongoing/20-thumb.jpg",
+        "width": 2400,
+        "height": 1600,
+        "caption": "Marusya, a 1984 motorhome rebuilt by an exiled Belarusian family, at the Przekupalle festival 15 km from the border. Biendziugi, Poland, 17 August 2024."
+      }
+    ]
+  },
+  {
+    "slug": "the-stuffs-of-live-streamers",
+    "year": 2025,
+    "category": "Multiple Image",
+    "title": "The Stuffs of Live Streamers",
+    "photographer": "Qingjun Huang",
+    "country": "China, based in the USA",
+    "description": "",
+    "place": "Students’ Choice",
+    "rank": null,
+    "studentsChoice": true,
+    "credit": "© Qingjun Huang / Giga Photo Award 2025",
+    "images": [
+      {
+        "src": "/photo-awards/the-stuffs-of-live-streamers/01.jpg",
+        "thumb": "/photo-awards/the-stuffs-of-live-streamers/01-thumb.jpg",
+        "width": 1800,
+        "height": 2400,
+        "title": "Gao Zhixiao, the Deliveryman",
+        "caption": "Gao Zhixiao, a delivery driver and live streamer, with the stuff of his streaming work. China, 2021."
+      },
+      {
+        "src": "/photo-awards/the-stuffs-of-live-streamers/02.jpg",
+        "thumb": "/photo-awards/the-stuffs-of-live-streamers/02-thumb.jpg",
+        "width": 1800,
+        "height": 2400,
+        "title": "Lao San, the Trekker",
+        "caption": "Lao San, a trekking live streamer, with the stuff of his streaming work. China, 2021."
+      },
+      {
+        "src": "/photo-awards/the-stuffs-of-live-streamers/03.jpg",
+        "thumb": "/photo-awards/the-stuffs-of-live-streamers/03-thumb.jpg",
+        "width": 1800,
+        "height": 2400,
+        "title": "Tian Bin, the Comedian",
+        "caption": "Tian Rongguo is a young lad from Shandong Province. Influenced by Stephen Chow’s comedies, he has been dreaming of becoming an actor from a young age. When he grew up, he tried various occupations: Worker, barber, comedy writer, short video maker and live streamer. However, none of these jobs helped the youngblood realise his comeback dream until he came across a meme on the Internet in July 2021. With the help of the meme, Tian acquires 7 million followers and becomes famous overnight. Tian claimed himself to be “Tian Bin the mentor”, a funny figure dressed in a grey long shirt and ragged straw hat. Moreover, there are so many hidden treasures in his streaming room: Fake gold chains, binoculars without lenses, a fake diamond ring made of glass, a broken mirror, two cardboard boxes to get his phone fixed and loop lamps set up on twisted wooden shelves. These strange funny figures provide him with a chance to change his destiny."
+      },
+      {
+        "src": "/photo-awards/the-stuffs-of-live-streamers/04.jpg",
+        "thumb": "/photo-awards/the-stuffs-of-live-streamers/04-thumb.jpg",
+        "width": 1800,
+        "height": 2400,
+        "title": "Yang Hongmei, the Kite Maker",
+        "caption": "Yang Hongmei, a kite maker who streams her craft. China, 2021."
+      },
+      {
+        "src": "/photo-awards/the-stuffs-of-live-streamers/05.jpg",
+        "thumb": "/photo-awards/the-stuffs-of-live-streamers/05-thumb.jpg",
+        "width": 1800,
+        "height": 2400,
+        "title": "The Grilled Cold Noodle Guy",
+        "caption": "The grilled cold noodle vendor at Dezhou Vocational and Technical College, who streams from his stall. China, 2021."
+      },
+      {
+        "src": "/photo-awards/the-stuffs-of-live-streamers/06.jpg",
+        "thumb": "/photo-awards/the-stuffs-of-live-streamers/06-thumb.jpg",
+        "width": 1800,
+        "height": 2400,
+        "title": "Dr Dai’s Laboratory",
+        "caption": "David G. Evans was born in Birmingham, yet his ancestral home is in Wales. Besides, he is a big fan of Welsh football and therefore he claims himself to be Welsh. When he came to China for the first time in 1987, the train from Beijing to Guiyang took him 33 hours, whilst the same route only takes 8 or 9 hours by high-speed train now. After returning to the UK, he found the railway system there was slow as usual. David persuaded his friends to come to China: “Please do come to China! Their high-speed trains are magnificent!” David is a Professor of Chemistry at the Beijing University of Chemical Technology, he started science popularization in 2011 and he got to know Kuaishou in 2018. From then on, he has begun to popularize science by uploading short videos in Kuaishou. Up to now, he has almost 10 million followers. David says, “Shooting short videos is another type of chemical experiment. Conveying interest and knowledge is important. It requires effort to find those in need rather than wait passively. Kuaishou gives me the chance to know people that I cannot meet in ordinary life”."
+      },
+      {
+        "src": "/photo-awards/the-stuffs-of-live-streamers/07.jpg",
+        "thumb": "/photo-awards/the-stuffs-of-live-streamers/07-thumb.jpg",
+        "width": 1800,
+        "height": 2400,
+        "title": "Naughty Bunny · Carrier Pigeon · Positive Energy",
+        "caption": "Quan Rui’s “stuff” for photographic lighting and shooting would amaze any photographer for their professional standard. Her career requires her to be highly professional. Apart from commenting on matches nationwide, she also shows carrier pigeons from a professional perspective and shares her knowledge with her followers. Sometimes she needs to do e-business live streaming indoors, professional devices are essential. Quan worked as an ordinary IT business staff 10 years ago, she devoted herself to her current career after discovering the vacuum of the carrier pigeon business online. With 420k followers, she has become the head streamer of the carrier pigeon business, a niche nowadays. Waiting for carrier pigeons returning home would be the most fascinating moment for Quan: Breaking through storm and dark clouds, the homing pigeons return before nightfall. She chooses the word “wait” to define the relationship between pigeons and their owners. As she says, watching pigeons flying brings a breeze to her mind and rids her of any disturbance."
+      },
+      {
+        "src": "/photo-awards/the-stuffs-of-live-streamers/08.jpg",
+        "thumb": "/photo-awards/the-stuffs-of-live-streamers/08-thumb.jpg",
+        "width": 1800,
+        "height": 2400,
+        "title": "Zhang Meili, the Bodyguard",
+        "caption": "There are few bodyguards streaming in Kuaishou. When it comes to female bodyguards, Zhang Meili is merely the only one who does live-streaming. During her first live-streaming experience, Zhang simply read what she has previously written on an A4 paper. She found her tone to be stiff and the result to be not good enough. As her live-streaming experience gradually accumulated, she learned to relax and finally got used to live streaming. Apart from her daily routine as a female bodyguard, she also shares some self-protection skills with her female audience. Zhang would take some time to watch other streams every day after dinner so that she can learn how other streamers get engaged with the atmosphere. This 21-year-old young lass is not only eager to learn but also determined. She fought against a male trainee the very first day that she came to learn bodyguarding in Beijing. She lost that combat, yet she would never lose to anyone now."
+      },
+      {
+        "src": "/photo-awards/the-stuffs-of-live-streamers/09.jpg",
+        "thumb": "/photo-awards/the-stuffs-of-live-streamers/09-thumb.jpg",
+        "width": 1800,
+        "height": 2400,
+        "title": "Oceanie’s Limo Life",
+        "caption": "Oceanie, a live streamer, with the stuff of her streaming work. China, 2021."
+      }
+    ]
+  },
+  {
+    "slug": "reclaim-the-night",
+    "year": 2025,
+    "category": "Single Image",
+    "title": "Reclaim the Night",
+    "photographer": "Sudip Maiti",
+    "country": "India",
+    "description": "",
+    "place": "1st Place",
+    "rank": 1,
+    "studentsChoice": false,
+    "credit": "© Sudip Maiti / Giga Photo Award 2025",
+    "images": [
+      {
+        "src": "/photo-awards/reclaim-the-night/01.jpg",
+        "thumb": "/photo-awards/reclaim-the-night/01-thumb.jpg",
+        "width": 2400,
+        "height": 1600,
+        "caption": "A woman virtually joins “Reclaim the night” protest rallies across West Bengal to seek justice for the brutal rape and murder of a young female doctor in the premises of a renowned govt. hospital of Kolkata, India. Communication apps effectively sustained the demonstration’s intensity over several months and expanded dissent across all aspects of society."
+      }
+    ]
+  },
+  {
     "slug": "internet-cafes",
     "year": 2025,
     "category": "Single Image",
@@ -466,6 +1120,94 @@ export const PHOTO_AWARD_STORIES: PhotoAwardStory[] = [
         "width": 2400,
         "height": 1349,
         "caption": "Sudan is now considered one of the largest, if not the largest humanitarian crises in the world. According to UNHCR, over 12 million people have been forcibly displaced since the conflict between the RSF and SAF began on April 15, 2023. More than 3 million of them are now refugees and asylum seekers. The city of Renk in South Sudan has been receiving over 3,000 refugees from Sudan every day. However, Renk has no cellular internet, so people walk 2 kilometers from the UNHCR Transit Centre to the city market, where they can find the so-called “internet cafés”, small shops that rent hourly WiFi connections. There, they check daily updates, contact their families, and receive money transfers. In the frame, a group of fellow Sudanese refugees who were using satellite internet to contact their family, Ms. Fatima (not her real name) on the left sitting beside her daughter while contacting her husband and son who are currently in White Nile State in Sudan and giving them updates about her asylum registration process. Renk, South Sudan, January 6, 2024."
+      }
+    ]
+  },
+  {
+    "slug": "the-phone-number-on-the-wall",
+    "year": 2025,
+    "category": "Single Image",
+    "title": "The Phone Number on the Wall",
+    "photographer": "Marguerite Liuqing Yang",
+    "country": "China, based in the USA",
+    "description": "",
+    "place": "3rd Place · Students’ Choice",
+    "rank": 3,
+    "studentsChoice": true,
+    "credit": "© Marguerite Liuqing Yang / Giga Photo Award 2025",
+    "images": [
+      {
+        "src": "/photo-awards/the-phone-number-on-the-wall/01.jpg",
+        "thumb": "/photo-awards/the-phone-number-on-the-wall/01-thumb.jpg",
+        "width": 1800,
+        "height": 2400,
+        "caption": "This old telephone is still sitting in the corner, just where it always was, in Grandpa and Grandma’s house. Next to it, on the wall, the numbers they once carefully wrote down are still there — faded but legible. I remember when I was little, how my mom would call them every evening at six o’clock. I would sit quietly beside her, listening, feeling as if I were part of the conversation too. It feels like, through this phone and these numbers, they’re still somehow reachable, even though the line has long gone silent."
+      }
+    ]
+  },
+  {
+    "slug": "noon-selfie",
+    "year": 2025,
+    "category": "Junior Visual Storyteller",
+    "title": "Noon Selfie",
+    "photographer": "Athena Prudence Fernando",
+    "country": "Philippines",
+    "description": "",
+    "place": "1st Place · Students’ Choice",
+    "rank": 1,
+    "studentsChoice": true,
+    "credit": "© Athena Prudence Fernando / Giga Photo Award 2025",
+    "images": [
+      {
+        "src": "/photo-awards/noon-selfie/01.jpg",
+        "thumb": "/photo-awards/noon-selfie/01-thumb.jpg",
+        "width": 2400,
+        "height": 1800,
+        "caption": "This photo, recreates/represents the joy and the feeling of connection one has when bonding with their partner, friends, or family, through taking photos to remember their memories while they’re still together."
+      }
+    ]
+  },
+  {
+    "slug": "illuminated-dreams-2025",
+    "year": 2025,
+    "category": "Junior Visual Storyteller",
+    "title": "Illuminated Dreams",
+    "photographer": "Kathleen Shayana Ravikumar",
+    "country": "Sri Lanka",
+    "description": "",
+    "place": "2nd Place",
+    "rank": 2,
+    "studentsChoice": false,
+    "credit": "© Kathleen Shayana Ravikumar / Giga Photo Award 2025",
+    "images": [
+      {
+        "src": "/photo-awards/illuminated-dreams-2025/01.jpg",
+        "thumb": "/photo-awards/illuminated-dreams-2025/01-thumb.jpg",
+        "width": 1806,
+        "height": 2400,
+        "caption": "Harish’s journey is the story of a boy who refused to be limited by circumstance. With no stable internet, no fancy gadgets, and financial hardships at home, he still found a way to build. Inspired by his dream to become an innovator, he designed a tool that can detect and display countries on a world map from scratch. His ICT teacher encouraged him. His parents sacrificed to give him a smartphone. And Harish turned that into something extraordinary. This moment shows the fire of innovation how talent, when nurtured with even a little support, can light up the most unexpected places."
+      }
+    ]
+  },
+  {
+    "slug": "adeeshas-life-story",
+    "year": 2025,
+    "category": "Junior Visual Storyteller",
+    "title": "Adeesha’s Life Story",
+    "photographer": "Nathalie Yenara Ranasinghe",
+    "country": "Sri Lanka",
+    "description": "",
+    "place": "3rd Place",
+    "rank": 3,
+    "studentsChoice": false,
+    "credit": "© Nathalie Yenara Ranasinghe / Giga Photo Award 2025",
+    "images": [
+      {
+        "src": "/photo-awards/adeeshas-life-story/01.jpg",
+        "thumb": "/photo-awards/adeeshas-life-story/01-thumb.jpg",
+        "width": 2400,
+        "height": 1600,
+        "caption": "Adeesha showing his father the new design he just created with the help of modern technology."
       }
     ]
   }
