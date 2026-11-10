@@ -2,17 +2,33 @@
 
 import { useState } from 'react'
 import { Award, ChevronLeft, ChevronRight } from 'lucide-react'
-import { PHOTO_AWARD_STORIES, type PhotoAwardStory } from '@/lib/photo-awards'
+import { PHOTO_AWARD_CATEGORIES, PHOTO_AWARD_STORIES, type PhotoAwardStory } from '@/lib/photo-awards'
 import { StoryLightbox } from '@/components/photo-awards/story-lightbox'
+import { placeLabel } from '@/components/photo-awards/labels'
 import { cn } from '@/lib/utils'
 
-const RANK_LABEL: Record<1 | 2 | 3, string> = { 1: '1st place', 2: '2nd place', 3: '3rd place' }
+/** Each edition's theme, shown next to its year. */
+const EDITION_THEME: Record<number, string> = {
+  2025: 'The Joy of Connection',
+  2026: 'The Urgency of Connectivity',
+}
 
-// Winners first, then the sheet's order; unranked stories close the list.
-const STORIES = [...PHOTO_AWARD_STORIES].sort((a, b) => (a.rank ?? 9) - (b.rank ?? 9))
+// One section per edition, newest first. Inside it one group per category,
+// podium order; a prize outside the podium (Students' Choice) closes its group.
+const EDITIONS = [...new Set(PHOTO_AWARD_STORIES.map((s) => s.year))]
+  .sort((a, b) => b - a)
+  .map((year) => ({
+    year,
+    groups: PHOTO_AWARD_CATEGORIES.map((category) => ({
+      category,
+      stories: PHOTO_AWARD_STORIES.filter((s) => s.year === year && s.category === category).sort(
+        (a, b) => (a.rank ?? 9) - (b.rank ?? 9),
+      ),
+    })).filter((g) => g.stories.length > 0),
+  }))
 
 /**
- * Photo awards grid. Each story is a photo tile with the text underneath,
+ * Photo awards, one section per edition and one grid per category. Each story is a photo tile with the text underneath,
  * the way listing and photo sites do it: no card chrome, the photograph is
  * the card. Multi-photo stories carry their own small carousel inside the
  * tile (arrows on hover, dots underneath the photo) so the story can be
@@ -23,12 +39,32 @@ export function PhotoAwardsGallery() {
   const [open, setOpen] = useState<{ story: PhotoAwardStory; index: number } | null>(null)
 
   return (
-    <div className="animate-in fade-in duration-300 ease-out">
-      <div className="grid gap-x-6 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
-        {STORIES.map((story) => (
-          <StoryTile key={story.slug} story={story} onOpen={(index) => setOpen({ story, index })} />
-        ))}
-      </div>
+    <div className="flex flex-col gap-14 animate-in fade-in duration-300 ease-out">
+      {EDITIONS.map(({ year, groups }) => (
+        <section key={year} aria-labelledby={`photo-awards-${year}`} className="flex flex-col gap-8">
+          <h2
+            id={`photo-awards-${year}`}
+            className="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-b border-border pb-3 font-heading text-2xl font-medium tracking-[-0.02em] text-foreground"
+          >
+            {year} winners
+            {EDITION_THEME[year] && (
+              <span className="font-sans text-sm font-normal tracking-normal text-muted-foreground">
+                {EDITION_THEME[year]}
+              </span>
+            )}
+          </h2>
+          {groups.map(({ category, stories }) => (
+            <div key={category} className="flex flex-col gap-4">
+              <h3 className="text-sm font-semibold text-muted-foreground">{category}</h3>
+              <div className="grid gap-x-6 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
+                {stories.map((story) => (
+                  <StoryTile key={story.slug} story={story} onOpen={(index) => setOpen({ story, index })} />
+                ))}
+              </div>
+            </div>
+          ))}
+        </section>
+      ))}
 
       <StoryLightbox
         story={open?.story ?? null}
@@ -45,6 +81,7 @@ function StoryTile({ story, onOpen }: { story: PhotoAwardStory; onOpen: (index: 
   const many = story.images.length > 1
   const image = story.images[index]
   const go = (delta: number) => setIndex((i) => (i + delta + story.images.length) % story.images.length)
+  const place = placeLabel(story)
 
   return (
     <article className="group flex flex-col gap-2.5">
@@ -64,10 +101,10 @@ function StoryTile({ story, onOpen }: { story: PhotoAwardStory; onOpen: (index: 
           className="absolute inset-0 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         />
 
-        {story.rank && (
+        {place && (
           <span className="pointer-events-none absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-card/95 px-2.5 py-1 text-[11px] font-semibold text-foreground shadow-stripe">
             <Award className="h-3 w-3 text-link" aria-hidden />
-            {RANK_LABEL[story.rank]}
+            {place}
           </span>
         )}
 
@@ -85,10 +122,10 @@ function StoryTile({ story, onOpen }: { story: PhotoAwardStory; onOpen: (index: 
       </div>
 
       <button type="button" onClick={() => onOpen(index)} className="flex flex-col items-start text-left focus-visible:outline-none">
-        <h3 className="font-heading text-[15px] font-medium leading-snug text-foreground line-clamp-2">{story.title}</h3>
+        <h4 className="font-heading text-[15px] font-medium leading-snug text-foreground line-clamp-2">{story.title}</h4>
         <p className="mt-0.5 text-sm text-muted-foreground">
           {story.photographer}
-          {story.location ? ` · ${story.location}` : ''}
+          {story.country ? ` · ${story.country}` : ''}
         </p>
         {many && <p className="mt-0.5 text-xs text-muted-foreground">{story.images.length} photos</p>}
       </button>

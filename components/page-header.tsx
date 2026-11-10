@@ -16,7 +16,7 @@ export function PageHeader({
   actions,
 }: {
   title: string
-  description?: string
+  description?: React.ReactNode
   /** "giga" and "both" show a pill; Digital Inclusion is the default and gets none. */
   brand?: AssetBrand
   actions?: React.ReactNode

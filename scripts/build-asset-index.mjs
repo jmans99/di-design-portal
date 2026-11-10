@@ -371,7 +371,7 @@ for (const story of PHOTO_AWARD_STORIES) {
       preview: image.thumb,
       page: '/media/photo-awards',
       registryBrand: PHOTO_AWARD_BRAND,
-      tags: [story.photographer, story.location, 'photo award', 'giga photo award', 'connectivity'],
+      tags: [story.photographer, story.country, String(story.year), story.category, 'photo award', 'giga photo award', 'connectivity'],
     })
   })
 }

@@ -2,12 +2,12 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
-import { Award, ChevronLeft, ChevronRight, Download, MapPin, X } from 'lucide-react'
+import { Award, ChevronLeft, ChevronRight, Download, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import type { PhotoAwardStory } from '@/lib/photo-awards'
+import { placeLabel } from '@/components/photo-awards/labels'
 
-const RANK_LABEL: Record<1 | 2 | 3, string> = { 1: '1st place', 2: '2nd place', 3: '3rd place' }
 const CLAMP_CHARS = 520
 
 function slugify(s: string) {
@@ -44,9 +44,11 @@ export function StoryLightbox({
   const image = images[index]
   const many = images.length > 1
 
-  // Story text: multi-photo stories carry a project description; a single
+  // Story text: a multi-photo story shows its project description when it
+  // has one, and otherwise only the caption of the photo on screen; a single
   // photo's caption is the story itself.
-  const text = displayed ? (displayed.description || displayed.images[0]?.caption || '') : ''
+  const text = displayed ? (displayed.description || (many ? '' : displayed.images[0]?.caption) || '') : ''
+  const place = displayed ? placeLabel(displayed) : ''
   const showCaption = many && !!image?.caption
   const long = text.length > CLAMP_CHARS
 
@@ -143,18 +145,13 @@ export function StoryLightbox({
                 <div className="flex items-start justify-between gap-3 px-6 pt-5">
                   <div className="min-w-0">
                     <p className="truncate text-sm font-semibold text-foreground">{displayed.photographer}</p>
-                    {displayed.location && (
-                      <p className="mt-0.5 flex items-center gap-1 text-xs text-muted-foreground">
-                        <MapPin className="h-3 w-3" aria-hidden />
-                        {displayed.location}
-                      </p>
-                    )}
+                    {displayed.country && <p className="mt-0.5 text-xs text-muted-foreground">{displayed.country}</p>}
                   </div>
                   <div className="flex shrink-0 items-center gap-2">
-                    {displayed.rank && (
+                    {place && (
                       <span className="inline-flex items-center gap-1 rounded-full border border-chosen-border bg-chosen px-2.5 py-1 text-[11px] font-semibold text-link">
-                        <Award className="h-3 w-3" aria-hidden />
-                        {RANK_LABEL[displayed.rank]}
+                        <Award className="h-3 w-3 shrink-0" aria-hidden />
+                        {place}
                       </span>
                     )}
                     <DialogPrimitive.Close
@@ -170,9 +167,14 @@ export function StoryLightbox({
                   <DialogPrimitive.Title className="font-heading text-xl font-medium leading-snug tracking-[-0.02em] text-foreground">
                     {displayed.title}
                   </DialogPrimitive.Title>
-                  <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-muted-foreground">
-                    {long && !expanded ? `${text.slice(0, CLAMP_CHARS).trimEnd()}…` : text}
+                  <p className="mt-1.5 text-xs text-muted-foreground">
+                    Giga Photo Award {displayed.year} · {displayed.category}
                   </p>
+                  {text && (
+                    <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-muted-foreground">
+                      {long && !expanded ? `${text.slice(0, CLAMP_CHARS).trimEnd()}…` : text}
+                    </p>
+                  )}
                   {long && (
                     <button
                       type="button"
@@ -188,6 +190,7 @@ export function StoryLightbox({
                       <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
                         Photo {index + 1} of {images.length}
                       </p>
+                      {image.title && <p className="mb-1 text-sm font-semibold text-foreground">{image.title}</p>}
                       <p className="whitespace-pre-line text-sm leading-relaxed text-foreground">{image.caption}</p>
                     </div>
                   )}
@@ -201,7 +204,7 @@ export function StoryLightbox({
                     </a>
                   </Button>
                   <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">
-                    JPEG, {image.width} × {image.height}. Credit: {displayed.photographer} / Giga Photo Award. For UNICEF
+                    JPEG, {image.width} × {image.height}. Credit: {displayed.credit}. For UNICEF
                     advocacy use; contact UNICEF for any other use.
                   </p>
                 </div>

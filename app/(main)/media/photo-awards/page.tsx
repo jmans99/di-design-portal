@@ -8,7 +8,24 @@ export default function PhotoAwardsPage() {
       <PageHeader
         title="Photo awards"
         brand={PHOTO_AWARD_BRAND}
-        description="The winning stories of the 2026 Giga Photo Award, Stories on the Impact of Connectivity. The photos may be used for UNICEF advocacy purposes; for any other use, contact UNICEF for permission."
+        description={
+          <>
+            The winning stories of the Giga Photo Award: The Joy of Connection (2025) and The Urgency of Connectivity
+            (2026), selected from more than 8,000 photographs from around the world. From families staying close across
+            borders to children learning through a phone screen, these stories show how connectivity shapes daily life.
+            The photographs may be used for UNICEF advocacy purposes. For any other use, please contact UNICEF for
+            permission. Learn more at{' '}
+            <a
+              href="https://gigaphotoaward.global"
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium text-link transition-smooth hover:text-link-hover"
+            >
+              gigaphotoaward.global
+            </a>
+            .
+          </>
+        }
       />
       <PhotoAwardsGallery />
     </main>
