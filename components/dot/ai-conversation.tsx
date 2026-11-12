@@ -4,11 +4,10 @@ import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { SidePanelToggle } from '@/components/app-shell/app-shell'
 import { CHIP, DotMessage, ReplyBar, UserMessage } from '@/components/dot/conversation'
-import { useDot } from '@/components/dot/use-dot'
+import { markAiOff, useDot } from '@/components/dot/use-dot'
 import type { DotAiResult, DotChatMessage, DotLink } from '@/lib/dot/ai'
 import { searchHref, type AskState } from '@/lib/dot/conversation'
 import { matchIntent, matchTemplate } from '@/lib/dot/intent'
-import { resolveUseKnowledge } from '@/lib/dot/settings'
 import { cn } from '@/lib/utils'
 import styles from './dot.module.css'
 
@@ -25,6 +24,8 @@ async function askDot(messages: DotChatMessage[], signal: AbortSignal): Promise<
       body: JSON.stringify({ messages }),
       signal,
     })
+    // 503 = this deployment has no key: stop asking for the rest of the visit.
+    if (res.status === 503) markAiOff()
     return res.ok ? ((await res.json()) as DotAiResult) : null
   } catch {
     return null
@@ -41,8 +42,8 @@ export function AiConversation({ state }: { state: AskState }) {
   const { start, sendByKeywords, push, replace } = useDot()
   const [turns, setTurns] = useState<Turn[]>([{ role: 'user', content: state.q }])
   const [pending, setPending] = useState(true)
-  // "Use DI knowledge" in the reply bar (off while the switch is disabled); it only goes into the brief of what starts next.
-  const [useKnowledge, setUseKnowledge] = useState(resolveUseKnowledge(true))
+  // "Use DI knowledge" in the reply bar: starts from the box's value; it only goes into the brief of what starts next.
+  const [useKnowledge, setUseKnowledge] = useState(state.useKnowledge)
   const request = useRef<AbortController | null>(null)
 
   const ask = async (chat: Turn[]) => {

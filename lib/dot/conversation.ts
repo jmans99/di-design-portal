@@ -78,14 +78,16 @@ export function searchHref(state: SearchState): string {
 }
 
 /** A request for Dot's AI in the URL: what was typed to start the chat. */
-export type AskState = { q: string }
+export type AskState = { q: string; useKnowledge: boolean }
 
-/** URL → AI chat: ?ask=… */
+/** URL → AI chat: ?ask=…&knowledge=off */
 export function askFromParams(params: URLSearchParams): AskState | null {
   const q = params.get('ask')?.trim()
-  return q ? { q } : null
+  return q ? { q, useKnowledge: resolveUseKnowledge(params.get('knowledge') !== 'off') } : null
 }
 
-export function askHref(q: string): string {
-  return `/?${new URLSearchParams({ ask: q }).toString()}`
+export function askHref(state: AskState): string {
+  const params = new URLSearchParams({ ask: state.q })
+  if (!state.useKnowledge) params.set('knowledge', 'off')
+  return `/?${params.toString()}`
 }

@@ -16,14 +16,16 @@ keyword matcher as the first step; the matcher stays as the fallback.
    so Back does not ask the model again.
 
 In the scripted conversation (`components/dot/conversation.tsx`) a typed reply
-is still read as a template or an audience first; anything else goes to the AI.
+inside a format's flow is still matched with keywords, so the flow is kept.
+On the "couldn't match" page (no format) it goes to the AI.
 
 ## Without a key
 
 `/api/dot` answers 503 when `OPENAI_API_KEY` is not set. The page then uses the
 keyword matcher (`lib/dot/intent.ts`) exactly as before: format, asset search,
-or "I couldn't match that yet". The same happens if the model call fails on the
-first message.
+or "I couldn't match that yet". After the first 503 the page stops asking for
+the rest of the visit. The same fallback applies if the model call fails on
+the first message.
 
 ## Configuration
 

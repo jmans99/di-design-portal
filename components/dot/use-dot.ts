@@ -15,6 +15,12 @@ export function recentLabel(state: ConversationState & { format: OutputType }) {
   return [getFormat(state.format).label, getDeckTemplate(state.templateId)?.name, group?.name].filter(Boolean).join(' · ')
 }
 
+/** True once /api/dot said it has no key (503): typed text then skips the AI for the rest of the visit. */
+let aiOff = false
+export const markAiOff = () => {
+  aiOff = true
+}
+
 /** Starting things from Dot: formats with a tool open it (and go in Recent); the others start a conversation. */
 export function useDot() {
   const router = useRouter()
@@ -36,11 +42,14 @@ export function useDot() {
   /**
    * Typed text from Dot's box and the reply bars: it goes to Dot's AI
    * (/?ask=…, components/dot/ai-conversation.tsx), which starts a format,
-   * opens the search reply or answers in words.
+   * opens the search reply or answers in words. On a deployment without a
+   * key (known after the first try) it goes straight to the keyword matcher.
    */
-  const send = (text: string) => {
+  const send = (text: string, useKnowledge: boolean) => {
     const q = text.trim()
-    if (q) router.push(askHref(q))
+    if (!q) return
+    if (aiOff) sendByKeywords(q, useKnowledge)
+    else router.push(askHref({ q, useKnowledge }))
   }
 
   /**

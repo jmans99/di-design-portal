@@ -83,6 +83,8 @@ export async function POST(request: Request) {
   const client = request.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown'
   if (rateLimited(client)) return NextResponse.json({ error: 'Too many requests' }, { status: 429 })
 
+  // The chat is capped at 12 short messages, so a large body is not a chat.
+  if (Number(request.headers.get('content-length') ?? 0) > 32_000) return NextResponse.json({ error: 'Request too large' }, { status: 413 })
   const body = await request.json().catch(() => null)
   const messages = parseMessages(body?.messages)
   if (!messages) return NextResponse.json({ error: 'Invalid messages' }, { status: 400 })
@@ -103,8 +105,9 @@ export async function POST(request: Request) {
       }),
     })
     if (!res.ok) {
-      // Log the provider's reason on the server; the browser only learns that it failed.
-      console.error('Dot AI: the model API responded', res.status, (await res.text()).slice(0, 500))
+      // Log only the provider's error code: the full body could echo what was sent.
+      const reason = await res.json().catch(() => null)
+      console.error('Dot AI: the model API responded', res.status, reason?.error?.code ?? reason?.statusCode ?? '')
       return NextResponse.json({ error: 'The model request failed' }, { status: 502 })
     }
     const data = (await res.json()) as { output?: { type: string; content?: { type: string; text?: string }[] }[] }

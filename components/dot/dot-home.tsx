@@ -32,7 +32,7 @@ export function DotHome() {
   if (demo) return <DeckDemo key={JSON.stringify(demo)} state={demo} />
   // Keyed on the URL so a new step starts with fresh local state.
   const ask = askFromParams(params)
-  if (ask) return <AiConversation key={ask.q} state={ask} />
+  if (ask) return <AiConversation key={JSON.stringify(ask)} state={ask} />
   const search = searchFromParams(params)
   if (search) return <SearchReply key={JSON.stringify(search)} state={search} />
   const state = conversationFromParams(params)
@@ -62,7 +62,7 @@ export function EmptyHome() {
           <DotBox
             useKnowledge={showKnowledgeToggle ? useKnowledge : undefined}
             onUseKnowledgeChange={showKnowledgeToggle ? setUseKnowledge : undefined}
-            onSend={send}
+            onSend={(text) => send(text, useKnowledge)}
             placeholder="Describe what you want to make or find"
             label="Ask Dot"
           />
