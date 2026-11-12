@@ -112,7 +112,7 @@ export function SearchReply({ state }: { state: SearchState }) {
             </DotMessage>
           )}
         </ol>
-        <ReplyBar showBrief={false} onSend={(text) => send(text, useKnowledge)} useKnowledge={useKnowledge} onUseKnowledgeChange={setUseKnowledge} />
+        <ReplyBar showBrief={false} onSend={send} useKnowledge={useKnowledge} onUseKnowledgeChange={setUseKnowledge} />
       </div>
     </div>
   )

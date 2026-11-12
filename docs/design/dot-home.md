@@ -8,6 +8,8 @@ assistant, shown as a green orb). Format tiles sit under the box, templates appe
 only after a format is picked, and recent work lives in the side panel.
 There is NO AI in this step: Dot's replies are scripted and typed text is
 matched with simple keywords.
+Update: typed text now goes to a model first, and the keywords below are the
+fallback when no API key is set. See docs/design/dot-ai.md.
 
 ## Design tokens
 

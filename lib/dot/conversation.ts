@@ -1,7 +1,8 @@
 /**
  * Dot's conversation lives in the home page URL, so refresh and Back work:
  * /?new=deck&template=master-deck&audience=governments&q=…&knowledge=off,
- * and for an asset search /?find=…&without=colour,type.
+ * for an asset search /?find=…&without=colour,type, and for a request
+ * sent to the AI /?ask=… (docs/design/dot-ai.md).
  */
 
 import { OUTPUT_OPTIONS, type OutputType } from '@/lib/brief'
@@ -74,4 +75,17 @@ export function searchHref(state: SearchState): string {
   const params = new URLSearchParams({ find: state.query })
   if (state.without.length) params.set('without', state.without.join(','))
   return `/?${params.toString()}`
+}
+
+/** A request for Dot's AI in the URL: what was typed to start the chat. */
+export type AskState = { q: string }
+
+/** URL → AI chat: ?ask=… */
+export function askFromParams(params: URLSearchParams): AskState | null {
+  const q = params.get('ask')?.trim()
+  return q ? { q } : null
+}
+
+export function askHref(q: string): string {
+  return `/?${new URLSearchParams({ ask: q }).toString()}`
 }

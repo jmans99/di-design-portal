@@ -1,6 +1,6 @@
 'use client'
 
-import { Fragment, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { ArrowUp, ArrowUpRight, Plus } from 'lucide-react'
 import { SidePanelToggle } from '@/components/app-shell/app-shell'
@@ -13,7 +13,7 @@ import { recentLabel, useDot } from '@/components/dot/use-dot'
 import { briefHref } from '@/lib/brief'
 import { SKIP_AUDIENCE, conversationHref, type ConversationState } from '@/lib/dot/conversation'
 import { getFormat, type Format } from '@/lib/dot/formats'
-import { isSkip, matchAudienceGroup, matchIntent, matchTemplate, type DeckTemplateId } from '@/lib/dot/intent'
+import { isSkip, matchAudienceGroup, matchTemplate, type DeckTemplateId } from '@/lib/dot/intent'
 import { addRecent } from '@/lib/dot/recent'
 import { DECK_TEMPLATES, getDeckTemplate } from '@/lib/dot/templates'
 import { AUDIENCE_GROUPS, getAudienceGroup } from '@/lib/knowledge'
@@ -22,15 +22,14 @@ import { cn } from '@/lib/utils'
 import styles from './dot.module.css'
 
 const NO_MATCH = "I couldn't match that yet. Pick one of these to start:"
-const NO_MATCH_AGAIN = "I couldn't match that yet. Pick one above, or try other words."
 
 /**
- * Dot's scripted conversation (docs/design/dot-home.md, section 3). No AI:
- * every reply is fixed text, and each step is in the URL.
+ * Dot's scripted conversation (docs/design/dot-home.md, section 3): every
+ * reply here is fixed text, and each step is in the URL. A typed reply that
+ * is not an answer to Dot's question goes to the AI (docs/design/dot-ai.md).
  */
 export function Conversation({ state }: { state: ConversationState }) {
-  const { start, push, replace } = useDot()
-  const [notes, setNotes] = useState<string[]>([])
+  const { start, send, push, replace } = useDot()
   // "Use DI knowledge" in the reply bar: starts from the brief's value; it only goes into the brief of what starts next.
   const [useKnowledge, setUseKnowledge] = useState(state.useKnowledge)
 
@@ -65,8 +64,8 @@ export function Conversation({ state }: { state: ConversationState }) {
 
   // Each step remounts this component (keyed on the URL): bring the newest message into view.
   useEffect(() => {
-    if (notes.length > 0 || state.templateId || state.audience) window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
-  }, [notes.length, state.templateId, state.audience])
+    if (state.templateId || state.audience) window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
+  }, [state.templateId, state.audience])
 
   const reply = (text: string) => {
     const q = text.trim()
@@ -81,9 +80,7 @@ export function Conversation({ state }: { state: ConversationState }) {
       const audience = matchAudienceGroup(q, AUDIENCE_GROUPS)?.id
       if (audience) return go({ audience })
     }
-    const intent = matchIntent(q)
-    if (intent.kind === 'format') return start({ format: intent.outputType, templateId: intent.templateId, q, useKnowledge })
-    setNotes((n) => [...n, q])
+    send(q)
   }
 
   const startFormat = (type: Format['type']) => start({ format: type, useKnowledge })
@@ -150,13 +147,6 @@ export function Conversation({ state }: { state: ConversationState }) {
               />
             </>
           )}
-
-          {notes.map((note, i) => (
-            <Fragment key={i}>
-              <UserMessage>{note}</UserMessage>
-              <DotMessage text={format ? NO_MATCH_AGAIN : NO_MATCH}>{!format && <SmallFormatTiles onStart={startFormat} />}</DotMessage>
-            </Fragment>
-          ))}
         </ol>
 
         <ReplyBar
@@ -290,6 +280,7 @@ export function ReplyBar({
   onUseKnowledgeChange,
   chips,
   placeholder,
+  disabled = false,
 }: {
   format?: Format
   templateName?: string | null
@@ -304,9 +295,11 @@ export function ReplyBar({
   chips?: { label: string; value: string | null }[]
   /** Input placeholder; the default depends on `showBrief`. */
   placeholder?: string
+  /** True while Dot is answering: typing stays possible, sending waits. */
+  disabled?: boolean
 }) {
   const [text, setText] = useState('')
-  const canSend = text.trim().length > 0
+  const canSend = text.trim().length > 0 && !disabled
   const color = format?.color ?? '#5C6B7A'
   const knowledge = showKnowledgeToggle && useKnowledge !== undefined && onUseKnowledgeChange
 

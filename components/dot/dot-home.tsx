@@ -8,11 +8,12 @@ import { SidePanelToggle } from '@/components/app-shell/app-shell'
 import { DotOrb } from '@/components/dot/dot-orb'
 import { ComingSoonPill, ExternalTitle, KnowledgeSwitch, MoreMenu, RecommendedPill, SEND_BUTTON, StartTile } from '@/components/dot/format-tiles'
 import { LogoArt, MapArt, MasterDeckArt, SlidesArt, TwoPagerArt } from '@/components/dot/dot-art'
+import { AiConversation } from '@/components/dot/ai-conversation'
 import { Conversation } from '@/components/dot/conversation'
 import { DeckDemo, deckDemoFromParams } from '@/components/dot/deck-demo'
 import { SearchReply } from '@/components/dot/search-reply'
 import { useDot } from '@/components/dot/use-dot'
-import { conversationFromParams, searchFromParams } from '@/lib/dot/conversation'
+import { askFromParams, conversationFromParams, searchFromParams } from '@/lib/dot/conversation'
 import type { OutputType } from '@/lib/brief'
 import { masterDeckAvailable } from '@/lib/external-tools'
 import { resolveUseKnowledge, showDeckDemo, showKnowledgeToggle } from '@/lib/dot/settings'
@@ -30,6 +31,8 @@ export function DotHome() {
   const demo = showDeckDemo ? deckDemoFromParams(params) : null
   if (demo) return <DeckDemo key={JSON.stringify(demo)} state={demo} />
   // Keyed on the URL so a new step starts with fresh local state.
+  const ask = askFromParams(params)
+  if (ask) return <AiConversation key={ask.q} state={ask} />
   const search = searchFromParams(params)
   if (search) return <SearchReply key={JSON.stringify(search)} state={search} />
   const state = conversationFromParams(params)
@@ -59,7 +62,7 @@ export function EmptyHome() {
           <DotBox
             useKnowledge={showKnowledgeToggle ? useKnowledge : undefined}
             onUseKnowledgeChange={showKnowledgeToggle ? setUseKnowledge : undefined}
-            onSend={(text) => send(text, useKnowledge)}
+            onSend={send}
             placeholder="Describe what you want to make or find"
             label="Ask Dot"
           />
