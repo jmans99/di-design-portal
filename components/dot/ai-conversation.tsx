@@ -7,7 +7,8 @@ import { CHIP, DotMessage, ReplyBar, UserMessage } from '@/components/dot/conver
 import { markAiOff, useDot } from '@/components/dot/use-dot'
 import type { DotAiResult, DotChatMessage, DotLink } from '@/lib/dot/ai'
 import { searchHref, type AskState } from '@/lib/dot/conversation'
-import { matchIntent, matchTemplate } from '@/lib/dot/intent'
+import { matchTemplate } from '@/lib/dot/intent'
+import { parseQuery } from '@/lib/search/match'
 import { cn } from '@/lib/utils'
 import styles from './dot.module.css'
 
@@ -67,8 +68,10 @@ export function AiConversation({ state }: { state: AskState }) {
       const templateId = result.format === 'deck' && matchTemplate(text) === 'master-deck' ? ('master-deck' as const) : undefined
       return start({ format: result.format, templateId, q: text, useKnowledge }, { replace: first })
     } else if (result.action === 'search') {
-      // Keep the person's own words when the asset search understands them; else use the model's search words.
-      const query = matchIntent(text).kind === 'search' ? text : result.query
+      // Keep the person's own words when the asset search reads as much from them as from the model's
+      // search words; else use the model's (e.g. "logo bianco" is "white logo" to the search).
+      const understood = (q: string) => Object.keys(parseQuery(q).facets).length
+      const query = understood(text) >= understood(result.query) ? text : result.query
       return (first ? replace : push)(searchHref({ query, without: [] }))
     } else {
       setTurns([...chat, { role: 'assistant', content: result.reply, links: result.links }])
