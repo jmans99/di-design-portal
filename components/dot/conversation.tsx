@@ -25,11 +25,13 @@ const NO_MATCH = "I couldn't match that yet. Pick one of these to start:"
 const NO_MATCH_AGAIN = "I couldn't match that yet. Pick one above, or try other words."
 
 /**
- * Dot's scripted conversation (docs/design/dot-home.md, section 3). No AI:
- * every reply is fixed text, and each step is in the URL.
+ * Dot's scripted conversation (docs/design/dot-home.md, section 3): every
+ * reply here is fixed text, and each step is in the URL. On the "couldn't
+ * match" page (no format) a typed reply goes to the AI (docs/design/dot-ai.md);
+ * inside a format's flow it is matched with keywords, so the flow is kept.
  */
 export function Conversation({ state }: { state: ConversationState }) {
-  const { start, push, replace } = useDot()
+  const { start, send, push, replace } = useDot()
   const [notes, setNotes] = useState<string[]>([])
   // "Use DI knowledge" in the reply bar: starts from the brief's value; it only goes into the brief of what starts next.
   const [useKnowledge, setUseKnowledge] = useState(state.useKnowledge)
@@ -81,6 +83,7 @@ export function Conversation({ state }: { state: ConversationState }) {
       const audience = matchAudienceGroup(q, AUDIENCE_GROUPS)?.id
       if (audience) return go({ audience })
     }
+    if (!format) return send(q, useKnowledge)
     const intent = matchIntent(q)
     if (intent.kind === 'format') return start({ format: intent.outputType, templateId: intent.templateId, q, useKnowledge })
     setNotes((n) => [...n, q])
@@ -290,6 +293,7 @@ export function ReplyBar({
   onUseKnowledgeChange,
   chips,
   placeholder,
+  disabled = false,
 }: {
   format?: Format
   templateName?: string | null
@@ -304,9 +308,11 @@ export function ReplyBar({
   chips?: { label: string; value: string | null }[]
   /** Input placeholder; the default depends on `showBrief`. */
   placeholder?: string
+  /** True while Dot is answering: typing stays possible, sending waits. */
+  disabled?: boolean
 }) {
   const [text, setText] = useState('')
-  const canSend = text.trim().length > 0
+  const canSend = text.trim().length > 0 && !disabled
   const color = format?.color ?? '#5C6B7A'
   const knowledge = showKnowledgeToggle && useKnowledge !== undefined && onUseKnowledgeChange
 
