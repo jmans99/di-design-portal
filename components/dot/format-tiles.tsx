@@ -2,7 +2,7 @@
 
 import { useId } from 'react'
 import Link from 'next/link'
-import { ArrowUpRight, Plus } from 'lucide-react'
+import { ArrowUpRight, Globe2, Plus } from 'lucide-react'
 import { Switch } from '@/components/ui/switch'
 import { FormatIcon } from '@/components/dot/format-icon'
 import {
@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import type { OutputType } from '@/lib/brief'
 import { getFormat } from '@/lib/dot/formats'
-import { knowledgeToggleDisabled, showDeckDemo } from '@/lib/dot/settings'
+import { knowledgeToggleDisabled, showCountryPitchDemo, showDeckDemo } from '@/lib/dot/settings'
 import { externalLinkLabel } from '@/lib/external-tools'
 import { cn } from '@/lib/utils'
 import styles from './dot.module.css'
@@ -152,9 +152,9 @@ export function MoreMenu({ onStart, children }: { onStart: (format: OutputType) 
             </DropdownMenuItem>
           )
         })}
+        {(showDeckDemo || showCountryPitchDemo) && <DropdownMenuSeparator />}
         {showDeckDemo && (
           <>
-            <DropdownMenuSeparator />
             {/* Testing only (lib/dot/settings.ts): opens the deck demo in this tab, not the external builder. */}
             <DropdownMenuItem
               asChild
@@ -166,6 +166,18 @@ export function MoreMenu({ onStart, children }: { onStart: (format: OutputType) 
               </Link>
             </DropdownMenuItem>
           </>
+        )}
+        {showCountryPitchDemo && (
+          // Demo only (lib/dot/settings.ts): the scripted Country pitch demo, in this tab.
+          <DropdownMenuItem
+            asChild
+            className="min-h-9 cursor-pointer gap-2.5 rounded-lg px-2 py-1.5 text-sm text-ink-secondary focus:bg-selected focus:text-ink"
+          >
+            <Link href="/?demo=country-pitch">
+              <FormatIcon format={{ icon: Globe2, color: getFormat('deck').color }} size={22} />
+              Country pitch (demo)
+            </Link>
+          </DropdownMenuItem>
         )}
       </DropdownMenuContent>
     </DropdownMenu>

@@ -294,6 +294,8 @@ export function ReplyBar({
   chips,
   placeholder,
   disabled = false,
+  value,
+  onValueChange,
 }: {
   format?: Format
   templateName?: string | null
@@ -310,8 +312,13 @@ export function ReplyBar({
   placeholder?: string
   /** True while Dot is answering: typing stays possible, sending waits. */
   disabled?: boolean
+  /** The input's text, when the parent drives it (the Country pitch demo types it in autoplay). */
+  value?: string
+  onValueChange?: (text: string) => void
 }) {
-  const [text, setText] = useState('')
+  const [ownText, setOwnText] = useState('')
+  const text = value ?? ownText
+  const setText = (next: string) => (onValueChange ? onValueChange(next) : setOwnText(next))
   const canSend = text.trim().length > 0 && !disabled
   const color = format?.color ?? '#5C6B7A'
   const knowledge = showKnowledgeToggle && useKnowledge !== undefined && onUseKnowledgeChange

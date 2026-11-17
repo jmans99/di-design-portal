@@ -29,3 +29,15 @@ export const resolveUseKnowledge = (requested: boolean) => (knowledgeToggleDisab
  * Set to false to hide the menu item and send /?demo=deck to the normal home.
  */
 export const showDeckDemo = true
+
+/**
+ * The Country pitch demo, for testing and for recording the Cable to Child
+ * demo video (docs/design/dot-home.md, "Country pitch demo (testing)"). Shows
+ * "Country pitch (demo)" in the + More menu and turns on /?demo=country-pitch.
+ * Nothing real is made. Set to false to hide the menu item and send
+ * /?demo=country-pitch to the normal home.
+ */
+export const showCountryPitchDemo = true
+
+/** The small "Illustrative data" line under the snapshot and the slides of the Country pitch demo. */
+export const showIllustrativeNote = true
