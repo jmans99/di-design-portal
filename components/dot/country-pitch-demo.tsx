@@ -15,6 +15,8 @@ import {
   LENGTHS,
   SKIP,
   autoplayPause,
+  autoplaySlideIndexes,
+  demoPickChanges,
   buildPitchSlides,
   clearPitchFrom,
   countryPitchHref,
@@ -282,20 +284,27 @@ export function CountryPitchDemo({ state, view }: { state: CountryPitchState; vi
           then(pause('beat'), () => reveal(document.querySelector('[role="alert"]')))
           then(pause('hold'), () => setPicked((p) => p.filter((id) => id !== notYet)))
         }
+        // Then narrow the pick to the demo set (data.demoOfferingIds), one chip at a time so the video shows it.
+        const { untick, tick } = demoPickChanges(picked, DATA.demoOfferingIds)
+        const each = reduced ? 0 : Math.round(260 / view.speed)
+        then(pause('beat'), () => {})
+        for (const id of untick) then(each, () => setPicked((p) => p.filter((x) => x !== id)))
+        for (const id of tick) then(each, () => setPicked((p) => [...p, id]))
         then(pause('step'), () => {})
         press('continue', () => continueOfferings(latest.current.picked))
         break
       }
       case 'length':
         then(pause('step'), () => {})
-        press('length:standard', () => go({ length: 'standard' }))
+        press('length:short', () => go({ length: 'short' }))
         break
       case 'review':
         then(pause('hold'), () => {})
         press('generate', generate)
         break
       case 'result':
-        then(pause('hold'), () => setOpenSlide(0))
+        // "Why it matters" (footnotes) then "Proof" (the gap), large, 2.5 s each.
+        for (const index of autoplaySlideIndexes(slides)) then(pause('hold'), () => setOpenSlide(index))
         then(pause('hold'), () => setOpenSlide(null))
         then(pause('step'), () => commitRef.current && scrollToTop(commitRef.current.closest('li') ?? commitRef.current))
         then(pause('step'), () => {})

@@ -289,7 +289,7 @@ function SlideStatus({ status, country, n }: { status: OfferingStatus | 'unknown
   return (
     <span
       className={cn(
-        'inline-flex items-center rounded-full px-[0.8cqw] py-[0.2cqw] text-[length:1.15cqw] font-semibold leading-tight',
+        'inline-flex items-center self-start rounded-full px-[0.8cqw] py-[0.2cqw] text-[length:1.15cqw] font-semibold leading-tight',
         status === 'available' && 'bg-primary-50 text-primary-700',
         status === 'pilot' && 'bg-navy/[0.06] text-navy/80',
         (status === 'not-yet' || status === 'unknown') && 'border border-dashed border-navy/30 font-normal text-navy/60',
@@ -522,13 +522,13 @@ function OfferingsSlide({ slide, notes, country }: { slide: Extract<PitchSlide, 
     <div className="absolute inset-0 px-[5cqw] pt-[4.5cqw]">
       <p className={SLIDE_EYEBROW}>{slide.eyebrow}</p>
       <h3 className={cn(SLIDE_TITLE, 'mt-[1cqw]')}>{slide.title}</h3>
-      <ul className={cn('mt-[2.4cqw] grid', compact ? 'gap-[1cqw]' : 'gap-[1.6cqw]')} style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}>
+      <ul className={cn('grid', n > 3 ? 'mt-[1.8cqw]' : 'mt-[2.4cqw]', compact || n > 3 ? 'gap-[1.2cqw]' : 'gap-[1.6cqw]')} style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}>
         {slide.offerings.map((o: PitchOffering) => (
           <li
             key={o.id}
             className={cn(
               'flex flex-col rounded-[1.2cqw] border-[0.1cqw] border-navy/10',
-              compact ? 'px-[1.4cqw] py-[1cqw]' : roomy ? 'px-[2.4cqw] py-[2.2cqw]' : 'px-[1.8cqw] py-[1.5cqw]',
+              compact ? 'px-[1.4cqw] py-[1cqw]' : roomy ? 'px-[2.4cqw] py-[2.2cqw]' : n > 3 ? 'px-[1.8cqw] py-[1.2cqw]' : 'px-[1.8cqw] py-[1.5cqw]',
               n === 1 && 'max-w-[56cqw]',
             )}
           >
@@ -577,7 +577,7 @@ export function SlideDialog({
   return (
     <Dialog open={index !== null} onOpenChange={(open) => !open && onIndexChange(null)}>
       <DialogContent
-        className="max-w-[min(1120px,calc(100vw-2rem))] gap-3 rounded-2xl border-line-card bg-card p-4 sm:p-5"
+        className="max-w-[min(1120px,calc(100vw-2rem))] gap-3 rounded-2xl border-line-card bg-card p-4 outline-none sm:p-5"
         onOpenAutoFocus={(e) => quiet && e.preventDefault()}
         onCloseAutoFocus={(e) => quiet && e.preventDefault()}
         onKeyDown={(e) => {

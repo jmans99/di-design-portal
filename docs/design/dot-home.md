@@ -477,7 +477,9 @@ commit.
   checks every figure has a label, value, exact excerpt, a full source
   (title, type, committed by, validated by, date) and `"illustrative": true`,
   and every offering status is `available`, `pilot` or `not-yet` with a
-  one-line note. Sources are named as samples ("Giga Maps country snapshot
+  one-line note. `demoOfferingIds` lists the 4 to 5 offerings autoplay leaves
+  ticked (available or pilot only; the check fails otherwise), ideally from 2
+  to 3 categories. Sources are named as samples ("Giga Maps country snapshot
   (sample)", "KPI app, Q3 2026 (sample)", "Country case study (sample)").
   Validators are named by role only. Default: Kenya, Ministry of Education
   (Governments). The audience's needs and offerings come from the knowledge
@@ -517,8 +519,12 @@ commit.
      are generated output, so they keep their colours in both themes. Slides:
      Title (Kenya's outline in white on a DI-blue panel), Why it matters (top 3
      needs and the first 2 figures), one slide per selected offering category
-     (each offering with its status and note; Short merges them into 2, Long
-     adds one slide per offering), Proof (the case study word for word, in
+     (each offering with its status and note). Short merges neighbouring
+     categories into 2 slides at most (the deck demo's rule), then merges any
+     slide with fewer than 3 offerings into its neighbour, so none looks mostly
+     empty; a merged slide is titled with its category names ("Modelling and
+     finance", or "Finance · Network and data solutions" when a name already
+     holds "and"). Long adds one slide per offering. Proof (the case study word for word, in
      quotes, with its source, and a dashed "Gap: no recent case study. Add one
      before sending."), How we work together (with the latest engagement
      record), The ask (start with what is available, test what is in pilot,
@@ -564,16 +570,20 @@ commit.
   An unknown value is dropped, and a missing answer clears the later ones.
   `autoplay`, `speed` and `clean` are kept on every step.
 - Recording mode (`&autoplay=1`): types the opening message character by
-  character, confirms, opens one source popover on the snapshot, picks
-  "Propose a partnership", ticks a "not yet" offering to show the warning and
-  unticks it, picks Standard, generates, opens the title slide large, then adds
-  and submits the case study. Pauses: about 1.5 s per step, 2.5 s on the
-  snapshot, the popover, the review and the slides. Autoplay does not move
+  character, confirms, opens one source popover on the snapshot (then brings
+  the gap row and "Build the pitch" into view), picks "Propose a partnership",
+  ticks a "not yet" offering to show the warning and unticks it, then unticks
+  the others one by one until only `demoOfferingIds` are left, picks Short,
+  generates, opens "Why it matters" (footnotes) and then "Proof" (the gap)
+  large, 2.5 s each, closes the dialog, then adds and submits the case study.
+  When the snapshot appears, Dot's line and the top of the card sit just under
+  the top bar. Pauses: about 1.5 s per step, 2.5 s on the snapshot, the
+  popover, the review and each slide. Autoplay does not move
   focus (no focus rings in the video) and shows each pick as pressed for a beat
   before it acts. With reduced motion: no typing animation and no waits, and
   autoplay moves step to step with 1 s pauses.
 - Recording URLs: `/?demo=country-pitch` (by hand) and
-  `/?demo=country-pitch&autoplay=1&clean=1` (by itself, about 45 s at speed 1).
+  `/?demo=country-pitch&autoplay=1&clean=1` (by itself, about 48 s at speed 1).
   Checked at 1920x1080 and 1440x900 in the light theme; the dark theme works.
 - It makes nothing real: nothing goes in Recent, and no AI (`/api/dot`) or
   external API is called.

@@ -43,6 +43,8 @@ export type CountryPitchData = {
   connectivity: Fact[]
   offeringStatusSource: Fact
   offerings: Record<string, { status: OfferingStatus; note: string }>
+  /** The offerings autoplay leaves ticked: 4 to 5, available or pilot only. */
+  demoOfferingIds: string[]
   records: PitchRecord[]
   gaps: Gap[]
   caseStudyDraft: { title: string; body: string }
@@ -89,6 +91,12 @@ export function validatePitchData(data: CountryPitchData, offeringIds: string[])
   }
   if (data.records.length < 1 || data.records.length > 2) errors.push('records: 1 to 2 records are needed')
   if (data.gaps.length < 1 || data.gaps.length > 2) errors.push('gaps: 1 to 2 gaps are needed')
+  const demo = data.demoOfferingIds ?? []
+  if (demo.length < 4 || demo.length > 5) errors.push('demoOfferingIds: 4 to 5 offerings are needed')
+  for (const id of demo) {
+    if (!offeringIds.includes(id)) errors.push(`demoOfferingIds: unknown offering id "${id}"`)
+    else if (statusOf(data, id) !== 'available' && statusOf(data, id) !== 'pilot') errors.push(`demoOfferingIds: "${id}" must be available or pilot`)
+  }
   for (const [id, o] of Object.entries(data.offerings)) {
     if (!offeringIds.includes(id)) errors.push(`offerings: unknown offering id "${id}"`)
     if (!STATUSES.includes(o.status)) errors.push(`offerings.${id}: status must be available, pilot or not-yet`)
@@ -414,6 +422,37 @@ const joinNames = (list: string[]) => {
   return lower.length <= 1 ? (lower[0] ?? '') : `${lower.slice(0, -1).join(', ')} and ${lower[lower.length - 1]}`
 }
 
+type Category = PitchInput['categories'][number]
+
+/** Splits the categories into 2 groups of neighbours at most (none when there are no categories). */
+function halves(categories: Category[]): Category[][] {
+  if (categories.length <= 2) return categories.map((c) => [c])
+  const half = Math.ceil(categories.length / 2)
+  return [categories.slice(0, half), categories.slice(half)]
+}
+
+/** The fewest offerings a Short offering slide should have before it is merged with its neighbour. */
+export const MIN_OFFERINGS_PER_SLIDE = 3
+
+/** Merges a group with fewer than MIN_OFFERINGS_PER_SLIDE offerings into the next group (the last one into the one before). */
+export function mergeSparse<T extends { offerings: unknown[] }>(groups: T[][]): T[][] {
+  const out = groups.map((g) => [...g])
+  const size = (g: T[]) => g.reduce((n, c) => n + c.offerings.length, 0)
+  let i = out.findIndex((g) => size(g) < MIN_OFFERINGS_PER_SLIDE)
+  while (i >= 0 && out.length > 1) {
+    const into = i < out.length - 1 ? i + 1 : i - 1
+    const [a, b] = into > i ? [i, into] : [into, i]
+    out.splice(a, 2, [...out[a], ...out[b]])
+    i = out.findIndex((g) => size(g) < MIN_OFFERINGS_PER_SLIDE)
+  }
+  return out
+}
+
+/** A merged slide's title: "Modelling and finance"; names that already hold "and" are joined with a dot. */
+export function mergedTitle(names: string[]): string {
+  return names.some((n) => / and /.test(n)) ? names.join(' · ') : joinNames(names)
+}
+
 /**
  * The pitch, from fixed rules (no AI): Title, Why it matters (top 3 needs and
  * 2 figures), one slide per selected offering category, Proof (the case study
@@ -446,12 +485,13 @@ export function buildPitchSlides(input: PitchInput): PitchSlide[] {
     offerings: c.offerings,
     cites: [input.statusFact.id],
   }))
-  if (input.length === 'short' && categories.length > 2) {
-    const half = Math.ceil(input.categories.length / 2)
-    categories = [input.categories.slice(0, half), input.categories.slice(half)].map((chunk) => ({
+  if (input.length === 'short') {
+    // Short: at most 2 offering slides (the deck demo's merge of neighbours), and no slide with
+    // fewer than 3 offerings while a neighbour is left to merge with, so none looks mostly empty.
+    categories = mergeSparse(halves(input.categories)).map((chunk) => ({
       kind: 'offerings',
       eyebrow: 'What we offer',
-      title: joinNames(chunk.map((c) => c.name)),
+      title: mergedTitle(chunk.map((c) => c.name)),
       offerings: chunk.flatMap((c) => c.offerings),
       cites: [input.statusFact.id],
     }))
@@ -499,3 +539,15 @@ export function autoplayPause(kind: 'step' | 'hold' | 'beat', speed: number, red
 /** True for /?demo=country-pitch&clean=1: the app shell hides the side panel for a clean recording frame. */
 export const isCleanPitchFrame = (pathname: string, params: URLSearchParams) =>
   pathname === '/' && params.get('demo') === DEMO_VALUE && params.get('clean') === '1'
+
+/**
+ * Autoplay's offerings step: what to untick and what to tick to go from the
+ * pre-selection to the demo pick (data.demoOfferingIds), in that order.
+ */
+export function demoPickChanges(current: string[], demoIds: string[]): { untick: string[]; tick: string[] } {
+  return { untick: current.filter((id) => !demoIds.includes(id)), tick: demoIds.filter((id) => !current.includes(id)) }
+}
+
+/** The slides autoplay opens large, in order: "Why it matters" (footnotes) and "Proof" (the gap). */
+export const autoplaySlideIndexes = (slides: PitchSlide[]) =>
+  (['why', 'proof'] as const).map((kind) => slides.findIndex((s) => s.kind === kind)).filter((i) => i >= 0)

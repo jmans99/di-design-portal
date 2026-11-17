@@ -1,5 +1,5 @@
 {
-  "about": "Sample data for the Country pitch demo (docs/design/dot-home.md, 'Country pitch demo (testing)'). Every figure is illustrative, not real. Swap the country, numbers and texts here before recording. Offering ids come from data/knowledge/offerings.json; audience needs and offerings come from the knowledge data, not from this file.",
+  "about": "Sample data for the Country pitch demo (docs/design/dot-home.md, 'Country pitch demo (testing)'). Every figure is illustrative, not real. Swap the country, numbers and texts here before recording. Offering ids come from data/knowledge/offerings.json; audience needs and offerings come from the knowledge data, not from this file. demoOfferingIds: the 4 to 5 offerings autoplay leaves ticked (available or pilot only, ideally from 2 to 3 categories).",
   "illustrative": true,
   "country": {
     "name": "Kenya",
@@ -101,6 +101,7 @@
     "supported-procurement": { "status": "pilot", "note": "Tested in one county tender." },
     "procurement-on-behalf": { "status": "not-yet", "note": "Needs a government agreement first." }
   },
+  "demoOfferingIds": ["funding-screening", "investment-case", "mapping", "real-time-monitoring", "dashboards"],
   "records": [
     {
       "id": "case-study-counties",
