@@ -41,8 +41,12 @@ export function GigaNotice() {
     const card = ref.current
     if (!visible || !card) return
     const root = document.documentElement
-    const update = () =>
-      root.style.setProperty(SPACE_VAR, `${Math.ceil(root.clientWidth - card.getBoundingClientRect().left + TITLE_GAP)}px`)
+    const update = () => {
+      const rect = card.getBoundingClientRect()
+      // Hidden by CSS (the Country pitch demo's clean frame): it takes no room.
+      if (!rect.width) return root.style.removeProperty(SPACE_VAR)
+      root.style.setProperty(SPACE_VAR, `${Math.ceil(root.clientWidth - rect.left + TITLE_GAP)}px`)
+    }
     update()
     const observer = new ResizeObserver(update)
     observer.observe(card)
@@ -68,6 +72,7 @@ export function GigaNotice() {
   return (
     <div
       ref={ref}
+      data-giga-notice=""
       // Fades in on show and out on close (150ms). Reduced motion shortens both to nothing (app/globals.css).
       onAnimationEnd={() => phase === 'leaving' && setPhase('closed')}
       className={cn(

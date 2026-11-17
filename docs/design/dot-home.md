@@ -438,6 +438,156 @@ side panel row, ⌘K and `/?new=deck` are unchanged.
 - It makes nothing real: demo briefs are not added to Recent, and no AI or
   external API is called.
 
+## Country pitch demo (testing)
+
+Added in November 2026, to record the demo video for the Cable to Child pitch
+deck. It shows the Country Engagement story: a country engagement lead sees
+everything DI knows about a country, builds an accurate, personalised pitch
+herself, then commits what she learned. **It makes nothing real and saves
+nothing.** The real "Create a deck" flow, the side panel, ⌘K and the deck demo
+(`?demo=deck`) are unchanged.
+
+It makes the trust rules visible: every fact has a source, evidence keeps its
+exact wording, gaps are flagged and not filled, and Dot suggests while people
+commit.
+
+- Where it is reached: the + "More" menu, right under "Create a deck (for
+  testing purposes)": "Country pitch (demo)" (`MoreMenu` in
+  `components/dot/format-tiles.tsx`). It opens `/?demo=country-pitch` in the
+  same tab. It is not in the side panel, ⌘K or the home bento.
+- The switches, in `lib/dot/settings.ts`:
+  - `showCountryPitchDemo = true`. When false, the menu item is hidden and
+    `/?demo=country-pitch` shows the normal home.
+  - `showIllustrativeNote = true`: the small muted "Illustrative data" line
+    under the snapshot and under the slides.
+- Code: `components/dot/country-pitch-demo.tsx` (the flow; `DotHome` renders it
+  when `?demo=country-pitch` is in the URL, right after the deck demo check),
+  `components/dot/country-pitch-parts.tsx` (snapshot card, source chip and
+  popover, status pills, slides, slide dialog) and
+  `lib/dot/country-pitch-demo.ts` (URL parse/build, step order, opening
+  message, offering pre-selection, the "not yet" warning, the slide rules,
+  footnote numbers, autoplay pauses and a check of the demo data; tested in
+  `lib/dot/country-pitch-demo.test.mjs`). The pieces both demos use (buttons,
+  answer chips, progress list, review rows, top bar) are in
+  `components/dot/demo-parts.tsx`. It also reuses `UserMessage`, `DotMessage`,
+  `ReplyBar`, `OpenBuilderButton` and `DotOrb`, and `GOALS`, `LENGTHS` and
+  `goalKind` from the deck demo.
+- Demo data: one file, `data/demo/country-pitch.json`. Swap the country and the
+  numbers there before recording; `validatePitchData` (run by `npm test`)
+  checks every figure has a label, value, exact excerpt, a full source
+  (title, type, committed by, validated by, date) and `"illustrative": true`,
+  and every offering status is `available`, `pilot` or `not-yet` with a
+  one-line note. `demoOfferingIds` lists the 4 to 5 offerings autoplay leaves
+  ticked (available or pilot only; the check fails otherwise), ideally from 2
+  to 3 categories. Sources are named as samples ("Giga Maps country snapshot
+  (sample)", "KPI app, Q3 2026 (sample)", "Country case study (sample)").
+  Validators are named by role only. Default: Kenya, Ministry of Education
+  (Governments). The audience's needs and offerings come from the knowledge
+  data (`needsForAudience`, `offeringsForAudience`), not from the file.
+- Layout: as the deck demo. Top bar "Country pitch" with the "Demo" pill and
+  "Start over" (back to the start of this demo, keeping the recording options).
+  One question at a time; each answer becomes a user bubble. Reply bar Brief
+  chips: Country, Audience, Goal, Offerings, Length.
+- Steps, in order:
+  1. Opening: Dot asks who you're meeting and where (with the example as a
+     chip). The user's message (typed, or the example) is read for the country
+     (name or alias from the data) and the specific audience (the longest
+     audience name that appears). Dot shows both as chips, with "Looks right"
+     and "Change". If either is missing, Dot says what it could not find and
+     gives the example.
+  2. Snapshot: "Here's what DI knows about Kenya." One card: the connectivity
+     figures, the 18 offerings by status (Available, Pilot, Not yet in Kenya),
+     the latest case study (exact excerpt in quotes) and the audience's top 3
+     needs. Every figure has a source chip; it opens a popover with the exact
+     wording, source, type, committed by, validated by and date. Each gap sits
+     in its own dashed row: "Gap flagged, not filled", the gap, and an "Ask
+     Country Engagement" button that does nothing. Then "Build the pitch".
+  3. Brief: Goal (the deck demo's four, "Propose a partnership" shown first as
+     the suggestion, plus Skip); Offerings (the audience's offerings under
+     their categories, each with its status pill; available and pilot ones are
+     ticked, "not yet" ones never are; ticking one shows "Not yet available in
+     Kenya. Check with Product before promising it." under it; "Show all 18";
+     Continue needs at least one); Length (the deck demo's three); then the
+     review card with "Change" on every row (Country and Audience go back to
+     the opening).
+  4. Generating: a progress list (`aria-live="polite"`) next to the animated
+     orb: "Reading what DI knows about Kenya", "Checking which offerings are
+     available", "Applying Comms' narrative and key terms", "Laying out slides
+     with approved assets", 0.7 s each.
+  5. Result: real-looking 16:9 slides in the master deck look (white, DI blue,
+     navy, Manrope headings, Open Sans body, the DI logo, sentence case). They
+     are generated output, so they keep their colours in both themes. Slides:
+     Title (Kenya's outline in white on a DI-blue panel), Why it matters (top 3
+     needs and the first 2 figures), one slide per selected offering category
+     (each offering with its status and note). Short merges neighbouring
+     categories into 2 slides at most (the deck demo's rule), then merges any
+     slide with fewer than 3 offerings into its neighbour, so none looks mostly
+     empty; a merged slide is titled with its category names ("Modelling and
+     finance", or "Finance · Network and data solutions" when a name already
+     holds "and"). Long adds one slide per offering. Proof (the case study word for word, in
+     quotes, with its source, and a dashed "Gap: no recent case study. Add one
+     before sending."), How we work together (with the latest engagement
+     record), The ask (start with what is available, test what is in pilot,
+     check with Product before anything not yet there) and Contact. Every
+     figure has a numbered footnote, numbered by first appearance; the
+     "Sources" strip under the grid lists them all. Clicking a slide opens it
+     large in a dialog with Prev/Next (and the arrow keys) and its sources.
+     Under the grid: the chips "Every figure is cited", "Tone and key terms
+     from Comms applied" and "1 gap flagged"; "Open deck builder" (external,
+     new tab), "Download (demo)" (disabled, tooltip "Demo only") and "Start
+     over".
+  6. Commit: "Did you learn anything in this engagement worth sharing?" with
+     "Add a case study" and "Not now". The case study form (title and what
+     happened, prefilled) has "Submit for review". The confirmation shows
+     status "Waiting for review", reviewer "Country Engagement reviewer" and
+     "Your pitch deck is not added to the knowledge base. Only reviewed
+     sources are." Nothing is saved.
+- The title slide map: the country outline comes from the world atlas file
+  the social media tool already uses (`lib/social-media/silhouette-loader.ts`,
+  a local file in `public/`). `lib/giga-maps` is not used because it loads the
+  Giga backend and the OpenFreeMap tiles, and the demo calls no external
+  service. While the outline loads, or if it can't, the panel is plain blue.
+- URL params (all answers are in the URL, so refresh and Back work):
+
+  | Param | Value |
+  | --- | --- |
+  | `demo` | `country-pitch` (turns the demo on) |
+  | `q` | the opening message |
+  | `country` | the ISO code in the data (`KE`) |
+  | `audience` | an audience id from the knowledge data |
+  | `confirmed` | `1` after "Looks right" |
+  | `pitch` | `1` after "Build the pitch" |
+  | `goal` | the goal text, or `skip` |
+  | `offerings` | offering ids separated by commas |
+  | `length` | `short`, `standard`, `long` |
+  | `generate` | `1` after "Generate pitch" |
+  | `commit` | `case-study` or `not-now` |
+  | `case` | the case study title, once submitted |
+  | `autoplay` | `1` plays the whole flow by itself |
+  | `speed` | `0.5` to `2`, scales every autoplay pause (2 is faster) |
+  | `clean` | `1` hides the side panel, the Demo pill and the Giga notice |
+
+  An unknown value is dropped, and a missing answer clears the later ones.
+  `autoplay`, `speed` and `clean` are kept on every step.
+- Recording mode (`&autoplay=1`): types the opening message character by
+  character, confirms, opens one source popover on the snapshot (then brings
+  the gap row and "Build the pitch" into view), picks "Propose a partnership",
+  ticks a "not yet" offering to show the warning and unticks it, then unticks
+  the others one by one until only `demoOfferingIds` are left, picks Short,
+  generates, opens "Why it matters" (footnotes) and then "Proof" (the gap)
+  large, 2.5 s each, closes the dialog, then adds and submits the case study.
+  When the snapshot appears, Dot's line and the top of the card sit just under
+  the top bar. Pauses: about 1.5 s per step, 2.5 s on the snapshot, the
+  popover, the review and each slide. Autoplay does not move
+  focus (no focus rings in the video) and shows each pick as pressed for a beat
+  before it acts. With reduced motion: no typing animation and no waits, and
+  autoplay moves step to step with 1 s pauses.
+- Recording URLs: `/?demo=country-pitch` (by hand) and
+  `/?demo=country-pitch&autoplay=1&clean=1` (by itself, about 48 s at speed 1).
+  Checked at 1920x1080 and 1440x900 in the light theme; the dark theme works.
+- It makes nothing real: nothing goes in Recent, and no AI (`/api/dot`) or
+  external API is called.
+
 ## Theme
 
 Added in October 2026. Light, dark or system.

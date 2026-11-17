@@ -1,0 +1,152 @@
+{
+  "about": "Sample data for the Country pitch demo (docs/design/dot-home.md, 'Country pitch demo (testing)'). Every figure is illustrative, not real. Swap the country, numbers and texts here before recording. Offering ids come from data/knowledge/offerings.json; audience needs and offerings come from the knowledge data, not from this file. demoOfferingIds: the 4 to 5 offerings autoplay leaves ticked (available or pilot only, ideally from 2 to 3 categories).",
+  "illustrative": true,
+  "country": {
+    "name": "Kenya",
+    "iso": "KE",
+    "aliases": ["kenya", "kenyan"]
+  },
+  "audienceId": "ministry-of-education",
+  "opening": "I'm meeting the Ministry of Education in Kenya next week. I need a pitch.",
+  "pitchTitle": "Connecting every school in Kenya",
+  "connectivity": [
+    {
+      "id": "schools-mapped",
+      "label": "Schools mapped",
+      "value": "31,400",
+      "excerpt": "31,400 schools in Kenya are mapped on Giga Maps.",
+      "illustrative": true,
+      "source": {
+        "title": "Giga Maps country snapshot (sample)",
+        "type": "Dataset",
+        "committedBy": "Giga Maps team",
+        "validatedBy": "Data reviewer",
+        "date": "2026-09-30"
+      }
+    },
+    {
+      "id": "schools-connected",
+      "label": "Mapped schools with a live connection",
+      "value": "38%",
+      "excerpt": "38% of mapped schools in Kenya have a live internet connection.",
+      "illustrative": true,
+      "source": {
+        "title": "Giga Maps country snapshot (sample)",
+        "type": "Dataset",
+        "committedBy": "Giga Maps team",
+        "validatedBy": "Data reviewer",
+        "date": "2026-09-30"
+      }
+    },
+    {
+      "id": "schools-monitored",
+      "label": "Schools sending real-time data",
+      "value": "2,150",
+      "excerpt": "2,150 schools send real-time connectivity data each day.",
+      "illustrative": true,
+      "source": {
+        "title": "KPI app, Q3 2026 (sample)",
+        "type": "KPI report",
+        "committedBy": "M&E team",
+        "validatedBy": "M&E reviewer",
+        "date": "2026-10-15"
+      }
+    },
+    {
+      "id": "median-speed",
+      "label": "Median download speed in monitored schools",
+      "value": "9 Mbps",
+      "excerpt": "The median download speed in monitored schools is 9 Mbps.",
+      "illustrative": true,
+      "source": {
+        "title": "KPI app, Q3 2026 (sample)",
+        "type": "KPI report",
+        "committedBy": "M&E team",
+        "validatedBy": "M&E reviewer",
+        "date": "2026-10-15"
+      }
+    }
+  ],
+  "offeringStatusSource": {
+    "id": "offering-status",
+    "label": "DI offerings in Kenya",
+    "value": "Status of 18 offerings",
+    "excerpt": "Status of each DI offering in Kenya: available, pilot or not yet.",
+    "illustrative": true,
+    "source": {
+      "title": "Offering status by country (sample)",
+      "type": "Catalogue",
+      "committedBy": "Product team",
+      "validatedBy": "Product reviewer",
+      "date": "2026-10-01"
+    }
+  },
+  "offerings": {
+    "predictive-modelling": { "status": "pilot", "note": "Tested with one county planning team." },
+    "infra-modelling": { "status": "available", "note": "Cost models ready for national planning." },
+    "funding-screening": { "status": "available", "note": "Funding sources screened in 2026." },
+    "investment-case": { "status": "pilot", "note": "First draft shared with the treasury." },
+    "ifi-engagement": { "status": "available", "note": "Ready to plan with development banks." },
+    "investment-proposal": { "status": "not-yet", "note": "Needs an agreed investment case first." },
+    "connectivity-credits": { "status": "not-yet", "note": "Not launched in Kenya." },
+    "x-as-a-hub": { "status": "pilot", "note": "Two schools tested as community hubs." },
+    "mapping": { "status": "available", "note": "Public schools mapped nationwide." },
+    "real-time-monitoring": { "status": "available", "note": "Live in schools with a connection." },
+    "dashboards": { "status": "pilot", "note": "Pilot with the ministry's data team." },
+    "institutional-development": { "status": "available", "note": "Support for a national connectivity unit." },
+    "in-country-implementation": { "status": "available", "note": "Country team in Nairobi." },
+    "global-convening": { "status": "available", "note": "Kenya joins regional peer exchanges." },
+    "research": { "status": "pilot", "note": "One study on learning outcomes under way." },
+    "delivery-toolkit": { "status": "available", "note": "Toolkit adapted for county rollouts." },
+    "supported-procurement": { "status": "pilot", "note": "Tested in one county tender." },
+    "procurement-on-behalf": { "status": "not-yet", "note": "Needs a government agreement first." }
+  },
+  "demoOfferingIds": ["funding-screening", "investment-case", "mapping", "real-time-monitoring", "dashboards"],
+  "records": [
+    {
+      "id": "case-study-counties",
+      "kind": "case-study",
+      "title": "Connecting schools in two counties (sample)",
+      "team": "Country Engagement",
+      "date": "2024-11-12",
+      "excerpt": "Teachers in the pilot schools used the connection every school day, and the county education office now reviews connectivity data each month.",
+      "illustrative": true,
+      "source": {
+        "title": "Country case study (sample)",
+        "type": "Case study",
+        "committedBy": "Country Engagement",
+        "validatedBy": "Country Engagement reviewer",
+        "date": "2024-11-12"
+      }
+    },
+    {
+      "id": "engagement-workshop",
+      "kind": "engagement",
+      "title": "Ministry workshop on school connectivity data (sample)",
+      "team": "Country Engagement",
+      "date": "2025-03-04",
+      "excerpt": "The ministry asked for one shared view of school connectivity across all counties.",
+      "illustrative": true,
+      "source": {
+        "title": "Engagement record (sample)",
+        "type": "Engagement record",
+        "committedBy": "Country Engagement",
+        "validatedBy": "Country Engagement reviewer",
+        "date": "2025-03-04"
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "id": "no-recent-case-study",
+      "label": "No case study committed since 2025",
+      "detail": "The latest case study for Kenya is from November 2024.",
+      "slideNote": "Gap: no recent case study. Add one before sending.",
+      "owner": "Country Engagement"
+    }
+  ],
+  "caseStudyDraft": {
+    "title": "Ministry of Education asks for one view of school connectivity (sample)",
+    "body": "In the November meeting, the Ministry of Education agreed to test a shared connectivity dashboard with two county education offices before the next school term."
+  }
+}

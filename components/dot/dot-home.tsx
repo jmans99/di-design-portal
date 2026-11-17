@@ -10,13 +10,14 @@ import { ComingSoonPill, ExternalTitle, KnowledgeSwitch, MoreMenu, RecommendedPi
 import { LogoArt, MapArt, MasterDeckArt, SlidesArt, TwoPagerArt } from '@/components/dot/dot-art'
 import { AiConversation } from '@/components/dot/ai-conversation'
 import { Conversation } from '@/components/dot/conversation'
+import { CountryPitchDemo, countryPitchFromParams } from '@/components/dot/country-pitch-demo'
 import { DeckDemo, deckDemoFromParams } from '@/components/dot/deck-demo'
 import { SearchReply } from '@/components/dot/search-reply'
 import { useDot } from '@/components/dot/use-dot'
 import { askFromParams, conversationFromParams, searchFromParams } from '@/lib/dot/conversation'
 import type { OutputType } from '@/lib/brief'
 import { masterDeckAvailable } from '@/lib/external-tools'
-import { resolveUseKnowledge, showDeckDemo, showKnowledgeToggle } from '@/lib/dot/settings'
+import { resolveUseKnowledge, showCountryPitchDemo, showDeckDemo, showKnowledgeToggle } from '@/lib/dot/settings'
 import { cn } from '@/lib/utils'
 import styles from './dot.module.css'
 
@@ -30,6 +31,9 @@ export function DotHome() {
   // The deck demo (testing only, showDeckDemo in lib/dot/settings.ts) comes before the other checks.
   const demo = showDeckDemo ? deckDemoFromParams(params) : null
   if (demo) return <DeckDemo key={JSON.stringify(demo)} state={demo} />
+  // The Country pitch demo (showCountryPitchDemo); when it is off, ?demo=country-pitch shows the normal home.
+  const pitch = showCountryPitchDemo ? countryPitchFromParams(params) : null
+  if (pitch) return <CountryPitchDemo key={JSON.stringify(pitch.state)} state={pitch.state} view={pitch.view} />
   // Keyed on the URL so a new step starts with fresh local state.
   const ask = askFromParams(params)
   if (ask) return <AiConversation key={JSON.stringify(ask)} state={ask} />

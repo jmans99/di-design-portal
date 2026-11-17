@@ -1,12 +1,11 @@
 'use client'
 
-import { Fragment, useEffect, useRef, useState, useSyncExternalStore } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { Check, Loader2 } from 'lucide-react'
-import { SidePanelToggle } from '@/components/app-shell/app-shell'
+import { Check } from 'lucide-react'
 import { AudienceChips, CHIP, DotMessage, OpenBuilderButton, ReplyBar, TemplateBento, UserMessage } from '@/components/dot/conversation'
-import { ComingSoonPill } from '@/components/dot/format-tiles'
+import { Chips, DemoTopBar, PRIMARY_BUTTON, ProgressList, ReviewRows, TEXT_BUTTON, reducedMotion, useReducedMotion, type ReviewRow } from '@/components/dot/demo-parts'
 import { getFormat } from '@/lib/dot/formats'
 import { isSkip, matchAudienceGroup } from '@/lib/dot/intent'
 import {
@@ -82,28 +81,8 @@ const CATALOG: DeckCatalog = {
   offeringIds: ALL_IDS,
 }
 
-const PRIMARY_BUTTON =
-  'focus-ring inline-flex h-10 items-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover'
-const TEXT_BUTTON = 'focus-ring rounded text-[13px] font-semibold text-link hover:text-link-hover'
-const SKIP_CHIP = cn(CHIP, 'border-dashed border-line-dashed')
-
 /** ?demo=deck → the demo's answers so far; null for any other URL. */
 export const deckDemoFromParams = (params: URLSearchParams) => parseDeckDemo(params, CATALOG)
-
-const reducedMotion = () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-/** prefers-reduced-motion as React state (false on the server, so the first render matches). */
-function useReducedMotion() {
-  return useSyncExternalStore(
-    (onChange) => {
-      const query = window.matchMedia('(prefers-reduced-motion: reduce)')
-      query.addEventListener('change', onChange)
-      return () => query.removeEventListener('change', onChange)
-    },
-    reducedMotion,
-    () => false,
-  )
-}
 
 const countLabel = (n: number) => (n === 1 ? '1 offering' : `${n} offerings`)
 
@@ -255,17 +234,7 @@ export function DeckDemo({ state }: { state: DeckDemoState }) {
 
   return (
     <div className="flex min-h-svh flex-col">
-      <header className="sticky top-0 z-30 flex h-14 shrink-0 items-center gap-3 border-b border-line-divider bg-background/90 px-4 backdrop-blur md:px-6">
-        <SidePanelToggle />
-        <span aria-hidden className="h-4 w-px bg-line-divider" />
-        <h1 className="truncate text-sm font-semibold text-ink">{deck.title}</h1>
-        <span className="shrink-0">
-          <ComingSoonPill>Demo</ComingSoonPill>
-        </span>
-        <Link href="/" className="focus-ring ml-auto shrink-0 rounded text-sm font-semibold text-link hover:text-link-hover">
-          Start over
-        </Link>
-      </header>
+      <DemoTopBar title={deck.title} />
 
       <div className={cn('mx-auto flex w-full max-w-[calc(760px+4rem)] flex-1 flex-col px-4 sm:px-8', styles.container)}>
         <ol className={cn('flex flex-1 flex-col gap-6 py-8', step === 'result' && 'pb-12')} aria-label="Conversation with Dot">
@@ -305,34 +274,6 @@ export function DeckDemo({ state }: { state: DeckDemoState }) {
           <ReplyBar format={deck} onSend={reply} chips={briefChips(state)} placeholder={step === 'region' ? 'Type a country or region, or skip' : undefined} />
         )}
       </div>
-    </div>
-  )
-}
-
-/** Answer chips under a question, plus a dashed Skip when the question can be skipped. */
-function Chips({
-  label,
-  options,
-  onPick,
-  onSkip,
-}: {
-  label: string
-  options: { value: string; label: string }[]
-  onPick?: (value: string) => void
-  onSkip?: () => void
-}) {
-  return (
-    <div className="flex flex-wrap gap-2" role="group" aria-label={label}>
-      {options.map((o) => (
-        <button key={o.value} type="button" onClick={() => onPick?.(o.value)} className={CHIP}>
-          {o.label}
-        </button>
-      ))}
-      {onSkip && (
-        <button type="button" onClick={onSkip} className={SKIP_CHIP}>
-          Skip
-        </button>
-      )}
     </div>
   )
 }
@@ -394,7 +335,7 @@ function ReviewCard({ state, onChange, onGenerate }: { state: DeckDemoState; onC
   const shown = (value: string | undefined, text: string) => (value === SKIP ? 'Skipped' : text)
   const master = state.template === 'master-deck'
   // The Master deck always has all 18 offerings, so that row has nothing to change.
-  const rows: { key: AnswerKey; label: string; value: string; fixed?: boolean }[] = [
+  const rows: ReviewRow<AnswerKey>[] = [
     { key: 'template', label: 'Template', value: getDeckTemplate(state.template)?.name ?? '' },
     { key: 'audience', label: 'Audience', value: shown(state.audience, audience) },
     { key: 'goal', label: 'Goal', value: shown(state.goal, state.goal ?? '') },
@@ -409,21 +350,7 @@ function ReviewCard({ state, onChange, onGenerate }: { state: DeckDemoState; onC
   ]
   return (
     <div>
-      <dl className="overflow-hidden rounded-2xl border border-line-card bg-card">
-        {rows.map((row) => (
-          <div key={row.key} className="flex items-baseline gap-3 border-b border-line-divider px-4 py-2.5 last:border-b-0">
-            <dt className="w-[88px] shrink-0 text-xs text-ink-muted sm:w-[132px]">{row.label}</dt>
-            <dd className="min-w-0 flex-1 break-words text-sm text-ink">{row.value}</dd>
-            {row.fixed ? (
-              <span aria-hidden className="w-[52px] shrink-0" />
-            ) : (
-              <button type="button" onClick={() => onChange(row.key)} aria-label={`Change ${row.label.toLowerCase()}`} className={cn(TEXT_BUTTON, 'shrink-0')}>
-                Change
-              </button>
-            )}
-          </div>
-        ))}
-      </dl>
+      <ReviewRows rows={rows} onChange={onChange} />
       <button type="button" data-autofocus onClick={onGenerate} className={cn(PRIMARY_BUTTON, 'mt-4')}>
         Generate deck
       </button>
@@ -459,21 +386,7 @@ function Generate({ state }: { state: DeckDemoState }) {
   if (!done) {
     return (
       <DotMessage text="On it. Putting your deck together." animated>
-        <ul aria-live="polite" aria-label="Progress" className="flex flex-col gap-2">
-          {PROGRESS.map((label, i) =>
-            i > finished ? null : (
-              <li key={label} className="flex items-center gap-2 text-sm text-ink-secondary">
-                {i < finished ? (
-                  <Check className="h-4 w-4 shrink-0 text-ink-muted" strokeWidth={2} aria-hidden />
-                ) : (
-                  <Loader2 className="h-4 w-4 shrink-0 text-ink-muted motion-safe:animate-spin" strokeWidth={2} aria-hidden />
-                )}
-                {label}
-                <span className="sr-only">{i < finished ? ' (done)' : ''}</span>
-              </li>
-            ),
-          )}
-        </ul>
+        <ProgressList labels={PROGRESS} finished={finished} />
       </DotMessage>
     )
   }

@@ -26,6 +26,8 @@ import { SearchProvider, useSearchPalette } from '@/components/search/search-pal
 import { SIDEBAR_MENU, activeNavItem, type NavGroup, type NavItem } from '@/lib/nav'
 import { dropRecent, useRecent } from '@/lib/dot/recent'
 import { externalLinkLabel, inPortalDeckFlow } from '@/lib/external-tools'
+import { isCleanPitchFrame } from '@/lib/dot/country-pitch-demo'
+import { showCountryPitchDemo } from '@/lib/dot/settings'
 import type { OutputType } from '@/lib/brief'
 import { SITE } from '@/lib/site'
 import { cn } from '@/lib/utils'
@@ -70,11 +72,14 @@ const FALLBACK_OPEN_GROUP = 'create'
  */
 export function AppShell({ defaultOpen, children }: { defaultOpen: boolean; children: React.ReactNode }) {
   const pathname = usePathname()
+  // The Country pitch demo's clean recording frame (/?demo=country-pitch&clean=1) has no side panel.
+  const params = useSearchParams()
+  const clean = showCountryPitchDemo && isCleanPitchFrame(pathname, params)
   return (
     <SearchProvider>
       <SidebarProvider defaultOpen={defaultOpen} style={{ '--sidebar-width': SIDEBAR_WIDTH } as React.CSSProperties}>
         {/* The (main) layout reads a cookie, so it renders per request and the URL is known on the server: no Suspense needed. */}
-        <AppSidebar />
+        {!clean && <AppSidebar />}
         <div className="relative flex min-h-svh min-w-0 flex-1 flex-col bg-background">
           {pathname !== '/' && <AppTopBar />}
           {children}

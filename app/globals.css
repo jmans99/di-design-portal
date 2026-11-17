@@ -454,3 +454,8 @@
     padding: 0;
   }
 }
+
+/* Country pitch demo, &clean=1: a clean recording frame (components/dot/country-pitch-demo.tsx). */
+html[data-clean-frame] [data-giga-notice] {
+  display: none;
+}
